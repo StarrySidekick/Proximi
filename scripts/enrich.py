@@ -75,6 +75,10 @@ FOOD = re.compile(
     r'coffee|dessert|pizza|oysters?|food (and|&) drink|catered)\b', re.I)
 
 
+def blob_of(e):
+    return ' '.join(filter(None, [e.get('title'), e.get('description'), e.get('venue')]))
+
+
 def type_of(title, description=''):
     """Classify from the title first, falling back to the description.
 
@@ -310,6 +314,8 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--in', dest='src', default='build/candidates.json')
     ap.add_argument('--platform', default='build/platform.json')
+    ap.add_argument('--jsonld', default='build/jsonld.json')
+    ap.add_argument('--manual', default='sources/manual.json')
     ap.add_argument('--out', default='build/enriched.json')
     ap.add_argument('--registry', default='sources/registry.json')
     args = ap.parse_args()
@@ -383,36 +389,63 @@ def main():
 
     # Platform results (Ticketmaster) already arrive in final shape with real
     # coordinates and prices, so they skip enrichment — but not the radius check.
+    # Ticketmaster, JSON-LD scrapes and hand-read listings all arrive in final
+    # shape. They skip classification — but never the radius check.
+    prepared = []
+    for path, key in ((args.platform, 'events'), (args.jsonld, 'events'),
+                      (args.manual, 'items')):
+        if os.path.exists(path):
+            prepared.extend(json.load(open(path)).get(key, []))
+
     platform_kept = 0
-    if os.path.exists(args.platform):
-        for e in json.load(open(args.platform)).get('events', []):
-            if e.get('lat') is None or e.get('lon') is None:
-                continue
+    for e in prepared:
+        # Hand-read entries were checked by a person; pass them through whole.
+        if str(e.get('id', '')).startswith('manual-'):
             if miles(center['lat'], center['lon'], e['lat'], e['lon']) > center['radiusMiles']:
                 dropped['out_of_radius'] += 1
                 continue
-            out.append({
-                'id': f"tm-{abs(hash(e['url'] or e['title'])) % 10**8}",
-                'title': e['title'],
-                'type': type_of(e['title'], e.get('description')),
-                'repeats': False,
-                'setting': setting_of(' '.join(filter(None, [e['title'], e.get('description')]))),
-                'timeOfDay': time_of_day(datetime.fromisoformat(e['start'].replace('Z', '+00:00'))),
-                'hasFood': bool(FOOD.search(' '.join(filter(None, [e['title'], e.get('description')])))),
-                'host': e.get('venue') or e['sourceName'],
-                'audience': audience_of(' '.join(filter(None, [
-                    e['title'], e.get('description'), e.get('venue')]))),
-                'categories': e['categories'], 'start': e['start'], 'end': e.get('end'),
-                'venue': e.get('venue') or 'See listing', 'city': e.get('city'),
-                'address': e.get('address') or e.get('venue'),
-                'lat': round(e['lat'], 5), 'lon': round(e['lon'], 5),
-                'price': e.get('price'),
-                'signupRequired': True, 'signupUrl': e.get('signupUrl'),
-                'url': e.get('url'),
-                'description': clean_text(e.get('description')),
-                'source': e['sourceName'],
-            })
+            out.append(e)
             platform_kept += 1
+            continue
+
+        if e.get('lat') is None or e.get('lon') is None:
+            query = e.get('address') or e.get('venue')
+            hit = geocode(query, cache, stats) if query else None
+            if not hit:
+                dropped['ungeocodable'] += 1
+                continue
+            e['lat'], e['lon'] = hit['lat'], hit['lon']
+
+        if miles(center['lat'], center['lon'], e['lat'], e['lon']) > center['radiusMiles']:
+            dropped['out_of_radius'] += 1
+            continue
+
+        blob = blob_of(e)
+        out.append({
+            'id': e.get('id') or f"{e.get('sourceId', 'x')}-"
+                                 f"{abs(hash(e.get('url') or e['title'])) % 10**8}",
+            'title': e['title'],
+            'type': e.get('type') or type_of(e['title'], e.get('description')),
+            'repeats': bool(e.get('repeats')),
+            'audience': e.get('audience') or audience_of(blob),
+            'setting': e.get('setting') or setting_of(blob),
+            'timeOfDay': e.get('timeOfDay') or time_of_day(
+                datetime.fromisoformat(e['start'].replace('Z', '+00:00'))),
+            'hasFood': e.get('hasFood', bool(FOOD.search(blob))),
+            'host': e.get('host') or e.get('venue') or e.get('sourceName'),
+            'categories': e.get('categories') or categorise(blob),
+            'start': e['start'], 'end': e.get('end'),
+            'venue': e.get('venue') or 'See listing', 'city': e.get('city'),
+            'address': e.get('address') or e.get('venue'),
+            'lat': round(e['lat'], 5), 'lon': round(e['lon'], 5),
+            'price': e.get('price'),
+            'signupRequired': bool(e.get('signupRequired')),
+            'signupUrl': e.get('signupUrl'),
+            'url': e.get('url'),
+            'description': clean_text(e.get('description')),
+            'source': e.get('sourceName') or e.get('source'),
+        })
+        platform_kept += 1
 
     out.sort(key=lambda x: x['start'])
     os.makedirs('build', exist_ok=True)
@@ -422,7 +455,8 @@ def main():
               indent=2, ensure_ascii=False)
 
     print(f"\n{len(out)} listings kept → {args.out}"
-          + (f" (incl. {platform_kept} from platform APIs)" if platform_kept else ""))
+          + (f" (incl. {platform_kept} pre-shaped: platform, JSON-LD, hand-read)"
+             if platform_kept else ""))
     print(f"  geocoding: {stats['looked_up']} looked up, {stats['cached']} cached, "
           f"{stats['errors']} errors")
     print(f"  dropped:   {dropped['out_of_radius']} outside {center['radiusMiles']} mi, "

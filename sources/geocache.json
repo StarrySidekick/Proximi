@@ -268,5 +268,33 @@
 "display": "New York Botanical Garden, 2900, Southern Boulevard, The Bronx, Bronx County, New York, 10458, United States",
 "matched": "New York Botanical Garden, 2950 Southern Boulevard, Bronx, NY",
 "precision": 0
+},
+"astronomy center &#038; planetarium, 151 scofieldtown road, stamford, ct": {
+"lat": 41.1240443,
+"lon": -73.5480499,
+"display": "151, Scofieldtown Road, Scofieldtown, North Stamford, Stamford, Western Connecticut Planning Region, Connecticut, 06903, United States",
+"matched": "151 Scofieldtown Road, Stamford, CT",
+"precision": 1
+},
+"farmhouse parking lot (north gate), 151 scofieldtown road, stamford, ct": {
+"lat": 41.1240443,
+"lon": -73.5480499,
+"display": "151, Scofieldtown Road, Scofieldtown, North Stamford, Stamford, Western Connecticut Planning Region, Connecticut, 06903, United States",
+"matched": "151 Scofieldtown Road, Stamford, CT",
+"precision": 1
+},
+"heckscher wild!, 39 scofieldtown road, stamford, ct": {
+"lat": 41.1238143,
+"lon": -73.5450704,
+"display": "39, Scofieldtown Road, North Stamford, Stamford, Western Connecticut Planning Region, Connecticut, 06903, United States",
+"matched": "39 Scofieldtown Road, Stamford, CT",
+"precision": 1
+},
+"bendel mansion, 39 scofieldtown road, stamford, ct": {
+"lat": 41.1238143,
+"lon": -73.5450704,
+"display": "39, Scofieldtown Road, North Stamford, Stamford, Western Connecticut Planning Region, Connecticut, 06903, United States",
+"matched": "39 Scofieldtown Road, Stamford, CT",
+"precision": 1
 }
 }

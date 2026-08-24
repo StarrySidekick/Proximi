@@ -8,7 +8,7 @@ here can invent an event.
   python3 scripts/harvest.py [--registry sources/registry.json] [--json]
 """
 
-import argparse, http.cookiejar, json, os, sys, time, urllib.error, urllib.request
+import argparse, gzip, http.cookiejar, io, json, os, sys, time, urllib.error, urllib.request, zlib
 from datetime import datetime, timezone
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -16,6 +16,20 @@ import icsparse
 
 UA = 'Mozilla/5.0 (compatible; ProximiBot/0.1; +https://github.com/StarrySidekick/Proximi)'
 TIMEOUT = 25
+
+def decode_body(raw, encoding):
+    """urllib does not decompress. A gzip-only host otherwise yields mojibake
+    that silently parses as "no events" rather than failing loudly."""
+    enc = (encoding or '').lower()
+    try:
+        if 'gzip' in enc:
+            raw = gzip.decompress(raw)
+        elif 'deflate' in enc:
+            raw = zlib.decompress(raw, -zlib.MAX_WBITS)
+    except (OSError, zlib.error):
+        pass
+    return raw.decode('utf-8', 'replace')
+
 
 # A feed with no future events is stale, not empty. Towne Crier and The Beacon
 # both serve well-formed archives frozen months back; ingesting them would put
@@ -41,12 +55,13 @@ def fetch(url, tries=3):
         'User-Agent': UA,
         'Accept': 'text/calendar, text/plain, */*;q=0.8',
         'Accept-Language': 'en-US,en;q=0.9',
+        'Accept-Encoding': 'gzip, deflate',
     }
     last = None
     for attempt in range(tries):
         try:
             with opener.open(urllib.request.Request(url, headers=headers), timeout=TIMEOUT) as r:
-                body = r.read().decode('utf-8', 'replace')
+                body = decode_body(r.read(), r.headers.get('Content-Encoding'))
                 ctype = (r.headers.get('Content-Type') or '').lower()
             if 'BEGIN:VCALENDAR' in body:
                 return body

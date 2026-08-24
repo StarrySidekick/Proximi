@@ -222,7 +222,8 @@
       "url": "https://news.hamlethub.com/danbury/events",
       "publisher": "HamletHub Danbury",
       "scope": "local",
-      "note": "Hyperlocal CT news with an events section. Added to close the Connecticut gap."
+      "note": "Disabled 2026-08-24: HamletHub's own events backend errors with getaddrinfo ENOTFOUND on its execute-api.amazonaws.com host, so the page renders no listings. Their outage, not ours — recheck later.",
+      "enabled": false
     },
     {
       "id": "ridgefieldplayhouse",
@@ -235,9 +236,10 @@
     {
       "id": "palacedanbury",
       "kind": "html",
-      "url": "https://palacedanbury.com/events/",
+      "url": "https://palacedanbury.com",
       "publisher": "Palace Danbury",
-      "scope": "venue"
+      "scope": "venue",
+      "note": "Event listings live on the root page; /events/ 404s. Carries JSON-LD."
     },
     {
       "id": "stamfordmuseum",

@@ -190,9 +190,11 @@ data/events.json        the listings the site serves
 
 sources/registry.json   curated list of feeds, pages and APIs to check
 sources/geocache.json   remembered geocoding results, hits and misses alike
+sources/manual.json     listings read by hand from feedless sources
 
 scripts/icsparse.py     minimal iCalendar reader
 scripts/harvest.py      pull feeds listed in the registry
+scripts/jsonld.py       extract schema.org Event data from html sources
 scripts/platforms.py    Ticketmaster Discovery (needs TICKETMASTER_API_KEY)
 scripts/discover.py     find new venues (OSM) and probe them for feeds
 scripts/enrich.py       geocode, radius-filter, infer categories
@@ -211,13 +213,24 @@ what needs judgement:
 
 ```
 sources/registry.json     the curated list of places to look
+sources/manual.json       listings read by hand, versioned so they survive reruns
         │
         ├─ harvest.py     pull iCal feeds          → build/candidates.json
+        ├─ jsonld.py      scrape schema.org Events → build/jsonld.json
         ├─ platforms.py   Ticketmaster (API key)   → build/platform.json
-        ├─ enrich.py      geocode, radius-filter, categorise
+        ├─ enrich.py      geocode, radius-filter, classify
         ├─ merge.py       collapse repeats, dedupe → data/events.json
         └─ validate.py    gate before anything ships
 ```
+
+Sources fall into three tiers, and each needs a different amount of human
+attention:
+
+| Tier | How it is read | Effort |
+| --- | --- | --- |
+| `ics` | `harvest.py` parses the feed | none |
+| `jsonld` / `html` with structured data | `jsonld.py` extracts schema.org Events — the only automated route that yields a **price** | none |
+| `html`, prose only | Claude reads the page and writes into `sources/manual.json` | manual, weekly |
 
 Everything above is deterministic — no model is involved, so nothing in it can
 invent an event. Claude's job is the rest: reading the sources that have no
@@ -280,6 +293,23 @@ put confident, obsolete listings on the site. So:
 - Hosts that answer a bot challenge (HTTP 202 with an HTML interstitial — Opus 40
   and Maverick Concerts both do) are reported as `blocked`, never silently
   counted as zero.
+
+### Reading pages by hand
+
+Some sources have no feed and no structured data, and a few cannot be read from
+a script at all:
+
+- **Ridgefield Playhouse** renders entirely in JavaScript — fetching it returns
+  zero characters of text. A headless browser would be needed.
+- **HamletHub Danbury** is disabled: its own backend answers
+  `getaddrinfo ENOTFOUND …execute-api.amazonaws.com`, so the page renders no
+  listings. That is their outage, not ours.
+- **Bethel Woods** publishes its listing index without times or prices; both
+  live on each event's own detail page, so getting them right means one fetch
+  per event.
+
+Anything read by hand goes into `sources/manual.json` rather than straight into
+`data/events.json`, so it is not lost the next time the pipeline regenerates.
 
 ### Price is the known gap
 

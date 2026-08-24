@@ -1,7 +1,7 @@
 {
   "meta": {
     "schemaVersion": 2,
-    "scrapedAt": "2026-08-24T21:54:34+00:00",
+    "scrapedAt": "2026-08-24T22:18:18+00:00",
     "centerName": "Beacon, NY",
     "centerLat": 41.5048,
     "centerLon": -73.9696,
@@ -9,6 +9,7 @@
     "timezone": "America/New_York",
     "generatedBy": "scripts/harvest.py + enrich.py + merge.py, reviewed by Claude",
     "sources": [
+      "Bethel Woods Center for the Arts",
       "Desmond-Fish Library, Garrison",
       "Emelin Theatre",
       "Hudson River Sloop Clearwater",
@@ -16,6 +17,7 @@
       "Millbrook Vineyards & Winery",
       "Savage Wonder, Beacon",
       "Scenic Hudson",
+      "Stamford Museum & Nature Center",
       "Storm King Art Center",
       "Teatown Lake Reservation",
       "White Memorial Conservation Center",
@@ -34,6 +36,34 @@
     "note": "Times and prices are as published by the source at scrape time and can change. Listings with no published price carry price: null."
   },
   "items": [
+    {
+      "id": "stamfordmuseum-20260063",
+      "title": "Sculpture Trail Scavenger Hunt: Daily, Self-Guided",
+      "type": "art",
+      "repeats": true,
+      "audience": "all",
+      "setting": "unknown",
+      "timeOfDay": "morning",
+      "hasFood": false,
+      "host": "Stamford Museum &amp; Nature Center",
+      "categories": [
+        "art",
+        "outdoors"
+      ],
+      "start": "2026-01-23T09:00:00-05:00",
+      "end": "2029-12-31T17:00:00-05:00",
+      "venue": "Stamford Museum &amp; Nature Center",
+      "city": "Stamford, CT",
+      "address": "Stamford Museum &amp; Nature Center, 39 Scofieldtown Road, Stamford, CT",
+      "lat": 41.12608,
+      "lon": -73.54565,
+      "price": null,
+      "signupRequired": false,
+      "signupUrl": null,
+      "url": "https://www.stamfordmuseum.org/event/sculpture-trail-scavenger-huntdaily-self-guided/",
+      "description": "Daily & Self-Guided! Before setting out, be sure to drop by Bendel Mansion\\'s reception desk to pick up a guide to our all-new Sculpture Trail Scavenger Hunt, and gain a brand-new perspective of our beautiful grounds through art and history! Self-guided by prompts and clues from start to finish, you\\'ll explore our sculpture trail at… \\n",
+      "source": "Stamford Museum & Nature Center"
+    },
     {
       "id": "whitememorial-33891336",
       "title": "The 44th Annual Family Nature Day Raffle Ticket Sale!",
@@ -178,6 +208,36 @@
       "host": "timeshudsonvalley.com"
     },
     {
+      "id": "stamfordmuseum-73529770",
+      "title": "Planetarium Show: Forward! To the Moon",
+      "type": "other",
+      "repeats": true,
+      "audience": "all",
+      "setting": "unknown",
+      "timeOfDay": "morning",
+      "hasFood": false,
+      "host": "Stamford Museum &amp; Nature Center",
+      "categories": [
+        "film",
+        "art",
+        "outdoors"
+      ],
+      "start": "2026-08-25T11:00:00-04:00",
+      "end": null,
+      "venue": "Astronomy Center &#038; Planetarium",
+      "city": "Stamford, CT",
+      "address": "Astronomy Center &#038; Planetarium, 151 Scofieldtown Road, Stamford, CT",
+      "lat": 41.12404,
+      "lon": -73.54805,
+      "price": null,
+      "signupRequired": true,
+      "signupUrl": "https://www.stamfordmuseum.org/event/forward-to-the-moon-2/2026-08-25/",
+      "url": "https://www.stamfordmuseum.org/event/forward-to-the-moon-2/2026-08-25/",
+      "description": "Forward! To the Moon FullDome Cinematic Show* Step into NASA’s Artemis Program ◆ Daily at 11 AM (except Mondays) Ages 5+, 45 mins SM&NC Members: $8/seat Non-Members: $12/seat + Daily Admission Preview the Trailer | Step into NASA’s Artemis program, a bold new era of lunar exploration. Learn about the awe-inspiring Artemis program currently underway and… \\n",
+      "source": "Stamford Museum & Nature Center",
+      "recurrence": "11 dates listed through Sep 5"
+    },
+    {
       "id": "wildlife-play-days-hhnc",
       "title": "Wildlife Play Days",
       "categories": [
@@ -205,6 +265,34 @@
       "timeOfDay": "afternoon",
       "hasFood": false,
       "host": "timeshudsonvalley.com"
+    },
+    {
+      "id": "stamfordmuseum-41675517",
+      "title": "Daily Otter Feeding",
+      "type": "other",
+      "repeats": true,
+      "audience": "all",
+      "setting": "indoor",
+      "timeOfDay": "afternoon",
+      "hasFood": false,
+      "host": "Stamford Museum &amp; Nature Center",
+      "categories": [
+        "outdoors"
+      ],
+      "start": "2026-08-25T13:00:00-04:00",
+      "end": null,
+      "venue": "Stamford Museum &amp; Nature Center",
+      "city": "Stamford, CT",
+      "address": "Stamford Museum &amp; Nature Center, 39 Scofieldtown Road, Stamford, CT",
+      "lat": 41.12608,
+      "lon": -73.54565,
+      "price": null,
+      "signupRequired": false,
+      "signupUrl": null,
+      "url": "https://www.stamfordmuseum.org/event/daily-otter-feeding-3/2026-08-25/",
+      "description": "Daily Otter Feedings Come say hi to Sadie and Ron, our two river otters! Our otter feedings are daily at 1 pm, and switch to noon upon November\\'s time change through the winter. Feedings last approximately 10 minutes. Spring & Summer: March — November (through Fall time change) : 1:00 pm Fall & Winter: November— March (through Spring time change) : NOON MORE ABOUT OUR OTTERS \\n",
+      "source": "Stamford Museum & Nature Center",
+      "recurrence": "12 dates listed through Sep 5"
     },
     {
       "id": "teatown-23387125",
@@ -338,6 +426,34 @@
       "timeOfDay": "evening",
       "hasFood": false,
       "host": "thebeaconbeaconny.com"
+    },
+    {
+      "id": "stamfordmuseum-75791906",
+      "title": "Today’s Planetarium Shows & Showtimes",
+      "type": "other",
+      "repeats": true,
+      "audience": "all",
+      "setting": "unknown",
+      "timeOfDay": "morning",
+      "hasFood": false,
+      "host": "Stamford Museum &amp; Nature Center",
+      "categories": [
+        "film"
+      ],
+      "start": "2026-08-26T09:00:00-04:00",
+      "end": null,
+      "venue": "Astronomy Center &#038; Planetarium",
+      "city": "Stamford, CT",
+      "address": "Astronomy Center &#038; Planetarium, 151 Scofieldtown Road, Stamford, CT",
+      "lat": 41.12404,
+      "lon": -73.54805,
+      "price": null,
+      "signupRequired": false,
+      "signupUrl": null,
+      "url": "https://www.stamfordmuseum.org/event/todays-planetarium-shows-showtimes-2/2026-08-26/",
+      "description": "Immersive. Interactive. Inspiring. Our Planetarium transports visitors beyond Earth and into the cosmos. Guests can take an immersive journey through the universe at any of our regularly scheduled Planetarium Shows, including our signature \"Stamford Skies\" astronomer-led live program, 360° full-dome cinematic experiences, and immersive audio-visual/laser light concerts.",
+      "source": "Stamford Museum & Nature Center",
+      "recurrence": "9 dates listed through Sep 5"
     },
     {
       "id": "stormking-80175712",
@@ -506,6 +622,34 @@
       "host": "thebeaconbeaconny.com"
     },
     {
+      "id": "stamfordmuseum-67198759",
+      "title": "All-Ages Drop-In Programs: Nancy Grace Roman Space Telescope",
+      "type": "other",
+      "repeats": true,
+      "audience": "all",
+      "setting": "unknown",
+      "timeOfDay": "morning",
+      "hasFood": false,
+      "host": "Stamford Museum &amp; Nature Center",
+      "categories": [
+        "community"
+      ],
+      "start": "2026-08-27T09:00:00-04:00",
+      "end": null,
+      "venue": "Astronomy Center &#038; Planetarium",
+      "city": "Stamford, CT",
+      "address": "Astronomy Center &#038; Planetarium, 151 Scofieldtown Road, Stamford, CT",
+      "lat": 41.12404,
+      "lon": -73.54805,
+      "price": null,
+      "signupRequired": false,
+      "signupUrl": null,
+      "url": "https://www.stamfordmuseum.org/event/all-ages-drop-in-programs-nancy-grace-roman-space-telescope/2026-08-27/",
+      "description": "Astronomy Drop-in programs for all ages featuring NASA\\'s newest Space Telescope! During our regular hours, the Astronomy Center & Planetarium will host drop-in activities celebrating NASA\\'s Nancy Grace Roman Space Telescope.",
+      "source": "Stamford Museum & Nature Center",
+      "recurrence": "4 dates listed through Aug 30"
+    },
+    {
       "id": "sunflower-picking-cold-pressed-oils",
       "title": "Sunflower Picking & Live Music",
       "categories": [
@@ -621,6 +765,39 @@
       "host": "thebeaconbeaconny.com"
     },
     {
+      "id": "manual-bethelwoods-rockbandjam",
+      "title": "Rock Band Jam",
+      "type": "class",
+      "start": "2026-08-27T18:00:00-04:00",
+      "end": null,
+      "repeats": true,
+      "recurrence": "Monthly — also Sep 25, Oct 30, Nov 20",
+      "audience": "adults",
+      "setting": "indoor",
+      "timeOfDay": "evening",
+      "hasFood": false,
+      "categories": [
+        "music",
+        "class"
+      ],
+      "venue": "Bethel Woods Center for the Arts",
+      "city": "Bethel, NY",
+      "address": "200 Hurd Rd, Bethel, NY",
+      "lat": 41.696,
+      "lon": -74.879,
+      "price": {
+        "min": 15,
+        "max": 20,
+        "note": "$20 general, $15 members"
+      },
+      "signupRequired": true,
+      "signupUrl": "https://www.bethelwoodscenter.org/events/detail/rock-band-jam",
+      "url": "https://www.bethelwoodscenter.org/events/detail/rock-band-jam",
+      "description": "Monthly music drop-in for adult musicians of intermediate to advanced ability. Doors 6-8pm.",
+      "host": "Bethel Woods Center for the Arts",
+      "source": "Bethel Woods Center for the Arts"
+    },
+    {
       "id": "towne-crier-open-mic",
       "title": "Towne Crier Open Mic Night",
       "categories": [
@@ -645,6 +822,61 @@
       "timeOfDay": "evening",
       "hasFood": false,
       "host": "thebeaconbeaconny.com"
+    },
+    {
+      "id": "stamfordmuseum-54342990",
+      "title": "The Legacy of Nancy Grace Roman & Blood Moon Eclipse",
+      "type": "other",
+      "repeats": false,
+      "audience": "all",
+      "setting": "unknown",
+      "timeOfDay": "evening",
+      "hasFood": false,
+      "host": "Stamford Museum &amp; Nature Center",
+      "categories": [
+        "community"
+      ],
+      "start": "2026-08-27T19:00:00-04:00",
+      "end": "2026-08-27T22:00:00-04:00",
+      "venue": "Astronomy Center &#038; Planetarium",
+      "city": "Stamford, CT",
+      "address": "Astronomy Center &#038; Planetarium, 151 Scofieldtown Road, Stamford, CT",
+      "lat": 41.12404,
+      "lon": -73.54805,
+      "price": null,
+      "signupRequired": true,
+      "signupUrl": "https://www.stamfordmuseum.org/event/legacy-and-eclipse/",
+      "url": "https://www.stamfordmuseum.org/event/legacy-and-eclipse/",
+      "description": "On Thursday, August 27, join us for an Astronomical Trifecta celebrating the launch of NASA\\'s latest Space Telescope. SM&NC Planetarium Interior FIRST: STARS Astronomer-Led Planetarium Show Experience a special edition of our live, interactive Stamford Skies Planetarium Show exploring the life, legacy and groundbreaking work of Dr. Nancy Grace Roman, the “Mother of Hubble.” Dr.",
+      "source": "Stamford Museum & Nature Center"
+    },
+    {
+      "id": "stamfordmuseum-83919109",
+      "title": "Planetarium Show: Taylor Swift (Laser)",
+      "type": "concert",
+      "repeats": true,
+      "audience": "all",
+      "setting": "unknown",
+      "timeOfDay": "afternoon",
+      "hasFood": false,
+      "host": "Stamford Museum &amp; Nature Center",
+      "categories": [
+        "music"
+      ],
+      "start": "2026-08-28T16:00:00-04:00",
+      "end": null,
+      "venue": "Astronomy Center &#038; Planetarium",
+      "city": "Stamford, CT",
+      "address": "Astronomy Center &#038; Planetarium, 151 Scofieldtown Road, Stamford, CT",
+      "lat": 41.12404,
+      "lon": -73.54805,
+      "price": null,
+      "signupRequired": true,
+      "signupUrl": "https://www.stamfordmuseum.org/event/planetarium-show-taylor-swift-laser/2026-08-28/",
+      "url": "https://www.stamfordmuseum.org/event/planetarium-show-taylor-swift-laser/2026-08-28/",
+      "description": "Laser Taylor Swift Laser Show* Her Hits Reimagined in Light and Sound ◆ Fridays & Saturdays at 4 PM Ages: 6+, 45 mins SM&NC Members: $12/seat Non-Members: $15/seat An electrifying mix of Taylor Swift fan-favorite hits, reimagined through a dynamic laser show that transforms the planetarium dome into a fully immersive visual concert. BOOK SEATS… \\n",
+      "source": "Stamford Museum & Nature Center",
+      "recurrence": "4 dates listed through Sep 5"
     },
     {
       "id": "treasury-cider-open-mic",
@@ -728,6 +960,117 @@
       "timeOfDay": "evening",
       "hasFood": false,
       "host": "Hudson Valley Tourism"
+    },
+    {
+      "id": "stamfordmuseum-36321780",
+      "title": "Planetarium Show: Fractals (Audio-Visual Journey)",
+      "type": "other",
+      "repeats": true,
+      "audience": "kids",
+      "setting": "unknown",
+      "timeOfDay": "evening",
+      "hasFood": false,
+      "host": "Stamford Museum &amp; Nature Center",
+      "categories": [
+        "community"
+      ],
+      "start": "2026-08-28T19:00:00-04:00",
+      "end": null,
+      "venue": "Astronomy Center &#038; Planetarium",
+      "city": "Stamford, CT",
+      "address": "Astronomy Center &#038; Planetarium, 151 Scofieldtown Road, Stamford, CT",
+      "lat": 41.12404,
+      "lon": -73.54805,
+      "price": null,
+      "signupRequired": true,
+      "signupUrl": "https://www.stamfordmuseum.org/event/planetarium-show-fractals-audio-visual-journey/2026-08-28/",
+      "url": "https://www.stamfordmuseum.org/event/planetarium-show-fractals-audio-visual-journey/2026-08-28/",
+      "description": "Fractals Audio-Visual Journey* Patterns of Infinity Illuminated by Sound ◆ Friday & Saturday Nights at 7 PM Ages: Teens & Up, 45 mins SM&NC Members: $12/seat Non-Members: $15/seat Preview a Fractal Zoom | Immerse yourself in the infinite beauty of kaleidoscopic mathematical patterns. Hypnotic, surprising and unexpectedly emotional, Fractals is a sweeping audiovisual journey into… \\n",
+      "source": "Stamford Museum & Nature Center",
+      "recurrence": "4 dates listed through Sep 5"
+    },
+    {
+      "id": "stamfordmuseum-77526248",
+      "title": "Friday & Saturday Night Sky Observing",
+      "type": "outdoors",
+      "repeats": true,
+      "audience": "all",
+      "setting": "unknown",
+      "timeOfDay": "evening",
+      "hasFood": false,
+      "host": "Stamford Museum &amp; Nature Center",
+      "categories": [
+        "community"
+      ],
+      "start": "2026-08-28T19:00:00-04:00",
+      "end": null,
+      "venue": "Astronomy Center &#038; Planetarium",
+      "city": "Stamford, CT",
+      "address": "Astronomy Center &#038; Planetarium, 151 Scofieldtown Road, Stamford, CT",
+      "lat": 41.12404,
+      "lon": -73.54805,
+      "price": null,
+      "signupRequired": false,
+      "signupUrl": null,
+      "url": "https://www.stamfordmuseum.org/event/night-sky-observing/2026-08-28/",
+      "description": "Join us on Friday & Saturday nights for educator-led stargazing. On clear evenings, we roll back our Observatory roof to reveal the night sky, offering guests the chance to peer through our 14\" Celestron Schmidt-Cassegrain telescope for awe-inspiring views of the Moon, planets and deep sky objects. Our new Observatory features a permanently mounted 14-inch… \\n",
+      "source": "Stamford Museum & Nature Center",
+      "recurrence": "4 dates listed through Sep 5"
+    },
+    {
+      "id": "stamfordmuseum-53788272",
+      "title": "Planetarium Show: Stamford Skies",
+      "type": "other",
+      "repeats": true,
+      "audience": "all",
+      "setting": "unknown",
+      "timeOfDay": "evening",
+      "hasFood": false,
+      "host": "Stamford Museum &amp; Nature Center",
+      "categories": [
+        "community"
+      ],
+      "start": "2026-08-28T20:00:00-04:00",
+      "end": null,
+      "venue": "Astronomy Center &#038; Planetarium",
+      "city": "Stamford, CT",
+      "address": "Astronomy Center &#038; Planetarium, 151 Scofieldtown Road, Stamford, CT",
+      "lat": 41.12404,
+      "lon": -73.54805,
+      "price": null,
+      "signupRequired": true,
+      "signupUrl": "https://www.stamfordmuseum.org/event/planetarium-show-stamford-skies-5-2/2026-08-28/",
+      "url": "https://www.stamfordmuseum.org/event/planetarium-show-stamford-skies-5-2/2026-08-28/",
+      "description": "Stamford Skies Narrated Exploration through Space Our Signature LIVE Planetarium Show* ◆ Daily at 2 PM (except Mondays) ◆ Friday & Saturday Evenings at 8 PM All Ages, 45 mins 2 PM SHOWTIMES SM&NC Members: $8/seat Non-Members: $12/seat + Daily Admission 8 PM FRIDAY & SATURDAY NIGHTS SM&NC Members: $12/seat Non-Members: $15/seat Our signature, ever-evolving,… \\n",
+      "source": "Stamford Museum & Nature Center",
+      "recurrence": "4 dates listed through Sep 5"
+    },
+    {
+      "id": "stamfordmuseum-12030292",
+      "title": "Planetarium Show: Laser Led Zeppelin",
+      "type": "other",
+      "repeats": false,
+      "audience": "kids",
+      "setting": "unknown",
+      "timeOfDay": "night",
+      "hasFood": false,
+      "host": "Stamford Museum &amp; Nature Center",
+      "categories": [
+        "community"
+      ],
+      "start": "2026-08-28T21:00:00-04:00",
+      "end": "2026-08-28T21:45:00-04:00",
+      "venue": "Astronomy Center &#038; Planetarium",
+      "city": "Stamford, CT",
+      "address": "Astronomy Center &#038; Planetarium, 151 Scofieldtown Road, Stamford, CT",
+      "lat": 41.12404,
+      "lon": -73.54805,
+      "price": null,
+      "signupRequired": true,
+      "signupUrl": "https://www.stamfordmuseum.org/event/planetarium-show-laser-led-zeppelin/2026-08-28/",
+      "url": "https://www.stamfordmuseum.org/event/planetarium-show-laser-led-zeppelin/2026-08-28/",
+      "description": "Laser Led Zeppelin Laser Show* Journey Beyond the Stairway ◆ Fridays at 9 PM Ages: Teens & Up, 45 mins SM&NC Members: $12/seat Non-Members: $15/seat Journey through the legendary sound of Led Zeppelin as powerful rock anthems ignite the dome with immersive laser effects and cosmic visuals. Please Note: Tickets to this show include an… \\n",
+      "source": "Stamford Museum & Nature Center"
     },
     {
       "id": "cold-spring-farmers-market",
@@ -990,6 +1333,38 @@
       "host": "timeshudsonvalley.com"
     },
     {
+      "id": "manual-bethelwoods-outlaw",
+      "title": "Outlaw Music Festival",
+      "type": "festival",
+      "start": "2026-08-29T15:00:00-04:00",
+      "end": null,
+      "repeats": false,
+      "audience": "all",
+      "setting": "outdoor",
+      "timeOfDay": "afternoon",
+      "hasFood": false,
+      "categories": [
+        "music",
+        "outdoors"
+      ],
+      "venue": "Bethel Woods Pavilion",
+      "city": "Bethel, NY",
+      "address": "200 Hurd Rd, Bethel, NY",
+      "lat": 41.696,
+      "lon": -74.879,
+      "price": {
+        "min": 61,
+        "max": 290.5,
+        "note": "incl. taxes & fees"
+      },
+      "signupRequired": true,
+      "signupUrl": "https://www.bethelwoodscenter.org/events/detail/outlaw",
+      "url": "https://www.bethelwoodscenter.org/events/detail/outlaw",
+      "description": "All-day festival on the Pavilion stage.",
+      "host": "Bethel Woods Center for the Arts",
+      "source": "Bethel Woods Center for the Arts"
+    },
+    {
       "id": "millbrookwine-39513533",
       "title": "Jazz in the Vineyard",
       "categories": [
@@ -1014,6 +1389,33 @@
       "timeOfDay": "evening",
       "hasFood": false,
       "host": "Millbrook Vineyards & Winery"
+    },
+    {
+      "id": "stamfordmuseum-25688846",
+      "title": "How Stars Are Born: Space Telescope Discoveries with Dr. Mario Tafalla",
+      "type": "other",
+      "repeats": false,
+      "audience": "all",
+      "setting": "unknown",
+      "timeOfDay": "evening",
+      "hasFood": false,
+      "host": "Stamford Museum &amp; Nature Center",
+      "categories": [
+        "community"
+      ],
+      "start": "2026-08-29T19:00:00-04:00",
+      "end": "2026-08-29T20:00:00-04:00",
+      "venue": "Astronomy Center &#038; Planetarium",
+      "city": "Stamford, CT",
+      "address": "Astronomy Center &#038; Planetarium, 151 Scofieldtown Road, Stamford, CT",
+      "lat": 41.12404,
+      "lon": -73.54805,
+      "price": null,
+      "signupRequired": true,
+      "signupUrl": "https://www.stamfordmuseum.org/event/dr-mario-tafalla/",
+      "url": "https://www.stamfordmuseum.org/event/dr-mario-tafalla/",
+      "description": "Join us for a special evening with Dr. Mario Tafalla, astrophysicist at the Observatorio Astronómico Nacional (Spain), as he takes us deep into the process of star formation. Drawing from his research using radio telescopes and showcasing breathtaking imagery captured by the James Webb Space Telescope (JWST), Dr. Tafalla will take us inside the hidden… \\n",
+      "source": "Stamford Museum & Nature Center"
     },
     {
       "id": "walkway-at-night",
@@ -1095,6 +1497,33 @@
       "timeOfDay": "evening",
       "hasFood": true,
       "host": "Savage Wonder, Beacon"
+    },
+    {
+      "id": "stamfordmuseum-96618959",
+      "title": "Planetarium Show: Laser Michael Jackson",
+      "type": "concert",
+      "repeats": false,
+      "audience": "kids",
+      "setting": "unknown",
+      "timeOfDay": "night",
+      "hasFood": false,
+      "host": "Stamford Museum &amp; Nature Center",
+      "categories": [
+        "community"
+      ],
+      "start": "2026-08-29T21:00:00-04:00",
+      "end": "2026-08-29T21:45:00-04:00",
+      "venue": "Astronomy Center &#038; Planetarium",
+      "city": "Stamford, CT",
+      "address": "Astronomy Center &#038; Planetarium, 151 Scofieldtown Road, Stamford, CT",
+      "lat": 41.12404,
+      "lon": -73.54805,
+      "price": null,
+      "signupRequired": true,
+      "signupUrl": "https://www.stamfordmuseum.org/event/planetarium-show-laser-michael-jackson-2/2026-08-29/",
+      "url": "https://www.stamfordmuseum.org/event/planetarium-show-laser-michael-jackson-2/2026-08-29/",
+      "description": "Laser Michael Jackson Laser Show* Moonwalk the Magic of a Legend ◆ Saturdays at 9 PM Ages: Teens & Up, 45 mins SM&NC Members: $12/seat Non-Members: $15/seat Experience Michael Jackson\\'s iconic music as dazzling lasers and immersive visuals transform the dome into an electrifying celebration of a legendary performer. Please Note: Tickets to this show… \\n",
+      "source": "Stamford Museum & Nature Center"
     },
     {
       "id": "desmondfish-library-5195681",
@@ -1211,6 +1640,37 @@
       "source": "Teatown Lake Reservation"
     },
     {
+      "id": "stamfordmuseum-26123919",
+      "title": "SM&NC Sunday Farm Market",
+      "type": "market",
+      "repeats": true,
+      "audience": "all",
+      "setting": "outdoor",
+      "timeOfDay": "morning",
+      "hasFood": false,
+      "host": "Stamford Museum &amp; Nature Center",
+      "categories": [
+        "market"
+      ],
+      "start": "2026-08-30T10:00:00-04:00",
+      "end": "2026-08-30T14:00:00-04:00",
+      "venue": "Farmhouse Parking Lot (North Gate)",
+      "city": "Stamford, CT",
+      "address": "Farmhouse Parking Lot (North Gate), 151 Scofieldtown Road, Stamford, CT",
+      "lat": 41.12404,
+      "lon": -73.54805,
+      "price": {
+        "min": 0.0,
+        "max": 0.0,
+        "note": "from the listing page"
+      },
+      "signupRequired": true,
+      "signupUrl": "https://www.stamfordmuseum.org/event/smnc-sunday-farm-market-2-2/2026-08-30/",
+      "url": "https://www.stamfordmuseum.org/event/smnc-sunday-farm-market-2-2/2026-08-30/",
+      "description": "Our Sunday Farm Market is back and better than ever – and as always, admission to come shop is free! Join us today and every Sunday this summer, to pick up some great products and produce to support local agriculture. Our Market features everything from locally grown veggies & fruits, eggs, meat, bread, cheeses, honey,… \\n",
+      "source": "Stamford Museum & Nature Center"
+    },
+    {
       "id": "teatown-40288275",
       "title": "Wildflower Island Open Gate Day (ages 10+, no dogs)",
       "type": "other",
@@ -1263,6 +1723,40 @@
       "timeOfDay": "afternoon",
       "hasFood": false,
       "host": "Storm King Art Center"
+    },
+    {
+      "id": "manual-bethelwoods-paintsip",
+      "title": "Harvest Festival Paint & Sip",
+      "type": "class",
+      "start": "2026-08-30T12:00:00-04:00",
+      "end": null,
+      "repeats": true,
+      "recurrence": "Also September 27",
+      "audience": "all",
+      "setting": "unknown",
+      "timeOfDay": "afternoon",
+      "hasFood": true,
+      "categories": [
+        "art",
+        "class",
+        "food"
+      ],
+      "venue": "Bethel Woods Center for the Arts",
+      "city": "Bethel, NY",
+      "address": "200 Hurd Rd, Bethel, NY",
+      "lat": 41.696,
+      "lon": -74.879,
+      "price": {
+        "min": 20,
+        "max": 20,
+        "note": "Includes materials and a glass of wine"
+      },
+      "signupRequired": true,
+      "signupUrl": "https://www.bethelwoodscenter.org/events/detail/harvest-festival-paint-sip",
+      "url": "https://www.bethelwoodscenter.org/events/detail/harvest-festival-paint-sip",
+      "description": "Drop-in painting session, last entry 2:30pm.",
+      "host": "Bethel Woods Center for the Arts",
+      "source": "Bethel Woods Center for the Arts"
     },
     {
       "id": "travelhudsonvalley-84698530",
@@ -1318,6 +1812,64 @@
       "timeOfDay": "afternoon",
       "hasFood": true,
       "host": "Hudson Valley Tourism"
+    },
+    {
+      "id": "stamfordmuseum-33137580",
+      "title": "Heckscher WILD! Summer Closure Week",
+      "type": "other",
+      "repeats": false,
+      "audience": "all",
+      "setting": "unknown",
+      "timeOfDay": "afternoon",
+      "hasFood": false,
+      "host": "Stamford Museum &amp; Nature Center",
+      "categories": [
+        "community"
+      ],
+      "start": "2026-08-30T14:00:00-04:00",
+      "end": "2026-09-05T13:00:00-04:00",
+      "venue": "Heckscher WILD!",
+      "city": "Stamford, CT",
+      "address": "Heckscher WILD!, 39 Scofieldtown Road, Stamford, CT",
+      "lat": 41.12381,
+      "lon": -73.54507,
+      "price": null,
+      "signupRequired": false,
+      "signupUrl": null,
+      "url": "https://www.stamfordmuseum.org/event/heckscher-wild-summer-closure-week/",
+      "description": "Heckscher WILD! is closed to the public for annual end-of-summer maintenance, and will reopen on Saturday, September 5, 2026 at 1 pm. \\n",
+      "source": "Stamford Museum & Nature Center"
+    },
+    {
+      "id": "stamfordmuseum-39068142",
+      "title": "Last Look: Printmaking and the Unconventional Pathways of African American Artists",
+      "type": "art",
+      "repeats": false,
+      "audience": "all",
+      "setting": "unknown",
+      "timeOfDay": "afternoon",
+      "hasFood": false,
+      "host": "Stamford Museum &amp; Nature Center",
+      "categories": [
+        "art"
+      ],
+      "start": "2026-08-30T15:00:00-04:00",
+      "end": "2026-08-30T16:30:00-04:00",
+      "venue": "Bendel Mansion",
+      "city": "Stamford, CT",
+      "address": "Bendel Mansion, 39 Scofieldtown Road, Stamford, CT",
+      "lat": 41.12381,
+      "lon": -73.54507,
+      "price": {
+        "min": 0.0,
+        "max": 0.0,
+        "note": "from the listing page"
+      },
+      "signupRequired": true,
+      "signupUrl": "https://www.stamfordmuseum.org/event/last-look-printmaking/",
+      "url": "https://www.stamfordmuseum.org/event/last-look-printmaking/",
+      "description": "Last Look Reception: Printmaking and the Unconventional Pathways of African American Artists Members & Non-Members alike are invited to join us for a closing reception and last look at our summer exhibition, Printmaking and the Unconventional Pathways of African American Artists. On loan from the collection of Raven Fine Art Editions and curated by artist,… \\n",
+      "source": "Stamford Museum & Nature Center"
     },
     {
       "id": "scenichudson-83581962",
@@ -1377,6 +1929,68 @@
       "timeOfDay": "evening",
       "hasFood": false,
       "host": "timeshudsonvalley.com"
+    },
+    {
+      "id": "manual-bethelwoods-jerrygarcia",
+      "title": "Jerry Garcia Symphonic Celebration",
+      "type": "concert",
+      "start": "2026-08-30T20:00:00-04:00",
+      "end": null,
+      "repeats": false,
+      "audience": "all",
+      "setting": "outdoor",
+      "timeOfDay": "evening",
+      "hasFood": false,
+      "categories": [
+        "music"
+      ],
+      "venue": "Bethel Woods Pavilion",
+      "city": "Bethel, NY",
+      "address": "200 Hurd Rd, Bethel, NY",
+      "lat": 41.696,
+      "lon": -74.879,
+      "price": {
+        "min": 55,
+        "max": 177,
+        "note": "incl. taxes & fees"
+      },
+      "signupRequired": true,
+      "signupUrl": "https://www.bethelwoodscenter.org/events/detail/jerry-garcia",
+      "url": "https://www.bethelwoodscenter.org/events/detail/jerry-garcia",
+      "description": "Symphonic tribute on the Pavilion stage.",
+      "host": "Bethel Woods Center for the Arts",
+      "source": "Bethel Woods Center for the Arts"
+    },
+    {
+      "id": "manual-bethelwoods-tedeschitrucks",
+      "title": "Tedeschi Trucks Band",
+      "type": "concert",
+      "start": "2026-08-31T19:00:00-04:00",
+      "end": null,
+      "repeats": false,
+      "audience": "all",
+      "setting": "outdoor",
+      "timeOfDay": "evening",
+      "hasFood": false,
+      "categories": [
+        "music"
+      ],
+      "venue": "Bethel Woods Pavilion",
+      "city": "Bethel, NY",
+      "address": "200 Hurd Rd, Bethel, NY",
+      "lat": 41.696,
+      "lon": -74.879,
+      "price": {
+        "min": 49.5,
+        "max": 157,
+        "note": "incl. taxes & fees"
+      },
+      "signupRequired": true,
+      "signupUrl": "https://www.bethelwoodscenter.org/events/detail/tedeschi-trucks-band",
+      "url": "https://www.bethelwoodscenter.org/events/detail/tedeschi-trucks-band",
+      "description": "Gates 6pm, show 7pm on the Pavilion stage.",
+      "host": "Bethel Woods Center for the Arts",
+      "source": "Bethel Woods Center for the Arts"
     },
     {
       "id": "jazz-mondays-quinns",
@@ -1707,6 +2321,33 @@
       "host": "Savage Wonder, Beacon"
     },
     {
+      "id": "stamfordmuseum-34193231",
+      "title": "Planetarium Show: Laser Led Zeppelin",
+      "type": "other",
+      "repeats": false,
+      "audience": "kids",
+      "setting": "unknown",
+      "timeOfDay": "night",
+      "hasFood": false,
+      "host": "Stamford Museum &amp; Nature Center",
+      "categories": [
+        "community"
+      ],
+      "start": "2026-09-04T21:00:00-04:00",
+      "end": "2026-09-04T21:45:00-04:00",
+      "venue": "Astronomy Center &#038; Planetarium",
+      "city": "Stamford, CT",
+      "address": "Astronomy Center &#038; Planetarium, 151 Scofieldtown Road, Stamford, CT",
+      "lat": 41.12404,
+      "lon": -73.54805,
+      "price": null,
+      "signupRequired": true,
+      "signupUrl": "https://www.stamfordmuseum.org/event/planetarium-show-laser-led-zeppelin/2026-09-04/",
+      "url": "https://www.stamfordmuseum.org/event/planetarium-show-laser-led-zeppelin/2026-09-04/",
+      "description": "Laser Led Zeppelin Laser Show* Journey Beyond the Stairway ◆ Fridays at 9 PM Ages: Teens & Up, 45 mins SM&NC Members: $12/seat Non-Members: $15/seat Journey through the legendary sound of Led Zeppelin as powerful rock anthems ignite the dome with immersive laser effects and cosmic visuals. Please Note: Tickets to this show include an… \\n",
+      "source": "Stamford Museum & Nature Center"
+    },
+    {
       "id": "travelhudsonvalley-71251130",
       "title": "Woodstock-New Paltz Art & Crafts Fair",
       "categories": [
@@ -1895,6 +2536,33 @@
       "timeOfDay": "evening",
       "hasFood": false,
       "host": "Millbrook Vineyards & Winery"
+    },
+    {
+      "id": "stamfordmuseum-50452950",
+      "title": "Planetarium Show: Laser Michael Jackson",
+      "type": "concert",
+      "repeats": false,
+      "audience": "kids",
+      "setting": "unknown",
+      "timeOfDay": "night",
+      "hasFood": false,
+      "host": "Stamford Museum &amp; Nature Center",
+      "categories": [
+        "community"
+      ],
+      "start": "2026-09-05T21:00:00-04:00",
+      "end": "2026-09-05T21:45:00-04:00",
+      "venue": "Astronomy Center &#038; Planetarium",
+      "city": "Stamford, CT",
+      "address": "Astronomy Center &#038; Planetarium, 151 Scofieldtown Road, Stamford, CT",
+      "lat": 41.12404,
+      "lon": -73.54805,
+      "price": null,
+      "signupRequired": true,
+      "signupUrl": "https://www.stamfordmuseum.org/event/planetarium-show-laser-michael-jackson-2/2026-09-05/",
+      "url": "https://www.stamfordmuseum.org/event/planetarium-show-laser-michael-jackson-2/2026-09-05/",
+      "description": "Laser Michael Jackson Laser Show* Moonwalk the Magic of a Legend ◆ Saturdays at 9 PM Ages: Teens & Up, 45 mins SM&NC Members: $12/seat Non-Members: $15/seat Experience Michael Jackson\\'s iconic music as dazzling lasers and immersive visuals transform the dome into an electrifying celebration of a legendary performer. Please Note: Tickets to this show… \\n",
+      "source": "Stamford Museum & Nature Center"
     },
     {
       "id": "travelhudsonvalley-65157175",
