@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Proximi — find things to do near you</title>
+<meta name="description" content="Find events and activities happening near wherever you are.">
+<link rel="stylesheet" href="assets/styles.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='26'>📍</text></svg>">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap topbar-inner">
+    <div class="brand">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span class="brand-name">Proximi</span>
+    </div>
+    <p class="tagline">Events and activities near wherever you are.</p>
+  </div>
+</header>
+
+<div class="wrap">
+  <p class="demo-banner" role="note">
+    <strong>Prototype.</strong> These listings are placeholder sample data for building the interface — not real events. Links go to <code>example.com</code>.
+  </p>
+</div>
+
+<main class="wrap">
+
+  <!-- ── Location ─────────────────────────────────────────── -->
+  <section class="panel" aria-labelledby="loc-h">
+    <h2 id="loc-h" class="panel-h">Where are you looking?</h2>
+    <div class="loc-row">
+      <button id="use-my-location" class="btn btn-primary" type="button">Use my location</button>
+      <span class="or">or</span>
+      <form id="place-form" class="place-form" role="search">
+        <label class="sr-only" for="place-input">Search for a place</label>
+        <input id="place-input" type="text" placeholder="Type a town, city or address…" autocomplete="off">
+        <button class="btn" type="submit">Go</button>
+      </form>
+    </div>
+    <div class="preset-row" id="presets"></div>
+    <p class="loc-status" id="loc-status" role="status" aria-live="polite">No location set — showing everything, unsorted by distance.</p>
+  </section>
+
+  <!-- ── Filters ──────────────────────────────────────────── -->
+  <section class="panel" aria-labelledby="filt-h">
+    <div class="panel-head">
+      <h2 id="filt-h" class="panel-h">Filters</h2>
+      <button id="reset-filters" class="btn btn-ghost btn-sm" type="button">Reset</button>
+    </div>
+
+    <div class="filter-grid">
+
+      <div class="field field-wide">
+        <label for="q">Search</label>
+        <input id="q" type="search" placeholder="Keyword, venue or neighborhood…">
+      </div>
+
+      <div class="field">
+        <label for="kind">Type</label>
+        <select id="kind">
+          <option value="all">Events &amp; activities</option>
+          <option value="event">Events only</option>
+          <option value="activity">Activities only</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="when">When</label>
+        <select id="when">
+          <option value="any">Any time</option>
+          <option value="today">Today</option>
+          <option value="tomorrow">Tomorrow</option>
+          <option value="weekend">This weekend</option>
+          <option value="7">Next 7 days</option>
+          <option value="30">Next 30 days</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="sort">Sort by</label>
+        <select id="sort">
+          <option value="soonest">Soonest</option>
+          <option value="nearest">Nearest</option>
+          <option value="cheapest">Cheapest</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="radius">
+          Search radius — <output id="radius-out">Any distance</output>
+        </label>
+        <input id="radius" type="range" min="0" max="60" step="1" value="0">
+        <div class="range-ends"><span>Any</span><span id="radius-max">60 mi</span></div>
+      </div>
+
+      <div class="field">
+        <label for="price">
+          Max price — <output id="price-out">Any price</output>
+        </label>
+        <input id="price" type="range" min="0" max="101" step="1" value="101">
+        <div class="range-ends"><span>Free</span><span>Any</span></div>
+      </div>
+
+      <div class="field field-inline">
+        <label class="check"><input type="checkbox" id="free-only"> Free only</label>
+        <label class="check"><input type="checkbox" id="signup-only"> Needs sign-up</label>
+        <label class="check"><input type="checkbox" id="units-km"> Kilometers</label>
+      </div>
+
+      <div class="field field-full">
+        <span class="label-static">Category</span>
+        <div id="cats" class="chips" role="group" aria-label="Filter by category"></div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── Results ──────────────────────────────────────────── -->
+  <div class="results-head">
+    <p id="count" class="count" role="status" aria-live="polite">Loading…</p>
+  </div>
+
+  <ul id="list" class="list"></ul>
+
+  <p id="empty" class="empty" hidden>
+    Nothing matches those filters. Try widening the radius or clearing a category.
+  </p>
+
+</main>
+
+<footer class="footer wrap">
+  <p>Proximi · prototype · <a href="https://github.com/StarrySidekick/Proximi">source on GitHub</a></p>
+  <p class="fine">Place search by <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> / Nominatim.</p>
+</footer>
+
+<script src="assets/app.js"></script>
+</body>
+</html>
