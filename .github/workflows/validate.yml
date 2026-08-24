@@ -26,7 +26,7 @@ jobs:
           ids = [s['id'] for s in reg['sources']]
           assert len(ids) == len(set(ids)), 'duplicate source ids'
           for s in reg['sources']:
-              assert s['kind'] in ('ics', 'html', 'api'), (s['id'], s['kind'])
+              assert s['kind'] in ('ics', 'html', 'api', 'social'), (s['id'], s['kind'])
               assert s['url'].startswith('http'), s['id']
           print(f'{len(ids)} sources OK')
           "

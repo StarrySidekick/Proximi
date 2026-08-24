@@ -263,6 +263,13 @@ def clean_text(raw, limit=400):
     t = re.sub(r'<br\s*/?>|</p>', ' ', t, flags=re.I)
     t = re.sub(r'<[^>]+>', '', t)
     t = html.unescape(t)
+    # Some feeds double-encode, so one unescape pass can leave "&amp;" behind.
+    if '&' in t:
+        t = html.unescape(t)
+    # Others ship JavaScript string escapes that survive JSON decoding as a
+    # literal backslash, which renders as "Mansion\'s" on the card.
+    t = re.sub(r'\\([\'"\\])', r'\1', t)
+    t = re.sub(r'\\[nrt]', ' ', t)
     t = t.replace('\u00a0', ' ')
     t = re.sub(r'\s+', ' ', t).strip()
     if len(t) <= limit:
@@ -315,6 +322,7 @@ def main():
     ap.add_argument('--in', dest='src', default='build/candidates.json')
     ap.add_argument('--platform', default='build/platform.json')
     ap.add_argument('--jsonld', default='build/jsonld.json')
+    ap.add_argument('--social', default='build/social.json')
     ap.add_argument('--manual', default='sources/manual.json')
     ap.add_argument('--out', default='build/enriched.json')
     ap.add_argument('--registry', default='sources/registry.json')
@@ -387,13 +395,13 @@ def main():
             'source': c['sourceName'],
         })
 
-    # Platform results (Ticketmaster) already arrive in final shape with real
-    # coordinates and prices, so they skip enrichment — but not the radius check.
-    # Ticketmaster, JSON-LD scrapes and hand-read listings all arrive in final
-    # shape. They skip classification — but never the radius check.
+    # Ticketmaster, JSON-LD scrapes, the Eventbrite/Meetup sweep and hand-read
+    # listings all arrive in final shape. They skip classification — but never
+    # the radius check. Meetup carries no coordinates, so those records fall
+    # through to the geocoder below like any other address.
     prepared = []
     for path, key in ((args.platform, 'events'), (args.jsonld, 'events'),
-                      (args.manual, 'items')):
+                      (args.social, 'events'), (args.manual, 'items')):
         if os.path.exists(path):
             prepared.extend(json.load(open(path)).get(key, []))
 

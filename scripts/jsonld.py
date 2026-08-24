@@ -185,10 +185,12 @@ def harvest_source(src):
             'start': start.isoformat(),
             'end': end.isoformat() if end else None,
             'url': url,
-            'venue': loc.get('name') or src.get('publisher'),
-            'city': ', '.join(filter(None, [loc.get('city'), loc.get('region')])) or None,
-            'address': ', '.join(filter(None, [
-                loc.get('name'), loc.get('street'), loc.get('city'), loc.get('region')])) or None,
+            # Venue and address come straight off the page and carry entities
+            # just like descriptions do; clean them on the same path.
+            'venue': clean_text(loc.get('name'), 120) or src.get('publisher'),
+            'city': clean_text(', '.join(filter(None, [loc.get('city'), loc.get('region')])), 120),
+            'address': clean_text(', '.join(filter(None, [
+                loc.get('name'), loc.get('street'), loc.get('city'), loc.get('region')])), 200),
             'lat': loc.get('lat'), 'lon': loc.get('lon'),
             'price': price_of(n),
             'categories': categorise(blob),
@@ -197,7 +199,7 @@ def harvest_source(src):
             'timeOfDay': time_of_day(start),
             'hasFood': bool(FOOD.search(blob)),
             'repeats': bool(ACTIVITY_HINTS.search(blob)),
-            'host': host or src.get('publisher'),
+            'host': clean_text(host, 120) or src.get('publisher'),
             'description': desc,
             'signupRequired': bool(n.get('offers')),
             'signupUrl': url if n.get('offers') else None,

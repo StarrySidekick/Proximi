@@ -10,11 +10,13 @@
     "kind: ics    — machine-readable feed, harvested by scripts/harvest.py",
     "kind: html   — no feed; the weekly job reads the page and extracts",
     "kind: api    — needs a key or token; see scripts/platforms.py",
+    "kind: social — big listing platform read through its own embedded JSON, no key; scripts/social.py",
     "A feed that parses but has no future events is STALE, not empty. Feeds are",
     "re-checked every run, so a source going stale is reported, never silently",
     "dropped. Confirmed stale feeds are kept here with enabled:false and a note,",
     "so we do not rediscover and re-trust them later.",
-    "Connecticut was invisible for a different reason than distance: Danbury is 27.8 mi from Beacon and was always inside the radius, but the registry had no CT sources at all. Coverage gaps look like radius gaps — check the registry before widening the circle."
+    "Connecticut was invisible for a different reason than distance: Danbury is 27.8 mi from Beacon and was always inside the radius, but the registry had no CT sources at all. Coverage gaps look like radius gaps — check the registry before widening the circle.",
+    "Eventbrite and Meetup were previously assumed to need paid API access. Both hand their front end public JSON, which is why the registry now carries them: check what a site gives its own browser before concluding there is no free path."
   ],
   "sources": [
     {
@@ -280,6 +282,22 @@
       "scope": "regional",
       "keyEnv": "TICKETMASTER_API_KEY",
       "note": "Free key from developer.ticketmaster.com. Native radius+date search and it returns price ranges. Skipped automatically when the env var is unset."
+    },
+    {
+      "id": "eventbrite",
+      "kind": "social",
+      "url": "https://www.eventbrite.com/d/ny--beacon/events/",
+      "publisher": "Eventbrite",
+      "scope": "regional",
+      "note": "No key. The place page sets a csrftoken cookie and carries the numeric placeId in window.__SERVER_DATA__; that pair authorises their internal destination-search endpoint, which paginates the whole place. Swept across 9 place slugs by scripts/social.py and filtered to the radius. Needs a browser User-Agent — ProximiBot gets a challenge."
+    },
+    {
+      "id": "meetup",
+      "kind": "social",
+      "url": "https://www.meetup.com/find/?location=us--ny--Beacon&source=EVENTS",
+      "publisher": "Meetup",
+      "scope": "regional",
+      "note": "No key. The GraphQL API needs a paid Pro subscription, but the find page ships its Apollo cache in __NEXT_DATA__ with hydrated Event objects. Venue names and cities are present; coordinates are not, so these records go through the geocoder."
     }
   ]
 }

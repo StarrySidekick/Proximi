@@ -196,6 +196,7 @@ scripts/icsparse.py     minimal iCalendar reader
 scripts/harvest.py      pull feeds listed in the registry
 scripts/jsonld.py       extract schema.org Event data from html sources
 scripts/platforms.py    Ticketmaster Discovery (needs TICKETMASTER_API_KEY)
+scripts/social.py       Eventbrite and Meetup, read through their embedded JSON
 scripts/discover.py     find new venues (OSM) and probe them for feeds
 scripts/enrich.py       geocode, radius-filter, infer categories
 scripts/merge.py        collapse repeats, dedupe, fold into data/events.json
@@ -218,19 +219,27 @@ sources/manual.json       listings read by hand, versioned so they survive rerun
         ├─ harvest.py     pull iCal feeds          → build/candidates.json
         ├─ jsonld.py      scrape schema.org Events → build/jsonld.json
         ├─ platforms.py   Ticketmaster (API key)   → build/platform.json
+        ├─ social.py      Eventbrite + Meetup       → build/social.json
         ├─ enrich.py      geocode, radius-filter, classify
         ├─ merge.py       collapse repeats, dedupe → data/events.json
         └─ validate.py    gate before anything ships
 ```
 
-Sources fall into three tiers, and each needs a different amount of human
+Sources fall into four tiers, and each needs a different amount of human
 attention:
 
 | Tier | How it is read | Effort |
 | --- | --- | --- |
 | `ics` | `harvest.py` parses the feed | none |
-| `jsonld` / `html` with structured data | `jsonld.py` extracts schema.org Events — the only automated route that yields a **price** | none |
+| `jsonld` / `html` with structured data | `jsonld.py` extracts schema.org Events | none |
+| `social` | `social.py` reads the JSON Eventbrite and Meetup hand their own front end — no key, and it carries a **price** | none |
 | `html`, prose only | Claude reads the page and writes into `sources/manual.json` | manual, weekly |
+
+`social` is where most of the volume now comes from. Eventbrite alone supplies
+roughly four listings in five, which is worth knowing when reading the feed:
+the long tail of paid recurring classes is real, but it is not the same thing
+as a curated local calendar. The `ics` and hand-read sources still carry the
+village-hall and small-venue listings no aggregator has.
 
 Everything above is deterministic — no model is involved, so nothing in it can
 invent an event. Claude's job is the rest: reading the sources that have no

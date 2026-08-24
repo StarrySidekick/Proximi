@@ -44,9 +44,20 @@ def day(iso):
     return (iso or '')[:10]
 
 
+# Raw entities ("&amp;") and surviving JS escapes ("Mansion\\'s") render as
+# literal noise on a card. A record carrying them is worth less than the same
+# record re-read after the extractor learned to strip them — without this,
+# richness alone would keep the corrupt copy forever, since cleaning text only
+# ever makes it shorter.
+UNCLEAN = re.compile(r'&(?:amp|lt|gt|quot|nbsp|#\d+|#x[0-9a-f]+);|\\[nrt\'"]', re.I)
+
+
 def richness(item):
     """How much a record actually tells a reader."""
     score = 0
+    if any(UNCLEAN.search(str(item[f])) for f in
+           ('title', 'description', 'venue', 'city', 'address', 'host') if item.get(f)):
+        score -= 4
     if item.get('price'):
         score += 6                                     # the scarcest field
     if item.get('signupUrl'):

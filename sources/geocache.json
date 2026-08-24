@@ -296,5 +296,297 @@
 "display": "39, Scofieldtown Road, North Stamford, Stamford, Western Connecticut Planning Region, Connecticut, 06903, United States",
 "matched": "39 Scofieldtown Road, Stamford, CT",
 "precision": 1
+},
+"796 main st": {
+"lat": 33.9931724,
+"lon": -118.4746758,
+"display": "Barrique, 796, Main Street, Venice, Los Angeles, Los Angeles County, California, 90291, United States",
+"matched": "796 Main St",
+"precision": 0
+},
+"424 main st, ridgefield, ct 06877": {
+"lat": 41.2819856,
+"lon": -73.4983281,
+"display": "424, Main Street, Titicus, Ridgefield, Western Connecticut Planning Region, Connecticut, 06877, United States",
+"matched": "424 Main St, Ridgefield, CT 06877",
+"precision": 0
+},
+"194 washington st": {
+"lat": 41.7566548,
+"lon": -72.6821854,
+"display": "194, Washington Street, Jefferson\u2013Seymour Historic District, Frog Hollow, Clay Arsenal, Hartford, Connecticut, 06106, United States",
+"matched": "194 Washington St",
+"precision": 0
+},
+"15 backus avenue,": {
+"lat": 41.3687658,
+"lon": -73.4929058,
+"display": "15, Backus Avenue, Miry Brook, Danbury, Western Connecticut Planning Region, Connecticut, 06810, United States",
+"matched": "15 Backus Avenue",
+"precision": 0
+},
+"181 mamaroneck avenue": {
+"lat": 41.0283543,
+"lon": -73.7644817,
+"display": "181, Mamaroneck Avenue, City of White Plains, Westchester County, New York, 10601, United States",
+"matched": "181 Mamaroneck Avenue",
+"precision": 0
+},
+"2402 ny-32": {
+"lat": 41.4471874,
+"lon": -74.0561832,
+"display": "Brothers BBQ, 2402, State Route 32, Firthcliffe Heights, Town of New Windsor, Orange County, New York, 12553, United States",
+"matched": "2402 NY-32",
+"precision": 0
+},
+"152 mamaroneck ave": {
+"lat": 41.0287858,
+"lon": -73.7653395,
+"display": "152, Mamaroneck Avenue, City of White Plains, Westchester County, New York, 10601, United States",
+"matched": "152 Mamaroneck Ave",
+"precision": 0
+},
+"4661 palisades center dr.": {
+"lat": 41.0971202,
+"lon": -73.9548124,
+"display": "4661, Palisades Center Drive, Central Nyack, West Nyack, Town of Clarkstown, Rockland County, New York, 10994, United States",
+"matched": "4661 Palisades Center Dr.",
+"precision": 0
+},
+"route 9": {
+"lat": 33.8696342,
+"lon": 35.5432372,
+"display": "\u0637\u0631\u064a\u0642 9, \u062f\u0643\u0648\u0627\u0646\u0629, \u0642\u0636\u0627\u0621 \u0627\u0644\u0645\u062a\u0646, \u0645\u062d\u0627\u0641\u0638\u0629 \u062c\u0628\u0644 \u0644\u0628\u0646\u0627\u0646, 2703, \u0644\u0628\u0646\u0627\u0646",
+"matched": "Route 9",
+"precision": 0
+},
+"2 churchill st.": {
+"lat": -37.7021555,
+"lon": 144.9204864,
+"display": "2, Churchill Street, Glenroy, Melbourne, Victoria, 3046, Australia",
+"matched": "2 churchill St.",
+"precision": 0
+},
+"kensico dam park": {
+"lat": 41.0722463,
+"lon": -73.7663936,
+"display": "Kensico Dam Plaza, 1, North White Plains, Town of North Castle, Westchester County, New York, United States",
+"matched": "Kensico Dam Park",
+"precision": 0
+},
+"to be advised to attendees": null,
+"2087 u.s. 9w": {
+"lat": 49.6746743,
+"lon": 9.5585074,
+"display": "Unterer See, Uissigheim, K\u00fclsheim, Main-Tauber-Kreis, Baden-W\u00fcrttemberg, 97900, Deutschland",
+"matched": "2087 U.S. 9W",
+"precision": 0
+},
+"3206 bear mountain-beacon hwy": {
+"lat": 41.4396868,
+"lon": -73.9736921,
+"display": "3206, Bear Mountain-Beacon Highway, Town of Philipstown, Putnam County, New York, 10516, United States",
+"matched": "3206 Bear Mountain-Beacon Hwy",
+"precision": 0
+},
+"rte 9d": {
+"lat": 41.3694526,
+"lon": -73.9476435,
+"display": "Route 9D, Glenclyffe, Garrison, Town of Philipstown, Putnam County, New York, 10997, United States",
+"matched": "Rte 9D",
+"precision": 0
+},
+"265 federal road": {
+"lat": 41.446411,
+"lon": -73.4032593,
+"display": "265, Federal Road, Brookfield, Western Connecticut Planning Region, Connecticut, 06804, United States",
+"matched": "265 Federal Road",
+"precision": 0
+},
+"1348 rte 9w": {
+"lat": 41.6061923,
+"lon": -73.9708823,
+"display": "The Falcon, 1348, Route 9W, Marlboro, Town of Marlborough, Ulster County, New York, 12528, United States",
+"matched": "1348 Rte 9W",
+"precision": 0
+},
+"41 main st.": {
+"lat": 54.2117685,
+"lon": -3.2747913,
+"display": "The Plough Inn, 41, Holborn Hill, Knott End, Haverigg, Millom, Cumberland, England, LA18 5BH, United Kingdom",
+"matched": "41 Main St.",
+"precision": 0
+},
+"15 ethan allen hwy": {
+"lat": 41.2654505,
+"lon": -73.4413017,
+"display": "Soccer & Rugby Imports, 15, Ethan Allen Highway, Branchville, Ridgefield, Western Connecticut Planning Region, Connecticut, 06877, United States",
+"matched": "15 Ethan Allen Hwy",
+"precision": 0
+},
+"6636 springbrook ave, rte. 9,": null,
+"online event": null,
+"125 westchester ave": {
+"lat": 41.1237985,
+"lon": -73.7745645,
+"display": "125, Westchester Avenue, Thornwood, Town of Mount Pleasant, Westchester County, New York, 10594, United States",
+"matched": "125 Westchester Ave",
+"precision": 0
+},
+"82 john st": {
+"lat": -33.8203308,
+"lon": 151.0468504,
+"display": "82, John Street, Rydalmere, Sydney, New South Wales, 2116, Australia",
+"matched": "82 John St",
+"precision": 0
+},
+"6565 spring brook avenue,": {
+"lat": 41.937261,
+"lon": -73.91003,
+"display": "Rhinebeck Spa Nails, 6565, Spring Brook Avenue, Village of Rhinebeck, Town of Rhinebeck, Dutchess County, New York, 12572, United States",
+"matched": "6565 spring Brook avenue",
+"precision": 0
+},
+"6565 spring brook avenue ,": {
+"lat": 41.937261,
+"lon": -73.91003,
+"display": "Rhinebeck Spa Nails, 6565, Spring Brook Avenue, Village of Rhinebeck, Town of Rhinebeck, Dutchess County, New York, 12572, United States",
+"matched": "6565 spring Brook avenue",
+"precision": 0
+},
+"330 boston post rd": {
+"lat": 41.2635523,
+"lon": -73.0046539,
+"display": "330, Boston Post Road, Orange, South Central Connecticut Planning Region, Connecticut, 06477, United States",
+"matched": "330 Boston Post Rd",
+"precision": 0
+},
+"487 delaware ave": {
+"lat": 43.66972,
+"lon": -79.43126,
+"display": "487, Delaware Avenue, Dovercourt Village, Davenport, Toronto, Golden Horseshoe, Ontario, M6H 1Z6, Canada",
+"matched": "487 Delaware Ave",
+"precision": 0
+},
+"400 ridge road": {
+"lat": 41.2648177,
+"lon": -73.04161,
+"display": "400, Ridge Road, Orange, South Central Connecticut Planning Region, Connecticut, 06477, United States",
+"matched": "400 Ridge Road",
+"precision": 0
+},
+"end of washington st. at the waterfront": null,
+"659 danbury rd": {
+"lat": 41.2396514,
+"lon": -73.432966,
+"display": "659, Danbury Road, Wilton, Western Connecticut Planning Region, Connecticut, 06897, United States",
+"matched": "659 Danbury Rd",
+"precision": 0
+},
+"1 duchess terrance": null,
+"103 burroughs drive": {
+"lat": 51.4487702,
+"lon": 0.2235746,
+"display": "103, Burroughs Drive, Brooklands, Temple Hill, Dartford, Kent, England, DA1 5TW, United Kingdom",
+"matched": "103 Burroughs Drive",
+"precision": 0
+},
+"244 fair street": {
+"lat": 41.9327423,
+"lon": -74.0173789,
+"display": "Ulster County Office Building, 244, Fair Street, Stockade District, City of Kingston, Ulster County, New York, 12401, United States",
+"matched": "244 Fair Street",
+"precision": 0
+},
+"185 east flat hill road": {
+"lat": 41.466597,
+"lon": -73.2591384,
+"display": "185, East Flat Hill Road, South Britain Historic District, Traditions, South Britain, Southbury, Naugatuck Valley Planning Region, Connecticut, 06488, United States",
+"matched": "185 East Flat Hill Road",
+"precision": 0
+},
+"723 south broadway": {
+"lat": 39.2829215,
+"lon": -76.5928143,
+"display": "723, South Broadway, Fell's Point, Baltimore, Maryland, 21231, United States",
+"matched": "723 South Broadway",
+"precision": 0
+},
+"490 danbury road": {
+"lat": 41.2232816,
+"lon": -73.4255194,
+"display": "490, Danbury Road, Cannondale, Wilton, Western Connecticut Planning Region, Connecticut, 06897, United States",
+"matched": "490 Danbury Road",
+"precision": 0
+},
+"1079 ny-35": {
+"lat": 41.2774801,
+"lon": -73.5888013,
+"display": "1079, Old Post Road, South Salem, Town of Lewisboro, Westchester County, New York, 10590, United States",
+"matched": "1079 NY-35",
+"precision": 0
+},
+"156 highland avenue": {
+"lat": 42.913908,
+"lon": -78.8755343,
+"display": "156, Highland Avenue, Elmwood Village, West Side, Buffalo, Erie County, New York, 14222, United States",
+"matched": "156 Highland Avenue",
+"precision": 0
+},
+"42 bayview avenue,": {
+"lat": -38.3797919,
+"lon": 144.9145186,
+"display": "42, Bayview Avenue, Rosebud, Melbourne, Victoria, 3939, Australia",
+"matched": "42 Bayview Avenue",
+"precision": 0
+},
+"225 ct-37": {
+"lat": 41.5295702,
+"lon": -73.5094941,
+"display": "225, Route 37 South, Sherman, Western Connecticut Planning Region, Connecticut, 06784, United States",
+"matched": "225 CT-37",
+"precision": 0
+},
+"149 aaron ct": {
+"lat": 38.0714846,
+"lon": -122.560504,
+"display": "149, Aaron Court, Rafael Village, Novato, Marin County, California, 94949, United States",
+"matched": "149 Aaron Ct",
+"precision": 0
+},
+"160 hanover road": {
+"lat": 51.5420062,
+"lon": -0.2248385,
+"display": "160, Hanover Road, Brondesbury Park, Brondesbury, London Borough of Brent, Greater London, England, NW10 3DP, United Kingdom",
+"matched": "160 Hanover Road",
+"precision": 0
+},
+"75-77 spring street": {
+"lat": 36.403657,
+"lon": -93.7373044,
+"display": "75-77, Spring Street, Eureka Springs, Carroll County, Arkansas, 72632, United States",
+"matched": "75-77 Spring Street",
+"precision": 0
+},
+"astronomy center & planetarium, 151 scofieldtown road, stamford, ct": {
+"lat": 41.1240443,
+"lon": -73.5480499,
+"display": "151, Scofieldtown Road, Scofieldtown, North Stamford, Stamford, Western Connecticut Planning Region, Connecticut, 06903, United States",
+"matched": "151 Scofieldtown Road, Stamford, CT",
+"precision": 1
+},
+"110 route 303": {
+"lat": 45.5836255,
+"lon": -76.6369575,
+"display": "110, Route 303, Clarendon, Pontiac, Outaouais, Qu\u00e9bec, J0X 2T0, Canada",
+"matched": "110 Route 303",
+"precision": 0
+},
+"200 central avenue,": {
+"lat": 40.6983326,
+"lon": -73.92596,
+"display": "200, Central Avenue, Bushwick, Brooklyn, Kings County, New York, 11221, United States",
+"matched": "200 Central Avenue",
+"precision": 0
 }
 }
