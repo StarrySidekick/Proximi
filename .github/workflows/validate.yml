@@ -1,0 +1,70 @@
+# Guards the listings file. The weekly scrape commits data/events.json
+# unattended, so this catches malformed or out-of-area data before it reaches
+# the published site.
+name: Validate listings
+
+on:
+  push:
+    branches: [claude/local-events-discovery-vfjgwr]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check data/events.json
+        run: |
+          python3 - <<'PY'
+          import json, sys
+          from math import radians, sin, cos, asin, sqrt
+
+          data = json.load(open('data/events.json'))
+          meta, items = data['meta'], data['items']
+          errors = []
+
+          def miles(lat1, lon1, lat2, lon2):
+              dlat, dlon = radians(lat2 - lat1), radians(lon2 - lon1)
+              h = sin(dlat / 2) ** 2 + cos(radians(lat1)) * cos(radians(lat2)) * sin(dlon / 2) ** 2
+              return 2 * 3958.8 * asin(sqrt(h))
+
+          ids = [i['id'] for i in items]
+          dupes = {i for i in ids if ids.count(i) > 1}
+          if dupes:
+              errors.append(f'duplicate ids: {sorted(dupes)}')
+
+          for i in items:
+              for field in ('id', 'title', 'kind', 'categories', 'venue', 'lat', 'lon', 'url'):
+                  if i.get(field) in (None, '', []):
+                      errors.append(f"{i.get('id', '?')}: missing {field}")
+              if i.get('kind') not in ('event', 'activity'):
+                  errors.append(f"{i['id']}: bad kind {i.get('kind')!r}")
+              if not (i.get('start') or i.get('daysFromNow') is not None):
+                  errors.append(f"{i['id']}: no start")
+              # price must be null or a {min,max} object — never a bare number,
+              # and never 0 standing in for "unknown".
+              p = i.get('price', 'MISSING')
+              if p == 'MISSING':
+                  errors.append(f"{i['id']}: price key absent (use null if unpublished)")
+              elif p is not None and not isinstance(p, dict):
+                  errors.append(f"{i['id']}: price must be null or an object")
+              if i.get('signupRequired') and not i.get('signupUrl'):
+                  errors.append(f"{i['id']}: signupRequired without signupUrl")
+
+              d = miles(meta['centerLat'], meta['centerLon'], i['lat'], i['lon'])
+              if d > meta['radiusMiles']:
+                  errors.append(f"{i['id']}: {d:.1f} mi, outside the {meta['radiusMiles']} mi radius")
+
+          if errors:
+              print('FAILED:')
+              for e in errors:
+                  print('  -', e)
+              sys.exit(1)
+
+          priced = sum(1 for i in items if i.get('price'))
+          print(f'{len(items)} listings OK '
+                f'({priced} priced, {len(items) - priced} "see listing"), '
+                f'all within {meta["radiusMiles"]} mi of {meta["centerName"]}')
+          PY

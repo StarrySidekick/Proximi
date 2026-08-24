@@ -54,8 +54,22 @@ python3 -m http.server 8000
 ## Deploy to GitHub Pages
 
 The site is plain static files at the repo root with a `.nojekyll` marker, so it
-needs no build step. In **Settings → Pages**, set *Source* to **Deploy from a
-branch** and pick the branch and `/ (root)`.
+needs no build step and no deploy workflow.
+
+**One-time setup** (a repo setting, so it has to be done by hand — the Pages API
+is not reachable from automation here):
+
+> **Settings → Pages → Build and deployment**
+> Source: **Deploy from a branch**
+> Branch: **`claude/local-events-discovery-vfjgwr`** · folder: **`/ (root)`** → **Save**
+
+The site then publishes at `https://starrysidekick.github.io/Proximi/` within a
+minute or two, and republishes automatically on every push — including the
+weekly listing refresh, so no further action is ever needed.
+
+A `Validate listings` workflow checks `data/events.json` on every push (schema,
+unique ids, sign-up links, and that every venue really is inside the radius), so
+a bad automated scrape fails loudly instead of quietly shipping.
 
 ## Data format
 
