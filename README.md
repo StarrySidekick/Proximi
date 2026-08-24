@@ -46,6 +46,9 @@ Inside the sheet:
   OpenStreetMap's Nominatim), or a one-tap preset from the covered region.
 - **Happening within** — today, 3 days, a week, 2 weeks, a month, or anytime.
 - **Distance** — search radius, with a miles/kilometres toggle.
+- **Repeating** — all, one-off only, or repeating only.
+- **Who it's for** — children-only listings are **hidden by default**; 21+ ones
+  are shown. Both are toggles.
 - **What** — free-text search, events vs. activities, and category chips that
   show live match counts.
 - **Cost** — max price, free-only, and needs-sign-up-only.
@@ -57,8 +60,20 @@ the gate"), venue, town, distance, duration, category tags, and a **Sign up**
 button wherever registration is required. Multi-day runs read as a range, and
 something already under way reads "on now, through Sep 6".
 
-Light and dark themes, and it works down to phone widths — where the filter
-sheet becomes a bottom sheet.
+Cards badge what they are: **Event** or **Activity**, plus **Repeats**,
+**Children only** or **21+** where those apply.
+
+## Look
+
+The theme is **Victorian**, lifted from the [Bureau](https://github.com/StarrySidekick/bureau)
+app's style system (`docs/STYLES.md`, `web/js/look.js`) — an old writing desk:
+parchment and checkerboard baize, brass, sage and claret, Iowan Old Style for
+display type, and panelled mouldings on the cards. Nothing pure white and
+nothing pure black. Dark mode is Bureau's own reading of it: the parchment
+becomes the walnut it was always sitting on, and the colours deepen rather
+than change.
+
+It works down to phone widths, where the filter sheet becomes a bottom sheet.
 
 ## Run it locally
 
@@ -105,7 +120,9 @@ its times are published in. One entry:
   "start": "2026-09-05T19:30:00-04:00",   // ISO 8601 with offset
   "end": "2026-09-07T22:00:00-04:00",     // optional; multi-day runs only
   "durationMin": 180,
-  "recurrence": "Every Saturday",  // activities only; free text shown on the card
+  "repeats": true,                 // does it come round again? drives the filter
+  "recurrence": "Every Saturday",  // free text shown on the card
+  "audience": "all",               // "all" | "kids" (children only) | "adults" (21+)
   "venue": "The Standard Loft",
   "city": "Long Island City, NY",
   "address": "44-02 21st St, Long Island City, NY",
@@ -130,6 +147,15 @@ Notes:
   text for the caveats that matter ("$10 parking", "free before 7pm"). Use
   **`"price": null`** when the source publishes no price — the card then reads
   "See listing". Null is never treated as free, and never guessed at.
+- **Repeating.** `repeats` is the machine-readable flag the filter uses;
+  `recurrence` is the human sentence on the card. A weekly market and a monthly
+  repair clinic are both `repeats: true`. Validation rejects a listing that
+  states a recurrence but claims not to repeat.
+- **Audience.** `kids` means children *only* — a drop-off programme or an
+  age-capped class — not a family day where children are welcome alongside
+  everyone else. Family listings stay `all`, and the inference has an explicit
+  family override so "family festival, ages 3-12" is not mistaken for
+  children-only and hidden from the people it is for.
 - **Categories** are open-ended. Unknown values are title-cased and get a filter
   chip automatically, so a scraper can introduce new ones without a code change.
 - Anything with `signupRequired: true` should have a `signupUrl`.

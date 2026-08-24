@@ -9,7 +9,7 @@ in is the weekly job's judgement step, not this script's.
   python3 scripts/enrich.py [--in build/candidates.json] [--out build/enriched.json]
 """
 
-import argparse, json, os, re, sys, time, urllib.parse, urllib.request
+import argparse, html, json, os, re, sys, time, urllib.parse, urllib.request
 from datetime import datetime
 from math import radians, sin, cos, asin, sqrt
 
@@ -51,6 +51,31 @@ KEYWORDS = [
 ACTIVITY_HINTS = re.compile(
     r'\b(every|weekly|monthly|daily|ongoing|drop-?in|series|recurring|'
     r'each (mon|tues|wednes|thurs|fri|satur|sun)day|open hours)\b', re.I)
+
+# Age gating. "Kids" means children ONLY — a drop-off programme for grades K-3,
+# not a family day where children are welcome alongside everyone else. The
+# family override matters: without it, "family festival, ages 3-12" reads as
+# kids-only and gets hidden from the people it is actually for.
+KIDS_ONLY = re.compile(
+    r'\b(grades?\s*(k|pre-?k|\d{1,2})|ages?\s*\d{1,2}\s*[-–—]\s*\d{1,2}|'
+    r'children entering|toddlers?|pre-?school|storytime|story time|kids only|'
+    r'teens?|for kids|'
+    r'children only|youth (program|group|club)|drop-?off program|campers?)\b', re.I)
+FAMILY = re.compile(r'\b(family|families|all ages|caregiver|parent and|adults? and children)\b', re.I)
+# Lookarounds, not \b: a word boundary cannot match after the "+" in "21+",
+# so \b(21\+)\b silently never fires.
+ADULTS_ONLY = re.compile(
+    r'(?<!\w)(21\s*\+|18\s*\+|21 and over|18 and over|adults? only|must be 21|'
+    r'ages 21|over 21|21 years|21 and up|no minors)(?!\w)', re.I)
+
+
+def audience_of(text):
+    """Who a listing is actually open to: 'kids', 'adults' or 'all'."""
+    if ADULTS_ONLY.search(text):
+        return 'adults'
+    if KIDS_ONLY.search(text) and not FAMILY.search(text):
+        return 'kids'
+    return 'all'
 
 
 def miles(lat1, lon1, lat2, lon2):
@@ -132,6 +157,31 @@ def geocode(loc, cache, stats):
     return result
 
 
+def clean_text(raw, limit=400):
+    """Feed descriptions arrive as HTML fragments with entities intact.
+
+    Without this, cards render literal "&gt;" and stray markup. Truncation
+    lands on a sentence or word boundary rather than mid-word.
+    """
+    if not raw:
+        return None
+    t = re.sub(r'<(script|style)[^>]*>.*?</\1>', ' ', raw, flags=re.S | re.I)
+    t = re.sub(r'<br\s*/?>|</p>', ' ', t, flags=re.I)
+    t = re.sub(r'<[^>]+>', '', t)
+    t = html.unescape(t)
+    t = t.replace('\u00a0', ' ')
+    t = re.sub(r'\s+', ' ', t).strip()
+    if len(t) <= limit:
+        return t or None
+
+    cut = t[:limit]
+    stop = max(cut.rfind('. '), cut.rfind('! '), cut.rfind('? '))
+    if stop > limit * 0.55:
+        return cut[:stop + 1]
+    space = cut.rfind(' ')
+    return (cut[:space] if space > 0 else cut).rstrip(' ,;:—-') + '…'
+
+
 def split_location(loc):
     """Pull a venue name and town out of a free-text location line."""
     parts = [p.strip() for p in (loc or '').split(',') if p.strip()]
@@ -202,6 +252,8 @@ def main():
             'id': f"{c['sourceId']}-{abs(hash(c.get('uid') or c['title'] + c['start'])) % 10**8}",
             'title': c['title'],
             'kind': 'activity' if recurring else 'event',
+            'repeats': bool(recurring),
+            'audience': audience_of(blob),
             'categories': categorise(blob),
             'start': c['start'],
             'end': c.get('end'),
@@ -213,7 +265,7 @@ def main():
             'price': None,                     # never guessed — see module docstring
             'signupRequired': False,
             'url': c.get('url'),
-            'description': (c.get('description') or '').strip()[:400] or None,
+            'description': clean_text(c.get('description')),
             'source': c['sourceName'],
         })
 
@@ -230,6 +282,9 @@ def main():
             out.append({
                 'id': f"tm-{abs(hash(e['url'] or e['title'])) % 10**8}",
                 'title': e['title'], 'kind': 'event',
+                'repeats': False,
+                'audience': audience_of(' '.join(filter(None, [
+                    e['title'], e.get('description'), e.get('venue')]))),
                 'categories': e['categories'], 'start': e['start'], 'end': e.get('end'),
                 'venue': e.get('venue') or 'See listing', 'city': e.get('city'),
                 'address': e.get('address') or e.get('venue'),
@@ -237,7 +292,7 @@ def main():
                 'price': e.get('price'),
                 'signupRequired': True, 'signupUrl': e.get('signupUrl'),
                 'url': e.get('url'),
-                'description': (e.get('description') or '').strip()[:400] or None,
+                'description': clean_text(e.get('description')),
                 'source': e['sourceName'],
             })
             platform_kept += 1

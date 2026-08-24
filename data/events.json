@@ -1,7 +1,7 @@
 {
   "meta": {
     "schemaVersion": 2,
-    "scrapedAt": "2026-08-24T20:43:00+00:00",
+    "scrapedAt": "2026-08-24T20:55:34+00:00",
     "centerName": "Beacon, NY",
     "centerLat": 41.5048,
     "centerLon": -73.9696,
@@ -51,8 +51,10 @@
       "price": null,
       "signupRequired": false,
       "url": "https://travelhudsonvalley.com/event/250th-river-and-rock/",
-      "description": "Join a special guided tour of Fortress West Point that explores the River and the Rock narrative and West Point’s role during the American Revolution. Offered June through August for the 250th Anniversary Season, the tour travels along trails and historic sites with an emphasis on battlefield lore and military history. Conducted in English, the experience is outdoors and involves extended walking ",
-      "source": "Hudson Valley Tourism"
+      "description": "Join a special guided tour of Fortress West Point that explores the River and the Rock narrative and West Point’s role during the American Revolution. Offered June through August for the 250th Anniversary Season, the tour travels along trails and historic sites with an emphasis on battlefield lore and military history. Conducted in English, the experience is outdoors and involves extended walking",
+      "source": "Hudson Valley Tourism",
+      "repeats": false,
+      "audience": "all"
     },
     {
       "id": "clearwater-83799029",
@@ -73,7 +75,9 @@
       "signupRequired": false,
       "url": "https://www.clearwater.org/event/mudlark-drop-off-program-session-2/",
       "description": "Join Clearwater for a week of hands-on outdoor adventure and river exploration! Designed for children entering 4th and 5th grades, this land-based summer drop-off program brings the magic of Clearwater’s environmental education to Long Dock Park. Campers will investigate the Hudson River ecosystem, engage in nature-based games and activities, and build a deeper connection to the environment throug",
-      "source": "Hudson River Sloop Clearwater"
+      "source": "Hudson River Sloop Clearwater",
+      "repeats": false,
+      "audience": "kids"
     },
     {
       "id": "dutchess-county-fair-2026",
@@ -100,7 +104,9 @@
       "signupRequired": false,
       "url": "https://dutchessfair.com/",
       "description": "Six days of agriculture, midway rides, and grandstand concerts. Children 11 and under are admitted free and parking is free; buying online saves $5 a head.",
-      "source": "dutchessfair.com"
+      "source": "dutchessfair.com",
+      "repeats": false,
+      "audience": "all"
     },
     {
       "id": "healthy-orange-farmers-market",
@@ -125,7 +131,9 @@
       "signupRequired": false,
       "url": "https://www.timeshudsonvalley.com/stories/healthy-orange-farmers-market,230909",
       "description": "Local vegetables, fruit, honey, maple syrup, baked goods, eggs and craft items on the green lot next to the DMV building.",
-      "source": "timeshudsonvalley.com"
+      "source": "timeshudsonvalley.com",
+      "repeats": true,
+      "audience": "all"
     },
     {
       "id": "wildlife-play-days-hhnc",
@@ -148,7 +156,9 @@
       "signupUrl": "https://www.timeshudsonvalley.com/stories/wildlife-play-days,227691",
       "url": "https://www.timeshudsonvalley.com/stories/wildlife-play-days,227691",
       "description": "Drop-off program for children entering grades K–3, focused on a different Hudson Highlands animal each session.",
-      "source": "timeshudsonvalley.com"
+      "source": "timeshudsonvalley.com",
+      "repeats": true,
+      "audience": "kids"
     },
     {
       "id": "stormking-39402415",
@@ -169,8 +179,10 @@
       "price": null,
       "signupRequired": false,
       "url": "https://stormking.org/events/outstanding-in-the-field-2/",
-      "description": "We're looking forward to partnering with Outstanding in the Field on producing an unforgettable evening of dining on our site. Read more about the event, and purchase tickets&gt;\n\nFrom our partner:\nIs this a next level Extraordinary in the Field? We return to the storied grounds of Storm King to set our iconic table in the company of massive sculptures set amidst acres of manicured meadows and for",
-      "source": "Storm King Art Center"
+      "description": "We're looking forward to partnering with Outstanding in the Field on producing an unforgettable evening of dining on our site. Read more about the event, and purchase tickets> From our partner: Is this a next level Extraordinary in the Field? We return to the storied grounds of Storm King to set our iconic table in the company of massive sculptures set amidst acres of manicured meadows and for",
+      "source": "Storm King Art Center",
+      "repeats": false,
+      "audience": "all"
     },
     {
       "id": "evening-yoga-pavilion-gardiner",
@@ -192,7 +204,9 @@
       "signupRequired": false,
       "url": "https://www.timeshudsonvalley.com/stories/evening-yoga-at-the-pavillion,226518",
       "description": "All-levels outdoor class, suitable for any age, mobility or experience level.",
-      "source": "timeshudsonvalley.com"
+      "source": "timeshudsonvalley.com",
+      "repeats": true,
+      "audience": "all"
     },
     {
       "id": "story-screen-trivia",
@@ -213,7 +227,9 @@
       "signupRequired": false,
       "url": "https://thebeaconbeaconny.com/events/story-screen-trivia-at-draught-industries-august/",
       "description": "Movie trivia run by Story Screen, 7pm to 9pm.",
-      "source": "thebeaconbeaconny.com"
+      "source": "thebeaconbeaconny.com",
+      "repeats": true,
+      "audience": "all"
     },
     {
       "id": "beacon-historical-society-aug",
@@ -234,7 +250,9 @@
       "signupRequired": false,
       "url": "https://thebeaconbeaconny.com/events/beacon-historical-society-august-meeting/",
       "description": "Monthly meeting of the Beacon Historical Society, 7pm to 9pm.",
-      "source": "thebeaconbeaconny.com"
+      "source": "thebeaconbeaconny.com",
+      "repeats": true,
+      "audience": "all"
     },
     {
       "id": "stormking-80175712",
@@ -255,9 +273,11 @@
       "price": null,
       "signupRequired": false,
       "url": "https://stormking.org/events/daily-walking-tour-2026-08-26/",
-      "description": "Join a docent or Storm King educator on Museum Hill for a 45 to 60 minute tour and learn more about the artwork, landscape, and history of the Art Center. Tours meet daily in front of the Museum Building.\n\nFree with admission. No registration required.\n\n&nbsp;\n\n\n\nACCESSIBILITY\n\nTerrain and Getting Around\nTours take place on Museum Hill on mostly level mown grass, stone patio, and paved pathway. So",
+      "description": "Join a docent or Storm King educator on Museum Hill for a 45 to 60 minute tour and learn more about the artwork, landscape, and history of the Art Center. Tours meet daily in front of the Museum Building. Free with admission. No registration required. ACCESSIBILITY Terrain and Getting Around Tours take place on Museum Hill on mostly level mown grass, stone patio, and paved pathway. So",
       "source": "Storm King Art Center",
-      "recurrence": "84 dates listed through Nov 30"
+      "recurrence": "84 dates listed through Nov 30",
+      "repeats": true,
+      "audience": "all"
     },
     {
       "id": "newburgh-brewing-trivia",
@@ -278,7 +298,9 @@
       "signupRequired": false,
       "url": "https://hudsonvalleyone.com/calendar/",
       "description": "Weekly pub trivia in the taproom from 6pm.",
-      "source": "hudsonvalleyone.com"
+      "source": "hudsonvalleyone.com",
+      "repeats": true,
+      "audience": "all"
     },
     {
       "id": "hv-shakespeare-les-mis-2026",
@@ -301,7 +323,9 @@
       "signupUrl": "https://hvshakespeare.org/events/les-miserables",
       "url": "https://hvshakespeare.org/events/les-miserables",
       "description": "One of three summer productions at the open-air Garrison theater, running in repertory with As You Like It and King Lear through September 27.",
-      "source": "hvmag.com"
+      "source": "hvmag.com",
+      "repeats": true,
+      "audience": "all"
     },
     {
       "id": "open-mic-comedy-two-way",
@@ -322,7 +346,9 @@
       "signupRequired": false,
       "url": "https://thebeaconbeaconny.com/events/open-mic-comedy-night-2026-08-26/",
       "description": "Stand-up open mic at the brewery, 7pm to 9pm.",
-      "source": "thebeaconbeaconny.com"
+      "source": "thebeaconbeaconny.com",
+      "repeats": true,
+      "audience": "all"
     },
     {
       "id": "killer-queen-meetup",
@@ -346,7 +372,9 @@
       "signupRequired": false,
       "url": "https://thebeaconbeaconny.com/events/your-queen-calls-killer-queen-meetup-2026-05-13-2026-05-20-2026-05-27-2026-06-03-2026-06-10-2026-06-17-2026-06-24-2026-07-01-2026-07-08-2026-07-15-2026-07-22-2026-07-29-2026-08-05-2026-0-19-2026-08-26/",
       "description": "Free weekly Killer Queen arcade meetup, 7pm to 10pm.",
-      "source": "thebeaconbeaconny.com"
+      "source": "thebeaconbeaconny.com",
+      "repeats": true,
+      "audience": "all"
     },
     {
       "id": "watching-birds-lucky-dog",
@@ -367,7 +395,9 @@
       "signupRequired": false,
       "url": "https://thebeaconbeaconny.com/events/watching-birds-at-lucky-dog/",
       "description": "Live set at Lucky Dog, 7pm to 9:30pm.",
-      "source": "thebeaconbeaconny.com"
+      "source": "thebeaconbeaconny.com",
+      "repeats": false,
+      "audience": "all"
     },
     {
       "id": "sunflower-picking-cold-pressed-oils",
@@ -395,7 +425,9 @@
       "signupRequired": false,
       "url": "https://destinationdutchess.com/event-view/45327_2026_08_21",
       "description": "Acres of sunflower fields with local musicians playing from 5:30pm to sunset, plus grills and local beer and cider from noon. Thu/Fri from 12pm, Sat/Sun from 10am.",
-      "source": "destinationdutchess.com"
+      "source": "destinationdutchess.com",
+      "repeats": true,
+      "audience": "all"
     },
     {
       "id": "compilation-of-creatives",
@@ -417,8 +449,10 @@
       "price": null,
       "signupRequired": false,
       "url": "https://www.savagewonder.org/event/a-compilation-of-creatives/",
-      "description": "A Compilation of Creatives \nPrepare your senses for an absolute explosion of talent! The Cornwall NY Authors Coalition is collaborating with Savage Wonder in Beacon, NY, and it’s officially the first of its kind for the Hudson Valley. \nLiterature from local authors, gorgeous art, and an underground wine bar will be the stars of this vibrant show. \nThis isn’t your average, run-of-the-mill variety s",
-      "source": "Savage Wonder, Beacon"
+      "description": "A Compilation of Creatives Prepare your senses for an absolute explosion of talent! The Cornwall NY Authors Coalition is collaborating with Savage Wonder in Beacon, NY, and it’s officially the first of its kind for the Hudson Valley. Literature from local authors, gorgeous art, and an underground wine bar will be the stars of this vibrant show. This isn’t your average, run-of-the-mill variety s",
+      "source": "Savage Wonder, Beacon",
+      "repeats": false,
+      "audience": "all"
     },
     {
       "id": "desmondfish-library-28434422",
@@ -439,8 +473,10 @@
       "price": null,
       "signupRequired": false,
       "url": "https://desmondfishlibrary.org/event/teens-princess-bride/",
-      "description": "Stop by the library for pizza and a movie! This month we’ll be watching The Princess Bride: 98 minutes, Rated PG. \nPlease register (so we know how much pizza to get)! This program is for students in grades 6-12. For children and adult movie programs, please see our calendar or register for our newsletter here.",
-      "source": "Desmond-Fish Library, Garrison"
+      "description": "Stop by the library for pizza and a movie! This month we’ll be watching The Princess Bride: 98 minutes, Rated PG. Please register (so we know how much pizza to get)! This program is for students in grades 6-12. For children and adult movie programs, please see our calendar or register for our newsletter here.",
+      "source": "Desmond-Fish Library, Garrison",
+      "repeats": false,
+      "audience": "kids"
     },
     {
       "id": "beacon-drum-circle",
@@ -462,7 +498,9 @@
       "signupRequired": false,
       "url": "https://thebeaconbeaconny.com/events/beacon-drum-circle-2026-08-27/",
       "description": "Open drum circle on the riverfront, 6pm to 8pm.",
-      "source": "thebeaconbeaconny.com"
+      "source": "thebeaconbeaconny.com",
+      "repeats": true,
+      "audience": "all"
     },
     {
       "id": "towne-crier-open-mic",
@@ -483,7 +521,9 @@
       "signupRequired": false,
       "url": "https://thebeaconbeaconny.com/events/towne-crier-open-mic-night-2026-08-27/",
       "description": "Weekly open mic on the Salon Stage, 6:30pm to 9:30pm.",
-      "source": "thebeaconbeaconny.com"
+      "source": "thebeaconbeaconny.com",
+      "repeats": true,
+      "audience": "all"
     },
     {
       "id": "treasury-cider-open-mic",
@@ -504,7 +544,9 @@
       "signupRequired": false,
       "url": "https://destinationdutchess.com/event-view/44998_2026_08_21",
       "description": "Open mic on the covered cider porch, welcoming musicians, poets, storytellers and comedians. Performers sign up at the bar; slots run about 15 minutes.",
-      "source": "destinationdutchess.com"
+      "source": "destinationdutchess.com",
+      "repeats": true,
+      "audience": "all"
     },
     {
       "id": "millbrook-friday-food-trucks",
@@ -525,7 +567,9 @@
       "signupRequired": false,
       "url": "https://destinationdutchess.com/event-view/44966_2026_08_21",
       "description": "Rotating food trucks with a different local performer each Friday.",
-      "source": "destinationdutchess.com"
+      "source": "destinationdutchess.com",
+      "repeats": true,
+      "audience": "all"
     },
     {
       "id": "travelhudsonvalley-43531144",
@@ -546,8 +590,10 @@
       "price": null,
       "signupRequired": false,
       "url": "https://travelhudsonvalley.com/event/bear-mountain-inn-fridays-five-2-2-2-2-2-2-2-2-2-2/",
-      "description": "“Fridays @ Five” Returns to Bear Mountain Inn! May 29-September 4 from 5-8PM. Join us on Friday evenings for live music, great food and drinks and spectacular views! Bear Mountain Inn’s free outdoor summer concert series designed to help you unwind, reconnect, and kick off the weekend right. Enjoy a weekly lineup of talented local and regional musicians playing folk, soft rock, pop, funk, and more",
-      "source": "Hudson Valley Tourism"
+      "description": "“Fridays @ Five” Returns to Bear Mountain Inn! May 29-September 4 from 5-8PM. Join us on Friday evenings for live music, great food and drinks and spectacular views! Bear Mountain Inn’s free outdoor summer concert series designed to help you unwind, reconnect, and kick off the weekend right. Enjoy a weekly lineup of talented local and regional musicians playing folk, soft rock, pop, funk, and more",
+      "source": "Hudson Valley Tourism",
+      "repeats": true,
+      "audience": "all"
     },
     {
       "id": "cold-spring-farmers-market",
@@ -572,7 +618,9 @@
       "signupRequired": false,
       "url": "https://www.chronogram.com/arts/9-autumn-activities-to-enjoy-in-putnam-county-18898803/",
       "description": "Saturdays 9am to 1pm on the Boscobel grounds, running through the end of October.",
-      "source": "chronogram.com"
+      "source": "chronogram.com",
+      "repeats": true,
+      "audience": "all"
     },
     {
       "id": "stormking-26935986",
@@ -594,9 +642,11 @@
       "price": null,
       "signupRequired": false,
       "url": "https://stormking.org/events/member-yoga-2-2026-08-29/",
-      "description": "Weekly yoga classes are open to Storm King Members! Led by local seasoned professionals, these hour-long sessions are open to all experience levels. Classes are held on Museum Hill, with an amazing Storm King view as you practice. In inclement weather, class moves indoors. Bring your own mat, and enjoy yoga in art and nature!\n\n \tYoga classes are free for Members and don’t require registration.\n \tB",
+      "description": "Weekly yoga classes are open to Storm King Members! Led by local seasoned professionals, these hour-long sessions are open to all experience levels. Classes are held on Museum Hill, with an amazing Storm King view as you practice. In inclement weather, class moves indoors. Bring your own mat, and enjoy yoga in art and nature! Yoga classes are free for Members and don’t require registration. B",
       "source": "Storm King Art Center",
-      "recurrence": "10 dates listed through Oct 31"
+      "recurrence": "10 dates listed through Oct 31",
+      "repeats": true,
+      "audience": "all"
     },
     {
       "id": "ny-renaissance-faire-2026",
@@ -621,7 +671,9 @@
       "signupUrl": "https://renfair.com/ny/",
       "url": "https://renfair.com/ny/",
       "description": "Eight weekends of 16th-century England — jousting, sword swallowers, a makers' market and turkey legs. Weekends only, plus Labor Day Monday.",
-      "source": "hvmag.com"
+      "source": "hvmag.com",
+      "repeats": true,
+      "audience": "all"
     },
     {
       "id": "bannerman-island-tour",
@@ -647,7 +699,9 @@
       "signupUrl": "https://bannermancastle.org/tours-events/bannerman-island-tour/",
       "url": "https://bannermancastle.org/",
       "description": "Two and a half hours: a half-hour cruise to Pollepel Island, ninety minutes of guided tour around the castle ruins, then the cruise back. Sells out fast.",
-      "source": "bannermancastle.org"
+      "source": "bannermancastle.org",
+      "repeats": true,
+      "audience": "all"
     },
     {
       "id": "dia-beacon-play-sets",
@@ -670,7 +724,9 @@
       "signupUrl": "https://destinationdutchess.com/event-view/45218_2026_08_22",
       "url": "https://destinationdutchess.com/event-view/45218_2026_08_22",
       "description": "Hands-on exercises for children built around a featured artist each session — Louise Lawler on August 29, Robert Irwin on August 30.",
-      "source": "destinationdutchess.com"
+      "source": "destinationdutchess.com",
+      "repeats": true,
+      "audience": "all"
     },
     {
       "id": "travelhudsonvalley-34320443",
@@ -689,8 +745,10 @@
       "price": null,
       "signupRequired": false,
       "url": "https://travelhudsonvalley.com/event/summer-saturdays-at-philipsburg-manor-2-2-2-2-2/",
-      "description": "Visit Philipsburg Manor every Saturday from July 11 to September 5 to explore history through fun activities, such as harvesting wheat, learning about pollination and other wildlife, exploring waterways, creating ceramics, and playing old-fashioned games. Each week has a new theme: \nJuly 11: Barnyard Bash \nJuly 18: Fabric & Fashion \nJuly 25: Hive & Honey \nAugust 1: Wonderful Waterways \nAugust 8: C",
-      "source": "Hudson Valley Tourism"
+      "description": "Visit Philipsburg Manor every Saturday from July 11 to September 5 to explore history through fun activities, such as harvesting wheat, learning about pollination and other wildlife, exploring waterways, creating ceramics, and playing old-fashioned games. Each week has a new theme: July 11: Barnyard Bash July 18: Fabric & Fashion July 25: Hive & Honey August 1: Wonderful Waterways August 8: C",
+      "source": "Hudson Valley Tourism",
+      "repeats": true,
+      "audience": "all"
     },
     {
       "id": "millbrookwine-23811641",
@@ -710,7 +768,9 @@
       "signupRequired": false,
       "url": "https://www.millbrookwine.com/winery-event/weekend-food-trucks-6/",
       "description": null,
-      "source": "Millbrook Vineyards & Winery"
+      "source": "Millbrook Vineyards & Winery",
+      "repeats": false,
+      "audience": "all"
     },
     {
       "id": "bau-gallery-beacon",
@@ -734,7 +794,9 @@
       "signupRequired": false,
       "url": "https://www.timeshudsonvalley.com/stories/bau-gallery-july-shows,232228",
       "description": "Artist-run gallery on upper Main Street, with new exhibitions opening on Beacon's Second Saturday gallery night.",
-      "source": "timeshudsonvalley.com"
+      "source": "timeshudsonvalley.com",
+      "repeats": true,
+      "audience": "all"
     },
     {
       "id": "millbrookwine-39513533",
@@ -754,7 +816,9 @@
       "signupRequired": false,
       "url": "https://www.millbrookwine.com/winery-event/jazz-in-the-vineyard-20/",
       "description": null,
-      "source": "Millbrook Vineyards & Winery"
+      "source": "Millbrook Vineyards & Winery",
+      "repeats": false,
+      "audience": "all"
     },
     {
       "id": "walkway-at-night",
@@ -776,7 +840,9 @@
       "signupRequired": false,
       "url": "https://destinationdutchess.com/event-view/44984_2026_08_21",
       "description": "The Walkway stays open after dark for Hudson Valley views from 212 feet above the river.",
-      "source": "destinationdutchess.com"
+      "source": "destinationdutchess.com",
+      "repeats": true,
+      "audience": "all"
     },
     {
       "id": "maverick-concerts-2026",
@@ -798,7 +864,9 @@
       "signupUrl": "https://hudsonvalleyone.com/calendar/",
       "url": "https://hudsonvalleyone.com/calendar/",
       "description": "America's oldest continuous summer chamber music series, in the woods outside Woodstock. Season runs through September 13.",
-      "source": "hudsonvalleyone.com"
+      "source": "hudsonvalleyone.com",
+      "repeats": true,
+      "audience": "all"
     },
     {
       "id": "savagewonder-88912060",
@@ -818,8 +886,10 @@
       "price": null,
       "signupRequired": false,
       "url": "https://www.savagewonder.org/event/savage-soiree-an-underground-music-and-dance-experience/",
-      "description": "One room, four hours, and a former bank behaving very badly. \nDashiell Hammett published The Maltese Falcon in 1930. Everybody in it is lying, everybody is using a false name, and everybody wants the same object. On Saturday August 29 we are turning the whole downstairs into that world. \nA themed cocktail party with vaudeville acts working the room all night, projections across every surface, and ",
-      "source": "Savage Wonder, Beacon"
+      "description": "One room, four hours, and a former bank behaving very badly. Dashiell Hammett published The Maltese Falcon in 1930. Everybody in it is lying, everybody is using a false name, and everybody wants the same object. On Saturday August 29 we are turning the whole downstairs into that world. A themed cocktail party with vaudeville acts working the room all night, projections across every surface, and",
+      "source": "Savage Wonder, Beacon",
+      "repeats": true,
+      "audience": "all"
     },
     {
       "id": "desmondfish-library-5195681",
@@ -840,7 +910,9 @@
       "url": "https://desmondfishlibrary.org/event/library-closed-13/2026-08-30/",
       "description": "The Library is closed on Sundays from Memorial Day through Labor Day.",
       "source": "Desmond-Fish Library, Garrison",
-      "recurrence": "5 dates listed through Sep 7"
+      "recurrence": "5 dates listed through Sep 7",
+      "repeats": true,
+      "audience": "all"
     },
     {
       "id": "beacon-flea-market",
@@ -865,7 +937,9 @@
       "signupRequired": false,
       "url": "https://www.alittlebeaconblog.com/annual-events",
       "description": "Sundays 8am to 3pm behind the post office on Henry Street, weather permitting.",
-      "source": "alittlebeaconblog.com"
+      "source": "alittlebeaconblog.com",
+      "repeats": true,
+      "audience": "all"
     },
     {
       "id": "beacon-farmers-market",
@@ -890,7 +964,9 @@
       "signupRequired": false,
       "url": "https://www.alittlebeaconblog.com/annual-events",
       "description": "Sundays 10am to 2pm in the DMV lot on Main Street. Rain or shine.",
-      "source": "alittlebeaconblog.com"
+      "source": "alittlebeaconblog.com",
+      "repeats": true,
+      "audience": "all"
     },
     {
       "id": "travelhudsonvalley-17214816",
@@ -910,8 +986,10 @@
       "price": null,
       "signupRequired": false,
       "url": "https://travelhudsonvalley.com/event/180th-dutchess-county-fair-in-rhinebeck/",
-      "description": "The Dutchess County Fair is one of the biggest county fairs in New York State and has been a summer highlight in the Hudson Valley for 180 years. This year’s fair features another action-packed lineup of carnival rides, concerts, livestock shows and competitive, historical and educational exhibits, along with an endless supply of tasty food and beverages! \nGrandstand performers will include Chase ",
-      "source": "Hudson Valley Tourism"
+      "description": "The Dutchess County Fair is one of the biggest county fairs in New York State and has been a summer highlight in the Hudson Valley for 180 years. This year’s fair features another action-packed lineup of carnival rides, concerts, livestock shows and competitive, historical and educational exhibits, along with an endless supply of tasty food and beverages! Grandstand performers will include Chase",
+      "source": "Hudson Valley Tourism",
+      "repeats": false,
+      "audience": "all"
     },
     {
       "id": "stormking-70841960",
@@ -933,8 +1011,10 @@
       "price": null,
       "signupRequired": false,
       "url": "https://stormking.org/events/children-families-rainbow-collages/",
-      "description": "Join us for artmaking in the Meadows! Families are invited to explore the colors of the rainbow through collaging with a range of bright and tactile materials. This program will be led by Ally Caple.\n\nAlly Caple is an image-based artist and educator located in Brooklyn, New York. Her work in education centers youth and emerging artists, creating curriculum and programs that focus on building visua",
-      "source": "Storm King Art Center"
+      "description": "Join us for artmaking in the Meadows! Families are invited to explore the colors of the rainbow through collaging with a range of bright and tactile materials. This program will be led by Ally Caple. Ally Caple is an image-based artist and educator located in Brooklyn, New York. Her work in education centers youth and emerging artists, creating curriculum and programs that focus on building visua",
+      "source": "Storm King Art Center",
+      "repeats": false,
+      "audience": "all"
     },
     {
       "id": "travelhudsonvalley-84698530",
@@ -954,7 +1034,9 @@
       "signupRequired": false,
       "url": "https://travelhudsonvalley.com/event/capitol-for-a-day/",
       "description": "Join the Village of Irvington for this free event commemorating the one day in 1776 when Irvington’s Odell Tavern served as the Seat of the New York State Government. Meet and greet George Washington and Ben and Deborah Franklin, listen to Master Storyteller Jonathan Kruk and The Liberty Three, discover the role of indigenous people in the Revolution, enjoy games, and participate in patriotic spyc",
-      "source": "Hudson Valley Tourism"
+      "source": "Hudson Valley Tourism",
+      "repeats": false,
+      "audience": "all"
     },
     {
       "id": "travelhudsonvalley-98594226",
@@ -976,13 +1058,17 @@
       "price": null,
       "signupRequired": false,
       "url": "https://travelhudsonvalley.com/event/nyack-jazz-festival/",
-      "description": "Don’t miss out of the “Nyack Jazz Festival!” Sunday, August 30. 1-7PM. 2 North Broadway. FREE event! Great family friendly outdoor concert featuring music, food trucks, wine and beer gardens, artisan vendors and MORE!  Limited seating available. Lawn chairs recommended!  CLICK HERE for details.",
-      "source": "Hudson Valley Tourism"
+      "description": "Don’t miss out of the “Nyack Jazz Festival!” Sunday, August 30. 1-7PM. 2 North Broadway. FREE event! Great family friendly outdoor concert featuring music, food trucks, wine and beer gardens, artisan vendors and MORE! Limited seating available. Lawn chairs recommended! CLICK HERE for details.",
+      "source": "Hudson Valley Tourism",
+      "repeats": false,
+      "audience": "all"
     },
     {
       "id": "scenichudson-83581962",
       "title": "Poughkeepsie Farm Project Fundraiser Dinner",
       "kind": "event",
+      "repeats": false,
+      "audience": "all",
       "categories": [
         "food",
         "community"
@@ -997,7 +1083,7 @@
       "price": null,
       "signupRequired": false,
       "url": "https://www.scenichudson.org/events/poughkeepsie-farm-project-fundraiser-dinner/",
-      "description": "Events\t\t\t\t\n\t\t\t\t\t\n\t\t\n\t\t\t\t\t\n\t\t\n\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t\n\t\t\t\n\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\n\t\t\n\t\t\t\t\t\n\t\t\n\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\tCommunity events bring people together to protect and celebrate what makes this region so special. From volunteer and educational opportunities to festivals and block parties, find out what’s up next in the Hudson Valley.\t\t\t\t\n\t\t\t\t\t\n\t\t\n\t\t\t\t\t\n\t\t\n\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\n\t\t",
+      "description": "Events Community events bring people together to protect and celebrate what makes this region so special. From volunteer and educational opportunities to festivals and block parties, find out what’s up next in the Hudson Valley. 4 events found. Events Today Upcoming Upcoming Select date.",
       "source": "Scenic Hudson"
     },
     {
@@ -1024,7 +1110,9 @@
       "signupRequired": false,
       "url": "https://www.timeshudsonvalley.com/stories/town-of-cornwall-music-in-the-park-concert-series,229176",
       "description": "Free weekly outdoor concerts on Sunday evenings, 6:30pm to 8pm.",
-      "source": "timeshudsonvalley.com"
+      "source": "timeshudsonvalley.com",
+      "repeats": true,
+      "audience": "all"
     },
     {
       "id": "jazz-mondays-quinns",
@@ -1045,7 +1133,9 @@
       "signupRequired": false,
       "url": "https://thebeaconbeaconny.com/events/jazz-mondays-at-quinns-2026-08-24/",
       "description": "Long-running Monday night jazz session, 8:30pm to 10:30pm.",
-      "source": "thebeaconbeaconny.com"
+      "source": "thebeaconbeaconny.com",
+      "repeats": true,
+      "audience": "all"
     },
     {
       "id": "desmondfish-library-86353041",
@@ -1065,8 +1155,10 @@
       "price": null,
       "signupRequired": false,
       "url": "https://desmondfishlibrary.org/event/paah-avoid-scams-2/",
-      "description": "Scammers are getting craftier, and sometimes scams are hard to identify. The library is here to help! Learn about a range of common scams – from fake emails to robocalls – and tips and tricks to avoid them and protect your identity. This talk will be led by our very own Digital Services Librarian, Ryan Biracree. \nEvery first Thursday, Philipstown Aging at Home is collaborating with the Desmond-Fis",
-      "source": "Desmond-Fish Library, Garrison"
+      "description": "Scammers are getting craftier, and sometimes scams are hard to identify. The library is here to help! Learn about a range of common scams – from fake emails to robocalls – and tips and tricks to avoid them and protect your identity. This talk will be led by our very own Digital Services Librarian, Ryan Biracree. Every first Thursday, Philipstown Aging at Home is collaborating with the Desmond-Fis",
+      "source": "Desmond-Fish Library, Garrison",
+      "repeats": true,
+      "audience": "all"
     },
     {
       "id": "lolos-boyfriend-show-sep",
@@ -1087,7 +1179,9 @@
       "signupUrl": "https://www.savagewonder.org/event/lolos-boyfriend-show/2026-09-03/",
       "url": "https://www.alittlebeaconblog.com/blog/lolos-boyfriend-show-opens-at-savage-wonder-edinburgh-fringe-winner-of-ici-audience-choice-award",
       "description": "Solo punk-cabaret show, winner of the ICI Audience Choice Award at the Edinburgh Fringe. Also playing September 17.",
-      "source": "alittlebeaconblog.com"
+      "source": "alittlebeaconblog.com",
+      "repeats": false,
+      "audience": "all"
     },
     {
       "id": "travelhudsonvalley-13820608",
@@ -1110,7 +1204,9 @@
       "signupRequired": false,
       "url": "https://travelhudsonvalley.com/event/dromfest-2026-indie-rock-takes-over-catskill/",
       "description": "Celebrate Labor Day Weekend in the Great Northern Catskills at Dromfest 2026, a three-day independent music festival hosted at The Avalon Lounge and venues throughout Catskill Village. Presented by Dromedary Records, the festival brings together acclaimed and emerging artists, along with film, literature, and community events in a walkable downtown setting. The 2026 lineup features more than 25 ar",
-      "source": "Hudson Valley Tourism"
+      "source": "Hudson Valley Tourism",
+      "repeats": false,
+      "audience": "all"
     },
     {
       "id": "desmondfish-library-30113792",
@@ -1130,9 +1226,11 @@
       "price": null,
       "signupRequired": false,
       "url": "https://desmondfishlibrary.org/event/friends-of-the-library-pavilion-book-sale/2026-09-04/",
-      "description": "The Friends of the Library look forward to welcoming patrons back for another spectacular year of their annual book sale! The sale is open to the public and this year it will be taking place under our brand new solar pavilion! This year, we have three summer sales, taking place in July, September, and August. \nFirst Sale Dates:\nJuly 10 – 12\nSecond Sale Dates:\nAugust 14 – 16\nThird Sale Dates:\nSepte",
+      "description": "The Friends of the Library look forward to welcoming patrons back for another spectacular year of their annual book sale! The sale is open to the public and this year it will be taking place under our brand new solar pavilion! This year, we have three summer sales, taking place in July, September, and August. First Sale Dates: July 10 – 12 Second Sale Dates: August 14 – 16 Third Sale Dates: Septe",
       "source": "Desmond-Fish Library, Garrison",
-      "recurrence": "6 dates listed through Sep 9"
+      "recurrence": "6 dates listed through Sep 9",
+      "repeats": true,
+      "audience": "all"
     },
     {
       "id": "desmondfish-library-27640624",
@@ -1153,8 +1251,10 @@
       "price": null,
       "signupRequired": false,
       "url": "https://desmondfishlibrary.org/event/play-and-chat-caregiver-meetup-with-putnam-county-doh-nurses/2026-09-04/",
-      "description": "Stop by the library for an informal play meet-up in our programming room. Meet and mingle with other parents and caregivers while your littles one play (toys will be available to share). \nWhile there, meet the Maternal Child Health Nurses from the Putnam County Department of Health and have your questions answered about breastfeeding, sleep, milestones, and more! \nNo registration required. This pr",
-      "source": "Desmond-Fish Library, Garrison"
+      "description": "Stop by the library for an informal play meet-up in our programming room. Meet and mingle with other parents and caregivers while your littles one play (toys will be available to share). While there, meet the Maternal Child Health Nurses from the Putnam County Department of Health and have your questions answered about breastfeeding, sleep, milestones, and more! No registration required. This pr",
+      "source": "Desmond-Fish Library, Garrison",
+      "repeats": false,
+      "audience": "all"
     },
     {
       "id": "millbrookwine-71083165",
@@ -1174,7 +1274,9 @@
       "signupRequired": false,
       "url": "https://www.millbrookwine.com/winery-event/friday-night-food-trucks-7/",
       "description": null,
-      "source": "Millbrook Vineyards & Winery"
+      "source": "Millbrook Vineyards & Winery",
+      "repeats": false,
+      "audience": "all"
     },
     {
       "id": "hv-balloon-festival-2026",
@@ -1201,7 +1303,9 @@
       "signupUrl": "https://app.gopassage.com/events/the-35th-annual-jpmorganchase-hudson-valley-hot-air-balloon-festival",
       "url": "https://www.dcrcoc.org/balloonfesthv-org/",
       "description": "120+ balloon ascensions at dawn and dusk plus the evening Moon Glow. Tickets must be bought online in advance — none are sold at the gate.",
-      "source": "dcrcoc.org"
+      "source": "dcrcoc.org",
+      "repeats": false,
+      "audience": "all"
     },
     {
       "id": "travelhudsonvalley-21551111",
@@ -1222,8 +1326,10 @@
       "price": null,
       "signupRequired": false,
       "url": "https://travelhudsonvalley.com/event/bear-mountain-inn-fridays-five-2-2-2-2-2-2-2-2-2-2-2/",
-      "description": "“Fridays @ Five” Returns to Bear Mountain Inn! May 29-September 4 from 5-8PM. Join us on Friday evenings for live music, great food and drinks and spectacular views! Bear Mountain Inn’s free outdoor summer concert series designed to help you unwind, reconnect, and kick off the weekend right. Enjoy a weekly lineup of talented local and regional musicians playing folk, soft rock, pop, funk, and more",
-      "source": "Hudson Valley Tourism"
+      "description": "“Fridays @ Five” Returns to Bear Mountain Inn! May 29-September 4 from 5-8PM. Join us on Friday evenings for live music, great food and drinks and spectacular views! Bear Mountain Inn’s free outdoor summer concert series designed to help you unwind, reconnect, and kick off the weekend right. Enjoy a weekly lineup of talented local and regional musicians playing folk, soft rock, pop, funk, and more",
+      "source": "Hudson Valley Tourism",
+      "repeats": true,
+      "audience": "all"
     },
     {
       "id": "lit-lit-open-mic-sep",
@@ -1244,7 +1350,9 @@
       "signupRequired": false,
       "url": "http://www.donnaminkowitz.com/lit-lit",
       "description": "Open mic for writers at the distillery, 7pm to 9pm.",
-      "source": "alittlebeaconblog.com"
+      "source": "alittlebeaconblog.com",
+      "repeats": false,
+      "audience": "all"
     },
     {
       "id": "savagewonder-82909650",
@@ -1264,8 +1372,10 @@
       "price": null,
       "signupRequired": false,
       "url": "https://www.savagewonder.org/event/savage-wonder-presents-the-soul-jam/2026-09-04/",
-      "description": "Get ready for a night of deep grooves, soaring vocals, and electrifying improvisation.\nSoul Jam is a rotating jazz, blues, and funk ensemble with a consistent vibe and an ever-changing lineup. While there will be regular core musicians—myself, Rodney on trumpet, and Ed on sax—the group will also feature a different mix of talented friends and guest musicians each time.\nThis approach keeps every So",
-      "source": "Savage Wonder, Beacon"
+      "description": "Get ready for a night of deep grooves, soaring vocals, and electrifying improvisation. Soul Jam is a rotating jazz, blues, and funk ensemble with a consistent vibe and an ever-changing lineup. While there will be regular core musicians—myself, Rodney on trumpet, and Ed on sax—the group will also feature a different mix of talented friends and guest musicians each time. This approach keeps every So",
+      "source": "Savage Wonder, Beacon",
+      "repeats": true,
+      "audience": "all"
     },
     {
       "id": "travelhudsonvalley-71251130",
@@ -1289,7 +1399,9 @@
       "url": "https://travelhudsonvalley.com/event/woodstock-new-paltz-art-crafts-fair/",
       "description": "One of Hudson Valley’s most beloved traditions! Hundreds of talented makers showcasing handcrafted art, jewelry, home décor, specialty foods, and more in a scenic outdoor setting. With live music, local flavors, and one-of-a-kind finds, it’s the perfect destination to experience the region’s vibrant creative spirit while supporting independent artisans!",
       "source": "Hudson Valley Tourism",
-      "recurrence": "3 dates listed through Sep 7"
+      "recurrence": "3 dates listed through Sep 7",
+      "repeats": true,
+      "audience": "all"
     },
     {
       "id": "hv-wine-music-festival-2026",
@@ -1312,7 +1424,9 @@
       "signupUrl": "https://www.eventbrite.com/d/ny--poughkeepsie/september/",
       "url": "https://www.eventbrite.com/d/ny--poughkeepsie/september/",
       "description": "Regional wineries and live music on the Newburgh waterfront, 11am to 7pm.",
-      "source": "eventbrite.com"
+      "source": "eventbrite.com",
+      "repeats": false,
+      "audience": "all"
     },
     {
       "id": "millbrookwine-5972041",
@@ -1332,7 +1446,9 @@
       "signupRequired": false,
       "url": "https://www.millbrookwine.com/winery-event/weekend-food-trucks-7/",
       "description": null,
-      "source": "Millbrook Vineyards & Winery"
+      "source": "Millbrook Vineyards & Winery",
+      "repeats": false,
+      "audience": "all"
     },
     {
       "id": "millbrookwine-36039939",
@@ -1352,7 +1468,9 @@
       "signupRequired": false,
       "url": "https://www.millbrookwine.com/winery-event/jazz-in-the-vineyard-21/",
       "description": null,
-      "source": "Millbrook Vineyards & Winery"
+      "source": "Millbrook Vineyards & Winery",
+      "repeats": false,
+      "audience": "all"
     },
     {
       "id": "travelhudsonvalley-65157175",
@@ -1375,7 +1493,9 @@
       "signupRequired": false,
       "url": "https://travelhudsonvalley.com/event/35th-hudson-valley-hot-air-balloon-festival-at-tymor-park/",
       "description": "The 35th-annual Hudson Valley Hot-Air Balloon Festival has an entire weekend of family-friendly fun and excitement planned at Tymor Park Sept. 4–6, 2026! Among the festival favorites are the tethered hot-air balloon rides, full hot-air balloon flights, morning yoga, fireworks, live music and entertainment, food trucks, a beer and wine tent, local vendors, a whole bunch of family activities and mor",
-      "source": "Hudson Valley Tourism"
+      "source": "Hudson Valley Tourism",
+      "repeats": false,
+      "audience": "all"
     },
     {
       "id": "stormking-62493883",
@@ -1396,8 +1516,10 @@
       "price": null,
       "signupRequired": false,
       "url": "https://stormking.org/events/children-families-program-7/",
-      "description": "Create a poetic conversation! Participants will respond to Saif Azzuz’s sculpture weych-pues / tàkhòne (where the rivers meet) by imagining the thoughts of both the sturgeon and the watery environment in which it resides. These will then be cut and configured into a two-person poem. This program will be led by Mala Hoffman.\n\n \tProgram location: Museum Hill\n \tSuggested age range: all ages\n \tFree wi",
-      "source": "Storm King Art Center"
+      "description": "Create a poetic conversation! Participants will respond to Saif Azzuz’s sculpture weych-pues / tàkhòne (where the rivers meet) by imagining the thoughts of both the sturgeon and the watery environment in which it resides. These will then be cut and configured into a two-person poem. This program will be led by Mala Hoffman. Program location: Museum Hill Suggested age range: all ages Free wi",
+      "source": "Storm King Art Center",
+      "repeats": false,
+      "audience": "all"
     },
     {
       "id": "travelhudsonvalley-36727895",
@@ -1420,7 +1542,9 @@
       "signupRequired": false,
       "url": "https://travelhudsonvalley.com/event/bedford-music-festival-3/",
       "description": "Enjoy a full day of live music while exploring Caramoor’s grounds and its collection of sound art. Tour the historic Rosen house, play lawn games, and indulge in delicious food and drink offerings at this festival for music lovers of all ages.",
-      "source": "Hudson Valley Tourism"
+      "source": "Hudson Valley Tourism",
+      "repeats": false,
+      "audience": "all"
     },
     {
       "id": "savagewonder-55927370",
@@ -1442,8 +1566,10 @@
       "price": null,
       "signupRequired": false,
       "url": "https://www.savagewonder.org/event/old-exit-19/",
-      "description": "Savage Wonder presents another evening of live music featuring Hudson Valley’s best musicians, singers & songwriters. \nTonight,\nOld Exit 19 performs a program blending classical finesse, rock-driven energy, exceptional artistry, and just plain fun! \nFeaturing,\nAurelia Landon\nBob Cinque\nCarol Jendras\nJoe Spallina\nPhil Levine \nAbout Old Exit 19,\nOld Exit 19, founded by Bob Cinque, Carol Jendras, and",
-      "source": "Savage Wonder, Beacon"
+      "description": "Savage Wonder presents another evening of live music featuring Hudson Valley’s best musicians, singers & songwriters. Tonight, Old Exit 19 performs a program blending classical finesse, rock-driven energy, exceptional artistry, and just plain fun! Featuring, Aurelia Landon Bob Cinque Carol Jendras Joe Spallina Phil Levine About Old Exit 19, Old Exit 19, founded by Bob Cinque, Carol Jendras, and",
+      "source": "Savage Wonder, Beacon",
+      "repeats": false,
+      "audience": "all"
     },
     {
       "id": "travelhudsonvalley-63354050",
@@ -1463,8 +1589,10 @@
       "price": null,
       "signupRequired": false,
       "url": "https://travelhudsonvalley.com/event/ny-boulders-greatest-night-in-baseball-final-regular-season-home-game/",
-      "description": "Don’t miss the “NY Boulders-Greatest Night in Baseball – Final Regular Season Home Game!” Sunday, Sept. 6. 6PM.  Join the NY Boulders for their epic 15th season finale! They’re pulling out all the stops for one unforgettable night of baseball, entertainment and celebration! Stick around for Postgame Fireworks!  Gates open at 5:30PM. Tickets on sale!  CLICK HERE for details.",
-      "source": "Hudson Valley Tourism"
+      "description": "Don’t miss the “NY Boulders-Greatest Night in Baseball – Final Regular Season Home Game!” Sunday, Sept. 6. 6PM. Join the NY Boulders for their epic 15th season finale! They’re pulling out all the stops for one unforgettable night of baseball, entertainment and celebration! Stick around for Postgame Fireworks! Gates open at 5:30PM. Tickets on sale! CLICK HERE for details.",
+      "source": "Hudson Valley Tourism",
+      "repeats": false,
+      "audience": "all"
     },
     {
       "id": "travelhudsonvalley-25134421",
@@ -1485,8 +1613,10 @@
       "price": null,
       "signupRequired": false,
       "url": "https://travelhudsonvalley.com/event/sunflower-festival-at-barton-orchards-in-poughquag-aug-28-30-sept-4-7/",
-      "description": "Barton Orchard’s five-acre sunflower field has thousands of sunflowers just waiting to be picked. At this eighth-annual festival, you’ll receive two free sunflowers (bring your shears if you’d like to cut additional sunflowers), along with unlimited hayrides, live music, local craft vendors, delicious food, carousel rides, a petting zoo, magic shows, a dog park and so much more. Click here for det",
-      "source": "Hudson Valley Tourism"
+      "description": "Barton Orchard’s five-acre sunflower field has thousands of sunflowers just waiting to be picked. At this eighth-annual festival, you’ll receive two free sunflowers (bring your shears if you’d like to cut additional sunflowers), along with unlimited hayrides, live music, local craft vendors, delicious food, carousel rides, a petting zoo, magic shows, a dog park and so much more. Click here for det",
+      "source": "Hudson Valley Tourism",
+      "repeats": false,
+      "audience": "all"
     },
     {
       "id": "desmondfish-library-48650834",
@@ -1508,8 +1638,10 @@
       "price": null,
       "signupRequired": false,
       "url": "https://desmondfishlibrary.org/event/creative-games-meetup/2026-09-08/",
-      "description": "In this no-commitment, weekly club, kids and teens can play their favorite creative games like Minecraft, Animal Crossing, The Sims, Stardew Valley, Scratch, Super Mario Maker, Terraria, Zelda: Tears of the Kingdom, and more in a safe, supportive, and fun environment. Whether beginners looking to learn the basics, advanced players constructing their masterpieces, or tinkerers who want to toy with ",
-      "source": "Desmond-Fish Library, Garrison"
+      "description": "In this no-commitment, weekly club, kids and teens can play their favorite creative games like Minecraft, Animal Crossing, The Sims, Stardew Valley, Scratch, Super Mario Maker, Terraria, Zelda: Tears of the Kingdom, and more in a safe, supportive, and fun environment. Whether beginners looking to learn the basics, advanced players constructing their masterpieces, or tinkerers who want to toy with",
+      "source": "Desmond-Fish Library, Garrison",
+      "repeats": true,
+      "audience": "kids"
     },
     {
       "id": "desmondfish-library-55773143",
@@ -1528,13 +1660,17 @@
       "price": null,
       "signupRequired": false,
       "url": "https://desmondfishlibrary.org/event/make-your-own-tote/",
-      "description": "Start the new school year off with a new bag! Come decorate a bag with patches and stamps to show off your style at school or out and about. \nFor students in grades 4-12. Registration is required. Please register each child individually.",
-      "source": "Desmond-Fish Library, Garrison"
+      "description": "Start the new school year off with a new bag! Come decorate a bag with patches and stamps to show off your style at school or out and about. For students in grades 4-12. Registration is required. Please register each child individually.",
+      "source": "Desmond-Fish Library, Garrison",
+      "repeats": false,
+      "audience": "kids"
     },
     {
       "id": "scenichudson-50368685",
       "title": "Hope on a Mission (HOAM) Board Retreat",
       "kind": "event",
+      "repeats": false,
+      "audience": "all",
       "categories": [
         "community"
       ],
@@ -1548,7 +1684,7 @@
       "price": null,
       "signupRequired": false,
       "url": "https://www.scenichudson.org/events/hope-on-a-mission-board-retreat/",
-      "description": "Events\t\t\t\t\n\t\t\t\t\t\n\t\t\n\t\t\t\t\t\n\t\t\n\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t\n\t\t\t\n\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\n\t\t\n\t\t\t\t\t\n\t\t\n\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\tCommunity events bring people together to protect and celebrate what makes this region so special. From volunteer and educational opportunities to festivals and block parties, find out what’s up next in the Hudson Valley.\t\t\t\t\n\t\t\t\t\t\n\t\t\n\t\t\t\t\t\n\t\t\n\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\n\t\t",
+      "description": "Events Community events bring people together to protect and celebrate what makes this region so special. From volunteer and educational opportunities to festivals and block parties, find out what’s up next in the Hudson Valley. 4 events found. Events Today Upcoming Upcoming Select date.",
       "source": "Scenic Hudson"
     },
     {
@@ -1571,8 +1707,10 @@
       "price": null,
       "signupRequired": false,
       "url": "https://www.savagewonder.org/event/an-evening-with-kj-and-amelia/2026-09-09/",
-      "description": "Savage Wonder presents an evening of live music featuring the best Hudson Valley performers and musicians. \nTonight,\n An Evening with KJ and Amelia—a dynamic night of pop, jazz, and timeless standards featuring soulful vocals & keyboard by 20-year U.S. Army veteran and former Army National Guard featured vocalist KJ McAleesejergins, alongside the expressive violin work of Amelia Muccia. \nFeaturing",
-      "source": "Savage Wonder, Beacon"
+      "description": "Savage Wonder presents an evening of live music featuring the best Hudson Valley performers and musicians. Tonight, An Evening with KJ and Amelia—a dynamic night of pop, jazz, and timeless standards featuring soulful vocals & keyboard by 20-year U.S. Army veteran and former Army National Guard featured vocalist KJ McAleesejergins, alongside the expressive violin work of Amelia Muccia. Featuring",
+      "source": "Savage Wonder, Beacon",
+      "repeats": false,
+      "audience": "all"
     },
     {
       "id": "travelhudsonvalley-60772549",
@@ -1593,9 +1731,11 @@
       "price": null,
       "signupRequired": false,
       "url": "https://travelhudsonvalley.com/event/italian-feast-carnival-2026/",
-      "description": "Don’t miss the “16th Annual Italian Feast & Carnival!  September 10-13 at the Masonic Park Fair Grounds in Tappan.  Hosted by the Rockland Sons of Italy Lodge, this four-day celebration features food and beverages, music, vendors, kids’ activities, and MORE!  Celebrate Italian heritage! Fun for the whole family!  Admission: $10. FREE parking!  CLICK HERE for more information. \nEvent schedule: \nThu",
+      "description": "Don’t miss the “16th Annual Italian Feast & Carnival! September 10-13 at the Masonic Park Fair Grounds in Tappan. Hosted by the Rockland Sons of Italy Lodge, this four-day celebration features food and beverages, music, vendors, kids’ activities, and MORE! Celebrate Italian heritage! Fun for the whole family! Admission: $10. FREE parking! CLICK HERE for more information. Event schedule: Thu",
       "source": "Hudson Valley Tourism",
-      "recurrence": "4 dates listed through Sep 13"
+      "recurrence": "4 dates listed through Sep 13",
+      "repeats": true,
+      "audience": "all"
     },
     {
       "id": "desmondfish-library-26712378",
@@ -1614,8 +1754,10 @@
       "price": null,
       "signupRequired": false,
       "url": "https://desmondfishlibrary.org/event/library-student-council-12/",
-      "description": "Calling all students in grades 6-12! The Desmond-Fish Public Library wants you to join the Library Student Council! Here’s some of what Library Student Council members might do: make book recommendations, help plan and present events, prep and organize library materials. We need your help and your ideas! Just for attending you get one hour of community service credit, and don’t forget…snacks! \nThi",
-      "source": "Desmond-Fish Library, Garrison"
+      "description": "Calling all students in grades 6-12! The Desmond-Fish Public Library wants you to join the Library Student Council! Here’s some of what Library Student Council members might do: make book recommendations, help plan and present events, prep and organize library materials. We need your help and your ideas! Just for attending you get one hour of community service credit, and don’t forget…snacks! Thi",
+      "source": "Desmond-Fish Library, Garrison",
+      "repeats": false,
+      "audience": "kids"
     },
     {
       "id": "travelhudsonvalley-86451934",
@@ -1637,8 +1779,10 @@
       "price": null,
       "signupRequired": false,
       "url": "https://travelhudsonvalley.com/event/yorktown-grange-fair/",
-      "description": "With a theme of “Goats, Games and Good Times!” the fair features the best livestock, produce and flowers from local farms and growers. Entertainment throughout the weekend includes special children’s programs, live music, rides, comedy shows and arts and crafts from local makers. The first hour of each day is a quiet hour with no loud noises. \nEvent hours are: 9/11/26: 4pm-11pm; 9/12/26: 10am-11pm",
-      "source": "Hudson Valley Tourism"
+      "description": "With a theme of “Goats, Games and Good Times!” the fair features the best livestock, produce and flowers from local farms and growers. Entertainment throughout the weekend includes special children’s programs, live music, rides, comedy shows and arts and crafts from local makers. The first hour of each day is a quiet hour with no loud noises. Event hours are: 9/11/26: 4pm-11pm; 9/12/26: 10am-11pm",
+      "source": "Hudson Valley Tourism",
+      "repeats": false,
+      "audience": "all"
     },
     {
       "id": "desmondfish-library-78302714",
@@ -1658,8 +1802,10 @@
       "price": null,
       "signupRequired": false,
       "url": "https://desmondfishlibrary.org/event/mahjong-meetup-5/2026-09-11/",
-      "description": "Join us for Mahjong on Fridays at the library! We will have two tables set up, one for experienced players, and one for people learning to play. All ages and skill levels are welcome. Please register to let us know that you’re coming. \n\n\nThis group will either meet outside in the pavilion or indoors in the Fish room.",
-      "source": "Desmond-Fish Library, Garrison"
+      "description": "Join us for Mahjong on Fridays at the library! We will have two tables set up, one for experienced players, and one for people learning to play. All ages and skill levels are welcome. Please register to let us know that you’re coming. This group will either meet outside in the pavilion or indoors in the Fish room.",
+      "source": "Desmond-Fish Library, Garrison",
+      "repeats": false,
+      "audience": "all"
     },
     {
       "id": "desmondfish-library-37566703",
@@ -1680,7 +1826,9 @@
       "signupRequired": false,
       "url": "https://desmondfishlibrary.org/event/dfpl-at-the-cold-spring-farmers-market-7/",
       "description": "Stop by and say hello to some of your favorite librarians at the Farmers Market between 10am and 12pm.",
-      "source": "Desmond-Fish Library, Garrison"
+      "source": "Desmond-Fish Library, Garrison",
+      "repeats": false,
+      "audience": "all"
     },
     {
       "id": "hv-wine-food-festival-2026",
@@ -1703,12 +1851,16 @@
       "signupUrl": "https://www.eventbrite.com/d/ny--new-paltz/festivals/",
       "url": "https://www.eventbrite.com/d/ny--new-paltz/festivals/",
       "description": "Regional wine, cider and food producers at the fairgrounds.",
-      "source": "eventbrite.com"
+      "source": "eventbrite.com",
+      "repeats": false,
+      "audience": "all"
     },
     {
       "id": "scenichudson-61015978",
       "title": "Pollinator PK Arts Festival",
       "kind": "event",
+      "repeats": false,
+      "audience": "all",
       "categories": [
         "art",
         "market",
@@ -1724,7 +1876,7 @@
       "price": null,
       "signupRequired": false,
       "url": "https://www.scenichudson.org/events/pollinator-pk-arts-festival/2026-09-12/",
-      "description": "Events\t\t\t\t\n\t\t\t\t\t\n\t\t\n\t\t\t\t\t\n\t\t\n\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t\n\t\t\t\n\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\n\t\t\n\t\t\t\t\t\n\t\t\n\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\tCommunity events bring people together to protect and celebrate what makes this region so special. From volunteer and educational opportunities to festivals and block parties, find out what’s up next in the Hudson Valley.\t\t\t\t\n\t\t\t\t\t\n\t\t\n\t\t\t\t\t\n\t\t\n\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\n\t\t",
+      "description": "Events Community events bring people together to protect and celebrate what makes this region so special. From volunteer and educational opportunities to festivals and block parties, find out what’s up next in the Hudson Valley. 4 events found. Events Today Upcoming Upcoming Select date.",
       "source": "Scenic Hudson"
     },
     {
@@ -1746,8 +1898,10 @@
       "price": null,
       "signupRequired": false,
       "url": "https://travelhudsonvalley.com/event/nyack-fall-festival-street-fair/",
-      "description": "Don’t miss the “Nyack Fall Festival Street Fair!” Sunday, Sept. 13. 10AM – 5PM. Rain or Shine. Featuring 200 vendors with something for everyone. Jewelry, art, photography, collectibles, antiques, quality handmade crafts, and unique gifts! Live entertainment, kids activities, and much more! Fun for the whole family!  CLICK HERE for details.",
-      "source": "Hudson Valley Tourism"
+      "description": "Don’t miss the “Nyack Fall Festival Street Fair!” Sunday, Sept. 13. 10AM – 5PM. Rain or Shine. Featuring 200 vendors with something for everyone. Jewelry, art, photography, collectibles, antiques, quality handmade crafts, and unique gifts! Live entertainment, kids activities, and much more! Fun for the whole family! CLICK HERE for details.",
+      "source": "Hudson Valley Tourism",
+      "repeats": false,
+      "audience": "all"
     },
     {
       "id": "stormking-5802230",
@@ -1768,13 +1922,17 @@
       "price": null,
       "signupRequired": false,
       "url": "https://stormking.org/events/children-families-forest-ramble/",
-      "description": "Let's go for a stroll with Hudson Highlands Nature Center on the trails of Storm King! We'll observe our surroundings and discover the diversity of our plants and trees. We will discuss their many uses, including how humans and animals rely on them!\n\n\n\n\nThe Hudson Highlands Nature Center is a nonprofit (501c3) center for nature, with a focus on Nature Education and Nature Play.  We use our living ",
-      "source": "Storm King Art Center"
+      "description": "Let's go for a stroll with Hudson Highlands Nature Center on the trails of Storm King! We'll observe our surroundings and discover the diversity of our plants and trees. We will discuss their many uses, including how humans and animals rely on them! The Hudson Highlands Nature Center is a nonprofit (501c3) center for nature, with a focus on Nature Education and Nature Play. We use our living",
+      "source": "Storm King Art Center",
+      "repeats": false,
+      "audience": "all"
     },
     {
       "id": "scenichudson-51952511",
       "title": "Pollinator PK Arts Festival",
       "kind": "event",
+      "repeats": false,
+      "audience": "all",
       "categories": [
         "art",
         "market",
@@ -1790,7 +1948,7 @@
       "price": null,
       "signupRequired": false,
       "url": "https://www.scenichudson.org/events/pollinator-pk-arts-festival/2026-09-13/",
-      "description": "Events\t\t\t\t\n\t\t\t\t\t\n\t\t\n\t\t\t\t\t\n\t\t\n\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t\n\t\t\t\n\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\n\t\t\n\t\t\t\t\t\n\t\t\n\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\tCommunity events bring people together to protect and celebrate what makes this region so special. From volunteer and educational opportunities to festivals and block parties, find out what’s up next in the Hudson Valley.\t\t\t\t\n\t\t\t\t\t\n\t\t\n\t\t\t\t\t\n\t\t\n\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\n\t\t",
+      "description": "Events Community events bring people together to protect and celebrate what makes this region so special. From volunteer and educational opportunities to festivals and block parties, find out what’s up next in the Hudson Valley. 4 events found. Events Today Upcoming Upcoming Select date.",
       "source": "Scenic Hudson"
     },
     {
@@ -1811,8 +1969,10 @@
       "price": null,
       "signupRequired": false,
       "url": "https://desmondfishlibrary.org/event/good-bot-2/",
-      "description": "Advising Elmer’s glue as an ingredient for pasta sauce, inventing citations that don’t exist, gaslighting users about the spelling of “strawberry,” even causing psychosis – with so many potential dangers, how can we responsibly and reliably use this powerful technology in our daily lives, at home or at work? \nIn this workshop, we’ll learn strategies for making AI your tool – not your tyrant. We’ll",
-      "source": "Desmond-Fish Library, Garrison"
+      "description": "Advising Elmer’s glue as an ingredient for pasta sauce, inventing citations that don’t exist, gaslighting users about the spelling of “strawberry,” even causing psychosis – with so many potential dangers, how can we responsibly and reliably use this powerful technology in our daily lives, at home or at work? In this workshop, we’ll learn strategies for making AI your tool – not your tyrant. We’ll",
+      "source": "Desmond-Fish Library, Garrison",
+      "repeats": true,
+      "audience": "all"
     },
     {
       "id": "desmondfish-library-27233945",
@@ -1833,7 +1993,9 @@
       "signupRequired": false,
       "url": "https://desmondfishlibrary.org/event/open-makerspace-hours-2/2026-09-13/",
       "description": "Want to create an object on a 3D printer? Cut decals on a Cricut? Engrave a gift with a laser cutter? Create custom chocolate molds on a vacuum former? You can do it all – and more! – at the Innovation & Learning Center, the Desmond-Fish Public Library’s makerspace and education center. During open makerspace hours, patrons can use, learn about, and experiment with all the tools available in the I",
-      "source": "Desmond-Fish Library, Garrison"
+      "source": "Desmond-Fish Library, Garrison",
+      "repeats": false,
+      "audience": "all"
     },
     {
       "id": "savagewonder-57017734",
@@ -1854,8 +2016,10 @@
       "price": null,
       "signupRequired": false,
       "url": "https://www.savagewonder.org/event/savage-wonder-presents-jay-strauss-the-floating-seeds/2026-09-13/",
-      "description": "Settle in at The Grape Rebellion with a glass of wine as Savage Wonder presents another evening of FREE MUSIC featuring Hudson Valley’s best musicians, singers & songwriters.\nSongs with teeth, lyrics with layers, and a sideways look at the world. Jay Strauss brings his uniquely rhythmic, subtly warped take on indie rock to the stage for a night of music that’s both heady and deeply human.\nJay Stra",
-      "source": "Savage Wonder, Beacon"
+      "description": "Settle in at The Grape Rebellion with a glass of wine as Savage Wonder presents another evening of FREE MUSIC featuring Hudson Valley’s best musicians, singers & songwriters. Songs with teeth, lyrics with layers, and a sideways look at the world. Jay Strauss brings his uniquely rhythmic, subtly warped take on indie rock to the stage for a night of music that’s both heady and deeply human. Jay Stra",
+      "source": "Savage Wonder, Beacon",
+      "repeats": false,
+      "audience": "all"
     },
     {
       "id": "desmondfish-library-48463030",
@@ -1875,8 +2039,10 @@
       "price": null,
       "signupRequired": false,
       "url": "https://desmondfishlibrary.org/event/lego-dream-and-design/2026-09-14/",
-      "description": "In this no-commitment, weekly club, kids and teens in grades 2-12 can practice their building skills, show off their creativity, make friends, and learn new techniques. Each week, we’ll feature a creative challenge for builders to complete (or work on a personal project), and introduce advanced building techniques. We are not able to accommodate adult builders at this time; however, check out our ",
-      "source": "Desmond-Fish Library, Garrison"
+      "description": "In this no-commitment, weekly club, kids and teens in grades 2-12 can practice their building skills, show off their creativity, make friends, and learn new techniques. Each week, we’ll feature a creative challenge for builders to complete (or work on a personal project), and introduce advanced building techniques. We are not able to accommodate adult builders at this time; however, check out our",
+      "source": "Desmond-Fish Library, Garrison",
+      "repeats": true,
+      "audience": "kids"
     },
     {
       "id": "travelhudsonvalley-46652890",
@@ -1896,7 +2062,9 @@
       "signupRequired": false,
       "url": "https://travelhudsonvalley.com/event/hispanic-heritage-month-featured-artist-breana-ferreira/",
       "description": "Clay Art Center Shop presents a selection of functional handmade ceramics by guest featured artist Breana Ferreira throughout Hispanic Heritage Month. Guest Breana’s work features multi-layered and textured surfaces, with colorful motifs and imagery that shape a personal narrative. Visit the shop at 40 Beech Street, Port Chester, NY Monday through Saturday from September 15 through October 17 to v",
-      "source": "Hudson Valley Tourism"
+      "source": "Hudson Valley Tourism",
+      "repeats": false,
+      "audience": "all"
     },
     {
       "id": "desmondfish-library-1956066",
@@ -1916,7 +2084,9 @@
       "signupRequired": false,
       "url": "https://desmondfishlibrary.org/event/register-to-vote/",
       "description": "Participate in democracy at your local library on National Voter Registration Day. Throughout the day, you can check your voter registration status, register to vote, and sign up to be an election worker! We’ll have a plethora of voting information and resources. Any patron who registers to vote/updates their registration will receive a free sticker.",
-      "source": "Desmond-Fish Library, Garrison"
+      "source": "Desmond-Fish Library, Garrison",
+      "repeats": false,
+      "audience": "all"
     },
     {
       "id": "desmondfish-library-46882767",
@@ -1938,8 +2108,10 @@
       "price": null,
       "signupRequired": false,
       "url": "https://desmondfishlibrary.org/event/creative-games-meetup/2026-09-15/",
-      "description": "In this no-commitment, weekly club, kids and teens can play their favorite creative games like Minecraft, Animal Crossing, The Sims, Stardew Valley, Scratch, Super Mario Maker, Terraria, Zelda: Tears of the Kingdom, and more in a safe, supportive, and fun environment. Whether beginners looking to learn the basics, advanced players constructing their masterpieces, or tinkerers who want to toy with ",
-      "source": "Desmond-Fish Library, Garrison"
+      "description": "In this no-commitment, weekly club, kids and teens can play their favorite creative games like Minecraft, Animal Crossing, The Sims, Stardew Valley, Scratch, Super Mario Maker, Terraria, Zelda: Tears of the Kingdom, and more in a safe, supportive, and fun environment. Whether beginners looking to learn the basics, advanced players constructing their masterpieces, or tinkerers who want to toy with",
+      "source": "Desmond-Fish Library, Garrison",
+      "repeats": true,
+      "audience": "kids"
     },
     {
       "id": "desmondfish-library-53316915",
@@ -1960,7 +2132,9 @@
       "signupRequired": false,
       "url": "https://desmondfishlibrary.org/event/gnbc926/",
       "description": "Choose something light or something dark in our double feature graphic novel book club. Join us for a discussion around two graphic novels with differing themes, styles, and tones chosen by two of our librarians. We invite you to pick one book or read both as we explore this art driven form of storytelling. We’ll share what we love (and don’t love) about both books and share recommendations of sim",
-      "source": "Desmond-Fish Library, Garrison"
+      "source": "Desmond-Fish Library, Garrison",
+      "repeats": false,
+      "audience": "all"
     },
     {
       "id": "desmondfish-library-10224603",
@@ -1980,8 +2154,10 @@
       "price": null,
       "signupRequired": false,
       "url": "https://desmondfishlibrary.org/event/whats-the-worst-that-could-happen/",
-      "description": "Join us on the third Thursday of every month to find out if the book really is better than the movie. Each month we will read a book and then come together to watch the movie adaptation and discuss our thoughts. Registration is appreciated! \nSeptember’s Pick: What’s the Worst That Could Happen? by Donald E. Westlake \nAbout the Book\nDortmunder is in the midst of a routine burglary of a Long Island ",
-      "source": "Desmond-Fish Library, Garrison"
+      "description": "Join us on the third Thursday of every month to find out if the book really is better than the movie. Each month we will read a book and then come together to watch the movie adaptation and discuss our thoughts. Registration is appreciated! September’s Pick: What’s the Worst That Could Happen? by Donald E. Westlake About the Book Dortmunder is in the midst of a routine burglary of a Long Island",
+      "source": "Desmond-Fish Library, Garrison",
+      "repeats": true,
+      "audience": "all"
     },
     {
       "id": "stormking-45646864",
@@ -2003,8 +2179,10 @@
       "price": null,
       "signupRequired": false,
       "url": "https://stormking.org/events/member-event-art-work-learning-and-engagement/",
-      "description": "We are delighted to welcome Hannah des Cognets, Storm King's Director of Learning &amp; Engagement to our next Art/Work event. Hannah leads a team that creates unique and immersive experiences in art and nature including public programs, family programs, school visits, teacher workshops, and artist residencies. Join us for a conversation about Storm King’s approach to education and how art can cre",
-      "source": "Storm King Art Center"
+      "description": "We are delighted to welcome Hannah des Cognets, Storm King's Director of Learning & Engagement to our next Art/Work event. Hannah leads a team that creates unique and immersive experiences in art and nature including public programs, family programs, school visits, teacher workshops, and artist residencies. Join us for a conversation about Storm King’s approach to education and how art can cre",
+      "source": "Storm King Art Center",
+      "repeats": false,
+      "audience": "all"
     },
     {
       "id": "desmondfish-library-55337",
@@ -2026,7 +2204,9 @@
       "signupRequired": false,
       "url": "https://desmondfishlibrary.org/event/origami-club/2026-09-17/",
       "description": "Welcome to Hudson Valley Folds, our new monthly origami club that meets every third Thursday. Please join us to be part of some folding fun. We’ll be folding origami, sharing origami and hopefully teaching each other some new models along the way. No prior knowledge or skill is required – if you like paper, and the idea of folder that paper a few times until it becomes something, then come hang ou",
-      "source": "Desmond-Fish Library, Garrison"
+      "source": "Desmond-Fish Library, Garrison",
+      "repeats": true,
+      "audience": "all"
     },
     {
       "id": "desmondfish-library-323260",
@@ -2046,13 +2226,17 @@
       "price": null,
       "signupRequired": false,
       "url": "https://desmondfishlibrary.org/event/paw-pals-read-to-a-dog-10/2026-09-17/",
-      "description": "Sit, stay, read! Join us for an opportunity to read to Journey, one of the therapy dogs from Hudson Valley Paws for a Cause. For many children, reading out loud can be stressful. But reading to a dog can provide them a chance to improve their reading skills with a non-judgmental listener.\n\nFor children in grades Kindergarten and up. Each child will be allotted fifteen minutes of reading time. Spac",
-      "source": "Desmond-Fish Library, Garrison"
+      "description": "Sit, stay, read! Join us for an opportunity to read to Journey, one of the therapy dogs from Hudson Valley Paws for a Cause. For many children, reading out loud can be stressful. But reading to a dog can provide them a chance to improve their reading skills with a non-judgmental listener. For children in grades Kindergarten and up. Each child will be allotted fifteen minutes of reading time. Spac",
+      "source": "Desmond-Fish Library, Garrison",
+      "repeats": false,
+      "audience": "all"
     },
     {
       "id": "scenichudson-91790409",
       "title": "DAY ONE Learning Center Economic Justice Summit",
       "kind": "event",
+      "repeats": false,
+      "audience": "all",
       "categories": [
         "community"
       ],
@@ -2066,7 +2250,7 @@
       "price": null,
       "signupRequired": false,
       "url": "https://www.scenichudson.org/events/day-one-learning-center-economic-justice-summit/",
-      "description": "Events\t\t\t\t\n\t\t\t\t\t\n\t\t\n\t\t\t\t\t\n\t\t\n\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t\n\t\t\t\n\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\n\t\t\n\t\t\t\t\t\n\t\t\n\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\tCommunity events bring people together to protect and celebrate what makes this region so special. From volunteer and educational opportunities to festivals and block parties, find out what’s up next in the Hudson Valley.\t\t\t\t\n\t\t\t\t\t\n\t\t\n\t\t\t\t\t\n\t\t\n\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\n\t\t",
+      "description": "Events Community events bring people together to protect and celebrate what makes this region so special. From volunteer and educational opportunities to festivals and block parties, find out what’s up next in the Hudson Valley. 4 events found. Events Today Upcoming Upcoming Select date.",
       "source": "Scenic Hudson"
     },
     {
@@ -2088,8 +2272,10 @@
       "price": null,
       "signupRequired": false,
       "url": "https://travelhudsonvalley.com/event/legendary-tours-of-washington-irvings-sunnyside/",
-      "description": "Sunnyside celebrates its connection to Washington Irving’s classic tale, The Legend of Sleepy Hollow, at this family-friendly daytime event. Visitors can tour the cottage, see an original short shadow puppet film, and enjoy a Legend-themed exhibit. \nThe program runs from Sept. 18-Nov. 8, 2026. For tickets and more information, visit: https://tickets.hudsonvalley.org/events?view=calendar&k=legend_t",
-      "source": "Hudson Valley Tourism"
+      "description": "Sunnyside celebrates its connection to Washington Irving’s classic tale, The Legend of Sleepy Hollow, at this family-friendly daytime event. Visitors can tour the cottage, see an original short shadow puppet film, and enjoy a Legend-themed exhibit. The program runs from Sept. 18-Nov. 8, 2026. For tickets and more information, visit: https://tickets.hudsonvalley.org/events?view=calendar&k=legend_t",
+      "source": "Hudson Valley Tourism",
+      "repeats": false,
+      "audience": "all"
     },
     {
       "id": "desmondfish-library-39506072",
@@ -2110,8 +2296,10 @@
       "price": null,
       "signupRequired": false,
       "url": "https://desmondfishlibrary.org/event/play-and-chat-caregiver-meetup-with-putnam-county-doh-nurses/2026-09-18/",
-      "description": "Stop by the library for an informal play meet-up in our programming room. Meet and mingle with other parents and caregivers while your littles one play (toys will be available to share). \nWhile there, meet the Maternal Child Health Nurses from the Putnam County Department of Health and have your questions answered about breastfeeding, sleep, milestones, and more! \nNo registration required. This pr",
-      "source": "Desmond-Fish Library, Garrison"
+      "description": "Stop by the library for an informal play meet-up in our programming room. Meet and mingle with other parents and caregivers while your littles one play (toys will be available to share). While there, meet the Maternal Child Health Nurses from the Putnam County Department of Health and have your questions answered about breastfeeding, sleep, milestones, and more! No registration required. This pr",
+      "source": "Desmond-Fish Library, Garrison",
+      "repeats": false,
+      "audience": "all"
     },
     {
       "id": "desmondfish-library-12433799",
@@ -2131,8 +2319,10 @@
       "price": null,
       "signupRequired": false,
       "url": "https://desmondfishlibrary.org/event/mahjong-meetup-5/2026-09-18/",
-      "description": "Join us for Mahjong on Fridays at the library! We will have two tables set up, one for experienced players, and one for people learning to play. All ages and skill levels are welcome. Please register to let us know that you’re coming. \n\n\nThis group will either meet outside in the pavilion or indoors in the Fish room.",
-      "source": "Desmond-Fish Library, Garrison"
+      "description": "Join us for Mahjong on Fridays at the library! We will have two tables set up, one for experienced players, and one for people learning to play. All ages and skill levels are welcome. Please register to let us know that you’re coming. This group will either meet outside in the pavilion or indoors in the Fish room.",
+      "source": "Desmond-Fish Library, Garrison",
+      "repeats": false,
+      "audience": "all"
     },
     {
       "id": "travelhudsonvalley-65205185",
@@ -2153,7 +2343,9 @@
       "signupRequired": false,
       "url": "https://travelhudsonvalley.com/event/the-great-jack-olantern-blaze/",
       "description": "The Great Jack O’Lantern Blaze, an annual event at Van Cortlandt Manor in Croton-on-Hudson, taking place September 18-November 8. The gourd-geous displays feature more than 7,000 hand-carved, illuminated jack o’lanterns arranged in jaw-dropping displays, such as dinosaurs and a carousel. Guests take a self-guided walk through the display and can stop at the Gourd & Goblet Tavern or the Headless Ho",
-      "source": "Hudson Valley Tourism"
+      "source": "Hudson Valley Tourism",
+      "repeats": false,
+      "audience": "all"
     },
     {
       "id": "savagewonder-82726890",
@@ -2173,8 +2365,10 @@
       "price": null,
       "signupRequired": false,
       "url": "https://www.savagewonder.org/event/savage-wonder-presents-a-night-with-the-447s/2026-09-18/",
-      "description": "Savage Wonder presents another evening of FREE MUSIC featuring Hudson Valley’s best musicians, singers & songwriters.\nTonight,A Night with The 447’s — come out and jam with The 447’s as they perform an eclectic selection of hits ranging from alt rock to jazz, right here at Savage Wonder.\nFeaturing,\nJenae Petty, Jake Hall, Kyle Tobin, Sam Miller, Olivia Bennett, Ivan Bennett, and Elias Quintero.\nAb",
-      "source": "Savage Wonder, Beacon"
+      "description": "Savage Wonder presents another evening of FREE MUSIC featuring Hudson Valley’s best musicians, singers & songwriters. Tonight,A Night with The 447’s — come out and jam with The 447’s as they perform an eclectic selection of hits ranging from alt rock to jazz, right here at Savage Wonder. Featuring, Jenae Petty, Jake Hall, Kyle Tobin, Sam Miller, Olivia Bennett, Ivan Bennett, and Elias Quintero. Ab",
+      "source": "Savage Wonder, Beacon",
+      "repeats": false,
+      "audience": "all"
     },
     {
       "id": "travelhudsonvalley-92542596",
@@ -2195,8 +2389,10 @@
       "price": null,
       "signupRequired": false,
       "url": "https://travelhudsonvalley.com/event/the-dining-room/",
-      "description": "Don’t miss Antrim Playhouse’s presentation of “The Dining Room.” September 18-October 4.  Set in the dining room of a typical well-to-do household, The Dining Room is a mosaic of interrelated scenes – some funny, some touching, some rueful – which, taken together, create an in-depth portrait of a vanishing species: the upper-middle-class WASP. Written by A.R. Gurney. Directed by Steve Bell.  Ticke",
-      "source": "Hudson Valley Tourism"
+      "description": "Don’t miss Antrim Playhouse’s presentation of “The Dining Room.” September 18-October 4. Set in the dining room of a typical well-to-do household, The Dining Room is a mosaic of interrelated scenes – some funny, some touching, some rueful – which, taken together, create an in-depth portrait of a vanishing species: the upper-middle-class WASP. Written by A.R. Gurney. Directed by Steve Bell. Ticke",
+      "source": "Hudson Valley Tourism",
+      "repeats": false,
+      "audience": "all"
     },
     {
       "id": "stormking-65363532",
@@ -2218,8 +2414,10 @@
       "price": null,
       "signupRequired": false,
       "url": "https://stormking.org/events/fungi-in-the-field/",
-      "description": "Hike through the fields, forest, and sculptures of Storm King in search of mushrooms, guided by experts from the New York Mycological Society, Anna Efanova and Matthew Rozanoff. Then channel your observations in a hands-on creative workshop. Registration required.\n\n \tTickets will be available on August 15 (8/13 for Members). Tickets are $10 + admission; $5 for members\n \tSession 1: 10:30AM-12:30PM ",
-      "source": "Storm King Art Center"
+      "description": "Hike through the fields, forest, and sculptures of Storm King in search of mushrooms, guided by experts from the New York Mycological Society, Anna Efanova and Matthew Rozanoff. Then channel your observations in a hands-on creative workshop. Registration required. Tickets will be available on August 15 (8/13 for Members). Tickets are $10 + admission; $5 for members Session 1: 10:30AM-12:30PM",
+      "source": "Storm King Art Center",
+      "repeats": false,
+      "audience": "all"
     },
     {
       "id": "travelhudsonvalley-89751781",
@@ -2241,8 +2439,10 @@
       "price": null,
       "signupRequired": false,
       "url": "https://travelhudsonvalley.com/event/moon-festival/",
-      "description": "11th Annual Moon Festival – Exploring 250 years of Asian and Asian-American influence in the United States, the Moon Festival celebrates tradition, creativity, and community. Through food, music, and family experiences, it brings culture to life and fosters cross-cultural connection. Free Admission, $5 Parking \nWhat to Expect: \n-Over 20,000 Visitors \n-200+ market vendors featuring handmade goods, ",
-      "source": "Hudson Valley Tourism"
+      "description": "11th Annual Moon Festival – Exploring 250 years of Asian and Asian-American influence in the United States, the Moon Festival celebrates tradition, creativity, and community. Through food, music, and family experiences, it brings culture to life and fosters cross-cultural connection. Free Admission, $5 Parking What to Expect: -Over 20,000 Visitors -200+ market vendors featuring handmade goods,",
+      "source": "Hudson Valley Tourism",
+      "repeats": false,
+      "audience": "all"
     },
     {
       "id": "travelhudsonvalley-82791998",
@@ -2263,7 +2463,9 @@
       "signupRequired": false,
       "url": "https://travelhudsonvalley.com/event/korea-fest-a-celebration-of-korean-heritage-food-and-community/",
       "description": "Set against the scenic backdrop of the Shawangunk Ridge, celebrate Korean culture in the heart of the Hudson Valley where traditional performances, authentic cuisine, local craft beverages, and orchard charm come together for a one-of-a-kind fall experience!",
-      "source": "Hudson Valley Tourism"
+      "source": "Hudson Valley Tourism",
+      "repeats": false,
+      "audience": "all"
     },
     {
       "id": "savagewonder-20029783",
@@ -2285,8 +2487,10 @@
       "price": null,
       "signupRequired": false,
       "url": "https://www.savagewonder.org/event/savage-wonder-presents-awkward-silence/2026-09-19/",
-      "description": "Bop into the Grape Rebellion for a glass of wine as we present another evening of FREE MUSIC & OPEN DANCE in The Savage Wonderground Gallery featuring Hudson Valley’s best musicians, singers & songwriters. \nTonight,\nGet ready for a night of energy, creativity, and good vibes! Awkward Silence is a versatile collective of friends and musicians who bring a fresh mix of Spanish, swing, jazz, pop, and ",
-      "source": "Savage Wonder, Beacon"
+      "description": "Bop into the Grape Rebellion for a glass of wine as we present another evening of FREE MUSIC & OPEN DANCE in The Savage Wonderground Gallery featuring Hudson Valley’s best musicians, singers & songwriters. Tonight, Get ready for a night of energy, creativity, and good vibes! Awkward Silence is a versatile collective of friends and musicians who bring a fresh mix of Spanish, swing, jazz, pop, and",
+      "source": "Savage Wonder, Beacon",
+      "repeats": false,
+      "audience": "all"
     },
     {
       "id": "stormking-55297745",
@@ -2307,8 +2511,10 @@
       "price": null,
       "signupRequired": false,
       "url": "https://stormking.org/events/children-families-winogradsky-watercolors-2/",
-      "description": "Join us in making watercolor paintings inspired by Anicka Yi: Message from the Mud! The colors, shapes, and textures of the microorganisms found in Yi’s Winogradsky columns will be the source of inspiration for these abstract works of art. This program will be led by Ally Caple.\n\n\n \tProgram location: South Ponds, near Message from the Mud\n \tSuggested age range: all ages\n \tFree with admission, no r",
-      "source": "Storm King Art Center"
+      "description": "Join us in making watercolor paintings inspired by Anicka Yi: Message from the Mud! The colors, shapes, and textures of the microorganisms found in Yi’s Winogradsky columns will be the source of inspiration for these abstract works of art. This program will be led by Ally Caple. Program location: South Ponds, near Message from the Mud Suggested age range: all ages Free with admission, no r",
+      "source": "Storm King Art Center",
+      "repeats": false,
+      "audience": "all"
     },
     {
       "id": "savagewonder-23683207",
@@ -2329,8 +2535,10 @@
       "price": null,
       "signupRequired": false,
       "url": "https://www.savagewonder.org/event/savage-wonder-presents-straight-ahead-jazz-project/2026-09-20/",
-      "description": "Settle in at The Grape Rebellion with a glass of wine as Savage Wonder presents another evening of FREE MUSIC featuring some of the Hudson Valley’s finest talent.\nThis time, we’re proud to welcome The Straight-Ahead Jazz Trio—a powerhouse group delivering a distinctive mix of melodious jazz classics from the bebop era, funky soul, cool blues, and smooth bossa nova. Their performances draw from leg",
-      "source": "Savage Wonder, Beacon"
+      "description": "Settle in at The Grape Rebellion with a glass of wine as Savage Wonder presents another evening of FREE MUSIC featuring some of the Hudson Valley’s finest talent. This time, we’re proud to welcome The Straight-Ahead Jazz Trio—a powerhouse group delivering a distinctive mix of melodious jazz classics from the bebop era, funky soul, cool blues, and smooth bossa nova. Their performances draw from leg",
+      "source": "Savage Wonder, Beacon",
+      "repeats": false,
+      "audience": "all"
     },
     {
       "id": "beacon-short-film-showcase",
@@ -2354,12 +2562,16 @@
       "signupRequired": false,
       "url": "https://www.alittlebeaconblog.com/annual-events",
       "description": "Outdoor showcase of local short films from The Film Lab at the Yard. Beer and food for sale.",
-      "source": "alittlebeaconblog.com"
+      "source": "alittlebeaconblog.com",
+      "repeats": false,
+      "audience": "all"
     },
     {
       "id": "scenichudson-65388164",
       "title": "Craft Circle",
       "kind": "event",
+      "repeats": false,
+      "audience": "all",
       "categories": [
         "community"
       ],
@@ -2373,7 +2585,7 @@
       "price": null,
       "signupRequired": false,
       "url": "https://www.scenichudson.org/events/craft-circle-3/",
-      "description": "Events\t\t\t\t\n\t\t\t\t\t\n\t\t\n\t\t\t\t\t\n\t\t\n\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t\n\t\t\t\n\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\n\t\t\n\t\t\t\t\t\n\t\t\n\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\tCommunity events bring people together to protect and celebrate what makes this region so special. From volunteer and educational opportunities to festivals and block parties, find out what’s up next in the Hudson Valley.\t\t\t\t\n\t\t\t\t\t\n\t\t\n\t\t\t\t\t\n\t\t\n\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\n\t\t",
+      "description": "Events Community events bring people together to protect and celebrate what makes this region so special. From volunteer and educational opportunities to festivals and block parties, find out what’s up next in the Hudson Valley. 4 events found. Events Today Upcoming Upcoming Select date.",
       "source": "Scenic Hudson"
     },
     {
@@ -2394,12 +2606,16 @@
       "signupRequired": false,
       "url": "https://www.millbrookwine.com/winery-event/sommelier-paint-and-sip/",
       "description": "Tickets available online.",
-      "source": "Millbrook Vineyards & Winery"
+      "source": "Millbrook Vineyards & Winery",
+      "repeats": false,
+      "audience": "all"
     },
     {
       "id": "scenichudson-25623906",
       "title": "Literacy Connections 50th Anniversary",
       "kind": "event",
+      "repeats": false,
+      "audience": "all",
       "categories": [
         "community"
       ],
@@ -2413,7 +2629,7 @@
       "price": null,
       "signupRequired": false,
       "url": "https://www.scenichudson.org/events/50th-anniversary-of-literacy-connections-of-the-hudson-valley/",
-      "description": "Events\t\t\t\t\n\t\t\t\t\t\n\t\t\n\t\t\t\t\t\n\t\t\n\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t\n\t\t\t\n\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\n\t\t\n\t\t\t\t\t\n\t\t\n\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\tCommunity events bring people together to protect and celebrate what makes this region so special. From volunteer and educational opportunities to festivals and block parties, find out what’s up next in the Hudson Valley.\t\t\t\t\n\t\t\t\t\t\n\t\t\n\t\t\t\t\t\n\t\t\n\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\n\t\t",
+      "description": "Events Community events bring people together to protect and celebrate what makes this region so special. From volunteer and educational opportunities to festivals and block parties, find out what’s up next in the Hudson Valley. 4 events found. Events Today Upcoming Upcoming Select date.",
       "source": "Scenic Hudson"
     },
     {
@@ -2439,7 +2655,9 @@
       "signupRequired": false,
       "url": "https://www.spiritofbeacon.org/",
       "description": "Beacon's biggest day. Vendor tables open at 11am, the parade steps off at noon from Pohill Park and runs to the main stage at Veterans Place, ending at 5pm.",
-      "source": "alittlebeaconblog.com"
+      "source": "alittlebeaconblog.com",
+      "repeats": false,
+      "audience": "all"
     },
     {
       "id": "stormking-4552868",
@@ -2460,7 +2678,9 @@
       "signupRequired": false,
       "url": "https://stormking.org/events/young-explorer-backpacks-10/",
       "description": "Young Explorer Backpacks are a resource for children and families to use during their visit to Storm King Art Center. Each backpack contains a variety of navigational and observational tools, as well as self-guided activities that help young visitors explore the landscape and sculptures. Borrowing a backpack is free and intended for children of all ages.",
-      "source": "Storm King Art Center"
+      "source": "Storm King Art Center",
+      "repeats": false,
+      "audience": "all"
     },
     {
       "id": "stormking-47735882",
@@ -2480,8 +2700,10 @@
       "price": null,
       "signupRequired": false,
       "url": "https://stormking.org/events/where-the-rivers-meet-a-knowledge-sharing-with-saif-azzuz-jamie-holt-and-joe-baker/",
-      "description": "Join us for a conversation with 2026 Outlooks artist Saif Azzuz around his work weych-pues / tàkhòne (where the rivers meet) (2026), alongside Yurok fisheries technician, Jamie Holt, and Joe Baker, co-founder and Executive Director of Lenape Center.\n\nThe program brings together perspectives from Indigenous communities and conservation efforts centered on the Klamath and the Hudson rivers to explor",
-      "source": "Storm King Art Center"
+      "description": "Join us for a conversation with 2026 Outlooks artist Saif Azzuz around his work weych-pues / tàkhòne (where the rivers meet) (2026), alongside Yurok fisheries technician, Jamie Holt, and Joe Baker, co-founder and Executive Director of Lenape Center. The program brings together perspectives from Indigenous communities and conservation efforts centered on the Klamath and the Hudson rivers to explor",
+      "source": "Storm King Art Center",
+      "repeats": false,
+      "audience": "all"
     },
     {
       "id": "stormking-81509220",
@@ -2503,13 +2725,17 @@
       "price": null,
       "signupRequired": false,
       "url": "https://stormking.org/events/saif-azzuz/",
-      "description": "[caption id=\"attachment_30708\" align=\"alignnone\" width=\"1024\"] Image Credit: Jeffrey Jenkins[/caption]\n\nJoin us for a hands-on program led by Outlooks artist, Saif Azzuz! Participants will explore sound, mark-making, sculptural technique, and material play inspired by Azzuz's work and practice. Materials include shells, sticks, wire, wind chimes, cyanotype fabric, and paint sticks. \n\n\n\n \tProgram l",
-      "source": "Storm King Art Center"
+      "description": "[caption id=\"attachment_30708\" align=\"alignnone\" width=\"1024\"] Image Credit: Jeffrey Jenkins[/caption] Join us for a hands-on program led by Outlooks artist, Saif Azzuz! Participants will explore sound, mark-making, sculptural technique, and material play inspired by Azzuz's work and practice. Materials include shells, sticks, wire, wind chimes, cyanotype fabric, and paint sticks. Program l",
+      "source": "Storm King Art Center",
+      "repeats": false,
+      "audience": "all"
     },
     {
       "id": "scenichudson-77621532",
       "title": "Revive College Hill Park Coalition Meeting",
       "kind": "event",
+      "repeats": false,
+      "audience": "all",
       "categories": [
         "community"
       ],
@@ -2523,7 +2749,7 @@
       "price": null,
       "signupRequired": false,
       "url": "https://www.scenichudson.org/events/revive-college-hill-park-coalition-meeting-2/",
-      "description": "Events\t\t\t\t\n\t\t\t\t\t\n\t\t\n\t\t\t\t\t\n\t\t\n\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t\n\t\t\t\n\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\n\t\t\n\t\t\t\t\t\n\t\t\n\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\tCommunity events bring people together to protect and celebrate what makes this region so special. From volunteer and educational opportunities to festivals and block parties, find out what’s up next in the Hudson Valley.\t\t\t\t\n\t\t\t\t\t\n\t\t\n\t\t\t\t\t\n\t\t\n\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\n\t\t",
+      "description": "Events Community events bring people together to protect and celebrate what makes this region so special. From volunteer and educational opportunities to festivals and block parties, find out what’s up next in the Hudson Valley. 4 events found. Events Today Upcoming Upcoming Select date.",
       "source": "Scenic Hudson"
     },
     {
@@ -2545,8 +2771,10 @@
       "price": null,
       "signupRequired": false,
       "url": "https://stormking.org/events/children-families-through-the-viewfinder/",
-      "description": "Join us in customizing your own viewfinder—and then use it to explore Storm King from a new point of view! Materials will include cardstock, markers, stickers, and decorative washi tape. This program will be led by Ally Caple.\n\n\n \tProgram location: The Meadows, near the Outdoor Cafe\n \tSuggested age range: all ages\n \tFree with admission, no registration required\n\n\n\n\nAlly Caple is an image-based art",
-      "source": "Storm King Art Center"
+      "description": "Join us in customizing your own viewfinder—and then use it to explore Storm King from a new point of view! Materials will include cardstock, markers, stickers, and decorative washi tape. This program will be led by Ally Caple. Program location: The Meadows, near the Outdoor Cafe Suggested age range: all ages Free with admission, no registration required Ally Caple is an image-based art",
+      "source": "Storm King Art Center",
+      "repeats": false,
+      "audience": "all"
     },
     {
       "id": "clearwater-78667716",
@@ -2568,8 +2796,10 @@
       "price": null,
       "signupRequired": false,
       "url": "https://www.clearwater.org/event/the-beacon-sloop-clubs-annual-pumpkin-festival-2/",
-      "description": "Join the Beacon Sloop Club for their Annual Pumpkin Festival! Enjoy two solar-powered music stages, one dedicated to young folks (children), featuring live music throughout the day. Numerous food and craft vendors will be on hand. Environmental non-profits will feature displays of local river history and the environment, including information about their organization. Families can enjoy many free ",
-      "source": "Hudson River Sloop Clearwater"
+      "description": "Join the Beacon Sloop Club for their Annual Pumpkin Festival! Enjoy two solar-powered music stages, one dedicated to young folks (children), featuring live music throughout the day. Numerous food and craft vendors will be on hand. Environmental non-profits will feature displays of local river history and the environment, including information about their organization. Families can enjoy many free",
+      "source": "Hudson River Sloop Clearwater",
+      "repeats": false,
+      "audience": "all"
     },
     {
       "id": "stormking-57075940",
@@ -2590,8 +2820,10 @@
       "price": null,
       "signupRequired": false,
       "url": "https://stormking.org/events/moonlit-walk-3/",
-      "description": "Enjoy art and nature under a full moon with Storm King educators. Experience Storm King from sunset through moonrise during this special guided, after-hours event. Wear comfortable shoes, and dress in layers, as it often cools down quite a bit in the evening. Registration is required and space is limited.\n\n\nTICKETS\n\n \tTickets will be available on September 15 at 10AM\n \t$25 per person; $10 for Memb",
-      "source": "Storm King Art Center"
+      "description": "Enjoy art and nature under a full moon with Storm King educators. Experience Storm King from sunset through moonrise during this special guided, after-hours event. Wear comfortable shoes, and dress in layers, as it often cools down quite a bit in the evening. Registration is required and space is limited. TICKETS Tickets will be available on September 15 at 10AM $25 per person; $10 for Memb",
+      "source": "Storm King Art Center",
+      "repeats": false,
+      "audience": "all"
     },
     {
       "id": "stormking-97710836",
@@ -2613,8 +2845,10 @@
       "price": null,
       "signupRequired": false,
       "url": "https://stormking.org/events/children-families-paper-weaving/",
-      "description": "Lean in the autumnal energy! Join us in weaving pouches and baskets from natural fibers and paper to take home. This program will be led by Marcela Torres.\n\n\n \tProgram location: The Meadows, near the Outdoor Cafe\n \tSuggested age range: all ages\n \tFree with admission, no registration required\n\n\n\n\nMarcela Torres was born in Salt Lake City, Utah and currently resides between Brooklyn, NY and Chicago,",
-      "source": "Storm King Art Center"
+      "description": "Lean in the autumnal energy! Join us in weaving pouches and baskets from natural fibers and paper to take home. This program will be led by Marcela Torres. Program location: The Meadows, near the Outdoor Cafe Suggested age range: all ages Free with admission, no registration required Marcela Torres was born in Salt Lake City, Utah and currently resides between Brooklyn, NY and Chicago,",
+      "source": "Storm King Art Center",
+      "repeats": false,
+      "audience": "all"
     },
     {
       "id": "stormking-87181791",
@@ -2636,8 +2870,10 @@
       "price": null,
       "signupRequired": false,
       "url": "https://stormking.org/events/children-families-halloween/",
-      "description": "Join artist and performer Erica Enriquez in the 2026 Storm King Art Center Halloween Costume Spectacular! Arrive already dressed for the stage or construct your very own cardboard costume on site in this all ages, two-part event.\n\nFrom 12-2pm meet us in our Costume Factory, where Erica will help participants transform into the creatures of their wildest dreams! Using locally sourced, recyclable ma",
-      "source": "Storm King Art Center"
+      "description": "Join artist and performer Erica Enriquez in the 2026 Storm King Art Center Halloween Costume Spectacular! Arrive already dressed for the stage or construct your very own cardboard costume on site in this all ages, two-part event. From 12-2pm meet us in our Costume Factory, where Erica will help participants transform into the creatures of their wildest dreams! Using locally sourced, recyclable ma",
+      "source": "Storm King Art Center",
+      "repeats": false,
+      "audience": "all"
     },
     {
       "id": "stormking-66212983",
@@ -2659,8 +2895,10 @@
       "price": null,
       "signupRequired": false,
       "url": "https://stormking.org/events/children-families-spooky-inks/",
-      "description": "Make ink using toxic plants gathered from Storm King’s landscape, then experiment with these rare colors to create a painting derived from nature!\n\n\n\n \tProgram location: Meet near the Outdoor Cafe\n \tSuggested age range: all ages\n \tFree with admission, no registration required\n\n\n\n\n\n\n\n&nbsp;\n\n\n\n\nACCESSIBILITY \n\nTerrain and Getting Around\nThe tour will take place on grass, just off of a paved path. T",
-      "source": "Storm King Art Center"
+      "description": "Make ink using toxic plants gathered from Storm King’s landscape, then experiment with these rare colors to create a painting derived from nature! Program location: Meet near the Outdoor Cafe Suggested age range: all ages Free with admission, no registration required ACCESSIBILITY Terrain and Getting Around The tour will take place on grass, just off of a paved path. T",
+      "source": "Storm King Art Center",
+      "repeats": false,
+      "audience": "all"
     },
     {
       "id": "stormking-64659428",
@@ -2683,7 +2921,9 @@
       "signupRequired": false,
       "url": "https://stormking.org/events/whoop-dee-doo-at-storm-king-2/",
       "description": "Revel in the bursting fun and spectacle of an outdoor performance at Storm King with WHOOP DEE DOO, a fake public-access TV show and contemporary art project. In partnership with the Newburgh Free Library and Storm King Art Center, WHOOP DEE DOO (WDD), created the performances through a series of community-engaged workshops in collaboration with local performance groups, local youth, and young adu",
-      "source": "Storm King Art Center"
+      "source": "Storm King Art Center",
+      "repeats": true,
+      "audience": "all"
     },
     {
       "id": "stormking-38468406",
@@ -2705,7 +2945,9 @@
       "signupRequired": false,
       "url": "https://stormking.org/events/geology-of-storm-king-3/",
       "description": "Hike with geologist Kim Fendrich to explore the deep connections between art and geology at Storm King. The tour will visit several key sculptures and landscapes at Storm King that were developed with geologic materials both from the local area and around the world. Learn about how the geologic forces of earth shaped Storm King’s place in the Hudson Valley, and how artists have come to collaborate",
-      "source": "Storm King Art Center"
+      "source": "Storm King Art Center",
+      "repeats": false,
+      "audience": "all"
     }
   ]
 }

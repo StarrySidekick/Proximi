@@ -12,6 +12,7 @@ from datetime import datetime, timedelta, timezone
 from math import radians, sin, cos, asin, sqrt
 
 KINDS = {'event', 'activity'}
+AUDIENCES = {'all', 'kids', 'adults'}
 ISO = re.compile(r'^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}([+-]\d{2}:\d{2}|Z)$')
 
 
@@ -70,6 +71,20 @@ def main(path='data/events.json'):
             elif not isinstance(p.get('min'), (int, float)):
                 errors.append(f'{tag}: price.min must be a number')
 
+        if i.get('audience') not in AUDIENCES:
+            errors.append(f"{tag}: audience must be one of {sorted(AUDIENCES)}, "
+                          f"got {i.get('audience')!r}")
+        if not isinstance(i.get('repeats'), bool):
+            errors.append(f'{tag}: repeats must be true or false')
+        # A stated recurrence and repeats:false contradict each other, and the
+        # UI trusts repeats for filtering while showing recurrence to readers.
+        if i.get('recurrence') and not i.get('repeats'):
+            errors.append(f'{tag}: has a recurrence but repeats is false')
+
+        if i.get('description') and re.search(r'<[a-z/][^>]*>|&(amp|gt|lt|quot|#\d+);',
+                                              i['description'], re.I):
+            warnings.append(f'{tag}: description still contains markup or entities')
+
         if i.get('signupRequired') and not i.get('signupUrl'):
             errors.append(f'{tag}: signupRequired with no signupUrl')
 
@@ -89,7 +104,11 @@ def main(path='data/events.json'):
         return 1
 
     priced = sum(1 for i in items if i.get('price'))
+    repeat = sum(1 for i in items if i.get('repeats'))
+    kids = sum(1 for i in items if i.get('audience') == 'kids')
+    adults = sum(1 for i in items if i.get('audience') == 'adults')
     print(f'{len(items)} listings OK — {priced} priced, {len(items) - priced} "see listing", '
+          f'{repeat} repeating, {kids} children-only, {adults} 21+, '
           f'all within {meta["radiusMiles"]} mi of {meta["centerName"]}'
           + (f' ({len(warnings)} warning(s))' if warnings else ''))
     return 0

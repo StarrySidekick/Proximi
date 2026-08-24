@@ -26,6 +26,12 @@
     { id: 'any',   label: 'Anytime',      days: Infinity }
   ];
 
+  const REPEAT_MODES = [
+    { id: 'any',    label: 'All' },
+    { id: 'once',   label: 'One-off only' },
+    { id: 'repeat', label: 'Repeating only' },
+  ];
+
   const PRESETS = [
     { name: 'Beacon, NY',       lat: 41.5048, lon: -73.9696 },
     { name: 'Poughkeepsie, NY', lat: 41.7004, lon: -73.9210 },
@@ -42,7 +48,11 @@
   const DEFAULTS = {
     horizon: '7', radius: '50', sort: 'soonest',
     q: '', kind: 'all', price: '101',
-    freeOnly: false, signupOnly: false, unitsKm: false
+    freeOnly: false, signupOnly: false, unitsKm: false,
+    repeatMode: 'any',
+    // Children-only listings are hidden by default; 21+ ones are not. An adult
+    // browsing wants the brewery tour and does not want a grades K-3 drop-off.
+    showKids: false, showAdults: true
   };
 
   const $ = (id) => document.getElementById(id);
@@ -50,6 +60,7 @@
   const el = {
     list: $('list'), empty: $('empty'), banner: $('data-banner'),
     cats: $('cats'), presets: $('presets'), horizon: $('horizon'),
+    repeats: $('repeats'), showKids: $('show-kids'), showAdults: $('show-adults'),
     q: $('q'), kind: $('kind'), sort: $('sort'),
     radius: $('radius'), radiusOut: $('radius-out'),
     price: $('price'), priceOut: $('price-out'),
@@ -68,6 +79,7 @@
     origin: null,
     activeCats: new Set(),
     horizon: DEFAULTS.horizon,
+    repeatMode: DEFAULTS.repeatMode,
     staleCount: 0,
     tz: null
   };
@@ -230,11 +242,19 @@
       .filter(Boolean).join(' ').toLowerCase().includes(q);
   }
 
+  const repeatsOf = (item) => item.repeats === true || !!item.recurrence;
+  const audienceOf = (item) => item.audience || 'all';
+
   function filtered() {
     const rMax = radiusMiles();
     const pMax = maxPrice();
 
     return state.items.filter((item) => {
+      const audience = audienceOf(item);
+      if (audience === 'kids' && !el.showKids.checked) return false;
+      if (audience === 'adults' && !el.showAdults.checked) return false;
+      if (state.repeatMode === 'once' && repeatsOf(item)) return false;
+      if (state.repeatMode === 'repeat' && !repeatsOf(item)) return false;
       if (el.kind.value !== 'all' && item.kind !== el.kind.value) return false;
       if (state.activeCats.size &&
           !(item.categories || []).some((c) => state.activeCats.has(c))) return false;
@@ -324,6 +344,9 @@
         <div class="tags">
           <span class="badge ${item.kind === 'event' ? 'badge-event' : 'badge-activity'}">
             ${item.kind === 'event' ? 'Event' : 'Activity'}</span>
+          ${repeatsOf(item) ? '<span class="badge badge-repeat">Repeats</span>' : ''}
+          ${audienceOf(item) === 'kids' ? '<span class="badge badge-kids">Children only</span>' : ''}
+          ${audienceOf(item) === 'adults' ? '<span class="badge badge-adults">21+</span>' : ''}
           ${(item.categories || []).map((c) => `<span class="tag">${esc(catLabel(c))}</span>`).join('')}
         </div>
         ${links.join('')}
@@ -409,6 +432,9 @@
     if (el.freeOnly.checked) n++;
     if (el.signupOnly.checked) n++;
     if (state.activeCats.size) n++;
+    if (state.repeatMode !== DEFAULTS.repeatMode) n++;
+    if (el.showKids.checked !== DEFAULTS.showKids) n++;
+    if (el.showAdults.checked !== DEFAULTS.showAdults) n++;
 
     el.filtersCount.textContent = n;
     el.filtersCount.hidden = n === 0;
@@ -492,6 +518,25 @@
         state.horizon = h.id;
         for (const c of el.horizon.children) {
           c.setAttribute('aria-pressed', String(c.dataset.horizon === h.id));
+        }
+        render();
+      });
+      return b;
+    }));
+  }
+
+  function buildRepeatChips() {
+    el.repeats.replaceChildren(...REPEAT_MODES.map((m) => {
+      const b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'chip';
+      b.dataset.mode = m.id;
+      b.textContent = m.label;
+      b.setAttribute('aria-pressed', String(m.id === state.repeatMode));
+      b.addEventListener('click', () => {
+        state.repeatMode = m.id;
+        for (const c of el.repeats.children) {
+          c.setAttribute('aria-pressed', String(c.dataset.mode === m.id));
         }
         render();
       });
@@ -619,7 +664,8 @@
   const rerender = () => { syncRangeLabels(); render(); };
 
   for (const node of [el.q, el.kind, el.sort, el.radius, el.price,
-                      el.freeOnly, el.signupOnly, el.unitsKm]) {
+                      el.freeOnly, el.signupOnly, el.unitsKm,
+                      el.showKids, el.showAdults]) {
     node.addEventListener('input', rerender);
   }
 
@@ -633,8 +679,14 @@
     el.freeOnly.checked = DEFAULTS.freeOnly;
     el.signupOnly.checked = DEFAULTS.signupOnly;
     el.unitsKm.checked = DEFAULTS.unitsKm;
+    state.repeatMode = DEFAULTS.repeatMode;
+    el.showKids.checked = DEFAULTS.showKids;
+    el.showAdults.checked = DEFAULTS.showAdults;
     state.activeCats.clear();
     for (const c of el.cats.children) c.setAttribute('aria-pressed', 'false');
+    for (const c of el.repeats.children) {
+      c.setAttribute('aria-pressed', String(c.dataset.mode === DEFAULTS.repeatMode));
+    }
     for (const c of el.horizon.children) {
       c.setAttribute('aria-pressed', String(c.dataset.horizon === DEFAULTS.horizon));
     }
@@ -646,6 +698,7 @@
   (async function init() {
     buildPresets();
     buildHorizonChips();
+    buildRepeatChips();
     syncRangeLabels();
 
     try {

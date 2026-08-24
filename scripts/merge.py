@@ -75,6 +75,7 @@ def collapse_repeats(items, threshold=3):
         first, last = group[0], group[-1]
         keep = dict(first)
         keep['kind'] = 'activity'
+        keep['repeats'] = True
         when = datetime.fromisoformat(last['start']).strftime('%b %-d')
         keep['recurrence'] = f'{len(group)} dates listed through {when}'
         keep['end'] = None
