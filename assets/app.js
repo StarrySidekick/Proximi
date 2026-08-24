@@ -8,6 +8,24 @@
   const MI_PER_KM = 0.621371;
   const ANY_DISTANCE = 105;   // the radius slider's top stop means "no limit"
 
+  // The single primary answer to "what kind of thing is this?". Anything not
+  // listed still works — it just gets title-cased.
+  const TYPE_LABELS = {
+    concert: 'Concert', dj: 'DJ / Party', 'open-mic': 'Open Mic', comedy: 'Comedy',
+    theater: 'Theater', dance: 'Dance', film: 'Film', art: 'Art Exhibit',
+    tour: 'Tour', outdoors: 'Outdoors', class: 'Class', talk: 'Talk',
+    market: 'Market', sale: 'Sale', festival: 'Festival', parade: 'Parade',
+    celebration: 'Celebration', protest: 'Protest', sports: 'Sports',
+    food: 'Food & Drink', volunteer: 'Volunteer', kids: 'Kids Program',
+    meetup: 'Meetup', other: 'Other'
+  };
+
+  const TIME_OF_DAY = [
+    { id: 'any',     label: 'Any time' },
+    { id: 'daytime', label: 'Daytime',  match: (t) => t === 'morning' || t === 'afternoon' },
+    { id: 'evening', label: 'Evening',  match: (t) => t === 'evening' || t === 'night' },
+  ];
+
   const CATEGORY_LABELS = {
     music: 'Music', show: 'Shows', art: 'Art', market: 'Markets',
     sale: 'Sales', parade: 'Parades', tour: 'Tours', protest: 'Protests',
@@ -46,10 +64,11 @@
   // Everything the Reset button restores, and the baseline the "N filters
   // active" badge counts against.
   const DEFAULTS = {
-    horizon: '7', radius: '50', sort: 'soonest',
-    q: '', kind: 'all', price: '101',
+    horizon: '7', radius: '75', sort: 'soonest',
+    q: '', price: '101',
     freeOnly: false, signupOnly: false, unitsKm: false,
-    repeatMode: 'any',
+    repeatMode: 'any', timeOfDay: 'any',
+    foodOnly: false, outdoorOnly: false,
     // Children-only listings are hidden by default; 21+ ones are not. An adult
     // browsing wants the brewery tour and does not want a grades K-3 drop-off.
     showKids: false, showAdults: true
@@ -59,9 +78,10 @@
 
   const el = {
     list: $('list'), empty: $('empty'), banner: $('data-banner'),
-    cats: $('cats'), presets: $('presets'), horizon: $('horizon'),
+    types: $('types'), presets: $('presets'), horizon: $('horizon'),
     repeats: $('repeats'), showKids: $('show-kids'), showAdults: $('show-adults'),
-    q: $('q'), kind: $('kind'), sort: $('sort'),
+    tod: $('tod'), foodOnly: $('food-only'), outdoorOnly: $('outdoor-only'),
+    q: $('q'), sort: $('sort'),
     radius: $('radius'), radiusOut: $('radius-out'),
     price: $('price'), priceOut: $('price-out'),
     freeOnly: $('free-only'), signupOnly: $('signup-only'), unitsKm: $('units-km'),
@@ -77,9 +97,10 @@
   const state = {
     items: [],
     origin: null,
-    activeCats: new Set(),
+    activeTypes: new Set(),
     horizon: DEFAULTS.horizon,
     repeatMode: DEFAULTS.repeatMode,
+    timeOfDay: DEFAULTS.timeOfDay,
     staleCount: 0,
     tz: null
   };
@@ -255,9 +276,11 @@
       if (audience === 'adults' && !el.showAdults.checked) return false;
       if (state.repeatMode === 'once' && repeatsOf(item)) return false;
       if (state.repeatMode === 'repeat' && !repeatsOf(item)) return false;
-      if (el.kind.value !== 'all' && item.kind !== el.kind.value) return false;
-      if (state.activeCats.size &&
-          !(item.categories || []).some((c) => state.activeCats.has(c))) return false;
+      if (state.activeTypes.size && !state.activeTypes.has(item.type || 'other')) return false;
+      if (el.foodOnly.checked && !item.hasFood) return false;
+      if (el.outdoorOnly.checked && item.setting !== 'outdoor') return false;
+      const tod = TIME_OF_DAY.find((t) => t.id === state.timeOfDay);
+      if (tod && tod.match && !tod.match(item.timeOfDay)) return false;
       if (el.freeOnly.checked && !isFree(item)) return false;
       if (el.signupOnly.checked && !item.signupRequired) return false;
       if (pMax !== Infinity && (!priceKnown(item) || priceMin(item) > pMax)) return false;
@@ -293,6 +316,7 @@
   /* ── Rendering ────────────────────────────────────────── */
 
   const catLabel = (c) => CATEGORY_LABELS[c] || c.charAt(0).toUpperCase() + c.slice(1);
+  const typeLabel = (t) => TYPE_LABELS[t] || (t ? t.charAt(0).toUpperCase() + t.slice(1) : 'Other');
 
   const esc = (s) => String(s).replace(/[&<>"']/g, (c) => (
     { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]
@@ -313,6 +337,9 @@
       meta.push(`<span class="dist">${esc(formatDistance(item._distance))}</span>`);
     }
     if (item.durationMin) meta.push(`<span>${formatDuration(item.durationMin)}</span>`);
+    if (item.host && item.host !== item.venue) {
+      meta.push(`<span class="host">by ${esc(item.host)}</span>`);
+    }
 
     const links = [];
     if (item.signupRequired && item.signupUrl) {
@@ -342,8 +369,7 @@
       ${item.description ? `<p class="card-desc">${esc(item.description)}</p>` : ''}
       <div class="card-bottom">
         <div class="tags">
-          <span class="badge ${item.kind === 'event' ? 'badge-event' : 'badge-activity'}">
-            ${item.kind === 'event' ? 'Event' : 'Activity'}</span>
+          <span class="badge badge-type">${esc(typeLabel(item.type))}</span>
           ${repeatsOf(item) ? '<span class="badge badge-repeat">Repeats</span>' : ''}
           ${audienceOf(item) === 'kids' ? '<span class="badge badge-kids">Children only</span>' : ''}
           ${audienceOf(item) === 'adults' ? '<span class="badge badge-adults">21+</span>' : ''}
@@ -401,7 +427,7 @@
 
     updateContextBar(results.length);
     updateFilterCount();
-    renderCategoryCounts();
+    renderTypeCounts();
     el.applyFilters.textContent =
       `Show ${results.length} ${results.length === 1 ? 'result' : 'results'}`;
   }
@@ -427,11 +453,13 @@
     if (el.radius.value !== DEFAULTS.radius) n++;
     if (el.sort.value !== DEFAULTS.sort) n++;
     if (el.q.value.trim() !== DEFAULTS.q) n++;
-    if (el.kind.value !== DEFAULTS.kind) n++;
     if (el.price.value !== DEFAULTS.price) n++;
     if (el.freeOnly.checked) n++;
     if (el.signupOnly.checked) n++;
-    if (state.activeCats.size) n++;
+    if (state.activeTypes.size) n++;
+    if (state.timeOfDay !== DEFAULTS.timeOfDay) n++;
+    if (el.foodOnly.checked) n++;
+    if (el.outdoorOnly.checked) n++;
     if (state.repeatMode !== DEFAULTS.repeatMode) n++;
     if (el.showKids.checked !== DEFAULTS.showKids) n++;
     if (el.showAdults.checked !== DEFAULTS.showAdults) n++;
@@ -544,40 +572,60 @@
     }));
   }
 
-  function buildCategoryChips() {
-    const cats = [...new Set(state.items.flatMap((i) => i.categories || []))]
-      .sort((a, b) => catLabel(a).localeCompare(catLabel(b)));
+  function buildTypeChips() {
+    const types = [...new Set(state.items.map((i) => i.type || 'other'))]
+      .sort((a, b) => typeLabel(a).localeCompare(typeLabel(b)));
 
-    el.cats.replaceChildren(...cats.map((c) => {
+    el.types.replaceChildren(...types.map((t) => {
       const b = document.createElement('button');
       b.type = 'button';
       b.className = 'chip';
-      b.dataset.cat = c;
+      b.dataset.type = t;
       b.setAttribute('aria-pressed', 'false');
-      b.innerHTML = `${esc(catLabel(c))}<span class="chip-n"></span>`;
+      b.innerHTML = `${esc(typeLabel(t))}<span class="chip-n"></span>`;
       b.addEventListener('click', () => {
-        state.activeCats.has(c) ? state.activeCats.delete(c) : state.activeCats.add(c);
-        b.setAttribute('aria-pressed', String(state.activeCats.has(c)));
+        state.activeTypes.has(t) ? state.activeTypes.delete(t) : state.activeTypes.add(t);
+        b.setAttribute('aria-pressed', String(state.activeTypes.has(t)));
         render();
       });
       return b;
     }));
   }
 
-  // Counts reflect the other active filters but ignore the category filter
-  // itself, so the numbers stay useful while picking.
-  function renderCategoryCounts() {
-    const saved = state.activeCats;
-    state.activeCats = new Set();
+  function buildTimeOfDayChips() {
+    el.tod.replaceChildren(...TIME_OF_DAY.map((t) => {
+      const b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'chip';
+      b.dataset.tod = t.id;
+      b.textContent = t.label;
+      b.setAttribute('aria-pressed', String(t.id === state.timeOfDay));
+      b.addEventListener('click', () => {
+        state.timeOfDay = t.id;
+        for (const c of el.tod.children) {
+          c.setAttribute('aria-pressed', String(c.dataset.tod === t.id));
+        }
+        render();
+      });
+      return b;
+    }));
+  }
+
+  // Counts reflect the other active filters but ignore the type filter itself,
+  // so the numbers stay useful while picking.
+  function renderTypeCounts() {
+    const saved = state.activeTypes;
+    state.activeTypes = new Set();
     const pool = filtered();
-    state.activeCats = saved;
+    state.activeTypes = saved;
 
     const counts = new Map();
     for (const item of pool) {
-      for (const c of item.categories || []) counts.set(c, (counts.get(c) || 0) + 1);
+      const t = item.type || 'other';
+      counts.set(t, (counts.get(t) || 0) + 1);
     }
-    for (const chip of el.cats.children) {
-      chip.querySelector('.chip-n').textContent = counts.get(chip.dataset.cat) || 0;
+    for (const chip of el.types.children) {
+      chip.querySelector('.chip-n').textContent = counts.get(chip.dataset.type) || 0;
     }
   }
 
@@ -663,9 +711,9 @@
 
   const rerender = () => { syncRangeLabels(); render(); };
 
-  for (const node of [el.q, el.kind, el.sort, el.radius, el.price,
+  for (const node of [el.q, el.sort, el.radius, el.price,
                       el.freeOnly, el.signupOnly, el.unitsKm,
-                      el.showKids, el.showAdults]) {
+                      el.showKids, el.showAdults, el.foodOnly, el.outdoorOnly]) {
     node.addEventListener('input', rerender);
   }
 
@@ -674,16 +722,21 @@
     el.radius.value = DEFAULTS.radius;
     el.sort.value = DEFAULTS.sort;
     el.q.value = DEFAULTS.q;
-    el.kind.value = DEFAULTS.kind;
     el.price.value = DEFAULTS.price;
     el.freeOnly.checked = DEFAULTS.freeOnly;
     el.signupOnly.checked = DEFAULTS.signupOnly;
     el.unitsKm.checked = DEFAULTS.unitsKm;
     state.repeatMode = DEFAULTS.repeatMode;
+    state.timeOfDay = DEFAULTS.timeOfDay;
     el.showKids.checked = DEFAULTS.showKids;
     el.showAdults.checked = DEFAULTS.showAdults;
-    state.activeCats.clear();
-    for (const c of el.cats.children) c.setAttribute('aria-pressed', 'false');
+    el.foodOnly.checked = DEFAULTS.foodOnly;
+    el.outdoorOnly.checked = DEFAULTS.outdoorOnly;
+    state.activeTypes.clear();
+    for (const c of el.types.children) c.setAttribute('aria-pressed', 'false');
+    for (const c of el.tod.children) {
+      c.setAttribute('aria-pressed', String(c.dataset.tod === DEFAULTS.timeOfDay));
+    }
     for (const c of el.repeats.children) {
       c.setAttribute('aria-pressed', String(c.dataset.mode === DEFAULTS.repeatMode));
     }
@@ -699,6 +752,7 @@
     buildPresets();
     buildHorizonChips();
     buildRepeatChips();
+    buildTimeOfDayChips();
     syncRangeLabels();
 
     try {
@@ -713,7 +767,7 @@
       state.items = all.filter((item) => !isExpired(item));
       state.staleCount = all.length - state.items.length;
 
-      buildCategoryChips();
+      buildTypeChips();
       showDataAge(data.meta);
 
       const m = data.meta;

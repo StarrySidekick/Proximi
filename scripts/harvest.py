@@ -85,6 +85,7 @@ def harvest_ics(src, tz):
             'location': e.get('location'),
             'description': (e.get('description') or '')[:1200] or None,
             'feedCategories': e.get('categories'),
+            'organizer': e.get('organizer'),
             'recurring': bool(e.get('rrule')),
             'uid': e.get('uid'),
         })

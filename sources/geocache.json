@@ -204,5 +204,69 @@
 "display": "Red Flynn Drive, City of Beacon, Dutchess County, New York, 12508, United States",
 "matched": "2 Red Flynn Dr, Beacon, New York",
 "precision": 1
+},
+"mamaroneck public library, 136 prospect ave, mamaroneck, 10543, united states": {
+"lat": 40.9495211,
+"lon": -73.7341327,
+"display": "Mamaroneck Public Library, 136, Prospect Avenue, Village of Mamaroneck, Westchester County, New York, 10543, United States",
+"matched": "mamaroneck public library, 136 Prospect Ave, Mamaroneck",
+"precision": 0
+},
+"teatown, 1600 spring valley rd, ossining, ny, 10562": {
+"lat": 41.2113642,
+"lon": -73.826753,
+"display": "Teatown Visitor Center, 1600, Spring Valley Road, Town of Ossining, Westchester County, New York, 10562, United States",
+"matched": "Teatown, 1600 Spring Valley Rd, Ossining, NY",
+"precision": 0
+},
+"cliffdale farm, 85 teatown rd, croton-on-hudson, ny, 10520, united states": {
+"lat": 41.2060242,
+"lon": -73.8518702,
+"display": "85, Teatown Road, Town of Cortlandt, Westchester County, New York, 10520, United States",
+"matched": "85 Teatown Rd, Croton-on-Hudson, NY",
+"precision": 1
+},
+"john c. hart memorial library, 1130 e main st, shrub oak, ny, 10588, united states": {
+"lat": 41.3300951,
+"lon": -73.8294194,
+"display": "John C. Hart Memorial Library, 1130, East Main Street, Shrub Oak, Town of Yorktown, Westchester County, New York, 10588, United States",
+"matched": "John C. Hart Memorial Library, 1130 E Main St, Shrub Oak, NY",
+"precision": 0
+},
+"white memorial \u2013 a.b. ceder room": null,
+"eastchester public library, 11 oakridge pl, eastchester, ny, 10709, united states": {
+"lat": 40.9572539,
+"lon": -73.8117797,
+"display": "Eastchester Public Library, 11, Oakridge Place, Waverly, Town of Eastchester, Westchester County, New York, 10709, United States",
+"matched": "Eastchester Public Library, 11 Oakridge Pl, Eastchester, NY",
+"precision": 0
+},
+"port chester-rye brook public library, 1 haseco ave, port chester, new york, 10573, united states": {
+"lat": 41.0036424,
+"lon": -73.6685959,
+"display": "Port Chester Public Library, 1, Haseco Avenue, Village of Port Chester, Town of Rye, Westchester County, New York, 10573, United States",
+"matched": "1 Haseco Ave, Port Chester, New York",
+"precision": 1
+},
+"greenburgh public library, 300 tarrytown road, elmsford, ny, 10523, united states": {
+"lat": 41.0464411,
+"lon": -73.806776,
+"display": "Greenburgh Public Library, 300, Tarrytown Road, Village of Elmsford, Town of Greenburgh, Westchester County, New York, 10523, United States",
+"matched": "Greenburgh Public Library, 300 Tarrytown Road, Elmsford, NY",
+"precision": 0
+},
+"emelin theatre, 153 library lane, mamaroneck, ny, 10543, united states": {
+"lat": 40.9492601,
+"lon": -73.7340177,
+"display": "Emelin Theatre, 151, Library Lane, Village of Mamaroneck, Westchester County, New York, 10543, United States",
+"matched": "Emelin Theatre, 153 Library Lane, Mamaroneck, NY",
+"precision": 0
+},
+"new york botanical garden, 2950 southern boulevard, bronx, ny, 10458, united states": {
+"lat": 40.8622431,
+"lon": -73.8771541,
+"display": "New York Botanical Garden, 2900, Southern Boulevard, The Bronx, Bronx County, New York, 10458, United States",
+"matched": "New York Botanical Garden, 2950 Southern Boulevard, Bronx, NY",
+"precision": 0
 }
 }

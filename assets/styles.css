@@ -243,6 +243,7 @@ a { color: var(--accent); }
   margin-top: 8px; font-size: 13.5px; color: var(--ink-2);
 }
 .card-meta .dist { color: var(--ink); font-weight: 600; }
+.card-meta .host { color: var(--ink-3); font-style: italic; }
 .card-desc { margin: 8px 0 0; font-size: 13.5px; color: var(--ink-2); }
 
 .card-bottom {
@@ -257,8 +258,8 @@ a { color: var(--accent); }
   letter-spacing: .04em; text-transform: uppercase;
   padding: 3px 8px; border-radius: 6px;
 }
-.badge-event { background: var(--event-bg); color: var(--event-ink); }
-.badge-activity { background: var(--act-bg); color: var(--act-ink); }
+/* The primary "what is this" label, where Event/Activity used to sit. */
+.badge-type { background: var(--event-bg); color: var(--event-ink); }
 .badge-repeat { background: var(--rep-bg); color: var(--rep-ink); }
 .badge-kids { background: var(--kid-bg); color: var(--kid-ink); }
 .badge-adults { background: var(--adult-bg); color: var(--adult-ink); }

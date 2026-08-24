@@ -11,8 +11,9 @@ import json, re, sys
 from datetime import datetime, timedelta, timezone
 from math import radians, sin, cos, asin, sqrt
 
-KINDS = {'event', 'activity'}
 AUDIENCES = {'all', 'kids', 'adults'}
+SETTINGS = {'indoor', 'outdoor', 'unknown'}
+TIMES = {'morning', 'afternoon', 'evening', 'night'}
 ISO = re.compile(r'^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}([+-]\d{2}:\d{2}|Z)$')
 
 
@@ -41,11 +42,19 @@ def main(path='data/events.json'):
     horizon = datetime.now(timezone.utc) + timedelta(days=730)
     for i in items:
         tag = i.get('id', '?')
-        for field in ('id', 'title', 'kind', 'categories', 'venue', 'lat', 'lon', 'url'):
+        for field in ('id', 'title', 'type', 'venue', 'host', 'lat', 'lon', 'url'):
             if i.get(field) in (None, '', []):
                 errors.append(f'{tag}: missing {field}')
-        if i.get('kind') not in KINDS:
-            errors.append(f"{tag}: kind must be one of {sorted(KINDS)}, got {i.get('kind')!r}")
+        if 'kind' in i:
+            errors.append(f'{tag}: kind was removed from the schema — use type')
+        if i.get('setting') not in SETTINGS:
+            errors.append(f"{tag}: setting must be one of {sorted(SETTINGS)}, "
+                          f"got {i.get('setting')!r}")
+        if i.get('timeOfDay') not in TIMES:
+            errors.append(f"{tag}: timeOfDay must be one of {sorted(TIMES)}, "
+                          f"got {i.get('timeOfDay')!r}")
+        if not isinstance(i.get('hasFood'), bool):
+            errors.append(f'{tag}: hasFood must be true or false')
 
         start = i.get('start')
         if not start:
@@ -105,10 +114,14 @@ def main(path='data/events.json'):
 
     priced = sum(1 for i in items if i.get('price'))
     repeat = sum(1 for i in items if i.get('repeats'))
+    outdoor = sum(1 for i in items if i.get('setting') == 'outdoor')
+    food = sum(1 for i in items if i.get('hasFood'))
+    types = len({i.get('type') for i in items})
     kids = sum(1 for i in items if i.get('audience') == 'kids')
     adults = sum(1 for i in items if i.get('audience') == 'adults')
     print(f'{len(items)} listings OK — {priced} priced, {len(items) - priced} "see listing", '
           f'{repeat} repeating, {kids} children-only, {adults} 21+, '
+          f'{outdoor} outdoor, {food} with food, {types} types, '
           f'all within {meta["radiusMiles"]} mi of {meta["centerName"]}'
           + (f' ({len(warnings)} warning(s))' if warnings else ''))
     return 0

@@ -57,6 +57,10 @@ def richness(item):
         score += 1
     if item.get('recurrence'):
         score += 1
+    if item.get('host'):
+        score += 1
+    if item.get('setting') and item['setting'] != 'unknown':
+        score += 1
     return score
 
 
@@ -74,7 +78,6 @@ def collapse_repeats(items, threshold=3):
         group.sort(key=lambda x: x['start'])
         first, last = group[0], group[-1]
         keep = dict(first)
-        keep['kind'] = 'activity'
         keep['repeats'] = True
         when = datetime.fromisoformat(last['start']).strftime('%b %-d')
         keep['recurrence'] = f'{len(group)} dates listed through {when}'
@@ -84,10 +87,61 @@ def collapse_repeats(items, threshold=3):
     return out, collapsed
 
 
-def same_event(a, b):
-    if day(a['start']) != day(b['start']):
+STOP = {'the', 'a', 'an', 'at', 'in', 'on', 'of', 'and', 'for', 'to', 'with',
+        'annual', 'presents', 'featuring'}
+
+
+def tokens(title):
+    return {w for w in norm(title).split() if w not in STOP and len(w) > 2}
+
+
+def titles_match(a, b):
+    """Exact after normalising, one contained in the other, or mostly the same words.
+
+    Aggregators rewrite titles: the same county fair arrived as both "180th
+    Dutchess County Fair" and "180th Dutchess County Fair in Rhinebeck (Aug 25-30)",
+    which exact matching treats as two events.
+    """
+    na, nb = norm(a), norm(b)
+    if na == nb:
+        return True
+    if na and nb and (na in nb or nb in na):
+        return True
+    ta, tb = tokens(a), tokens(b)
+    if not ta or not tb:
         return False
-    if norm(a['title']) != norm(b['title']):
+    overlap = len(ta & tb) / len(ta | tb)
+    return overlap >= 0.6
+
+
+def span(item):
+    """The days a listing covers, as (first, last)."""
+    first = day(item['start'])
+    last = day(item.get('end')) or first
+    return first, (last if last >= first else first)
+
+
+def dates_overlap(a, b):
+    """Same day, or overlapping runs when either is multi-day.
+
+    A six-day fair reaches us twice — once dated to its opening and once to a
+    day inside the run — so equal start dates alone miss it. Overlap is only
+    allowed to match when one of them really is a multi-day run, otherwise two
+    separate weekly sessions at one venue would collapse into each other.
+    """
+    a0, a1 = span(a)
+    b0, b1 = span(b)
+    if a0 == b0:
+        return True
+    if a1 == a0 and b1 == b0:
+        return False                      # both single-day, different days
+    return a0 <= b1 and b0 <= a1
+
+
+def same_event(a, b):
+    if not dates_overlap(a, b):
+        return False
+    if not titles_match(a['title'], b['title']):
         return False
     return miles(a['lat'], a['lon'], b['lat'], b['lon']) < 2.0
 
@@ -110,7 +164,19 @@ def main():
 
     incoming, collapsed = collapse_repeats(incoming)
 
-    merged = list(curated)
+    # Fold duplicates already sitting in the curated set (earlier runs matched
+    # on exact titles only, so near-duplicates accumulated).
+    merged, folded = [], 0
+    for item in curated:
+        twin = next((i for i, other in enumerate(merged) if same_event(other, item)), None)
+        if twin is None:
+            merged.append(item)
+        else:
+            folded += 1
+            if richness(item) > richness(merged[twin]):
+                item['id'] = merged[twin]['id']
+                merged[twin] = item
+
     added = replaced = 0
     for new in incoming:
         match = next((i for i, old in enumerate(merged) if same_event(old, new)), None)
@@ -131,6 +197,8 @@ def main():
     meta['sources'] = sorted({i.get('source') for i in merged if i.get('source')})
 
     print(f'  {len(curated)} existing + {before} harvested')
+    if folded:
+        print(f'  −{folded} near-duplicates already in the set')
     print(f'  −{noise} internal meetings, −{collapsed} folded into recurring activities')
     print(f'  +{added} new, {replaced} upgraded  →  {len(merged)} listings')
     if args.dry_run:

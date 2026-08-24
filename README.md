@@ -12,25 +12,21 @@ with real listings refreshed weekly by a scheduled Claude task — see
 
 ---
 
-## Two kinds of listing
+## One list, many kinds of thing
 
-The app deliberately distinguishes:
-
-| | **Event** | **Activity** |
-|---|---|---|
-| Happens | Once, at a specific time | Repeatedly, or across a window |
-| Examples | A concert, a parade, a protest, a one-day sale | A walking tour, a weekly open mic, a farmers market, a drop-in class |
-| Shown as | `Sat, Sep 5, 7 PM` | `Sat, Sep 5, 2 PM · Daily at 2pm and 4pm` |
-
-Both are time-gated — an activity still has a schedule — so both live in one
-list, tagged with a badge, and the `Type` filter separates them on demand.
+There is no event-versus-activity split. Everything is a listing with a
+**type** (Concert, Market, Tour, Open Mic, Film, Festival…) and a **repeats**
+flag, which turned out to be the distinction that actually mattered: a weekly
+farmers market and a one-off parade are both things happening at a time, and
+what a reader wants to know is *what kind of thing it is* and *whether it comes
+round again*. Both are filterable.
 
 ## What the prototype does
 
 The page is just the list. Everything else lives behind a **Filters** sheet, so
 the default view is scannable rather than a wall of controls.
 
-**Out of the box** it shows what's on in the **next week**, **within 50 miles**,
+**Out of the box** it shows what's on in the **next week**, **within 75 miles**,
 sorted **soonest first** — and within a day, nearest first. Day dividers
 (`Today`, `Tomorrow`, `Wednesday`, then `Monday, Aug 31` once a bare weekday
 would be ambiguous) stick beneath the header as you scroll, the way date
@@ -49,8 +45,10 @@ Inside the sheet:
 - **Repeating** — all, one-off only, or repeating only.
 - **Who it's for** — children-only listings are **hidden by default**; 21+ ones
   are shown. Both are toggles.
-- **What** — free-text search, events vs. activities, and category chips that
-  show live match counts.
+- **Kind of thing** — type chips (Concert, Market, Tour, Film…) with live
+  match counts, multi-select.
+- **Features** — food or drink, outdoors, and time of day (daytime / evening).
+- **What** — free-text search.
 - **Cost** — max price, free-only, and needs-sign-up-only.
 - **Sort** — soonest (default), nearest, or cheapest. Day dividers appear only
   under soonest, where they mean something.
@@ -60,8 +58,9 @@ the gate"), venue, town, distance, duration, category tags, and a **Sign up**
 button wherever registration is required. Multi-day runs read as a range, and
 something already under way reads "on now, through Sep 6".
 
-Cards badge what they are: **Event** or **Activity**, plus **Repeats**,
-**Children only** or **21+** where those apply.
+Cards badge what kind of thing they are — **Concert**, **Market**, **Tour** —
+plus **Repeats**, **Children only** or **21+** where those apply, and name the
+host who runs it.
 
 ## Look
 
@@ -115,14 +114,18 @@ its times are published in. One entry:
 {
   "id": "sample-001",
   "title": "Rooftop Jazz Sessions",
-  "kind": "event",                 // "event" | "activity"
   "categories": ["music", "nightlife"],
   "start": "2026-09-05T19:30:00-04:00",   // ISO 8601 with offset
   "end": "2026-09-07T22:00:00-04:00",     // optional; multi-day runs only
   "durationMin": 180,
+  "type": "concert",               // the one primary answer to "what is this?"
   "repeats": true,                 // does it come round again? drives the filter
   "recurrence": "Every Saturday",  // free text shown on the card
   "audience": "all",               // "all" | "kids" (children only) | "adults" (21+)
+  "setting": "indoor",             // "indoor" | "outdoor" | "unknown"
+  "timeOfDay": "evening",          // morning | afternoon | evening | night
+  "hasFood": true,                 // is food or drink part of it?
+  "host": "The Standard Loft",     // who is putting it on
   "venue": "The Standard Loft",
   "city": "Long Island City, NY",
   "address": "44-02 21st St, Long Island City, NY",
@@ -147,6 +150,19 @@ Notes:
   text for the caveats that matter ("$10 parking", "free before 7pm"). Use
   **`"price": null`** when the source publishes no price — the card then reads
   "See listing". Null is never treated as free, and never guessed at.
+- **Every listing answers the same questions.** That is the point of the
+  schema: when a field is missing you know it needs scraping, rather than
+  discovering later that half the listings never had it. The standard set is
+  **when** (`start`, `end`, `timeOfDay`), **how much** (`price`), **where**
+  (`venue`, `city`, `lat`/`lon`, `setting`), **who runs it** (`host`), **who
+  it's for** (`audience`), **does it come round again** (`repeats`), and
+  **what kind of thing it is** (`type`).
+- **Type** is the single primary label — Concert, Open Mic, Market, Tour,
+  Film, Art Exhibit, Festival, Celebration and so on — and it is what the card
+  badges. It is inferred from the **title first**, falling back to the
+  description: a county fair whose blurb mentions "grandstand concerts" is a
+  Festival, because what a thing *is* lives in its name. `categories` remain as
+  looser secondary tags.
 - **Repeating.** `repeats` is the machine-readable flag the filter uses;
   `recurrence` is the human sentence on the card. A weekly market and a monthly
   repair clinic are both `repeats: true`. Validation rejects a listing that
@@ -207,6 +223,17 @@ Everything above is deterministic — no model is involved, so nothing in it can
 invent an event. Claude's job is the rest: reading the sources that have no
 feed, finding real prices, and spot-checking what the scripts inferred.
 
+### Coverage gaps look like radius gaps
+
+Connecticut was completely absent from the listings, which reads as "the radius
+is too small". It was not: **Danbury is 27.8 miles from Beacon** and nine CT
+towns were already well inside the old 50-mile circle. The registry simply had
+no Connecticut sources. Before widening the circle, check whether anything is
+actually looking at the places already inside it.
+
+The radius is now 75 miles, which additionally reaches New York City, New
+Haven, Hartford, Hudson and Great Barrington.
+
 ### The registry is the point
 
 Searching the web each week only ever finds what aggregators already collected,
@@ -222,8 +249,20 @@ python3 scripts/discover.py --overpass   # every venue with a website in the rad
 python3 scripts/discover.py --probe      # test each domain for a live iCal feed
 ```
 
-A lot of venues run WordPress with The Events Calendar, which always answers
-`?ical=1`. **Roughly 7% of venue domains expose a usable feed** — that is how
+`--probe` tries iCal paths first, then fingerprints the page for an embedded
+calendar platform and derives a feed where the address is predictable:
+
+| Fingerprint | What it yields |
+| --- | --- |
+| The Events Calendar (`?ical=1`) | iCal directly — the highest-yield case |
+| Squarespace (`?format=ical`) | iCal from an event collection |
+| Google Calendar embed | the calendar's public `basic.ics` |
+| Springshare LibCal | a library's iCal export |
+| Localist / Tockify / Trumba | a known feed or API endpoint |
+| Eventbrite / Bandsintown / DICE | an organiser or venue page worth registering |
+| `schema.org/Event` JSON-LD | no feed, but structured data on the page |
+
+**Roughly 7% of venue domains expose a usable feed** — that is how
 Storm King (111 listings), Savage Wonder, Scenic Hudson and Millbrook Vineyards
 were found. The winery is the case that motivated all this: tasting dinners
 never reach a county calendar, but its feed publishes them.

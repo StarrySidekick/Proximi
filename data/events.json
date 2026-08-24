@@ -1,21 +1,24 @@
 {
   "meta": {
     "schemaVersion": 2,
-    "scrapedAt": "2026-08-24T20:55:34+00:00",
+    "scrapedAt": "2026-08-24T21:54:34+00:00",
     "centerName": "Beacon, NY",
     "centerLat": 41.5048,
     "centerLon": -73.9696,
-    "radiusMiles": 50,
+    "radiusMiles": 75,
     "timezone": "America/New_York",
     "generatedBy": "scripts/harvest.py + enrich.py + merge.py, reviewed by Claude",
     "sources": [
       "Desmond-Fish Library, Garrison",
+      "Emelin Theatre",
       "Hudson River Sloop Clearwater",
       "Hudson Valley Tourism",
       "Millbrook Vineyards & Winery",
       "Savage Wonder, Beacon",
       "Scenic Hudson",
       "Storm King Art Center",
+      "Teatown Lake Reservation",
+      "White Memorial Conservation Center",
       "alittlebeaconblog.com",
       "bannermancastle.org",
       "chronogram.com",
@@ -32,14 +35,39 @@
   },
   "items": [
     {
+      "id": "whitememorial-33891336",
+      "title": "The 44th Annual Family Nature Day Raffle Ticket Sale!",
+      "type": "sale",
+      "repeats": false,
+      "audience": "all",
+      "setting": "outdoor",
+      "timeOfDay": "morning",
+      "hasFood": false,
+      "host": "White Memorial Conservation Center",
+      "categories": [
+        "sale",
+        "outdoors",
+        "family"
+      ],
+      "start": "2026-03-01T08:00:00-05:00",
+      "end": "2026-09-20T17:00:00-04:00",
+      "venue": "80 Whitehall Rd",
+      "city": "Litchfield, CT",
+      "address": "80 Whitehall Rd, Litchfield, CT",
+      "lat": 41.73,
+      "lon": -73.21,
+      "price": null,
+      "signupRequired": false,
+      "url": "https://whitememorialcc.org/event/the-44th-annual-family-nature-day-raffle-ticket-sale/",
+      "description": "March 1 – September 20, 2026 Stewart McPherson, Redfern Tours has once again gifted the Conservation Center with an unreal first prize for the 44th Annual Family Nature Day Raffle on September 26, 2026! You and a guest will be traveling to our planet’s largest island, GREENLAND! This incredible journey will immerse you in the beauty and majesty of Greenland.",
+      "source": "White Memorial Conservation Center"
+    },
+    {
       "id": "travelhudsonvalley-47287297",
       "title": "250th River and Rock",
-      "kind": "activity",
       "categories": [
         "tour",
-        "outdoors",
-        "family",
-        "food"
+        "outdoors"
       ],
       "start": "2026-06-01T11:00:00-04:00",
       "end": "2026-08-29T13:30:00-04:00",
@@ -54,12 +82,16 @@
       "description": "Join a special guided tour of Fortress West Point that explores the River and the Rock narrative and West Point’s role during the American Revolution. Offered June through August for the 250th Anniversary Season, the tour travels along trails and historic sites with an emphasis on battlefield lore and military history. Conducted in English, the experience is outdoors and involves extended walking",
       "source": "Hudson Valley Tourism",
       "repeats": false,
-      "audience": "all"
+      "audience": "all",
+      "type": "celebration",
+      "setting": "outdoor",
+      "timeOfDay": "morning",
+      "hasFood": false,
+      "host": "Hudson Valley Tourism"
     },
     {
       "id": "clearwater-83799029",
       "title": "Mudlark Drop Off Program (Session #2)",
-      "kind": "activity",
       "categories": [
         "outdoors",
         "family"
@@ -77,17 +109,19 @@
       "description": "Join Clearwater for a week of hands-on outdoor adventure and river exploration! Designed for children entering 4th and 5th grades, this land-based summer drop-off program brings the magic of Clearwater’s environmental education to Long Dock Park. Campers will investigate the Hudson River ecosystem, engage in nature-based games and activities, and build a deeper connection to the environment throug",
       "source": "Hudson River Sloop Clearwater",
       "repeats": false,
-      "audience": "kids"
+      "audience": "kids",
+      "type": "outdoors",
+      "setting": "outdoor",
+      "timeOfDay": "morning",
+      "hasFood": false,
+      "host": "Hudson River Sloop Clearwater"
     },
     {
       "id": "dutchess-county-fair-2026",
       "title": "180th Dutchess County Fair",
-      "kind": "event",
       "categories": [
-        "family",
         "market",
-        "music",
-        "food"
+        "family"
       ],
       "start": "2026-08-25T10:00:00-04:00",
       "end": "2026-08-30T22:00:00-04:00",
@@ -106,15 +140,18 @@
       "description": "Six days of agriculture, midway rides, and grandstand concerts. Children 11 and under are admitted free and parking is free; buying online saves $5 a head.",
       "source": "dutchessfair.com",
       "repeats": false,
-      "audience": "all"
+      "audience": "all",
+      "type": "festival",
+      "setting": "unknown",
+      "timeOfDay": "morning",
+      "hasFood": false,
+      "host": "dutchessfair.com"
     },
     {
       "id": "healthy-orange-farmers-market",
       "title": "Healthy Orange Farmers Market",
-      "kind": "activity",
       "categories": [
-        "market",
-        "food"
+        "market"
       ],
       "start": "2026-08-25T10:00:00-04:00",
       "recurrence": "Every Tuesday",
@@ -133,16 +170,20 @@
       "description": "Local vegetables, fruit, honey, maple syrup, baked goods, eggs and craft items on the green lot next to the DMV building.",
       "source": "timeshudsonvalley.com",
       "repeats": true,
-      "audience": "all"
+      "audience": "all",
+      "type": "market",
+      "setting": "unknown",
+      "timeOfDay": "morning",
+      "hasFood": false,
+      "host": "timeshudsonvalley.com"
     },
     {
       "id": "wildlife-play-days-hhnc",
       "title": "Wildlife Play Days",
-      "kind": "activity",
       "categories": [
-        "family",
-        "class",
-        "outdoors"
+        "show",
+        "outdoors",
+        "family"
       ],
       "start": "2026-08-25T12:30:00-04:00",
       "recurrence": "Selected weekdays",
@@ -158,16 +199,44 @@
       "description": "Drop-off program for children entering grades K–3, focused on a different Hudson Highlands animal each session.",
       "source": "timeshudsonvalley.com",
       "repeats": true,
-      "audience": "kids"
+      "audience": "kids",
+      "type": "theater",
+      "setting": "indoor",
+      "timeOfDay": "afternoon",
+      "hasFood": false,
+      "host": "timeshudsonvalley.com"
+    },
+    {
+      "id": "teatown-23387125",
+      "title": "Exploring Entomology: Beyond Butterflies at the Mamaroneck Public Library (for families)",
+      "type": "other",
+      "repeats": false,
+      "audience": "all",
+      "setting": "indoor",
+      "timeOfDay": "afternoon",
+      "hasFood": false,
+      "host": "Teatown Lake Reservation",
+      "categories": [
+        "community"
+      ],
+      "start": "2026-08-25T14:00:00-04:00",
+      "end": "2026-08-25T15:00:00-04:00",
+      "venue": "mamaroneck public library",
+      "city": "Ossining, NY",
+      "address": "mamaroneck public library, 136 Prospect Ave, Mamaroneck, 10543, United States",
+      "lat": 40.94952,
+      "lon": -73.73413,
+      "price": null,
+      "signupRequired": false,
+      "url": "https://www.teatown.org/events/beyond-butterflies-mamaroneck-public-library/",
+      "description": "Step into the fascinating world of insects! From monarch caterpillars to dragonflies, this interactive program introduces participants to local invertebrates. Create your own sweep net and learn how to safely observe and handle insects while gaining a deeper appreciation for their role in the ecosystem. This program takes place at the Mamaroneck Public Library. Register",
+      "source": "Teatown Lake Reservation"
     },
     {
       "id": "stormking-39402415",
       "title": "Outstanding in the Field",
-      "kind": "event",
       "categories": [
-        "art",
-        "outdoors",
-        "class"
+        "art"
       ],
       "start": "2026-08-25T15:00:00-04:00",
       "end": "2026-08-25T19:30:00-04:00",
@@ -182,16 +251,20 @@
       "description": "We're looking forward to partnering with Outstanding in the Field on producing an unforgettable evening of dining on our site. Read more about the event, and purchase tickets> From our partner: Is this a next level Extraordinary in the Field? We return to the storied grounds of Storm King to set our iconic table in the company of massive sculptures set amidst acres of manicured meadows and for",
       "source": "Storm King Art Center",
       "repeats": false,
-      "audience": "all"
+      "audience": "all",
+      "type": "food",
+      "setting": "unknown",
+      "timeOfDay": "afternoon",
+      "hasFood": false,
+      "host": "Storm King Art Center"
     },
     {
       "id": "evening-yoga-pavilion-gardiner",
       "title": "Evening Yoga at the Pavilion",
-      "kind": "activity",
       "categories": [
+        "outdoors",
         "class",
-        "sports",
-        "outdoors"
+        "sports"
       ],
       "start": "2026-08-25T18:00:00-04:00",
       "recurrence": "Weekday evenings",
@@ -206,15 +279,19 @@
       "description": "All-levels outdoor class, suitable for any age, mobility or experience level.",
       "source": "timeshudsonvalley.com",
       "repeats": true,
-      "audience": "all"
+      "audience": "all",
+      "type": "sports",
+      "setting": "outdoor",
+      "timeOfDay": "evening",
+      "hasFood": false,
+      "host": "timeshudsonvalley.com"
     },
     {
       "id": "story-screen-trivia",
       "title": "Story Screen Trivia at Draught Industries",
-      "kind": "activity",
       "categories": [
-        "community",
-        "film"
+        "film",
+        "sports"
       ],
       "start": "2026-08-25T19:00:00-04:00",
       "recurrence": "Tuesdays",
@@ -229,15 +306,18 @@
       "description": "Movie trivia run by Story Screen, 7pm to 9pm.",
       "source": "thebeaconbeaconny.com",
       "repeats": true,
-      "audience": "all"
+      "audience": "all",
+      "type": "film",
+      "setting": "unknown",
+      "timeOfDay": "evening",
+      "hasFood": false,
+      "host": "thebeaconbeaconny.com"
     },
     {
       "id": "beacon-historical-society-aug",
       "title": "Beacon Historical Society Meeting",
-      "kind": "event",
       "categories": [
-        "community",
-        "class"
+        "community"
       ],
       "start": "2026-08-25T19:00:00-04:00",
       "end": "2026-08-25T21:00:00-04:00",
@@ -252,12 +332,16 @@
       "description": "Monthly meeting of the Beacon Historical Society, 7pm to 9pm.",
       "source": "thebeaconbeaconny.com",
       "repeats": true,
-      "audience": "all"
+      "audience": "all",
+      "type": "meetup",
+      "setting": "unknown",
+      "timeOfDay": "evening",
+      "hasFood": false,
+      "host": "thebeaconbeaconny.com"
     },
     {
       "id": "stormking-80175712",
       "title": "Daily Walking Tour",
-      "kind": "activity",
       "categories": [
         "art",
         "tour",
@@ -277,15 +361,18 @@
       "source": "Storm King Art Center",
       "recurrence": "84 dates listed through Nov 30",
       "repeats": true,
-      "audience": "all"
+      "audience": "all",
+      "type": "tour",
+      "setting": "indoor",
+      "timeOfDay": "afternoon",
+      "hasFood": false,
+      "host": "Storm King Art Center"
     },
     {
       "id": "newburgh-brewing-trivia",
       "title": "Trivia Night at Newburgh Brewing",
-      "kind": "activity",
       "categories": [
-        "community",
-        "nightlife"
+        "community"
       ],
       "start": "2026-08-26T18:00:00-04:00",
       "recurrence": "Every Wednesday",
@@ -300,15 +387,18 @@
       "description": "Weekly pub trivia in the taproom from 6pm.",
       "source": "hudsonvalleyone.com",
       "repeats": true,
-      "audience": "all"
+      "audience": "all",
+      "type": "other",
+      "setting": "indoor",
+      "timeOfDay": "evening",
+      "hasFood": false,
+      "host": "hudsonvalleyone.com"
     },
     {
       "id": "hv-shakespeare-les-mis-2026",
       "title": "Les Misérables — Hudson Valley Shakespeare",
-      "kind": "activity",
       "categories": [
-        "show",
-        "music"
+        "show"
       ],
       "start": "2026-08-26T19:00:00-04:00",
       "end": "2026-09-27T22:00:00-04:00",
@@ -325,15 +415,19 @@
       "description": "One of three summer productions at the open-air Garrison theater, running in repertory with As You Like It and King Lear through September 27.",
       "source": "hvmag.com",
       "repeats": true,
-      "audience": "all"
+      "audience": "all",
+      "type": "theater",
+      "setting": "indoor",
+      "timeOfDay": "evening",
+      "hasFood": false,
+      "host": "hvmag.com"
     },
     {
       "id": "open-mic-comedy-two-way",
       "title": "Open Mic Comedy Night",
-      "kind": "activity",
       "categories": [
         "comedy",
-        "nightlife"
+        "music"
       ],
       "start": "2026-08-26T19:00:00-04:00",
       "recurrence": "Wednesdays",
@@ -348,12 +442,16 @@
       "description": "Stand-up open mic at the brewery, 7pm to 9pm.",
       "source": "thebeaconbeaconny.com",
       "repeats": true,
-      "audience": "all"
+      "audience": "all",
+      "type": "open-mic",
+      "setting": "unknown",
+      "timeOfDay": "evening",
+      "hasFood": false,
+      "host": "thebeaconbeaconny.com"
     },
     {
       "id": "killer-queen-meetup",
       "title": "Your Queen Calls — Killer Queen Meetup",
-      "kind": "activity",
       "categories": [
         "community",
         "nightlife"
@@ -374,15 +472,18 @@
       "description": "Free weekly Killer Queen arcade meetup, 7pm to 10pm.",
       "source": "thebeaconbeaconny.com",
       "repeats": true,
-      "audience": "all"
+      "audience": "all",
+      "type": "meetup",
+      "setting": "unknown",
+      "timeOfDay": "evening",
+      "hasFood": false,
+      "host": "thebeaconbeaconny.com"
     },
     {
       "id": "watching-birds-lucky-dog",
       "title": "Watching Birds at Lucky Dog",
-      "kind": "event",
       "categories": [
-        "music",
-        "nightlife"
+        "outdoors"
       ],
       "start": "2026-08-26T19:00:00-04:00",
       "end": "2026-08-26T21:30:00-04:00",
@@ -397,16 +498,18 @@
       "description": "Live set at Lucky Dog, 7pm to 9:30pm.",
       "source": "thebeaconbeaconny.com",
       "repeats": false,
-      "audience": "all"
+      "audience": "all",
+      "type": "other",
+      "setting": "unknown",
+      "timeOfDay": "evening",
+      "hasFood": false,
+      "host": "thebeaconbeaconny.com"
     },
     {
       "id": "sunflower-picking-cold-pressed-oils",
       "title": "Sunflower Picking & Live Music",
-      "kind": "activity",
       "categories": [
-        "outdoors",
         "music",
-        "family",
         "food"
       ],
       "start": "2026-08-27T12:00:00-04:00",
@@ -427,17 +530,21 @@
       "description": "Acres of sunflower fields with local musicians playing from 5:30pm to sunset, plus grills and local beer and cider from noon. Thu/Fri from 12pm, Sat/Sun from 10am.",
       "source": "destinationdutchess.com",
       "repeats": true,
-      "audience": "all"
+      "audience": "all",
+      "type": "concert",
+      "setting": "unknown",
+      "timeOfDay": "afternoon",
+      "hasFood": true,
+      "host": "destinationdutchess.com"
     },
     {
       "id": "compilation-of-creatives",
       "title": "A Compilation of Creatives",
-      "kind": "event",
       "categories": [
         "art",
         "food",
         "sports",
-        "community"
+        "nightlife"
       ],
       "start": "2026-08-27T17:00:00-04:00",
       "end": "2026-08-27T21:00:00-04:00",
@@ -452,12 +559,16 @@
       "description": "A Compilation of Creatives Prepare your senses for an absolute explosion of talent! The Cornwall NY Authors Coalition is collaborating with Savage Wonder in Beacon, NY, and it’s officially the first of its kind for the Hudson Valley. Literature from local authors, gorgeous art, and an underground wine bar will be the stars of this vibrant show. This isn’t your average, run-of-the-mill variety s",
       "source": "Savage Wonder, Beacon",
       "repeats": false,
-      "audience": "all"
+      "audience": "all",
+      "type": "sports",
+      "setting": "indoor",
+      "timeOfDay": "evening",
+      "hasFood": true,
+      "host": "Savage Wonder, Beacon"
     },
     {
       "id": "desmondfish-library-28434422",
       "title": "Dinner and a Movie for Teens: The Princess Bride",
-      "kind": "event",
       "categories": [
         "film",
         "family",
@@ -476,16 +587,18 @@
       "description": "Stop by the library for pizza and a movie! This month we’ll be watching The Princess Bride: 98 minutes, Rated PG. Please register (so we know how much pizza to get)! This program is for students in grades 6-12. For children and adult movie programs, please see our calendar or register for our newsletter here.",
       "source": "Desmond-Fish Library, Garrison",
       "repeats": false,
-      "audience": "kids"
+      "audience": "kids",
+      "type": "film",
+      "setting": "indoor",
+      "timeOfDay": "evening",
+      "hasFood": true,
+      "host": "Desmond-Fish Library, Garrison"
     },
     {
       "id": "beacon-drum-circle",
       "title": "Beacon Drum Circle",
-      "kind": "activity",
       "categories": [
-        "music",
-        "outdoors",
-        "community"
+        "outdoors"
       ],
       "start": "2026-08-27T18:00:00-04:00",
       "recurrence": "Thursdays at Long Dock",
@@ -500,15 +613,18 @@
       "description": "Open drum circle on the riverfront, 6pm to 8pm.",
       "source": "thebeaconbeaconny.com",
       "repeats": true,
-      "audience": "all"
+      "audience": "all",
+      "type": "other",
+      "setting": "outdoor",
+      "timeOfDay": "evening",
+      "hasFood": false,
+      "host": "thebeaconbeaconny.com"
     },
     {
       "id": "towne-crier-open-mic",
       "title": "Towne Crier Open Mic Night",
-      "kind": "activity",
       "categories": [
-        "music",
-        "community"
+        "music"
       ],
       "start": "2026-08-27T18:30:00-04:00",
       "recurrence": "Every Thursday",
@@ -523,15 +639,21 @@
       "description": "Weekly open mic on the Salon Stage, 6:30pm to 9:30pm.",
       "source": "thebeaconbeaconny.com",
       "repeats": true,
-      "audience": "all"
+      "audience": "all",
+      "type": "open-mic",
+      "setting": "unknown",
+      "timeOfDay": "evening",
+      "hasFood": false,
+      "host": "thebeaconbeaconny.com"
     },
     {
       "id": "treasury-cider-open-mic",
       "title": "Open Mic & Food Truck Night at Treasury Cider",
-      "kind": "activity",
       "categories": [
         "music",
-        "food"
+        "food",
+        "sports",
+        "nightlife"
       ],
       "start": "2026-08-28T16:30:00-04:00",
       "recurrence": "Friday evenings",
@@ -546,15 +668,18 @@
       "description": "Open mic on the covered cider porch, welcoming musicians, poets, storytellers and comedians. Performers sign up at the bar; slots run about 15 minutes.",
       "source": "destinationdutchess.com",
       "repeats": true,
-      "audience": "all"
+      "audience": "all",
+      "type": "open-mic",
+      "setting": "unknown",
+      "timeOfDay": "afternoon",
+      "hasFood": true,
+      "host": "destinationdutchess.com"
     },
     {
       "id": "millbrook-friday-food-trucks",
       "title": "Friday Night Food Trucks at Millbrook Winery",
-      "kind": "activity",
       "categories": [
-        "food",
-        "music"
+        "food"
       ],
       "start": "2026-08-28T17:00:00-04:00",
       "recurrence": "Every Friday evening",
@@ -569,12 +694,16 @@
       "description": "Rotating food trucks with a different local performer each Friday.",
       "source": "destinationdutchess.com",
       "repeats": true,
-      "audience": "all"
+      "audience": "all",
+      "type": "other",
+      "setting": "unknown",
+      "timeOfDay": "evening",
+      "hasFood": true,
+      "host": "destinationdutchess.com"
     },
     {
       "id": "travelhudsonvalley-43531144",
       "title": "BEAR MOUNTAIN INN FRIDAYS @ FIVE",
-      "kind": "activity",
       "categories": [
         "music",
         "outdoors",
@@ -593,15 +722,19 @@
       "description": "“Fridays @ Five” Returns to Bear Mountain Inn! May 29-September 4 from 5-8PM. Join us on Friday evenings for live music, great food and drinks and spectacular views! Bear Mountain Inn’s free outdoor summer concert series designed to help you unwind, reconnect, and kick off the weekend right. Enjoy a weekly lineup of talented local and regional musicians playing folk, soft rock, pop, funk, and more",
       "source": "Hudson Valley Tourism",
       "repeats": true,
-      "audience": "all"
+      "audience": "all",
+      "type": "concert",
+      "setting": "outdoor",
+      "timeOfDay": "evening",
+      "hasFood": false,
+      "host": "Hudson Valley Tourism"
     },
     {
       "id": "cold-spring-farmers-market",
       "title": "Cold Spring Farmers' Market",
-      "kind": "activity",
       "categories": [
         "market",
-        "food"
+        "outdoors"
       ],
       "start": "2026-08-29T09:00:00-04:00",
       "recurrence": "Saturdays through the end of October",
@@ -620,12 +753,16 @@
       "description": "Saturdays 9am to 1pm on the Boscobel grounds, running through the end of October.",
       "source": "chronogram.com",
       "repeats": true,
-      "audience": "all"
+      "audience": "all",
+      "type": "market",
+      "setting": "outdoor",
+      "timeOfDay": "morning",
+      "hasFood": false,
+      "host": "chronogram.com"
     },
     {
       "id": "stormking-26935986",
       "title": "Member Yoga",
-      "kind": "activity",
       "categories": [
         "art",
         "outdoors",
@@ -646,17 +783,19 @@
       "source": "Storm King Art Center",
       "recurrence": "10 dates listed through Oct 31",
       "repeats": true,
-      "audience": "all"
+      "audience": "all",
+      "type": "sports",
+      "setting": "indoor",
+      "timeOfDay": "morning",
+      "hasFood": false,
+      "host": "Storm King Art Center"
     },
     {
       "id": "ny-renaissance-faire-2026",
       "title": "New York Renaissance Faire",
-      "kind": "activity",
       "categories": [
-        "show",
         "market",
-        "family",
-        "food"
+        "outdoors"
       ],
       "start": "2026-08-29T10:00:00-04:00",
       "end": "2026-10-04T19:00:00-04:00",
@@ -673,12 +812,16 @@
       "description": "Eight weekends of 16th-century England — jousting, sword swallowers, a makers' market and turkey legs. Weekends only, plus Labor Day Monday.",
       "source": "hvmag.com",
       "repeats": true,
-      "audience": "all"
+      "audience": "all",
+      "type": "market",
+      "setting": "unknown",
+      "timeOfDay": "morning",
+      "hasFood": false,
+      "host": "hvmag.com"
     },
     {
       "id": "bannerman-island-tour",
       "title": "Bannerman Island Cruise & Walking Tour",
-      "kind": "activity",
       "categories": [
         "tour",
         "outdoors"
@@ -701,16 +844,46 @@
       "description": "Two and a half hours: a half-hour cruise to Pollepel Island, ninety minutes of guided tour around the castle ruins, then the cruise back. Sells out fast.",
       "source": "bannermancastle.org",
       "repeats": true,
-      "audience": "all"
+      "audience": "all",
+      "type": "tour",
+      "setting": "unknown",
+      "timeOfDay": "morning",
+      "hasFood": false,
+      "host": "bannermancastle.org"
+    },
+    {
+      "id": "whitememorial-3032748",
+      "title": "The Ron and Joan Jones Memorial Hikes: Loving Haight and The White Oak Trail",
+      "type": "outdoors",
+      "repeats": false,
+      "audience": "all",
+      "setting": "outdoor",
+      "timeOfDay": "morning",
+      "hasFood": false,
+      "host": "White Memorial Conservation Center",
+      "categories": [
+        "outdoors"
+      ],
+      "start": "2026-08-29T10:00:00-04:00",
+      "end": "2026-08-29T13:00:00-04:00",
+      "venue": "80 Whitehall Rd",
+      "city": "Litchfield, CT",
+      "address": "80 Whitehall Rd, Litchfield, CT",
+      "lat": 41.73,
+      "lon": -73.21,
+      "price": null,
+      "signupRequired": false,
+      "url": "https://whitememorialcc.org/event/the-ron-and-joan-jones-memorial-hikes-loving-haight-and-the-white-oak-trail/",
+      "description": "August 29, 2026 Step out for a visit to the White memorial Foundation’s newest trail! The White Oak Trail was created in and made its first appearance on our new trail map. Wander this lovely short trail to visit its namesake. Today’s hikes are both along the Bantam River.",
+      "source": "White Memorial Conservation Center"
     },
     {
       "id": "dia-beacon-play-sets",
       "title": "\"Play Sets\" Children's Art Program at Dia Beacon",
-      "kind": "activity",
       "categories": [
+        "show",
         "art",
-        "family",
-        "class"
+        "family"
       ],
       "start": "2026-08-29T10:30:00-04:00",
       "recurrence": "Selected Saturdays and Sundays",
@@ -726,12 +899,16 @@
       "description": "Hands-on exercises for children built around a featured artist each session — Louise Lawler on August 29, Robert Irwin on August 30.",
       "source": "destinationdutchess.com",
       "repeats": true,
-      "audience": "all"
+      "audience": "all",
+      "type": "theater",
+      "setting": "unknown",
+      "timeOfDay": "morning",
+      "hasFood": false,
+      "host": "destinationdutchess.com"
     },
     {
       "id": "travelhudsonvalley-34320443",
       "title": "Summer Saturdays at Philipsburg Manor",
-      "kind": "activity",
       "categories": [
         "art"
       ],
@@ -748,12 +925,16 @@
       "description": "Visit Philipsburg Manor every Saturday from July 11 to September 5 to explore history through fun activities, such as harvesting wheat, learning about pollination and other wildlife, exploring waterways, creating ceramics, and playing old-fashioned games. Each week has a new theme: July 11: Barnyard Bash July 18: Fabric & Fashion July 25: Hive & Honey August 1: Wonderful Waterways August 8: C",
       "source": "Hudson Valley Tourism",
       "repeats": true,
-      "audience": "all"
+      "audience": "all",
+      "type": "other",
+      "setting": "unknown",
+      "timeOfDay": "morning",
+      "hasFood": false,
+      "host": "Hudson Valley Tourism"
     },
     {
       "id": "millbrookwine-23811641",
       "title": "Weekend Food Trucks",
-      "kind": "event",
       "categories": [
         "food"
       ],
@@ -770,14 +951,19 @@
       "description": null,
       "source": "Millbrook Vineyards & Winery",
       "repeats": false,
-      "audience": "all"
+      "audience": "all",
+      "type": "other",
+      "setting": "unknown",
+      "timeOfDay": "afternoon",
+      "hasFood": true,
+      "host": "Millbrook Vineyards & Winery"
     },
     {
       "id": "bau-gallery-beacon",
       "title": "BAU Gallery Monthly Exhibitions",
-      "kind": "activity",
       "categories": [
-        "art"
+        "art",
+        "sports"
       ],
       "start": "2026-08-29T12:00:00-04:00",
       "recurrence": "Weekends; new shows each Second Saturday",
@@ -796,12 +982,16 @@
       "description": "Artist-run gallery on upper Main Street, with new exhibitions opening on Beacon's Second Saturday gallery night.",
       "source": "timeshudsonvalley.com",
       "repeats": true,
-      "audience": "all"
+      "audience": "all",
+      "type": "art",
+      "setting": "indoor",
+      "timeOfDay": "afternoon",
+      "hasFood": false,
+      "host": "timeshudsonvalley.com"
     },
     {
       "id": "millbrookwine-39513533",
       "title": "Jazz in the Vineyard",
-      "kind": "event",
       "categories": [
         "music"
       ],
@@ -818,16 +1008,18 @@
       "description": null,
       "source": "Millbrook Vineyards & Winery",
       "repeats": false,
-      "audience": "all"
+      "audience": "all",
+      "type": "concert",
+      "setting": "unknown",
+      "timeOfDay": "evening",
+      "hasFood": false,
+      "host": "Millbrook Vineyards & Winery"
     },
     {
       "id": "walkway-at-night",
       "title": "Walkway At Night",
-      "kind": "activity",
       "categories": [
-        "outdoors",
-        "tour",
-        "family"
+        "outdoors"
       ],
       "start": "2026-08-29T20:00:00-04:00",
       "recurrence": "Selected evenings",
@@ -842,12 +1034,16 @@
       "description": "The Walkway stays open after dark for Hudson Valley views from 212 feet above the river.",
       "source": "destinationdutchess.com",
       "repeats": true,
-      "audience": "all"
+      "audience": "all",
+      "type": "other",
+      "setting": "unknown",
+      "timeOfDay": "evening",
+      "hasFood": false,
+      "host": "destinationdutchess.com"
     },
     {
       "id": "maverick-concerts-2026",
       "title": "Maverick Concerts Chamber Series",
-      "kind": "activity",
       "categories": [
         "music"
       ],
@@ -866,12 +1062,16 @@
       "description": "America's oldest continuous summer chamber music series, in the woods outside Woodstock. Season runs through September 13.",
       "source": "hudsonvalleyone.com",
       "repeats": true,
-      "audience": "all"
+      "audience": "all",
+      "type": "concert",
+      "setting": "unknown",
+      "timeOfDay": "evening",
+      "hasFood": false,
+      "host": "hudsonvalleyone.com"
     },
     {
       "id": "savagewonder-88912060",
       "title": "Dashiell Hammett's The Maltese Falcon: A Savage Soirée",
-      "kind": "activity",
       "categories": [
         "art",
         "nightlife"
@@ -889,12 +1089,16 @@
       "description": "One room, four hours, and a former bank behaving very badly. Dashiell Hammett published The Maltese Falcon in 1930. Everybody in it is lying, everybody is using a false name, and everybody wants the same object. On Saturday August 29 we are turning the whole downstairs into that world. A themed cocktail party with vaudeville acts working the room all night, projections across every surface, and",
       "source": "Savage Wonder, Beacon",
       "repeats": true,
-      "audience": "all"
+      "audience": "all",
+      "type": "dj",
+      "setting": "indoor",
+      "timeOfDay": "evening",
+      "hasFood": true,
+      "host": "Savage Wonder, Beacon"
     },
     {
       "id": "desmondfish-library-5195681",
       "title": "LIBRARY CLOSED",
-      "kind": "activity",
       "categories": [
         "community"
       ],
@@ -912,15 +1116,19 @@
       "source": "Desmond-Fish Library, Garrison",
       "recurrence": "5 dates listed through Sep 7",
       "repeats": true,
-      "audience": "all"
+      "audience": "all",
+      "type": "other",
+      "setting": "indoor",
+      "timeOfDay": "morning",
+      "hasFood": false,
+      "host": "Desmond-Fish Library, Garrison"
     },
     {
       "id": "beacon-flea-market",
       "title": "Beacon Flea Market",
-      "kind": "activity",
       "categories": [
-        "sale",
-        "market"
+        "market",
+        "sale"
       ],
       "start": "2026-08-30T08:00:00-04:00",
       "recurrence": "Sundays in fine weather",
@@ -939,15 +1147,18 @@
       "description": "Sundays 8am to 3pm behind the post office on Henry Street, weather permitting.",
       "source": "alittlebeaconblog.com",
       "repeats": true,
-      "audience": "all"
+      "audience": "all",
+      "type": "market",
+      "setting": "outdoor",
+      "timeOfDay": "morning",
+      "hasFood": false,
+      "host": "alittlebeaconblog.com"
     },
     {
       "id": "beacon-farmers-market",
       "title": "Beacon Farmers Market",
-      "kind": "activity",
       "categories": [
-        "market",
-        "food"
+        "market"
       ],
       "start": "2026-08-30T10:00:00-04:00",
       "recurrence": "Every Sunday, rain or shine",
@@ -966,39 +1177,71 @@
       "description": "Sundays 10am to 2pm in the DMV lot on Main Street. Rain or shine.",
       "source": "alittlebeaconblog.com",
       "repeats": true,
-      "audience": "all"
+      "audience": "all",
+      "type": "market",
+      "setting": "unknown",
+      "timeOfDay": "morning",
+      "hasFood": false,
+      "host": "alittlebeaconblog.com"
     },
     {
-      "id": "travelhudsonvalley-17214816",
-      "title": "180th Dutchess County Fair in Rhinebeck (Aug. 25-30)",
-      "kind": "event",
+      "id": "teatown-14113866",
+      "title": "Wildflower Island Curator Chat (For everyone 10+)",
+      "type": "talk",
+      "repeats": false,
+      "audience": "all",
+      "setting": "unknown",
+      "timeOfDay": "morning",
+      "hasFood": false,
+      "host": "Teatown Lake Reservation",
       "categories": [
-        "market",
-        "food"
+        "class"
       ],
       "start": "2026-08-30T10:00:00-04:00",
-      "end": "2026-08-30T20:00:00-04:00",
-      "venue": "Dutchess County Fairgrounds",
-      "city": "Rhinebeck, NY",
-      "address": "Dutchess County Fairgrounds, 6636 Route 9, Rhinebeck, NY, 12572, United States",
-      "lat": 41.93749,
-      "lon": -73.90913,
+      "end": "2026-08-30T11:00:00-04:00",
+      "venue": "Teatown",
+      "city": "Ossining, NY",
+      "address": "Teatown, 1600 Spring Valley Rd, Ossining, NY, 10562",
+      "lat": 41.21136,
+      "lon": -73.82675,
       "price": null,
       "signupRequired": false,
-      "url": "https://travelhudsonvalley.com/event/180th-dutchess-county-fair-in-rhinebeck/",
-      "description": "The Dutchess County Fair is one of the biggest county fairs in New York State and has been a summer highlight in the Hudson Valley for 180 years. This year’s fair features another action-packed lineup of carnival rides, concerts, livestock shows and competitive, historical and educational exhibits, along with an endless supply of tasty food and beverages! Grandstand performers will include Chase",
-      "source": "Hudson Valley Tourism",
+      "url": "https://www.teatown.org/events/wildflower-island-curator-chat-august/",
+      "description": "Join Wildflower Island Curator Rebecca Dymes for a talk before our first Open Gate Day of the season. She will highlight what’s in bloom, share botanical information, and touch on the history of this unique plant refuge. Members $3; Non-members $8 Limited to 20 participants Register",
+      "source": "Teatown Lake Reservation"
+    },
+    {
+      "id": "teatown-40288275",
+      "title": "Wildflower Island Open Gate Day (ages 10+, no dogs)",
+      "type": "other",
       "repeats": false,
-      "audience": "all"
+      "audience": "all",
+      "setting": "unknown",
+      "timeOfDay": "morning",
+      "hasFood": false,
+      "host": "Teatown Lake Reservation",
+      "categories": [
+        "outdoors",
+        "family"
+      ],
+      "start": "2026-08-30T11:00:00-04:00",
+      "end": "2026-08-30T13:00:00-04:00",
+      "venue": "Teatown",
+      "city": "Ossining, NY",
+      "address": "Teatown, 1600 Spring Valley Rd, Ossining, NY, 10562",
+      "lat": 41.21136,
+      "lon": -73.82675,
+      "price": null,
+      "signupRequired": false,
+      "url": "https://www.teatown.org/events/open-gate-day-august/",
+      "description": "The gates of Wildflower Island are open – come stroll the winding paths and enjoy the beauty of Teatown Lake from a different perspective. Guides will be stationed in the Gatehouse and along the trails to answer questions about the flowers in bloom. Please, no children under 10 and no dogs. Free.",
+      "source": "Teatown Lake Reservation"
     },
     {
       "id": "stormking-70841960",
       "title": "Children & Families: Collaging the Rainbow",
-      "kind": "event",
       "categories": [
         "art",
-        "tour",
-        "outdoors",
         "family"
       ],
       "start": "2026-08-30T12:00:00-04:00",
@@ -1014,12 +1257,16 @@
       "description": "Join us for artmaking in the Meadows! Families are invited to explore the colors of the rainbow through collaging with a range of bright and tactile materials. This program will be led by Ally Caple. Ally Caple is an image-based artist and educator located in Brooklyn, New York. Her work in education centers youth and emerging artists, creating curriculum and programs that focus on building visua",
       "source": "Storm King Art Center",
       "repeats": false,
-      "audience": "all"
+      "audience": "all",
+      "type": "other",
+      "setting": "indoor",
+      "timeOfDay": "afternoon",
+      "hasFood": false,
+      "host": "Storm King Art Center"
     },
     {
       "id": "travelhudsonvalley-84698530",
       "title": "Capitol for a Day",
-      "kind": "event",
       "categories": [
         "community"
       ],
@@ -1036,12 +1283,16 @@
       "description": "Join the Village of Irvington for this free event commemorating the one day in 1776 when Irvington’s Odell Tavern served as the Seat of the New York State Government. Meet and greet George Washington and Ben and Deborah Franklin, listen to Master Storyteller Jonathan Kruk and The Liberty Three, discover the role of indigenous people in the Revolution, enjoy games, and participate in patriotic spyc",
       "source": "Hudson Valley Tourism",
       "repeats": false,
-      "audience": "all"
+      "audience": "all",
+      "type": "other",
+      "setting": "unknown",
+      "timeOfDay": "afternoon",
+      "hasFood": false,
+      "host": "Hudson Valley Tourism"
     },
     {
       "id": "travelhudsonvalley-98594226",
       "title": "NYACK JAZZ FESTIVAL",
-      "kind": "event",
       "categories": [
         "music",
         "art",
@@ -1061,12 +1312,16 @@
       "description": "Don’t miss out of the “Nyack Jazz Festival!” Sunday, August 30. 1-7PM. 2 North Broadway. FREE event! Great family friendly outdoor concert featuring music, food trucks, wine and beer gardens, artisan vendors and MORE! Limited seating available. Lawn chairs recommended! CLICK HERE for details.",
       "source": "Hudson Valley Tourism",
       "repeats": false,
-      "audience": "all"
+      "audience": "all",
+      "type": "concert",
+      "setting": "outdoor",
+      "timeOfDay": "afternoon",
+      "hasFood": true,
+      "host": "Hudson Valley Tourism"
     },
     {
       "id": "scenichudson-83581962",
       "title": "Poughkeepsie Farm Project Fundraiser Dinner",
-      "kind": "event",
       "repeats": false,
       "audience": "all",
       "categories": [
@@ -1084,16 +1339,20 @@
       "signupRequired": false,
       "url": "https://www.scenichudson.org/events/poughkeepsie-farm-project-fundraiser-dinner/",
       "description": "Events Community events bring people together to protect and celebrate what makes this region so special. From volunteer and educational opportunities to festivals and block parties, find out what’s up next in the Hudson Valley. 4 events found. Events Today Upcoming Upcoming Select date.",
-      "source": "Scenic Hudson"
+      "source": "Scenic Hudson",
+      "type": "food",
+      "setting": "outdoor",
+      "timeOfDay": "afternoon",
+      "hasFood": true,
+      "host": "Scenic Hudson"
     },
     {
       "id": "cornwall-music-in-the-park",
       "title": "Music in the Park Concert Series",
-      "kind": "activity",
       "categories": [
         "music",
         "outdoors",
-        "family"
+        "community"
       ],
       "start": "2026-08-30T18:30:00-04:00",
       "recurrence": "Sunday evenings",
@@ -1112,15 +1371,18 @@
       "description": "Free weekly outdoor concerts on Sunday evenings, 6:30pm to 8pm.",
       "source": "timeshudsonvalley.com",
       "repeats": true,
-      "audience": "all"
+      "audience": "all",
+      "type": "concert",
+      "setting": "unknown",
+      "timeOfDay": "evening",
+      "hasFood": false,
+      "host": "timeshudsonvalley.com"
     },
     {
       "id": "jazz-mondays-quinns",
       "title": "Jazz Mondays at Quinn's",
-      "kind": "activity",
       "categories": [
-        "music",
-        "nightlife"
+        "music"
       ],
       "start": "2026-08-31T20:30:00-04:00",
       "recurrence": "Every Monday",
@@ -1135,15 +1397,18 @@
       "description": "Long-running Monday night jazz session, 8:30pm to 10:30pm.",
       "source": "thebeaconbeaconny.com",
       "repeats": true,
-      "audience": "all"
+      "audience": "all",
+      "type": "concert",
+      "setting": "unknown",
+      "timeOfDay": "evening",
+      "hasFood": false,
+      "host": "thebeaconbeaconny.com"
     },
     {
       "id": "desmondfish-library-86353041",
       "title": "How to Avoid Scams and Identity Theft (first Thursdays with PAAH)",
-      "kind": "activity",
       "categories": [
-        "class",
-        "community"
+        "class"
       ],
       "start": "2026-09-03T14:00:00-04:00",
       "end": "2026-09-03T15:00:00-04:00",
@@ -1158,15 +1423,18 @@
       "description": "Scammers are getting craftier, and sometimes scams are hard to identify. The library is here to help! Learn about a range of common scams – from fake emails to robocalls – and tips and tricks to avoid them and protect your identity. This talk will be led by our very own Digital Services Librarian, Ryan Biracree. Every first Thursday, Philipstown Aging at Home is collaborating with the Desmond-Fis",
       "source": "Desmond-Fish Library, Garrison",
       "repeats": true,
-      "audience": "all"
+      "audience": "all",
+      "type": "talk",
+      "setting": "indoor",
+      "timeOfDay": "afternoon",
+      "hasFood": false,
+      "host": "Desmond-Fish Library, Garrison"
     },
     {
       "id": "lolos-boyfriend-show-sep",
       "title": "Lolo's Boyfriend Show",
-      "kind": "event",
       "categories": [
-        "show",
-        "comedy"
+        "show"
       ],
       "start": "2026-09-03T19:00:00-04:00",
       "venue": "Savage Wonder",
@@ -1181,12 +1449,16 @@
       "description": "Solo punk-cabaret show, winner of the ICI Audience Choice Award at the Edinburgh Fringe. Also playing September 17.",
       "source": "alittlebeaconblog.com",
       "repeats": false,
-      "audience": "all"
+      "audience": "all",
+      "type": "theater",
+      "setting": "unknown",
+      "timeOfDay": "evening",
+      "hasFood": false,
+      "host": "alittlebeaconblog.com"
     },
     {
       "id": "travelhudsonvalley-13820608",
       "title": "Dromfest 2026: Indie Rock Takes Over Catskill",
-      "kind": "event",
       "categories": [
         "film",
         "art",
@@ -1206,15 +1478,18 @@
       "description": "Celebrate Labor Day Weekend in the Great Northern Catskills at Dromfest 2026, a three-day independent music festival hosted at The Avalon Lounge and venues throughout Catskill Village. Presented by Dromedary Records, the festival brings together acclaimed and emerging artists, along with film, literature, and community events in a walkable downtown setting. The 2026 lineup features more than 25 ar",
       "source": "Hudson Valley Tourism",
       "repeats": false,
-      "audience": "all"
+      "audience": "all",
+      "type": "film",
+      "setting": "indoor",
+      "timeOfDay": "morning",
+      "hasFood": false,
+      "host": "Hudson Valley Tourism"
     },
     {
       "id": "desmondfish-library-30113792",
       "title": "Friends of the Library Pavilion Book Sale",
-      "kind": "activity",
       "categories": [
-        "sale",
-        "community"
+        "sale"
       ],
       "start": "2026-09-04T10:00:00-04:00",
       "end": null,
@@ -1230,12 +1505,16 @@
       "source": "Desmond-Fish Library, Garrison",
       "recurrence": "6 dates listed through Sep 9",
       "repeats": true,
-      "audience": "all"
+      "audience": "all",
+      "type": "sale",
+      "setting": "indoor",
+      "timeOfDay": "morning",
+      "hasFood": false,
+      "host": "Desmond-Fish Library, Garrison"
     },
     {
       "id": "desmondfish-library-27640624",
       "title": "Play and Chat: Caregiver Meetup with Putnam County DoH Nurses",
-      "kind": "event",
       "categories": [
         "show",
         "family",
@@ -1254,12 +1533,16 @@
       "description": "Stop by the library for an informal play meet-up in our programming room. Meet and mingle with other parents and caregivers while your littles one play (toys will be available to share). While there, meet the Maternal Child Health Nurses from the Putnam County Department of Health and have your questions answered about breastfeeding, sleep, milestones, and more! No registration required. This pr",
       "source": "Desmond-Fish Library, Garrison",
       "repeats": false,
-      "audience": "all"
+      "audience": "all",
+      "type": "theater",
+      "setting": "indoor",
+      "timeOfDay": "morning",
+      "hasFood": false,
+      "host": "Desmond-Fish Library, Garrison"
     },
     {
       "id": "millbrookwine-71083165",
       "title": "Friday Night Food Trucks",
-      "kind": "event",
       "categories": [
         "food"
       ],
@@ -1276,16 +1559,18 @@
       "description": null,
       "source": "Millbrook Vineyards & Winery",
       "repeats": false,
-      "audience": "all"
+      "audience": "all",
+      "type": "other",
+      "setting": "unknown",
+      "timeOfDay": "evening",
+      "hasFood": true,
+      "host": "Millbrook Vineyards & Winery"
     },
     {
       "id": "hv-balloon-festival-2026",
       "title": "35th Hudson Valley Hot-Air Balloon Festival",
-      "kind": "event",
       "categories": [
-        "family",
-        "outdoors",
-        "show"
+        "market"
       ],
       "start": "2026-09-04T17:00:00-04:00",
       "end": "2026-09-06T21:00:00-04:00",
@@ -1305,12 +1590,16 @@
       "description": "120+ balloon ascensions at dawn and dusk plus the evening Moon Glow. Tickets must be bought online in advance — none are sold at the gate.",
       "source": "dcrcoc.org",
       "repeats": false,
-      "audience": "all"
+      "audience": "all",
+      "type": "festival",
+      "setting": "outdoor",
+      "timeOfDay": "evening",
+      "hasFood": false,
+      "host": "dcrcoc.org"
     },
     {
       "id": "travelhudsonvalley-21551111",
       "title": "BEAR MOUNTAIN INN FRIDAYS @ FIVE",
-      "kind": "activity",
       "categories": [
         "music",
         "outdoors",
@@ -1329,15 +1618,46 @@
       "description": "“Fridays @ Five” Returns to Bear Mountain Inn! May 29-September 4 from 5-8PM. Join us on Friday evenings for live music, great food and drinks and spectacular views! Bear Mountain Inn’s free outdoor summer concert series designed to help you unwind, reconnect, and kick off the weekend right. Enjoy a weekly lineup of talented local and regional musicians playing folk, soft rock, pop, funk, and more",
       "source": "Hudson Valley Tourism",
       "repeats": true,
-      "audience": "all"
+      "audience": "all",
+      "type": "concert",
+      "setting": "outdoor",
+      "timeOfDay": "evening",
+      "hasFood": false,
+      "host": "Hudson Valley Tourism"
+    },
+    {
+      "id": "whitememorial-42984458",
+      "title": "Pajama Parade!",
+      "type": "parade",
+      "repeats": false,
+      "audience": "all",
+      "setting": "outdoor",
+      "timeOfDay": "evening",
+      "hasFood": true,
+      "host": "White Memorial Conservation Center",
+      "categories": [
+        "parade",
+        "family",
+        "food"
+      ],
+      "start": "2026-09-04T18:00:00-04:00",
+      "end": "2026-09-04T19:30:00-04:00",
+      "venue": "80 Whitehall Rd",
+      "city": "Litchfield, CT",
+      "address": "80 Whitehall Rd, Litchfield, CT",
+      "lat": 41.73,
+      "lon": -73.21,
+      "price": null,
+      "signupRequired": false,
+      "url": "https://whitememorialcc.org/event/pajama-parade/",
+      "description": "Friday, September 4, 2026 You don’t have to be a kid to participate in this fun event! Put on your favorite jammies and take an easy stroll (geared towards kids) around the main area. Look out for bats! Perhaps you’ll hear frogs, owls, and katydids. Our destination is Ongley Pond, a cozy campfire, S’Mores, and family fun!.6:00 p.m., Meet in the A. B. Ceder Room. Suggested donation: $5.00.",
+      "source": "White Memorial Conservation Center"
     },
     {
       "id": "lit-lit-open-mic-sep",
       "title": "Lit Lit: Open Mic for Writers",
-      "kind": "event",
       "categories": [
-        "community",
-        "art"
+        "music"
       ],
       "start": "2026-09-04T19:00:00-04:00",
       "end": "2026-09-04T21:00:00-04:00",
@@ -1352,12 +1672,16 @@
       "description": "Open mic for writers at the distillery, 7pm to 9pm.",
       "source": "alittlebeaconblog.com",
       "repeats": false,
-      "audience": "all"
+      "audience": "all",
+      "type": "open-mic",
+      "setting": "unknown",
+      "timeOfDay": "evening",
+      "hasFood": false,
+      "host": "alittlebeaconblog.com"
     },
     {
       "id": "savagewonder-82909650",
       "title": "Savage Wonder Presents, The Soul Jam",
-      "kind": "activity",
       "categories": [
         "music",
         "art"
@@ -1375,12 +1699,16 @@
       "description": "Get ready for a night of deep grooves, soaring vocals, and electrifying improvisation. Soul Jam is a rotating jazz, blues, and funk ensemble with a consistent vibe and an ever-changing lineup. While there will be regular core musicians—myself, Rodney on trumpet, and Ed on sax—the group will also feature a different mix of talented friends and guest musicians each time. This approach keeps every So",
       "source": "Savage Wonder, Beacon",
       "repeats": true,
-      "audience": "all"
+      "audience": "all",
+      "type": "concert",
+      "setting": "indoor",
+      "timeOfDay": "evening",
+      "hasFood": false,
+      "host": "Savage Wonder, Beacon"
     },
     {
       "id": "travelhudsonvalley-71251130",
       "title": "Woodstock-New Paltz Art & Crafts Fair",
-      "kind": "activity",
       "categories": [
         "music",
         "art",
@@ -1401,16 +1729,47 @@
       "source": "Hudson Valley Tourism",
       "recurrence": "3 dates listed through Sep 7",
       "repeats": true,
-      "audience": "all"
+      "audience": "all",
+      "type": "festival",
+      "setting": "outdoor",
+      "timeOfDay": "morning",
+      "hasFood": false,
+      "host": "Hudson Valley Tourism"
+    },
+    {
+      "id": "teatown-5396246",
+      "title": "Build a Nest Box (for families, ages 8+)",
+      "type": "outdoors",
+      "repeats": false,
+      "audience": "all",
+      "setting": "unknown",
+      "timeOfDay": "morning",
+      "hasFood": false,
+      "host": "Teatown Lake Reservation",
+      "categories": [
+        "outdoors",
+        "class"
+      ],
+      "start": "2026-09-05T10:00:00-04:00",
+      "end": "2026-09-05T11:00:00-04:00",
+      "venue": "Teatown",
+      "city": "Ossining, NY",
+      "address": "Teatown, 1600 Spring Valley Rd, Ossining, NY, 10562",
+      "lat": 41.21136,
+      "lon": -73.82675,
+      "price": null,
+      "signupRequired": false,
+      "url": "https://www.teatown.org/events/build-a-nest-box-for-families-ages-8/",
+      "description": "Teatown is home to breeding birds of all shapes and sizes. Many of them rely on cavities in dead trees to build their nests. Not everyone has the perfect tree in their yard to encourage would-be parents! Join us for a nestbox building workshop so you can prepare for breeding bird season – owls start early! This program involves the use of simple tools.",
+      "source": "Teatown Lake Reservation"
     },
     {
       "id": "hv-wine-music-festival-2026",
       "title": "5th Hudson Valley Wine & Music Festival",
-      "kind": "event",
       "categories": [
         "music",
-        "food",
-        "market"
+        "market",
+        "food"
       ],
       "start": "2026-09-05T11:00:00-04:00",
       "end": "2026-09-05T19:00:00-04:00",
@@ -1426,12 +1785,16 @@
       "description": "Regional wineries and live music on the Newburgh waterfront, 11am to 7pm.",
       "source": "eventbrite.com",
       "repeats": false,
-      "audience": "all"
+      "audience": "all",
+      "type": "concert",
+      "setting": "outdoor",
+      "timeOfDay": "morning",
+      "hasFood": true,
+      "host": "eventbrite.com"
     },
     {
       "id": "millbrookwine-5972041",
       "title": "Weekend Food Trucks",
-      "kind": "event",
       "categories": [
         "food"
       ],
@@ -1448,12 +1811,68 @@
       "description": null,
       "source": "Millbrook Vineyards & Winery",
       "repeats": false,
-      "audience": "all"
+      "audience": "all",
+      "type": "other",
+      "setting": "unknown",
+      "timeOfDay": "afternoon",
+      "hasFood": true,
+      "host": "Millbrook Vineyards & Winery"
+    },
+    {
+      "id": "teatown-39876067",
+      "title": "Open Gate Day: Cliffdale Farm Animals (for everyone)",
+      "type": "outdoors",
+      "repeats": false,
+      "audience": "all",
+      "setting": "outdoor",
+      "timeOfDay": "afternoon",
+      "hasFood": false,
+      "host": "Teatown Lake Reservation",
+      "categories": [
+        "outdoors"
+      ],
+      "start": "2026-09-05T12:00:00-04:00",
+      "end": "2026-09-05T14:00:00-04:00",
+      "venue": "Cliffdale Farm",
+      "city": "Croton-on-Hudson, NY",
+      "address": "Cliffdale Farm, 85 Teatown Rd, Croton-on-Hudson, NY, 10520, United States",
+      "lat": 41.20602,
+      "lon": -73.85187,
+      "price": null,
+      "signupRequired": false,
+      "url": "https://www.teatown.org/events/open-raptor-day-sept/",
+      "description": "The garden gates will be open at Cliffdale Farm and we invite you to visit our temporary bird and mammal enclosures. Drop in to speak with our Raptor Group volunteers, who will share their expertise about our live collection, including Red-tailed Hawks, Turkey Vultures, and Barred Owls. Ask your questions about prickly porcupines, chatty jays, and curious crows!",
+      "source": "Teatown Lake Reservation"
+    },
+    {
+      "id": "whitememorial-40894615",
+      "title": "Predators at Risk: The Deadly Journey of Rodenticides with Mary-Beth Kaeser",
+      "type": "other",
+      "repeats": false,
+      "audience": "all",
+      "setting": "unknown",
+      "timeOfDay": "afternoon",
+      "hasFood": false,
+      "host": "White Memorial Conservation Center",
+      "categories": [
+        "community"
+      ],
+      "start": "2026-09-05T14:00:00-04:00",
+      "end": "2026-09-05T15:30:00-04:00",
+      "venue": "80 Whitehall Rd",
+      "city": "Litchfield, CT",
+      "address": "80 Whitehall Rd, Litchfield, CT",
+      "lat": 41.73,
+      "lon": -73.21,
+      "price": null,
+      "signupRequired": false,
+      "url": "https://whitememorialcc.org/event/predators-at-risk-the-deadly-journey-of-rodenticides-with-mary-beth-kaeser/",
+      "description": "Saturday, September 5, 2026 For Ages 16 and up From mice in the pantry to rats in the barn, rodents have posed health and economic challenges for people for thousands of years. Today, a variety of effective rodent control methods are available, with prevention serving as the most important and successful first line of defense.",
+      "source": "White Memorial Conservation Center"
     },
     {
       "id": "millbrookwine-36039939",
       "title": "Jazz in the Vineyard",
-      "kind": "event",
       "categories": [
         "music"
       ],
@@ -1470,12 +1889,16 @@
       "description": null,
       "source": "Millbrook Vineyards & Winery",
       "repeats": false,
-      "audience": "all"
+      "audience": "all",
+      "type": "concert",
+      "setting": "unknown",
+      "timeOfDay": "evening",
+      "hasFood": false,
+      "host": "Millbrook Vineyards & Winery"
     },
     {
       "id": "travelhudsonvalley-65157175",
       "title": "35th Hudson Valley Hot-Air Balloon Festival at Tymor Park (Sept. 4-6)",
-      "kind": "event",
       "categories": [
         "music",
         "market",
@@ -1495,12 +1918,16 @@
       "description": "The 35th-annual Hudson Valley Hot-Air Balloon Festival has an entire weekend of family-friendly fun and excitement planned at Tymor Park Sept. 4–6, 2026! Among the festival favorites are the tethered hot-air balloon rides, full hot-air balloon flights, morning yoga, fireworks, live music and entertainment, food trucks, a beer and wine tent, local vendors, a whole bunch of family activities and mor",
       "source": "Hudson Valley Tourism",
       "repeats": false,
-      "audience": "all"
+      "audience": "all",
+      "type": "festival",
+      "setting": "outdoor",
+      "timeOfDay": "morning",
+      "hasFood": true,
+      "host": "Hudson Valley Tourism"
     },
     {
       "id": "stormking-62493883",
       "title": "Children & Families: River Response",
-      "kind": "event",
       "categories": [
         "art",
         "outdoors",
@@ -1519,12 +1946,16 @@
       "description": "Create a poetic conversation! Participants will respond to Saif Azzuz’s sculpture weych-pues / tàkhòne (where the rivers meet) by imagining the thoughts of both the sturgeon and the watery environment in which it resides. These will then be cut and configured into a two-person poem. This program will be led by Mala Hoffman. Program location: Museum Hill Suggested age range: all ages Free wi",
       "source": "Storm King Art Center",
       "repeats": false,
-      "audience": "all"
+      "audience": "all",
+      "type": "art",
+      "setting": "indoor",
+      "timeOfDay": "afternoon",
+      "hasFood": false,
+      "host": "Storm King Art Center"
     },
     {
       "id": "travelhudsonvalley-36727895",
       "title": "Bedford Music Festival",
-      "kind": "event",
       "categories": [
         "music",
         "show",
@@ -1544,17 +1975,19 @@
       "description": "Enjoy a full day of live music while exploring Caramoor’s grounds and its collection of sound art. Tour the historic Rosen house, play lawn games, and indulge in delicious food and drink offerings at this festival for music lovers of all ages.",
       "source": "Hudson Valley Tourism",
       "repeats": false,
-      "audience": "all"
+      "audience": "all",
+      "type": "concert",
+      "setting": "outdoor",
+      "timeOfDay": "afternoon",
+      "hasFood": true,
+      "host": "Hudson Valley Tourism"
     },
     {
       "id": "savagewonder-55927370",
       "title": "Old Exit 19",
-      "kind": "event",
       "categories": [
         "music",
-        "show",
-        "art",
-        "community"
+        "art"
       ],
       "start": "2026-09-06T15:00:00-04:00",
       "end": "2026-09-06T16:30:00-04:00",
@@ -1569,12 +2002,16 @@
       "description": "Savage Wonder presents another evening of live music featuring Hudson Valley’s best musicians, singers & songwriters. Tonight, Old Exit 19 performs a program blending classical finesse, rock-driven energy, exceptional artistry, and just plain fun! Featuring, Aurelia Landon Bob Cinque Carol Jendras Joe Spallina Phil Levine About Old Exit 19, Old Exit 19, founded by Bob Cinque, Carol Jendras, and",
       "source": "Savage Wonder, Beacon",
       "repeats": false,
-      "audience": "all"
+      "audience": "all",
+      "type": "concert",
+      "setting": "indoor",
+      "timeOfDay": "afternoon",
+      "hasFood": false,
+      "host": "Savage Wonder, Beacon"
     },
     {
       "id": "travelhudsonvalley-63354050",
       "title": "NY Boulders – Greatest Night in Baseball – FINAL Regular Season Home Game",
-      "kind": "event",
       "categories": [
         "sale",
         "sports"
@@ -1592,12 +2029,16 @@
       "description": "Don’t miss the “NY Boulders-Greatest Night in Baseball – Final Regular Season Home Game!” Sunday, Sept. 6. 6PM. Join the NY Boulders for their epic 15th season finale! They’re pulling out all the stops for one unforgettable night of baseball, entertainment and celebration! Stick around for Postgame Fireworks! Gates open at 5:30PM. Tickets on sale! CLICK HERE for details.",
       "source": "Hudson Valley Tourism",
       "repeats": false,
-      "audience": "all"
+      "audience": "all",
+      "type": "sports",
+      "setting": "unknown",
+      "timeOfDay": "evening",
+      "hasFood": false,
+      "host": "Hudson Valley Tourism"
     },
     {
       "id": "travelhudsonvalley-25134421",
       "title": "Sunflower Festival at Barton Orchards in Poughquag (Aug. 28-30, Sept. 4-7)",
-      "kind": "event",
       "categories": [
         "music",
         "market",
@@ -1616,17 +2057,20 @@
       "description": "Barton Orchard’s five-acre sunflower field has thousands of sunflowers just waiting to be picked. At this eighth-annual festival, you’ll receive two free sunflowers (bring your shears if you’d like to cut additional sunflowers), along with unlimited hayrides, live music, local craft vendors, delicious food, carousel rides, a petting zoo, magic shows, a dog park and so much more. Click here for det",
       "source": "Hudson Valley Tourism",
       "repeats": false,
-      "audience": "all"
+      "audience": "all",
+      "type": "festival",
+      "setting": "outdoor",
+      "timeOfDay": "morning",
+      "hasFood": false,
+      "host": "Hudson Valley Tourism"
     },
     {
       "id": "desmondfish-library-48650834",
       "title": "Creative Games Meetup",
-      "kind": "activity",
       "categories": [
         "show",
-        "outdoors",
         "family",
-        "class"
+        "community"
       ],
       "start": "2026-09-08T15:30:00-04:00",
       "end": "2026-09-08T16:30:00-04:00",
@@ -1641,12 +2085,69 @@
       "description": "In this no-commitment, weekly club, kids and teens can play their favorite creative games like Minecraft, Animal Crossing, The Sims, Stardew Valley, Scratch, Super Mario Maker, Terraria, Zelda: Tears of the Kingdom, and more in a safe, supportive, and fun environment. Whether beginners looking to learn the basics, advanced players constructing their masterpieces, or tinkerers who want to toy with",
       "source": "Desmond-Fish Library, Garrison",
       "repeats": true,
-      "audience": "kids"
+      "audience": "kids",
+      "type": "meetup",
+      "setting": "indoor",
+      "timeOfDay": "afternoon",
+      "hasFood": false,
+      "host": "Desmond-Fish Library, Garrison"
+    },
+    {
+      "id": "teatown-5577825",
+      "title": "Women Take to the Trails",
+      "type": "outdoors",
+      "repeats": true,
+      "audience": "all",
+      "setting": "outdoor",
+      "timeOfDay": "morning",
+      "hasFood": false,
+      "host": "Teatown Lake Reservation",
+      "categories": [
+        "outdoors"
+      ],
+      "start": "2026-09-09T10:00:00-04:00",
+      "end": null,
+      "venue": "Teatown",
+      "city": "Ossining, NY",
+      "address": "Teatown, 1600 Spring Valley Rd, Ossining, NY, 10562",
+      "lat": 41.21136,
+      "lon": -73.82675,
+      "price": null,
+      "signupRequired": false,
+      "url": "https://www.teatown.org/events/women-take-to-the-trails-sept-oct-2025/2026-09-09/",
+      "description": "Lace up your hiking boots and bond with fellow female hikers as we cruise the trails. Each hike’s location will be dependent on weather and trail conditions. Please dress appropriately for prolonged outdoor activity, and be sure to bring sun protection, bug spray, water, and a snack.",
+      "source": "Teatown Lake Reservation",
+      "recurrence": "4 dates listed through Sep 30"
+    },
+    {
+      "id": "teatown-60222182",
+      "title": "Birding Basics at the John C. Hart Memorial Library (for everyone)",
+      "type": "other",
+      "repeats": false,
+      "audience": "all",
+      "setting": "unknown",
+      "timeOfDay": "afternoon",
+      "hasFood": false,
+      "host": "Teatown Lake Reservation",
+      "categories": [
+        "outdoors"
+      ],
+      "start": "2026-09-09T15:00:00-04:00",
+      "end": "2026-09-09T16:00:00-04:00",
+      "venue": "John C. Hart Memorial Library",
+      "city": "Shrub Oak, NY",
+      "address": "John C. Hart Memorial Library, 1130 E Main St, Shrub Oak, NY, 10588, United States",
+      "lat": 41.3301,
+      "lon": -73.82942,
+      "price": null,
+      "signupRequired": false,
+      "url": "https://www.teatown.org/events/birding-basics-yorktown-library/",
+      "description": "Can you tell an eagle from an egret? This beginner-friendly introduction to birding helps participants build confidence in identifying birds in the field. Learn essential tools, helpful resources, and practical tips—then put your skills to the test together. This program takes place at the John C. Hart Memorial Library in Yorktown. Register",
+      "source": "Teatown Lake Reservation"
     },
     {
       "id": "desmondfish-library-55773143",
       "title": "Make Your Own: Decorated Canvas Tote Bag",
-      "kind": "event",
       "categories": [
         "family"
       ],
@@ -1663,12 +2164,16 @@
       "description": "Start the new school year off with a new bag! Come decorate a bag with patches and stamps to show off your style at school or out and about. For students in grades 4-12. Registration is required. Please register each child individually.",
       "source": "Desmond-Fish Library, Garrison",
       "repeats": false,
-      "audience": "kids"
+      "audience": "kids",
+      "type": "other",
+      "setting": "indoor",
+      "timeOfDay": "afternoon",
+      "hasFood": false,
+      "host": "Desmond-Fish Library, Garrison"
     },
     {
       "id": "scenichudson-50368685",
       "title": "Hope on a Mission (HOAM) Board Retreat",
-      "kind": "event",
       "repeats": false,
       "audience": "all",
       "categories": [
@@ -1685,17 +2190,19 @@
       "signupRequired": false,
       "url": "https://www.scenichudson.org/events/hope-on-a-mission-board-retreat/",
       "description": "Events Community events bring people together to protect and celebrate what makes this region so special. From volunteer and educational opportunities to festivals and block parties, find out what’s up next in the Hudson Valley. 4 events found. Events Today Upcoming Upcoming Select date.",
-      "source": "Scenic Hudson"
+      "source": "Scenic Hudson",
+      "type": "volunteer",
+      "setting": "unknown",
+      "timeOfDay": "evening",
+      "hasFood": false,
+      "host": "Scenic Hudson"
     },
     {
       "id": "savagewonder-50624819",
       "title": "An Evening with KJ and Amelia",
-      "kind": "event",
       "categories": [
         "music",
-        "show",
-        "art",
-        "class"
+        "art"
       ],
       "start": "2026-09-09T19:00:00-04:00",
       "end": "2026-09-09T20:30:00-04:00",
@@ -1710,12 +2217,70 @@
       "description": "Savage Wonder presents an evening of live music featuring the best Hudson Valley performers and musicians. Tonight, An Evening with KJ and Amelia—a dynamic night of pop, jazz, and timeless standards featuring soulful vocals & keyboard by 20-year U.S. Army veteran and former Army National Guard featured vocalist KJ McAleesejergins, alongside the expressive violin work of Amelia Muccia. Featuring",
       "source": "Savage Wonder, Beacon",
       "repeats": false,
-      "audience": "all"
+      "audience": "all",
+      "type": "concert",
+      "setting": "indoor",
+      "timeOfDay": "evening",
+      "hasFood": false,
+      "host": "Savage Wonder, Beacon"
+    },
+    {
+      "id": "whitememorial-20626272",
+      "title": "Happy Hour Hiking Club with Kelly Orr",
+      "type": "outdoors",
+      "repeats": true,
+      "audience": "all",
+      "setting": "outdoor",
+      "timeOfDay": "afternoon",
+      "hasFood": true,
+      "host": "White Memorial Conservation Center",
+      "categories": [
+        "outdoors",
+        "community"
+      ],
+      "start": "2026-09-10T16:00:00-04:00",
+      "end": "2026-09-10T17:00:00-04:00",
+      "venue": "80 Whitehall Rd",
+      "city": "Litchfield, CT",
+      "address": "80 Whitehall Rd, Litchfield, CT",
+      "lat": 41.73,
+      "lon": -73.21,
+      "price": null,
+      "signupRequired": false,
+      "url": "https://whitememorialcc.org/event/happy-hour-hiking-club-with-gerri-griswold-5/",
+      "description": "Thursday, September 10, 2026 Summer is upon us! Maintain a monthly resolution to keep your body moving! Skip that Happy Hour cocktail and calorie-laden appetizer and take a walk with Kelly! It may be rainy. It will definitely be buggy…but you can do it! Each one-hour walk will cover a different trail on the property. You’ll receive recipes for a healthful, meals to help keep you on track.",
+      "source": "White Memorial Conservation Center"
+    },
+    {
+      "id": "whitememorial-84236267",
+      "title": "Nature's Nursery Series, Summer 2026",
+      "type": "outdoors",
+      "repeats": true,
+      "audience": "kids",
+      "setting": "outdoor",
+      "timeOfDay": "afternoon",
+      "hasFood": false,
+      "host": "White Memorial Conservation Center",
+      "categories": [
+        "outdoors",
+        "family"
+      ],
+      "start": "2026-09-10T16:00:00-04:00",
+      "end": "2026-09-10T17:00:00-04:00",
+      "venue": "White Memorial – A.B. Ceder Room",
+      "city": "Litchfield, CT",
+      "address": "White Memorial – A.B. Ceder Room",
+      "lat": 41.73,
+      "lon": -73.21,
+      "price": null,
+      "signupRequired": false,
+      "url": "https://whitememorialcc.org/event/natures-nursery-series-summer-2026/2026-09-10/",
+      "description": "Thursdays, July 9th, August 13th, September 10th Nature’s Nursery, Summer 2026 4:00pm Ages 3-6 years Join us on the second Thursday of the month from July-September for an engaging program designed just for your young nature lovers. Every session will last 45 minutes – 1 hour and include a story, an encounter with a live animal, and an activity or craft.",
+      "source": "White Memorial Conservation Center"
     },
     {
       "id": "travelhudsonvalley-60772549",
       "title": "ITALIAN FEAST & CARNIVAL 2026",
-      "kind": "activity",
       "categories": [
         "market",
         "family",
@@ -1735,12 +2300,16 @@
       "source": "Hudson Valley Tourism",
       "recurrence": "4 dates listed through Sep 13",
       "repeats": true,
-      "audience": "all"
+      "audience": "all",
+      "type": "concert",
+      "setting": "outdoor",
+      "timeOfDay": "evening",
+      "hasFood": false,
+      "host": "Hudson Valley Tourism"
     },
     {
       "id": "desmondfish-library-26712378",
       "title": "Library Student Council",
-      "kind": "event",
       "categories": [
         "community"
       ],
@@ -1757,12 +2326,16 @@
       "description": "Calling all students in grades 6-12! The Desmond-Fish Public Library wants you to join the Library Student Council! Here’s some of what Library Student Council members might do: make book recommendations, help plan and present events, prep and organize library materials. We need your help and your ideas! Just for attending you get one hour of community service credit, and don’t forget…snacks! Thi",
       "source": "Desmond-Fish Library, Garrison",
       "repeats": false,
-      "audience": "kids"
+      "audience": "kids",
+      "type": "other",
+      "setting": "indoor",
+      "timeOfDay": "evening",
+      "hasFood": true,
+      "host": "Desmond-Fish Library, Garrison"
     },
     {
       "id": "travelhudsonvalley-86451934",
       "title": "Yorktown Grange Fair",
-      "kind": "event",
       "categories": [
         "comedy",
         "music",
@@ -1782,12 +2355,16 @@
       "description": "With a theme of “Goats, Games and Good Times!” the fair features the best livestock, produce and flowers from local farms and growers. Entertainment throughout the weekend includes special children’s programs, live music, rides, comedy shows and arts and crafts from local makers. The first hour of each day is a quiet hour with no loud noises. Event hours are: 9/11/26: 4pm-11pm; 9/12/26: 10am-11pm",
       "source": "Hudson Valley Tourism",
       "repeats": false,
-      "audience": "all"
+      "audience": "all",
+      "type": "festival",
+      "setting": "unknown",
+      "timeOfDay": "morning",
+      "hasFood": false,
+      "host": "Hudson Valley Tourism"
     },
     {
       "id": "desmondfish-library-78302714",
       "title": "Mahjong Meetup",
-      "kind": "event",
       "categories": [
         "show",
         "community"
@@ -1805,12 +2382,16 @@
       "description": "Join us for Mahjong on Fridays at the library! We will have two tables set up, one for experienced players, and one for people learning to play. All ages and skill levels are welcome. Please register to let us know that you’re coming. This group will either meet outside in the pavilion or indoors in the Fish room.",
       "source": "Desmond-Fish Library, Garrison",
       "repeats": false,
-      "audience": "all"
+      "audience": "all",
+      "type": "meetup",
+      "setting": "unknown",
+      "timeOfDay": "morning",
+      "hasFood": false,
+      "host": "Desmond-Fish Library, Garrison"
     },
     {
       "id": "desmondfish-library-37566703",
       "title": "DFPL at the Cold Spring Farmers Market",
-      "kind": "event",
       "categories": [
         "market",
         "outdoors"
@@ -1828,16 +2409,45 @@
       "description": "Stop by and say hello to some of your favorite librarians at the Farmers Market between 10am and 12pm.",
       "source": "Desmond-Fish Library, Garrison",
       "repeats": false,
-      "audience": "all"
+      "audience": "all",
+      "type": "market",
+      "setting": "unknown",
+      "timeOfDay": "morning",
+      "hasFood": false,
+      "host": "Desmond-Fish Library, Garrison"
+    },
+    {
+      "id": "whitememorial-28054047",
+      "title": "The Ron and Joan Jones Memorial Hikes: Morning Ramble to Laurel Hill, Cat Swamp, and Apple Hill",
+      "type": "outdoors",
+      "repeats": false,
+      "audience": "all",
+      "setting": "outdoor",
+      "timeOfDay": "morning",
+      "hasFood": false,
+      "host": "White Memorial Conservation Center",
+      "categories": [
+        "outdoors"
+      ],
+      "start": "2026-09-12T10:00:00-04:00",
+      "end": "2026-09-12T13:00:00-04:00",
+      "venue": "80 Whitehall Rd",
+      "city": "Litchfield, CT",
+      "address": "80 Whitehall Rd, Litchfield, CT",
+      "lat": 41.73,
+      "lon": -73.21,
+      "price": null,
+      "signupRequired": false,
+      "url": "https://whitememorialcc.org/event/the-ron-and-joan-jones-memorial-hikes-morning-ramble-to-laurel-hill-cat-swamp-and-apple-hill/",
+      "description": "Saturday, September 12, 2026 Start your day with a trip up the Laurel Hill Trail to visit spectacular Cat Swamp. Wind your way through a carpet of Princess Pine to the swamp where sightings of Wood Ducks, otters, herons, beavers, and hawks are commonplace. Then, head up to what Gerri refers to as White Memorial’s “Jewel in the Crown”, Apple Hill.",
+      "source": "White Memorial Conservation Center"
     },
     {
       "id": "hv-wine-food-festival-2026",
       "title": "Hudson Valley Wine & Food Festival",
-      "kind": "event",
       "categories": [
-        "food",
         "market",
-        "music"
+        "food"
       ],
       "start": "2026-09-12T11:00:00-04:00",
       "end": "2026-09-13T18:00:00-04:00",
@@ -1853,12 +2463,16 @@
       "description": "Regional wine, cider and food producers at the fairgrounds.",
       "source": "eventbrite.com",
       "repeats": false,
-      "audience": "all"
+      "audience": "all",
+      "type": "festival",
+      "setting": "unknown",
+      "timeOfDay": "morning",
+      "hasFood": true,
+      "host": "eventbrite.com"
     },
     {
       "id": "scenichudson-61015978",
       "title": "Pollinator PK Arts Festival",
-      "kind": "event",
       "repeats": false,
       "audience": "all",
       "categories": [
@@ -1877,12 +2491,68 @@
       "signupRequired": false,
       "url": "https://www.scenichudson.org/events/pollinator-pk-arts-festival/2026-09-12/",
       "description": "Events Community events bring people together to protect and celebrate what makes this region so special. From volunteer and educational opportunities to festivals and block parties, find out what’s up next in the Hudson Valley. 4 events found. Events Today Upcoming Upcoming Select date.",
-      "source": "Scenic Hudson"
+      "source": "Scenic Hudson",
+      "type": "festival",
+      "setting": "unknown",
+      "timeOfDay": "afternoon",
+      "hasFood": false,
+      "host": "Scenic Hudson"
+    },
+    {
+      "id": "whitememorial-58491155",
+      "title": "Meet our Radical Raptors with Colleen Harrak",
+      "type": "other",
+      "repeats": false,
+      "audience": "all",
+      "setting": "outdoor",
+      "timeOfDay": "afternoon",
+      "hasFood": false,
+      "host": "White Memorial Conservation Center",
+      "categories": [
+        "outdoors"
+      ],
+      "start": "2026-09-12T14:00:00-04:00",
+      "end": "2026-09-12T15:30:00-04:00",
+      "venue": "80 Whitehall Rd",
+      "city": "Litchfield, CT",
+      "address": "80 Whitehall Rd, Litchfield, CT",
+      "lat": 41.73,
+      "lon": -73.21,
+      "price": null,
+      "signupRequired": false,
+      "url": "https://whitememorialcc.org/event/radical-raptors-with-colleen-harrak/",
+      "description": "Saturday, September 12, 2026 For Ages 8 and up Just who-who-whoo are those big, beautiful birds of prey you see perched atop fenceposts by day or hear calling outside your window by night? Environmental Educator Colleen Harrak highlights some of the hawks, owls, eagles, and falcons that call northwest CT home. You’ll even get to meet our Avian Ambassadors up close and personal! 2 p.m., A. B.",
+      "source": "White Memorial Conservation Center"
+    },
+    {
+      "id": "teatown-79233108",
+      "title": "Birding Basics at the Eastchester Public Library (for everyone)",
+      "type": "other",
+      "repeats": false,
+      "audience": "all",
+      "setting": "unknown",
+      "timeOfDay": "afternoon",
+      "hasFood": false,
+      "host": "Teatown Lake Reservation",
+      "categories": [
+        "outdoors"
+      ],
+      "start": "2026-09-12T14:00:00-04:00",
+      "end": "2026-09-12T15:00:00-04:00",
+      "venue": "Eastchester Public Library",
+      "city": "Eastchester, NY",
+      "address": "Eastchester Public Library, 11 Oakridge Pl, Eastchester, NY, 10709, United States",
+      "lat": 40.95725,
+      "lon": -73.81178,
+      "price": null,
+      "signupRequired": false,
+      "url": "https://www.teatown.org/events/birding-basics-eastchester/",
+      "description": "Can you tell an eagle from an egret? This beginner-friendly introduction to birding helps participants build confidence in identifying birds in the field. Learn essential tools, helpful resources, and practical tips—then put your skills to the test together. This program takes place at the Eastchester Public Library. Register",
+      "source": "Teatown Lake Reservation"
     },
     {
       "id": "travelhudsonvalley-66352217",
       "title": "NYACK FALL FESTIVAL STREET FAIR",
-      "kind": "event",
       "categories": [
         "art",
         "market",
@@ -1901,12 +2571,16 @@
       "description": "Don’t miss the “Nyack Fall Festival Street Fair!” Sunday, Sept. 13. 10AM – 5PM. Rain or Shine. Featuring 200 vendors with something for everyone. Jewelry, art, photography, collectibles, antiques, quality handmade crafts, and unique gifts! Live entertainment, kids activities, and much more! Fun for the whole family! CLICK HERE for details.",
       "source": "Hudson Valley Tourism",
       "repeats": false,
-      "audience": "all"
+      "audience": "all",
+      "type": "festival",
+      "setting": "unknown",
+      "timeOfDay": "morning",
+      "hasFood": false,
+      "host": "Hudson Valley Tourism"
     },
     {
       "id": "stormking-5802230",
       "title": "Children & Families: Forest Ramble Tree ID",
-      "kind": "event",
       "categories": [
         "show",
         "outdoors",
@@ -1925,12 +2599,16 @@
       "description": "Let's go for a stroll with Hudson Highlands Nature Center on the trails of Storm King! We'll observe our surroundings and discover the diversity of our plants and trees. We will discuss their many uses, including how humans and animals rely on them! The Hudson Highlands Nature Center is a nonprofit (501c3) center for nature, with a focus on Nature Education and Nature Play. We use our living",
       "source": "Storm King Art Center",
       "repeats": false,
-      "audience": "all"
+      "audience": "all",
+      "type": "outdoors",
+      "setting": "indoor",
+      "timeOfDay": "afternoon",
+      "hasFood": false,
+      "host": "Storm King Art Center"
     },
     {
       "id": "scenichudson-51952511",
       "title": "Pollinator PK Arts Festival",
-      "kind": "event",
       "repeats": false,
       "audience": "all",
       "categories": [
@@ -1949,14 +2627,17 @@
       "signupRequired": false,
       "url": "https://www.scenichudson.org/events/pollinator-pk-arts-festival/2026-09-13/",
       "description": "Events Community events bring people together to protect and celebrate what makes this region so special. From volunteer and educational opportunities to festivals and block parties, find out what’s up next in the Hudson Valley. 4 events found. Events Today Upcoming Upcoming Select date.",
-      "source": "Scenic Hudson"
+      "source": "Scenic Hudson",
+      "type": "festival",
+      "setting": "unknown",
+      "timeOfDay": "afternoon",
+      "hasFood": false,
+      "host": "Scenic Hudson"
     },
     {
       "id": "desmondfish-library-47434437",
       "title": "Good Bot - Ethical & Responsible AI Use For Home & Work",
-      "kind": "activity",
       "categories": [
-        "show",
         "class"
       ],
       "start": "2026-09-13T14:00:00-04:00",
@@ -1972,15 +2653,18 @@
       "description": "Advising Elmer’s glue as an ingredient for pasta sauce, inventing citations that don’t exist, gaslighting users about the spelling of “strawberry,” even causing psychosis – with so many potential dangers, how can we responsibly and reliably use this powerful technology in our daily lives, at home or at work? In this workshop, we’ll learn strategies for making AI your tool – not your tyrant. We’ll",
       "source": "Desmond-Fish Library, Garrison",
       "repeats": true,
-      "audience": "all"
+      "audience": "all",
+      "type": "class",
+      "setting": "indoor",
+      "timeOfDay": "afternoon",
+      "hasFood": false,
+      "host": "Desmond-Fish Library, Garrison"
     },
     {
       "id": "desmondfish-library-27233945",
       "title": "Open Makerspace Hours",
-      "kind": "activity",
       "categories": [
-        "family",
-        "class"
+        "community"
       ],
       "start": "2026-09-13T15:00:00-04:00",
       "end": "2026-09-13T16:45:00-04:00",
@@ -1995,14 +2679,17 @@
       "description": "Want to create an object on a 3D printer? Cut decals on a Cricut? Engrave a gift with a laser cutter? Create custom chocolate molds on a vacuum former? You can do it all – and more! – at the Innovation & Learning Center, the Desmond-Fish Public Library’s makerspace and education center. During open makerspace hours, patrons can use, learn about, and experiment with all the tools available in the I",
       "source": "Desmond-Fish Library, Garrison",
       "repeats": false,
-      "audience": "all"
+      "audience": "all",
+      "type": "other",
+      "setting": "indoor",
+      "timeOfDay": "afternoon",
+      "hasFood": false,
+      "host": "Desmond-Fish Library, Garrison"
     },
     {
       "id": "savagewonder-57017734",
       "title": "Savage Wonder Presents: Jay Strauss and The Floating Seeds",
-      "kind": "event",
       "categories": [
-        "music",
         "art",
         "food"
       ],
@@ -2019,12 +2706,43 @@
       "description": "Settle in at The Grape Rebellion with a glass of wine as Savage Wonder presents another evening of FREE MUSIC featuring Hudson Valley’s best musicians, singers & songwriters. Songs with teeth, lyrics with layers, and a sideways look at the world. Jay Strauss brings his uniquely rhythmic, subtly warped take on indie rock to the stage for a night of music that’s both heady and deeply human. Jay Stra",
       "source": "Savage Wonder, Beacon",
       "repeats": false,
-      "audience": "all"
+      "audience": "all",
+      "type": "concert",
+      "setting": "indoor",
+      "timeOfDay": "afternoon",
+      "hasFood": true,
+      "host": "Savage Wonder, Beacon"
+    },
+    {
+      "id": "whitememorial-54599695",
+      "title": "Children's Free Week in the Museum",
+      "type": "other",
+      "repeats": true,
+      "audience": "all",
+      "setting": "indoor",
+      "timeOfDay": "morning",
+      "hasFood": false,
+      "host": "White Memorial Conservation Center",
+      "categories": [
+        "family"
+      ],
+      "start": "2026-09-14T09:00:00-04:00",
+      "end": null,
+      "venue": "80 Whitehall Rd",
+      "city": "Litchfield, CT",
+      "address": "80 Whitehall Rd, Litchfield, CT",
+      "lat": 41.73,
+      "lon": -73.21,
+      "price": null,
+      "signupRequired": false,
+      "url": "https://whitememorialcc.org/event/museum-children-free-week-11/",
+      "description": "September 14 – 20, 2026 In Memory of Louise W. Willson. Free admission to children ages twelve and under when accompanied by an adult.",
+      "source": "White Memorial Conservation Center",
+      "recurrence": "3 dates listed through Oct 12"
     },
     {
       "id": "desmondfish-library-48463030",
       "title": "LEGO Dream and Design",
-      "kind": "activity",
       "categories": [
         "family",
         "community"
@@ -2042,12 +2760,71 @@
       "description": "In this no-commitment, weekly club, kids and teens in grades 2-12 can practice their building skills, show off their creativity, make friends, and learn new techniques. Each week, we’ll feature a creative challenge for builders to complete (or work on a personal project), and introduce advanced building techniques. We are not able to accommodate adult builders at this time; however, check out our",
       "source": "Desmond-Fish Library, Garrison",
       "repeats": true,
-      "audience": "kids"
+      "audience": "kids",
+      "type": "kids",
+      "setting": "indoor",
+      "timeOfDay": "afternoon",
+      "hasFood": false,
+      "host": "Desmond-Fish Library, Garrison"
+    },
+    {
+      "id": "teatown-24881406",
+      "title": "Birding Basics at the Mamaroneck Public Library (for everyone)",
+      "type": "other",
+      "repeats": false,
+      "audience": "all",
+      "setting": "unknown",
+      "timeOfDay": "afternoon",
+      "hasFood": false,
+      "host": "Teatown Lake Reservation",
+      "categories": [
+        "outdoors"
+      ],
+      "start": "2026-09-14T16:00:00-04:00",
+      "end": "2026-09-14T17:00:00-04:00",
+      "venue": "mamaroneck public library",
+      "city": "Ossining, NY",
+      "address": "mamaroneck public library, 136 Prospect Ave, Mamaroneck, 10543, United States",
+      "lat": 40.94952,
+      "lon": -73.73413,
+      "price": null,
+      "signupRequired": false,
+      "url": "https://www.teatown.org/events/birding-basics-mamaroneck/",
+      "description": "Can you tell an eagle from an egret? This beginner-friendly introduction to birding helps participants build confidence in identifying birds in the field. Learn essential tools, helpful resources, and practical tips—then put your skills to the test together. This program takes place at the Mamaroneck Public Library. Registration link coming soon",
+      "source": "Teatown Lake Reservation"
+    },
+    {
+      "id": "travelhudsonvalley-1436267",
+      "title": "Catskill Mountain Thunder",
+      "type": "concert",
+      "repeats": false,
+      "audience": "all",
+      "setting": "outdoor",
+      "timeOfDay": "morning",
+      "hasFood": false,
+      "host": "Blackthorne Resort",
+      "categories": [
+        "music",
+        "market",
+        "outdoors",
+        "food"
+      ],
+      "start": "2026-09-15T00:00:00-04:00",
+      "end": "2026-09-21T00:00:00-04:00",
+      "venue": "Blackthorne Resort",
+      "city": "East Durham, NY",
+      "address": "Blackthorne Resort, 348 Sunside Road, East Durham, NY, 12423, United States",
+      "lat": 42.3526,
+      "lon": -74.07136,
+      "price": null,
+      "signupRequired": false,
+      "url": "https://travelhudsonvalley.com/event/catskill-mountain-thunder/",
+      "description": "Experience the Catskill Mountain Thunder Motorcycle Festival at Blackthorne Resort, featuring scenic motorcycle rides, bike games, custom bike build-offs, motocross stunts, live music, and more. Explore the expansive vendor expo, enjoy food and drinks at multiple bars and dining areas, and take in entertainment on the festival’s outdoor stage.",
+      "source": "Hudson Valley Tourism"
     },
     {
       "id": "travelhudsonvalley-46652890",
       "title": "Hispanic Heritage Month Featured Artist: Breana Ferreira",
-      "kind": "event",
       "categories": [
         "art"
       ],
@@ -2064,12 +2841,16 @@
       "description": "Clay Art Center Shop presents a selection of functional handmade ceramics by guest featured artist Breana Ferreira throughout Hispanic Heritage Month. Guest Breana’s work features multi-layered and textured surfaces, with colorful motifs and imagery that shape a personal narrative. Visit the shop at 40 Beech Street, Port Chester, NY Monday through Saturday from September 15 through October 17 to v",
       "source": "Hudson Valley Tourism",
       "repeats": false,
-      "audience": "all"
+      "audience": "all",
+      "type": "other",
+      "setting": "unknown",
+      "timeOfDay": "morning",
+      "hasFood": false,
+      "host": "Hudson Valley Tourism"
     },
     {
       "id": "desmondfish-library-1956066",
       "title": "National Voter Registration Day",
-      "kind": "event",
       "categories": [
         "community"
       ],
@@ -2086,17 +2867,20 @@
       "description": "Participate in democracy at your local library on National Voter Registration Day. Throughout the day, you can check your voter registration status, register to vote, and sign up to be an election worker! We’ll have a plethora of voting information and resources. Any patron who registers to vote/updates their registration will receive a free sticker.",
       "source": "Desmond-Fish Library, Garrison",
       "repeats": false,
-      "audience": "all"
+      "audience": "all",
+      "type": "other",
+      "setting": "indoor",
+      "timeOfDay": "morning",
+      "hasFood": false,
+      "host": "Desmond-Fish Library, Garrison"
     },
     {
       "id": "desmondfish-library-46882767",
       "title": "Creative Games Meetup",
-      "kind": "activity",
       "categories": [
         "show",
-        "outdoors",
         "family",
-        "class"
+        "community"
       ],
       "start": "2026-09-15T15:30:00-04:00",
       "end": "2026-09-15T16:30:00-04:00",
@@ -2111,12 +2895,16 @@
       "description": "In this no-commitment, weekly club, kids and teens can play their favorite creative games like Minecraft, Animal Crossing, The Sims, Stardew Valley, Scratch, Super Mario Maker, Terraria, Zelda: Tears of the Kingdom, and more in a safe, supportive, and fun environment. Whether beginners looking to learn the basics, advanced players constructing their masterpieces, or tinkerers who want to toy with",
       "source": "Desmond-Fish Library, Garrison",
       "repeats": true,
-      "audience": "kids"
+      "audience": "kids",
+      "type": "meetup",
+      "setting": "indoor",
+      "timeOfDay": "afternoon",
+      "hasFood": false,
+      "host": "Desmond-Fish Library, Garrison"
     },
     {
       "id": "desmondfish-library-53316915",
       "title": "Graphic Novel Book Club (for adults)",
-      "kind": "event",
       "categories": [
         "art",
         "community"
@@ -2134,12 +2922,43 @@
       "description": "Choose something light or something dark in our double feature graphic novel book club. Join us for a discussion around two graphic novels with differing themes, styles, and tones chosen by two of our librarians. We invite you to pick one book or read both as we explore this art driven form of storytelling. We’ll share what we love (and don’t love) about both books and share recommendations of sim",
       "source": "Desmond-Fish Library, Garrison",
       "repeats": false,
-      "audience": "all"
+      "audience": "all",
+      "type": "talk",
+      "setting": "indoor",
+      "timeOfDay": "afternoon",
+      "hasFood": false,
+      "host": "Desmond-Fish Library, Garrison"
+    },
+    {
+      "id": "whitememorial-88303257",
+      "title": "Tiny Trekking with Kelly Orr: Heron Pond",
+      "type": "sports",
+      "repeats": false,
+      "audience": "all",
+      "setting": "outdoor",
+      "timeOfDay": "afternoon",
+      "hasFood": false,
+      "host": "White Memorial Conservation Center",
+      "categories": [
+        "outdoors",
+        "family"
+      ],
+      "start": "2026-09-16T14:00:00-04:00",
+      "end": "2026-09-16T15:00:00-04:00",
+      "venue": "80 Whitehall Rd",
+      "city": "Litchfield, CT",
+      "address": "80 Whitehall Rd, Litchfield, CT",
+      "lat": 41.73,
+      "lon": -73.21,
+      "price": null,
+      "signupRequired": false,
+      "url": "https://whitememorialcc.org/event/tiny-trekking-with-kelly-orr-5/",
+      "description": "Wednesday, September 16, 2026 Join Kelly Orr to experience the outside world at a child’s pace! You and your child will explore each new bud and flower, climb each rock and log, and probably get a little dirty in the process! This program is geared towards children ages newborn-5 years old and will encourage them to get hands on in the outdoors. Dress for the weather.",
+      "source": "White Memorial Conservation Center"
     },
     {
       "id": "desmondfish-library-10224603",
       "title": "Page to Screen Book Club: What's the Worst That Could Happen?",
-      "kind": "activity",
       "categories": [
         "film",
         "community"
@@ -2157,15 +2976,18 @@
       "description": "Join us on the third Thursday of every month to find out if the book really is better than the movie. Each month we will read a book and then come together to watch the movie adaptation and discuss our thoughts. Registration is appreciated! September’s Pick: What’s the Worst That Could Happen? by Donald E. Westlake About the Book Dortmunder is in the midst of a routine burglary of a Long Island",
       "source": "Desmond-Fish Library, Garrison",
       "repeats": true,
-      "audience": "all"
+      "audience": "all",
+      "type": "talk",
+      "setting": "indoor",
+      "timeOfDay": "afternoon",
+      "hasFood": false,
+      "host": "Desmond-Fish Library, Garrison"
     },
     {
       "id": "stormking-45646864",
       "title": "Member Event—Art/Work: Hannah des Cognets, Director of Learning & Engagement",
-      "kind": "activity",
       "categories": [
         "art",
-        "tour",
         "outdoors",
         "family"
       ],
@@ -2182,15 +3004,17 @@
       "description": "We are delighted to welcome Hannah des Cognets, Storm King's Director of Learning & Engagement to our next Art/Work event. Hannah leads a team that creates unique and immersive experiences in art and nature including public programs, family programs, school visits, teacher workshops, and artist residencies. Join us for a conversation about Storm King’s approach to education and how art can cre",
       "source": "Storm King Art Center",
       "repeats": false,
-      "audience": "all"
+      "audience": "all",
+      "type": "outdoors",
+      "setting": "indoor",
+      "timeOfDay": "afternoon",
+      "hasFood": false,
+      "host": "Storm King Art Center"
     },
     {
       "id": "desmondfish-library-55337",
       "title": "Origami Club",
-      "kind": "activity",
       "categories": [
-        "music",
-        "class",
         "community"
       ],
       "start": "2026-09-17T18:00:00-04:00",
@@ -2206,12 +3030,16 @@
       "description": "Welcome to Hudson Valley Folds, our new monthly origami club that meets every third Thursday. Please join us to be part of some folding fun. We’ll be folding origami, sharing origami and hopefully teaching each other some new models along the way. No prior knowledge or skill is required – if you like paper, and the idea of folder that paper a few times until it becomes something, then come hang ou",
       "source": "Desmond-Fish Library, Garrison",
       "repeats": true,
-      "audience": "all"
+      "audience": "all",
+      "type": "meetup",
+      "setting": "indoor",
+      "timeOfDay": "evening",
+      "hasFood": false,
+      "host": "Desmond-Fish Library, Garrison"
     },
     {
       "id": "desmondfish-library-323260",
       "title": "Paw Pals: Read to a Dog!",
-      "kind": "event",
       "categories": [
         "family",
         "class"
@@ -2229,12 +3057,16 @@
       "description": "Sit, stay, read! Join us for an opportunity to read to Journey, one of the therapy dogs from Hudson Valley Paws for a Cause. For many children, reading out loud can be stressful. But reading to a dog can provide them a chance to improve their reading skills with a non-judgmental listener. For children in grades Kindergarten and up. Each child will be allotted fifteen minutes of reading time. Spac",
       "source": "Desmond-Fish Library, Garrison",
       "repeats": false,
-      "audience": "all"
+      "audience": "all",
+      "type": "talk",
+      "setting": "indoor",
+      "timeOfDay": "evening",
+      "hasFood": false,
+      "host": "Desmond-Fish Library, Garrison"
     },
     {
       "id": "scenichudson-91790409",
       "title": "DAY ONE Learning Center Economic Justice Summit",
-      "kind": "event",
       "repeats": false,
       "audience": "all",
       "categories": [
@@ -2251,12 +3083,16 @@
       "signupRequired": false,
       "url": "https://www.scenichudson.org/events/day-one-learning-center-economic-justice-summit/",
       "description": "Events Community events bring people together to protect and celebrate what makes this region so special. From volunteer and educational opportunities to festivals and block parties, find out what’s up next in the Hudson Valley. 4 events found. Events Today Upcoming Upcoming Select date.",
-      "source": "Scenic Hudson"
+      "source": "Scenic Hudson",
+      "type": "volunteer",
+      "setting": "unknown",
+      "timeOfDay": "morning",
+      "hasFood": false,
+      "host": "Scenic Hudson"
     },
     {
       "id": "travelhudsonvalley-12375579",
       "title": "Legendary Tours of Washington Irving's Sunnyside",
-      "kind": "event",
       "categories": [
         "film",
         "tour",
@@ -2275,12 +3111,16 @@
       "description": "Sunnyside celebrates its connection to Washington Irving’s classic tale, The Legend of Sleepy Hollow, at this family-friendly daytime event. Visitors can tour the cottage, see an original short shadow puppet film, and enjoy a Legend-themed exhibit. The program runs from Sept. 18-Nov. 8, 2026. For tickets and more information, visit: https://tickets.hudsonvalley.org/events?view=calendar&k=legend_t",
       "source": "Hudson Valley Tourism",
       "repeats": false,
-      "audience": "all"
+      "audience": "all",
+      "type": "film",
+      "setting": "unknown",
+      "timeOfDay": "morning",
+      "hasFood": false,
+      "host": "Hudson Valley Tourism"
     },
     {
       "id": "desmondfish-library-39506072",
       "title": "Play and Chat: Caregiver Meetup with Putnam County DoH Nurses",
-      "kind": "event",
       "categories": [
         "show",
         "family",
@@ -2299,12 +3139,16 @@
       "description": "Stop by the library for an informal play meet-up in our programming room. Meet and mingle with other parents and caregivers while your littles one play (toys will be available to share). While there, meet the Maternal Child Health Nurses from the Putnam County Department of Health and have your questions answered about breastfeeding, sleep, milestones, and more! No registration required. This pr",
       "source": "Desmond-Fish Library, Garrison",
       "repeats": false,
-      "audience": "all"
+      "audience": "all",
+      "type": "theater",
+      "setting": "indoor",
+      "timeOfDay": "morning",
+      "hasFood": false,
+      "host": "Desmond-Fish Library, Garrison"
     },
     {
       "id": "desmondfish-library-12433799",
       "title": "Mahjong Meetup",
-      "kind": "event",
       "categories": [
         "show",
         "community"
@@ -2322,12 +3166,16 @@
       "description": "Join us for Mahjong on Fridays at the library! We will have two tables set up, one for experienced players, and one for people learning to play. All ages and skill levels are welcome. Please register to let us know that you’re coming. This group will either meet outside in the pavilion or indoors in the Fish room.",
       "source": "Desmond-Fish Library, Garrison",
       "repeats": false,
-      "audience": "all"
+      "audience": "all",
+      "type": "meetup",
+      "setting": "unknown",
+      "timeOfDay": "morning",
+      "hasFood": false,
+      "host": "Desmond-Fish Library, Garrison"
     },
     {
       "id": "travelhudsonvalley-65205185",
       "title": "The Great Jack O'Lantern Blaze",
-      "kind": "event",
       "categories": [
         "tour",
         "outdoors"
@@ -2345,12 +3193,16 @@
       "description": "The Great Jack O’Lantern Blaze, an annual event at Van Cortlandt Manor in Croton-on-Hudson, taking place September 18-November 8. The gourd-geous displays feature more than 7,000 hand-carved, illuminated jack o’lanterns arranged in jaw-dropping displays, such as dinosaurs and a carousel. Guests take a self-guided walk through the display and can stop at the Gourd & Goblet Tavern or the Headless Ho",
       "source": "Hudson Valley Tourism",
       "repeats": false,
-      "audience": "all"
+      "audience": "all",
+      "type": "tour",
+      "setting": "unknown",
+      "timeOfDay": "evening",
+      "hasFood": false,
+      "host": "Hudson Valley Tourism"
     },
     {
       "id": "savagewonder-82726890",
       "title": "Savage Wonder Presents, A Night with The 447's",
-      "kind": "event",
       "categories": [
         "music",
         "art"
@@ -2368,15 +3220,17 @@
       "description": "Savage Wonder presents another evening of FREE MUSIC featuring Hudson Valley’s best musicians, singers & songwriters. Tonight,A Night with The 447’s — come out and jam with The 447’s as they perform an eclectic selection of hits ranging from alt rock to jazz, right here at Savage Wonder. Featuring, Jenae Petty, Jake Hall, Kyle Tobin, Sam Miller, Olivia Bennett, Ivan Bennett, and Elias Quintero. Ab",
       "source": "Savage Wonder, Beacon",
       "repeats": false,
-      "audience": "all"
+      "audience": "all",
+      "type": "concert",
+      "setting": "indoor",
+      "timeOfDay": "evening",
+      "hasFood": false,
+      "host": "Savage Wonder, Beacon"
     },
     {
       "id": "travelhudsonvalley-92542596",
       "title": "THE DINING ROOM",
-      "kind": "event",
       "categories": [
-        "show",
-        "sale",
         "class"
       ],
       "start": "2026-09-18T20:00:00-04:00",
@@ -2392,15 +3246,72 @@
       "description": "Don’t miss Antrim Playhouse’s presentation of “The Dining Room.” September 18-October 4. Set in the dining room of a typical well-to-do household, The Dining Room is a mosaic of interrelated scenes – some funny, some touching, some rueful – which, taken together, create an in-depth portrait of a vanishing species: the upper-middle-class WASP. Written by A.R. Gurney. Directed by Steve Bell. Ticke",
       "source": "Hudson Valley Tourism",
       "repeats": false,
-      "audience": "all"
+      "audience": "all",
+      "type": "food",
+      "setting": "unknown",
+      "timeOfDay": "evening",
+      "hasFood": false,
+      "host": "Hudson Valley Tourism"
+    },
+    {
+      "id": "whitememorial-92893155",
+      "title": "Star Party!",
+      "type": "dj",
+      "repeats": false,
+      "audience": "all",
+      "setting": "outdoor",
+      "timeOfDay": "evening",
+      "hasFood": false,
+      "host": "White Memorial Conservation Center",
+      "categories": [
+        "family",
+        "community",
+        "nightlife"
+      ],
+      "start": "2026-09-18T20:00:00-04:00",
+      "end": "2026-09-18T21:30:00-04:00",
+      "venue": "80 Whitehall Rd",
+      "city": "Litchfield, CT",
+      "address": "80 Whitehall Rd, Litchfield, CT",
+      "lat": 41.73,
+      "lon": -73.21,
+      "price": null,
+      "signupRequired": false,
+      "url": "https://whitememorialcc.org/event/star-party-2/",
+      "description": "Friday, September 18, 2026 This astronomy program is organized by members of the Litchfield Hills Amateur Astronomy Club and the Mattatuck Astronomical Society. Weather permitting, there will be star gazing after the program. 8:00 P.M., A.B. Ceder Room. Children under 16 must be accompanied by an adult. You are invited to bring your own telescope or binoculars.",
+      "source": "White Memorial Conservation Center"
+    },
+    {
+      "id": "whitememorial-62311497",
+      "title": "The CT DEEP'S 10th Annual Bat Appreciation Day at Old Newgate Prison, East Granby CT",
+      "type": "other",
+      "repeats": false,
+      "audience": "all",
+      "setting": "unknown",
+      "timeOfDay": "morning",
+      "hasFood": false,
+      "host": "White Memorial Conservation Center",
+      "categories": [
+        "family"
+      ],
+      "start": "2026-09-19T10:00:00-04:00",
+      "end": "2026-09-19T15:00:00-04:00",
+      "venue": "80 Whitehall Rd",
+      "city": "Litchfield, CT",
+      "address": "80 Whitehall Rd, Litchfield, CT",
+      "lat": 41.73,
+      "lon": -73.21,
+      "price": null,
+      "signupRequired": false,
+      "url": "https://whitememorialcc.org/event/the-ct-deeps-10th-annual-bat-appreciation-day-at-old-newgate-prison-granby-ct/",
+      "description": "Saturday, September 19, 2026 Old Newgate Prison and Copper Mine is located at 115 Newgate Road, East Granby, CT. The 10th Annual Bat Appreciation Day at Old Newgate Prison in East Granby Connecticut is a wonderful family friendly event highlighting the importance and conservation of Connecticut’s native bat species, along with the story of one of the state’s most intriguing historical sites!",
+      "source": "White Memorial Conservation Center"
     },
     {
       "id": "stormking-65363532",
       "title": "Fungi in the Field",
-      "kind": "event",
       "categories": [
         "art",
-        "tour",
         "outdoors",
         "class"
       ],
@@ -2417,17 +3328,21 @@
       "description": "Hike through the fields, forest, and sculptures of Storm King in search of mushrooms, guided by experts from the New York Mycological Society, Anna Efanova and Matthew Rozanoff. Then channel your observations in a hands-on creative workshop. Registration required. Tickets will be available on August 15 (8/13 for Members). Tickets are $10 + admission; $5 for members Session 1: 10:30AM-12:30PM",
       "source": "Storm King Art Center",
       "repeats": false,
-      "audience": "all"
+      "audience": "all",
+      "type": "outdoors",
+      "setting": "unknown",
+      "timeOfDay": "morning",
+      "hasFood": false,
+      "host": "Storm King Art Center"
     },
     {
       "id": "travelhudsonvalley-89751781",
       "title": "Moon Festival",
-      "kind": "event",
       "categories": [
-        "music",
-        "show",
-        "art",
-        "market"
+        "market",
+        "family",
+        "food",
+        "community"
       ],
       "start": "2026-09-19T11:00:00-04:00",
       "end": "2026-09-20T19:00:00-04:00",
@@ -2442,12 +3357,42 @@
       "description": "11th Annual Moon Festival – Exploring 250 years of Asian and Asian-American influence in the United States, the Moon Festival celebrates tradition, creativity, and community. Through food, music, and family experiences, it brings culture to life and fosters cross-cultural connection. Free Admission, $5 Parking What to Expect: -Over 20,000 Visitors -200+ market vendors featuring handmade goods,",
       "source": "Hudson Valley Tourism",
       "repeats": false,
-      "audience": "all"
+      "audience": "all",
+      "type": "festival",
+      "setting": "unknown",
+      "timeOfDay": "morning",
+      "hasFood": false,
+      "host": "Hudson Valley Tourism"
+    },
+    {
+      "id": "teatown-32385754",
+      "title": "Exploring Entomology: Beyond Butterflies at the Port Chester-Rye Brook Public Library (for everyone)",
+      "type": "other",
+      "repeats": false,
+      "audience": "all",
+      "setting": "indoor",
+      "timeOfDay": "morning",
+      "hasFood": false,
+      "host": "Teatown Lake Reservation",
+      "categories": [
+        "community"
+      ],
+      "start": "2026-09-19T11:00:00-04:00",
+      "end": "2026-09-19T12:00:00-04:00",
+      "venue": "Port Chester-Rye Brook Public Library",
+      "city": "Port Chester, NY",
+      "address": "Port Chester-Rye Brook Public Library, 1 Haseco Ave, Port Chester, New York, 10573, United States",
+      "lat": 41.00364,
+      "lon": -73.6686,
+      "price": null,
+      "signupRequired": false,
+      "url": "https://www.teatown.org/events/entomology-port-chester-rye-brook-library/",
+      "description": "Step into the fascinating world of insects! From monarch caterpillars to dragonflies, this interactive program introduces participants to local invertebrates. Create your own sweep net and learn how to safely observe and handle insects while gaining a deeper appreciation for their role in the ecosystem. This program takes place at the Port Chester-Rye Brook Public Library.",
+      "source": "Teatown Lake Reservation"
     },
     {
       "id": "travelhudsonvalley-82791998",
       "title": "Korea Fest: A Celebration of Korean Heritage, Food, and Community",
-      "kind": "event",
       "categories": [
         "food",
         "community"
@@ -2465,12 +3410,42 @@
       "description": "Set against the scenic backdrop of the Shawangunk Ridge, celebrate Korean culture in the heart of the Hudson Valley where traditional performances, authentic cuisine, local craft beverages, and orchard charm come together for a one-of-a-kind fall experience!",
       "source": "Hudson Valley Tourism",
       "repeats": false,
-      "audience": "all"
+      "audience": "all",
+      "type": "festival",
+      "setting": "outdoor",
+      "timeOfDay": "afternoon",
+      "hasFood": false,
+      "host": "Hudson Valley Tourism"
+    },
+    {
+      "id": "whitememorial-20761315",
+      "title": "Ron and Joan Jones Memorial Hikes: Evening at Little Pond",
+      "type": "outdoors",
+      "repeats": false,
+      "audience": "all",
+      "setting": "outdoor",
+      "timeOfDay": "evening",
+      "hasFood": false,
+      "host": "White Memorial Conservation Center",
+      "categories": [
+        "outdoors"
+      ],
+      "start": "2026-09-19T17:00:00-04:00",
+      "end": "2026-09-19T19:30:00-04:00",
+      "venue": "80 Whitehall Rd",
+      "city": "Litchfield, CT",
+      "address": "80 Whitehall Rd, Litchfield, CT",
+      "lat": 41.73,
+      "lon": -73.21,
+      "price": null,
+      "signupRequired": false,
+      "url": "https://whitememorialcc.org/event/ron-and-jone-jones-memorial-hikes-evening-at-little-pond/",
+      "description": "Saturday, September 19, 2026 Join Gerri Griswold in search of Wood Ducks, migrating raptors, herons, muskrats, otters, beavers, frogs, and anything else Mother Nature is willing to dish out at dusk on this ethereal property! Dress for the weather! This will be a 3.5 mile hike on flat but often rooty terrain. Bring a flashlight as part of the walk will be in darker conditions. 5:00 p.m.",
+      "source": "White Memorial Conservation Center"
     },
     {
       "id": "savagewonder-20029783",
       "title": "Savage Wonder Presents, Awkward Silence",
-      "kind": "activity",
       "categories": [
         "music",
         "show",
@@ -2490,15 +3465,18 @@
       "description": "Bop into the Grape Rebellion for a glass of wine as we present another evening of FREE MUSIC & OPEN DANCE in The Savage Wonderground Gallery featuring Hudson Valley’s best musicians, singers & songwriters. Tonight, Get ready for a night of energy, creativity, and good vibes! Awkward Silence is a versatile collective of friends and musicians who bring a fresh mix of Spanish, swing, jazz, pop, and",
       "source": "Savage Wonder, Beacon",
       "repeats": false,
-      "audience": "all"
+      "audience": "all",
+      "type": "art",
+      "setting": "indoor",
+      "timeOfDay": "night",
+      "hasFood": true,
+      "host": "Savage Wonder, Beacon"
     },
     {
       "id": "stormking-55297745",
       "title": "Children & Families: Winogradsky Watercolors",
-      "kind": "event",
       "categories": [
         "art",
-        "tour",
         "family"
       ],
       "start": "2026-09-20T12:00:00-04:00",
@@ -2514,12 +3492,16 @@
       "description": "Join us in making watercolor paintings inspired by Anicka Yi: Message from the Mud! The colors, shapes, and textures of the microorganisms found in Yi’s Winogradsky columns will be the source of inspiration for these abstract works of art. This program will be led by Ally Caple. Program location: South Ponds, near Message from the Mud Suggested age range: all ages Free with admission, no r",
       "source": "Storm King Art Center",
       "repeats": false,
-      "audience": "all"
+      "audience": "all",
+      "type": "art",
+      "setting": "indoor",
+      "timeOfDay": "afternoon",
+      "hasFood": false,
+      "host": "Storm King Art Center"
     },
     {
       "id": "savagewonder-23683207",
       "title": "Savage Wonder Presents, Straight Ahead JAZZ Project",
-      "kind": "event",
       "categories": [
         "music",
         "art",
@@ -2538,14 +3520,20 @@
       "description": "Settle in at The Grape Rebellion with a glass of wine as Savage Wonder presents another evening of FREE MUSIC featuring some of the Hudson Valley’s finest talent. This time, we’re proud to welcome The Straight-Ahead Jazz Trio—a powerhouse group delivering a distinctive mix of melodious jazz classics from the bebop era, funky soul, cool blues, and smooth bossa nova. Their performances draw from leg",
       "source": "Savage Wonder, Beacon",
       "repeats": false,
-      "audience": "all"
+      "audience": "all",
+      "type": "concert",
+      "setting": "indoor",
+      "timeOfDay": "afternoon",
+      "hasFood": true,
+      "host": "Savage Wonder, Beacon"
     },
     {
       "id": "beacon-short-film-showcase",
       "title": "Outdoor Micro Film Festival: Beacon Short Film Showcase",
-      "kind": "event",
       "categories": [
         "film",
+        "market",
+        "sale",
         "outdoors"
       ],
       "start": "2026-09-20T19:30:00-04:00",
@@ -2564,12 +3552,123 @@
       "description": "Outdoor showcase of local short films from The Film Lab at the Yard. Beer and food for sale.",
       "source": "alittlebeaconblog.com",
       "repeats": false,
-      "audience": "all"
+      "audience": "all",
+      "type": "film",
+      "setting": "outdoor",
+      "timeOfDay": "evening",
+      "hasFood": true,
+      "host": "alittlebeaconblog.com"
+    },
+    {
+      "id": "teatown-2564405",
+      "title": "Hudson Valley Wildlife at the Greenburgh Public Library (for families)",
+      "type": "other",
+      "repeats": false,
+      "audience": "all",
+      "setting": "indoor",
+      "timeOfDay": "evening",
+      "hasFood": false,
+      "host": "Teatown Lake Reservation",
+      "categories": [
+        "community"
+      ],
+      "start": "2026-09-22T18:00:00-04:00",
+      "end": "2026-09-22T19:00:00-04:00",
+      "venue": "Greenburgh Public Library",
+      "city": "Elmsford, NY",
+      "address": "Greenburgh Public Library, 300 Tarrytown Road, Elmsford, NY, 10523, United States",
+      "lat": 41.04644,
+      "lon": -73.80678,
+      "price": null,
+      "signupRequired": false,
+      "url": "https://www.teatown.org/events/hudson-valley-wildlife-greenburgh/",
+      "description": "What’s living in your backyard? This engaging, hands-on program introduces participants to wildlife found in the Hudson Hills and Highlands region. Using live animals, mounts, furs, and bones, a Teatown educator brings local species to life while exploring key concepts such as biodiversity, habitat, population dynamics, and conservation through interactive demonstrations.",
+      "source": "Teatown Lake Reservation"
+    },
+    {
+      "id": "teatown-63632615",
+      "title": "Plug In and Power Up: An Introduction to Plug-In Solar",
+      "type": "other",
+      "repeats": false,
+      "audience": "all",
+      "setting": "unknown",
+      "timeOfDay": "evening",
+      "hasFood": false,
+      "host": "Teatown Lake Reservation",
+      "categories": [
+        "community"
+      ],
+      "start": "2026-09-22T18:30:00-04:00",
+      "end": "2026-09-22T20:00:00-04:00",
+      "venue": "Teatown",
+      "city": "Ossining, NY",
+      "address": "Teatown, 1600 Spring Valley Rd, Ossining, NY, 10562",
+      "lat": 41.21136,
+      "lon": -73.82675,
+      "price": null,
+      "signupRequired": false,
+      "url": "https://www.teatown.org/events/plug-in-solar/",
+      "description": "Could solar power be as simple as plugging in an appliance? Join us for an introduction to plug-in solar, an emerging option that allows households to generate renewable electricity using compact solar panels. Speakers NYS Assemblymember Emily Gallagher Leo Weigmen, Sustainable Westchester Program takes place in person and on Zoom. An Environmental Leaders Learning Alliance (ELLA) program.",
+      "source": "Teatown Lake Reservation"
+    },
+    {
+      "id": "emelin-72670213",
+      "title": "Fall Film Club 2026 #1",
+      "type": "film",
+      "repeats": false,
+      "audience": "all",
+      "setting": "indoor",
+      "timeOfDay": "evening",
+      "hasFood": false,
+      "host": "Emelin",
+      "categories": [
+        "film",
+        "show",
+        "community"
+      ],
+      "start": "2026-09-23T19:30:00-04:00",
+      "end": "2026-09-23T21:30:00-04:00",
+      "venue": "Emelin Theatre",
+      "city": "Mamaroneck, NY",
+      "address": "Emelin Theatre, 153 Library Lane, Mamaroneck, NY, 10543, United States",
+      "lat": 40.94926,
+      "lon": -73.73402,
+      "price": null,
+      "signupRequired": false,
+      "url": "https://emelin.org/event/fall-film-club-2026-1/",
+      "description": null,
+      "source": "Emelin Theatre"
+    },
+    {
+      "id": "whitememorial-62682713",
+      "title": "The 44th Annual Family Nature Day",
+      "type": "outdoors",
+      "repeats": false,
+      "audience": "all",
+      "setting": "unknown",
+      "timeOfDay": "morning",
+      "hasFood": false,
+      "host": "White Memorial Conservation Center",
+      "categories": [
+        "outdoors",
+        "family"
+      ],
+      "start": "2026-09-26T11:00:00-04:00",
+      "end": "2026-09-26T17:00:00-04:00",
+      "venue": "80 Whitehall Rd",
+      "city": "Litchfield, CT",
+      "address": "80 Whitehall Rd, Litchfield, CT",
+      "lat": 41.73,
+      "lon": -73.21,
+      "price": null,
+      "signupRequired": false,
+      "url": "https://whitememorialcc.org/event/the-42nd-annual-family-nature-day/",
+      "description": "Saturday, September 26, 2026 Our annual celebration of Mother Nature is a must for folks of all ages. This edition is chock full of the greatest presenters! Riverside Reptiles’ introduces you to some of Nature’s most underappreciated creatures. Come visit the many friends they’ll be bringing along.",
+      "source": "White Memorial Conservation Center"
     },
     {
       "id": "scenichudson-65388164",
       "title": "Craft Circle",
-      "kind": "event",
       "repeats": false,
       "audience": "all",
       "categories": [
@@ -2586,12 +3685,16 @@
       "signupRequired": false,
       "url": "https://www.scenichudson.org/events/craft-circle-3/",
       "description": "Events Community events bring people together to protect and celebrate what makes this region so special. From volunteer and educational opportunities to festivals and block parties, find out what’s up next in the Hudson Valley. 4 events found. Events Today Upcoming Upcoming Select date.",
-      "source": "Scenic Hudson"
+      "source": "Scenic Hudson",
+      "type": "volunteer",
+      "setting": "unknown",
+      "timeOfDay": "morning",
+      "hasFood": false,
+      "host": "Scenic Hudson"
     },
     {
       "id": "millbrookwine-39512038",
       "title": "Sommelier Paint and Sip",
-      "kind": "event",
       "categories": [
         "community"
       ],
@@ -2608,12 +3711,16 @@
       "description": "Tickets available online.",
       "source": "Millbrook Vineyards & Winery",
       "repeats": false,
-      "audience": "all"
+      "audience": "all",
+      "type": "other",
+      "setting": "unknown",
+      "timeOfDay": "afternoon",
+      "hasFood": false,
+      "host": "Millbrook Vineyards & Winery"
     },
     {
       "id": "scenichudson-25623906",
       "title": "Literacy Connections 50th Anniversary",
-      "kind": "event",
       "repeats": false,
       "audience": "all",
       "categories": [
@@ -2630,16 +3737,100 @@
       "signupRequired": false,
       "url": "https://www.scenichudson.org/events/50th-anniversary-of-literacy-connections-of-the-hudson-valley/",
       "description": "Events Community events bring people together to protect and celebrate what makes this region so special. From volunteer and educational opportunities to festivals and block parties, find out what’s up next in the Hudson Valley. 4 events found. Events Today Upcoming Upcoming Select date.",
-      "source": "Scenic Hudson"
+      "source": "Scenic Hudson",
+      "type": "celebration",
+      "setting": "unknown",
+      "timeOfDay": "afternoon",
+      "hasFood": false,
+      "host": "Scenic Hudson"
+    },
+    {
+      "id": "teatown-76764000",
+      "title": "Teatown Tales (for everyone)",
+      "type": "theater",
+      "repeats": false,
+      "audience": "all",
+      "setting": "unknown",
+      "timeOfDay": "afternoon",
+      "hasFood": false,
+      "host": "Teatown Lake Reservation",
+      "categories": [
+        "show",
+        "family"
+      ],
+      "start": "2026-09-26T14:00:00-04:00",
+      "end": "2026-09-26T15:00:00-04:00",
+      "venue": "Teatown",
+      "city": "Ossining, NY",
+      "address": "Teatown, 1600 Spring Valley Rd, Ossining, NY, 10562",
+      "lat": 41.21136,
+      "lon": -73.82675,
+      "price": null,
+      "signupRequired": false,
+      "url": "https://www.teatown.org/events/teatown-tales-for-everyone/",
+      "description": "Join master storyteller Jonathan Kruk for a lively interactive performance of local lore for families, with live musical accompaniment by “Caffeine” Steve Kelman. Children will step into stories as characters in these tales, so come prepared to get called upon to join the troupe of troubadours.",
+      "source": "Teatown Lake Reservation"
+    },
+    {
+      "id": "teatown-47472496",
+      "title": "Revolutionary Teatown! (for adults)",
+      "type": "theater",
+      "repeats": false,
+      "audience": "all",
+      "setting": "unknown",
+      "timeOfDay": "evening",
+      "hasFood": false,
+      "host": "Teatown Lake Reservation",
+      "categories": [
+        "show",
+        "community"
+      ],
+      "start": "2026-09-26T18:00:00-04:00",
+      "end": "2026-09-26T19:30:00-04:00",
+      "venue": "Teatown",
+      "city": "Ossining, NY",
+      "address": "Teatown, 1600 Spring Valley Rd, Ossining, NY, 10562",
+      "lat": 41.21136,
+      "lon": -73.82675,
+      "price": null,
+      "signupRequired": false,
+      "url": "https://www.teatown.org/events/revolutionary-teatown-for-adults/",
+      "description": "Help Teatown write its next chapter! Join us for this special fundraiser in support of our campus renovation, filled with stories and songs that bring Westchester’s struggle for independence to life. Celebrate America 250 with Hudson Valley Master Storyteller Jonathan Kruk and Historical Balladeer Linda Russell, as they lead us on a musical journey starting with Teatown’s Revolutionary origins…",
+      "source": "Teatown Lake Reservation"
+    },
+    {
+      "id": "emelin-27414725",
+      "title": "Jane Monheit",
+      "type": "theater",
+      "repeats": true,
+      "audience": "all",
+      "setting": "indoor",
+      "timeOfDay": "evening",
+      "hasFood": false,
+      "host": "Emelin",
+      "categories": [
+        "music",
+        "show"
+      ],
+      "start": "2026-09-26T20:00:00-04:00",
+      "end": "2026-09-26T22:00:00-04:00",
+      "venue": "Emelin Theatre",
+      "city": "Mamaroneck, NY",
+      "address": "Emelin Theatre, 153 Library Lane, Mamaroneck, NY, 10543, United States",
+      "lat": 40.94926,
+      "lon": -73.73402,
+      "price": null,
+      "signupRequired": false,
+      "url": "https://emelin.org/event/jane-monheit/",
+      "description": "“Monheit has great chops, a terrific voice.” — All About Jazz Jane Monheit brings one of the most admired voices in contemporary jazz to the Great American Songbook. Praised by The New York Times for “a voice of phenomenal beauty,” Monheit has spent more than 25 years building an international career defined by elegance, warmth, and deep musical intelligence.",
+      "source": "Emelin Theatre"
     },
     {
       "id": "spirit-of-beacon-day-2026",
       "title": "Spirit of Beacon Day Parade",
-      "kind": "event",
       "categories": [
         "parade",
-        "community",
-        "family"
+        "market"
       ],
       "start": "2026-09-27T11:00:00-04:00",
       "end": "2026-09-27T17:00:00-04:00",
@@ -2657,12 +3848,42 @@
       "description": "Beacon's biggest day. Vendor tables open at 11am, the parade steps off at noon from Pohill Park and runs to the main stage at Veterans Place, ending at 5pm.",
       "source": "alittlebeaconblog.com",
       "repeats": false,
-      "audience": "all"
+      "audience": "all",
+      "type": "parade",
+      "setting": "outdoor",
+      "timeOfDay": "morning",
+      "hasFood": false,
+      "host": "alittlebeaconblog.com"
+    },
+    {
+      "id": "teatown-9782193",
+      "title": "Animal Encounter: Owls of the World (for everyone)",
+      "type": "talk",
+      "repeats": false,
+      "audience": "all",
+      "setting": "unknown",
+      "timeOfDay": "morning",
+      "hasFood": false,
+      "host": "Teatown Lake Reservation",
+      "categories": [
+        "class"
+      ],
+      "start": "2026-09-27T11:00:00-04:00",
+      "end": "2026-09-27T12:30:00-04:00",
+      "venue": "Teatown",
+      "city": "Ossining, NY",
+      "address": "Teatown, 1600 Spring Valley Rd, Ossining, NY, 10562",
+      "lat": 41.21136,
+      "lon": -73.82675,
+      "price": null,
+      "signupRequired": false,
+      "url": "https://www.teatown.org/events/animal-encounters-owls-august/",
+      "description": "Join Dr. Laura Jaworski to meet four different native and non-native species of owls from around the world as we talk about their unique characteristics, adaptations, and modern-day risks that they face. Learn what people can do to help raptors thrive in their native habitats, especially those who live in our own backyards. After graduating from veterinary school in 2013, Dr.",
+      "source": "Teatown Lake Reservation"
     },
     {
       "id": "stormking-4552868",
       "title": "Young Explorer Backpacks",
-      "kind": "event",
       "categories": [
         "art",
         "family"
@@ -2680,12 +3901,95 @@
       "description": "Young Explorer Backpacks are a resource for children and families to use during their visit to Storm King Art Center. Each backpack contains a variety of navigational and observational tools, as well as self-guided activities that help young visitors explore the landscape and sculptures. Borrowing a backpack is free and intended for children of all ages.",
       "source": "Storm King Art Center",
       "repeats": false,
-      "audience": "all"
+      "audience": "all",
+      "type": "other",
+      "setting": "indoor",
+      "timeOfDay": "afternoon",
+      "hasFood": false,
+      "host": "Storm King Art Center"
+    },
+    {
+      "id": "emelin-8044305",
+      "title": "Rachel Feinstein",
+      "type": "comedy",
+      "repeats": true,
+      "audience": "all",
+      "setting": "indoor",
+      "timeOfDay": "evening",
+      "hasFood": false,
+      "host": "Emelin",
+      "categories": [
+        "comedy",
+        "show"
+      ],
+      "start": "2026-10-01T19:30:00-04:00",
+      "end": "2026-10-01T21:30:00-04:00",
+      "venue": "Emelin Theatre",
+      "city": "Mamaroneck, NY",
+      "address": "Emelin Theatre, 153 Library Lane, Mamaroneck, NY, 10543, United States",
+      "lat": 40.94926,
+      "lon": -73.73402,
+      "price": null,
+      "signupRequired": false,
+      "url": "https://emelin.org/event/rachel-feinstein/",
+      "description": "“Feinstein is quick with a quip.” — Decider Named one of Variety’s “10 Comics to Watch” in 2024, Rachel Feinstein has become one of stand-up’s sharpest and most distinctive voices. Her Netflix special Big Guy premiered in May 2024 and landed on Netflix’s Top 10 TV Shows in the U.S., where it remained for more than a week—bringing her fast, fearless, character-driven comedy to an even wider…",
+      "source": "Emelin Theatre"
+    },
+    {
+      "id": "whitememorial-87717170",
+      "title": "ANTHROPOMORPHIC OR NATURAL MOUSE TAXIDERMY with GOTHAM TAXIDERMY",
+      "type": "class",
+      "repeats": false,
+      "audience": "all",
+      "setting": "unknown",
+      "timeOfDay": "morning",
+      "hasFood": false,
+      "host": "White Memorial Conservation Center",
+      "categories": [
+        "class"
+      ],
+      "start": "2026-10-03T09:00:00-04:00",
+      "end": "2026-10-03T17:00:00-04:00",
+      "venue": "80 Whitehall Rd",
+      "city": "Litchfield, CT",
+      "address": "80 Whitehall Rd, Litchfield, CT",
+      "lat": 41.73,
+      "lon": -73.21,
+      "price": null,
+      "signupRequired": false,
+      "url": "https://whitememorialcc.org/event/anthropomorphic-or-natural-mouse-taxidermy-with-gotham-taxidermy/",
+      "description": "Saturday, October 3, 2026 In this class, we will learn about the fascinating anatomy of mammals and traditional mammal taxidermy. This class is designed for beginners with an interest in taxidermy. No matter the experience level, all are welcome!",
+      "source": "White Memorial Conservation Center"
+    },
+    {
+      "id": "whitememorial-10477305",
+      "title": "The Fungus Among Us with Dave Paton",
+      "type": "outdoors",
+      "repeats": false,
+      "audience": "all",
+      "setting": "indoor",
+      "timeOfDay": "morning",
+      "hasFood": false,
+      "host": "White Memorial Conservation Center",
+      "categories": [
+        "outdoors"
+      ],
+      "start": "2026-10-03T10:00:00-04:00",
+      "end": "2026-10-03T12:00:00-04:00",
+      "venue": "80 Whitehall Rd",
+      "city": "Litchfield, CT",
+      "address": "80 Whitehall Rd, Litchfield, CT",
+      "lat": 41.73,
+      "lon": -73.21,
+      "price": null,
+      "signupRequired": false,
+      "url": "https://whitememorialcc.org/event/dave-the-fungus-among-us/",
+      "description": "Saturday, October 3, 2026 Spend a couple of hours in the forest with Dave learning do’s and don’ts, basic identification, and stories behind all of the fungus among us! The program begins with a brief introduction in the Mott- Van Winkle Classroom to view some specimens. 10:00 a.m. – 12:00 p.m., Meet in the Mott – Van Winkle Classroom, 53 Whitehall Road, Litchfield. Dress for the weather!",
+      "source": "White Memorial Conservation Center"
     },
     {
       "id": "stormking-47735882",
       "title": "where the rivers meet: A Knowledge Sharing with Saif Azzuz, Jamie Holt, and Joe Baker",
-      "kind": "activity",
       "categories": [
         "art",
         "outdoors"
@@ -2703,16 +4007,72 @@
       "description": "Join us for a conversation with 2026 Outlooks artist Saif Azzuz around his work weych-pues / tàkhòne (where the rivers meet) (2026), alongside Yurok fisheries technician, Jamie Holt, and Joe Baker, co-founder and Executive Director of Lenape Center. The program brings together perspectives from Indigenous communities and conservation efforts centered on the Klamath and the Hudson rivers to explor",
       "source": "Storm King Art Center",
       "repeats": false,
-      "audience": "all"
+      "audience": "all",
+      "type": "other",
+      "setting": "indoor",
+      "timeOfDay": "afternoon",
+      "hasFood": false,
+      "host": "Storm King Art Center"
+    },
+    {
+      "id": "emelin-16320984",
+      "title": "Lez Zeppelin",
+      "type": "concert",
+      "repeats": false,
+      "audience": "all",
+      "setting": "indoor",
+      "timeOfDay": "evening",
+      "hasFood": false,
+      "host": "Emelin",
+      "categories": [
+        "music",
+        "show"
+      ],
+      "start": "2026-10-03T20:00:00-04:00",
+      "end": "2026-10-03T22:00:00-04:00",
+      "venue": "Emelin Theatre",
+      "city": "Mamaroneck, NY",
+      "address": "Emelin Theatre, 153 Library Lane, Mamaroneck, NY, 10543, United States",
+      "lat": 40.94926,
+      "lon": -73.73402,
+      "price": null,
+      "signupRequired": false,
+      "url": "https://emelin.org/event/lez-zeppelin-3/",
+      "description": "“They played the Led Zeppelin music with an extraordinary sensuality and an energy and passion that highlighted their superb musicianship.” – Jimmy Page (Led Zeppelin Lead Guitarist) Called “the most powerful all-female band in rock history” by Spin magazine, Lez Zeppelin has earned a reputation as one of the rare tribute acts with the musicianship, authority, and stage presence to take on Led…",
+      "source": "Emelin Theatre"
+    },
+    {
+      "id": "whitememorial-18136930",
+      "title": "SUNSET MOTH  PRESERVATION with GOTHAM TAXIDERMY",
+      "type": "class",
+      "repeats": false,
+      "audience": "all",
+      "setting": "unknown",
+      "timeOfDay": "morning",
+      "hasFood": false,
+      "host": "White Memorial Conservation Center",
+      "categories": [
+        "class"
+      ],
+      "start": "2026-10-04T09:00:00-04:00",
+      "end": "2026-10-04T12:00:00-04:00",
+      "venue": "80 Whitehall Rd",
+      "city": "Litchfield, CT",
+      "address": "80 Whitehall Rd, Litchfield, CT",
+      "lat": 41.73,
+      "lon": -73.21,
+      "price": null,
+      "signupRequired": false,
+      "url": "https://whitememorialcc.org/event/sunset-moth-stag-beetle-preservation-with-gotham-taxidermy/",
+      "description": "Sunday, October 4, 2026 In this beginners class, students will learn everything about basic butterfly/insect/ arachnid preparation. We will discuss harvesting and drying specimen, rehydrating dried specimen, and in class we will practice handling techniques, spreading, mounting, the nuances of posing, display, and maintenance.",
+      "source": "White Memorial Conservation Center"
     },
     {
       "id": "stormking-81509220",
       "title": "Children & Families: Sculpture Studies with Saif Azzuz",
-      "kind": "event",
       "categories": [
         "show",
         "art",
-        "outdoors",
         "family"
       ],
       "start": "2026-10-04T12:00:00-04:00",
@@ -2728,12 +4088,151 @@
       "description": "[caption id=\"attachment_30708\" align=\"alignnone\" width=\"1024\"] Image Credit: Jeffrey Jenkins[/caption] Join us for a hands-on program led by Outlooks artist, Saif Azzuz! Participants will explore sound, mark-making, sculptural technique, and material play inspired by Azzuz's work and practice. Materials include shells, sticks, wire, wind chimes, cyanotype fabric, and paint sticks. Program l",
       "source": "Storm King Art Center",
       "repeats": false,
-      "audience": "all"
+      "audience": "all",
+      "type": "art",
+      "setting": "indoor",
+      "timeOfDay": "afternoon",
+      "hasFood": false,
+      "host": "Storm King Art Center"
+    },
+    {
+      "id": "whitememorial-58329098",
+      "title": "LONGHORN BEETLE PRESERVATION with GOTHAM TAXIDERMY",
+      "type": "class",
+      "repeats": false,
+      "audience": "all",
+      "setting": "unknown",
+      "timeOfDay": "afternoon",
+      "hasFood": false,
+      "host": "White Memorial Conservation Center",
+      "categories": [
+        "class"
+      ],
+      "start": "2026-10-04T13:30:00-04:00",
+      "end": "2026-10-04T16:30:00-04:00",
+      "venue": "80 Whitehall Rd",
+      "city": "Litchfield, CT",
+      "address": "80 Whitehall Rd, Litchfield, CT",
+      "lat": 41.73,
+      "lon": -73.21,
+      "price": null,
+      "signupRequired": false,
+      "url": "https://whitememorialcc.org/event/stag-beetle-preservation-with-gotham-taxidermy/",
+      "description": "Sunday, October 4, 2026 In this beginners class, students will learn everything about basic butterfly/insect/ arachnid preparation. We will discuss harvesting and drying specimen, rehydrating dried specimen, and in class we will practice handling techniques, spreading, mounting, the nuances of posing, display, and maintenance.",
+      "source": "White Memorial Conservation Center"
+    },
+    {
+      "id": "whitememorial-56122598",
+      "title": "Fresh Start Hiking Club",
+      "type": "outdoors",
+      "repeats": false,
+      "audience": "all",
+      "setting": "outdoor",
+      "timeOfDay": "morning",
+      "hasFood": false,
+      "host": "White Memorial Conservation Center",
+      "categories": [
+        "outdoors",
+        "community"
+      ],
+      "start": "2026-10-06T07:45:00-04:00",
+      "end": "2026-10-06T09:00:00-04:00",
+      "venue": "80 Whitehall Rd",
+      "city": "Litchfield, CT",
+      "address": "80 Whitehall Rd, Litchfield, CT",
+      "lat": 41.73,
+      "lon": -73.21,
+      "price": null,
+      "signupRequired": false,
+      "url": "https://whitememorialcc.org/event/fresh-start-hiking-club/2026-10-06/",
+      "description": "October 6, November 3, December 1, 2026 Get a leg up on your day by heading to White Memorial! Join Gerri Griswold on the first Tuesday of each month for a one-hour hike! It’s the perfect way to engage with Nature, spend time with old friends and meet new friends! With over 40 miles of trails from which to choose, you never know where Gerri will take you! 7:45 a.m. – 9:00 a.m., Meet in the A. B.",
+      "source": "White Memorial Conservation Center"
+    },
+    {
+      "id": "emelin-21277901",
+      "title": "Fall Film Club 2026 #2",
+      "type": "film",
+      "repeats": false,
+      "audience": "all",
+      "setting": "indoor",
+      "timeOfDay": "evening",
+      "hasFood": false,
+      "host": "Emelin",
+      "categories": [
+        "film",
+        "show",
+        "community"
+      ],
+      "start": "2026-10-07T19:30:00-04:00",
+      "end": "2026-10-07T21:30:00-04:00",
+      "venue": "Emelin Theatre",
+      "city": "Mamaroneck, NY",
+      "address": "Emelin Theatre, 153 Library Lane, Mamaroneck, NY, 10543, United States",
+      "lat": 40.94926,
+      "lon": -73.73402,
+      "price": null,
+      "signupRequired": false,
+      "url": "https://emelin.org/event/fall-film-club-2026-2/",
+      "description": null,
+      "source": "Emelin Theatre"
+    },
+    {
+      "id": "whitememorial-51375527",
+      "title": "Happy Hour Hiking Club with Gerri Griswold",
+      "type": "outdoors",
+      "repeats": false,
+      "audience": "all",
+      "setting": "unknown",
+      "timeOfDay": "afternoon",
+      "hasFood": true,
+      "host": "White Memorial Conservation Center",
+      "categories": [
+        "outdoors",
+        "community"
+      ],
+      "start": "2026-10-08T16:00:00-04:00",
+      "end": "2026-10-08T17:00:00-04:00",
+      "venue": "80 Whitehall Rd",
+      "city": "Litchfield, CT",
+      "address": "80 Whitehall Rd, Litchfield, CT",
+      "lat": 41.73,
+      "lon": -73.21,
+      "price": null,
+      "signupRequired": false,
+      "url": "https://whitememorialcc.org/event/happy-hour-hiking-club-with-gerri-griswold-6/2026-10-08/",
+      "description": "October 8, November 12, December 10, 2026 Get your autumn on! Skip that Happy Hour cocktail and calorie-laden appetizer, and take a beautiful autumn walk with Gerri! Each one-hour walk will cover a different trail on the property. Dress for the weather. 4:00 – 5:00 p.m. Meet in the Museum. FREE…Donations will be accepted to help defray the Conservation Center’s programming expenses.",
+      "source": "White Memorial Conservation Center"
+    },
+    {
+      "id": "whitememorial-85698157",
+      "title": "Tiny Trekking: On the Water Edition!",
+      "type": "sports",
+      "repeats": false,
+      "audience": "all",
+      "setting": "outdoor",
+      "timeOfDay": "morning",
+      "hasFood": true,
+      "host": "White Memorial Conservation Center",
+      "categories": [
+        "outdoors",
+        "family"
+      ],
+      "start": "2026-10-09T10:00:00-04:00",
+      "end": "2026-10-09T11:00:00-04:00",
+      "venue": "80 Whitehall Rd",
+      "city": "Litchfield, CT",
+      "address": "80 Whitehall Rd, Litchfield, CT",
+      "lat": 41.73,
+      "lon": -73.21,
+      "price": null,
+      "signupRequired": false,
+      "url": "https://whitememorialcc.org/event/tiny-trekking-on-the-water-edition/",
+      "description": "Friday, October 9, 2026 Join Kelly Orr to experience the Bantam River at a child’s pace! Bring your own boat and snacks! This will be a family friendly paddle, but all are welcome to join. We will hit the water hoping to see beavers, herons, turtles and more! Life jackets will be required, and must be worn for the duration of the paddle. Kayaks or canoes will work!",
+      "source": "White Memorial Conservation Center"
     },
     {
       "id": "scenichudson-77621532",
       "title": "Revive College Hill Park Coalition Meeting",
-      "kind": "event",
       "repeats": false,
       "audience": "all",
       "categories": [
@@ -2750,12 +4249,97 @@
       "signupRequired": false,
       "url": "https://www.scenichudson.org/events/revive-college-hill-park-coalition-meeting-2/",
       "description": "Events Community events bring people together to protect and celebrate what makes this region so special. From volunteer and educational opportunities to festivals and block parties, find out what’s up next in the Hudson Valley. 4 events found. Events Today Upcoming Upcoming Select date.",
-      "source": "Scenic Hudson"
+      "source": "Scenic Hudson",
+      "type": "meetup",
+      "setting": "outdoor",
+      "timeOfDay": "afternoon",
+      "hasFood": false,
+      "host": "Scenic Hudson"
+    },
+    {
+      "id": "teatown-39938509",
+      "title": "A Night in the Woods Gala 2026",
+      "type": "celebration",
+      "repeats": true,
+      "audience": "all",
+      "setting": "outdoor",
+      "timeOfDay": "evening",
+      "hasFood": false,
+      "host": "Teatown Lake Reservation",
+      "categories": [
+        "outdoors",
+        "community"
+      ],
+      "start": "2026-10-09T18:00:00-04:00",
+      "end": "2026-10-09T21:00:00-04:00",
+      "venue": "New York Botanical Garden",
+      "city": "Bronx, NY",
+      "address": "New York Botanical Garden, 2950 Southern Boulevard, Bronx, NY, 10458, United States",
+      "lat": 40.86224,
+      "lon": -73.87715,
+      "price": null,
+      "signupRequired": false,
+      "url": "https://www.teatown.org/events/a-night-in-the-woods-gala-2026/",
+      "description": "A Night in the WoodsTeatown’s Annual Gala Friday, October 9, 2026 6:00 in the evening New York Botanical Garden, Bronx, NY Honorees Ziporah Janowski Dan Riesel Benefit Co-chairs Jackie Shaw Beverly Aisenbrey Meet our Gala Honorees Teatown is proud to honor Ziporah Janowski and Daniel Riesel for their commitment to Teatown’s mission at this year’s A Night in the Woods Gala.",
+      "source": "Teatown Lake Reservation"
+    },
+    {
+      "id": "whitememorial-20162057",
+      "title": "The Ron & Joan Jones Memorial Hikes: An Autumn Walk through Slab Meadow with Gerri Griswold",
+      "type": "outdoors",
+      "repeats": false,
+      "audience": "all",
+      "setting": "outdoor",
+      "timeOfDay": "morning",
+      "hasFood": false,
+      "host": "White Memorial Conservation Center",
+      "categories": [
+        "outdoors"
+      ],
+      "start": "2026-10-10T10:00:00-04:00",
+      "end": "2026-10-10T12:00:00-04:00",
+      "venue": "80 Whitehall Rd",
+      "city": "Litchfield, CT",
+      "address": "80 Whitehall Rd, Litchfield, CT",
+      "lat": 41.73,
+      "lon": -73.21,
+      "price": null,
+      "signupRequired": false,
+      "url": "https://whitememorialcc.org/event/an-autumn-hike-through-slab-meadow-with-gerri-griswold-2/",
+      "description": "Saturday, October 10, 2026 Enjoy the peak of autumn as we wander the two loops of this lovely trail; one of the greatest secrets of the White Memorial Foundation! Slab Meadow is a wonderful mix of conifers and deciduous trees, wetlands and forest. The hike is capped off by a visit to the stunning overlook. Keep your eyes open for Great Blue Herons, signs of Black Bears, and more! 10:00 a. m.",
+      "source": "White Memorial Conservation Center"
+    },
+    {
+      "id": "emelin-47874783",
+      "title": "Absolute Adele with Jennifer Cella",
+      "type": "concert",
+      "repeats": true,
+      "audience": "all",
+      "setting": "unknown",
+      "timeOfDay": "evening",
+      "hasFood": false,
+      "host": "Emelin Theatre",
+      "categories": [
+        "music",
+        "show",
+        "outdoors"
+      ],
+      "start": "2026-10-10T20:00:00-04:00",
+      "end": "2026-10-10T22:00:00-04:00",
+      "venue": "Emelin Theatre",
+      "city": "Mamaroneck, NY",
+      "address": "Emelin Theatre, 153 Library Lane, Mamaroneck, NY, 10543, United States",
+      "lat": 40.94926,
+      "lon": -73.73402,
+      "price": null,
+      "signupRequired": false,
+      "url": "https://emelin.org/event/absolute-adele-with-jennifer-cella/",
+      "description": "This is your chance to experience Adele’s music the way it was meant to be heard — live, and up close. Absolute Adele brings all of the sixteen-time GRAMMY winner’s songs to an intimate stage — delivered by the acclaimed vocalist Jennifer Cella, who spent nearly a decade selling out arenas with Trans-Siberian Orchestra, performed at Madison Square Garden, shared the stage with Roger Daltrey, Joan…",
+      "source": "Emelin Theatre"
     },
     {
       "id": "stormking-43701869",
       "title": "Children & Families: Through the Viewfinder",
-      "kind": "event",
       "categories": [
         "art",
         "outdoors",
@@ -2774,12 +4358,150 @@
       "description": "Join us in customizing your own viewfinder—and then use it to explore Storm King from a new point of view! Materials will include cardstock, markers, stickers, and decorative washi tape. This program will be led by Ally Caple. Program location: The Meadows, near the Outdoor Cafe Suggested age range: all ages Free with admission, no registration required Ally Caple is an image-based art",
       "source": "Storm King Art Center",
       "repeats": false,
-      "audience": "all"
+      "audience": "all",
+      "type": "other",
+      "setting": "unknown",
+      "timeOfDay": "afternoon",
+      "hasFood": false,
+      "host": "Storm King Art Center"
+    },
+    {
+      "id": "whitememorial-39417887",
+      "title": "Columbus Day / Indigenous Peoples Day",
+      "type": "other",
+      "repeats": false,
+      "audience": "all",
+      "setting": "unknown",
+      "timeOfDay": "morning",
+      "hasFood": false,
+      "host": "White Memorial Conservation Center",
+      "categories": [
+        "community"
+      ],
+      "start": "2026-10-12T07:00:00-04:00",
+      "end": "2026-10-12T07:00:00-04:00",
+      "venue": "80 Whitehall Rd",
+      "city": "Litchfield, CT",
+      "address": "80 Whitehall Rd, Litchfield, CT",
+      "lat": 41.73,
+      "lon": -73.21,
+      "price": null,
+      "signupRequired": false,
+      "url": "https://whitememorialcc.org/event/columbus-day/",
+      "description": "Monday, October 12, 2026 Offices Closed",
+      "source": "White Memorial Conservation Center"
+    },
+    {
+      "id": "teatown-11407236",
+      "title": "Hudson Valley Wildlife at the Pelham Public Library (for families)",
+      "type": "other",
+      "repeats": false,
+      "audience": "all",
+      "setting": "indoor",
+      "timeOfDay": "afternoon",
+      "hasFood": false,
+      "host": "Teatown Lake Reservation",
+      "categories": [
+        "community"
+      ],
+      "start": "2026-10-17T14:00:00-04:00",
+      "end": "2026-10-17T15:00:00-04:00",
+      "venue": "Greenburgh Public Library",
+      "city": "Elmsford, NY",
+      "address": "Greenburgh Public Library, 300 Tarrytown Road, Elmsford, NY, 10523, United States",
+      "lat": 41.04644,
+      "lon": -73.80678,
+      "price": null,
+      "signupRequired": false,
+      "url": "https://www.teatown.org/events/hudson-valley-wildlife-pelham-library/",
+      "description": "What’s living in your backyard? This engaging, hands-on program introduces participants to wildlife found in the Hudson Hills and Highlands region. Using live animals, mounts, furs, and bones, a Teatown educator brings local species to life while exploring key concepts such as biodiversity, habitat, population dynamics, and conservation through interactive demonstrations.",
+      "source": "Teatown Lake Reservation"
+    },
+    {
+      "id": "whitememorial-85768261",
+      "title": "Beginner Family Camp Out at White Memorial",
+      "type": "other",
+      "repeats": true,
+      "audience": "all",
+      "setting": "outdoor",
+      "timeOfDay": "afternoon",
+      "hasFood": false,
+      "host": "White Memorial Conservation Center",
+      "categories": [
+        "outdoors",
+        "family"
+      ],
+      "start": "2026-10-17T15:30:00-04:00",
+      "end": "2026-10-18T09:00:00-04:00",
+      "venue": "80 Whitehall Rd",
+      "city": "Litchfield, CT",
+      "address": "80 Whitehall Rd, Litchfield, CT",
+      "lat": 41.73,
+      "lon": -73.21,
+      "price": null,
+      "signupRequired": false,
+      "url": "https://whitememorialcc.org/event/beginner-family-camp-out-at-white-memorial/",
+      "description": "Saturday, October 17, 2026 New to the world of camping? Don’t let the “gear-fear” or tent poles keep you at home! Join us for a stress-free, guided overnight experience designed specifically for families who are ready to learn how to camp with kids! Whether you’ve never pitched a tent or just need a refresher on outdoor basics, our experienced leaders will be with you every step of the way.",
+      "source": "White Memorial Conservation Center"
+    },
+    {
+      "id": "whitememorial-94893406",
+      "title": "STAR PARTY! The Litchfield Hills Amateur Astronomy Club Celebrates 70 Years Under the Stars!",
+      "type": "dj",
+      "repeats": false,
+      "audience": "all",
+      "setting": "outdoor",
+      "timeOfDay": "afternoon",
+      "hasFood": true,
+      "host": "White Memorial Conservation Center",
+      "categories": [
+        "food",
+        "community",
+        "nightlife"
+      ],
+      "start": "2026-10-17T16:00:00-04:00",
+      "end": "2026-10-17T21:00:00-04:00",
+      "venue": "80 Whitehall Rd",
+      "city": "Litchfield, CT",
+      "address": "80 Whitehall Rd, Litchfield, CT",
+      "lat": 41.73,
+      "lon": -73.21,
+      "price": null,
+      "signupRequired": false,
+      "url": "https://whitememorialcc.org/event/star-party-the-litchfield-hills-amateur-astronomy-club-celebrates-70-years-under-the-stars/",
+      "description": "Saturday, October 17, 2026 Join us as our local astronomy club marks its 70th anniversary with an afternoon of history, discovery, and as evening descends, dinner and (weather permitting) stargazing for dessert! Enjoy presentations on the club’s remarkable legacy, a tribute to the life and work of E. Dorrit Hoffleit, for whom the observatory is named, and a tea cup auction!.",
+      "source": "White Memorial Conservation Center"
+    },
+    {
+      "id": "emelin-75817078",
+      "title": "Livingston Taylor",
+      "type": "concert",
+      "repeats": true,
+      "audience": "all",
+      "setting": "indoor",
+      "timeOfDay": "evening",
+      "hasFood": false,
+      "host": "Emelin",
+      "categories": [
+        "music",
+        "show"
+      ],
+      "start": "2026-10-17T20:00:00-04:00",
+      "end": "2026-10-17T22:00:00-04:00",
+      "venue": "Emelin Theatre",
+      "city": "Mamaroneck, NY",
+      "address": "Emelin Theatre, 153 Library Lane, Mamaroneck, NY, 10543, United States",
+      "lat": 40.94926,
+      "lon": -73.73402,
+      "price": null,
+      "signupRequired": false,
+      "url": "https://emelin.org/event/livingston-taylor-3/",
+      "description": "Livingston Taylor has spent more than 50 years making concerts feel personal. A singer-songwriter, storyteller, and natural entertainer, he brings the kind of warmth and ease that turns a live performance into a genuine conversation with the audience. His catalog moves fluidly through folk, pop, gospel, jazz, and the American songbook.",
+      "source": "Emelin Theatre"
     },
     {
       "id": "clearwater-78667716",
       "title": "The Beacon Sloop Club’s Annual Pumpkin Festival",
-      "kind": "event",
       "categories": [
         "music",
         "market",
@@ -2799,15 +4521,73 @@
       "description": "Join the Beacon Sloop Club for their Annual Pumpkin Festival! Enjoy two solar-powered music stages, one dedicated to young folks (children), featuring live music throughout the day. Numerous food and craft vendors will be on hand. Environmental non-profits will feature displays of local river history and the environment, including information about their organization. Families can enjoy many free",
       "source": "Hudson River Sloop Clearwater",
       "repeats": false,
-      "audience": "all"
+      "audience": "all",
+      "type": "festival",
+      "setting": "outdoor",
+      "timeOfDay": "afternoon",
+      "hasFood": false,
+      "host": "Hudson River Sloop Clearwater"
+    },
+    {
+      "id": "emelin-89733809",
+      "title": "Fall Film Club 2026 #3",
+      "type": "film",
+      "repeats": false,
+      "audience": "all",
+      "setting": "indoor",
+      "timeOfDay": "evening",
+      "hasFood": false,
+      "host": "Emelin",
+      "categories": [
+        "film",
+        "show",
+        "community"
+      ],
+      "start": "2026-10-21T19:30:00-04:00",
+      "end": "2026-10-21T21:30:00-04:00",
+      "venue": "Emelin Theatre",
+      "city": "Mamaroneck, NY",
+      "address": "Emelin Theatre, 153 Library Lane, Mamaroneck, NY, 10543, United States",
+      "lat": 40.94926,
+      "lon": -73.73402,
+      "price": null,
+      "signupRequired": false,
+      "url": "https://emelin.org/event/fall-film-club-2026-3/",
+      "description": null,
+      "source": "Emelin Theatre"
+    },
+    {
+      "id": "whitememorial-65589936",
+      "title": "Ashes of Industry: 19th Century Charcoal Production in Northwestern Connecticut",
+      "type": "outdoors",
+      "repeats": false,
+      "audience": "all",
+      "setting": "outdoor",
+      "timeOfDay": "afternoon",
+      "hasFood": true,
+      "host": "White Memorial Conservation Center",
+      "categories": [
+        "outdoors",
+        "food"
+      ],
+      "start": "2026-10-22T13:00:00-04:00",
+      "end": "2026-10-22T15:00:00-04:00",
+      "venue": "80 Whitehall Rd",
+      "city": "Litchfield, CT",
+      "address": "80 Whitehall Rd, Litchfield, CT",
+      "lat": 41.73,
+      "lon": -73.21,
+      "price": null,
+      "signupRequired": false,
+      "url": "https://whitememorialcc.org/event/ashes-of-industry-19th-century-charcoal-production-in-northwestern-connecticut/",
+      "description": "Thursday, October 22, 2026 LUNCH INCLUDED! While hiking along the trails in Northwest Connecticut, hikers occasionally come across large raised circular mounds that appear odd and out of place. These 40-foot wide circles are the remains of charcoal hearths on which colliers burned logs to create charcoal used to power Connecticut’s nineteenth century iron, steel, and brass industries.",
+      "source": "White Memorial Conservation Center"
     },
     {
       "id": "stormking-57075940",
       "title": "Moonlit Walk",
-      "kind": "event",
       "categories": [
         "art",
-        "tour",
         "outdoors"
       ],
       "start": "2026-10-23T18:30:00+00:00",
@@ -2823,15 +4603,122 @@
       "description": "Enjoy art and nature under a full moon with Storm King educators. Experience Storm King from sunset through moonrise during this special guided, after-hours event. Wear comfortable shoes, and dress in layers, as it often cools down quite a bit in the evening. Registration is required and space is limited. TICKETS Tickets will be available on September 15 at 10AM $25 per person; $10 for Memb",
       "source": "Storm King Art Center",
       "repeats": false,
-      "audience": "all"
+      "audience": "all",
+      "type": "outdoors",
+      "setting": "indoor",
+      "timeOfDay": "evening",
+      "hasFood": false,
+      "host": "Storm King Art Center"
+    },
+    {
+      "id": "emelin-8675207",
+      "title": "Parsons Dance",
+      "type": "dance",
+      "repeats": false,
+      "audience": "all",
+      "setting": "indoor",
+      "timeOfDay": "evening",
+      "hasFood": false,
+      "host": "Emelin",
+      "categories": [
+        "show"
+      ],
+      "start": "2026-10-23T20:00:00-04:00",
+      "end": "2026-10-23T22:00:00-04:00",
+      "venue": "Emelin Theatre",
+      "city": "Mamaroneck, NY",
+      "address": "Emelin Theatre, 153 Library Lane, Mamaroneck, NY, 10543, United States",
+      "lat": 40.94926,
+      "lon": -73.73402,
+      "price": null,
+      "signupRequired": false,
+      "url": "https://emelin.org/event/parsons-dance-2/",
+      "description": "“This is a ‘dance your heart out’ kind of enterprise.” — The New York Times Parsons Dance has earned an international reputation for contemporary American dance that is athletic, joyful, and immediately engaging. Known for bold ensemble work, physical precision, and a style that feels both technically impressive and deeply human, the company brings an energy to the stage that makes modern dance…",
+      "source": "Emelin Theatre"
+    },
+    {
+      "id": "whitememorial-43680809",
+      "title": "The Historic Trees of Litchfield Van Tour",
+      "type": "tour",
+      "repeats": false,
+      "audience": "all",
+      "setting": "unknown",
+      "timeOfDay": "morning",
+      "hasFood": false,
+      "host": "White Memorial Conservation Center",
+      "categories": [
+        "tour"
+      ],
+      "start": "2026-10-24T10:00:00-04:00",
+      "end": "2026-10-24T12:00:00-04:00",
+      "venue": "80 Whitehall Rd",
+      "city": "Litchfield, CT",
+      "address": "80 Whitehall Rd, Litchfield, CT",
+      "lat": 41.73,
+      "lon": -73.21,
+      "price": null,
+      "signupRequired": false,
+      "url": "https://whitememorialcc.org/event/the-historic-trees-of-litchfield-van-tour/",
+      "description": "Saturday, October 24, 2026 Let the oldest and largest trees of Litchfield tell the tales of our town’s rich history. This van tour will take you to notable trees, such as Wolcott’s Sycamore, the Colvocoresses Oak, the rare Franklin Tree, and “The Biggest Tree” in Litchfield.",
+      "source": "White Memorial Conservation Center"
+    },
+    {
+      "id": "emelin-46564735",
+      "title": "Booker T. Jones",
+      "type": "concert",
+      "repeats": false,
+      "audience": "all",
+      "setting": "indoor",
+      "timeOfDay": "afternoon",
+      "hasFood": false,
+      "host": "Emelin Theatre",
+      "categories": [
+        "show",
+        "art"
+      ],
+      "start": "2026-10-24T16:00:00-04:00",
+      "end": "2026-10-24T18:00:00-04:00",
+      "venue": "Emelin Theatre",
+      "city": "Mamaroneck, NY",
+      "address": "Emelin Theatre, 153 Library Lane, Mamaroneck, NY, 10543, United States",
+      "lat": 40.94926,
+      "lon": -73.73402,
+      "price": null,
+      "signupRequired": false,
+      "url": "https://emelin.org/event/booker-t-jones/",
+      "description": "“Booker T. Jones is one of the legends of soul music.” — The New Yorker Few artists can say they helped define the sound of American soul music. Booker T. Jones did exactly that. As the leader of the legendary Booker T. & the M.G.’s and a cornerstone of Stax Records, Jones helped shape the sound of an era through timeless recordings like “Green Onions,” “Time Is Tight,” and “Hip Hug-Her.” More…",
+      "source": "Emelin Theatre"
+    },
+    {
+      "id": "whitememorial-51245449",
+      "title": "Moonlight Hike with Kelly Orr and Gerri Griswold",
+      "type": "outdoors",
+      "repeats": false,
+      "audience": "all",
+      "setting": "outdoor",
+      "timeOfDay": "evening",
+      "hasFood": false,
+      "host": "White Memorial Conservation Center",
+      "categories": [
+        "outdoors"
+      ],
+      "start": "2026-10-24T18:00:00-04:00",
+      "end": "2026-10-24T20:00:00-04:00",
+      "venue": "80 Whitehall Rd",
+      "city": "Litchfield, CT",
+      "address": "80 Whitehall Rd, Litchfield, CT",
+      "lat": 41.73,
+      "lon": -73.21,
+      "price": null,
+      "signupRequired": false,
+      "url": "https://whitememorialcc.org/event/moonlight-hike-with-kelly-orr-and-gerri-griswold/",
+      "description": "Saturday, October 24, 2026 Kelly Orr and Gerri Griswold lead you on a night hike on the cusp of the full Hunter Moon. Because the peak occurs just past midnight heading into Monday, the most stunning and brightest views will be during the evenings of Saturday, October 24 and Sunday, October 25. Wander our beautiful trails along the Bantam River.",
+      "source": "White Memorial Conservation Center"
     },
     {
       "id": "stormking-97710836",
       "title": "Children & Families: Woven Harvest Paper Weaving",
-      "kind": "event",
       "categories": [
-        "show",
-        "art",
         "outdoors",
         "family"
       ],
@@ -2848,16 +4735,45 @@
       "description": "Lean in the autumnal energy! Join us in weaving pouches and baskets from natural fibers and paper to take home. This program will be led by Marcela Torres. Program location: The Meadows, near the Outdoor Cafe Suggested age range: all ages Free with admission, no registration required Marcela Torres was born in Salt Lake City, Utah and currently resides between Brooklyn, NY and Chicago,",
       "source": "Storm King Art Center",
       "repeats": false,
-      "audience": "all"
+      "audience": "all",
+      "type": "other",
+      "setting": "unknown",
+      "timeOfDay": "afternoon",
+      "hasFood": false,
+      "host": "Storm King Art Center"
+    },
+    {
+      "id": "emelin-56025463",
+      "title": "Ruben Studdard",
+      "type": "concert",
+      "repeats": false,
+      "audience": "all",
+      "setting": "indoor",
+      "timeOfDay": "evening",
+      "hasFood": false,
+      "host": "Emelin",
+      "categories": [
+        "show",
+        "art"
+      ],
+      "start": "2026-10-29T19:30:00-04:00",
+      "end": "2026-10-29T21:30:00-04:00",
+      "venue": "Emelin Theatre",
+      "city": "Mamaroneck, NY",
+      "address": "Emelin Theatre, 153 Library Lane, Mamaroneck, NY, 10543, United States",
+      "lat": 40.94926,
+      "lon": -73.73402,
+      "price": null,
+      "signupRequired": false,
+      "url": "https://emelin.org/event/ruben-studdard/",
+      "description": "GRAMMY-nominated singer Ruben Studdard first won America over as the season two champion of American Idol—and more than two decades later, that rich, unmistakable voice remains the reason audiences come back. Known as the “Velvet Teddy Bear”—a nickname bestowed by soul legend Gladys Knight—Studdard brings warmth, power, and a voice rooted in the classic soul tradition of artists like Luther…",
+      "source": "Emelin Theatre"
     },
     {
       "id": "stormking-87181791",
       "title": "Children & Families: Halloween Costume Spectacular!",
-      "kind": "event",
       "categories": [
-        "show",
         "art",
-        "outdoors",
         "family"
       ],
       "start": "2026-10-31T12:00:00-04:00",
@@ -2873,12 +4789,42 @@
       "description": "Join artist and performer Erica Enriquez in the 2026 Storm King Art Center Halloween Costume Spectacular! Arrive already dressed for the stage or construct your very own cardboard costume on site in this all ages, two-part event. From 12-2pm meet us in our Costume Factory, where Erica will help participants transform into the creatures of their wildest dreams! Using locally sourced, recyclable ma",
       "source": "Storm King Art Center",
       "repeats": false,
-      "audience": "all"
+      "audience": "all",
+      "type": "other",
+      "setting": "indoor",
+      "timeOfDay": "afternoon",
+      "hasFood": false,
+      "host": "Storm King Art Center"
+    },
+    {
+      "id": "emelin-29763873",
+      "title": "The Adventures of Tortoise and Hare: The Next Gen",
+      "type": "other",
+      "repeats": false,
+      "audience": "all",
+      "setting": "indoor",
+      "timeOfDay": "morning",
+      "hasFood": false,
+      "host": "Emelin Theatre",
+      "categories": [
+        "show"
+      ],
+      "start": "2026-11-01T11:00:00-05:00",
+      "end": "2026-11-01T12:00:00-05:00",
+      "venue": "Emelin Theatre",
+      "city": "Mamaroneck, NY",
+      "address": "Emelin Theatre, 153 Library Lane, Mamaroneck, NY, 10543, United States",
+      "lat": 40.94926,
+      "lon": -73.73402,
+      "price": null,
+      "signupRequired": false,
+      "url": "https://emelin.org/event/the-adventures-of-tortoise-and-hare-the-next-gen-2/",
+      "description": "Aesop’s classic fable comes to life in a glow-in-the-dark adventure. The Tortoise and the Hare: The Next Gen follows the famous rivals ten years later—now parents navigating a world of smartphones, video games, and modern distractions.",
+      "source": "Emelin Theatre"
     },
     {
       "id": "stormking-66212983",
       "title": "Children & Families: Naturally Spooky Inks",
-      "kind": "activity",
       "categories": [
         "art",
         "tour",
@@ -2898,17 +4844,21 @@
       "description": "Make ink using toxic plants gathered from Storm King’s landscape, then experiment with these rare colors to create a painting derived from nature! Program location: Meet near the Outdoor Cafe Suggested age range: all ages Free with admission, no registration required ACCESSIBILITY Terrain and Getting Around The tour will take place on grass, just off of a paved path. T",
       "source": "Storm King Art Center",
       "repeats": false,
-      "audience": "all"
+      "audience": "all",
+      "type": "art",
+      "setting": "unknown",
+      "timeOfDay": "afternoon",
+      "hasFood": false,
+      "host": "Storm King Art Center"
     },
     {
       "id": "stormking-64659428",
       "title": "WHOOP DEE DOO at Storm King",
-      "kind": "activity",
       "categories": [
-        "film",
         "show",
         "art",
-        "outdoors"
+        "outdoors",
+        "family"
       ],
       "start": "2026-11-07T13:30:00-05:00",
       "end": "2026-11-07T16:30:00-05:00",
@@ -2923,12 +4873,16 @@
       "description": "Revel in the bursting fun and spectacle of an outdoor performance at Storm King with WHOOP DEE DOO, a fake public-access TV show and contemporary art project. In partnership with the Newburgh Free Library and Storm King Art Center, WHOOP DEE DOO (WDD), created the performances through a series of community-engaged workshops in collaboration with local performance groups, local youth, and young adu",
       "source": "Storm King Art Center",
       "repeats": true,
-      "audience": "all"
+      "audience": "all",
+      "type": "other",
+      "setting": "unknown",
+      "timeOfDay": "afternoon",
+      "hasFood": false,
+      "host": "Storm King Art Center"
     },
     {
       "id": "stormking-38468406",
       "title": "Geology of Storm King",
-      "kind": "event",
       "categories": [
         "art",
         "tour",
@@ -2947,7 +4901,284 @@
       "description": "Hike with geologist Kim Fendrich to explore the deep connections between art and geology at Storm King. The tour will visit several key sculptures and landscapes at Storm King that were developed with geologic materials both from the local area and around the world. Learn about how the geologic forces of earth shaped Storm King’s place in the Hudson Valley, and how artists have come to collaborate",
       "source": "Storm King Art Center",
       "repeats": false,
-      "audience": "all"
+      "audience": "all",
+      "type": "tour",
+      "setting": "unknown",
+      "timeOfDay": "morning",
+      "hasFood": false,
+      "host": "Storm King Art Center"
+    },
+    {
+      "id": "emelin-48980520",
+      "title": "Cyrille Aimée",
+      "type": "concert",
+      "repeats": true,
+      "audience": "all",
+      "setting": "indoor",
+      "timeOfDay": "evening",
+      "hasFood": false,
+      "host": "Emelin",
+      "categories": [
+        "music",
+        "show"
+      ],
+      "start": "2026-11-14T20:00:00-05:00",
+      "end": "2026-11-14T22:00:00-05:00",
+      "venue": "Emelin Theatre",
+      "city": "Mamaroneck, NY",
+      "address": "Emelin Theatre, 153 Library Lane, Mamaroneck, NY, 10543, United States",
+      "lat": 40.94926,
+      "lon": -73.73402,
+      "price": null,
+      "signupRequired": false,
+      "url": "https://emelin.org/event/cyrille-aimee-2/",
+      "description": "“A sweet, girlish voice that she controls with a sniper’s precision.” — The New York Times GRAMMY-nominated vocalist Cyrille Aimée has earned international acclaim for her fearless improvisation, radiant stage presence, and genre-crossing approach to jazz.",
+      "source": "Emelin Theatre"
+    },
+    {
+      "id": "emelin-26732694",
+      "title": "Fall Film Club 2026 #4",
+      "type": "film",
+      "repeats": false,
+      "audience": "all",
+      "setting": "indoor",
+      "timeOfDay": "evening",
+      "hasFood": false,
+      "host": "Emelin",
+      "categories": [
+        "film",
+        "show",
+        "community"
+      ],
+      "start": "2026-11-18T19:30:00-05:00",
+      "end": "2026-11-18T21:30:00-05:00",
+      "venue": "Emelin Theatre",
+      "city": "Mamaroneck, NY",
+      "address": "Emelin Theatre, 153 Library Lane, Mamaroneck, NY, 10543, United States",
+      "lat": 40.94926,
+      "lon": -73.73402,
+      "price": null,
+      "signupRequired": false,
+      "url": "https://emelin.org/event/fall-film-club-2026-4/",
+      "description": null,
+      "source": "Emelin Theatre"
+    },
+    {
+      "id": "emelin-58392200",
+      "title": "Vitaly: An Evening of Wonders",
+      "type": "other",
+      "repeats": false,
+      "audience": "all",
+      "setting": "indoor",
+      "timeOfDay": "evening",
+      "hasFood": false,
+      "host": "Emelin",
+      "categories": [
+        "show"
+      ],
+      "start": "2026-11-19T19:30:00-05:00",
+      "end": "2026-11-19T21:30:00-05:00",
+      "venue": "Emelin Theatre",
+      "city": "Mamaroneck, NY",
+      "address": "Emelin Theatre, 153 Library Lane, Mamaroneck, NY, 10543, United States",
+      "lat": 40.94926,
+      "lon": -73.73402,
+      "price": null,
+      "signupRequired": false,
+      "url": "https://emelin.org/event/vitaly/",
+      "description": "“Amazing magic full of charming surprises. He’s an ingenious inventor!” – Penn & Teller Vitaly has built an international reputation as one of magic’s most inventive illusionists, known for creating original effects that feel as imaginative as they are impossible.",
+      "source": "Emelin Theatre"
+    },
+    {
+      "id": "emelin-76170235",
+      "title": "Live and Let Die: The Music of Paul McCartney",
+      "type": "concert",
+      "repeats": false,
+      "audience": "all",
+      "setting": "indoor",
+      "timeOfDay": "evening",
+      "hasFood": false,
+      "host": "Emelin",
+      "categories": [
+        "show",
+        "nightlife"
+      ],
+      "start": "2026-11-21T20:00:00-05:00",
+      "end": "2026-11-21T22:00:00-05:00",
+      "venue": "Emelin Theatre",
+      "city": "Mamaroneck, NY",
+      "address": "Emelin Theatre, 153 Library Lane, Mamaroneck, NY, 10543, United States",
+      "lat": 40.94926,
+      "lon": -73.73402,
+      "price": null,
+      "signupRequired": false,
+      "url": "https://emelin.org/event/live-and-let-die/",
+      "description": "“A visual and vocal dead ringer for McCartney.” — Los Angeles Times When Beatles producer Sir George Martin says, “You sound like Paul McCartney,” and Paul McCartney himself says, “Tony is a good musician,” the tribute has already cleared a very high bar.",
+      "source": "Emelin Theatre"
+    },
+    {
+      "id": "emelin-43258801",
+      "title": "Fall Film Club 2026 #5",
+      "type": "film",
+      "repeats": false,
+      "audience": "all",
+      "setting": "indoor",
+      "timeOfDay": "evening",
+      "hasFood": false,
+      "host": "Emelin",
+      "categories": [
+        "film",
+        "show",
+        "community"
+      ],
+      "start": "2026-12-02T19:30:00-05:00",
+      "end": "2026-12-02T21:30:00-05:00",
+      "venue": "Emelin Theatre",
+      "city": "Mamaroneck, NY",
+      "address": "Emelin Theatre, 153 Library Lane, Mamaroneck, NY, 10543, United States",
+      "lat": 40.94926,
+      "lon": -73.73402,
+      "price": null,
+      "signupRequired": false,
+      "url": "https://emelin.org/event/fall-film-club-2026-5/",
+      "description": null,
+      "source": "Emelin Theatre"
+    },
+    {
+      "id": "emelin-43726699",
+      "title": "Paula Poundstone",
+      "type": "comedy",
+      "repeats": true,
+      "audience": "all",
+      "setting": "indoor",
+      "timeOfDay": "evening",
+      "hasFood": false,
+      "host": "Emelin",
+      "categories": [
+        "comedy",
+        "show"
+      ],
+      "start": "2026-12-04T20:00:00-05:00",
+      "end": "2026-12-04T22:00:00-05:00",
+      "venue": "Emelin Theatre",
+      "city": "Mamaroneck, NY",
+      "address": "Emelin Theatre, 153 Library Lane, Mamaroneck, NY, 10543, United States",
+      "lat": 40.94926,
+      "lon": -73.73402,
+      "price": null,
+      "signupRequired": false,
+      "url": "https://emelin.org/event/paula-poundstone-2/",
+      "description": "“Poundstone epitomizes what is great and special about stand-up comedy.” — Los Angeles Times Paula Poundstone has been making audiences laugh for decades — and making them think just as hard. Known for her smart observational humor and spontaneous wit, Poundstone has built one of the most distinctive and durable careers in American comedy.",
+      "source": "Emelin Theatre"
+    },
+    {
+      "id": "emelin-54695438",
+      "title": "Emmet Cohen Trio",
+      "type": "concert",
+      "repeats": true,
+      "audience": "all",
+      "setting": "indoor",
+      "timeOfDay": "evening",
+      "hasFood": false,
+      "host": "Emelin",
+      "categories": [
+        "music",
+        "show",
+        "art"
+      ],
+      "start": "2026-12-05T20:00:00-05:00",
+      "end": "2026-12-05T22:00:00-05:00",
+      "venue": "Emelin Theatre",
+      "city": "Mamaroneck, NY",
+      "address": "Emelin Theatre, 153 Library Lane, Mamaroneck, NY, 10543, United States",
+      "lat": 40.94926,
+      "lon": -73.73402,
+      "price": null,
+      "signupRequired": false,
+      "url": "https://emelin.org/event/emmet-cohen-trio-2/",
+      "description": "“Cohen is a young piano virtuoso with a delicate touch, assured, swaggering swing feel, and debonair flow.” — The New York Times Pianist and composer Emmet Cohen is one of the most compelling voices in contemporary jazz—an artist who brings the music’s history fully into the present.",
+      "source": "Emelin Theatre"
+    },
+    {
+      "id": "emelin-19639431",
+      "title": "The Ultimate Disney Tribute Band: The Little Mermen & The Princess Pals!",
+      "type": "concert",
+      "repeats": true,
+      "audience": "all",
+      "setting": "indoor",
+      "timeOfDay": "morning",
+      "hasFood": false,
+      "host": "Emelin Theatre",
+      "categories": [
+        "film",
+        "music",
+        "show",
+        "family"
+      ],
+      "start": "2027-01-24T11:00:00-05:00",
+      "end": "2027-01-24T12:00:00-05:00",
+      "venue": "Emelin Theatre",
+      "city": "Mamaroneck, NY",
+      "address": "Emelin Theatre, 153 Library Lane, Mamaroneck, NY, 10543, United States",
+      "lat": 40.94926,
+      "lon": -73.73402,
+      "price": null,
+      "signupRequired": false,
+      "url": "https://emelin.org/event/the-ultimate-disney-tribute-band-the-little-mermen-the-princess-pals-2/",
+      "description": "“Freaking adorable.” — BuzzFeed Get ready for a magical concert experience where Disney favorites meet high-energy rock and pop. The Little Mermen & the Princess Pals transform beloved songs from across your kids favorite Disney movies into an electrifying live performance packed with powerhouse vocals, dazzling costumes, and nonstop fun for fans of all ages.",
+      "source": "Emelin Theatre"
+    },
+    {
+      "id": "emelin-44092702",
+      "title": "Dino-Light",
+      "type": "dance",
+      "repeats": false,
+      "audience": "all",
+      "setting": "indoor",
+      "timeOfDay": "morning",
+      "hasFood": false,
+      "host": "Emelin Theatre",
+      "categories": [
+        "show"
+      ],
+      "start": "2027-03-20T11:00:00-04:00",
+      "end": "2027-03-20T12:00:00-04:00",
+      "venue": "Emelin Theatre",
+      "city": "Mamaroneck, NY",
+      "address": "Emelin Theatre, 153 Library Lane, Mamaroneck, NY, 10543, United States",
+      "lat": 40.94926,
+      "lon": -73.73402,
+      "price": null,
+      "signupRequired": false,
+      "url": "https://emelin.org/event/dino-light-2/",
+      "description": "“Ingenious puppetry and pure theatrical magic.” — The New York Times Recipient of the prestigious Jim Henson Foundation Grant, DINO-LIGHT is a visually stunning theatrical experience that blends puppetry, technology, and dance into a glowing prehistoric adventure unlike anything audiences have seen before.",
+      "source": "Emelin Theatre"
+    },
+    {
+      "id": "emelin-74185932",
+      "title": "Clifford the Big Red Dog, The Musical",
+      "type": "theater",
+      "repeats": false,
+      "audience": "all",
+      "setting": "indoor",
+      "timeOfDay": "morning",
+      "hasFood": false,
+      "host": "Emelin Theatre",
+      "categories": [
+        "show"
+      ],
+      "start": "2027-05-02T11:00:00-04:00",
+      "end": "2027-05-02T12:00:00-04:00",
+      "venue": "Emelin Theatre",
+      "city": "Mamaroneck, NY",
+      "address": "Emelin Theatre, 153 Library Lane, Mamaroneck, NY, 10543, United States",
+      "lat": 40.94926,
+      "lon": -73.73402,
+      "price": null,
+      "signupRequired": false,
+      "url": "https://emelin.org/event/clifford-the-big-red-dog-the-musical-2/",
+      "description": "Everyone’s favorite Big Red Dog bounds onto the stage in a brand-new musical adventure filled with laughter, heart, and larger-than-life fun. Clifford The Big Red Dog: The Musical brings Norman Bridwell’s beloved story to life with catchy songs, colorful characters, and a joyful message about friendship, belonging, and unconditional love.",
+      "source": "Emelin Theatre"
     }
   ]
 }

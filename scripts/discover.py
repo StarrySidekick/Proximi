@@ -15,7 +15,7 @@ Overpass is rate-limited and mirrors go down; if every mirror fails, pass a
 domain list to --probe instead.
 """
 
-import argparse, http.cookiejar, json, os, sys, time, urllib.error, urllib.parse, urllib.request
+import argparse, http.cookiejar, json, os, re, sys, time, urllib.error, urllib.parse, urllib.request
 from concurrent.futures import ThreadPoolExecutor
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -46,7 +46,42 @@ FEED_PATHS = [
     '/?post_type=tribe_events&ical=1',
     '/calendar/?ical=1',
     '/events/feed/',
+    # Squarespace event collections export iCal from the collection URL.
+    '/events?format=ical',
+    '/calendar?format=ical',
 ]
+
+# Pages to sniff for an embedded calendar platform.
+SNIFF_PATHS = ['/', '/events/', '/events', '/calendar/', '/calendar', '/whats-on/']
+
+# Fingerprints for calendar platforms that publish a feed at a derivable URL.
+# This is what unlocks sites that do not run The Events Calendar — most of
+# Connecticut, as it turns out.
+PLATFORMS = [
+    # A Google Calendar embed exposes a public ICS at a predictable address.
+    ('google', re.compile(r'calendar\.google\.com/calendar/(?:embed|u/\d+/embed)\?[^"\'<>]*src=([^"\'&<>]+)', re.I)),
+    # Springshare LibCal — near-universal in public libraries.
+    ('libcal', re.compile(r'https?://([a-z0-9-]+\.libcal\.com)', re.I)),
+    # Localist — universities, museums, city governments.
+    ('localist', re.compile(r'https?://([a-z0-9.-]+)/api/2/events|localist\.com', re.I)),
+    ('tockify', re.compile(r'tockify\.com/api/feeds/[a-z0-9]+|tockify\.com/([a-z0-9_-]+)', re.I)),
+    ('trumba', re.compile(r'trumba\.com/calendars/([a-z0-9._-]+)', re.I)),
+    ('eventbrite', re.compile(r'eventbrite\.com/o/([a-z0-9-]+)', re.I)),
+    ('bandsintown', re.compile(r'bandsintown\.com/v/(\d+)|bandsintown\.com/a/(\d+)', re.I)),
+    ('dice', re.compile(r'dice\.fm/(?:venue|partner)/([a-z0-9-]+)', re.I)),
+]
+
+JSONLD_EVENT = re.compile(r'"@type"\s*:\s*"?\[?"?(Event|MusicEvent|TheaterEvent|'
+                          r'ScreeningEvent|FoodEvent|SocialEvent|ExhibitionEvent|Festival)', re.I)
+
+
+def gcal_ics(src):
+    """A Google Calendar embed src is the calendar id; the public ICS follows."""
+    cal = urllib.parse.unquote(src).strip()
+    if not cal or '@' not in cal:
+        return None
+    return ('https://calendar.google.com/calendar/ical/'
+            + urllib.parse.quote(cal, safe='') + '/public/basic.ics')
 
 
 def overpass(center, timeout=180):
@@ -95,6 +130,41 @@ def collect_venues(center):
     return venues
 
 
+def sniff_platforms(domain, opener):
+    """Look for an embedded calendar platform and derive its feed where possible."""
+    found = []
+    for path in SNIFF_PATHS:
+        try:
+            req = urllib.request.Request(f'https://{domain}{path}', headers={
+                'User-Agent': UA, 'Accept': 'text/html,*/*;q=0.5'})
+            with opener.open(req, timeout=12) as r:
+                body = r.read(900_000).decode('utf-8', 'replace')
+        except Exception:
+            continue
+
+        for name, pattern in PLATFORMS:
+            m = pattern.search(body)
+            if not m:
+                continue
+            hit = {'platform': name, 'seenOn': f'https://{domain}{path}'}
+            if name == 'google':
+                ics = gcal_ics(m.group(1))
+                if ics:
+                    hit['feed'] = ics
+            elif name == 'libcal':
+                hit['feed'] = f'https://{m.group(1)}/calendar?cid=-1&t=d&d=0000-00-00&cal=-1&ical=1'
+            elif m.lastindex:
+                hit['ref'] = m.group(m.lastindex)
+            if not any(h['platform'] == name for h in found):
+                found.append(hit)
+
+        if JSONLD_EVENT.search(body) and not any(h['platform'] == 'jsonld' for h in found):
+            found.append({'platform': 'jsonld', 'seenOn': f'https://{domain}{path}'})
+        if found:
+            break
+    return found
+
+
 def probe_domain(domain):
     """Return the best working iCal feed for a domain, or None.
 
@@ -120,7 +190,30 @@ def probe_domain(domain):
                         'total': len(events), 'future': len(future)}
         except Exception:
             continue
-    return best
+
+    if best:
+        return best
+
+    # No iCal — but an embedded platform may still give us a feed or a page
+    # worth registering as an html source.
+    hits = sniff_platforms(domain, opener)
+    for h in hits:
+        if h.get('feed'):
+            try:
+                req = urllib.request.Request(h['feed'], headers={'User-Agent': UA})
+                with opener.open(req, timeout=12) as r:
+                    body = r.read(600_000).decode('utf-8', 'replace')
+                if 'BEGIN:VCALENDAR' in body:
+                    future = icsparse.future_only(icsparse.parse(body))
+                    if future:
+                        return {'domain': domain, 'url': h['feed'], 'via': h['platform'],
+                                'total': len(icsparse.parse(body)), 'future': len(future)}
+            except Exception:
+                pass
+    if hits:
+        return {'domain': domain, 'platforms': [h['platform'] for h in hits],
+                'seenOn': hits[0]['seenOn'], 'future': 0}
+    return None
 
 
 def main():
@@ -162,16 +255,27 @@ def main():
         domains = [d for d in domains if d not in known]
 
         print(f'probing {len(domains)} domains for iCal feeds ({args.workers} at a time)…')
-        found = []
+        feeds, leads = [], []
         with ThreadPoolExecutor(max_workers=args.workers) as pool:
             for hit in pool.map(probe_domain, domains):
-                if hit:
-                    found.append(hit)
-                    print(f"  + {hit['domain']:<38} {hit['future']:>4} future  {hit['url']}")
+                if not hit:
+                    continue
+                if hit.get('url'):
+                    feeds.append(hit)
+                    via = f" via {hit['via']}" if hit.get('via') else ''
+                    print(f"  + {hit['domain']:<34} {hit['future']:>4} future{via}  {hit['url']}")
+                else:
+                    leads.append(hit)
 
-        json.dump(found, open('build/discovered.json', 'w'), indent=2)
-        print(f'\n{len(found)}/{len(domains)} domains expose a live feed → build/discovered.json')
-        print('Review, then add the good ones to sources/registry.json.')
+        for l in leads:
+            print(f"  ? {l['domain']:<34} {'':>4}       {'/'.join(l['platforms'])} — {l['seenOn']}")
+
+        json.dump({'feeds': feeds, 'leads': leads},
+                  open('build/discovered.json', 'w'), indent=2)
+        print(f'\n{len(feeds)} live feeds, {len(leads)} platform leads '
+              f'from {len(domains)} domains → build/discovered.json')
+        print('Feeds can go straight into the registry as kind:ics.')
+        print('Leads have a calendar but no derivable feed — register as kind:html.')
 
     if not args.overpass and not args.probe:
         ap.print_help()

@@ -21,8 +21,98 @@ CACHE = 'sources/geocache.json'
 # steady-state run makes almost none.
 RATE = 1.1
 
+# The single primary answer to "what kind of thing is this?", shown on the card
+# where the event/activity badge used to be. Ordered most-specific first: the
+# first pattern that matches wins, so "open mic comedy night" is an Open Mic.
+TYPES = [
+    ('parade',      r'\bparade\b'),
+    # "march" alone also matches the month, which tagged a family nature day as
+    # a protest — so it only counts with a protest sense attached.
+    ('protest',     r'\b(rally|protest|demonstration|vigil|picket|walkout)\b|'
+                    r'\bmarch(es|ing)? (for|on|against|to demand)\b'),
+    ('open-mic',    r'\bopen[- ]mic\b'),
+    ('comedy',      r'\b(comedy|stand-?up|improv)\b'),
+    ('film',        r'\b(film|movie|screening|cinema|documentar\w*)\b'),
+    ('art',         r'\b(exhibition|exhibit|gallery|opening reception|artist talk|'
+                    r'installation|sculpture|paintings?)\b'),
+    ('theater',     r'\b(theat(er|re)|play|musical|opera|cabaret|drag|puppet)\b'),
+    ('dance',       r'\b(dance|ballet|salsa|swing|tango|contra)\b'),
+    ('concert',     r'\b(concert|music|band|recital|symphony|orchestra|quartet|'
+                    r'trio|songwriter|acoustic|jazz|blues|folk|choir|singer)\b'),
+    ('dj',          r'\b(dj|party|nightlife|dance party|after ?party)\b'),
+    ('market',      r'\b(market|bazaar|makers?|vendors?|craft fair)\b'),
+    ('sale',        r'\b(sale|flea|rummage|tag sale|book sale|swap)\b'),
+    ('festival',    r'\b(festival|fest|fair)\b'),
+    ('celebration', r'\b(celebration|anniversary|birthday|gala|holiday|'
+                    r'tree lighting|fireworks|opening day)\b'),
+    ('tour',        r'\b(tour|guided walk|house tour|behind the scenes)\b'),
+    ('kids',        r'\b(storytime|story time|lego|play ?days?|kids? program)\b'),
+    ('sports',      r'\b(yoga|run|race|5k|10k|fitness|pickleball|hockey|baseball|'
+                    r'soccer|tournament|golf|paddle|kayak|climb)\b'),
+    ('outdoors',    r'\b(hike|hiking|walk|bird|trail|nature|forest|cleanup|'
+                    r'stargaz\w*|foraging?)\b'),
+    ('food',        r'\b(dinner|dining|dine|tasting|brunch|supper|bbq|barbecue|'
+                    r'breakfast|food truck|potluck|wine|beer|cider|cocktail|'
+                    r'farm[- ]to[- ]table|long table)\b'),
+    ('class',       r'\b(workshop|class|lesson|course|seminar|clinic|training|demo)\b'),
+    ('talk',        r'\b(talk|lecture|reading|panel|author|discussion|book club)\b'),
+    ('volunteer',   r'\b(volunteer|work ?day|stewardship|planting|fundraiser|benefit)\b'),
+    ('meetup',      r'\b(meetup|meeting|social|club|forum|town hall|gathering)\b'),
+]
+
+# Is it under a roof? Only claimed when the text actually says so.
+OUTDOOR = re.compile(
+    r'\b(outdoors?|outside|park|trail|garden|lawn|riverfront|field|farm|orchard|'
+    r'hike|hiking|paddle|kayak|beach|meadow|grounds|picnic|rain date|weather '
+    r'permitting|plaza|courtyard)\b', re.I)
+INDOOR = re.compile(
+    r'\b(theat(er|re)|gallery|library|museum|hall|studio|taproom|auditorium|'
+    r'ballroom|basement|indoors?|classroom|sanctuary|lounge)\b', re.I)
+
+FOOD = re.compile(
+    r'\b(dinner|tasting|brunch|supper|breakfast|lunch|bbq|barbecue|food trucks?|'
+    r'potluck|refreshments|snacks|concessions|cash bar|beer|wine|cider|cocktails?|'
+    r'coffee|dessert|pizza|oysters?|food (and|&) drink|catered)\b', re.I)
+
+
+def type_of(title, description=''):
+    """Classify from the title first, falling back to the description.
+
+    A county fair whose blurb mentions "grandstand concerts" is a Festival, not
+    a Concert — what a thing *is* lives in its name, while the description only
+    mentions things it contains.
+    """
+    for source in (title or '', description or ''):
+        for name, pattern in TYPES:
+            if re.search(pattern, source, re.I):
+                return name
+    return 'other'
+
+
+def setting_of(text):
+    out, ind = bool(OUTDOOR.search(text)), bool(INDOOR.search(text))
+    if out and not ind:
+        return 'outdoor'
+    if ind and not out:
+        return 'indoor'
+    return 'unknown'
+
+
+def time_of_day(dt):
+    """Bucket by local clock hour: what a person means by morning or evening."""
+    h = dt.hour
+    if h < 12:
+        return 'morning'
+    if h < 17:
+        return 'afternoon'
+    if h < 21:
+        return 'evening'
+    return 'night'
+
+
 KEYWORDS = [
-    ('protest',   r'\b(rally|protest|march|demonstration|vigil|picket)\b'),
+    ('protest',   r'\b(rally|protest|demonstration|vigil|picket|walkout)\b|'
+                  r'\bmarch(es|ing)? (for|on|against|to demand)\b'),
     ('parade',    r'\bparade\b'),
     ('comedy',    r'\b(comedy|stand-?up|improv)\b'),
     ('film',      r'\b(film|movie|screening|cinema|documentar)\w*'),
@@ -182,6 +272,16 @@ def clean_text(raw, limit=400):
     return (cut[:space] if space > 0 else cut).rstrip(' ,;:—-') + '…'
 
 
+SMALL_WORDS = {'of', 'the', 'and', 'at', 'in', 'on', 'for', 'a', 'an'}
+
+
+def titlecase(text):
+    """Feeds sometimes give an all-lowercase venue; render it like a name."""
+    words = text.split()
+    return ' '.join(w if (i and w in SMALL_WORDS) else w[:1].upper() + w[1:]
+                    for i, w in enumerate(words))
+
+
 def split_location(loc):
     """Pull a venue name and town out of a free-text location line."""
     parts = [p.strip() for p in (loc or '').split(',') if p.strip()]
@@ -229,9 +329,14 @@ def main():
         loc = c.get('location')
         hit = geocode(loc, cache, stats) if loc else None
 
+        # Track whether the venue default was actually used. Inheriting the
+        # source venue's town for an event held somewhere else put "Ossining"
+        # on a Mamaroneck library listing.
+        used_fallback = False
         if not hit and fallback:
             hit = {'lat': fallback['lat'], 'lon': fallback['lon']}
             loc = loc or fallback.get('address') or fallback['name']
+            used_fallback = True
         if not hit:
             dropped['no_location' if not loc else 'ungeocodable'] += 1
             continue
@@ -242,18 +347,25 @@ def main():
             continue
 
         venue, city = split_location(loc)
-        if fallback:
+        if used_fallback:
             venue = venue or fallback['name']
             city = city or fallback.get('city')
+        if venue and venue == venue.lower():
+            venue = titlecase(venue)
         blob = ' '.join(filter(None, [c['title'], c.get('description'), venue]))
         recurring = c.get('recurring') or bool(ACTIVITY_HINTS.search(blob))
 
+        started = datetime.fromisoformat(c['start'])
         out.append({
             'id': f"{c['sourceId']}-{abs(hash(c.get('uid') or c['title'] + c['start'])) % 10**8}",
             'title': c['title'],
-            'kind': 'activity' if recurring else 'event',
+            'type': type_of(c['title'], c.get('description')),
             'repeats': bool(recurring),
             'audience': audience_of(blob),
+            'setting': setting_of(blob),
+            'timeOfDay': time_of_day(started),
+            'hasFood': bool(FOOD.search(blob)),
+            'host': c.get('organizer') or c['sourceName'],
             'categories': categorise(blob),
             'start': c['start'],
             'end': c.get('end'),
@@ -281,8 +393,13 @@ def main():
                 continue
             out.append({
                 'id': f"tm-{abs(hash(e['url'] or e['title'])) % 10**8}",
-                'title': e['title'], 'kind': 'event',
+                'title': e['title'],
+                'type': type_of(e['title'], e.get('description')),
                 'repeats': False,
+                'setting': setting_of(' '.join(filter(None, [e['title'], e.get('description')]))),
+                'timeOfDay': time_of_day(datetime.fromisoformat(e['start'].replace('Z', '+00:00'))),
+                'hasFood': bool(FOOD.search(' '.join(filter(None, [e['title'], e.get('description')])))),
+                'host': e.get('venue') or e['sourceName'],
                 'audience': audience_of(' '.join(filter(None, [
                     e['title'], e.get('description'), e.get('venue')]))),
                 'categories': e['categories'], 'start': e['start'], 'end': e.get('end'),

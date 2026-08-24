@@ -94,7 +94,7 @@
       <label class="field-label" for="radius">
         Search radius — <output id="radius-out"></output>
       </label>
-      <input id="radius" type="range" min="5" max="105" step="5" value="50">
+      <input id="radius" type="range" min="5" max="105" step="5" value="75">
       <div class="range-ends"><span>5</span><span>Any distance</span></div>
       <label class="check"><input type="checkbox" id="units-km"> Show kilometers</label>
     </section>
@@ -120,16 +120,18 @@
         <input id="q" type="search" placeholder="Keyword, venue or town…">
       </div>
       <div class="field">
-        <label class="field-label" for="kind">Type</label>
-        <select id="kind">
-          <option value="all">Events &amp; activities</option>
-          <option value="event">Events only</option>
-          <option value="activity">Activities only</option>
-        </select>
+        <span class="field-label">Kind of thing</span>
+        <div id="types" class="chips" role="group" aria-label="Filter by type"></div>
       </div>
-      <div class="field">
-        <span class="field-label">Category</span>
-        <div id="cats" class="chips" role="group" aria-label="Filter by category"></div>
+    </section>
+
+    <section class="group" aria-labelledby="g-feat">
+      <h3 class="group-h" id="g-feat">Features</h3>
+      <label class="check"><input type="checkbox" id="food-only"> Food or drink</label>
+      <label class="check"><input type="checkbox" id="outdoor-only"> Outdoors</label>
+      <div class="field" style="margin-top:11px">
+        <span class="field-label">Time of day</span>
+        <div id="tod" class="chips" role="group" aria-label="Filter by time of day"></div>
       </div>
     </section>
 

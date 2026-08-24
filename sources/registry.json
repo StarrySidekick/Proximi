@@ -3,7 +3,7 @@
     "name": "Beacon, NY",
     "lat": 41.5048,
     "lon": -73.9696,
-    "radiusMiles": 50,
+    "radiusMiles": 75,
     "timezone": "America/New_York"
   },
   "notes": [
@@ -13,7 +13,8 @@
     "A feed that parses but has no future events is STALE, not empty. Feeds are",
     "re-checked every run, so a source going stale is reported, never silently",
     "dropped. Confirmed stale feeds are kept here with enabled:false and a note,",
-    "so we do not rediscover and re-trust them later."
+    "so we do not rediscover and re-trust them later.",
+    "Connecticut was invisible for a different reason than distance: Danbury is 27.8 mi from Beacon and was always inside the radius, but the registry had no CT sources at all. Coverage gaps look like radius gaps — check the registry before widening the circle."
   ],
   "sources": [
     {
@@ -123,6 +124,48 @@
       }
     },
     {
+      "id": "whitememorial",
+      "kind": "ics",
+      "url": "https://whitememorialcc.org/events/?ical=1",
+      "publisher": "White Memorial Conservation Center",
+      "scope": "venue",
+      "venue": {
+        "name": "White Memorial Conservation Center",
+        "city": "Litchfield, CT",
+        "address": "80 Whitehall Rd, Litchfield, CT",
+        "lat": 41.73,
+        "lon": -73.21
+      }
+    },
+    {
+      "id": "emelin",
+      "kind": "ics",
+      "url": "https://emelin.org/events/?ical=1",
+      "publisher": "Emelin Theatre",
+      "scope": "venue",
+      "venue": {
+        "name": "Emelin Theatre",
+        "city": "Mamaroneck, NY",
+        "address": "153 Library Ln, Mamaroneck, NY",
+        "lat": 40.949,
+        "lon": -73.733
+      }
+    },
+    {
+      "id": "teatown",
+      "kind": "ics",
+      "url": "https://teatown.org/events/?ical=1",
+      "publisher": "Teatown Lake Reservation",
+      "scope": "venue",
+      "venue": {
+        "name": "Teatown Lake Reservation",
+        "city": "Ossining, NY",
+        "address": "1600 Spring Valley Rd, Ossining, NY",
+        "lat": 41.205,
+        "lon": -73.833
+      }
+    },
+    {
       "id": "thebeaconbeaconny",
       "kind": "html",
       "url": "https://thebeaconbeaconny.com/event-listings/",
@@ -172,6 +215,60 @@
       "url": "https://hvmag.com/things-to-do/this-week/",
       "publisher": "Hudson Valley Magazine",
       "scope": "regional"
+    },
+    {
+      "id": "hamlethub-danbury",
+      "kind": "html",
+      "url": "https://news.hamlethub.com/danbury/events",
+      "publisher": "HamletHub Danbury",
+      "scope": "local",
+      "note": "Hyperlocal CT news with an events section. Added to close the Connecticut gap."
+    },
+    {
+      "id": "ridgefieldplayhouse",
+      "kind": "html",
+      "url": "https://ridgefieldplayhouse.org/events/",
+      "publisher": "Ridgefield Playhouse",
+      "scope": "venue",
+      "note": "No iCal, but the page carries schema.org Event JSON-LD — parse that."
+    },
+    {
+      "id": "palacedanbury",
+      "kind": "html",
+      "url": "https://palacedanbury.com/events/",
+      "publisher": "Palace Danbury",
+      "scope": "venue"
+    },
+    {
+      "id": "stamfordmuseum",
+      "kind": "html",
+      "url": "https://stamfordmuseum.org/events/",
+      "publisher": "Stamford Museum & Nature Center",
+      "scope": "venue",
+      "note": "schema.org Event JSON-LD present."
+    },
+    {
+      "id": "ctvisit",
+      "kind": "html",
+      "url": "https://www.ctvisit.com/events",
+      "publisher": "CTvisit (CT state tourism)",
+      "scope": "regional"
+    },
+    {
+      "id": "bethelwoods",
+      "kind": "html",
+      "url": "https://www.bethelwoodscenter.org/events",
+      "publisher": "Bethel Woods Center for the Arts",
+      "scope": "venue",
+      "note": "48.9 mi — was inside the old radius too, just never registered."
+    },
+    {
+      "id": "bedfordplayhouse",
+      "kind": "html",
+      "url": "https://bedfordplayhouse.org/",
+      "publisher": "Bedford Playhouse",
+      "scope": "venue",
+      "note": "JSON-LD Event data present."
     },
     {
       "id": "ticketmaster",

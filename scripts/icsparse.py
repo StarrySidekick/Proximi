@@ -95,6 +95,9 @@ def parse(text, default_tz='America/New_York'):
             cur['location'] = unescape(value).strip()
         elif name == 'URL':
             cur['url'] = value.strip()
+        elif name == 'ORGANIZER':
+            # "CN=Some Org:mailto:…" — the common name is the useful half.
+            cur['organizer'] = (params.get('CN') or '').strip() or None
         elif name == 'UID':
             cur['uid'] = value.strip()
         elif name == 'CATEGORIES':
