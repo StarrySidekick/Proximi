@@ -141,39 +141,95 @@ Current category vocabulary: `music`, `show`, `art`, `market`, `sale`, `parade`,
 ## Layout
 
 ```
-index.html         markup and controls
-assets/styles.css  styling, light + dark themes
-assets/app.js      loading, filtering, sorting, geolocation, rendering
-data/events.json   listings (currently sample data)
+index.html              markup and the filter sheet
+assets/styles.css       styling, light + dark themes
+assets/app.js           loading, filtering, sorting, geolocation, rendering
+data/events.json        the listings the site serves
+
+sources/registry.json   curated list of feeds, pages and APIs to check
+sources/geocache.json   remembered geocoding results, hits and misses alike
+
+scripts/icsparse.py     minimal iCalendar reader
+scripts/harvest.py      pull feeds listed in the registry
+scripts/platforms.py    Ticketmaster Discovery (needs TICKETMASTER_API_KEY)
+scripts/discover.py     find new venues (OSM) and probe them for feeds
+scripts/enrich.py       geocode, radius-filter, infer categories
+scripts/merge.py        collapse repeats, dedupe, fold into data/events.json
+scripts/validate.py     schema and radius gate, also run in CI
 ```
 
 ## How listings get updated
 
-There is no scraper process and no backend. Instead, a **weekly scheduled task**
-wakes Claude, which crawls regional event calendars, normalizes what it finds
-into the schema above, verifies each item is genuinely inside the radius, and
-commits `data/events.json` back to this branch. GitHub Pages serves the file
-directly, so the push *is* the deploy.
+No backend and no scraper daemon. A **weekly scheduled task** wakes Claude, which
+runs a scripted pipeline and commits `data/events.json` back to this branch.
+GitHub Pages serves that file directly, so the push *is* the deploy.
 
-- **Schedule:** Mondays, 07:23 America/New_York.
-- **Coverage:** 50 miles around Beacon, NY.
-- **Sources:** regional calendars (A Little Beacon Blog, The Beacon, Destination
-  Dutchess, Hudson Valley One, Times Hudson Valley, Hudson Valley Magazine) plus
-  organiser sites directly when a price or ticket link needs confirming.
+The pipeline is deliberately split between what a script can do reliably and
+what needs judgement:
 
-The task's instructions live in the Routine itself, not in this repo. The rules
-that matter: never invent a listing, a price or a URL; use `price: null` rather
-than guessing; confirm every venue is really within 50 miles (the Beacon Theatre
-in Manhattan is a recurring trap); and validate the JSON and render the page
-before pushing.
+```
+sources/registry.json     the curated list of places to look
+        │
+        ├─ harvest.py     pull iCal feeds          → build/candidates.json
+        ├─ platforms.py   Ticketmaster (API key)   → build/platform.json
+        ├─ enrich.py      geocode, radius-filter, categorise
+        ├─ merge.py       collapse repeats, dedupe → data/events.json
+        └─ validate.py    gate before anything ships
+```
+
+Everything above is deterministic — no model is involved, so nothing in it can
+invent an event. Claude's job is the rest: reading the sources that have no
+feed, finding real prices, and spot-checking what the scripts inferred.
+
+### The registry is the point
+
+Searching the web each week only ever finds what aggregators already collected,
+so the long tail is excluded by construction. `sources/registry.json` replaces
+that with a list of specific places to check, each tagged `ics` (machine-readable
+feed), `html` (Claude reads the page) or `api` (needs a key). Search's job moves
+from *harvesting* to *discovering new sources*, which happens monthly.
+
+### Finding new sources
+
+```bash
+python3 scripts/discover.py --overpass   # every venue with a website in the radius, from OSM
+python3 scripts/discover.py --probe      # test each domain for a live iCal feed
+```
+
+A lot of venues run WordPress with The Events Calendar, which always answers
+`?ical=1`. **Roughly 7% of venue domains expose a usable feed** — that is how
+Storm King (111 listings), Savage Wonder, Scenic Hudson and Millbrook Vineyards
+were found. The winery is the case that motivated all this: tasting dinners
+never reach a county calendar, but its feed publishes them.
+
+### A feed existing is not a feed working
+
+Both Towne Crier and The Beacon serve well-formed iCal that is frozen months in
+the past, while their HTML calendars stay current. Ingesting either would have
+put confident, obsolete listings on the site. So:
+
+- Every feed is re-checked each run, and one with **no future events is reported
+  as stale, not treated as empty**.
+- Confirmed-dead feeds stay in the registry with `enabled: false` and a note, so
+  they are not rediscovered and re-trusted later.
+- Hosts that answer a bot challenge (HTTP 202 with an HTML interstitial — Opus 40
+  and Maverick Concerts both do) are reported as `blocked`, never silently
+  counted as zero.
+
+### Price is the known gap
+
+No iCal feed carries a price, and small venue sites do not publish
+`schema.org/Event` data either — only ticketing platforms do. So most listings
+show "See listing" until Claude opens the event's own page and reads the price
+out of prose. **`price: null` means unpublished and is never rendered as free**;
+`validate.py` fails the build if a bare number appears where the schema expects
+null or an object.
 
 ### Accuracy caveats
 
-Listings are only as good as the calendars they came from, and those go stale.
-The page states when it last refreshed and tells people to check the listing
-before turning up. Roughly two thirds of current entries have no published
-price — aggregator calendars usually omit it — so they show "See listing"
-rather than a number someone made up.
+Listings are only as good as the calendars they come from, and those go stale.
+The page states when it last refreshed and tells people to check before turning
+up. Categories are inferred by keyword matching and are sometimes thin or wrong.
 
 ## Status
 
@@ -182,18 +238,19 @@ responsive layout) and the weekly refresh described above.
 
 **Limits worth knowing:**
 
-- **Coverage is one region.** A single static JSON file suits a metro area. More
-  regions means partitioning the data by area, or a real backend.
-- **The radius filter is client-side.** Everything in the file ships to every
-  visitor, and the browser filters it. Fine at tens or hundreds of items; not at
-  tens of thousands.
-- **Weekly is coarse** for things that sell out or get cancelled. A daily run,
-  or an on-demand refresh, would help.
-- **Deduplication is by hand.** The same event listed by a venue, a promoter and
-  two aggregators is currently caught by Claude noticing, not by any matching
-  logic.
-- **Geocoding is approximate** — venues get their town's coordinates unless a
-  precise one was obvious.
+- **Most venues have no feed.** The 7% hit rate means the other 93% — the
+  restaurant with a one-off wine dinner — still need either an `html` registry
+  entry or a human to mention them. Letting people submit an event would close
+  more of that gap than any amount of scraping.
+- **Instagram and Facebook are where a lot of this actually gets announced**,
+  and both are hostile to scraping. Deliberately not attempted.
+- **Coverage is one region.** A single static JSON file suits a metro area; more
+  regions means partitioning by area or a real backend.
+- **The radius filter is client-side.** Every listing ships to every visitor.
+  Fine in the hundreds, not in the tens of thousands.
+- **Geocoding is approximate** — venues resolve to a street address where one is
+  given, otherwise to their town.
+- **Weekly is coarse** for anything that sells out or gets cancelled.
 
 Also worth adding: a map view, saved locations, calendar export, and
 "free tonight nearby" as a one-tap default.

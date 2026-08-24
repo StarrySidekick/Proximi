@@ -1,0 +1,99 @@
+#!/usr/bin/env python3
+"""Gate on data/events.json before it reaches the site.
+
+The weekly job writes this file unattended, so the checks here are the only
+thing standing between a bad harvest and 121 wrong listings in public.
+
+  python3 scripts/validate.py [path]
+"""
+
+import json, re, sys
+from datetime import datetime, timedelta, timezone
+from math import radians, sin, cos, asin, sqrt
+
+KINDS = {'event', 'activity'}
+ISO = re.compile(r'^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}([+-]\d{2}:\d{2}|Z)$')
+
+
+def miles(a, b, c, d):
+    dlat, dlon = radians(c - a), radians(d - b)
+    h = sin(dlat / 2) ** 2 + cos(radians(a)) * cos(radians(c)) * sin(dlon / 2) ** 2
+    return 2 * 3958.8 * asin(sqrt(h))
+
+
+def main(path='data/events.json'):
+    data = json.load(open(path))
+    meta, items = data['meta'], data['items']
+    errors, warnings = [], []
+
+    for key in ('centerLat', 'centerLon', 'radiusMiles', 'timezone', 'scrapedAt'):
+        if meta.get(key) in (None, ''):
+            errors.append(f'meta.{key} is missing')
+    if not ISO.match(meta.get('scrapedAt', '')):
+        errors.append('meta.scrapedAt must be a full ISO timestamp with an offset — '
+                      'a date-only string is read as UTC midnight')
+
+    ids = [i.get('id') for i in items]
+    for dup in {i for i in ids if ids.count(i) > 1}:
+        errors.append(f'duplicate id: {dup}')
+
+    horizon = datetime.now(timezone.utc) + timedelta(days=730)
+    for i in items:
+        tag = i.get('id', '?')
+        for field in ('id', 'title', 'kind', 'categories', 'venue', 'lat', 'lon', 'url'):
+            if i.get(field) in (None, '', []):
+                errors.append(f'{tag}: missing {field}')
+        if i.get('kind') not in KINDS:
+            errors.append(f"{tag}: kind must be one of {sorted(KINDS)}, got {i.get('kind')!r}")
+
+        start = i.get('start')
+        if not start:
+            errors.append(f'{tag}: no start')
+        else:
+            if not ISO.match(start):
+                errors.append(f'{tag}: start {start!r} needs an explicit UTC offset')
+            try:
+                when = datetime.fromisoformat(start)
+                if when.tzinfo and when > horizon:
+                    warnings.append(f'{tag}: starts more than 2 years out ({start[:10]})')
+            except ValueError:
+                errors.append(f'{tag}: start {start!r} is unparseable')
+
+        # price must be null or an object. A bare 0 would render as "Free",
+        # which is the one mistake that actively misleads people.
+        if 'price' not in i:
+            errors.append(f'{tag}: no price key (use null when unpublished)')
+        elif i['price'] is not None:
+            p = i['price']
+            if not isinstance(p, dict):
+                errors.append(f'{tag}: price must be null or an object, got {type(p).__name__}')
+            elif not isinstance(p.get('min'), (int, float)):
+                errors.append(f'{tag}: price.min must be a number')
+
+        if i.get('signupRequired') and not i.get('signupUrl'):
+            errors.append(f'{tag}: signupRequired with no signupUrl')
+
+        if isinstance(i.get('lat'), (int, float)) and isinstance(i.get('lon'), (int, float)):
+            d = miles(meta['centerLat'], meta['centerLon'], i['lat'], i['lon'])
+            if d > meta['radiusMiles']:
+                errors.append(f'{tag}: {d:.1f} mi — outside the {meta["radiusMiles"]} mi radius')
+
+    for w in warnings:
+        print(f'warning: {w}')
+    if errors:
+        print(f'\nFAILED — {len(errors)} problem(s):')
+        for e in errors[:40]:
+            print('  -', e)
+        if len(errors) > 40:
+            print(f'  … and {len(errors) - 40} more')
+        return 1
+
+    priced = sum(1 for i in items if i.get('price'))
+    print(f'{len(items)} listings OK — {priced} priced, {len(items) - priced} "see listing", '
+          f'all within {meta["radiusMiles"]} mi of {meta["centerName"]}'
+          + (f' ({len(warnings)} warning(s))' if warnings else ''))
+    return 0
+
+
+if __name__ == '__main__':
+    sys.exit(main(*sys.argv[1:]))

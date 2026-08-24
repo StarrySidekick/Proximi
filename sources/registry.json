@@ -1,0 +1,186 @@
+{
+  "center": {
+    "name": "Beacon, NY",
+    "lat": 41.5048,
+    "lon": -73.9696,
+    "radiusMiles": 50,
+    "timezone": "America/New_York"
+  },
+  "notes": [
+    "kind: ics    — machine-readable feed, harvested by scripts/harvest.py",
+    "kind: html   — no feed; the weekly job reads the page and extracts",
+    "kind: api    — needs a key or token; see scripts/platforms.py",
+    "A feed that parses but has no future events is STALE, not empty. Feeds are",
+    "re-checked every run, so a source going stale is reported, never silently",
+    "dropped. Confirmed stale feeds are kept here with enabled:false and a note,",
+    "so we do not rediscover and re-trust them later."
+  ],
+  "sources": [
+    {
+      "id": "travelhudsonvalley",
+      "kind": "ics",
+      "url": "https://travelhudsonvalley.com/events/?ical=1",
+      "publisher": "Hudson Valley Tourism",
+      "scope": "regional"
+    },
+    {
+      "id": "opus40",
+      "kind": "ics",
+      "url": "https://opus40.org/calendar/?ical=1",
+      "publisher": "Opus 40",
+      "scope": "venue",
+      "venue": {
+        "name": "Opus 40",
+        "city": "Saugerties, NY",
+        "address": "50 Fite Rd, Saugerties, NY",
+        "lat": 42.0345,
+        "lon": -74.079
+      }
+    },
+    {
+      "id": "desmondfish-library",
+      "kind": "ics",
+      "url": "https://desmondfishlibrary.org/events/?ical=1&eventDisplay=list",
+      "publisher": "Desmond-Fish Library, Garrison",
+      "scope": "venue",
+      "venue": {
+        "name": "Desmond-Fish Public Library",
+        "city": "Garrison, NY",
+        "address": "472 Route 403, Garrison, NY",
+        "lat": 41.3819,
+        "lon": -73.947
+      }
+    },
+    {
+      "id": "maverickconcerts",
+      "kind": "ics",
+      "url": "https://maverickconcerts.org/events/?ical=1",
+      "publisher": "Maverick Concerts",
+      "scope": "venue",
+      "venue": {
+        "name": "Maverick Concert Hall",
+        "city": "West Hurley, NY",
+        "address": "120 Maverick Rd, West Hurley, NY",
+        "lat": 42.018,
+        "lon": -74.087
+      }
+    },
+    {
+      "id": "clearwater",
+      "kind": "ics",
+      "url": "https://clearwater.org/events/?ical=1",
+      "publisher": "Hudson River Sloop Clearwater",
+      "scope": "org"
+    },
+    {
+      "id": "stormking",
+      "kind": "ics",
+      "url": "https://stormking.org/events/?ical=1",
+      "publisher": "Storm King Art Center",
+      "scope": "venue",
+      "venue": {
+        "name": "Storm King Art Center",
+        "city": "New Windsor, NY",
+        "address": "1 Museum Rd, New Windsor, NY",
+        "lat": 41.4249,
+        "lon": -74.0568
+      }
+    },
+    {
+      "id": "savagewonder",
+      "kind": "ics",
+      "url": "https://savagewonder.org/events/?ical=1",
+      "publisher": "Savage Wonder, Beacon",
+      "scope": "venue",
+      "venue": {
+        "name": "Savage Wonder",
+        "city": "Beacon, NY",
+        "address": "139 Main St, Beacon, NY",
+        "lat": 41.505,
+        "lon": -73.969
+      }
+    },
+    {
+      "id": "scenichudson",
+      "kind": "ics",
+      "url": "https://scenichudson.org/events/?ical=1",
+      "publisher": "Scenic Hudson",
+      "scope": "org"
+    },
+    {
+      "id": "millbrookwine",
+      "kind": "ics",
+      "url": "https://millbrookwine.com/?post_type=tribe_events&ical=1",
+      "publisher": "Millbrook Vineyards & Winery",
+      "scope": "venue",
+      "note": "Found by scripts/discover.py --probe. Exactly the long-tail case: winery dinners and tastings that never reach a county calendar.",
+      "venue": {
+        "name": "Millbrook Vineyards & Winery",
+        "city": "Millbrook, NY",
+        "address": "26 Wing Rd, Millbrook, NY",
+        "lat": 41.786,
+        "lon": -73.69
+      }
+    },
+    {
+      "id": "thebeaconbeaconny",
+      "kind": "html",
+      "url": "https://thebeaconbeaconny.com/event-listings/",
+      "publisher": "The Beacon",
+      "scope": "local",
+      "note": "Its ?ical=1 feed is frozen at Mar-Apr 2026 while the HTML listing stays current. Every feed URL variant returns the same dead window — read the page instead."
+    },
+    {
+      "id": "townecrier",
+      "kind": "html",
+      "url": "https://townecrier.com/events/",
+      "publisher": "Towne Crier Cafe, Beacon",
+      "scope": "venue",
+      "note": "Same problem: ?ical=1 serves a 2024 archive though the venue is active."
+    },
+    {
+      "id": "alittlebeaconblog",
+      "kind": "html",
+      "url": "https://www.alittlebeaconblog.com/annual-events",
+      "publisher": "A Little Beacon Blog",
+      "scope": "local"
+    },
+    {
+      "id": "destinationdutchess",
+      "kind": "html",
+      "url": "https://destinationdutchess.com/calendar",
+      "publisher": "Destination Dutchess",
+      "scope": "regional"
+    },
+    {
+      "id": "hudsonvalleyone",
+      "kind": "html",
+      "url": "https://hudsonvalleyone.com/calendar/",
+      "publisher": "Hudson Valley One",
+      "scope": "regional"
+    },
+    {
+      "id": "timeshudsonvalley",
+      "kind": "html",
+      "url": "https://www.timeshudsonvalley.com/calendar/",
+      "publisher": "Times Hudson Valley",
+      "scope": "regional"
+    },
+    {
+      "id": "hvmag",
+      "kind": "html",
+      "url": "https://hvmag.com/things-to-do/this-week/",
+      "publisher": "Hudson Valley Magazine",
+      "scope": "regional"
+    },
+    {
+      "id": "ticketmaster",
+      "kind": "api",
+      "url": "https://app.ticketmaster.com/discovery/v2/events.json",
+      "publisher": "Ticketmaster Discovery",
+      "scope": "regional",
+      "keyEnv": "TICKETMASTER_API_KEY",
+      "note": "Free key from developer.ticketmaster.com. Native radius+date search and it returns price ranges. Skipped automatically when the env var is unset."
+    }
+  ]
+}

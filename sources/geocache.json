@@ -1,0 +1,208 @@
+{
+"west point tours, 2107 new south post rd, west point, ny, 10996, united states": {
+"lat": 41.3912693,
+"lon": -73.9658803,
+"display": "United States Military Academy, 845, Brewerton Road, Town of Highlands, Orange County, New York, 10996, United States",
+"matched": "West Point, NY",
+"precision": 3
+},
+"anywhere": {
+"lat": 16.0392874,
+"lon": 108.2220415,
+"display": "Anywhere, 381, \u0110\u01b0\u1eddng N\u00fai Th\u00e0nh, T\u1ed5 d\u00e2n ph\u1ed1 41, Ph\u01b0\u1eddng H\u00f2a C\u01b0\u1eddng, Th\u00e0nh ph\u1ed1 \u0110\u00e0 N\u1eb5ng, 02363, Vi\u1ec7t Nam",
+"matched": "Anywhere",
+"precision": 0
+},
+"long dock park, 23 long dock rd, beacon, ny, 12508, united states": {
+"lat": 41.5038406,
+"lon": -73.9873484,
+"display": "Kayak Storage, 23, Long Dock Road, City of Beacon, Dutchess County, New York, 12508, United States",
+"matched": "23 Long Dock Rd, Beacon, NY",
+"precision": 1
+},
+"the northside hub \u2013 community meeting room, 58 parker ave, poughkeepsie, ny, 12601, united states": {
+"lat": 41.7112164,
+"lon": -73.924615,
+"display": "58, Parker Avenue, City of Poughkeepsie, Dutchess County, New York, 12601, United States",
+"matched": "58 Parker Ave, Poughkeepsie, NY",
+"precision": 1
+},
+"savage wonderground art gallery": null,
+"desmond-fish public library": {
+"lat": 41.3764434,
+"lon": -73.9424,
+"display": "Desmond-Fish Public Library, 472, State Highway 403, Forsonville, Garrison, Town of Philipstown, Putnam County, New York, 10524, United States",
+"matched": "Desmond-Fish Public Library",
+"precision": 0
+},
+"the parlor": {
+"lat": 47.6218626,
+"lon": -52.6551469,
+"display": "The Parlor, Logy Bay-Middle Cove-Outer Cove, Newfoundland, Newfoundland and Labrador, A1K 3B3, Canada",
+"matched": "The Parlor",
+"precision": 0
+},
+"bear mountain inn, 3020 seven lakes drive, bear mountain, ny, 10986, united states": {
+"lat": 41.3129068,
+"lon": -74.0061627,
+"display": "Bear Mountain, Town of Highlands, Orange County, New York, 10922, United States",
+"matched": "Bear Mountain, NY",
+"precision": 3
+},
+"philipsburg manor, 381 n. broadway, sleepy hollow, ny, 10591": {
+"lat": 41.0886008,
+"lon": -73.863984,
+"display": "Philipsburg Manor, 381, North Broadway, Village of Sleepy Hollow, Town of Mount Pleasant, Westchester County, New York, 10591, United States",
+"matched": "Philipsburg Manor, 381 N. Broadway, Sleepy Hollow, NY",
+"precision": 0
+},
+"dutchess county fairgrounds, 6636 route 9, rhinebeck, ny, 12572, united states": {
+"lat": 41.9374935,
+"lon": -73.9091277,
+"display": "Dutchess County Fairgrounds, Spring Brook Avenue, Village of Rhinebeck, Town of Rhinebeck, Dutchess County, New York, 12572, United States",
+"matched": "Dutchess County Fairgrounds, Rhinebeck, NY",
+"precision": 2
+},
+"village of irvington, irvington, ny, 10533": {
+"lat": 41.0393579,
+"lon": -73.8679491,
+"display": "Village of Irvington, 85, Main Street, Village of Irvington, Town of Greenburgh, Westchester County, New York, 10533, United States",
+"matched": "Village of Irvington, Irvington, NY",
+"precision": 0
+},
+"nyack, s. broadway & hudson avenue, nyack, ny, 10960": {
+"lat": 41.0987407,
+"lon": -73.9269347,
+"display": "Nyack Hospital Staff & Visitor Parking, Village of Nyack, Town of Orangetown, Rockland County, New York, United States",
+"matched": "Nyack, Nyack, NY",
+"precision": 2
+},
+"the northside hub \u2013 pavilion, 58 parker ave, poughkeepsie, ny, 12601, united states": {
+"lat": 41.7112164,
+"lon": -73.924615,
+"display": "58, Parker Avenue, City of Poughkeepsie, Dutchess County, New York, 12601, United States",
+"matched": "58 Parker Ave, Poughkeepsie, NY",
+"precision": 1
+},
+"catskill village, main street, catskill, ny, 12414, united states": {
+"lat": 42.2205056,
+"lon": -73.8657072,
+"display": "Catskill Municipal Building, 422, Main Street, Village of Catskill, Town of Catskill, Greene County, New York, 12414, United States",
+"matched": "Catskill Village, Main Street, Catskill, NY",
+"precision": 0
+},
+"ulster county fairgrounds, 249 libertyville road, new paltz, ny, 12561, united states": {
+"lat": 41.7220225,
+"lon": -74.1224184,
+"display": "249, Libertyville Road, Town of New Paltz, Ulster County, New York, 12561, United States",
+"matched": "249 Libertyville Road, New Paltz, NY",
+"precision": 1
+},
+"tymor park, 249 duncan road, lagrangeville, ny, 12540, united states": {
+"lat": 41.6532873,
+"lon": -73.7006076,
+"display": "Union Vale Town Hall, 249, Duncan Road, Lagrangeville, Town of Union Vale, Dutchess County, New York, 12540, United States",
+"matched": "249 Duncan Road, Lagrangeville, NY",
+"precision": 1
+},
+"caramoor, 149 girdle ridge rd, katonah, ny, 10536, united states": {
+"lat": 41.2390867,
+"lon": -73.6419848,
+"display": "149, Girdle Ridge Road, Town of Bedford, Westchester County, New York, 10536, United States",
+"matched": "149 Girdle Ridge Rd, Katonah, NY",
+"precision": 1
+},
+"clover stadium, 1 palisades credit union park, pomona, ny, 10970, united states": {
+"lat": 41.189153,
+"lon": -74.054249,
+"display": "Village of Pomona, Town of Haverstraw, Rockland County, New York, United States",
+"matched": "Pomona, NY",
+"precision": 3
+},
+"barton orchards, 63 apple tree lane, poughquag, ny, 12570, united states": {
+"lat": 41.6081305,
+"lon": -73.7068399,
+"display": "63, Apple Tree Lane, Poughquag, Town of Beekman, Dutchess County, New York, 12570, United States",
+"matched": "63 Apple Tree Lane, Poughquag, NY",
+"precision": 1
+},
+"german masonic park, 120 western highway, tappan, ny, 10983, united states": {
+"lat": 41.0268288,
+"lon": -73.9532599,
+"display": "120, Western Highway, Tappan, Town of Orangetown, Rockland County, New York, 10983, United States",
+"matched": "120 Western Highway, Tappan, NY",
+"precision": 1
+},
+"yorktown grange fair, 99 moseman rd., yorktown heights, ny, 10598": {
+"lat": 41.269464,
+"lon": -73.769254,
+"display": "99, Moseman Road, Yorktown Heights, Town of Yorktown, Westchester County, New York, 10598, United States",
+"matched": "99 Moseman Rd., Yorktown Heights, NY",
+"precision": 1
+},
+"boscobel house and gardens, 1601 ny-9d, garrison, new york, 10524, united states": {
+"lat": 41.3807494,
+"lon": -73.9393475,
+"display": "State Highway 9D, Garrison, Town of Philipstown, Putnam County, New York, 10997, United States",
+"matched": "1601 NY-9D, Garrison, New York",
+"precision": 1
+},
+"louis b. engel waterfront park": null,
+"blackthorne resort, 348 sunside road, east durham, ny, 12423, united states": {
+"lat": 42.3525991,
+"lon": -74.0713578,
+"display": "Sunside Road, East Durham, Town of Durham, Greene County, New York, 12405, United States",
+"matched": "348 Sunside Road, East Durham, NY",
+"precision": 1
+},
+"clay art center, 40 beech st., port chester, ny, 10573, united states": {
+"lat": 40.9962558,
+"lon": -73.6632836,
+"display": "40, Beech Street, Purdys Grove, Village of Port Chester, Town of Rye, Westchester County, New York, 10573, United States",
+"matched": "40 Beech St., Port Chester, NY",
+"precision": 1
+},
+"washington irving\u2019s sunnyside, 3 w. sunnyside ln., irvington, ny, 10533": {
+"lat": 41.0466719,
+"lon": -73.8652054,
+"display": "3, West Sunnyside Lane, Village of Irvington, Town of Greenburgh, Westchester County, New York, 10533, United States",
+"matched": "3 W. Sunnyside Ln., Irvington, NY",
+"precision": 1
+},
+"van cortlandt manor, 525 s riverside, croton-on-hudson, ny, 10520": {
+"lat": 41.1916544,
+"lon": -73.8764948,
+"display": "Van Cortlandt Manor, South Riverside Avenue, Village of Croton-on-Hudson, Town of Cortlandt, Westchester County, New York, 10520, United States",
+"matched": "Van Cortlandt Manor, 525 S Riverside, Croton-on-Hudson, ny",
+"precision": 0
+},
+"the antrim playhouse, 32 old tappan road, tappan, ny, 10983": {
+"lat": 41.022876,
+"lon": -73.9495648,
+"display": "32, Old Tappan Road, Tappan, Town of Orangetown, Rockland County, New York, 10983, United States",
+"matched": "32 Old Tappan Road, Tappan, NY",
+"precision": 1
+},
+"new century, 517 neversink drive, port jervis, ny, 12771, united states": {
+"lat": 41.4076751,
+"lon": -74.6369844,
+"display": "517, Neversink Drive, City of Port Jervis, Town of Deerpark, Orange County, New York, 12771, United States",
+"matched": "517 Neversink Drive, Port Jervis, NY",
+"precision": 1
+},
+"twin star orchards, 155 n. ohioville road, new paltz, ny, 12561": {
+"lat": 41.7572925,
+"lon": -74.0496252,
+"display": "Twin Star Orchards, 155, North Ohioville Road, Ohioville, Town of New Paltz, Ulster County, New York, 12561, United States",
+"matched": "Twin Star Orchards, 155 N. Ohioville Road, New Paltz, NY",
+"precision": 0
+},
+"grey barn at the hudson river maritime museum, 50 rondout landing, kingston, 12401, united states": null,
+"pete + toshi riverfront park, 2 red flynn dr, beacon, new york, 12508, united states": {
+"lat": 41.5061342,
+"lon": -73.9852439,
+"display": "Red Flynn Drive, City of Beacon, Dutchess County, New York, 12508, United States",
+"matched": "2 Red Flynn Dr, Beacon, New York",
+"precision": 1
+}
+}
