@@ -6,8 +6,9 @@ Find events and activities happening near wherever you are.
 of things happening nearby, filterable by what kind of thing it is, how far away
 it is, and what it costs.
 
-This repo currently holds a **working front-end prototype** running on sample
-data. There is no scraper yet — see [Status](#status).
+This repo holds a **working front-end prototype** served from GitHub Pages,
+with real listings refreshed weekly by a scheduled Claude task — see
+[How listings get updated](#how-listings-get-updated).
 
 ---
 
@@ -37,6 +38,8 @@ list, tagged with a badge, and the `Type` filter separates them on demand.
   "sliding scale at the door"), venue, town, distance, duration, description,
   category tags, and a **Sign up** button for anything requiring registration.
 - Miles/kilometres toggle, light and dark themes, works down to phone widths.
+- Says when the data was last refreshed, and drops listings once they have been
+  and gone.
 
 ## Run it locally
 
@@ -56,7 +59,9 @@ branch** and pick the branch and `/ (root)`.
 
 ## Data format
 
-`data/events.json` is the single source of truth for listings. One entry:
+`data/events.json` is the single source of truth for listings. The `meta` block
+records when it was scraped, the centre and radius it covers, and the timezone
+its times are published in. One entry:
 
 ```jsonc
 {
@@ -64,8 +69,8 @@ branch** and pick the branch and `/ (root)`.
   "title": "Rooftop Jazz Sessions",
   "kind": "event",                 // "event" | "activity"
   "categories": ["music", "nightlife"],
-  "daysFromNow": 0,                // prototype only — see note below
-  "time": "19:30",                 // local, 24h
+  "start": "2026-09-05T19:30:00-04:00",   // ISO 8601 with offset
+  "end": "2026-09-07T22:00:00-04:00",     // optional; multi-day runs only
   "durationMin": 180,
   "recurrence": "Every Saturday",  // activities only; free text shown on the card
   "venue": "The Standard Loft",
@@ -84,12 +89,14 @@ branch** and pick the branch and `/ (root)`.
 
 Notes:
 
-- **Dates.** The sample data uses `daysFromNow` + `time` so the prototype always
-  shows upcoming listings instead of going stale. Real scraped data should carry
-  an ISO 8601 `start` (and optional `end`) instead — the client already prefers
-  `start` when present.
+- **Dates.** `start` is ISO 8601 with an explicit offset; add `end` for multi-day
+  runs, which render as a date range. Times are displayed in the dataset's
+  `meta.timezone`, not the viewer's, so a Beacon show at 7pm reads as 7pm from
+  anywhere. Listings whose date has passed are dropped at load.
 - **Price.** `min` and `max` are numbers; `max: 0` means free. `note` is free
-  text for the caveats that matter ("$10 parking", "free before 7pm").
+  text for the caveats that matter ("$10 parking", "free before 7pm"). Use
+  **`"price": null`** when the source publishes no price — the card then reads
+  "See listing". Null is never treated as free, and never guessed at.
 - **Categories** are open-ended. Unknown values are title-cased and get a filter
   chip automatically, so a scraper can introduce new ones without a code change.
 - Anything with `signupRequired: true` should have a `signupUrl`.
@@ -107,30 +114,53 @@ assets/app.js      loading, filtering, sorting, geolocation, rendering
 data/events.json   listings (currently sample data)
 ```
 
+## How listings get updated
+
+There is no scraper process and no backend. Instead, a **weekly scheduled task**
+wakes Claude, which crawls regional event calendars, normalizes what it finds
+into the schema above, verifies each item is genuinely inside the radius, and
+commits `data/events.json` back to this branch. GitHub Pages serves the file
+directly, so the push *is* the deploy.
+
+- **Schedule:** Mondays, 07:23 America/New_York.
+- **Coverage:** 50 miles around Beacon, NY.
+- **Sources:** regional calendars (A Little Beacon Blog, The Beacon, Destination
+  Dutchess, Hudson Valley One, Times Hudson Valley, Hudson Valley Magazine) plus
+  organiser sites directly when a price or ticket link needs confirming.
+
+The task's instructions live in the Routine itself, not in this repo. The rules
+that matter: never invent a listing, a price or a URL; use `price: null` rather
+than guessing; confirm every venue is really within 50 miles (the Beacon Theatre
+in Manhattan is a recurring trap); and validate the JSON and render the page
+before pushing.
+
+### Accuracy caveats
+
+Listings are only as good as the calendars they came from, and those go stale.
+The page states when it last refreshed and tells people to check the listing
+before turning up. Roughly two thirds of current entries have no published
+price — aggregator calendars usually omit it — so they show "See listing"
+rather than a number someone made up.
+
 ## Status
 
-**Working:** the whole browsing experience — location, filters, sorting, cards,
-responsive layout.
+**Working:** the browsing experience (location, filters, sorting, cards,
+responsive layout) and the weekly refresh described above.
 
-**Not built yet: the scraper.** This is the real work, and it needs a decision
-first. GitHub Pages serves static files only, so ingestion has to happen
-*outside* the page and commit its output back to `data/events.json`. The natural
-shape is a scheduled GitHub Action that runs a scraper on a cron, normalizes
-results into the schema above, geocodes addresses, dedupes, and commits — the
-site then picks up new data with no deploy.
+**Limits worth knowing:**
 
-Open questions before that:
-
-- **Sources.** Public APIs with sane terms (Eventbrite, Ticketmaster, Meetup,
-  municipal calendars, library and parks-department feeds) are very different
-  work from HTML scraping, which has per-site terms-of-service and robots.txt
-  constraints to respect. Worth starting with feeds that permit it.
-- **Coverage.** A static JSON file scales to a metro area, not the world. Going
-  national means partitioning data by region, or moving to a real backend.
-- **Dedupe.** The same event is listed by the venue, the promoter and three
-  aggregators; matching on title + time + location is the hard part.
-- **Geocoding.** Nominatim's usage policy rules out bulk use, so batch geocoding
-  belongs in the ingest step with a permitted provider, not in the browser.
+- **Coverage is one region.** A single static JSON file suits a metro area. More
+  regions means partitioning the data by area, or a real backend.
+- **The radius filter is client-side.** Everything in the file ships to every
+  visitor, and the browser filters it. Fine at tens or hundreds of items; not at
+  tens of thousands.
+- **Weekly is coarse** for things that sell out or get cancelled. A daily run,
+  or an on-demand refresh, would help.
+- **Deduplication is by hand.** The same event listed by a venue, a promoter and
+  two aggregators is currently caught by Claude noticing, not by any matching
+  logic.
+- **Geocoding is approximate** — venues get their town's coordinates unless a
+  precise one was obvious.
 
 Also worth adding: a map view, saved locations, calendar export, and
 "free tonight nearby" as a one-tap default.

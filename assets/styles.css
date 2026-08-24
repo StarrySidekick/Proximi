@@ -234,11 +234,24 @@ input[type=range] { width: 100%; accent-color: var(--accent); margin: 6px 0 2px;
 .card-when .repeat { color: var(--ink-3); font-weight: 500; }
 
 .price-tag {
-  flex: none; text-align: right;
+  flex: 0 0 auto; max-width: 46%;
+  text-align: right;
   font-size: 15px; font-weight: 700;
 }
 .price-tag.is-free { color: var(--free); }
-.price-note { display: block; font-size: 11.5px; font-weight: 500; color: var(--ink-3); }
+.price-note {
+  display: block;
+  font-size: 11.5px; font-weight: 500;
+  color: var(--ink-3);
+  overflow-wrap: anywhere;
+}
+
+/* On narrow screens the price drops under the title rather than fighting it
+   for width — long fare notes ("$15 online, $20 at the gate") need the room. */
+@media (max-width: 480px) {
+  .card-top { flex-direction: column; align-items: flex-start; gap: 4px; }
+  .price-tag { max-width: 100%; text-align: left; }
+}
 
 .card-meta {
   display: flex; flex-wrap: wrap; gap: 4px 14px;
@@ -304,3 +317,5 @@ input[type=range] { width: 100%; accent-color: var(--accent); margin: 6px 0 2px;
 }
 .footer p { margin: 0 0 4px; }
 .fine { font-size: 12px; }
+
+.price-tag.is-unknown { font-size: 13px; font-weight: 600; color: var(--ink-3); }
