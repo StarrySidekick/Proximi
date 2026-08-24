@@ -27,19 +27,38 @@ list, tagged with a badge, and the `Type` filter separates them on demand.
 
 ## What the prototype does
 
-- **Location** — use the browser's geolocation, type any town/address (geocoded
-  via OpenStreetMap's Nominatim), or tap a preset. Distances are computed
-  client-side with the haversine formula.
-- **Filters** — free-text search, type, category, "when" (today / tomorrow /
-  this weekend / next 7 / next 30 days), search radius, max price, free-only,
-  and needs-sign-up-only.
-- **Sorting** — soonest, nearest, or cheapest.
-- **Cards** carry the things you need to decide: price (with notes like
-  "sliding scale at the door"), venue, town, distance, duration, description,
-  category tags, and a **Sign up** button for anything requiring registration.
-- Miles/kilometres toggle, light and dark themes, works down to phone widths.
-- Says when the data was last refreshed, and drops listings once they have been
-  and gone.
+The page is just the list. Everything else lives behind a **Filters** sheet, so
+the default view is scannable rather than a wall of controls.
+
+**Out of the box** it shows what's on in the **next week**, **within 50 miles**,
+sorted **soonest first** — and within a day, nearest first. Day dividers
+(`Today`, `Tomorrow`, `Wednesday`, then `Monday, Aug 31` once a bare weekday
+would be ambiguous) stick beneath the header as you scroll, the way date
+separators work in a messages thread.
+
+The header line always states what you are looking at — place, result count,
+time horizon and radius — and the Filters button carries a count of how many
+controls sit away from their defaults.
+
+Inside the sheet:
+
+- **Location** — browser geolocation, any town or address (geocoded via
+  OpenStreetMap's Nominatim), or a one-tap preset from the covered region.
+- **Happening within** — today, 3 days, a week, 2 weeks, a month, or anytime.
+- **Distance** — search radius, with a miles/kilometres toggle.
+- **What** — free-text search, events vs. activities, and category chips that
+  show live match counts.
+- **Cost** — max price, free-only, and needs-sign-up-only.
+- **Sort** — soonest (default), nearest, or cheapest. Day dividers appear only
+  under soonest, where they mean something.
+
+Cards carry what you need to decide: price with its caveats ("$15 online, $20 at
+the gate"), venue, town, distance, duration, category tags, and a **Sign up**
+button wherever registration is required. Multi-day runs read as a range, and
+something already under way reads "on now, through Sep 6".
+
+Light and dark themes, and it works down to phone widths — where the filter
+sheet becomes a bottom sheet.
 
 ## Run it locally
 

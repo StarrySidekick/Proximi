@@ -16,123 +16,140 @@
       <span class="brand-mark" aria-hidden="true"></span>
       <span class="brand-name">Proximi</span>
     </div>
-    <p class="tagline">Events and activities near wherever you are.</p>
+
+    <button id="open-filters" class="filters-btn" type="button"
+            aria-haspopup="dialog" aria-expanded="false" aria-controls="filter-sheet">
+      <svg viewBox="0 0 16 16" aria-hidden="true" class="ico">
+        <path d="M2 4h12M4 8h8M6.5 12h3" stroke="currentColor" stroke-width="1.6"
+              stroke-linecap="round" fill="none"/>
+      </svg>
+      Filters
+      <span class="filters-count" id="filters-count" hidden></span>
+    </button>
   </div>
 </header>
 
-<div class="wrap">
-  <p class="demo-banner" id="data-banner" role="note" hidden></p>
+<div class="wrap contextbar">
+  <button id="open-location" class="context-chip" type="button">
+    <svg viewBox="0 0 16 16" aria-hidden="true" class="ico">
+      <path d="M8 15s5-4.6 5-8.4A5 5 0 0 0 3 6.6C3 10.4 8 15 8 15Z"
+            stroke="currentColor" stroke-width="1.5" fill="none"/>
+      <circle cx="8" cy="6.5" r="1.8" fill="currentColor"/>
+    </svg>
+    <span id="context-place">Loading…</span>
+  </button>
+  <span class="context-scope" id="context-scope"></span>
 </div>
 
 <main class="wrap">
+  <p class="freshness" id="data-banner" hidden></p>
+  <ul id="list" class="list"></ul>
+  <p id="empty" class="empty" hidden></p>
+</main>
 
-  <!-- ── Location ─────────────────────────────────────────── -->
-  <section class="panel" aria-labelledby="loc-h">
-    <h2 id="loc-h" class="panel-h">Where are you looking?</h2>
-    <div class="loc-row">
-      <button id="use-my-location" class="btn btn-primary" type="button">Use my location</button>
-      <span class="or">or</span>
+<footer class="footer wrap">
+  <p>Proximi · <a href="https://github.com/StarrySidekick/Proximi">source on GitHub</a></p>
+  <p class="fine">Place search by <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> / Nominatim.</p>
+</footer>
+
+
+<!-- ── Filter sheet ─────────────────────────────────────── -->
+<div class="scrim" id="scrim" hidden></div>
+
+<aside class="sheet" id="filter-sheet" role="dialog" aria-modal="true"
+       aria-labelledby="sheet-title" hidden>
+
+  <header class="sheet-head">
+    <h2 id="sheet-title">Filters</h2>
+    <button id="close-filters" class="icon-btn" type="button" aria-label="Close filters">
+      <svg viewBox="0 0 16 16" aria-hidden="true" class="ico">
+        <path d="M4 4l8 8M12 4l-8 8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+      </svg>
+    </button>
+  </header>
+
+  <div class="sheet-body">
+
+    <section class="group" aria-labelledby="g-loc">
+      <h3 class="group-h" id="g-loc">Location</h3>
+      <div class="loc-row">
+        <button id="use-my-location" class="btn btn-primary" type="button">Use my location</button>
+      </div>
       <form id="place-form" class="place-form" role="search">
         <label class="sr-only" for="place-input">Search for a place</label>
-        <input id="place-input" type="text" placeholder="Type a town, city or address…" autocomplete="off">
+        <input id="place-input" type="text" placeholder="Town, city or address…" autocomplete="off">
         <button class="btn" type="submit">Go</button>
       </form>
-    </div>
-    <div class="preset-row" id="presets"></div>
-    <p class="loc-status" id="loc-status" role="status" aria-live="polite">No location set — showing everything, unsorted by distance.</p>
-  </section>
+      <div class="chips" id="presets"></div>
+      <p class="loc-status" id="loc-status" role="status" aria-live="polite"></p>
+    </section>
 
-  <!-- ── Filters ──────────────────────────────────────────── -->
-  <section class="panel" aria-labelledby="filt-h">
-    <div class="panel-head">
-      <h2 id="filt-h" class="panel-h">Filters</h2>
-      <button id="reset-filters" class="btn btn-ghost btn-sm" type="button">Reset</button>
-    </div>
+    <section class="group" aria-labelledby="g-when">
+      <h3 class="group-h" id="g-when">Happening within</h3>
+      <div class="chips" id="horizon" role="group" aria-label="How far ahead to look"></div>
+    </section>
 
-    <div class="filter-grid">
+    <section class="group" aria-labelledby="g-dist">
+      <h3 class="group-h" id="g-dist">Distance</h3>
+      <label class="field-label" for="radius">
+        Search radius — <output id="radius-out"></output>
+      </label>
+      <input id="radius" type="range" min="5" max="105" step="5" value="50">
+      <div class="range-ends"><span>5</span><span>Any distance</span></div>
+      <label class="check"><input type="checkbox" id="units-km"> Show kilometers</label>
+    </section>
 
-      <div class="field field-wide">
-        <label for="q">Search</label>
-        <input id="q" type="search" placeholder="Keyword, venue or neighborhood…">
-      </div>
-
+    <section class="group" aria-labelledby="g-what">
+      <h3 class="group-h" id="g-what">What</h3>
       <div class="field">
-        <label for="kind">Type</label>
+        <label class="field-label" for="q">Search</label>
+        <input id="q" type="search" placeholder="Keyword, venue or town…">
+      </div>
+      <div class="field">
+        <label class="field-label" for="kind">Type</label>
         <select id="kind">
           <option value="all">Events &amp; activities</option>
           <option value="event">Events only</option>
           <option value="activity">Activities only</option>
         </select>
       </div>
-
       <div class="field">
-        <label for="when">When</label>
-        <select id="when">
-          <option value="any">Any time</option>
-          <option value="today">Today</option>
-          <option value="tomorrow">Tomorrow</option>
-          <option value="weekend">This weekend</option>
-          <option value="7">Next 7 days</option>
-          <option value="30">Next 30 days</option>
-        </select>
-      </div>
-
-      <div class="field">
-        <label for="sort">Sort by</label>
-        <select id="sort">
-          <option value="soonest">Soonest</option>
-          <option value="nearest">Nearest</option>
-          <option value="cheapest">Cheapest</option>
-        </select>
-      </div>
-
-      <div class="field">
-        <label for="radius">
-          Search radius — <output id="radius-out">Any distance</output>
-        </label>
-        <input id="radius" type="range" min="0" max="60" step="1" value="0">
-        <div class="range-ends"><span>Any</span><span id="radius-max">60 mi</span></div>
-      </div>
-
-      <div class="field">
-        <label for="price">
-          Max price — <output id="price-out">Any price</output>
-        </label>
-        <input id="price" type="range" min="0" max="101" step="1" value="101">
-        <div class="range-ends"><span>Free</span><span>Any</span></div>
-      </div>
-
-      <div class="field field-inline">
-        <label class="check"><input type="checkbox" id="free-only"> Free only</label>
-        <label class="check"><input type="checkbox" id="signup-only"> Needs sign-up</label>
-        <label class="check"><input type="checkbox" id="units-km"> Kilometers</label>
-      </div>
-
-      <div class="field field-full">
-        <span class="label-static">Category</span>
+        <span class="field-label">Category</span>
         <div id="cats" class="chips" role="group" aria-label="Filter by category"></div>
       </div>
+    </section>
 
-    </div>
-  </section>
+    <section class="group" aria-labelledby="g-cost">
+      <h3 class="group-h" id="g-cost">Cost</h3>
+      <label class="field-label" for="price">
+        Max price — <output id="price-out"></output>
+      </label>
+      <input id="price" type="range" min="0" max="101" step="1" value="101">
+      <div class="range-ends"><span>Free</span><span>Any price</span></div>
+      <label class="check"><input type="checkbox" id="free-only"> Free only</label>
+      <label class="check"><input type="checkbox" id="signup-only"> Needs sign-up</label>
+    </section>
 
-  <!-- ── Results ──────────────────────────────────────────── -->
-  <div class="results-head">
-    <p id="count" class="count" role="status" aria-live="polite">Loading…</p>
+    <section class="group" aria-labelledby="g-sort">
+      <h3 class="group-h" id="g-sort">Sort</h3>
+      <div class="field">
+        <label class="sr-only" for="sort">Sort by</label>
+        <select id="sort">
+          <option value="soonest">Soonest, then nearest</option>
+          <option value="nearest">Nearest first</option>
+          <option value="cheapest">Cheapest first</option>
+        </select>
+      </div>
+      <p class="hint">Day headings show only when sorting by soonest.</p>
+    </section>
+
   </div>
 
-  <ul id="list" class="list"></ul>
-
-  <p id="empty" class="empty" hidden>
-    Nothing matches those filters. Try widening the radius or clearing a category.
-  </p>
-
-</main>
-
-<footer class="footer wrap">
-  <p>Proximi · prototype · <a href="https://github.com/StarrySidekick/Proximi">source on GitHub</a></p>
-  <p class="fine">Place search by <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> / Nominatim.</p>
-</footer>
+  <footer class="sheet-foot">
+    <button id="reset-filters" class="btn btn-ghost" type="button">Reset</button>
+    <button id="apply-filters" class="btn btn-primary" type="button">Show results</button>
+  </footer>
+</aside>
 
 <script src="assets/app.js"></script>
 </body>
