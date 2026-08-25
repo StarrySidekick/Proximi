@@ -1712,5 +1712,12 @@
 "display": "Tubby's, 586, Broadway, Stockade District, City of Kingston, Ulster County, New York, 12401, United States",
 "matched": "Tubby's, 586 Broadway, Kingston, NY",
 "precision": 0
+},
+"opus 40, 356 george sickle rd, saugerties, ny, 12477, united states": {
+"lat": 42.0544453,
+"lon": -74.0261736,
+"display": "356, George Sickle Road, High Woods, Town of Saugerties, Ulster County, New York, 12477, United States",
+"matched": "356 George Sickle Rd, Saugerties, NY",
+"precision": 1
 }
 }

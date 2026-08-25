@@ -65,19 +65,57 @@ def price(ev):
         return None
     lo = min(r['min'] for r in ranges if r.get('min') is not None)
     hi = max(r['max'] for r in ranges if r.get('max') is not None)
+    # Ticketmaster fills 0.00-0.00 in when a promoter has not published a price:
+    # a third of the priced events on a page come back that way, including club
+    # shows that certainly charge at the door. Passing it through would render
+    # "Free" — the one error the schema exists to prevent — so it reads as
+    # unknown. A genuinely free listing loses its badge; that is the safe side.
+    if lo == 0 and hi == 0:
+        return None
     return {'min': round(lo, 2), 'max': round(hi, 2), 'note': 'Ticketmaster face value'}
 
 
-def ticketmaster(center, days, key):
+# One circle drawn from Beacon at the registry radius reaches Manhattan, and
+# Manhattan has more events than the rest of the circle combined: a plain
+# date-sorted sweep came back 756-of-1000 Midtown and buried everything local.
+# Sweeping tight circles around the towns instead guarantees each of them a
+# share, and the wide pull still runs last for the big-ticket rooms.
+ANCHORS = [
+    ('Beacon',        41.5048, -73.9696, 20),
+    ('Poughkeepsie',  41.7004, -73.9210, 20),
+    ('Newburgh',      41.5034, -74.0104, 15),
+    ('Kingston',      41.9270, -73.9974, 20),
+    ('Danbury',       41.3948, -73.4540, 20),
+    ('White Plains',  41.0340, -73.7629, 20),
+    ('Peekskill',     41.2901, -73.9204, 15),
+    ('Bethel',        41.6712, -74.8735, 20),
+]
+
+
+# A circle of this size drawn from Beacon cannot leave these states. Ticketmaster
+# hands some venues the wrong coordinates — Chicago's Empty Bottle is filed at
+# 41.90,-74.01, which is Kingston — so 77 Illinois shows arrived inside the
+# radius and would have been listed as local. The stated address is right where
+# the geometry is wrong, so the address is what gets trusted.
+REACHABLE_STATES = {'NY', 'NJ', 'CT', 'PA', 'MA', 'VT', 'RI', 'NH'}
+
+
+def in_region(venue):
+    code = ((venue.get('state') or {}).get('stateCode') or '').upper()
+    return not code or code in REACHABLE_STATES
+
+
+def sweep(lat, lon, radius, days, key, seen, pages=3):
+    """Date-ascending pull around one point. Returns new events only."""
     start = datetime.now(timezone.utc)
     end = start + timedelta(days=days)
     events, page = [], 0
 
-    while page < 5:                                        # 5 x 200 is plenty per run
+    while page < pages:
         q = urllib.parse.urlencode({
             'apikey': key,
-            'latlong': f"{center['lat']},{center['lon']}",
-            'radius': int(center['radiusMiles']),
+            'latlong': f'{lat},{lon}',
+            'radius': int(radius),
             'unit': 'miles',
             'startDateTime': start.strftime('%Y-%m-%dT%H:%M:%SZ'),
             'endDateTime': end.strftime('%Y-%m-%dT%H:%M:%SZ'),
@@ -89,11 +127,20 @@ def ticketmaster(center, days, key):
             break
 
         for ev in batch:
+            if ev.get('id') in seen:
+                continue
+            seen.add(ev.get('id'))
             dates = (ev.get('dates') or {}).get('start') or {}
-            when = dates.get('dateTime') or dates.get('localDate')
+            # dateTime is the UTC instant; localDate alone means the time is
+            # still TBA. The schema wants a real offset and inventing one would
+            # put a made-up showtime on the card, so those wait until the
+            # promoter announces — they come back with a time when they do.
+            when = dates.get('dateTime')
             if not when:
                 continue
             venue = ((ev.get('_embedded') or {}).get('venues') or [{}])[0]
+            if not in_region(venue):
+                continue
             loc = venue.get('location') or {}
             events.append({
                 'sourceId': 'ticketmaster',
@@ -122,6 +169,19 @@ def ticketmaster(center, days, key):
         page += 1
         time.sleep(0.6)                                    # stay under 2 req/sec
 
+    return events
+
+
+def ticketmaster(center, days, key):
+    seen, events = set(), []
+    for name, lat, lon, radius in ANCHORS:
+        got = sweep(lat, lon, radius, days, key, seen)
+        events.extend(got)
+        print(f'  {name:<14} {len(got):>4}')
+        time.sleep(0.6)
+    wide = sweep(center['lat'], center['lon'], center['radiusMiles'], days, key, seen, pages=5)
+    events.extend(wide)
+    print(f'  {"wide circle":<14} {len(wide):>4}')
     return events
 
 
