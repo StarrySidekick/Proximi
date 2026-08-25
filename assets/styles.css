@@ -216,6 +216,91 @@ a { color: var(--accent); }
   box-shadow: var(--panel), 0 2px 4px rgba(42,36,28,.12), 0 10px 22px rgba(42,36,28,.10);
 }
 
+/* ── Swipe ──────────────────────────────────────────────
+   The card slides over a fixed rail. Both labels sit on the rail at once
+   and each lights up only when the drag has gone far enough to commit, so
+   the gesture says what it will do before the finger lifts.            */
+/* The slot holds a fixed rail with the card sliding over it. The rail must
+   not be a child of the moving element, or it travels along and covers the
+   very content the reader is deciding about. */
+.card-slot {
+  position: relative;
+  margin-bottom: 10px;
+  border-radius: var(--radius);
+  overflow: hidden;
+  touch-action: pan-y;                  /* vertical drags still scroll */
+}
+.card-slot > .card { margin-bottom: 0; }
+.swipe-rail {
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 20px;
+  font-size: 13px; font-weight: 700; letter-spacing: .02em;
+  background: var(--surface-2);
+}
+.swipe-rail .rail-no  { color: var(--act-ink); }
+.swipe-rail .rail-yes { color: var(--rep-ink); }
+.card.is-swiping {
+  position: relative;
+  transform: translateX(var(--dx, 0));
+  transition: none;
+  user-select: none;
+}
+.card-slot[data-swipe="hidden"] .swipe-rail { background: var(--act-bg); }
+.card-slot[data-swipe="going"]  .swipe-rail { background: var(--rep-bg); }
+/* Both labels are present from the first pixel of movement; the one being
+   committed to is the one that stays lit. */
+.card-slot[data-swipe="going"]  .rail-no,
+.card-slot[data-swipe="hidden"] .rail-yes { opacity: .25; }
+
+/* A card already answered keeps a quiet edge so the verdict is visible in
+   the list without re-reading the badge. */
+.card-slot.is-going  > .card { border-color: var(--rep-ink); }
+.card-slot.is-hidden > .card { opacity: .55; }
+
+.card-verdict { display: flex; gap: 8px; margin-top: 10px; }
+.verdict-btn {
+  font: inherit; font-size: 12.5px; font-weight: 600;
+  flex: 1; padding: 7px 10px; border-radius: 999px; cursor: pointer;
+  border: 1px solid var(--line); background: transparent; color: var(--ink-2);
+}
+.verdict-btn:hover { border-color: var(--ink-3); }
+.verdict-btn.is-no:hover  { border-color: var(--act-ink);  color: var(--act-ink); }
+.verdict-btn.is-yes:hover { border-color: var(--rep-ink);  color: var(--rep-ink); }
+.card-slot.is-hidden .verdict-btn.is-no,
+.card-slot.is-going  .verdict-btn.is-yes {
+  background: var(--surface-2); border-color: var(--ink-3); color: var(--ink);
+}
+
+.badge-going { background: var(--rep-bg); color: var(--rep-ink); }
+
+.decided-actions { display: flex; gap: 6px; flex-wrap: wrap; margin: 6px 0 4px; }
+
+/* ── Toast ───────────────────────────────────────────── */
+.toast {
+  position: fixed; left: 50%; transform: translateX(-50%);
+  bottom: max(16px, env(safe-area-inset-bottom));
+  z-index: 60;
+  display: flex; align-items: center; gap: 14px;
+  max-width: min(92vw, 460px);
+  padding: 11px 14px;
+  border-radius: 999px;
+  background: var(--ink); color: var(--bg);
+  box-shadow: 0 6px 24px rgba(42,36,28,.34);
+  font-size: 13.5px;
+}
+.toast[hidden] { display: none; }
+.toast-msg { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.toast-undo {
+  font: inherit; font-weight: 700; cursor: pointer;
+  background: none; border: 0; padding: 0;
+  color: var(--accent-sc); flex: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card { transition: none; }
+}
+
 .card-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 14px; }
 .card-lead { min-width: 0; }
 .card-title {

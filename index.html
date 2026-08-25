@@ -47,6 +47,11 @@
   <p id="empty" class="empty" hidden></p>
 </main>
 
+<div id="toast" class="toast" role="status" aria-live="polite" hidden>
+  <span class="toast-msg"></span>
+  <button type="button" class="toast-undo">Undo</button>
+</div>
+
 <footer class="footer wrap">
   <p>Proximi · <a href="https://github.com/StarrySidekick/Proximi">source on GitHub</a></p>
   <p class="fine">Place search by <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> / Nominatim.</p>
@@ -110,6 +115,17 @@
       <label class="check"><input type="checkbox" id="show-kids"> Children's &amp; family events</label>
       <label class="check"><input type="checkbox" id="show-seniors"> Senior-focused events</label>
       <label class="check"><input type="checkbox" id="show-adults" checked> 21+ events</label>
+      <div class="field decided">
+        <span class="field-label">Your picks</span>
+        <p class="hint" id="hidden-note">Nothing hidden yet.</p>
+        <div class="decided-actions">
+          <button type="button" id="show-hidden" class="chip" aria-pressed="false" hidden>Show hidden</button>
+          <button type="button" id="clear-hidden" class="chip" hidden>Restore all hidden</button>
+        </div>
+        <p class="hint">Swipe a card left to hide it, right to add it to your
+          calendar — or use the buttons on the card. Kept in this browser only.</p>
+      </div>
+
       <p class="hint">Children's covers both children-only programmes and events
         aimed at families with young children; senior-focused means a programme
         for older adults, like a senior breakfast club. A listing that is merely

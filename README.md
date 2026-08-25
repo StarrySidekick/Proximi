@@ -43,10 +43,14 @@ Inside the sheet:
 - **Happening within** — today, 3 days, a week, 2 weeks, a month, or anytime.
 - **Distance** — search radius, with a miles/kilometres toggle.
 - **Repeating** — all, one-off only, or repeating only.
-- **Who it's for** — children-only listings are **hidden by default**; 21+ ones
-  are shown. Both are toggles.
+- **Who it's for** — children's, family and senior-focused listings are
+  **hidden by default**; 21+ ones are shown. All three are toggles.
 - **Kind of thing** — type chips (Concert, Market, Tour, Film…) with live
-  match counts, multi-select.
+  match counts. Each cycles through three states: click once to show only that
+  kind, again to hide it everywhere, a third time to clear it. Excluding is
+  what you want when one busy category is drowning the rest.
+- **Your picks** — a count of what you've hidden or said yes to, with a way to
+  show or restore hidden listings.
 - **Features** — food or drink, outdoors, and time of day (daytime / evening).
 - **What** — free-text search.
 - **Cost** — max price, free-only, and needs-sign-up-only.
@@ -59,8 +63,30 @@ button wherever registration is required. Multi-day runs read as a range, and
 something already under way reads "on now, through Sep 6".
 
 Cards badge what kind of thing they are — **Concert**, **Market**, **Tour** —
-plus **Repeats**, **Children only** or **21+** where those apply, and name the
-host who runs it.
+plus **Repeats**, **Children only**, **Family**, **Seniors** or **21+** where
+those apply, and name the host who runs it.
+
+### Saying yes or no
+
+Swipe a card **left** to hide it ("not for me") or **right** to add it to your
+calendar. Both actions are also buttons on every card, because a swipe is
+undiscoverable and unusable from a keyboard.
+
+The gesture only takes over once it is clearly horizontal, so a vertical drag
+still scrolls the page. Every verdict raises an undo toast, and the hidden
+count with a **Restore all** sits in the Filters sheet — a mis-swipe is never a
+one-way door.
+
+Saying yes builds an iCalendar file in the page and hands it over; there is no
+backend to invite you from, and every calendar app reads `.ics`. A listing's
+`start` and `end` describe when it is *available*, which for a daily
+self-guided trail can be years wide, so anything spanning more than a day
+becomes a two-hour visit with the real run in the notes, and a run already
+under way is booked for today at its usual hour.
+
+Verdicts live in `localStorage`, so they are per-browser and private to you.
+Every read and write is guarded — a browser with site data blocked loses the
+memory, not the feed.
 
 ## Look
 

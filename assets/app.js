@@ -76,6 +76,25 @@
     showKids: false, showSeniors: false, showAdults: true
   };
 
+  /* ── Decisions ─────────────────────────────────────────
+     Swipe left "not for me", swipe right "going". Kept per browser in
+     localStorage: there is no backend, and a verdict is personal to the
+     reader anyway. Every access is guarded — a private window can throw on
+     read as well as write, and a thrown storage call must not take the
+     feed down with it. */
+
+  const DECISIONS_KEY = 'proximi.decisions.v1';
+
+  function loadDecisions() {
+    try {
+      return JSON.parse(localStorage.getItem(DECISIONS_KEY) || '{}') || {};
+    } catch { return {}; }
+  }
+
+  function saveDecisions(map) {
+    try { localStorage.setItem(DECISIONS_KEY, JSON.stringify(map)); } catch { /* not fatal */ }
+  }
+
   const $ = (id) => document.getElementById(id);
 
   const el = {
@@ -88,6 +107,8 @@
     radius: $('radius'), radiusOut: $('radius-out'),
     price: $('price'), priceOut: $('price-out'),
     freeOnly: $('free-only'), signupOnly: $('signup-only'), unitsKm: $('units-km'),
+    toast: $('toast'), hiddenNote: $('hidden-note'), showHiddenBtn: $('show-hidden'),
+    clearHiddenBtn: $('clear-hidden'),
     locStatus: $('loc-status'), useMyLocation: $('use-my-location'),
     placeForm: $('place-form'), placeInput: $('place-input'),
     contextPlace: $('context-place'), contextScope: $('context-scope'),
@@ -102,6 +123,8 @@
     origin: null,
     activeTypes: new Set(),
     excludedTypes: new Set(),
+    decisions: loadDecisions(),
+    showHidden: false,
     horizon: DEFAULTS.horizon,
     repeatMode: DEFAULTS.repeatMode,
     timeOfDay: DEFAULTS.timeOfDay,
@@ -285,6 +308,10 @@
       if (audience === 'adults' && !el.showAdults.checked) return false;
       if (state.repeatMode === 'once' && repeatsOf(item)) return false;
       if (state.repeatMode === 'repeat' && !repeatsOf(item)) return false;
+      // A hidden listing is gone until the reader asks to see hidden ones —
+      // this is the whole point of a left swipe, so it runs before anything
+      // else and is not softened by the other filters.
+      if (!state.showHidden && state.decisions[item.id] === 'hidden') return false;
       const itemType = item.type || 'other';
       if (state.excludedTypes.has(itemType)) return false;
       if (state.activeTypes.size && !state.activeTypes.has(itemType)) return false;
@@ -342,9 +369,187 @@
     return m ? `${h}h ${m}m` : `${h} hr`;
   }
 
+  /* ── Calendar ──────────────────────────────────────────
+     A swipe right has to leave something behind on the reader's own
+     calendar, and there is no backend to invite them from — so build an
+     iCalendar file in the page and hand it over. Every calendar app on
+     every platform reads .ics; on iOS the download opens Calendar directly. */
+
+  // RFC 5545: backslash, semicolon and comma are escaped, newlines become \n.
+  const icsText = (v) => String(v ?? '')
+    .replace(/\\/g, '\\\\').replace(/;/g, '\\;')
+    .replace(/,/g, '\\,').replace(/\r?\n/g, '\\n');
+
+  // Lines are limited to 75 octets, continued by CRLF + one space.
+  function icsFold(line) {
+    const out = [];
+    let rest = line;
+    while (rest.length > 74) {
+      out.push(rest.slice(0, 74));
+      rest = ' ' + rest.slice(74);
+    }
+    out.push(rest);
+    return out.join('\r\n');
+  }
+
+  const icsStamp = (d) =>
+    d.toISOString().replace(/[-:]/g, '').replace(/\.\d{3}/, '');
+
+  const HOUR = 3600 * 1000;
+
+  /* A listing's start and end describe when it is *available*, which for a
+     run — a daily tour, a self-guided trail — can be years wide. A calendar
+     wants one sitting you could actually attend, so:
+       · a run already under way is booked for today at its usual hour,
+       · anything wider than a day becomes a two-hour visit,
+       · the real span moves into the notes rather than being lost.        */
+  function icsWindow(item) {
+    const start = new Date(item.start);
+    const end = item.end ? new Date(item.end) : null;
+    const now = new Date();
+    const ongoing = end && start < now && end > now;
+
+    let from = start;
+    if (ongoing) {
+      from = new Date(now);
+      from.setHours(start.getHours(), start.getMinutes(), 0, 0);
+    }
+    const span = end ? end - start : null;
+    const isRun = span == null || span > 24 * HOUR;
+    return {
+      from,
+      to: isRun ? new Date(from.getTime() + 2 * HOUR) : new Date(from.getTime() + span),
+      estimated: isRun,
+      runsUntil: (isRun && end) ? end : null,
+    };
+  }
+
+  function icsFor(item) {
+    const { from, to, estimated, runsUntil } = icsWindow(item);
+    // venue, address and city overlap constantly — address often already
+    // contains both — so fold them rather than repeating the venue twice.
+    const where = [...new Set([item.venue, item.address, item.city].filter(Boolean))]
+      .filter((part, i, all) => !all.some((other, j) => j !== i && other.includes(part)))
+      .join(', ');
+    const notes = [
+      item.description,
+      runsUntil && `Runs through ${runsUntil.toLocaleDateString()} — this is one visit.`,
+      item.url && `Details: ${item.url}`,
+      estimated && 'End time is an estimate — check the listing.',
+    ].filter(Boolean).join('\n\n');
+    const lines = [
+      'BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//Proximi//EN', 'CALSCALE:GREGORIAN',
+      'BEGIN:VEVENT',
+      `UID:${icsText(item.id)}@proximi`,
+      `DTSTAMP:${icsStamp(new Date())}`,
+      `DTSTART:${icsStamp(from)}`,
+      `DTEND:${icsStamp(to)}`,
+      `SUMMARY:${icsText(item.title)}`,
+      where ? `LOCATION:${icsText(where)}` : null,
+      notes ? `DESCRIPTION:${icsText(notes)}` : null,
+      item.url ? `URL:${icsText(item.url)}` : null,
+      (item.lat != null && item.lon != null) ? `GEO:${item.lat};${item.lon}` : null,
+      'END:VEVENT', 'END:VCALENDAR',
+    ].filter(Boolean);
+    return lines.map(icsFold).join('\r\n') + '\r\n';
+  }
+
+  function addToCalendar(item) {
+    const blob = new Blob([icsFor(item)], { type: 'text/calendar;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = (item.title || 'event').replace(/[^\w -]+/g, '').slice(0, 60) + '.ics';
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 10_000);
+  }
+
+  /* ── Verdicts ──────────────────────────────────────────── */
+
+  function decide(item, verdict) {
+    const previous = state.decisions[item.id];
+    if (verdict) state.decisions[item.id] = verdict;
+    else delete state.decisions[item.id];
+    saveDecisions(state.decisions);
+    if (verdict === 'going') addToCalendar(item);
+    render();
+    toast(verdict === 'going' ? `Added “${item.title}” to your calendar`
+          : verdict === 'hidden' ? `Hid “${item.title}”`
+          : `Restored “${item.title}”`,
+          () => decide(item, previous || null));
+  }
+
+  let toastTimer = null;
+  function toast(message, undo) {
+    const box = el.toast;
+    if (!box) return;
+    box.querySelector('.toast-msg').textContent = message;
+    const btn = box.querySelector('.toast-undo');
+    btn.onclick = () => { clearTimeout(toastTimer); box.hidden = true; undo(); };
+    box.hidden = false;
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => { box.hidden = true; }, 6000);
+  }
+
+  /* ── Swipe ─────────────────────────────────────────────
+     Only claims the gesture once it is clearly horizontal, so a vertical
+     drag still scrolls the page — the mistake that makes a swipe list
+     unusable on a phone. The buttons underneath do the same two things for
+     anyone on a keyboard, a mouse, or who never discovers the gesture. */
+
+  const SWIPE_COMMIT = 90;   // px past which the verdict sticks
+
+  function attachSwipe(li, surface, item) {
+    let startX = 0, startY = 0, dx = 0, active = false, decided = false;
+
+    li.addEventListener('pointerdown', (e) => {
+      if (e.pointerType === 'mouse' && e.button !== 0) return;
+      if (e.target.closest('a, button')) return;   // links keep their taps
+      startX = e.clientX; startY = e.clientY; dx = 0;
+      active = false; decided = false;
+    });
+
+    li.addEventListener('pointermove', (e) => {
+      if (!startX && !startY) return;
+      if (e.buttons === 0) return;
+      const mx = e.clientX - startX, my = e.clientY - startY;
+      if (!active) {
+        if (Math.abs(mx) < 12 || Math.abs(mx) <= Math.abs(my)) return;
+        active = true;
+        li.setPointerCapture?.(e.pointerId);
+        li.classList.add('is-swiping');
+        surface.classList.add('is-swiping');
+      }
+      dx = mx;
+      surface.style.setProperty('--dx', `${dx}px`);
+      li.dataset.swipe = dx > SWIPE_COMMIT ? 'going' : dx < -SWIPE_COMMIT ? 'hidden' : 'none';
+      e.preventDefault();
+    });
+
+    const finish = () => {
+      if (!active) { startX = startY = 0; return; }
+      const verdict = dx > SWIPE_COMMIT ? 'going' : dx < -SWIPE_COMMIT ? 'hidden' : null;
+      li.classList.remove('is-swiping');
+      surface.classList.remove('is-swiping');
+      surface.style.removeProperty('--dx');
+      delete li.dataset.swipe;
+      active = false; startX = startY = 0;
+      if (verdict && !decided) { decided = true; decide(item, verdict); }
+    };
+    li.addEventListener('pointerup', finish);
+    li.addEventListener('pointercancel', finish);
+    li.addEventListener('lostpointercapture', finish);
+  }
+
   function card(item, isGrouped) {
     const li = document.createElement('li');
-    li.className = 'card';
+    const verdict = state.decisions[item.id];
+    li.className = 'card-slot' + (verdict ? ` is-${verdict}` : '');
+    li.dataset.id = item.id;
+    const surface = document.createElement('article');
+    surface.className = 'card';
 
     const meta = [`<span>${esc(item.venue)}${item.city ? ' · ' + esc(item.city) : ''}</span>`];
     if (item._distance != null) {
@@ -365,7 +570,7 @@
                      target="_blank" rel="noopener noreferrer">Details ↗</a>`);
     }
 
-    li.innerHTML = `
+    surface.innerHTML = `
       <div class="card-top">
         <div class="card-lead">
           <h3 class="card-title">${esc(item.title)}</h3>
@@ -384,6 +589,7 @@
       <div class="card-bottom">
         <div class="tags">
           <span class="badge badge-type">${esc(typeLabel(item.type))}</span>
+          ${state.decisions[item.id] === 'going' ? '<span class="badge badge-going">Going</span>' : ''}
           ${repeatsOf(item) ? '<span class="badge badge-repeat">Repeats</span>' : ''}
           ${audienceOf(item) === 'kids' ? '<span class="badge badge-kids">Children only</span>' : ''}
           ${audienceOf(item) === 'family' ? '<span class="badge badge-kids">Family</span>' : ''}
@@ -392,7 +598,29 @@
           ${(item.categories || []).map((c) => `<span class="tag">${esc(catLabel(c))}</span>`).join('')}
         </div>
         ${links.join('')}
+      </div>
+      <div class="card-verdict">
+        <button type="button" class="verdict-btn is-no" data-verdict="hidden"
+                aria-label="Not for me — hide ${esc(item.title)}">✕ Not for me</button>
+        <button type="button" class="verdict-btn is-yes" data-verdict="going"
+                aria-label="I'm going — add ${esc(item.title)} to calendar">✓ I'm going</button>
       </div>`;
+
+    // The rail is a fixed backdrop the card slides over, so it stays put while
+    // the card moves and is revealed on the side the card is leaving. Dragging
+    // left uncovers the right edge, so "Not for me" lives on the right.
+    const rail = document.createElement('div');
+    rail.className = 'swipe-rail';
+    rail.innerHTML = '<span class="rail-yes">✓ Going</span><span class="rail-no">Not for me ✕</span>';
+    li.append(rail, surface);
+
+    for (const btn of surface.querySelectorAll('.verdict-btn')) {
+      btn.addEventListener('click', () => {
+        const want = btn.dataset.verdict;
+        decide(item, verdict === want ? null : want);
+      });
+    }
+    attachSwipe(li, surface, item);
     return li;
   }
 
@@ -442,10 +670,28 @@
     }
 
     updateContextBar(results.length);
+    updateHiddenNote();
     updateFilterCount();
     renderTypeCounts();
     el.applyFilters.textContent =
       `Show ${results.length} ${results.length === 1 ? 'result' : 'results'}`;
+  }
+
+  // A swipe left removes a listing from view for good, so the count and the
+  // way back are always on screen rather than buried in a menu.
+  function updateHiddenNote() {
+    if (!el.hiddenNote) return;
+    const verdicts = Object.values(state.decisions);
+    const hidden = verdicts.filter((v) => v === 'hidden').length;
+    const going = verdicts.filter((v) => v === 'going').length;
+    const bits = [];
+    if (hidden) bits.push(`${hidden} hidden`);
+    if (going) bits.push(`${going} going`);
+    el.hiddenNote.textContent = bits.join(' · ') || 'Nothing hidden yet.';
+    el.showHiddenBtn.hidden = !hidden;
+    el.clearHiddenBtn.hidden = !hidden;
+    el.showHiddenBtn.textContent = state.showHidden ? 'Hide them again' : 'Show hidden';
+    el.showHiddenBtn.setAttribute('aria-pressed', String(state.showHidden));
   }
 
   /* ── Chrome ───────────────────────────────────────────── */
@@ -747,6 +993,23 @@
                       el.showKids, el.showSeniors, el.showAdults, el.foodOnly, el.outdoorOnly]) {
     node.addEventListener('input', rerender);
   }
+
+  el.showHiddenBtn?.addEventListener('click', () => {
+    state.showHidden = !state.showHidden;
+    render();
+  });
+
+  el.clearHiddenBtn?.addEventListener('click', () => {
+    const restored = Object.entries(state.decisions)
+      .filter(([, v]) => v === 'hidden').map(([id]) => id);
+    if (!restored.length) return;
+    const previous = { ...state.decisions };
+    for (const id of restored) delete state.decisions[id];
+    saveDecisions(state.decisions);
+    render();
+    toast(`Restored ${restored.length} hidden ${restored.length === 1 ? 'listing' : 'listings'}`,
+          () => { state.decisions = previous; saveDecisions(state.decisions); render(); });
+  });
 
   el.resetFilters.addEventListener('click', () => {
     state.horizon = DEFAULTS.horizon;
