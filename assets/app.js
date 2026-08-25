@@ -538,9 +538,16 @@
       active = false; startX = startY = 0;
       if (verdict && !decided) { decided = true; decide(item, verdict); }
     };
+    // pointerup and pointercancel are enough: capturing the pointer guarantees
+    // both are delivered here. lostpointercapture must NOT end the gesture —
+    // a touch pointer is implicitly captured by whatever element received the
+    // pointerdown, so calling setPointerCapture above *transfers* it and fires
+    // lostpointercapture on that descendant, which bubbles up to this listener.
+    // Treating that as the end reset the drag a few pixels in, which is why
+    // swiping worked with a mouse (no implicit capture) and never with a
+    // finger.
     li.addEventListener('pointerup', finish);
     li.addEventListener('pointercancel', finish);
-    li.addEventListener('lostpointercapture', finish);
   }
 
   function card(item, isGrouped) {
