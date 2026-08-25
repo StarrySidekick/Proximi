@@ -258,18 +258,39 @@ a { color: var(--accent); }
 .card-slot.is-going  > .card { border-color: var(--rep-ink); }
 .card-slot.is-hidden > .card { opacity: .55; }
 
-.card-verdict { display: flex; gap: 8px; margin-top: 10px; }
-.verdict-btn {
-  font: inherit; font-size: 12.5px; font-weight: 600;
-  flex: 1; padding: 7px 10px; border-radius: 999px; cursor: pointer;
-  border: 1px solid var(--line); background: transparent; color: var(--ink-2);
+/* Two small marks in the corner. The swipe is the real gesture; these are the
+   way in for a mouse, a keyboard, and anyone who never tries swiping — so they
+   need to be reachable without competing with the listing itself. */
+.card-verdict {
+  position: absolute; top: 10px; right: 12px;
+  display: flex; gap: 4px;
 }
-.verdict-btn:hover { border-color: var(--ink-3); }
-.verdict-btn.is-no:hover  { border-color: var(--act-ink);  color: var(--act-ink); }
-.verdict-btn.is-yes:hover { border-color: var(--rep-ink);  color: var(--rep-ink); }
+.verdict-btn {
+  font: inherit; font-size: 12px; line-height: 1;
+  width: 26px; height: 26px; padding: 0;
+  display: grid; place-items: center;
+  border-radius: 50%; cursor: pointer;
+  border: 1px solid var(--line-soft); background: transparent;
+  color: var(--ink-3); opacity: .5;
+  transition: opacity .12s, border-color .12s, color .12s;
+}
+.card:hover .verdict-btn, .verdict-btn:focus-visible { opacity: 1; }
+.verdict-btn.is-no:hover  { border-color: var(--act-ink); color: var(--act-ink); opacity: 1; }
+.verdict-btn.is-yes:hover { border-color: var(--rep-ink); color: var(--rep-ink); opacity: 1; }
+/* Touch has no hover, so they stay legible on a phone. */
+@media (hover: none) { .verdict-btn { opacity: .8; } }
 .card-slot.is-hidden .verdict-btn.is-no,
 .card-slot.is-going  .verdict-btn.is-yes {
-  background: var(--surface-2); border-color: var(--ink-3); color: var(--ink);
+  background: var(--surface-2); border-color: var(--ink-3);
+  color: var(--ink); opacity: 1;
+}
+
+/* Secondary kinds sit beside the primary badge without shouting. */
+.badge-type.is-secondary {
+  background: transparent;
+  border: 1px solid var(--line);
+  color: var(--ink-3);
+  font-weight: 500;
 }
 
 .badge-going { background: var(--rep-bg); color: var(--rep-ink); }
@@ -303,6 +324,7 @@ a { color: var(--accent); }
 
 .card-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 14px; }
 .card-lead { min-width: 0; }
+.card-top { padding-right: 62px; }
 .card-title {
   margin: 0 0 3px;
   font-family: var(--serif);

@@ -18,7 +18,7 @@
     celebration: 'Celebration', protest: 'Protest', sports: 'Sports',
     food: 'Food & Drink', volunteer: 'Volunteer', kids: 'Kids Program',
     meetup: 'Meetup', dating: 'Dating', trivia: 'Trivia', game: 'Games',
-    science: 'Science', wellness: 'Wellness', other: 'Other'
+    science: 'Science', wellness: 'Wellness', creative: 'Creative', other: 'Other'
   };
 
   const TIME_OF_DAY = [
@@ -290,6 +290,11 @@
       .filter(Boolean).join(' ').toLowerCase().includes(q);
   }
 
+  // A listing is several kinds of thing at once — a paint-and-sip is a class,
+  // and creative, and food & drink. `type` stays the primary one for the badge
+  // and the sort; every filter reads the whole set.
+  const typesOf = (item) => (item.types?.length ? item.types : [item.type || 'other']);
+
   const repeatsOf = (item) => item.repeats === true || !!item.recurrence;
   const audienceOf = (item) => item.audience || 'all';
 
@@ -312,9 +317,11 @@
       // this is the whole point of a left swipe, so it runs before anything
       // else and is not softened by the other filters.
       if (!state.showHidden && state.decisions[item.id] === 'hidden') return false;
-      const itemType = item.type || 'other';
-      if (state.excludedTypes.has(itemType)) return false;
-      if (state.activeTypes.size && !state.activeTypes.has(itemType)) return false;
+      const kinds = typesOf(item);
+      // Excluding wins over including: hiding Games should hide a listing that
+      // is also a Class, or the exclusion does not do what it says.
+      if (kinds.some((t) => state.excludedTypes.has(t))) return false;
+      if (state.activeTypes.size && !kinds.some((t) => state.activeTypes.has(t))) return false;
       if (el.foodOnly.checked && !item.hasFood) return false;
       if (el.outdoorOnly.checked && item.setting !== 'outdoor') return false;
       const tod = TIME_OF_DAY.find((t) => t.id === state.timeOfDay);
@@ -596,21 +603,26 @@
       <div class="card-bottom">
         <div class="tags">
           <span class="badge badge-type">${esc(typeLabel(item.type))}</span>
+          ${typesOf(item).slice(1).map((t) =>
+            `<span class="badge badge-type is-secondary">${esc(typeLabel(t))}</span>`).join('')}
           ${state.decisions[item.id] === 'going' ? '<span class="badge badge-going">Going</span>' : ''}
           ${repeatsOf(item) ? '<span class="badge badge-repeat">Repeats</span>' : ''}
           ${audienceOf(item) === 'kids' ? '<span class="badge badge-kids">Children only</span>' : ''}
           ${audienceOf(item) === 'family' ? '<span class="badge badge-kids">Family</span>' : ''}
           ${audienceOf(item) === 'seniors' ? '<span class="badge badge-kids">Seniors</span>' : ''}
           ${audienceOf(item) === 'adults' ? '<span class="badge badge-adults">21+</span>' : ''}
-          ${(item.categories || []).map((c) => `<span class="tag">${esc(catLabel(c))}</span>`).join('')}
+          ${(item.categories || [])
+            .filter((c) => !typesOf(item).includes(c))
+            .map((c) => `<span class="tag">${esc(catLabel(c))}</span>`).join('')}
         </div>
         ${links.join('')}
       </div>
       <div class="card-verdict">
         <button type="button" class="verdict-btn is-no" data-verdict="hidden"
-                aria-label="Not for me — hide ${esc(item.title)}">✕ Not for me</button>
+                title="Not for me" aria-label="Not for me — hide ${esc(item.title)}">✕</button>
         <button type="button" class="verdict-btn is-yes" data-verdict="going"
-                aria-label="I'm going — add ${esc(item.title)} to calendar">✓ I'm going</button>
+                title="Add to calendar"
+                aria-label="I'm going — add ${esc(item.title)} to calendar">✓</button>
       </div>`;
 
     // The rail is a fixed backdrop the card slides over, so it stays put while
@@ -843,7 +855,7 @@
   }
 
   function buildTypeChips() {
-    const types = [...new Set(state.items.map((i) => i.type || 'other'))]
+    const types = [...new Set(state.items.flatMap(typesOf))]
       .sort((a, b) => typeLabel(a).localeCompare(typeLabel(b)));
 
     el.types.replaceChildren(...types.map((t) => {
@@ -905,8 +917,7 @@
 
     const counts = new Map();
     for (const item of pool) {
-      const t = item.type || 'other';
-      counts.set(t, (counts.get(t) || 0) + 1);
+      for (const t of typesOf(item)) counts.set(t, (counts.get(t) || 0) + 1);
     }
     for (const chip of el.types.children) {
       chip.querySelector('.chip-n').textContent = counts.get(chip.dataset.type) || 0;

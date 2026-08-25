@@ -20,7 +20,8 @@
     "Localist runs the calendar at events.<domain>/calendar.ics, not on the main domain, so no FEED_PATHS probe reaches it. discover.py now tries that host directly — six college feeds came from that one pattern.",
     "campus:true marks a college calendar. Those are internal by default — orientation, registration, finals, involvement fairs — so merge.py keeps only what is genuinely open to the public (a lecture, concert, gallery opening, mass, 5K) plus home games, and drops the rest. An allowlist, not a blocklist: chasing \"Viking Days\" and \"Pie a Kappa\" by name never ends.",
     "LibCal is read by scripts/libcal.py, not the registry: its iCal export returns an empty body and rss.php a feed with zero items, so the only working route is the per-day ajax endpoint the calendar page itself calls, walked day by day.",
-    "Songkick is read by scripts/songkick.py (metro pages, JSON-LD MusicEvents): the ticketed-concert layer — Capitol Theatre, Tarrytown Music Hall, Daryl's House — whose own sites bot-challenge us or render in JavaScript. Their search/API endpoints 406; the metro pages serve plain HTML."
+    "Songkick is read by scripts/songkick.py (metro pages, JSON-LD MusicEvents): the ticketed-concert layer — Capitol Theatre, Tarrytown Music Hall, Daryl's House — whose own sites bot-challenge us or render in JavaScript. Their search/API endpoints 406; the metro pages serve plain HTML.",
+    "Marist has a working Liferay JSON API at /api/jsonws/events.maristevent/get-upcoming-events/limit/1000 (double-encoded JSON), but every entry is internal academic calendar — Semester Begins, Search Committee Meeting, Open House. Not registered: the campus rule would drop all of it."
   ],
   "sources": [
     {
@@ -423,8 +424,68 @@
       "url": "https://tubbyskingston.com/calendar",
       "publisher": "Tubby's, Kingston",
       "scope": "local",
-      "venue": "Tubby's, 586 Broadway, Kingston, NY",
+      "venue": {
+        "name": "Tubby's",
+        "city": "Kingston, NY",
+        "address": "Tubby's, 586 Broadway, Kingston, NY",
+        "lat": 41.9256,
+        "lon": -73.9971
+      },
       "note": "Squarespace collection JSON. ?format=ical answers 200 with an empty body; item map coordinates are Squarespace's SoHo placeholder, so the venue string above is what gets geocoded."
+    },
+    {
+      "id": "howland-beacon",
+      "kind": "html",
+      "url": "https://beaconlibrary.assabetinteractive.com/calendar/",
+      "publisher": "Howland Public Library, Beacon",
+      "scope": "local",
+      "note": "Assabet Interactive, not LibCal. 77 schema.org Events on the calendar page, read by jsonld.py. beaconlibrary.org itself is a Squarespace brochure site with no feed."
+    },
+    {
+      "id": "hudsonvalleybrewery",
+      "kind": "sqsp",
+      "url": "https://hudsonvalleybrewery.com/calendar",
+      "publisher": "Hudson Valley Brewery, Beacon",
+      "scope": "local",
+      "venue": {
+        "name": "Hudson Valley Brewery",
+        "city": "Beacon, NY",
+        "address": "7 East Main St, Beacon, NY",
+        "lat": 41.5056,
+        "lon": -73.9776
+      }
+    },
+    {
+      "id": "compassarts",
+      "kind": "html",
+      "url": "https://www.compassarts.org/calendar/",
+      "publisher": "Compass Arts, Beacon",
+      "scope": "local",
+      "note": "WordPress with no event post type — the calendar is hand-built pages, and wp-json exposes only pages/posts. No JSON-LD. Hand-read."
+    },
+    {
+      "id": "jacobburns",
+      "kind": "html",
+      "url": "https://burnsfilmcenter.org/film/",
+      "publisher": "Jacob Burns Film Center",
+      "scope": "regional",
+      "note": "WordPress but wp-json answers 401 rest_not_logged_in, and the film listings carry no JSON-LD. Screenings live at /booking/<film>. Hand-read."
+    },
+    {
+      "id": "cosm",
+      "kind": "html",
+      "url": "https://www.cosm.org/calendar",
+      "publisher": "Chapel of Sacred Mirrors (CoSM)",
+      "scope": "regional",
+      "note": "Calendar is an Elfsight widget rendered entirely client-side; nothing in the served HTML. Hand-read."
+    },
+    {
+      "id": "upstatefilms",
+      "kind": "html",
+      "url": "https://upstatefilms.org/",
+      "publisher": "Upstate Films (Starr Cinema, Rhinebeck)",
+      "scope": "local",
+      "note": "Answers HTTP 202 with a 169-byte bot interstitial to every scripted fetch. Needs a browser or hand-reading."
     }
   ]
 }

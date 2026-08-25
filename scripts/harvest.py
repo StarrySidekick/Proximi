@@ -107,6 +107,14 @@ def harvest_ics(src, tz):
     return out, None
 
 
+def venue_hint(src):
+    """The registry venue as a plain address string, whichever shape it is in."""
+    v = src.get('venue')
+    if isinstance(v, dict):
+        return v.get('address') or v.get('name')
+    return v
+
+
 def harvest_sqsp(src, tz):
     """Squarespace event collections: <url>?format=json returns the items the
     page renders, with millisecond timestamps.
@@ -146,7 +154,7 @@ def harvest_sqsp(src, tz):
             'end': end.isoformat() if end else None,
             'allDay': False,
             'url': base + e['fullUrl'] if e.get('fullUrl') else src['url'],
-            'location': loc.get('addressLine1') or src.get('venue'),
+            'location': loc.get('addressLine1') or venue_hint(src),
             'description': desc.strip()[:1200] or None,
             'feedCategories': e.get('categories'),
             'organizer': src.get('publisher'),

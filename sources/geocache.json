@@ -410,13 +410,6 @@
 "matched": "1348 Rte 9W",
 "precision": 0
 },
-"41 main st.": {
-"lat": 54.2117685,
-"lon": -3.2747913,
-"display": "The Plough Inn, 41, Holborn Hill, Knott End, Haverigg, Millom, Cumberland, England, LA18 5BH, United Kingdom",
-"matched": "41 Main St.",
-"precision": 0
-},
 "15 ethan allen hwy": {
 "lat": 41.2654505,
 "lon": -73.4413017,
@@ -484,13 +477,6 @@
 "precision": 0
 },
 "1 duchess terrance": null,
-"103 burroughs drive": {
-"lat": 51.4487702,
-"lon": 0.2235746,
-"display": "103, Burroughs Drive, Brooklands, Temple Hill, Dartford, Kent, England, DA1 5TW, United Kingdom",
-"matched": "103 Burroughs Drive",
-"precision": 0
-},
 "244 fair street": {
 "lat": 41.9327423,
 "lon": -74.0173789,
@@ -552,13 +538,6 @@
 "lon": -122.560504,
 "display": "149, Aaron Court, Rafael Village, Novato, Marin County, California, 94949, United States",
 "matched": "149 Aaron Ct",
-"precision": 0
-},
-"160 hanover road": {
-"lat": 51.5420062,
-"lon": -0.2248385,
-"display": "160, Hanover Road, Brondesbury Park, Brondesbury, London Borough of Brent, Greater London, England, NW10 3DP, United Kingdom",
-"matched": "160 Hanover Road",
 "precision": 0
 },
 "75-77 spring street": {
@@ -881,13 +860,6 @@
 "lon": -73.9283672,
 "display": "City of Poughkeepsie, Dutchess County, New York, 12601, United States",
 "matched": "Poughkeepsie, N.Y.",
-"precision": 0
-},
-"moulton lounge": {
-"lat": 52.8043862,
-"lon": -0.0970101,
-"display": "The Baytree Coffee Lounge, High Road, Weston, Weston CP, Moulton, South Holland, Lincolnshire, Greater Lincolnshire, England, PE12 6JU, United Kingdom",
-"matched": "Moulton Lounge",
 "precision": 0
 },
 "gettysburg, pa": {
@@ -1719,5 +1691,243 @@
 "display": "356, George Sickle Road, High Woods, Town of Saugerties, Ulster County, New York, 12477, United States",
 "matched": "356 George Sickle Rd, Saugerties, NY",
 "precision": 1
+},
+"idilko butler gallery, lowenstein center": null,
+"bixler/gerber quad": {
+"lat": 41.2905375,
+"lon": -72.9624043,
+"display": "Bixler/Gerber Quad, Allingtown, West Haven, South Central Connecticut Planning Region, Connecticut, United States",
+"matched": "Bixler/Gerber Quad",
+"precision": 0
+},
+"aquinas hall, room 105": null,
+"maverick concert hall, 120 maverick road, woodstock, ny, 12498": {
+"lat": 42.0144292,
+"lon": -74.1179381,
+"display": "Maverick Concerts, 120, Maverick Road, Glenford, West Hurley, Town of Woodstock, Ulster County, New York, 12498, United States",
+"matched": "Maverick Concert Hall, 120 Maverick Road, Woodstock, NY",
+"precision": 0
+},
+"arthur\u2019s point farm, 274 normung rd, ghent, ny, 12075, united states": {
+"lat": 42.2675186,
+"lon": -73.6461499,
+"display": "Normung Road, Town of Ghent, Columbia County, New York, 12565, United States",
+"matched": "274 Normung Rd, Ghent, NY",
+"precision": 1
+},
+"ny": {
+"lat": 43.1561681,
+"lon": -75.8449946,
+"display": "New York, United States",
+"matched": "NY",
+"precision": 0
+},
+"old dutch church, 272 wall street, kingston, ny": {
+"lat": 41.9329351,
+"lon": -74.0189411,
+"display": "Old Dutch Church, 272, Wall Street, Stockade District, City of Kingston, Ulster County, New York, 12401, United States",
+"matched": "Old Dutch Church, 272 Wall Street, Kingston, NY",
+"precision": 0
+},
+"dutch quad circle": null,
+"hudson hall, 109": {
+"lat": 35.7866545,
+"lon": -78.6845768,
+"display": "Hudson Hall, 2760, Wolf Village Way, Method, Raleigh, Wake County, North Carolina, 27695, United States",
+"matched": "Hudson Hall, 109",
+"precision": 0
+},
+"lecture center concourse, lcs, hallway": null,
+"taconic building, 302": null,
+"university main library, minerva room (garden level)": null,
+"columbia county fairgrounds, 182 hudson avenue, chatham, ny, 12037, united states": {
+"lat": 42.3508405,
+"lon": -73.6036962,
+"display": "182, Hudson Avenue, Buckleyville, Village of Chatham, Town of Ghent, Columbia County, New York, 12037, United States",
+"matched": "182 Hudson Avenue, Chatham, NY",
+"precision": 1
+},
+"levity live, 4210 palisades center drive, west nyack, ny, 10994, united states": {
+"lat": 41.09811,
+"lon": -73.9580208,
+"display": "4210, Palisades Center Drive, West Nyack, Town of Clarkstown, Rockland County, New York, 10994, United States",
+"matched": "4210 Palisades Center Drive, West Nyack, NY",
+"precision": 1
+},
+"cool whisper farm, 1011 county route 21, hillsdale, ny, 12529, united states": {
+"lat": 42.2690963,
+"lon": -73.5758641,
+"display": "1011, County Route 21, Harlemville, Town of Ghent, Columbia County, New York, 12075, United States",
+"matched": "1011 County Route 21, Hillsdale, NY",
+"precision": 1
+},
+"westside campus center, 43 lake ave. extension, danbury, ct": {
+"lat": 41.3861161,
+"lon": -73.4966139,
+"display": "43, Lake Avenue Extension, Mill Plain, Danbury, Western Connecticut Planning Region, Connecticut, 06810, United States",
+"matched": "43 Lake Ave. Extension, Danbury, CT",
+"precision": 1
+},
+"troy, ny": {
+"lat": 42.7284117,
+"lon": -73.6917878,
+"display": "City of Troy, Rensselaer County, New York, United States",
+"matched": "Troy, NY",
+"precision": 0
+},
+"the clubhouse westport": {
+"lat": 39.063511,
+"lon": -94.5727353,
+"display": "The Dashery Clubhouse, Harrison Street, North Hyde Park, Westport, Kansas City, Jackson County, Missouri, 64109, United States",
+"matched": "The Clubhouse Westport",
+"precision": 0
+},
+"branch brook park, nj": {
+"lat": 40.7713635,
+"lon": -74.1756347,
+"display": "Branch Brook Park, Roseville, Newark, Essex County, New Jersey, 07109, United States",
+"matched": "Branch Brook Park, NJ",
+"precision": 0
+},
+"stony brook, ny": {
+"lat": 40.908482,
+"lon": -73.1325471,
+"display": "Stony Brook, Town of Brookhaven, Suffolk County, New York, United States",
+"matched": "Stony Brook, NY",
+"precision": 0
+},
+"hartford, ct": {
+"lat": 41.764582,
+"lon": -72.6908547,
+"display": "Hartford, Capitol Planning Region, Connecticut, United States",
+"matched": "Hartford, CT",
+"precision": 0
+},
+"carlton, mn": {
+"lat": 46.5799933,
+"lon": -92.7206334,
+"display": "Carlton County, Minnesota, United States",
+"matched": "Carlton, MN",
+"precision": 0
+},
+"north andover, ma": {
+"lat": 42.7029687,
+"lon": -71.1309117,
+"display": "North Andover, Essex County, Massachusetts, 01845, United States",
+"matched": "North Andover, MA",
+"precision": 0
+},
+"buffalo, ny": {
+"lat": 42.8864163,
+"lon": -78.8781493,
+"display": "Buffalo, Erie County, New York, United States",
+"matched": "Buffalo, NY",
+"precision": 0
+},
+"lawrenceville, nj": {
+"lat": 40.3009876,
+"lon": -74.7373728,
+"display": "Lawrenceville, Lawrence Township, Mercer County, New Jersey, United States",
+"matched": "Lawrenceville, NJ",
+"precision": 0
+},
+"jersey city, nj": {
+"lat": 40.7215682,
+"lon": -74.047455,
+"display": "Jersey City, Hudson County, New Jersey, United States",
+"matched": "Jersey City, NJ",
+"precision": 0
+},
+"hamden, ct": {
+"lat": 41.3836233,
+"lon": -72.9020069,
+"display": "Hamden, South Central Connecticut Planning Region, Connecticut, United States",
+"matched": "Hamden, CT",
+"precision": 0
+},
+"bedford playhouse": {
+"lat": 41.2044385,
+"lon": -73.6441006,
+"display": "Bedford Playhouse, 633, Old Post Road, Bedford Center, Town of Bedford, Westchester County, New York, 10506, United States",
+"matched": "Bedford Playhouse",
+"precision": 0
+},
+"community room, howland public library, 313 main street, beacon, ny, 12508": {
+"lat": 41.5053602,
+"lon": -73.9710687,
+"display": "Howland Public Library, 313, Main Street, City of Beacon, Dutchess County, New York, 12508, United States",
+"matched": "Howland Public Library, 313 Main Street, Beacon, NY",
+"precision": 1
+},
+"youth services program room, howland public library, 313 main street, beacon, ny, 12508": {
+"lat": 41.5053602,
+"lon": -73.9710687,
+"display": "Howland Public Library, 313, Main Street, City of Beacon, Dutchess County, New York, 12508, United States",
+"matched": "Howland Public Library, 313 Main Street, Beacon, NY",
+"precision": 1
+},
+"311 learning annex, howland public library, 313 main street, beacon, ny, 12508": {
+"lat": 41.5053602,
+"lon": -73.9710687,
+"display": "Howland Public Library, 313, Main Street, City of Beacon, Dutchess County, New York, 12508, United States",
+"matched": "Howland Public Library, 313 Main Street, Beacon, NY",
+"precision": 1
+},
+"mount beacon trailhead": null,
+"1 depot square": {
+"lat": 40.9504431,
+"lon": -73.8283531,
+"display": "Starbucks, 1, Depot Square, Village of Tuckahoe, Town of Eastchester, Westchester County, New York, 10707, United States",
+"matched": "1 Depot Square",
+"precision": 0
+},
+"7 east main street, beacon, ny": {
+"lat": 41.501649,
+"lon": -73.9630408,
+"display": "Hudson Valley Brewery, 7, East Main Street, City of Beacon, Dutchess County, New York, 12508, United States",
+"matched": "7 East Main Street, Beacon, NY",
+"precision": 0
+},
+"ny, west hurley, ny": {
+"lat": 41.9953263,
+"lon": -74.0902006,
+"display": "State Route 28, West Hurley, Town of Hurley, Ulster County, New York, 12491, United States",
+"matched": "NY, West Hurley, NY",
+"precision": 0
+},
+"moulton lounge": {
+"lat": 52.8043862,
+"lon": -0.0970101,
+"display": "The Baytree Coffee Lounge, High Road, Weston, Weston CP, Moulton, South Holland, Lincolnshire, Greater Lincolnshire, England, PE12 6JU, United Kingdom",
+"matched": "Moulton Lounge",
+"precision": 0
+},
+"white memorial \u2013 a.b. ceder room, litchfield, ct": {
+"lat": 41.747319,
+"lon": -73.1887243,
+"display": "Litchfield, Northwest Hills Planning Region, Connecticut, United States",
+"matched": "Litchfield, CT",
+"precision": 1
+},
+"41 main st.": {
+"lat": 54.2117685,
+"lon": -3.2747913,
+"display": "The Plough Inn, 41, Holborn Hill, Knott End, Haverigg, Millom, Cumberland, England, LA18 5BH, United Kingdom",
+"matched": "41 Main St.",
+"precision": 0
+},
+"103 burroughs drive": {
+"lat": 51.4487702,
+"lon": 0.2235746,
+"display": "103, Burroughs Drive, Brooklands, Temple Hill, Dartford, Kent, England, DA1 5TW, United Kingdom",
+"matched": "103 Burroughs Drive",
+"precision": 0
+},
+"160 hanover road": {
+"lat": 51.5420062,
+"lon": -0.2248385,
+"display": "160, Hanover Road, Brondesbury Park, Brondesbury, London Borough of Brent, Greater London, England, NW10 3DP, United Kingdom",
+"matched": "160 Hanover Road",
+"precision": 0
 }
 }

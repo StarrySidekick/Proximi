@@ -80,6 +80,12 @@ def main(path='data/events.json'):
             elif not isinstance(p.get('min'), (int, float)):
                 errors.append(f'{tag}: price.min must be a number')
 
+        kinds = i.get('types')
+        if not isinstance(kinds, list) or not kinds:
+            errors.append(f'{tag}: types must be a non-empty list')
+        elif i.get('type') != kinds[0]:
+            errors.append(f'{tag}: type {i.get("type")!r} must be the first of '
+                          f'types {kinds!r} — the badge and the filter would disagree')
         if i.get('audience') not in AUDIENCES:
             errors.append(f"{tag}: audience must be one of {sorted(AUDIENCES)}, "
                           f"got {i.get('audience')!r}")
@@ -116,7 +122,7 @@ def main(path='data/events.json'):
     repeat = sum(1 for i in items if i.get('repeats'))
     outdoor = sum(1 for i in items if i.get('setting') == 'outdoor')
     food = sum(1 for i in items if i.get('hasFood'))
-    types = len({i.get('type') for i in items})
+    types = len({t for i in items for t in (i.get('types') or [])})
     kids = sum(1 for i in items if i.get('audience') == 'kids')
     family = sum(1 for i in items if i.get('audience') == 'family')
     seniors = sum(1 for i in items if i.get('audience') == 'seniors')

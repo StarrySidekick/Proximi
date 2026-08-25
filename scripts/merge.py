@@ -22,14 +22,14 @@ from datetime import datetime, timezone
 from math import radians, sin, cos, asin, sqrt
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from enrich import type_of, audience_of
+from enrich import type_of, types_of, audience_of, place_name, STREET_ONLY
 
 # Fields computed from a listing rather than reported by its source. They are
 # only ever as good as the code that derived them, so a listing already in the
 # set must not keep a classification made by an older vocabulary — otherwise
 # improving the rules only ever fixes listings we happen to be seeing for the
 # first time. Curated records (manual-) are exempt: a person checked those.
-DERIVED = ('type', 'categories', 'audience', 'setting', 'timeOfDay',
+DERIVED = ('type', 'types', 'categories', 'audience', 'setting', 'timeOfDay',
            'hasFood', 'repeats', 'recurrence')
 
 
@@ -45,12 +45,41 @@ def adopt_derived(old, new):
     for f in DERIVED:
         if f in new:
             merged[f] = new[f]
+    # repeats and recurrence describe one fact and have to move together. Taken
+    # field by field, a new record that repeats:false and simply omits
+    # recurrence left the old record's recurrence string standing beside it,
+    # which validation reads — correctly — as a contradiction.
+    if 'repeats' in new:
+        merged['recurrence'] = new.get('recurrence')
+        if not merged['recurrence']:
+            merged.pop('recurrence', None)
     return merged
 
 
 # Internal governance that is not "something to do".
 NOISE = re.compile(r'\b(board meeting|planning meeting|committee meeting|'
                    r'staff meeting|agm|annual general meeting)\b', re.I)
+
+# The running of a school, which reaches us through district, campus and
+# aggregator feeds alike. Kept separate from the campus rule below because it
+# is not tied to a source: a K-12 calendar can arrive via a library or a town,
+# and "first day of school" is no more attendable for coming through Eventbrite.
+# Narrow on purpose — a library's "Back to School Reading Buddies" is a real
+# programme a child can attend, and stays.
+SCHOOL_INTERNAL = re.compile(
+    r"\b(first|last) day of (school|classes)\b"
+    r"|\bschool (opens|closes|begins|resumes)\b"
+    r"|\bsemester (begins|ends)\b|\bclasses (begin|resume|end)\b"
+    r"|\bno school\b|\bearly dismissal\b|\bsnow day\b|\bhalf[- ]day\b"
+    r"|\b(parent|student)[- ]teacher conference"
+    r"|\breport cards?\b|\bpta\b|\bpto meeting\b|\bschool board\b"
+    r"|\bsuperintendent\b"
+    r"|\b(kindergarten|freshman|new student|student) orientation\b"
+    r"|\bback[- ]to[- ]school night\b"
+    r"|\bcourse (registration|selection)\b"
+    r"|\bfinal exams? (week|period)\b|\bgraduation rehearsal\b"
+    r"|\bconvocation\b",
+    re.I)
 
 # A college calendar is written for its own students. Most of what is on it —
 # orientation, registration, finals, involvement fairs — is not something a
@@ -312,7 +341,7 @@ def main():
                       if s.get('campus')}
 
     def wanted(item):
-        if NOISE.search(item['title']):
+        if NOISE.search(item['title']) or SCHOOL_INTERNAL.search(item['title']):
             return False
         if item.get('source') in campus_sources and not public_on_campus(item['title']):
             return False
@@ -363,16 +392,38 @@ def main():
                 refreshed += 1
 
     for item in merged:
+        # types is required of every listing, including hand-checked ones —
+        # filling a new field from the one it generalises is not reclassifying.
+        if not item.get('types'):
+            item['types'] = [item.get('type') or 'other']
+        # Listings already held were stored before venue resolution learned to
+        # prefer a name over a street, and venue is source data rather than a
+        # derived field, so nothing else would ever revisit them. "1 Museum Rd"
+        # becomes "Storm King Art Center" using only what the record carries.
+        if item.get('venue') and STREET_ONLY.match(str(item['venue']).strip()):
+            better = place_name(item['venue'], item.get('host'), item.get('source'))
+            if better and better != item['venue']:
+                if not item.get('address'):
+                    item['address'] = item['venue']
+                item['venue'] = better
         if is_curated(item):
             continue
-        fresh = type_of(item.get('title', ''), item.get('description') or '')
+        fresh = types_of(item.get('title', ''), item.get('description') or '')
         # 'other' is the absence of a text signal, not a verdict — a source
         # that asserted a type outright (Songkick marks every show a
         # MusicEvent) knows more than a title like "Faetooth @ Bowery
         # Ballroom" reveals, so silence never downgrades an existing type.
-        if fresh != item.get('type') and fresh != 'other':
-            item['type'] = fresh
+        if fresh != ['other'] and fresh != item.get('types'):
+            # Keep a source-asserted primary that the text cannot see, but let
+            # the derived kinds join it.
+            asserted = item.get('type')
+            if asserted and asserted != 'other' and asserted not in fresh:
+                fresh = [asserted] + [t for t in fresh if t != asserted]
+            item['types'] = fresh[:3]
+            item['type'] = item['types'][0]
             retyped += 1
+        elif not item.get('types'):
+            item['types'] = [item.get('type') or 'other']
         # Audience follows the same rule as type: a held listing keeps the
         # verdict of whatever vocabulary classified it, so a rule improvement
         # that fixes new records must also re-judge the old ones.

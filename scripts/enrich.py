@@ -52,7 +52,18 @@ TYPES = [
     ('film',        r'\b(film|movie|screening|cinema|documentar\w*)\b'),
     ('art',         r'\b(exhibition|exhibit|gallery|opening reception|artist talk|'
                     r'installation|sculpture|paintings?)\b'),
-    ('theater',     r'\b(theat(er|re)|play|musical|opera|cabaret|drag|puppet)\b'),
+    # Making something, as opposed to looking at something made. "craft" needs
+    # the guard or every craft beer night becomes a workshop.
+    ('creative',    r'\b(paint[- ]?(and|n|&)[- ]?sip|pottery|ceramics?|kiln|'
+                    r'knit\w*|crochet|quilt\w*|sewing|weaving|collage|printmaking|'
+                    r'linocut|watercolou?r\w*|calligraphy|jewel\w*[- ]making|'
+                    r'woodworking|zine|scrapbook\w*|florals?[- ]arranging|'
+                    r'make[- ]your[- ]own|diy|hands[- ]on|'
+                    r'craft(?!\ (beer|brew|cocktail|distiller|cider|fair|show)))\b'),
+    # "play" as a bare word is a verb far more often than a stage play — "free
+    # to play" made a pub trivia night theatre — so it must look like a noun.
+    ('theater',     r'\b(theat(er|re)|musicals?|opera|cabaret|drag show|puppet)\b|'
+                    r'\b(?:a|the|new|one[- ]act)\ plays?\b|\bplay\ (?:by|reading)\b'),
     ('dance',       r'\b(dance|ballet|salsa|swing|tango|contra)\b'),
     ('concert',     r'\b(concert|music|band|recital|symphony|orchestra|quartet|'
                     r'trio|songwriter|acoustic|jazz|blues|folk|choir|singer)\b'),
@@ -77,7 +88,9 @@ TYPES = [
                     r'training|demo|certification|certificate|bootcamp|'
                     r'paint[- ]and[- ]sip|paint ?n ?sip|intro to|101)\b'),
     ('talk',        r'\b(talk|lecture|reading|panel|author|discussion|book club)\b'),
-    ('volunteer',   r'\b(volunteer|work ?day|stewardship|planting|fundraiser|benefit)\b'),
+    ('volunteer',   r'\b(volunteer|work ?day|stewardship|planting|fundraiser|benefit|'
+                    r'(blood|food|coat|toy|book|clothing|donation|canned[- ]food)\ drive|'
+                    r'donation day|give ?back|charity|clean[- ]?up day)\b'),
     ('meetup',      r'\b(meetup|meeting|social|club|forum|town hall|gathering)\b'),
 ]
 
@@ -100,18 +113,37 @@ def blob_of(e):
     return ' '.join(filter(None, [e.get('title'), e.get('description'), e.get('venue')]))
 
 
-def type_of(title, description=''):
-    """Classify from the title first, falling back to the description.
+def types_of(title, description='', limit=3):
+    """All the kinds of thing a listing is, most defining first.
 
-    A county fair whose blurb mentions "grandstand concerts" is a Festival, not
-    a Concert — what a thing *is* lives in its name, while the description only
-    mentions things it contains.
+    A paint-and-sip is a class, and creative, and food & drink; forcing one
+    label on it loses whichever two the reader was filtering for. The title is
+    read first and exhausted before the description is consulted, because what
+    a thing *is* lives in its name while the description lists what it
+    contains — a county fair whose blurb mentions grandstand concerts is a
+    festival, not a concert.
+
+    Capped, since a long description will eventually touch half the vocabulary
+    and a listing tagged eight ways is no more findable than one tagged none.
     """
-    for source in (title or '', description or ''):
-        for name, pattern in TYPES:
-            if re.search(pattern, source, re.I):
-                return name
-    return 'other'
+    def matches(text):
+        return [name for name, pattern in TYPES if re.search(pattern, text, re.I)]
+
+    found = matches(title or '')[:limit]
+    # The description may contribute one more kind and no further. It is where
+    # the incidental words live — a blurb long enough will eventually touch
+    # half the vocabulary — so it can round a listing out but never define it.
+    if len(found) < limit:
+        for name in matches(description or ''):
+            if name not in found:
+                found.append(name)
+                break
+    return found[:limit] or ['other']
+
+
+def type_of(title, description=''):
+    """The single most defining kind — the badge, and the sort key."""
+    return types_of(title, description)[0]
 
 
 def setting_of(text):
@@ -216,6 +248,29 @@ SENIORS = re.compile(r'''(?<!\w)(?:55|60|62|65)\s*\+(?!\w)|\b(?:
 ADULTS_ONLY = re.compile(
     r'(?<!\w)(21\s*\+|18\s*\+|21 and over|18 and over|adults? only|must be 21|'
     r'ages 21|over 21|21 years|21 and up|no minors)(?!\w)', re.I)
+
+
+# A street address is not the name of a place. Feeds put one in LOCATION
+# constantly — Storm King's own calendar says "1 Museum Rd" — and a card
+# reading "1 Museum Rd · New Windsor" tells a reader nothing about where they
+# would actually be going.
+STREET_ONLY = re.compile(
+    r"^\s*\d+[-\d]*\s+[\w.'\- ]+?\s*"
+    r"(st|street|rd|road|ave|avenue|blvd|boulevard|ln|lane|dr|drive|way|"
+    r"pl|place|ct|court|hwy|highway|tpke|turnpike|pkwy|parkway|route|rt|sq|square)"
+    r"\.?\s*$", re.I)
+
+
+def place_name(venue, *fallbacks):
+    """The name of the place, preferring a real name over a street address.
+
+    Falls back through the source's own venue block, the organiser and the
+    publisher — whichever first gives something that is not just an address.
+    """
+    for candidate in (venue, *fallbacks):
+        if candidate and not STREET_ONLY.match(str(candidate).strip()):
+            return str(candidate).strip()
+    return venue or None
 
 
 def audience_of(text, title=None, kind=None):
@@ -410,7 +465,11 @@ def main():
     center = registry['center']
     # Venue feeds usually omit LOCATION — every event is at the same address —
     # so the registry carries the venue's own coordinates as a fallback.
-    venue_default = {s['id']: s['venue'] for s in registry['sources'] if s.get('venue')}
+    # Some entries carry the venue as a bare address string rather than a
+    # block; normalise so the fallback is always a dict to read from.
+    venue_default = {s['id']: (s['venue'] if isinstance(s['venue'], dict)
+                               else {'name': s['venue'], 'address': s['venue']})
+                     for s in registry['sources'] if s.get('venue')}
     data = json.load(open(args.src))
     cache, stats = load_cache(), {'cached': 0, 'looked_up': 0, 'errors': 0}
     dropped = {'no_location': 0, 'ungeocodable': 0, 'out_of_radius': 0}
@@ -419,13 +478,21 @@ def main():
     for c in data['candidates']:
         fallback = venue_default.get(c['sourceId'])
         loc = c.get('location')
-        hit = geocode(loc, cache, stats) if loc else None
+        # A venue feed often gives a street and nothing else — every event is
+        # at the same place, so the town goes without saying locally. It does
+        # not go without saying to a global gazetteer: "7 East Main Street"
+        # resolves to Uphall, Scotland. Where the registry knows the venue's
+        # town, say it.
+        query = loc
+        if loc and ',' not in loc and (fallback or {}).get('city'):
+            query = f"{loc}, {fallback['city']}"
+        hit = geocode(query, cache, stats) if query else None
 
         # Track whether the venue default was actually used. Inheriting the
         # source venue's town for an event held somewhere else put "Ossining"
         # on a Mamaroneck library listing.
         used_fallback = False
-        if not hit and fallback:
+        if not hit and fallback and fallback.get('lat') is not None:
             hit = {'lat': fallback['lat'], 'lon': fallback['lon']}
             loc = loc or fallback.get('address') or fallback['name']
             used_fallback = True
@@ -442,6 +509,8 @@ def main():
         if used_fallback:
             venue = venue or fallback['name']
             city = city or fallback.get('city')
+        venue = place_name(venue, (fallback or {}).get('name'),
+                           c.get('organizer'), c['sourceName'])
         if venue and venue == venue.lower():
             venue = titlecase(venue)
         blob = ' '.join(filter(None, [c['title'], c.get('description'), venue]))
@@ -452,6 +521,7 @@ def main():
             'id': f"{c['sourceId']}-{abs(hash(c.get('uid') or c['title'] + c['start'])) % 10**8}",
             'title': c['title'],
             'type': type_of(c['title'], c.get('description')),
+            'types': types_of(c['title'], c.get('description')),
             'repeats': bool(recurring),
             'audience': audience_of(blob, c['title'], type_of(c['title'], c.get('description'))),
             'setting': setting_of(blob),
@@ -513,6 +583,8 @@ def main():
                                  f"{abs(hash(e.get('url') or e['title'])) % 10**8}",
             'title': e['title'],
             'type': e.get('type') or type_of(e['title'], e.get('description')),
+            'types': e.get('types') or (
+                [e['type']] if e.get('type') else types_of(e['title'], e.get('description'))),
             'repeats': bool(e.get('repeats')),
             # Meetup states its own cadence; without carrying it here a monthly
             # group arrives as a one-off, since the find page lists only the
@@ -528,7 +600,9 @@ def main():
             'host': e.get('host') or e.get('venue') or e.get('sourceName'),
             'categories': e.get('categories') or categorise(blob),
             'start': e['start'], 'end': e.get('end'),
-            'venue': e.get('venue') or 'See listing', 'city': e.get('city'),
+            'venue': place_name(e.get('venue'), e.get('host'), e.get('sourceName'))
+                     or 'See listing',
+            'city': e.get('city'),
             'address': e.get('address') or e.get('venue'),
             'lat': round(e['lat'], 5), 'lon': round(e['lon'], 5),
             'price': e.get('price'),

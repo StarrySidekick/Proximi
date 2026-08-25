@@ -49,6 +49,13 @@ Inside the sheet:
   match counts. Each cycles through three states: click once to show only that
   kind, again to hide it everywhere, a third time to clear it. Excluding is
   what you want when one busy category is drowning the rest.
+
+  A listing is **several kinds at once** — a paint-and-sip is a class, and
+  creative, and food & drink — so it answers to every one of its chips. `type`
+  is the primary kind, shown as the solid badge and used for sorting; `types`
+  holds the full set, and the filters read all of it. Excluding beats
+  including: hiding Games hides a listing that is also a Class, or the word
+  "hide" does not mean anything.
 - **Your picks** — a count of what you've hidden or said yes to, with a way to
   show or restore hidden listings.
 - **Features** — food or drink, outdoors, and time of day (daytime / evening).
@@ -58,7 +65,10 @@ Inside the sheet:
   under soonest, where they mean something.
 
 Cards carry what you need to decide: price with its caveats ("$15 online, $20 at
-the gate"), venue, town, distance, duration, category tags, and a **Sign up**
+the gate"), the **name of the place** rather than its street — feeds put the
+address in the venue field constantly, and "1 Museum Rd" tells a reader nothing
+that "Storm King Art Center" does — plus town, distance, duration, category
+tags, and a **Sign up**
 button wherever registration is required. Multi-day runs read as a range, and
 something already under way reads "on now, through Sep 6".
 

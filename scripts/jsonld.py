@@ -161,6 +161,11 @@ def harvest_source(src):
         if start.tzinfo is None:
             start = start.replace(tzinfo=timezone.utc)
         end = parse_dt(n.get('endDate'))
+        # start is normalised above; end has to be too, or a feed that omits
+        # the offset (Howland's does) throws on the comparison below and the
+        # whole source reports zero events.
+        if end and end.tzinfo is None:
+            end = end.replace(tzinfo=timezone.utc)
         if (end or start) < now:
             continue
 
