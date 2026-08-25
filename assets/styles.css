@@ -413,6 +413,15 @@ input:focus-visible, select:focus-visible, button:focus-visible, a:focus-visible
 }
 .chip .chip-n { opacity: .6; font-size: .9em; margin-left: 3px; }
 
+/* Excluded type: the chip stays visible but reads as struck from the list. */
+.chip.chip-exclude {
+  background: transparent;
+  border-color: var(--claret, #7b2d43);
+  color: var(--claret, #7b2d43);
+  text-decoration: line-through;
+  opacity: .85;
+}
+
 .loc-row { margin-bottom: 8px; }
 .loc-row .btn { width: 100%; }
 .place-form { display: flex; gap: 8px; margin-bottom: 10px; }

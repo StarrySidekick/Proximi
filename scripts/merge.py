@@ -22,7 +22,7 @@ from datetime import datetime, timezone
 from math import radians, sin, cos, asin, sqrt
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from enrich import type_of
+from enrich import type_of, audience_of
 
 # Fields computed from a listing rather than reported by its source. They are
 # only ever as good as the code that derived them, so a listing already in the
@@ -366,8 +366,21 @@ def main():
         if is_curated(item):
             continue
         fresh = type_of(item.get('title', ''), item.get('description') or '')
-        if fresh != item.get('type'):
+        # 'other' is the absence of a text signal, not a verdict — a source
+        # that asserted a type outright (Songkick marks every show a
+        # MusicEvent) knows more than a title like "Faetooth @ Bowery
+        # Ballroom" reveals, so silence never downgrades an existing type.
+        if fresh != item.get('type') and fresh != 'other':
             item['type'] = fresh
+            retyped += 1
+        # Audience follows the same rule as type: a held listing keeps the
+        # verdict of whatever vocabulary classified it, so a rule improvement
+        # that fixes new records must also re-judge the old ones.
+        blob = ' '.join(filter(None, [item.get('title', ''),
+                                      item.get('description') or '']))
+        aud = audience_of(blob, item.get('title', ''), item.get('type'))
+        if aud != item.get('audience'):
+            item['audience'] = aud
             retyped += 1
 
     merged.sort(key=lambda x: x['start'])

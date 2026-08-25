@@ -70,9 +70,10 @@
     freeOnly: false, signupOnly: false, unitsKm: false,
     repeatMode: 'any', timeOfDay: 'any',
     foodOnly: false, outdoorOnly: false,
-    // Children-only listings are hidden by default; 21+ ones are not. An adult
-    // browsing wants the brewery tour and does not want a grades K-3 drop-off.
-    showKids: false, showAdults: true
+    // Children-only and senior-focused listings are hidden by default; 21+
+    // ones are not. An adult browsing wants the brewery tour, not a grades K-3
+    // drop-off or a senior breakfast club.
+    showKids: false, showSeniors: false, showAdults: true
   };
 
   const $ = (id) => document.getElementById(id);
@@ -80,7 +81,8 @@
   const el = {
     list: $('list'), empty: $('empty'), banner: $('data-banner'),
     types: $('types'), presets: $('presets'), horizon: $('horizon'),
-    repeats: $('repeats'), showKids: $('show-kids'), showAdults: $('show-adults'),
+    repeats: $('repeats'), showKids: $('show-kids'), showSeniors: $('show-seniors'),
+    showAdults: $('show-adults'),
     tod: $('tod'), foodOnly: $('food-only'), outdoorOnly: $('outdoor-only'),
     q: $('q'), sort: $('sort'),
     radius: $('radius'), radiusOut: $('radius-out'),
@@ -99,6 +101,7 @@
     items: [],
     origin: null,
     activeTypes: new Set(),
+    excludedTypes: new Set(),
     horizon: DEFAULTS.horizon,
     repeatMode: DEFAULTS.repeatMode,
     timeOfDay: DEFAULTS.timeOfDay,
@@ -278,10 +281,13 @@
       // wants neither, and splitting them across two checkboxes only asks the
       // reader to understand a distinction the data draws for its own reasons.
       if ((audience === 'kids' || audience === 'family') && !el.showKids.checked) return false;
+      if (audience === 'seniors' && !el.showSeniors.checked) return false;
       if (audience === 'adults' && !el.showAdults.checked) return false;
       if (state.repeatMode === 'once' && repeatsOf(item)) return false;
       if (state.repeatMode === 'repeat' && !repeatsOf(item)) return false;
-      if (state.activeTypes.size && !state.activeTypes.has(item.type || 'other')) return false;
+      const itemType = item.type || 'other';
+      if (state.excludedTypes.has(itemType)) return false;
+      if (state.activeTypes.size && !state.activeTypes.has(itemType)) return false;
       if (el.foodOnly.checked && !item.hasFood) return false;
       if (el.outdoorOnly.checked && item.setting !== 'outdoor') return false;
       const tod = TIME_OF_DAY.find((t) => t.id === state.timeOfDay);
@@ -381,6 +387,7 @@
           ${repeatsOf(item) ? '<span class="badge badge-repeat">Repeats</span>' : ''}
           ${audienceOf(item) === 'kids' ? '<span class="badge badge-kids">Children only</span>' : ''}
           ${audienceOf(item) === 'family' ? '<span class="badge badge-kids">Family</span>' : ''}
+          ${audienceOf(item) === 'seniors' ? '<span class="badge badge-kids">Seniors</span>' : ''}
           ${audienceOf(item) === 'adults' ? '<span class="badge badge-adults">21+</span>' : ''}
           ${(item.categories || []).map((c) => `<span class="tag">${esc(catLabel(c))}</span>`).join('')}
         </div>
@@ -465,12 +472,13 @@
     if (el.price.value !== DEFAULTS.price) n++;
     if (el.freeOnly.checked) n++;
     if (el.signupOnly.checked) n++;
-    if (state.activeTypes.size) n++;
+    if (state.activeTypes.size || state.excludedTypes.size) n++;
     if (state.timeOfDay !== DEFAULTS.timeOfDay) n++;
     if (el.foodOnly.checked) n++;
     if (el.outdoorOnly.checked) n++;
     if (state.repeatMode !== DEFAULTS.repeatMode) n++;
     if (el.showKids.checked !== DEFAULTS.showKids) n++;
+    if (el.showSeniors.checked !== DEFAULTS.showSeniors) n++;
     if (el.showAdults.checked !== DEFAULTS.showAdults) n++;
 
     el.filtersCount.textContent = n;
@@ -592,9 +600,20 @@
       b.dataset.type = t;
       b.setAttribute('aria-pressed', 'false');
       b.innerHTML = `${esc(typeLabel(t))}<span class="chip-n"></span>`;
+      // Three states, cycled by clicking: neutral -> only this (and other
+      // included types) -> anything but this -> neutral. Exclusion is what a
+      // reader wants when one busy category (say, games) is drowning the rest.
       b.addEventListener('click', () => {
-        state.activeTypes.has(t) ? state.activeTypes.delete(t) : state.activeTypes.add(t);
+        if (state.activeTypes.has(t)) {
+          state.activeTypes.delete(t);
+          state.excludedTypes.add(t);
+        } else if (state.excludedTypes.has(t)) {
+          state.excludedTypes.delete(t);
+        } else {
+          state.activeTypes.add(t);
+        }
         b.setAttribute('aria-pressed', String(state.activeTypes.has(t)));
+        b.classList.toggle('chip-exclude', state.excludedTypes.has(t));
         render();
       });
       return b;
@@ -624,9 +643,12 @@
   // so the numbers stay useful while picking.
   function renderTypeCounts() {
     const saved = state.activeTypes;
+    const savedEx = state.excludedTypes;
     state.activeTypes = new Set();
+    state.excludedTypes = new Set();
     const pool = filtered();
     state.activeTypes = saved;
+    state.excludedTypes = savedEx;
 
     const counts = new Map();
     for (const item of pool) {
@@ -722,7 +744,7 @@
 
   for (const node of [el.q, el.sort, el.radius, el.price,
                       el.freeOnly, el.signupOnly, el.unitsKm,
-                      el.showKids, el.showAdults, el.foodOnly, el.outdoorOnly]) {
+                      el.showKids, el.showSeniors, el.showAdults, el.foodOnly, el.outdoorOnly]) {
     node.addEventListener('input', rerender);
   }
 
@@ -738,10 +760,13 @@
     state.repeatMode = DEFAULTS.repeatMode;
     state.timeOfDay = DEFAULTS.timeOfDay;
     el.showKids.checked = DEFAULTS.showKids;
+    el.showSeniors.checked = DEFAULTS.showSeniors;
     el.showAdults.checked = DEFAULTS.showAdults;
     el.foodOnly.checked = DEFAULTS.foodOnly;
     el.outdoorOnly.checked = DEFAULTS.outdoorOnly;
     state.activeTypes.clear();
+    state.excludedTypes.clear();
+    for (const chip of el.types.children) chip.classList.remove('chip-exclude');
     for (const c of el.types.children) c.setAttribute('aria-pressed', 'false');
     for (const c of el.tod.children) {
       c.setAttribute('aria-pressed', String(c.dataset.tod === DEFAULTS.timeOfDay));

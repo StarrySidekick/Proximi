@@ -175,6 +175,12 @@ def eventbrite_event(e):
     tz = e.get('timezone') or 'America/New_York'
     start = local_iso(e.get('start_date'), e.get('start_time'), tz)
     end = local_iso(e.get('end_date'), e.get('end_time'), tz)
+    # The search API dedups a series to its next session and reports the rest
+    # in num_children. The scavenger-hunt style bookable activities run this
+    # way — daily slots for months — and showing only the next slot's date
+    # makes them read as a one-off happening this Tuesday at 11am.
+    sessions = e.get('num_children') or 0
+    bookable = sessions > 3
     cats = []
     for t in e.get('tags') or []:
         if t.get('prefix') == 'EventbriteCategory':
@@ -195,6 +201,9 @@ def eventbrite_event(e):
     return {
         'sourceId': 'eventbrite', 'sourceName': 'Eventbrite',
         'title': e.get('name'), 'start': start, 'end': end, 'allDay': False,
+        'repeats': bookable,
+        **({'recurrence': ('Bookable — runs most days' if sessions > 60 else
+                           f'Bookable — {sessions} upcoming dates')} if bookable else {}),
         'url': e.get('url') or f"https://www.eventbrite.com/e/{e.get('id')}",
         'venue': v.get('name'),
         'city': ', '.join(filter(None, [a.get('city'), a.get('region')])) or None,

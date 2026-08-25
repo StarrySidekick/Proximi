@@ -1705,5 +1705,12 @@
 "display": "Mount Kisco Public Library, Main Street, Village/Town of Mount Kisco, Westchester County, New York, 10549, United States",
 "matched": "Mount Kisco Public Library, Mount Kisco, NY",
 "precision": 0
+},
+"tubby's, 586 broadway, kingston, ny": {
+"lat": 41.9294229,
+"lon": -74.0036218,
+"display": "Tubby's, 586, Broadway, Stockade District, City of Kingston, Ulster County, New York, 12401, United States",
+"matched": "Tubby's, 586 Broadway, Kingston, NY",
+"precision": 0
 }
 }

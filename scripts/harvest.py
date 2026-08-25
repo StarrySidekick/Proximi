@@ -107,7 +107,58 @@ def harvest_ics(src, tz):
     return out, None
 
 
-HANDLERS = {'ics': harvest_ics}
+def harvest_sqsp(src, tz):
+    """Squarespace event collections: <url>?format=json returns the items the
+    page renders, with millisecond timestamps.
+
+    The documented ?format=ical variant answers 200 with an empty body on some
+    sites (Tubby's), so JSON is the reliable route. Item location carries
+    Squarespace's SoHo placeholder coordinates unless the site filled in a
+    street address, so the registry entry's venue string is what gets geocoded.
+    """
+    import re as _re
+    from urllib.parse import urlsplit
+    from zoneinfo import ZoneInfo
+    raw = fetch(src['url'].rstrip('/') + '?format=json')
+    data = json.loads(raw)
+    items = data.get('upcoming') or data.get('items') or []
+    base = 'https://' + urlsplit(src['url']).netloc
+    now_ms = time.time() * 1000
+    out = []
+    for e in items:
+        if not e.get('title') or (e.get('startDate') or 0) < now_ms:
+            continue
+        # Millisecond epochs, converted into the registry's zone explicitly —
+        # bare fromtimestamp() takes the machine's clock, which in CI is UTC,
+        # and quietly shifts every show four hours late. Microseconds dropped:
+        # the schema wants whole seconds.
+        zone = ZoneInfo(tz)
+        start = datetime.fromtimestamp(e['startDate'] / 1000, tz=zone).replace(microsecond=0)
+        end = (datetime.fromtimestamp(e['endDate'] / 1000, tz=zone).replace(microsecond=0)
+               if e.get('endDate') else None)
+        desc = _re.sub(r'<[^>]+>', ' ', e.get('excerpt') or e.get('body') or '')
+        loc = e.get('location') or {}
+        out.append({
+            'sourceId': src['id'],
+            'sourceName': src.get('publisher', src['id']),
+            'title': e['title'],
+            'start': start.isoformat(),
+            'end': end.isoformat() if end else None,
+            'allDay': False,
+            'url': base + e['fullUrl'] if e.get('fullUrl') else src['url'],
+            'location': loc.get('addressLine1') or src.get('venue'),
+            'description': desc.strip()[:1200] or None,
+            'feedCategories': e.get('categories'),
+            'organizer': src.get('publisher'),
+            'recurring': False,
+            'uid': e.get('id'),
+        })
+    if not out:
+        return [], STALE
+    return out, None
+
+
+HANDLERS = {'ics': harvest_ics, 'sqsp': harvest_sqsp}
 
 
 def main():

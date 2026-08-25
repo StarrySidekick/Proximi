@@ -197,6 +197,8 @@ scripts/harvest.py      pull feeds listed in the registry
 scripts/jsonld.py       extract schema.org Event data from html sources
 scripts/platforms.py    Ticketmaster Discovery (needs TICKETMASTER_API_KEY)
 scripts/social.py       Eventbrite and Meetup, read through their embedded JSON
+scripts/libcal.py       library programming via LibCal's per-day ajax endpoint
+scripts/songkick.py     ticketed concerts via Songkick metro pages (JSON-LD)
 scripts/discover.py     find new venues (OSM) and probe them for feeds
 scripts/enrich.py       geocode, radius-filter, infer categories
 scripts/merge.py        collapse repeats, dedupe, fold into data/events.json
@@ -220,6 +222,8 @@ sources/manual.json       listings read by hand, versioned so they survive rerun
         ├─ jsonld.py      scrape schema.org Events → build/jsonld.json
         ├─ platforms.py   Ticketmaster (API key)   → build/platform.json
         ├─ social.py      Eventbrite + Meetup       → build/social.json
+        ├─ libcal.py      library calendars         → build/libcal.json
+        ├─ songkick.py    ticketed concerts         → build/songkick.json
         ├─ enrich.py      geocode, radius-filter, classify
         ├─ merge.py       collapse repeats, dedupe → data/events.json
         └─ validate.py    gate before anything ships

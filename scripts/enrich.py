@@ -173,8 +173,13 @@ ACTIVITY_HINTS = re.compile(
 # kids-only and gets hidden from the people it is actually for.
 KIDS_ONLY = re.compile(
     # An age range only means children when the ages are a child's. Matching any
-    # two numbers made "Speed Dating Ages 25-39" a children's event.
-    r'\b(grades?\s*(k|pre-?k|\d{1,2})|ages?\s*(?:[0-9]|1[0-8])\s*[-–—]\s*(?:[0-9]|1[0-8])\b|'
+    # two numbers made "Speed Dating Ages 25-39" a children's event. Ranges are
+    # spelled "6-12", "6 to 12", "kids ages 6", and "ages 2 and up" — the first
+    # pass only read the hyphen form, so half the library programming slipped by.
+    r'\b(grades?\s*(k|pre-?k|\d{1,2})|'
+    r'ages?\s*(?:[0-9]|1[0-8])\s*(?:[-–—]|to)\s*(?:[0-9]|1[0-8])\b|'
+    r'(?:kids|children)\s+ages?\s*\d|'
+    r'ages?\s*[0-9]\s*(?:and|&)\s*(?:up|older|over)|'
     r'children entering|toddlers?|pre-?school|storytime|story time|kids only|'
     r'teens?|for kids|'
     r'children only|youth (program|group|club)|drop-?off program|campers?)\b', re.I)
@@ -195,6 +200,17 @@ CHILD_FOCUSED = re.compile(r'''\b(
 # A gig is not children's programming because a band is called Drink Baby.
 EXPLICITLY_FOR_CHILDREN = re.compile(
     r"\b(children'?s?|kids?|family|families|youth|toddlers?|storytime)\b", re.I)
+
+# Aimed at older adults. Deliberately narrow: "Senior Vice President" gives a
+# talk and "retired senior programmers" attend a dinner without either being a
+# seniors event, and a campus Senior Recital is a public concert. So match the
+# phrasings that name the audience, plus "Senior <activity>" programme titles.
+SENIORS = re.compile(r'''(?<!\w)(?:55|60|62|65)\s*\+(?!\w)|\b(?:
+ older\ adults?|senior\ citizens?|for\ seniors|seniors\ only|seniors\ welcome|
+ (?:55|60|62|65)\ and\ (?:up|over|older)|
+ senior\ (?:breakfast|lunch(?:eon)?|social|club|bingo|movie|matinee|fitness|
+         yoga|stretch|chair|tech|hour|day|center|centre|swim|walk|exercise)
+)\b''', re.I | re.X)
 # Lookarounds, not \b: a word boundary cannot match after the "+" in "21+",
 # so \b(21\+)\b silently never fires.
 ADULTS_ONLY = re.compile(
@@ -203,18 +219,25 @@ ADULTS_ONLY = re.compile(
 
 
 def audience_of(text, title=None, kind=None):
-    """Who a listing is for: 'kids', 'family', 'adults' or 'all'.
+    """Who a listing is for: 'kids', 'family', 'seniors', 'adults' or 'all'.
 
     'kids' means children only — a drop-off programme or an age-capped class.
     'family' means aimed at families with young children: open to an adult, but
     not what an adult browsing for themselves is looking for. Keeping the two
     apart lets one switch hide both without also hiding a county fair that
-    merely happens to be family friendly.
+    merely happens to be family friendly. 'seniors' is the same idea at the
+    other end of the age range.
     """
+    if SENIORS.search(text):
+        return 'seniors'
     if ADULTS_ONLY.search(text):
         return 'adults'
-    if KIDS_ONLY.search(text) and not FAMILY.search(text):
-        return 'kids'
+    if KIDS_ONLY.search(text):
+        # A child-aged programme in a family context ("ages 2-5 with a
+        # caregiver") is aimed at families, not children alone. The first
+        # version used family context as a veto and sent every library
+        # storytime to 'all' — the opposite of what the veto was for.
+        return 'family' if FAMILY.search(text) else 'kids'
     heading = title if title is not None else text
     if CHILD_FOCUSED.search(heading):
         # Music listings must say so outright, or every band with "Baby" in its
@@ -377,6 +400,7 @@ def main():
     ap.add_argument('--jsonld', default='build/jsonld.json')
     ap.add_argument('--social', default='build/social.json')
     ap.add_argument('--libcal', default='build/libcal.json')
+    ap.add_argument('--songkick', default='build/songkick.json')
     ap.add_argument('--manual', default='sources/manual.json')
     ap.add_argument('--out', default='build/enriched.json')
     ap.add_argument('--registry', default='sources/registry.json')
@@ -456,7 +480,7 @@ def main():
     prepared = []
     for path, key in ((args.platform, 'events'), (args.jsonld, 'events'),
                       (args.social, 'events'), (args.libcal, 'events'),
-                      (args.manual, 'items')):
+                      (args.songkick, 'events'), (args.manual, 'items')):
         if os.path.exists(path):
             prepared.extend(json.load(open(path)).get(key, []))
 

@@ -19,7 +19,8 @@
     "Eventbrite and Meetup were previously assumed to need paid API access. Both hand their front end public JSON, which is why the registry now carries them: check what a site gives its own browser before concluding there is no free path.",
     "Localist runs the calendar at events.<domain>/calendar.ics, not on the main domain, so no FEED_PATHS probe reaches it. discover.py now tries that host directly — six college feeds came from that one pattern.",
     "campus:true marks a college calendar. Those are internal by default — orientation, registration, finals, involvement fairs — so merge.py keeps only what is genuinely open to the public (a lecture, concert, gallery opening, mass, 5K) plus home games, and drops the rest. An allowlist, not a blocklist: chasing \"Viking Days\" and \"Pie a Kappa\" by name never ends.",
-    "LibCal is read by scripts/libcal.py, not the registry: its iCal export returns an empty body and rss.php a feed with zero items, so the only working route is the per-day ajax endpoint the calendar page itself calls, walked day by day."
+    "LibCal is read by scripts/libcal.py, not the registry: its iCal export returns an empty body and rss.php a feed with zero items, so the only working route is the per-day ajax endpoint the calendar page itself calls, walked day by day.",
+    "Songkick is read by scripts/songkick.py (metro pages, JSON-LD MusicEvents): the ticketed-concert layer — Capitol Theatre, Tarrytown Music Hall, Daryl's House — whose own sites bot-challenge us or render in JavaScript. Their search/API endpoints 406; the metro pages serve plain HTML."
   ],
   "sources": [
     {
@@ -406,6 +407,24 @@
       "publisher": "Untermyer Gardens Conservancy",
       "scope": "regional",
       "note": "Tockify. The feed name is the data-tockify-calendar attribute on the embed (untermyer.gardens.conservancy), not the domain — guessing from the domain 404s."
+    },
+    {
+      "id": "paramount-hv",
+      "kind": "ics",
+      "url": "https://paramounthudsonvalley.com/events/?ical=1",
+      "publisher": "Paramount Hudson Valley, Peekskill",
+      "scope": "local",
+      "note": "Found in the 2026-08 music-venue pass, then disabled the same day: the ?ical=1 feed parses (50 VEVENTs) but its newest event is 2026-03-06 — an archive, not a calendar. Same failure mode as Towne Crier. Their live listings render in JavaScript; recheck later.",
+      "enabled": false
+    },
+    {
+      "id": "tubbys",
+      "kind": "sqsp",
+      "url": "https://tubbyskingston.com/calendar",
+      "publisher": "Tubby's, Kingston",
+      "scope": "local",
+      "venue": "Tubby's, 586 Broadway, Kingston, NY",
+      "note": "Squarespace collection JSON. ?format=ical answers 200 with an empty body; item map coordinates are Squarespace's SoHo placeholder, so the venue string above is what gets geocoded."
     }
   ]
 }
