@@ -17,7 +17,9 @@
     "so we do not rediscover and re-trust them later.",
     "Connecticut was invisible for a different reason than distance: Danbury is 27.8 mi from Beacon and was always inside the radius, but the registry had no CT sources at all. Coverage gaps look like radius gaps — check the registry before widening the circle.",
     "Eventbrite and Meetup were previously assumed to need paid API access. Both hand their front end public JSON, which is why the registry now carries them: check what a site gives its own browser before concluding there is no free path.",
-    "Localist runs the calendar at events.<domain>/calendar.ics, not on the main domain, so no FEED_PATHS probe reaches it. discover.py now tries that host directly — six college feeds came from that one pattern."
+    "Localist runs the calendar at events.<domain>/calendar.ics, not on the main domain, so no FEED_PATHS probe reaches it. discover.py now tries that host directly — six college feeds came from that one pattern.",
+    "campus:true marks a college calendar. Those are internal by default — orientation, registration, finals, involvement fairs — so merge.py keeps only what is genuinely open to the public (a lecture, concert, gallery opening, mass, 5K) plus home games, and drops the rest. An allowlist, not a blocklist: chasing \"Viking Days\" and \"Pie a Kappa\" by name never ends.",
+    "LibCal is read by scripts/libcal.py, not the registry: its iCal export returns an empty body and rss.php a feed with zero items, so the only working route is the per-day ajax endpoint the calendar page itself calls, walked day by day."
   ],
   "sources": [
     {
@@ -305,56 +307,64 @@
       "kind": "ics",
       "url": "https://sunywcc.edu/events/?ical=1",
       "publisher": "Westchester Community College",
-      "scope": "regional"
+      "scope": "regional",
+      "campus": true
     },
     {
       "id": "wcsu",
       "kind": "ics",
       "url": "https://wcsu.edu/events/?ical=1",
       "publisher": "Western Connecticut State University",
-      "scope": "regional"
+      "scope": "regional",
+      "campus": true
     },
     {
       "id": "sunyrockland",
       "kind": "ics",
       "url": "https://sunyrockland.edu/events/?ical=1",
       "publisher": "SUNY Rockland",
-      "scope": "regional"
+      "scope": "regional",
+      "campus": true
     },
     {
       "id": "dominican-ny",
       "kind": "ics",
       "url": "https://duny.edu/events/?ical=1&eventDisplay=list",
       "publisher": "Dominican University New York",
-      "scope": "regional"
+      "scope": "regional",
+      "campus": true
     },
     {
       "id": "msmc",
       "kind": "ics",
       "url": "https://events.msmc.edu/calendar.ics",
       "publisher": "Mount Saint Mary College, Newburgh",
-      "scope": "regional"
+      "scope": "regional",
+      "campus": true
     },
     {
       "id": "fairfield-u",
       "kind": "ics",
       "url": "https://events.fairfield.edu/calendar.ics",
       "publisher": "Fairfield University",
-      "scope": "regional"
+      "scope": "regional",
+      "campus": true
     },
     {
       "id": "fordham",
       "kind": "ics",
       "url": "https://calendar.fordham.edu/calendar.ics",
       "publisher": "Fordham University",
-      "scope": "regional"
+      "scope": "regional",
+      "campus": true
     },
     {
       "id": "albany-u",
       "kind": "ics",
       "url": "https://events.albany.edu/calendar.ics",
       "publisher": "University at Albany",
-      "scope": "regional"
+      "scope": "regional",
+      "campus": true
     },
     {
       "id": "wpunj",
@@ -363,14 +373,16 @@
       "publisher": "William Paterson University",
       "scope": "regional",
       "enabled": false,
-      "note": "Feed parses but its newest event is 2012-10-24 — abandoned, not empty. Kept disabled so a later discovery pass does not re-trust it."
+      "note": "Feed parses but its newest event is 2012-10-24 — abandoned, not empty. Kept disabled so a later discovery pass does not re-trust it.",
+      "campus": true
     },
     {
       "id": "newhaven-u",
       "kind": "ics",
       "url": "https://events.newhaven.edu/calendar.ics",
       "publisher": "University of New Haven",
-      "scope": "regional"
+      "scope": "regional",
+      "campus": true
     },
     {
       "id": "mahaiwe",
@@ -386,6 +398,14 @@
       "publisher": "Eisenhower Hall Theatre, West Point",
       "scope": "regional",
       "note": "JSON-LD Events, no iCal. Read by scripts/jsonld.py."
+    },
+    {
+      "id": "untermyer",
+      "kind": "ics",
+      "url": "https://tockify.com/api/feeds/ics/untermyer.gardens.conservancy",
+      "publisher": "Untermyer Gardens Conservancy",
+      "scope": "regional",
+      "note": "Tockify. The feed name is the data-tockify-calendar attribute on the embed (untermyer.gardens.conservancy), not the domain — guessing from the domain 404s."
     }
   ]
 }

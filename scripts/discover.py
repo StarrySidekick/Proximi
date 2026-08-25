@@ -179,6 +179,12 @@ def sniff_platforms(domain, opener):
                     hit['feed'] = ics
             elif name == 'libcal':
                 hit['feed'] = f'https://{m.group(1)}/calendar?cid=-1&t=d&d=0000-00-00&cal=-1&ical=1'
+            elif name == 'tockify':
+                # The feed name is the embed's data-tockify-calendar attribute,
+                # which is rarely the domain — deriving it from the host 404s.
+                cal = re.search(r'data-tockify-calendar="([^"]+)"', body)
+                if cal:
+                    hit['feed'] = f'https://tockify.com/api/feeds/ics/{cal.group(1)}'
             elif name == 'localist':
                 feed = localist_feed(domain, opener)
                 if feed:

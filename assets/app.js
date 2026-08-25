@@ -273,7 +273,11 @@
 
     return state.items.filter((item) => {
       const audience = audienceOf(item);
-      if (audience === 'kids' && !el.showKids.checked) return false;
+      // 'kids' is children-only, 'family' is aimed at families with young
+      // children. One control hides both — an adult browsing for themselves
+      // wants neither, and splitting them across two checkboxes only asks the
+      // reader to understand a distinction the data draws for its own reasons.
+      if ((audience === 'kids' || audience === 'family') && !el.showKids.checked) return false;
       if (audience === 'adults' && !el.showAdults.checked) return false;
       if (state.repeatMode === 'once' && repeatsOf(item)) return false;
       if (state.repeatMode === 'repeat' && !repeatsOf(item)) return false;
@@ -376,6 +380,7 @@
           <span class="badge badge-type">${esc(typeLabel(item.type))}</span>
           ${repeatsOf(item) ? '<span class="badge badge-repeat">Repeats</span>' : ''}
           ${audienceOf(item) === 'kids' ? '<span class="badge badge-kids">Children only</span>' : ''}
+          ${audienceOf(item) === 'family' ? '<span class="badge badge-kids">Family</span>' : ''}
           ${audienceOf(item) === 'adults' ? '<span class="badge badge-adults">21+</span>' : ''}
           ${(item.categories || []).map((c) => `<span class="tag">${esc(catLabel(c))}</span>`).join('')}
         </div>

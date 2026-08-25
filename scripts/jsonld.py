@@ -194,7 +194,7 @@ def harvest_source(src):
             'lat': loc.get('lat'), 'lon': loc.get('lon'),
             'price': price_of(n),
             'categories': categorise(blob),
-            'audience': audience_of(blob),
+            'audience': audience_of(blob, name, type_of(name, desc)),
             'setting': setting_of(blob),
             'timeOfDay': time_of_day(start),
             'hasFood': bool(FOOD.search(blob)),

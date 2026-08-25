@@ -1635,5 +1635,75 @@
 "display": "Austin, Travis County, Texas, United States",
 "matched": "Austin, TX",
 "precision": 0
+},
+"untermyer gardens,945 n broadway, yonkers, ny 10701, usa": {
+"lat": 40.9659947,
+"lon": -73.8860174,
+"display": "Cola Community Center, 945, North Broadway, Greystone, City of Yonkers, Westchester County, New York, 10701, United States",
+"matched": "945 N Broadway, Yonkers, NY 10701",
+"precision": 1
+},
+"greenburgh public library": {
+"lat": 41.0464411,
+"lon": -73.806776,
+"display": "Greenburgh Public Library, 300, Tarrytown Road, Village of Elmsford, Town of Greenburgh, Westchester County, New York, 10523, United States",
+"matched": "Greenburgh Public Library",
+"precision": 0
+},
+"newburgh free library": {
+"lat": 41.5036031,
+"lon": -74.0084233,
+"display": "Newburgh Free Library, 124, Grand Street, Varick Homes, City of Newburgh, Orange County, New York, 12550, United States",
+"matched": "Newburgh Free Library",
+"precision": 0
+},
+"irvington public library": {
+"lat": 41.0396316,
+"lon": -73.8726902,
+"display": "Irvington Public Library, South Astor Street, Village of Irvington, Town of Greenburgh, Westchester County, New York, 10533, United States",
+"matched": "Irvington Public Library",
+"precision": 0
+},
+"mount kisco public library": {
+"lat": 41.2067797,
+"lon": -73.7272905,
+"display": "Mount Kisco Public Library, Main Street, Village/Town of Mount Kisco, Westchester County, New York, 10549, United States",
+"matched": "Mount Kisco Public Library",
+"precision": 0
+},
+"greenburgh public library, elmsford, ny": {
+"lat": 41.0464411,
+"lon": -73.806776,
+"display": "Greenburgh Public Library, 300, Tarrytown Road, Village of Elmsford, Town of Greenburgh, Westchester County, New York, 10523, United States",
+"matched": "Greenburgh Public Library, Elmsford, NY",
+"precision": 0
+},
+"newburgh free library, newburgh, ny": {
+"lat": 41.5036031,
+"lon": -74.0084233,
+"display": "Newburgh Free Library, 124, Grand Street, Varick Homes, City of Newburgh, Orange County, New York, 12550, United States",
+"matched": "Newburgh Free Library, Newburgh, NY",
+"precision": 0
+},
+"brewster public library, brewster, ny": {
+"lat": 41.3943918,
+"lon": -73.6170896,
+"display": "Village of Brewster, Town of Southeast, Putnam County, New York, United States",
+"matched": "Brewster, NY",
+"precision": 1
+},
+"irvington public library, irvington, ny": {
+"lat": 41.0396316,
+"lon": -73.8726902,
+"display": "Irvington Public Library, South Astor Street, Village of Irvington, Town of Greenburgh, Westchester County, New York, 10533, United States",
+"matched": "Irvington Public Library, Irvington, NY",
+"precision": 0
+},
+"mount kisco public library, mount kisco, ny": {
+"lat": 41.2067797,
+"lon": -73.7272905,
+"display": "Mount Kisco Public Library, Main Street, Village/Town of Mount Kisco, Westchester County, New York, 10549, United States",
+"matched": "Mount Kisco Public Library, Mount Kisco, NY",
+"precision": 0
 }
 }

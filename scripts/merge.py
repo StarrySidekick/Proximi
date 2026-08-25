@@ -52,6 +52,50 @@ def adopt_derived(old, new):
 NOISE = re.compile(r'\b(board meeting|planning meeting|committee meeting|'
                    r'staff meeting|agm|annual general meeting)\b', re.I)
 
+# A college calendar is written for its own students. Most of what is on it —
+# orientation, registration, finals, involvement fairs — is not something a
+# neighbour can turn up to, and the campus brands them differently every year
+# ("Viking Days", "Pie a Kappa"), so a blocklist of names never finishes.
+# Invert it: on a campus feed, keep only what is recognisably open to the
+# public, and drop everything else.
+STUDENT_ONLY = re.compile(r"""\b(
+ orientation|welcome\ (week|weekend|back|tables?|to)|viking\ days|move[-\ ]in|
+ first\ day\ of\ class|last\ day\ of\ class|no\ classes|classes\ (resume|begin)|
+ registration|add/drop|advising|final\ exams?|finals|cram\ jam|reading\ day|
+ convocation|commencement|open\ house|info(rmation)?\ session|undergraduate\ visit|
+ campus\ tour|admitted\ student|prospective\ student|enrollment|study\ abroad|
+ career\ fair|job\ fair|resource\ fair|involvement\ fair|resume|internship|
+ alumni|reunion|homecoming|sorority|fraternity|greek\ life|
+ student\ (employment|involvement|organization|activities|government|meet)|
+ clubs?\ carnival|common\ hour|campus\ community
+)\b""", re.I | re.X)
+
+CAMPUS_PUBLIC = re.compile(r"""\b(
+ concert|recital|symphony|orchestra|choir|jazz|open\ mic|
+ lecture|talk|reading|author|poet|keynote|symposium|panel|
+ gallery|exhibit\w*|opening\ reception|
+ film|screening|theat(er|re)|musical|comedy|
+ festival|streetfest|craft\ fair|farmers?\ market|
+ mass|worship|memorial|vigil|5k|10k|run/walk|marathon|
+ blood\ drive|book\ club|family\ day|map-a-thon|planetarium
+)\b""", re.I | re.X)
+
+SPORT = re.compile(r'\b(basketball|soccer|volleyball|baseball|softball|hockey|lacrosse|'
+                   r'tennis|golf|swimming|diving|cross country|field hockey|football|rugby)\b', re.I)
+# "Fairfield Men's Soccer at UConn" is played in Storrs. It is a real event, but
+# it belongs to the calendar of wherever it is held, not to ours.
+AWAY_GAME = re.compile(r'\b(?:at|@)\s+[A-Z]')
+HOME_GAME = re.compile(r'\bvs\.?\b', re.I)
+
+
+def public_on_campus(title):
+    """Would a neighbour with no connection to the college turn up to this?"""
+    if STUDENT_ONLY.search(title):
+        return False
+    if SPORT.search(title):
+        return bool(HOME_GAME.search(title)) and not AWAY_GAME.search(title)
+    return bool(CAMPUS_PUBLIC.search(title))
+
 
 def miles(a, b, c, d):
     dlat, dlon = radians(c - a), radians(d - b)
@@ -263,9 +307,26 @@ def main():
     curated = existing['items']
     incoming = json.load(open(args.new))['items']
 
+    # Publisher names, since a listing carries `source` rather than a source id.
+    campus_sources = {s.get('publisher') for s in json.load(open(args.registry))['sources']
+                      if s.get('campus')}
+
+    def wanted(item):
+        if NOISE.search(item['title']):
+            return False
+        if item.get('source') in campus_sources and not public_on_campus(item['title']):
+            return False
+        return True
+
     before = len(incoming)
-    incoming = [i for i in incoming if not NOISE.search(i['title'])]
+    incoming = [i for i in incoming if wanted(i)]
     noise = before - len(incoming)
+
+    # Apply the same rule to what is already held, so tightening it clears out
+    # listings admitted under looser rules instead of leaving them forever.
+    kept_curated = [i for i in curated if is_curated(i) or wanted(i)]
+    purged = len(curated) - len(kept_curated)
+    curated = kept_curated
 
     incoming, collapsed = collapse_repeats(incoming)
 
@@ -325,6 +386,8 @@ def main():
     meta['sources'] = sorted({i.get('source') for i in merged if i.get('source')})
 
     print(f'  {len(curated)} existing + {before} harvested')
+    if purged:
+        print(f'  −{purged} existing listings now filtered out (campus-internal or noise)')
     if folded:
         print(f'  −{folded} near-duplicates already in the set')
     print(f'  −{noise} internal meetings, −{collapsed} folded into recurring activities')

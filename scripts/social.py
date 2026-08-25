@@ -227,16 +227,47 @@ def meetup_place(op, location):
     def deref(ref):
         return apollo.get(ref['__ref']) if isinstance(ref, dict) and '__ref' in ref else ref
 
+    ORDINAL = {1: 'first', 2: 'second', 3: 'third', 4: 'fourth', 5: 'last', -1: 'last'}
+
+    def recurrence_of(node):
+        """Meetup's stated cadence for a recurring event, or None.
+
+        The find page lists only the *next* occurrence of a series, so a monthly
+        group arrives as a single dated event and nothing downstream can infer a
+        pattern from one date. The series object says it outright — including a
+        ready-made human phrase — so take it rather than guess.
+        """
+        series = deref(node.get('series'))
+        if not isinstance(series, dict):
+            return None
+        monthly = deref(series.get('monthlyRecurrence'))
+        if isinstance(monthly, dict) and monthly.get('monthlyDayOfWeek'):
+            week = ORDINAL.get(monthly.get('monthlyWeekOfMonth'))
+            day = str(monthly['monthlyDayOfWeek']).capitalize()
+            if week:
+                return f'Every {week} {day} of the month'
+            return f'Every month on a {day}'
+        weekly = deref(series.get('weeklyRecurrence'))
+        if isinstance(weekly, dict) and weekly.get('weeklyDaysOfWeek'):
+            days = [str(d).capitalize() for d in weekly['weeklyDaysOfWeek']]
+            joined = days[0] if len(days) == 1 else f"{', '.join(days[:-1])} & {days[-1]}"
+            every = 'Every' if (weekly.get('weeklyInterval') or 1) == 1 else 'Every other'
+            return f'{every} {joined}'
+        text = series.get('description')
+        return text.strip() if isinstance(text, str) and text.strip() else None
+
     out = []
     for key, node in apollo.items():
         if not key.startswith('Event:') or not isinstance(node, dict) or not node.get('title'):
             continue
         venue = deref(node.get('venue')) or {}
         group = deref(node.get('group')) or {}
+        repeats = recurrence_of(node)
         out.append({
             'sourceId': 'meetup', 'sourceName': 'Meetup',
             'title': node.get('title'), 'start': node.get('dateTime'),
             'end': node.get('endTime'), 'allDay': False,
+            'repeats': bool(repeats), 'recurrence': repeats,
             'url': node.get('eventUrl'),
             'venue': venue.get('name') or ('Online' if node.get('eventType') == 'ONLINE' else None),
             'city': ', '.join(filter(None, [venue.get('city'), venue.get('state')])) or None,

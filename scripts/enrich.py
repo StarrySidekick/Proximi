@@ -172,11 +172,29 @@ ACTIVITY_HINTS = re.compile(
 # family override matters: without it, "family festival, ages 3-12" reads as
 # kids-only and gets hidden from the people it is actually for.
 KIDS_ONLY = re.compile(
-    r'\b(grades?\s*(k|pre-?k|\d{1,2})|ages?\s*\d{1,2}\s*[-–—]\s*\d{1,2}|'
+    # An age range only means children when the ages are a child's. Matching any
+    # two numbers made "Speed Dating Ages 25-39" a children's event.
+    r'\b(grades?\s*(k|pre-?k|\d{1,2})|ages?\s*(?:[0-9]|1[0-8])\s*[-–—]\s*(?:[0-9]|1[0-8])\b|'
     r'children entering|toddlers?|pre-?school|storytime|story time|kids only|'
     r'teens?|for kids|'
     r'children only|youth (program|group|club)|drop-?off program|campers?)\b', re.I)
 FAMILY = re.compile(r'\b(family|families|all ages|caregiver|parent and|adults? and children)\b', re.I)
+# Aimed at children, or at families with young children — as distinct from
+# merely open to them. Judged on the title: descriptions mention families
+# incidentally ("family friendly patio") often enough that reading them turns
+# a county fair and a Dinosaur Jr. show into children's programming.
+CHILD_FOCUSED = re.compile(r'''\b(
+ children'?s?|child|kids?|kiddos|toddlers?|preschool|pre-?k|
+ storytime|story\ time|story\ hour|puppet|pajama|
+ youth|teens?|tweens?|bab(y|ies)(?!\ boomer)|infants?|
+ family\ (day|fun|night|program|workshop|storytime|festival|film|movie|concert)|
+ for\ families|children\ &\ families|all[-\ ]ages\ drop[-\ ]in|
+ petting\ zoo|face\ painting|bounce\ house|trick[-\ ]or[-\ ]treat|
+ lego|craft\ (time|hour)|summer\ reading
+)\b''', re.I | re.X)
+# A gig is not children's programming because a band is called Drink Baby.
+EXPLICITLY_FOR_CHILDREN = re.compile(
+    r"\b(children'?s?|kids?|family|families|youth|toddlers?|storytime)\b", re.I)
 # Lookarounds, not \b: a word boundary cannot match after the "+" in "21+",
 # so \b(21\+)\b silently never fires.
 ADULTS_ONLY = re.compile(
@@ -184,12 +202,26 @@ ADULTS_ONLY = re.compile(
     r'ages 21|over 21|21 years|21 and up|no minors)(?!\w)', re.I)
 
 
-def audience_of(text):
-    """Who a listing is actually open to: 'kids', 'adults' or 'all'."""
+def audience_of(text, title=None, kind=None):
+    """Who a listing is for: 'kids', 'family', 'adults' or 'all'.
+
+    'kids' means children only — a drop-off programme or an age-capped class.
+    'family' means aimed at families with young children: open to an adult, but
+    not what an adult browsing for themselves is looking for. Keeping the two
+    apart lets one switch hide both without also hiding a county fair that
+    merely happens to be family friendly.
+    """
     if ADULTS_ONLY.search(text):
         return 'adults'
     if KIDS_ONLY.search(text) and not FAMILY.search(text):
         return 'kids'
+    heading = title if title is not None else text
+    if CHILD_FOCUSED.search(heading):
+        # Music listings must say so outright, or every band with "Baby" in its
+        # name becomes a children's event.
+        if kind in ('concert', 'dj', 'open-mic') and not EXPLICITLY_FOR_CHILDREN.search(heading):
+            return 'all'
+        return 'family'
     return 'all'
 
 
@@ -344,6 +376,7 @@ def main():
     ap.add_argument('--platform', default='build/platform.json')
     ap.add_argument('--jsonld', default='build/jsonld.json')
     ap.add_argument('--social', default='build/social.json')
+    ap.add_argument('--libcal', default='build/libcal.json')
     ap.add_argument('--manual', default='sources/manual.json')
     ap.add_argument('--out', default='build/enriched.json')
     ap.add_argument('--registry', default='sources/registry.json')
@@ -396,7 +429,7 @@ def main():
             'title': c['title'],
             'type': type_of(c['title'], c.get('description')),
             'repeats': bool(recurring),
-            'audience': audience_of(blob),
+            'audience': audience_of(blob, c['title'], type_of(c['title'], c.get('description'))),
             'setting': setting_of(blob),
             'timeOfDay': time_of_day(started),
             'hasFood': bool(FOOD.search(blob)),
@@ -422,7 +455,8 @@ def main():
     # through to the geocoder below like any other address.
     prepared = []
     for path, key in ((args.platform, 'events'), (args.jsonld, 'events'),
-                      (args.social, 'events'), (args.manual, 'items')):
+                      (args.social, 'events'), (args.libcal, 'events'),
+                      (args.manual, 'items')):
         if os.path.exists(path):
             prepared.extend(json.load(open(path)).get(key, []))
 
@@ -456,7 +490,13 @@ def main():
             'title': e['title'],
             'type': e.get('type') or type_of(e['title'], e.get('description')),
             'repeats': bool(e.get('repeats')),
-            'audience': e.get('audience') or audience_of(blob),
+            # Meetup states its own cadence; without carrying it here a monthly
+            # group arrives as a one-off, since the find page lists only the
+            # next occurrence and nothing downstream can infer a pattern from
+            # a single date.
+            **({'recurrence': e['recurrence']} if e.get('recurrence') else {}),
+            'audience': e.get('audience') or audience_of(
+                blob, e['title'], e.get('type') or type_of(e['title'], e.get('description'))),
             'setting': e.get('setting') or setting_of(blob),
             'timeOfDay': e.get('timeOfDay') or time_of_day(
                 datetime.fromisoformat(e['start'].replace('Z', '+00:00'))),

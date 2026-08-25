@@ -11,7 +11,7 @@ import json, re, sys
 from datetime import datetime, timedelta, timezone
 from math import radians, sin, cos, asin, sqrt
 
-AUDIENCES = {'all', 'kids', 'adults'}
+AUDIENCES = {'all', 'kids', 'family', 'adults'}
 SETTINGS = {'indoor', 'outdoor', 'unknown'}
 TIMES = {'morning', 'afternoon', 'evening', 'night'}
 ISO = re.compile(r'^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}([+-]\d{2}:\d{2}|Z)$')
@@ -118,9 +118,10 @@ def main(path='data/events.json'):
     food = sum(1 for i in items if i.get('hasFood'))
     types = len({i.get('type') for i in items})
     kids = sum(1 for i in items if i.get('audience') == 'kids')
+    family = sum(1 for i in items if i.get('audience') == 'family')
     adults = sum(1 for i in items if i.get('audience') == 'adults')
     print(f'{len(items)} listings OK — {priced} priced, {len(items) - priced} "see listing", '
-          f'{repeat} repeating, {kids} children-only, {adults} 21+, '
+          f'{repeat} repeating, {kids} children-only, {family} family, {adults} 21+, '
           f'{outdoor} outdoor, {food} with food, {types} types, '
           f'all within {meta["radiusMiles"]} mi of {meta["centerName"]}'
           + (f' ({len(warnings)} warning(s))' if warnings else ''))
