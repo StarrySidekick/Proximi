@@ -33,10 +33,13 @@ MIRRORS = [
 # is cheap, and a false positive just fails to find a feed.
 OSM_FILTER = '''
   nwr["amenity"~"^(restaurant|bar|pub|cafe|nightclub|theatre|arts_centre|community_centre|library|cinema|place_of_worship)$"]["website"]({bbox});
-  nwr["tourism"~"^(museum|gallery|attraction|zoo)$"]["website"]({bbox});
+  nwr["amenity"~"^(college|university|events_venue|conference_centre|exhibition_centre|townhall|community_hall|social_centre|social_facility)$"]["website"]({bbox});
+  nwr["tourism"~"^(museum|gallery|attraction|zoo|aquarium|theme_park)$"]["website"]({bbox});
   nwr["craft"~"^(brewery|winery|distillery)$"]["website"]({bbox});
   nwr["shop"~"^(books|farm|winery)$"]["website"]({bbox});
-  nwr["leisure"~"^(park|nature_reserve|sports_centre)$"]["website"]({bbox});
+  nwr["leisure"~"^(park|nature_reserve|sports_centre|stadium|ice_rink|garden|bowling_alley)$"]["website"]({bbox});
+  nwr["historic"~"^(museum|castle|manor|memorial|monument)$"]["website"]({bbox});
+  nwr["club"]["website"]({bbox});
 '''
 
 # The Events Calendar and friends answer one of these on a huge number of sites.
@@ -53,6 +56,28 @@ FEED_PATHS = [
 
 # Pages to sniff for an embedded calendar platform.
 SNIFF_PATHS = ['/', '/events/', '/events', '/calendar/', '/calendar', '/whats-on/']
+
+# Localist publishes a full iCal export at /calendar.ics, but on its own events
+# host rather than the main domain. Colleges run it almost universally, and the
+# subdomain is predictable enough to try before sniffing anything: six college
+# feeds came from this that no FEED_PATHS probe would have reached.
+LOCALIST_HOSTS = ['events.{d}', 'calendar.{d}', '{d}']
+LOCALIST_PATH = '/calendar.ics'
+
+
+def localist_feed(domain, opener):
+    """Return a Localist iCal URL for `domain`, or None."""
+    for tmpl in LOCALIST_HOSTS:
+        url = f'https://{tmpl.format(d=domain)}{LOCALIST_PATH}'
+        try:
+            req = urllib.request.Request(url, headers={'User-Agent': UA})
+            with opener.open(req, timeout=15) as r:
+                body = r.read(400_000).decode('utf-8', 'replace')
+        except Exception:
+            continue
+        if 'BEGIN:VEVENT' in body:
+            return url
+    return None
 
 # Fingerprints for calendar platforms that publish a feed at a derivable URL.
 # This is what unlocks sites that do not run The Events Calendar — most of
@@ -123,7 +148,8 @@ def collect_venues(center):
             'name': tags.get('name'),
             'domain': dom,
             'kind': tags.get('amenity') or tags.get('tourism') or tags.get('craft')
-                    or tags.get('shop') or tags.get('leisure'),
+                    or tags.get('shop') or tags.get('leisure') or tags.get('historic')
+                    or (f"club:{tags['club']}" if tags.get('club') else None),
             'lat': el.get('lat') or (el.get('center') or {}).get('lat'),
             'lon': el.get('lon') or (el.get('center') or {}).get('lon'),
         })
@@ -153,6 +179,10 @@ def sniff_platforms(domain, opener):
                     hit['feed'] = ics
             elif name == 'libcal':
                 hit['feed'] = f'https://{m.group(1)}/calendar?cid=-1&t=d&d=0000-00-00&cal=-1&ical=1'
+            elif name == 'localist':
+                feed = localist_feed(domain, opener)
+                if feed:
+                    hit['feed'] = feed
             elif m.lastindex:
                 hit['ref'] = m.group(m.lastindex)
             if not any(h['platform'] == name for h in found):

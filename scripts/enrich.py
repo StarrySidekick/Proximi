@@ -31,6 +31,23 @@ TYPES = [
     ('protest',     r'\b(rally|protest|demonstration|vigil|picket|walkout)\b|'
                     r'\bmarch(es|ing)? (for|on|against|to demand)\b'),
     ('open-mic',    r'\bopen[- ]mic\b'),
+    # Professional certifications grade in "belts" too, so a Lean Six Sigma
+    # Black Belt course reads as martial arts unless it is caught first.
+    ('class',       r'\b(six sigma|scrum|pmp|osha|servsafe|notary|cpr|aed|'
+                    r'forklift|phlebotomy|real estate licens\w*)\b'),
+    # Specific-before-generic: a speed dating night is "social", a trivia night
+    # is a "meetup", and a martial-arts grading is "training", so each of these
+    # must be read before the catch-alls at the bottom of the list.
+    ('dating',      r'\b(speed dating|singles|matchmaking|blind date|'
+                    r'date night|mixer for singles)\b'),
+    ('trivia',      r'\b(trivia|pub quiz|quizzo|bingo)\b'),
+    ('game',        r'\b(scavenger hunt|game night|board ?games?|trading cards?|'
+                    r'escape room|chess|mahjong|bridge club|dungeons|karaoke|'
+                    r'random acts of kindness)\b'),
+    ('science',     r'\b(planetarium|astronomy|telescope|observatory|stargaz\w*|'
+                    r'science|entomolog\w*|geolog\w*)\b'),
+    ('wellness',    r'\b(meditation|mindfulness|pilates|sound bath|breathwork|'
+                    r'reiki|wellness|healing|qi ?gong|tai chi|restorative)\b'),
     ('comedy',      r'\b(comedy|stand-?up|improv)\b'),
     ('film',        r'\b(film|movie|screening|cinema|documentar\w*)\b'),
     ('art',         r'\b(exhibition|exhibit|gallery|opening reception|artist talk|'
@@ -47,14 +64,18 @@ TYPES = [
                     r'tree lighting|fireworks|opening day)\b'),
     ('tour',        r'\b(tour|guided walk|house tour|behind the scenes)\b'),
     ('kids',        r'\b(storytime|story time|lego|play ?days?|kids? program)\b'),
-    ('sports',      r'\b(yoga|run|race|5k|10k|fitness|pickleball|hockey|baseball|'
-                    r'soccer|tournament|golf|paddle|kayak|climb)\b'),
-    ('outdoors',    r'\b(hike|hiking|walk|bird|trail|nature|forest|cleanup|'
-                    r'stargaz\w*|foraging?)\b'),
+    ('sports',      r'\b(yoga|runs?|race|5k|10k|fitness|pickleball|hockey|baseball|'
+                    r'soccer|tournament|golf|paddle|kayak|climb\w*|basketball|'
+                    r'tennis|martial arts|karate|taekwondo|jiu[- ]?jitsu|judo|'
+                    r'black ?belt|boxing|self[- ]defense|swim\w*|cycling)\b'),
+    ('outdoors',    r'\b(hikes?|hiking|walks?|birds?|birding|trails?|nature|forest|'
+                    r'cleanups?|foraging?|canoe|camping|orchard)\b'),
     ('food',        r'\b(dinner|dining|dine|tasting|brunch|supper|bbq|barbecue|'
                     r'breakfast|food truck|potluck|wine|beer|cider|cocktail|'
                     r'farm[- ]to[- ]table|long table)\b'),
-    ('class',       r'\b(workshop|class|lesson|course|seminar|clinic|training|demo)\b'),
+    ('class',       r'\b(workshops?|class(es)?|lessons?|courses?|seminar|clinic|'
+                    r'training|demo|certification|certificate|bootcamp|'
+                    r'paint[- ]and[- ]sip|paint ?n ?sip|intro to|101)\b'),
     ('talk',        r'\b(talk|lecture|reading|panel|author|discussion|book club)\b'),
     ('volunteer',   r'\b(volunteer|work ?day|stewardship|planting|fundraiser|benefit)\b'),
     ('meetup',      r'\b(meetup|meeting|social|club|forum|town hall|gathering)\b'),

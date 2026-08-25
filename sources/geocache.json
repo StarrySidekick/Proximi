@@ -588,5 +588,1052 @@
 "display": "200, Central Avenue, Bushwick, Brooklyn, Kings County, New York, 11221, United States",
 "matched": "200 Central Avenue",
 "precision": 0
+},
+"midtown campus, 181 white st., danbury, ct": {
+"lat": 41.4004954,
+"lon": -73.445022,
+"display": "Western Connecticut State University, 181, White Street, Main Street Historic District, Germantown, Danbury, Western Connecticut Planning Region, Connecticut, 06810, United States",
+"matched": "181 White St., Danbury, CT",
+"precision": 1
+},
+"mount saint mary college": {
+"lat": 41.5118052,
+"lon": -74.0129321,
+"display": "Mount Saint Mary College, Liberty Street, Varick Homes, City of Newburgh, Orange County, New York, 12550, United States",
+"matched": "Mount Saint Mary College",
+"precision": 0
+},
+"suny westchester yonkers, 843 kimball avenue, yonkers, ny, 10704, united states": {
+"lat": 40.9287424,
+"lon": -73.8490589,
+"display": "843, Kimball Avenue, City of Yonkers, Westchester County, New York, 10704, United States",
+"matched": "843 Kimball Avenue, Yonkers, NY",
+"precision": 1
+},
+"midtown old main, 181 white street, danbury, ct": {
+"lat": 41.4004954,
+"lon": -73.445022,
+"display": "Western Connecticut State University, 181, White Street, Main Street Historic District, Germantown, Danbury, Western Connecticut Planning Region, Connecticut, 06810, United States",
+"matched": "181 White Street, Danbury, CT",
+"precision": 1
+},
+"westside campus center north plaza, 43 lake ave. extension, danbury, ct": {
+"lat": 41.3861161,
+"lon": -73.4966139,
+"display": "43, Lake Avenue Extension, Mill Plain, Danbury, Western Connecticut Planning Region, Connecticut, 06810, United States",
+"matched": "43 Lake Ave. Extension, Danbury, CT",
+"precision": 1
+},
+"bixler hall, bixler mail room": null,
+"egan school of nursing & health studies, 210": null,
+"virtual": {
+"lat": 57.9110833,
+"lon": 59.9823317,
+"display": "Virtual, \u043f\u0440\u043e\u0441\u043f\u0435\u043a\u0442 \u041b\u0435\u043d\u0438\u043d\u0430, \u041b\u0435\u043d\u0438\u043d\u0441\u043a\u0438\u0439 \u0440\u0430\u0439\u043e\u043d, \u041d\u0438\u0436\u043d\u0438\u0439 \u0422\u0430\u0433\u0438\u043b, \u043c\u0443\u043d\u0438\u0446\u0438\u043f\u0430\u043b\u044c\u043d\u044b\u0439 \u043e\u043a\u0440\u0443\u0433 \u041d\u0438\u0436\u043d\u0438\u0439 \u0422\u0430\u0433\u0438\u043b, \u0421\u0432\u0435\u0440\u0434\u043b\u043e\u0432\u0441\u043a\u0430\u044f \u043e\u0431\u043b\u0430\u0441\u0442\u044c, \u0423\u0440\u0430\u043b\u044c\u0441\u043a\u0438\u0439 \u0444\u0435\u0434\u0435\u0440\u0430\u043b\u044c\u043d\u044b\u0439 \u043e\u043a\u0440\u0443\u0433, 622034, \u0420\u043e\u0441\u0441\u0438\u044f",
+"matched": "Virtual",
+"precision": 0
+},
+"hudson hall, glass lounge": null,
+"online": {
+"lat": 43.5904719,
+"lon": 3.8595132,
+"display": "Online, Croix d'Argent, Montpellier, H\u00e9rault, Occitanie, France m\u00e9tropolitaine, France",
+"matched": "Online",
+"precision": 0
+},
+"hudson hall, auditorium": null,
+"mahaiwe performing arts center, 14 castle street, great barrington, ma, 01230": {
+"lat": 42.1942002,
+"lon": -73.3635508,
+"display": "Mahaiwe Performing Arts Center, 14, Castle Street, Berkshire Heights, Great Barrington, Berkshire County, Massachusetts, 01230, United States",
+"matched": "Mahaiwe Performing Arts Center, 14 Castle Street, Great Barrington, MA",
+"precision": 0
+},
+"lakewood, n.j.": {
+"lat": 40.0940995,
+"lon": -74.2149889,
+"display": "Lakewood Township, Ocean County, New Jersey, 08701, United States",
+"matched": "Lakewood, N.J.",
+"precision": 0
+},
+"dominican center, cafe": null,
+"university hall atrium": null,
+"chapel of the most holy rosary": {
+"lat": 52.8014338,
+"lon": -6.7331348,
+"display": "Church of the Most Holy Rosary, New Chapel Lane, Tullowphelim, Tullow, The Municipal District of Tullow, County Carlow, Leinster, \u00c9ire / Ireland",
+"matched": "Chapel of the Most Holy Rosary",
+"precision": 0
+},
+"sod field, hudson hall rain location": null,
+"suny westchester peekskill, 27 north division street, peekskill, ny, 10566, united states": {
+"lat": 41.2913802,
+"lon": -73.9195198,
+"display": "27, North Division Street, City of Peekskill, Westchester County, New York, 10566, United States",
+"matched": "27 North Division Street, Peekskill, NY",
+"precision": 1
+},
+"sod field": {
+"lat": 42.6172171,
+"lon": -83.5575384,
+"display": "Sod Farm Field Trial Area, White Lake Charter Township, Oakland County, Michigan, United States",
+"matched": "Sod Field",
+"precision": 0
+},
+"wolves den (mt student center, lower level), 181 white st., danbury, ct": {
+"lat": 41.394817,
+"lon": -73.4540111,
+"display": "Danbury, Western Connecticut Planning Region, Connecticut, United States",
+"matched": "Danbury, CT",
+"precision": 3
+},
+"david a. beckerman recreation center": {
+"lat": 41.2913765,
+"lon": -72.9628676,
+"display": "David A. Beckerman Recreation Center, Boston Post Road, Allingtown, West Haven, South Central Connecticut Planning Region, Connecticut, 06516, United States",
+"matched": "David A. Beckerman Recreation Center",
+"precision": 0
+},
+"hudson hall, parking lot": null,
+"midtown campus quad, 181 white street, danbury, ct": {
+"lat": 41.4004954,
+"lon": -73.445022,
+"display": "Western Connecticut State University, 181, White Street, Main Street Historic District, Germantown, Danbury, Western Connecticut Planning Region, Connecticut, 06810, United States",
+"matched": "181 White Street, Danbury, CT",
+"precision": 1
+},
+"suny westchester mount vernon, 17 south fifth avenue, mount vernon, ny, 10550, united states": {
+"lat": 40.9125085,
+"lon": -73.8386504,
+"display": "City of Mount Vernon, Westchester County, New York, United States",
+"matched": "Mount Vernon, NY",
+"precision": 3
+},
+"cambridge, ma": {
+"lat": 42.3656347,
+"lon": -71.1040018,
+"display": "Cambridge, Middlesex County, Massachusetts, United States",
+"matched": "Cambridge, MA",
+"precision": 0
+},
+"westside campus center ballroom, 43 lake ave. extension, danbury, ct": {
+"lat": 41.3861161,
+"lon": -73.4966139,
+"display": "43, Lake Avenue Extension, Mill Plain, Danbury, Western Connecticut Planning Region, Connecticut, 06810, United States",
+"matched": "43 Lake Ave. Extension, Danbury, CT",
+"precision": 1
+},
+"storrs, conn.": {
+"lat": 41.8085955,
+"lon": -72.2512807,
+"display": "Storrs, Mansfield, Capitol Planning Region, Connecticut, United States",
+"matched": "Storrs, Conn.",
+"precision": 0
+},
+"bob ford field at tom & mary casey stadium": null,
+"various locations": null,
+"rec field \u2013 science building lawn, 181 white st., danbury, ct": {
+"lat": 41.4004954,
+"lon": -73.445022,
+"display": "Western Connecticut State University, 181, White Street, Main Street Historic District, Germantown, Danbury, Western Connecticut Planning Region, Connecticut, 06810, United States",
+"matched": "181 White St., Danbury, CT",
+"precision": 1
+},
+"aquinas hall, atrium": null,
+"knoxville, tenn.": {
+"lat": 35.9603948,
+"lon": -83.9210261,
+"display": "Knoxville, Knox County, East Tennessee, Tennessee, United States",
+"matched": "Knoxville, Tenn.",
+"precision": 0
+},
+"west haven, conn., ralph f. dellacamera stadium": null,
+"wilkes-barre, pa": {
+"lat": 41.2464824,
+"lon": -75.8817316,
+"display": "Wilkes-Barre, Luzerne County, Pennsylvania, United States",
+"matched": "Wilkes-Barre, PA",
+"precision": 0
+},
+"gender & sexuality resource center (gsrc), campus center cc 190": null,
+"suny westchester valhalla, 75 grasslands road, valhalla, ny, 10595, united states": {
+"lat": 41.0689722,
+"lon": -73.7898784,
+"display": "75, Grasslands Road, Valhalla, Town of Mount Pleasant, Westchester County, New York, 10595, United States",
+"matched": "75 Grasslands Road, Valhalla, NY",
+"precision": 1
+},
+"mount saint mary college, tennis courts": null,
+"downtown bookstore, fairfield forest": null,
+"west haven, ct, ralph f. dellacamera stadium": null,
+"scranton, pa": {
+"lat": 41.4086874,
+"lon": -75.6621294,
+"display": "Scranton, Lackawanna County, Pennsylvania, United States",
+"matched": "Scranton, PA",
+"precision": 0
+},
+"egan chapel of st. ignatius loyola": {
+"lat": 41.1579842,
+"lon": -73.257784,
+"display": "Egan Chapel of Saint Ignatius Loyola, Bellarmine Road, Fairfield, Greater Bridgeport Planning Region, Connecticut, 06824, United States",
+"matched": "Egan Chapel of St. Ignatius Loyola",
+"precision": 0
+},
+"rosary hall chapel, 480 western highway, blauvelt, ny, 10913, united states": {
+"lat": 41.078064,
+"lon": -73.9633235,
+"display": "Western Highway North, Blauvelt, Town of Orangetown, Rockland County, New York, 10913, United States",
+"matched": "480 Western Highway, Blauvelt, NY",
+"precision": 1
+},
+"west haven, conn., kathy zolad stadium": null,
+"berkshire hall lawn, 181 white st., danbury, ct": {
+"lat": 41.4004954,
+"lon": -73.445022,
+"display": "Western Connecticut State University, 181, White Street, Main Street Historic District, Germantown, Danbury, Western Connecticut Planning Region, Connecticut, 06810, United States",
+"matched": "181 White St., Danbury, CT",
+"precision": 1
+},
+"aquinas hall, outside the view": null,
+"hennessy center, 495 western highway, blauvelt, ny, 10913, united states": {
+"lat": 41.0541367,
+"lon": -73.9525411,
+"display": "495, Western Highway, Blauvelt, Town of Orangetown, Rockland County, New York, 10913, United States",
+"matched": "495 Western Highway, Blauvelt, NY",
+"precision": 1
+},
+"lecture center concourse, lcs": null,
+"taconic building, ta 302": null,
+"bucknall theater": null,
+"westside athletic complex, 43 lake ave. extension, danbury, ct": {
+"lat": 41.3861161,
+"lon": -73.4966139,
+"display": "43, Lake Avenue Extension, Mill Plain, Danbury, Western Connecticut Planning Region, Connecticut, 06810, United States",
+"matched": "43 Lake Ave. Extension, Danbury, CT",
+"precision": 1
+},
+"newburgh, ny, kaplan field": null,
+"newburgh, ny, kaplan center": {
+"lat": 41.51106,
+"lon": -74.0141048,
+"display": "Kaplan Family Library/Dominican Center, 320, Powell Avenue, Varick Homes, City of Newburgh, Orange County, New York, 12550, United States",
+"matched": "Newburgh, NY, Kaplan Center",
+"precision": 0
+},
+"fairfield, conn., lessing field": {
+"lat": 41.1616939,
+"lon": -73.2581919,
+"display": "Lessing Field, Leeber Road, Fairfield, Greater Bridgeport Planning Region, Connecticut, 06824, United States",
+"matched": "Fairfield, Conn., Lessing Field",
+"precision": 0
+},
+"etec, b042": {
+"lat": -1.3850876,
+"lon": -48.4695578,
+"display": "ETEC, Val-de-C\u00e3es, Entroncamento, Bel\u00e9m, Par\u00e1, Regi\u00e3o Norte, Brasil",
+"matched": "ETEC, B042",
+"precision": 0
+},
+"west haven, conn., the hazell center": null,
+"midtown student center, 181 white st., danbury, ct": {
+"lat": 41.4004954,
+"lon": -73.445022,
+"display": "Western Connecticut State University, 181, White Street, Main Street Historic District, Germantown, Danbury, Western Connecticut Planning Region, Connecticut, 06810, United States",
+"matched": "181 White St., Danbury, CT",
+"precision": 1
+},
+"bellarmine hall": {
+"lat": 42.0033232,
+"lon": -87.6612306,
+"display": "Bellarmine Hall, 6628, North Sheridan Road, Glenwood Arts District, Rogers Park, Chicago, Rogers Park Township, Cook County, Illinois, 60626, United States",
+"matched": "Bellarmine Hall",
+"precision": 0
+},
+"aquila's nest vineyards": null,
+"teaneck, nj": {
+"lat": 40.8860164,
+"lon": -74.0072568,
+"display": "Teaneck Township, Bergen County, New Jersey, United States",
+"matched": "Teaneck, NJ",
+"precision": 0
+},
+"performing arts center pac main theatre": null,
+"career success center, westside campus center suite 300, 43 lake ave. extension, danbury": {
+"lat": 41.3861161,
+"lon": -73.4966139,
+"display": "43, Lake Avenue Extension, Mill Plain, Danbury, Western Connecticut Planning Region, Connecticut, 06810, United States",
+"matched": "43 Lake Ave. Extension, Danbury",
+"precision": 3
+},
+"massry school of business": null,
+"white hall 122, 181 white st., danbury, ct": {
+"lat": 41.4004954,
+"lon": -73.445022,
+"display": "Western Connecticut State University, 181, White Street, Main Street Historic District, Germantown, Danbury, Western Connecticut Planning Region, Connecticut, 06810, United States",
+"matched": "181 White St., Danbury, CT",
+"precision": 1
+},
+"campus center cc multipurpose room": null,
+"newburgh, ny, mount saint mary college tennis courts": null,
+"poughkeepsie, n.y.": {
+"lat": 41.7065539,
+"lon": -73.9283672,
+"display": "City of Poughkeepsie, Dutchess County, New York, 12601, United States",
+"matched": "Poughkeepsie, N.Y.",
+"precision": 0
+},
+"moulton lounge": {
+"lat": 52.8043862,
+"lon": -0.0970101,
+"display": "The Baytree Coffee Lounge, High Road, Weston, Weston CP, Moulton, South Holland, Lincolnshire, Greater Lincolnshire, England, PE12 6JU, United Kingdom",
+"matched": "Moulton Lounge",
+"precision": 0
+},
+"gettysburg, pa": {
+"lat": 39.8308973,
+"lon": -77.231012,
+"display": "Gettysburg, Adams County, Pennsylvania, United States",
+"matched": "Gettysburg, PA",
+"precision": 0
+},
+"cambridge, mass.": {
+"lat": 42.3656347,
+"lon": -71.1040018,
+"display": "Cambridge, Middlesex County, Massachusetts, United States",
+"matched": "Cambridge, Mass.",
+"precision": 0
+},
+"boston, mass.": {
+"lat": 42.3588336,
+"lon": -71.0578303,
+"display": "Boston, Suffolk County, Massachusetts, United States",
+"matched": "Boston, Mass.",
+"precision": 0
+},
+"new haven, ct": {
+"lat": 41.3082138,
+"lon": -72.9250518,
+"display": "New Haven, South Central Connecticut Planning Region, Connecticut, United States",
+"matched": "New Haven, CT",
+"precision": 0
+},
+"new york, n.y.": {
+"lat": 40.7127281,
+"lon": -74.0060152,
+"display": "New York, United States",
+"matched": "New York, N.Y.",
+"precision": 0
+},
+"washington, dc": {
+"lat": 38.8950982,
+"lon": -77.0363849,
+"display": "Washington, District of Columbia, United States",
+"matched": "Washington, DC",
+"precision": 0
+},
+"dimenna-nyselius library": {
+"lat": 41.1576938,
+"lon": -73.2558973,
+"display": "DiMenna-Nyselius Library, McInnes Road, Fairfield, Greater Bridgeport Planning Region, Connecticut, 06824, United States",
+"matched": "DiMenna-Nyselius Library",
+"precision": 0
+},
+"lawn \u2013 litchfield/newbury, 181 white st., danbury, ct, 06810": {
+"lat": 41.4004954,
+"lon": -73.445022,
+"display": "Western Connecticut State University, 181, White Street, Main Street Historic District, Germantown, Danbury, Western Connecticut Planning Region, Connecticut, 06810, United States",
+"matched": "181 White St., Danbury, CT",
+"precision": 1
+},
+"rockland community college, technology center, ellipse, 145 college rd, suffern, ny, 10901, united states": {
+"lat": 41.1330926,
+"lon": -74.0886395,
+"display": "Rockland Community College, 145, College Road, Village of Suffern, Town of Ramapo, Rockland County, New York, 10901, United States",
+"matched": "Rockland Community College, Suffern, NY",
+"precision": 2
+},
+"aquinas/mst atrium": null,
+"new paltz, ny": {
+"lat": 41.7464972,
+"lon": -74.0844894,
+"display": "Town of New Paltz, Ulster County, New York, 12561, United States",
+"matched": "New Paltz, NY",
+"precision": 0
+},
+"bronx, ny": {
+"lat": 40.8466508,
+"lon": -73.8785937,
+"display": "The Bronx, Bronx County, New York, United States",
+"matched": "Bronx, NY",
+"precision": 0
+},
+"delhi, ny": {
+"lat": 42.2781401,
+"lon": -74.9159946,
+"display": "Village of Delhi, Town of Delhi, Delaware County, New York, United States",
+"matched": "Delhi, NY",
+"precision": 0
+},
+"humanities hu 290": {
+"lat": 27.7132307,
+"lon": 111.9969151,
+"display": "\u6e56\u5357\u4eba\u6587\u79d1\u6280\u5b66\u9662, \u5b66\u9662\u8def, \u5927\u79d1\u8857\u9053, \u5a04\u661f\u533a, \u5a04\u5e95\u5e02, \u6e56\u5357\u7701, 417000, \u4e2d\u56fd",
+"matched": "Humanities HU 290",
+"precision": 0
+},
+"westside commuter lot, 43 lake ave. extension, danbury, ct": {
+"lat": 41.3861161,
+"lon": -73.4966139,
+"display": "43, Lake Avenue Extension, Mill Plain, Danbury, Western Connecticut Planning Region, Connecticut, 06810, United States",
+"matched": "43 Lake Ave. Extension, Danbury, CT",
+"precision": 1
+},
+"westside tennis courts, 43 lake ave. extension, danbury, ct": {
+"lat": 41.3861161,
+"lon": -73.4966139,
+"display": "43, Lake Avenue Extension, Mill Plain, Danbury, Western Connecticut Planning Region, Connecticut, 06810, United States",
+"matched": "43 Lake Ave. Extension, Danbury, CT",
+"precision": 1
+},
+"bellarmine campus (lawn), bellarmine campus": null,
+"art gallery, vpac, 43 lake ave. extension, danbury, ct": {
+"lat": 41.394817,
+"lon": -73.4540111,
+"display": "Danbury, Western Connecticut Planning Region, Connecticut, United States",
+"matched": "Danbury, CT",
+"precision": 3
+},
+"catskill 204": {
+"lat": 42.2208752,
+"lon": -73.8673136,
+"display": "204, Water Street, Village of Catskill, Town of Catskill, Greene County, New York, 12414, United States",
+"matched": "Catskill 204",
+"precision": 0
+},
+"regina a. quick center for the arts kelley theatre": null,
+"hanover, n.h.": {
+"lat": 43.7023545,
+"lon": -72.2892164,
+"display": "Hanover, Grafton County, New Hampshire, United States",
+"matched": "Hanover, N.H.",
+"precision": 0
+},
+"barone campus center, dogwood room": null,
+"fairfield university": {
+"lat": 41.1596756,
+"lon": -73.2574031,
+"display": "Fairfield University, 1073, North Benson Road, Fairfield, Greater Bridgeport Planning Region, Connecticut, 06824, United States",
+"matched": "Fairfield University",
+"precision": 0
+},
+"fairfield, conn.": {
+"lat": 41.1412078,
+"lon": -73.2637258,
+"display": "Fairfield, Greater Bridgeport Planning Region, Connecticut, United States",
+"matched": "Fairfield, Conn.",
+"precision": 0
+},
+"outside, stag statue, main campus": null,
+"hempstead, n.y.": {
+"lat": 40.6736812,
+"lon": -73.6190736,
+"display": "Town of Hempstead, Nassau County, New York, United States",
+"matched": "Hempstead, N.Y.",
+"precision": 0
+},
+"hamden, conn.": {
+"lat": 41.3836233,
+"lon": -72.9020069,
+"display": "Hamden, South Central Connecticut Planning Region, Connecticut, United States",
+"matched": "Hamden, Conn.",
+"precision": 0
+},
+"state quad, field": null,
+"yankee stadium": {
+"lat": 40.8295828,
+"lon": -73.9265212,
+"display": "Yankee Stadium, 1, East 161st Street, The Bronx, Bronx County, New York, 10451, United States",
+"matched": "Yankee Stadium",
+"precision": 0
+},
+"brooklawn country club": {
+"lat": 41.1883072,
+"lon": -73.2250322,
+"display": "Brooklawn Country Club, 500, Algonquin Road, Melville Village, Fairfield, Greater Bridgeport Planning Region, Connecticut, 06825, United States",
+"matched": "Brooklawn Country Club",
+"precision": 0
+},
+"regina a. quick center for the arts": {
+"lat": 41.1561561,
+"lon": -73.2554702,
+"display": "Regina A Quick Center for the Arts, McInnes Road, Fairfield, Greater Bridgeport Planning Region, Connecticut, 06824, United States",
+"matched": "Regina A. Quick Center for the Arts",
+"precision": 0
+},
+"page hall auditorium, downtown campus": null,
+"minerva room - reading room, university main library": null,
+"thrive hub - campus center west": null,
+"etec, b037": {
+"lat": -1.3850876,
+"lon": -48.4695578,
+"display": "ETEC, Val-de-C\u00e3es, Entroncamento, Bel\u00e9m, Par\u00e1, Regi\u00e3o Norte, Brasil",
+"matched": "ETEC, B037",
+"precision": 0
+},
+"the admiral": {
+"lat": -33.997871,
+"lon": 25.6616782,
+"display": "The Admiral, Nelson Mandela Bay Ward 1, Gqeberha, Nelson Mandela Bay Metropolitan Municipality, Eastern Cape, 6031, South Africa",
+"matched": "The Admiral",
+"precision": 0
+},
+"wayne, nj": {
+"lat": 40.9491723,
+"lon": -74.2376802,
+"display": "Wayne, Passaic County, New Jersey, 07470, United States",
+"matched": "Wayne, NJ",
+"precision": 0
+},
+"university main library, library main entrance": null,
+"performing arts center pac recital hall": null,
+"fairfield university, dolan school of business, event hall": null,
+"fairfield, conn., leo d. mahoney arena": null,
+"fairfield university art museum, bellarmine hall, bellarmine hall galleries": null,
+"regina a. quick center for the arts wien experimental theatre": null,
+"fairfield, conn., wac tennis courts": null,
+"guilderland, n.y., pinehaven country club": {
+"lat": 42.7180964,
+"lon": -73.9003466,
+"display": "Pinehaven Country Club, Papa Place, Town of Guilderland, Albany County, New York, 12303, United States",
+"matched": "Guilderland, N.Y., Pinehaven Country Club",
+"precision": 0
+},
+"bellarmine hall, great hall": null,
+"indigo room, 20 castle street, great barrington, ma, 01230, united states": {
+"lat": 42.1940587,
+"lon": -73.3635446,
+"display": "Castle Street, Berkshire Heights, Great Barrington, Berkshire County, Massachusetts, 01230, United States",
+"matched": "20 Castle Street, Great Barrington, MA",
+"precision": 1
+},
+"middletown, n.y.": {
+"lat": 41.45011,
+"lon": -74.4164807,
+"display": "City of Middletown, Orange County, New York, 10940, United States",
+"matched": "Middletown, N.Y.",
+"precision": 0
+},
+"sekonk, mass.": null,
+"loudonville, ny": {
+"lat": 42.7032355,
+"lon": -73.7636489,
+"display": "Loudonville, Town of Colonie, Albany County, New York, United States",
+"matched": "Loudonville, NY",
+"precision": 0
+},
+"dr. davies farm, 306 ny-304, congers, new york, 10920": {
+"lat": 41.1711362,
+"lon": -73.9507989,
+"display": "306, State Highway 304, Congers, Town of Clarkstown, Rockland County, New York, 10920, United States",
+"matched": "306 NY-304, Congers, New York",
+"precision": 1
+},
+"blue hill golf course, pearl river, ny, united states": {
+"lat": 41.0491021,
+"lon": -73.9936553,
+"display": "Blue Hill Golf Course, Veterans Memorial Drive, Pearl River, Town of Orangetown, Rockland County, New York, 10965, United States",
+"matched": "Blue Hill Golf Course, Pearl River, NY",
+"precision": 0
+},
+"barone campus center, oakroom": null,
+"aloysius p. kelley center, presentation room": null,
+"dimenna-nyselius library, 114": {
+"lat": 41.1576938,
+"lon": -73.2558973,
+"display": "DiMenna-Nyselius Library, McInnes Road, Fairfield, Greater Bridgeport Planning Region, Connecticut, 06824, United States",
+"matched": "DiMenna-Nyselius Library, 114",
+"precision": 0
+},
+"etec": {
+"lat": -1.3850876,
+"lon": -48.4695578,
+"display": "ETEC, Val-de-C\u00e3es, Entroncamento, Bel\u00e9m, Par\u00e1, Regi\u00e3o Norte, Brasil",
+"matched": "ETEC",
+"precision": 0
+},
+"brooklyn, ny": {
+"lat": 40.6526006,
+"lon": -73.9497211,
+"display": "Brooklyn, Kings County, New York, United States",
+"matched": "Brooklyn, NY",
+"precision": 0
+},
+"charles f. dolan school of business, dolan school of business event hall": null,
+"barone campus center, oak room and dogwood room": null,
+"fairfield university, bellarmine hall galleries, museum classroom": null,
+"dolan school of business, main campus": null,
+"west haven, conn.": {
+"lat": 41.2706527,
+"lon": -72.9470471,
+"display": "West Haven, South Central Connecticut Planning Region, Connecticut, 06516, United States",
+"matched": "West Haven, Conn.",
+"precision": 0
+},
+"west point, n.y.": {
+"lat": 41.3912693,
+"lon": -73.9658803,
+"display": "United States Military Academy, 845, Brewerton Road, Town of Highlands, Orange County, New York, 10996, United States",
+"matched": "West Point, N.Y.",
+"precision": 0
+},
+"niagara university, n.y.": {
+"lat": 43.1366031,
+"lon": -79.0348892,
+"display": "Niagara University, Vincentian Drive, Town of Lewiston, Niagara County, New York, 14109, United States",
+"matched": "Niagara University, N.Y.",
+"precision": 0
+},
+"gym - physical education": {
+"lat": 10.5539421,
+"lon": 76.2242923,
+"display": "Dept. of Physical Education and gym, Viyyur - Thanikkudam Road, Viyyur, Thrissur, Kerala, 680009, India",
+"matched": "Gym - Physical Education",
+"precision": 0
+},
+"farmingdale, ny": {
+"lat": 40.7328811,
+"lon": -73.4458564,
+"display": "Village of Farmingdale, Town of Oyster Bay, Nassau County, New York, United States",
+"matched": "Farmingdale, NY",
+"precision": 0
+},
+"patchogue, ny": {
+"lat": 40.7656539,
+"lon": -73.0151084,
+"display": "Village of Patchogue, Town of Brookhaven, Suffolk County, New York, United States",
+"matched": "Patchogue, NY",
+"precision": 0
+},
+"emmitsburg, md": {
+"lat": 39.7045417,
+"lon": -77.3269307,
+"display": "Emmitsburg, Frederick County, Maryland, United States",
+"matched": "Emmitsburg, MD",
+"precision": 0
+},
+"west hartford, ct": {
+"lat": 41.7620447,
+"lon": -72.7420399,
+"display": "West Hartford, Capitol Planning Region, Connecticut, United States",
+"matched": "West Hartford, CT",
+"precision": 0
+},
+"buffalo, n.y.": {
+"lat": 42.8864163,
+"lon": -78.8781493,
+"display": "Buffalo, Erie County, New York, United States",
+"matched": "Buffalo, N.Y.",
+"precision": 0
+},
+"hampden, mass.": {
+"lat": 42.1285315,
+"lon": -72.6063441,
+"display": "Hampden County, Massachusetts, United States",
+"matched": "Hampden, Mass.",
+"precision": 0
+},
+"throggs neck, ny": {
+"lat": 40.8230305,
+"lon": -73.8200756,
+"display": "Throggs Neck, The Bronx, Bronx County, New York, 10465, United States",
+"matched": "Throggs Neck, NY",
+"precision": 0
+},
+"annandale-on-hudson, ny": {
+"lat": 42.0128695,
+"lon": -73.9081901,
+"display": "Annandale-on-Hudson, Town of Red Hook, Dutchess County, New York, 12504, United States",
+"matched": "Annandale-on-Hudson, NY",
+"precision": 0
+},
+"fairfield, conn. (at shu)": null,
+"main campus": {
+"lat": 47.9006809,
+"lon": -122.3019919,
+"display": "Main Campus, 10801, Harbour Pointe Boulevard, Mukilteo, Snohomish County, Washington, 98275, United States",
+"matched": "Main Campus",
+"precision": 0
+},
+"jersey city, n.j.": {
+"lat": 40.7215682,
+"lon": -74.047455,
+"display": "Jersey City, Hudson County, New Jersey, United States",
+"matched": "Jersey City, N.J.",
+"precision": 0
+},
+"bethlehem, pa.": {
+"lat": -1.45056,
+"lon": -48.4682453,
+"display": "Bel\u00e9m, Par\u00e1, Regi\u00e3o Norte, Brasil",
+"matched": "Bethlehem, Pa.",
+"precision": 0
+},
+"fairfield, conn., recplex pool": null,
+"barone campus center  , bcc - dogwood room": null,
+"west haven, conn., new haven tennis courts": {
+"lat": 41.3534197,
+"lon": -73.0155545,
+"display": "Center Tennis Courts, Woodbridge, South Central Connecticut Planning Region, Connecticut, United States",
+"matched": "Conn., New Haven Tennis Courts",
+"precision": 1
+},
+"worcester, ma": {
+"lat": 42.2625621,
+"lon": -71.8018877,
+"display": "Worcester, Worcester County, Massachusetts, United States",
+"matched": "Worcester, MA",
+"precision": 0
+},
+"prusmack center, 3 campus drive, blauvelt, ny, united states": {
+"lat": 41.0530708,
+"lon": -73.9514571,
+"display": "3, Campus Drive, Blauvelt, Town of Orangetown, Rockland County, New York, 10913, United States",
+"matched": "3 Campus Drive, Blauvelt, NY",
+"precision": 1
+},
+"ijamsville, md.": {
+"lat": 39.3603809,
+"lon": -77.3227621,
+"display": "Ijamsville, Frederick County, Maryland, 21754, United States",
+"matched": "Ijamsville, Md.",
+"precision": 0
+},
+"boston park plaza": {
+"lat": 42.3515011,
+"lon": -71.0693963,
+"display": "Park Plaza, Downtown, Boston, Suffolk County, Massachusetts, 02117, United States",
+"matched": "Boston Park Plaza",
+"precision": 0
+},
+"new york, ny": {
+"lat": 40.7127281,
+"lon": -74.0060152,
+"display": "New York, United States",
+"matched": "New York, NY",
+"precision": 0
+},
+"kings point, ny": {
+"lat": 40.8197813,
+"lon": -73.7351337,
+"display": "Village of Kings Point, Town of North Hempstead, Nassau County, New York, 11024, United States",
+"matched": "Kings Point, NY",
+"precision": 0
+},
+"lecture center concourse, lcs, uptown campus": null,
+"poughkeepsie, ny": {
+"lat": 41.7065539,
+"lon": -73.9283672,
+"display": "City of Poughkeepsie, Dutchess County, New York, 12601, United States",
+"matched": "Poughkeepsie, NY",
+"precision": 0
+},
+"new haven, conn.": {
+"lat": 41.3082138,
+"lon": -72.9250518,
+"display": "New Haven, South Central Connecticut Planning Region, Connecticut, United States",
+"matched": "New Haven, Conn.",
+"precision": 0
+},
+"fairfield university - bellarmine hall,  bellarmine hall galleries": null,
+"smithfield, ri": {
+"lat": 41.9220433,
+"lon": -71.549507,
+"display": "Smithfield, Providence County, Rhode Island, United States",
+"matched": "Smithfield, RI",
+"precision": 0
+},
+"purchase, ny": {
+"lat": 41.0405953,
+"lon": -73.7144803,
+"display": "Purchase, Town/Village of Harrison, Westchester County, New York, 10577, United States",
+"matched": "Purchase, NY",
+"precision": 0
+},
+"great river golf club": {
+"lat": 41.274851,
+"lon": -73.0830108,
+"display": "Great River Golf Club, 130, Coram Lane, Milford, South Central Connecticut Planning Region, Connecticut, 06461, United States",
+"matched": "Great River Golf Club",
+"precision": 0
+},
+"emmitsburg, md.": {
+"lat": 39.7045417,
+"lon": -77.3269307,
+"display": "Emmitsburg, Frederick County, Maryland, United States",
+"matched": "Emmitsburg, Md.",
+"precision": 0
+},
+"delmar, n.y., normanside country club": {
+"lat": 42.6391722,
+"lon": -73.8162315,
+"display": "Normanside Country Club, Wedgewood Drive, Elsmere, Town of Bethlehem, Albany County, New York, 10254, United States",
+"matched": "Delmar, N.Y., Normanside Country Club",
+"precision": 0
+},
+"milford, conn.": {
+"lat": 41.2222218,
+"lon": -73.0570603,
+"display": "Milford, South Central Connecticut Planning Region, Connecticut, United States",
+"matched": "Milford, Conn.",
+"precision": 0
+},
+"university club of chicago": {
+"lat": 41.8810139,
+"lon": -87.6249695,
+"display": "University Club of Chicago, 76, East Monroe Street, Jewelers Row, Loop, Chicago, South Chicago Township, Cook County, Illinois, 60603, United States",
+"matched": "University Club of Chicago",
+"precision": 0
+},
+"pelham country club": {
+"lat": 40.8932358,
+"lon": -73.7956982,
+"display": "Pelham Country Club, Esplanade, Village of Pelham Manor, Town of Pelham, Westchester County, New York, 10803, United States",
+"matched": "Pelham Country Club",
+"precision": 0
+},
+"fairfield university - barone campus center, dogwood room": null,
+"patterson mansion": {
+"lat": 39.0844378,
+"lon": -84.497176,
+"display": "Patterson Street, Clifton, Newport, Campbell County, Kentucky, 41071, United States",
+"matched": "Patterson Mansion",
+"precision": 0
+},
+"dolan school of business event hall": null,
+"fairfield university - dogwood room, barone campus center": null,
+"farmingdale, n.y.": {
+"lat": 40.7328811,
+"lon": -73.4458564,
+"display": "Village of Farmingdale, Town of Oyster Bay, Nassau County, New York, United States",
+"matched": "Farmingdale, N.Y.",
+"precision": 0
+},
+"new rochelle, n.y.": {
+"lat": 40.9115386,
+"lon": -73.7826363,
+"display": "City of New Rochelle, Westchester County, New York, United States",
+"matched": "New Rochelle, N.Y.",
+"precision": 0
+},
+"niagara falls, ny": {
+"lat": 43.084841,
+"lon": -79.0701786,
+"display": "Niagara Falls, City of Niagara Falls, Niagara County, New York, United States",
+"matched": "Niagara Falls, NY",
+"precision": 0
+},
+"loudonville, n.y.": {
+"lat": 42.7032355,
+"lon": -73.7636489,
+"display": "Loudonville, Town of Colonie, Albany County, New York, United States",
+"matched": "Loudonville, N.Y.",
+"precision": 0
+},
+"metlife stadium": {
+"lat": 40.8135071,
+"lon": -74.0743442,
+"display": "MetLife Stadium, 1, MetLife Stadium Drive, East Rutherford, Bergen County, New Jersey, 07073, United States",
+"matched": "MetLife Stadium",
+"precision": 0
+},
+"glen cove, n.y.": {
+"lat": 40.8642028,
+"lon": -73.6317807,
+"display": "City of Glen Cove, Nassau County, New York, United States",
+"matched": "Glen Cove, N.Y.",
+"precision": 0
+},
+"etec 149/151": {
+"lat": -1.3850876,
+"lon": -48.4695578,
+"display": "ETEC, Val-de-C\u00e3es, Entroncamento, Bel\u00e9m, Par\u00e1, Regi\u00e3o Norte, Brasil",
+"matched": "ETEC 149/151",
+"precision": 0
+},
+"regina a. quick center for the arts, kelley theatre": null,
+"aloysius p. kelley center, kelley presentation room": null,
+"binghamton, n.y.": {
+"lat": 42.098698,
+"lon": -75.9125187,
+"display": "City of Binghamton, Broome County, New York, 13905, United States",
+"matched": "Binghamton, N.Y.",
+"precision": 0
+},
+"blackhawk country club": {
+"lat": 43.0782524,
+"lon": -89.4586616,
+"display": "Blackhawk Country Club, 3606, Blackhawk Drive, Shorewood, Shorewood Hills, Dane County, Wisconsin, 53705, United States",
+"matched": "Blackhawk Country Club",
+"precision": 0
+},
+"elicit brewing co.": {
+"lat": 41.1619472,
+"lon": -73.2317575,
+"display": "Elicit Brewing Co, Black Rock Turnpike, Fairfield, Greater Bridgeport Planning Region, Connecticut, 06430, United States",
+"matched": "Elicit Brewing Co.",
+"precision": 0
+},
+"riverdale, ny": {
+"lat": 40.90056,
+"lon": -73.90639,
+"display": "Riverdale, The Bronx, Bronx County, New York, 10471, United States",
+"matched": "Riverdale, NY",
+"precision": 0
+},
+"bronxville, ny": {
+"lat": 40.9381544,
+"lon": -73.8320784,
+"display": "Village of Bronxville, Town of Eastchester, Westchester County, New York, 10708, United States",
+"matched": "Bronxville, NY",
+"precision": 0
+},
+"broadview center": {
+"lat": 42.6821683,
+"lon": -73.8282597,
+"display": "Broadview Center, Athletic Complex, McKownville, Town of Guilderland, Albany County, New York, 12203, United States",
+"matched": "Broadview Center",
+"precision": 0
+},
+"etec, and the campus center": null,
+"north andover, mass.": {
+"lat": 42.7029687,
+"lon": -71.1309117,
+"display": "North Andover, Essex County, Massachusetts, 01845, United States",
+"matched": "North Andover, Mass.",
+"precision": 0
+},
+"old westbury, ny": {
+"lat": 40.7887113,
+"lon": -73.5995717,
+"display": "Village of Old Westbury, Town of North Hempstead, Nassau County, New York, 11568, United States",
+"matched": "Old Westbury, NY",
+"precision": 0
+},
+"fairfield, ct (at shu)": null,
+"lawrenceville, n.j.": {
+"lat": 40.3009876,
+"lon": -74.7373728,
+"display": "Lawrenceville, Lawrence Township, Mercer County, New Jersey, United States",
+"matched": "Lawrenceville, N.J.",
+"precision": 0
+},
+"smithfield, r.i.": {
+"lat": 41.9220433,
+"lon": -71.549507,
+"display": "Smithfield, Providence County, Rhode Island, United States",
+"matched": "Smithfield, R.I.",
+"precision": 0
+},
+"tbd (higher seed hosts)": null,
+"madison, wis.": {
+"lat": 43.07469,
+"lon": -89.3841663,
+"display": "Madison, Dane County, Wisconsin, United States",
+"matched": "Madison, Wis.",
+"precision": 0
+},
+"tbd": {
+"lat": 21.2364995,
+"lon": 81.6710617,
+"display": "Telibandha, Atal Path Expressway Flyover, Raipur, Raipur Tahsil, Raipur, Chhattisgarh, 493332, India",
+"matched": "TBD",
+"precision": 0
+},
+"boston, ma": {
+"lat": 42.3588336,
+"lon": -71.0578303,
+"display": "Boston, Suffolk County, Massachusetts, United States",
+"matched": "Boston, MA",
+"precision": 0
+},
+"charles f. dolan school of business, event hall": null,
+"terre haute, ind.": {
+"lat": 39.4667025,
+"lon": -87.4139119,
+"display": "Terre Haute, Vigo County, Indiana, United States",
+"matched": "Terre Haute, Ind.",
+"precision": 0
+},
+"brooklyn, n.y.": {
+"lat": 40.6526006,
+"lon": -73.9497211,
+"display": "Brooklyn, Kings County, New York, United States",
+"matched": "Brooklyn, N.Y.",
+"precision": 0
+},
+"st. petersburg, fla.": {
+"lat": 27.7712264,
+"lon": -82.6340259,
+"display": "Saint Petersburg, Pinellas County, Florida, United States",
+"matched": "St. Petersburg, Fla.",
+"precision": 0
+},
+"gonzaga hall auditorium": null,
+"providence, r.i.": {
+"lat": 41.8239891,
+"lon": -71.4128343,
+"display": "Providence, Providence County, Rhode Island, United States",
+"matched": "Providence, R.I.",
+"precision": 0
+},
+"durham, n.h.": {
+"lat": 43.1214141,
+"lon": -70.9177186,
+"display": "Durham, Strafford County, New Hampshire, 03824, United States",
+"matched": "Durham, N.H.",
+"precision": 0
+},
+"albany, n.y.": {
+"lat": 42.6511674,
+"lon": -73.754968,
+"display": "City of Albany, Albany County, New York, United States",
+"matched": "Albany, N.Y.",
+"precision": 0
+},
+"new rochelle, ny": {
+"lat": 40.9115386,
+"lon": -73.7826363,
+"display": "City of New Rochelle, Westchester County, New York, United States",
+"matched": "New Rochelle, NY",
+"precision": 0
+},
+"geneva, ohio": {
+"lat": 41.8052539,
+"lon": -80.9476206,
+"display": "Geneva, Ashtabula County, Ohio, 44041, United States",
+"matched": "Geneva, Ohio",
+"precision": 0
+},
+"atlantic city, n.j.": {
+"lat": 39.3642852,
+"lon": -74.4229351,
+"display": "Atlantic City, Atlantic County, New Jersey, United States",
+"matched": "Atlantic City, N.J.",
+"precision": 0
+},
+"ocala, fla.": {
+"lat": 29.1871986,
+"lon": -82.1400923,
+"display": "Ocala, Marion County, Florida, United States",
+"matched": "Ocala, Fla.",
+"precision": 0
+},
+"austin, tx": {
+"lat": 30.2711286,
+"lon": -97.7436995,
+"display": "Austin, Travis County, Texas, United States",
+"matched": "Austin, TX",
+"precision": 0
 }
 }

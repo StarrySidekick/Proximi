@@ -16,10 +16,37 @@ Three jobs, in order:
   python3 scripts/merge.py [--dry-run]
 """
 
-import argparse, json, re, sys
+import argparse, json, os, re, sys
 from collections import defaultdict
 from datetime import datetime, timezone
 from math import radians, sin, cos, asin, sqrt
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from enrich import type_of
+
+# Fields computed from a listing rather than reported by its source. They are
+# only ever as good as the code that derived them, so a listing already in the
+# set must not keep a classification made by an older vocabulary — otherwise
+# improving the rules only ever fixes listings we happen to be seeing for the
+# first time. Curated records (manual-) are exempt: a person checked those.
+DERIVED = ('type', 'categories', 'audience', 'setting', 'timeOfDay',
+           'hasFood', 'repeats', 'recurrence')
+
+
+def is_curated(item):
+    return str(item.get('id', '')).startswith('manual-')
+
+
+def adopt_derived(old, new):
+    """Take `new`'s derived fields onto `old`, keeping everything else."""
+    if is_curated(old):
+        return old
+    merged = dict(old)
+    for f in DERIVED:
+        if f in new:
+            merged[f] = new[f]
+    return merged
+
 
 # Internal governance that is not "something to do".
 NOISE = re.compile(r'\b(board meeting|planning meeting|committee meeting|'
@@ -75,6 +102,69 @@ def richness(item):
     return score
 
 
+WEEKDAY_NAMES = ['Monday', 'Tuesday', 'Wednesday', 'Thursday',
+                 'Friday', 'Saturday', 'Sunday']
+
+
+def join_and(names):
+    """['Tuesday', 'Thursday'] -> 'Tuesday & Thursday'."""
+    if len(names) == 1:
+        return names[0]
+    return f"{', '.join(names[:-1])} & {names[-1]}"
+
+
+def cadence(dates):
+    """Name the pattern a set of dates actually follows, or None if it has none.
+
+    "12 dates listed through Sep 5" tells a reader how much data we hold, not
+    when they could go. What they want to know is whether it is on this
+    Thursday, so read the shape of the dates and say it plainly.
+
+    Returns None when the dates fit no clean pattern — an irregular run is
+    better described by its count than by a cadence that would be a lie.
+    """
+    days = sorted({d.date() for d in dates})
+    if len(days) < 3:
+        return None
+    gaps = [(b - a).days for a, b in zip(days, days[1:])]
+    weekdays = sorted({d.weekday() for d in days})
+    span = (days[-1] - days[0]).days + 1
+
+    # Daily: most days in the range are covered. A gap for a closed Monday
+    # should not stop this reading as "every day".
+    if span >= 4 and len(days) >= span * 0.8:
+        return 'Every day'
+
+    def weekly_on(w):
+        """Do the dates falling on weekday `w` recur a whole number of weeks apart?
+
+        Two occurrences minimum: a weekday seen once is a date, not a pattern,
+        and without this a scatter of unrelated one-offs reads as
+        "Every Tuesday, Friday & Saturday".
+        """
+        series = [d for d in days if d.weekday() == w]
+        if len(series) < 2:
+            return False
+        steps = [(b - a).days for a, b in zip(series, series[1:])]
+        return all(s % 7 == 0 and s <= 21 for s in steps)
+
+    if all(weekly_on(w) for w in weekdays):
+        if weekdays == [0, 1, 2, 3, 4]:
+            return 'Every weekday'
+        if len(weekdays) <= 3:
+            names = [WEEKDAY_NAMES[w] for w in weekdays]
+            if len(weekdays) == 1 and all(g == 14 for g in gaps):
+                return f'Every other {names[0]}'
+            return 'Every ' + join_and(names)
+
+    # Calendar months drift between 28 and 31 days.
+    if all(26 <= g <= 32 for g in gaps):
+        return 'Every month'
+    if all(12 <= g <= 16 for g in gaps):
+        return 'Every other week'
+    return None
+
+
 def collapse_repeats(items, threshold=3):
     """Turn a title repeated across many dates into one recurring activity."""
     groups = defaultdict(list)
@@ -90,8 +180,11 @@ def collapse_repeats(items, threshold=3):
         first, last = group[0], group[-1]
         keep = dict(first)
         keep['repeats'] = True
+        starts = [datetime.fromisoformat(i['start']) for i in group]
         when = datetime.fromisoformat(last['start']).strftime('%b %-d')
-        keep['recurrence'] = f'{len(group)} dates listed through {when}'
+        pattern = cadence(starts)
+        keep['recurrence'] = (f'{pattern}, through {when}' if pattern
+                              else f'{len(group)} dates, through {when}')
         keep['end'] = None
         out.append(keep)
         collapsed += len(group) - 1
@@ -162,6 +255,7 @@ def main():
     ap.add_argument('--existing', default='data/events.json')
     ap.add_argument('--new', default='build/enriched.json')
     ap.add_argument('--out', default='data/events.json')
+    ap.add_argument('--registry', default='sources/registry.json')
     ap.add_argument('--dry-run', action='store_true')
     args = ap.parse_args()
 
@@ -188,7 +282,7 @@ def main():
                 item['id'] = merged[twin]['id']
                 merged[twin] = item
 
-    added = replaced = 0
+    added = replaced = refreshed = retyped = 0
     for new in incoming:
         match = next((i for i, old in enumerate(merged) if same_event(old, new)), None)
         if match is None:
@@ -199,10 +293,33 @@ def main():
             new['id'] = merged[match]['id']
             merged[match] = new
             replaced += 1
+        else:
+            # Not richer overall, but its classification is current.
+            current = merged[match]
+            reclassified = adopt_derived(current, new)
+            if reclassified != current:
+                merged[match] = reclassified
+                refreshed += 1
+
+    for item in merged:
+        if is_curated(item):
+            continue
+        fresh = type_of(item.get('title', ''), item.get('description') or '')
+        if fresh != item.get('type'):
+            item['type'] = fresh
+            retyped += 1
 
     merged.sort(key=lambda x: x['start'])
 
     meta = dict(existing['meta'])
+    # The registry owns the search area. Without this the published file keeps
+    # whatever radius it was first written with, so widening the registry left
+    # validate.py failing listings the pipeline had just decided were in range.
+    center = json.load(open(args.registry))['center']
+    meta['centerName'] = center['name']
+    meta['centerLat'], meta['centerLon'] = center['lat'], center['lon']
+    meta['radiusMiles'] = center['radiusMiles']
+    meta['timezone'] = center.get('timezone', meta.get('timezone'))
     meta['scrapedAt'] = datetime.now(timezone.utc).astimezone().isoformat(timespec='seconds')
     meta['generatedBy'] = 'scripts/harvest.py + enrich.py + merge.py, reviewed by Claude'
     meta['sources'] = sorted({i.get('source') for i in merged if i.get('source')})
@@ -211,7 +328,8 @@ def main():
     if folded:
         print(f'  −{folded} near-duplicates already in the set')
     print(f'  −{noise} internal meetings, −{collapsed} folded into recurring activities')
-    print(f'  +{added} new, {replaced} upgraded  →  {len(merged)} listings')
+    print(f'  +{added} new, {replaced} upgraded, {refreshed} reclassified, '
+          f'{retyped} retyped  →  {len(merged)} listings')
     if args.dry_run:
         return 0
 

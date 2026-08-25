@@ -17,7 +17,8 @@
     market: 'Market', sale: 'Sale', festival: 'Festival', parade: 'Parade',
     celebration: 'Celebration', protest: 'Protest', sports: 'Sports',
     food: 'Food & Drink', volunteer: 'Volunteer', kids: 'Kids Program',
-    meetup: 'Meetup', other: 'Other'
+    meetup: 'Meetup', dating: 'Dating', trivia: 'Trivia', game: 'Games',
+    science: 'Science', wellness: 'Wellness', other: 'Other'
   };
 
   const TIME_OF_DAY = [
@@ -65,7 +66,7 @@
   // active" badge counts against.
   const DEFAULTS = {
     horizon: '7', radius: '75', sort: 'soonest',
-    q: '', price: '101',
+    q: '', price: '100',
     freeOnly: false, signupOnly: false, unitsKm: false,
     repeatMode: 'any', timeOfDay: 'any',
     foodOnly: false, outdoorOnly: false,
@@ -283,7 +284,10 @@
       if (tod && tod.match && !tod.match(item.timeOfDay)) return false;
       if (el.freeOnly.checked && !isFree(item)) return false;
       if (el.signupOnly.checked && !item.signupRequired) return false;
-      if (pMax !== Infinity && (!priceKnown(item) || priceMin(item) > pMax)) return false;
+      // Only exclude what we know costs too much. A listing with no published
+      // price stays in and shows "See listing" — the cap filters expensive
+      // things, it does not filter unknowns.
+      if (pMax !== Infinity && priceKnown(item) && priceMin(item) > pMax) return false;
       if (item._distance != null && item._distance > rMax) return false;
       if (!matchesHorizon(item)) return false;
       if (!matchesQuery(item)) return false;

@@ -3,7 +3,7 @@
     "name": "Beacon, NY",
     "lat": 41.5048,
     "lon": -73.9696,
-    "radiusMiles": 75,
+    "radiusMiles": 100,
     "timezone": "America/New_York"
   },
   "notes": [
@@ -16,7 +16,8 @@
     "dropped. Confirmed stale feeds are kept here with enabled:false and a note,",
     "so we do not rediscover and re-trust them later.",
     "Connecticut was invisible for a different reason than distance: Danbury is 27.8 mi from Beacon and was always inside the radius, but the registry had no CT sources at all. Coverage gaps look like radius gaps — check the registry before widening the circle.",
-    "Eventbrite and Meetup were previously assumed to need paid API access. Both hand their front end public JSON, which is why the registry now carries them: check what a site gives its own browser before concluding there is no free path."
+    "Eventbrite and Meetup were previously assumed to need paid API access. Both hand their front end public JSON, which is why the registry now carries them: check what a site gives its own browser before concluding there is no free path.",
+    "Localist runs the calendar at events.<domain>/calendar.ics, not on the main domain, so no FEED_PATHS probe reaches it. discover.py now tries that host directly — six college feeds came from that one pattern."
   ],
   "sources": [
     {
@@ -298,6 +299,93 @@
       "publisher": "Meetup",
       "scope": "regional",
       "note": "No key. The GraphQL API needs a paid Pro subscription, but the find page ships its Apollo cache in __NEXT_DATA__ with hydrated Event objects. Venue names and cities are present; coordinates are not, so these records go through the geocoder."
+    },
+    {
+      "id": "sunywcc",
+      "kind": "ics",
+      "url": "https://sunywcc.edu/events/?ical=1",
+      "publisher": "Westchester Community College",
+      "scope": "regional"
+    },
+    {
+      "id": "wcsu",
+      "kind": "ics",
+      "url": "https://wcsu.edu/events/?ical=1",
+      "publisher": "Western Connecticut State University",
+      "scope": "regional"
+    },
+    {
+      "id": "sunyrockland",
+      "kind": "ics",
+      "url": "https://sunyrockland.edu/events/?ical=1",
+      "publisher": "SUNY Rockland",
+      "scope": "regional"
+    },
+    {
+      "id": "dominican-ny",
+      "kind": "ics",
+      "url": "https://duny.edu/events/?ical=1&eventDisplay=list",
+      "publisher": "Dominican University New York",
+      "scope": "regional"
+    },
+    {
+      "id": "msmc",
+      "kind": "ics",
+      "url": "https://events.msmc.edu/calendar.ics",
+      "publisher": "Mount Saint Mary College, Newburgh",
+      "scope": "regional"
+    },
+    {
+      "id": "fairfield-u",
+      "kind": "ics",
+      "url": "https://events.fairfield.edu/calendar.ics",
+      "publisher": "Fairfield University",
+      "scope": "regional"
+    },
+    {
+      "id": "fordham",
+      "kind": "ics",
+      "url": "https://calendar.fordham.edu/calendar.ics",
+      "publisher": "Fordham University",
+      "scope": "regional"
+    },
+    {
+      "id": "albany-u",
+      "kind": "ics",
+      "url": "https://events.albany.edu/calendar.ics",
+      "publisher": "University at Albany",
+      "scope": "regional"
+    },
+    {
+      "id": "wpunj",
+      "kind": "ics",
+      "url": "https://wpunj.edu/calendar.ics",
+      "publisher": "William Paterson University",
+      "scope": "regional",
+      "enabled": false,
+      "note": "Feed parses but its newest event is 2012-10-24 — abandoned, not empty. Kept disabled so a later discovery pass does not re-trust it."
+    },
+    {
+      "id": "newhaven-u",
+      "kind": "ics",
+      "url": "https://events.newhaven.edu/calendar.ics",
+      "publisher": "University of New Haven",
+      "scope": "regional"
+    },
+    {
+      "id": "mahaiwe",
+      "kind": "ics",
+      "url": "https://mahaiwe.org/events/?ical=1",
+      "publisher": "Mahaiwe Performing Arts Center",
+      "scope": "regional"
+    },
+    {
+      "id": "ikehall",
+      "kind": "html",
+      "url": "https://ikehall.com/events/",
+      "publisher": "Eisenhower Hall Theatre, West Point",
+      "scope": "regional",
+      "note": "JSON-LD Events, no iCal. Read by scripts/jsonld.py."
     }
   ]
 }

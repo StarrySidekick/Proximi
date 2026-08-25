@@ -1,0 +1,121 @@
+# Institutions within ~100 miles of Beacon, checked for a machine-readable
+# calendar by: python3 scripts/discover.py --probe sources/institutions.txt
+#
+# Curated rather than enumerated. discover.py --overpass is the usual route,
+# but Overpass was unreachable when this list was built, and the categories
+# asked for — colleges, museums, community centres, venues — are ones a person
+# can name more precisely than an OSM tag sweep can.
+#
+# Kept in the repo including the domains that answered nothing, so a later pass
+# does not re-probe them hoping for a different answer.
+
+# --- colleges and universities (public events, not student-only) ---
+vassar.edu
+marist.edu
+bard.edu
+newpaltz.edu
+sunyulster.edu
+sunydutchess.edu
+ciachef.edu
+msmc.edu
+purchase.edu
+artscenter.org
+manhattanville.edu
+sarahlawrence.edu
+iona.edu
+pace.edu
+sunywcc.edu
+mercy.edu
+fordham.edu
+wcsu.edu
+sacredheart.edu
+fairfield.edu
+wesleyan.edu
+trincoll.edu
+albany.edu
+sunyrockland.edu
+duny.edu
+ramapo.edu
+wpunj.edu
+ikehall.com
+
+# --- museums, historic sites and gardens ---
+diaart.org
+olana.org
+fdrlibrary.org
+hrm.org
+katonahmuseum.org
+neuberger.org
+brucemuseum.org
+thealdrich.org
+boscobel.org
+lyndhurst.org
+hudsonvalley.org
+magazzino.art
+wassaicproject.org
+motorcyclepedia.org
+hammondmuseum.org
+newhavenmuseum.org
+discoverymuseum.org
+maritimeaquarium.org
+steppingstonesmuseum.org
+greenwichhistory.org
+theglasshouse.org
+untermyergardens.org
+wavehill.org
+nybg.org
+bronxzoo.com
+caramoor.org
+lockwoodmathewsmansion.com
+mountgulian.org
+lockwoodhouse.org
+
+# --- performing arts venues ---
+bardavon.org
+thechancetheater.com
+colonywoodstock.com
+levonhelm.com
+darylshouseclub.com
+mahaiwe.org
+tarrytownmusichall.org
+rosendaletheatre.org
+storyscreenbeacon.com
+sugarloafpac.org
+burnsfilmcenter.org
+irvingtontheater.com
+helsinkihudson.com
+basilicahudson.org
+hudsonhall.org
+timeandspace.org
+liveatthefalcon.com
+unisonarts.org
+palacestamford.org
+shubert.com
+collegestreetmusichall.com
+toadsplace.com
+theegg.org
+troymusichall.org
+mainstreetbeacon.org
+
+# --- arts and community centres ---
+artsmidhudson.org
+barrettartcenter.org
+howlandculturalcenter.org
+garrisonartcenter.org
+rocklandartcenter.org
+beaconarts.org
+kingstonlibrary.org
+poklib.org
+newburghlibrary.org
+fishkilllibrary.org
+beaconlibrary.org
+ossininglibrary.org
+whiteplainslibrary.org
+greenburghlibrary.org
+chappaqualibrary.org
+scarsdalelibrary.org
+mountkiscolibrary.org
+katonahlibrary.org
+ruthkeeler.org
+butterfieldlibrary.org
+philipstownrec.com
