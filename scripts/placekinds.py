@@ -78,7 +78,10 @@ DESTINATIONS = {
 OSM_RULES = [
     ('museum', ['"tourism"="museum"', '"historic"="museum"',
                 '"amenity"="planetarium"']),
-    ('gallery', ['"tourism"="gallery"']),
+    # shop=art is "Tivoli Artists Gallery" and "Jack's Art Gallery" — galleries
+    # that sell, not shops that happen to stock prints. Claimed here, before
+    # the shop rule can take them.
+    ('gallery', ['"tourism"="gallery"', '"shop"="art"']),
     # historic=manor is OSM's tag for a country house open to visitors, which
     # is most of what people mean by "a mansion you can go and look at".
     # historic=house alone is any old house; it needs a reason to be on a map
@@ -142,7 +145,7 @@ OSM_RULES = [
               '"shop"="garden_centre"', '"shop"="pottery"',
               '"shop"="chocolate"', '"shop"="cheese"', '"shop"="tea"',
               '"shop"="games"', '"shop"="collector"', '"shop"="comics"',
-              '"shop"="record"', '"shop"="frame"', '"shop"="fabric"']),
+              '"shop"="record"', '"shop"="fabric"']),
     ('cafe', []),
     ('restaurant', []),
     ('community centre', []),
