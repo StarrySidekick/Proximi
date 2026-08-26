@@ -31,7 +31,7 @@ from enrich import (type_of, types_of, audience_of, place_name, place_kind,
 # improving the rules only ever fixes listings we happen to be seeing for the
 # first time. Curated records (manual-) are exempt: a person checked those.
 DERIVED = ('type', 'types', 'audience', 'setting', 'timeOfDay', 'cadence',
-           'hasFood', 'repeats', 'recurrence')
+           'hasFood', 'repeats', 'recurrence', 'until')
 
 
 def is_curated(item):
@@ -54,6 +54,11 @@ def adopt_derived(old, new):
         merged['recurrence'] = new.get('recurrence')
         if not merged['recurrence']:
             merged.pop('recurrence', None)
+        # until describes the same fact as recurrence and has to move with it,
+        # or a record that stopped repeating keeps last week's end date.
+        merged['until'] = new.get('until')
+        if not merged['until']:
+            merged.pop('until', None)
     return merged
 
 
@@ -353,6 +358,11 @@ def collapse_repeats(items, threshold=3):
         keep['recurrence'] = (f'{pattern}, through {when}' if pattern
                               else f'{len(group)} dates, through {when}')
         keep['end'] = None
+        # When the series stops, machine-readable. The recurrence string says
+        # "through Sep 2" and the client cannot read English — without this it
+        # has no way to know a daily run has finished, or to work out which
+        # occurrence is the next one still to come.
+        keep['until'] = last['start']
         out.append(keep)
         collapsed += len(group) - 1
     return out, collapsed

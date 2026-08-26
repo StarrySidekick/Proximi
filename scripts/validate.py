@@ -106,6 +106,13 @@ def main(path='data/events.json'):
         # UI trusts repeats for filtering while showing recurrence to readers.
         if i.get('recurrence') and not i.get('repeats'):
             errors.append(f'{tag}: has a recurrence but repeats is false')
+        if i.get('until'):
+            if not ISO.match(i['until']):
+                errors.append(f'{tag}: until {i["until"]!r} needs an explicit UTC offset')
+            elif start and i['until'] < start:
+                errors.append(f'{tag}: until {i["until"][:10]} is before start {start[:10]}')
+            elif not i.get('repeats'):
+                errors.append(f'{tag}: has an until but repeats is false')
 
         if i.get('description') and re.search(r'<[a-z/][^>]*>|&(amp|gt|lt|quot|#\d+);',
                                               i['description'], re.I):

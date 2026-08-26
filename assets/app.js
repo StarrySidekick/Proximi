@@ -125,6 +125,68 @@
     try { localStorage.setItem(SAVED_KEY, JSON.stringify([...set])); } catch { /* not fatal */ }
   }
 
+  /* Every filter the reader has set. Verdicts and muted venues were already
+     kept; the filter panel was not, so a radius of 25 miles and a chosen
+     category lasted exactly as long as the tab did. Restoring these is the
+     difference between a tool and a demo.
+
+     Stored as one object under one key so adding a control later cannot leave
+     half the settings behind, and read back defensively: an older build's
+     saved shape must never stop the app loading. */
+  const PREFS_KEY = 'proximi.filters.v1';
+
+  const PREF_FIELDS = [
+    ['q', 'value'], ['sort', 'value'], ['radius', 'value'], ['price', 'value'],
+    ['freeOnly', 'checked'], ['signupOnly', 'checked'], ['unitsKm', 'checked'],
+    ['foodOnly', 'checked'], ['outdoorOnly', 'checked'],
+    ['showKids', 'checked'], ['showSeniors', 'checked'], ['showAdults', 'checked'],
+    ['interestedOnly', 'checked']
+  ];
+
+  function savePrefs() {
+    const prefs = {
+      types: [...state.activeTypes], excludedTypes: [...state.excludedTypes],
+      horizon: state.horizon, repeatMode: state.repeatMode,
+      timeOfDay: state.timeOfDay, view: state.view,
+      placeKind: state.placeKind, placeSort: state.placeSort,
+      placesLocalOnly: state.placesLocalOnly, placesSavedOnly: state.placesSavedOnly
+    };
+    for (const [name, prop] of PREF_FIELDS) {
+      if (el[name]) prefs[name] = el[name][prop];
+    }
+    try { localStorage.setItem(PREFS_KEY, JSON.stringify(prefs)); } catch { /* not fatal */ }
+  }
+
+  function loadPrefs() {
+    try {
+      const prefs = JSON.parse(localStorage.getItem(PREFS_KEY) || 'null');
+      return prefs && typeof prefs === 'object' ? prefs : null;
+    } catch { return null; }
+  }
+
+  /* Applied after the chips exist, since restoring a type selection means
+     pressing chips that are built from the data. */
+  function applyPrefs(prefs) {
+    if (!prefs) return;
+    for (const [name, prop] of PREF_FIELDS) {
+      if (el[name] && prefs[name] !== undefined) el[name][prop] = prefs[name];
+    }
+    if (Array.isArray(prefs.types)) state.activeTypes = new Set(prefs.types);
+    if (Array.isArray(prefs.excludedTypes)) state.excludedTypes = new Set(prefs.excludedTypes);
+    if (prefs.horizon) state.horizon = prefs.horizon;
+    if (prefs.repeatMode) state.repeatMode = prefs.repeatMode;
+    if (prefs.timeOfDay) state.timeOfDay = prefs.timeOfDay;
+    if (prefs.placeKind !== undefined) state.placeKind = prefs.placeKind;
+    if (prefs.placeSort) state.placeSort = prefs.placeSort;
+    state.placesLocalOnly = !!prefs.placesLocalOnly;
+    state.placesSavedOnly = !!prefs.placesSavedOnly;
+    if (el.placesLocal) el.placesLocal.checked = state.placesLocalOnly;
+    if (el.placesSaved) el.placesSaved.checked = state.placesSavedOnly;
+    if (el.placesSort) el.placesSort.value = state.placeSort;
+    syncInterested();
+    syncRangeLabels();
+  }
+
   // "See listing" is what a card says when nothing named a place; it is not
   // itself a place, so it never becomes a row in Places or a filterable venue.
   const venueOf = (item) =>
@@ -165,7 +227,8 @@
   };
 
   const state = {
-    items: [],
+    items: [],                  // what is still to come, as of the last tick
+    allItems: [],               // everything the file carried
     origin: null,
     activeTypes: new Set(),
     excludedTypes: new Set(),
@@ -271,11 +334,80 @@
     return item._day ??= (isOngoing(item) ? todayNumber() : dayNumber(item._start));
   }
 
-  function isExpired(item) {
-    const now = new Date();
-    if (item._end) return item._end < now;
-    if (item.recurrence) return dayNumber(item._start) < todayNumber();
-    return item._start < now;
+  /* ── The clock ─────────────────────────────────────────
+     A listing is not "today"; it is a time. The feed used to work at day
+     granularity for anything repeating, so a cinema's 12:45 showing sat at the
+     top of the list at nine in the evening still saying 12:45. And the whole
+     expiry pass ran once at load, so a page left open all afternoon kept
+     offering things that had already started.
+
+     So: keep the series' first occurrence, and derive the *next* one from it
+     on every pass. A daily film that has played today is tomorrow's film, not
+     a stale row and not a deleted one.                                     */
+
+  const CADENCE_STEP = { daily: 1, weekday: 1, weekly: 7, fortnightly: 14 };
+
+  /* A midnight start is a feed saying "this day" and nothing about the hour —
+     691 of 3,239 listings, most of a library's calendar and every untimed
+     Ticketmaster row. Treated as a real 00:00 they expired one minute into the
+     day they were meant for, so an all-day event was never once visible on its
+     own day. They last until the day does. */
+  const isAllDay = (item) =>
+    typeof item.start === 'string' && item.start.slice(11, 16) === '00:00' && !item.end;
+
+  const endOfDay = (d) => {
+    const e = new Date(d);
+    e.setHours(23, 59, 59, 999);
+    return e;
+  };
+
+  // Started, not finished. The card should say so rather than quoting a start
+  // time that has been and gone.
+  const isUnderway = (item, now = new Date()) =>
+    item._end && item._start <= now && item._end >= now;
+
+  function nextOccurrence(item, now) {
+    const first = item._first;
+    if (!item.repeats || first >= now) return first;
+
+    const next = new Date(first);
+    if (item.cadence === 'monthly') {
+      while (next < now) next.setMonth(next.getMonth() + 1);
+      return next;
+    }
+    const step = CADENCE_STEP[item.cadence];
+    // 'occasional' and 'bookable' repeat on no pattern we can name, so there is
+    // nothing to advance to. They stand on their first date and expire with it.
+    if (!step) return first;
+
+    // Jump most of the way in whole steps rather than looping a day at a time:
+    // a daily series that began in January is 200-odd iterations otherwise.
+    const behind = Math.floor((now - next) / 86400000);
+    next.setDate(next.getDate() + Math.floor(behind / step) * step);
+    while (next < now) next.setDate(next.getDate() + step);
+    if (item.cadence === 'weekday') {
+      while (next.getDay() === 0 || next.getDay() === 6) next.setDate(next.getDate() + 1);
+    }
+    return next;
+  }
+
+  /* Point _start at whatever is actually next, and say whether the listing is
+     still live. Returns false once a series has run out. */
+  function advance(item, now) {
+    const next = nextOccurrence(item, now);
+    if (next !== item._start) {
+      item._start = next;
+      item._day = undefined;          // the grouping day moved with it
+    }
+    if (item._until && next > item._until) return false;   // the series is over
+    if (item._end && !item.repeats) return item._end >= now;
+    if (item._end && isOngoing(item)) return true;
+    if (isAllDay(item)) return endOfDay(next) >= now;
+    return next >= now;
+  }
+
+  function liveItems(now = new Date()) {
+    return state.allItems.filter((item) => advance(item, now));
   }
 
   function dayHeading(dayNum) {
@@ -312,6 +444,11 @@
     } else if (item._end && dayNumber(item._end) > dayNumber(item._start)) {
       parts.push(`${formatTime(item._start)}, through ${dayToDate(dayNumber(item._end))
         .toLocaleDateString([], { timeZone: 'UTC', month: 'short', day: 'numeric' })}`);
+    } else if (isUnderway(item)) {
+      // Quoting "6 PM" at five to seven reads as "not yet". It has started.
+      parts.push(`on now, until ${formatTime(item._end)}`);
+    } else if (isAllDay(item)) {
+      parts.push('all day');
     } else {
       parts.push(formatTime(item._start));
     }
@@ -461,21 +598,27 @@
 
   const grouped = () => el.sort.value === 'soonest';
 
+  /* An all-day listing has no published time, so sorting it at 00:00 put every
+     library's untimed morning class above the gig that actually starts at
+     seven. Sorted to the end of its own day instead: what is happening at a
+     known hour comes first, and "some time today" follows. */
+  const whenKey = (i) => (isAllDay(i) ? endOfDay(i._start).getTime() : i._start.getTime());
+
   function sorted(items) {
     const by = el.sort.value;
     const dist = (i) => (i._distance == null ? Infinity : i._distance);
     const copy = items.slice();
 
     if (by === 'nearest' && state.origin) {
-      copy.sort((a, b) => dist(a) - dist(b) || a._start - b._start);
+      copy.sort((a, b) => dist(a) - dist(b) || whenKey(a) - whenKey(b));
     } else if (by === 'cheapest') {
       const key = (i) => (priceKnown(i) ? priceMin(i) : Infinity);
-      copy.sort((a, b) => key(a) - key(b) || a._start - b._start);
+      copy.sort((a, b) => key(a) - key(b) || whenKey(a) - whenKey(b));
     } else {
       // Soonest: by day, then by start time, then by how close it is.
       copy.sort((a, b) =>
         effectiveDay(a) - effectiveDay(b) ||
-        a._start - b._start ||
+        whenKey(a) - whenKey(b) ||
         dist(a) - dist(b));
     }
     return copy;
@@ -834,6 +977,32 @@
 
   let lastRenderDay = null;
 
+  /* The feed is a clock face, so it has to tick. A phone left on the counter
+     all afternoon, or woken from a locked screen an hour later, was showing
+     the state of the world when the tab was opened. Re-derive on a minute
+     boundary and whenever the tab comes back to the front — both are cheap,
+     and neither fires while nothing is changing on screen. */
+  let lastTick = 0;
+
+  function tick() {
+    const minute = Math.floor(Date.now() / 60000);
+    if (minute === lastTick) return;
+    lastTick = minute;
+    const before = state.items.length;
+    state.items = liveItems();
+    state.staleCount = state.allItems.length - state.items.length;
+    // Repeats move even when nothing drops, so a changed count is not the only
+    // reason to repaint — but it is the only one worth logging.
+    if (state.items.length !== before) invalidatePlaces();
+    render();
+    if (state.view === 'places') renderPlaces();
+  }
+
+  setInterval(tick, 30000);
+  document.addEventListener('visibilitychange', () => {
+    if (!document.hidden) tick();
+  });
+
   function render() {
     // today rolls over and the ongoing-run test moves with it.
     todayCache = null;
@@ -1055,6 +1224,7 @@
       b.innerHTML = `${esc(kindLabel(k))}<span class="chip-n">${counts.get(k)}</span>`;
       b.addEventListener('click', () => {
         state.placeKind = state.placeKind === k ? null : k;
+        savePrefs();
         renderPlaces();
       });
       return b;
@@ -1210,6 +1380,7 @@
 
   function showView(view) {
     state.view = view;
+    savePrefs();
     const onPlaces = view === 'places';
     el.eventsView.hidden = onPlaces;
     el.placesView.hidden = !onPlaces;
@@ -1351,6 +1522,7 @@
         for (const c of el.horizon.children) {
           c.setAttribute('aria-pressed', String(c.dataset.horizon === h.id));
         }
+        savePrefs();
         render();
       });
       return b;
@@ -1370,6 +1542,7 @@
         for (const c of el.repeats.children) {
           c.setAttribute('aria-pressed', String(c.dataset.mode === m.id));
         }
+        savePrefs();
         render();
       });
       return b;
@@ -1385,7 +1558,10 @@
       b.type = 'button';
       b.className = 'chip';
       b.dataset.type = t;
-      b.setAttribute('aria-pressed', 'false');
+      // Read from state, not hard-coded false: these are rebuilt after the
+      // saved filters are applied, so a restored selection has to show.
+      b.setAttribute('aria-pressed', String(state.activeTypes.has(t)));
+      if (state.excludedTypes.has(t)) b.classList.add('chip-exclude');
       b.innerHTML = `${esc(typeLabel(t))}<span class="chip-n"></span>`;
       // Three states, cycled by clicking: neutral -> only this (and other
       // included types) -> anything but this -> neutral. Exclusion is what a
@@ -1401,6 +1577,7 @@
         }
         b.setAttribute('aria-pressed', String(state.activeTypes.has(t)));
         b.classList.toggle('chip-exclude', state.excludedTypes.has(t));
+        savePrefs();
         render();
       });
       return b;
@@ -1420,6 +1597,7 @@
         for (const c of el.tod.children) {
           c.setAttribute('aria-pressed', String(c.dataset.tod === t.id));
         }
+        savePrefs();
         render();
       });
       return b;
@@ -1529,7 +1707,7 @@
 
   /* ── Wiring ───────────────────────────────────────────── */
 
-  const rerender = () => { syncRangeLabels(); render(); };
+  const rerender = () => { syncRangeLabels(); savePrefs(); render(); };
 
   for (const node of [el.q, el.sort, el.radius, el.price,
                       el.freeOnly, el.signupOnly, el.unitsKm,
@@ -1543,14 +1721,17 @@
   el.placesSearch?.addEventListener('input', renderPlaces);
   el.placesSort?.addEventListener('change', () => {
     state.placeSort = el.placesSort.value;
+    savePrefs();
     renderPlaces();
   });
   el.placesLocal?.addEventListener('change', () => {
     state.placesLocalOnly = el.placesLocal.checked;
+    savePrefs();
     renderPlaces();
   });
   el.placesSaved?.addEventListener('change', () => {
     state.placesSavedOnly = el.placesSaved.checked;
+    savePrefs();
     renderPlaces();
   });
   el.venueBannerClear?.addEventListener('click', () => {
@@ -1611,6 +1792,10 @@
   /* ── Boot ─────────────────────────────────────────────── */
 
   (async function init() {
+    // Before any chip group is built: the horizon, repeat and time-of-day
+    // chips read their pressed state from `state` as they are constructed.
+    const prefs = loadPrefs();
+    applyPrefs(prefs);
     buildPresets();
     buildHorizonChips();
     buildRepeatChips();
@@ -1653,11 +1838,15 @@
         .catch(() => { /* the feed still works without the directory */ });
 
       state.tz = data.meta?.timezone || null;
-      const all = (data.items || []).map((item) => ({
-        ...item, _start: resolveStart(item), _end: resolveEnd(item)
-      }));
-      state.items = all.filter((item) => !isExpired(item));
-      state.staleCount = all.length - state.items.length;
+      state.allItems = (data.items || []).map((item) => {
+        const first = resolveStart(item);
+        return {
+          ...item, _first: first, _start: first, _end: resolveEnd(item),
+          _until: item.until ? new Date(item.until) : null
+        };
+      });
+      state.items = liveItems();
+      state.staleCount = state.allItems.length - state.items.length;
 
       buildTypeChips();
       showDataAge(data.meta);
@@ -1670,6 +1859,9 @@
       } else {
         render();
       }
+      // Last, once there is something to show: reopen on whichever tab was
+      // last in use.
+      if (prefs?.view === 'places') showView('places');
     } catch {
       el.empty.hidden = false;
       el.empty.textContent = 'The listings file failed to load. If you opened this file '
