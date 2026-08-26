@@ -39,6 +39,14 @@ TYPES = [
                        r'audience questions)\b'),
     ('meet & greet',   r'\b(meet[ &and]*greet|meet the (artist|author|maker|brewer)|'
                        r'book signing|autograph)\b'),
+    ('animal encounter', r'\b(petting zoo|animal (encounter|meet|feeding|ambassador)|'
+                       r'raptor|falconry|reptile show|aquarium feeding|zoo ?(kids|babies|tots)|'
+                       r'meet (the|our) (animals|raptors|reptiles|owls)|'
+                       r'critter|creature feature|read to (a )?(dog|rover))\b'),
+    ('religious ceremony', r'\b(mass\b|worship|service\b|liturgy|vespers|evensong|'
+                       r'shabbat|kiddush|jumu.?ah|puja|sangha|rosary|novena|'
+                       r'communion|baptism|confirmation|sermon|prayer (service|meeting)|'
+                       r'high holy days|yom kippur|rosh hashanah)\b'),
     ('yoga',           r'\b(yoga|pilates|tai chi|qi ?gong|meditation|sound bath|'
                        r'breathwork|restorative|mindfulness)\b'),
     ('workout',        r'\b(workout|bootcamp|hiit|crossfit|spin class|zumba|'
@@ -77,7 +85,7 @@ TYPES = [
                        r'(blood|food|coat|toy|book|clothing|donation|canned[- ]food) drive|'
                        r'give ?back|charity|clean[- ]?up day)\b'),
     ('game',           r'\b(game night|board ?games?|trading cards?|escape room|chess|'
-                       r'mahjong|bridge club|dungeons|karaoke|tabletop|video ?game)\b'),
+                       r'mah ?jong?g?|bridge club|dungeons|karaoke|tabletop|video ?game|dominoes|cribbage|canasta)\b'),
     ('sporting event', r'\b(basketball|soccer|volleyball|baseball|softball|hockey|'
                        r'lacrosse|tennis|golf|swimming|diving|cross country|'
                        r'field hockey|football|rugby|pickleball|race|5k|10k|marathon|'
@@ -85,8 +93,12 @@ TYPES = [
                        r'boxing|regatta|derby)\b'),
 
     # ── things to look at, learn from, or join ──────────────────
-    ('art exhibit',    r'\b(exhibition|exhibit\w*|gallery|opening reception|'
+    ('art exhibit',    r'\b(art (exhibit\w*|show)|gallery|opening reception|'
                        r'installation|sculpture|paintings?|artist talk)\b'),
+    ('exhibit',        r'\b(exhibit\w*|on view|retrospective|showcase|'
+                       r'permanent collection|special collection)\b'),
+    ('museum',         r'\b(museums?|planetarium|observatory|aquarium|zoo\b|'
+                       r'historic (house|site|home)|admission|general admission)\b'),
     ('tour',           r'\b(tours?|guided walk|house tour|behind the scenes|'
                        r'hike|hiking|walking tour|birding|paddle|kayak)\b'),
     ('talk',           r'\b(talk|lecture|reading|panel|author|poet|keynote|symposium|'
@@ -121,7 +133,28 @@ def blob_of(e):
     return ' '.join(filter(None, [e.get('title'), e.get('description'), e.get('venue')]))
 
 
-def types_of(title, description='', limit=3):
+# What a venue implies, for listings whose own words say nothing. "Hudson
+# Valley Renegades vs. Brooklyn Cyclones" names two teams and no sport;
+# "Wicked (NY)" names no kind at all. The building does: a ballpark holds
+# sport, a Broadway house holds theatre.
+VENUE_KINDS = [
+    ('sporting event', r'\b(stadium|ball ?park|arena|speedway|racetrack|raceway|'
+                       r'coliseum|ballfield|athletic (field|complex)|ice rink)\b'),
+    ('play',           r'\b(theatres?|theaters?|playhouse|opera house)\b'),
+    ('museum',         r'\b(museum|planetarium|observatory|aquarium|zoo)\b'),
+    ('film',           r'\b(cinema|film center|drive[- ]in)\b'),
+    ('art exhibit',    r'\b(gallery|art cent(er|re))\b'),
+]
+
+
+def venue_kind(venue):
+    for name, pattern in VENUE_KINDS:
+        if venue and re.search(pattern, str(venue), re.I):
+            return name
+    return None
+
+
+def types_of(title, description='', venue=None, limit=3):
     """All the kinds of thing a listing is, most defining first.
 
     A paint-and-sip is a class, and creative, and food & drink; forcing one
@@ -146,12 +179,27 @@ def types_of(title, description='', limit=3):
             if name not in found:
                 found.append(name)
                 break
+    # The building is consulted only when the listing's own words yielded
+    # nothing. An arena hosts concerts as readily as basketball, so letting the
+    # venue speak over a title that already said "concert" would be worse than
+    # silence — but against 'other' it is all we have.
+    if not found:
+        implied = venue_kind(venue)
+        if implied:
+            return [implied]
+        # "Hudson Valley Renegades vs. Brooklyn Cyclones" at Heritage Financial
+        # Park: two proper nouns either side of vs., and a venue named Park that
+        # no pattern can safely claim, since most Parks really are parks. The
+        # fixture line is the signal. Only reached when nothing else matched, so
+        # "Beatles Vs. Stones - A Musical Showdown" is long gone by here.
+        if re.search(r'^[A-Z][\w.\'-]*(?:\s+[\w.&\'-]+){0,4}\s+vs\.?\s+[A-Z]', title or ''):
+            return ['sporting event']
     return found[:limit] or ['other']
 
 
-def type_of(title, description=''):
+def type_of(title, description='', venue=None):
     """The single most defining kind — the badge, and the sort key."""
-    return types_of(title, description)[0]
+    return types_of(title, description, venue)[0]
 
 
 def setting_of(text):
@@ -538,8 +586,8 @@ def main():
         out.append({
             'id': f"{c['sourceId']}-{abs(hash(c.get('uid') or c['title'] + c['start'])) % 10**8}",
             'title': c['title'],
-            'type': type_of(c['title'], c.get('description')),
-            'types': types_of(c['title'], c.get('description')),
+            'type': type_of(c['title'], c.get('description'), venue),
+            'types': types_of(c['title'], c.get('description'), venue),
             'repeats': bool(recurring),
             'audience': audience_of(blob, c['title'], type_of(c['title'], c.get('description'))),
             'setting': setting_of(blob),
@@ -599,9 +647,10 @@ def main():
             'id': e.get('id') or f"{e.get('sourceId', 'x')}-"
                                  f"{abs(hash(e.get('url') or e['title'])) % 10**8}",
             'title': e['title'],
-            'type': e.get('type') or type_of(e['title'], e.get('description')),
+            'type': e.get('type') or type_of(e['title'], e.get('description'), e.get('venue')),
             'types': e.get('types') or (
-                [e['type']] if e.get('type') else types_of(e['title'], e.get('description'))),
+                [e['type']] if e.get('type')
+                else types_of(e['title'], e.get('description'), e.get('venue'))),
             'repeats': bool(e.get('repeats')),
             # Meetup states its own cadence; without carrying it here a monthly
             # group arrives as a one-off, since the find page lists only the

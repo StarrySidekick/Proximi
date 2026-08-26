@@ -471,7 +471,8 @@ def main():
                 item['venue'] = 'See listing'
         if is_curated(item):
             continue
-        fresh = types_of(item.get('title', ''), item.get('description') or '')
+        fresh = types_of(item.get('title', ''), item.get('description') or '',
+                         item.get('venue'))
         # 'other' is the absence of a text signal, not a verdict — a source
         # that asserted a type outright (Songkick marks every show a
         # MusicEvent) knows more than a title like "Faetooth @ Bowery

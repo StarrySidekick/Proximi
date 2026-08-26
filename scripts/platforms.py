@@ -20,11 +20,23 @@ from datetime import datetime, timedelta, timezone
 UA = 'Mozilla/5.0 (compatible; ProximiBot/0.1; +https://github.com/StarrySidekick/Proximi)'
 TM = 'https://app.ticketmaster.com/discovery/v2/events.json'
 
-# Ticketmaster's segment/genre vocabulary onto ours.
-SEGMENT = {'Music': 'music', 'Sports': 'sports', 'Arts & Theatre': 'show',
-           'Film': 'film', 'Miscellaneous': 'community'}
-GENRE = {'Comedy': 'comedy', 'Theatre': 'show', 'Dance': 'show', 'Family': 'family',
-         'Food & Drink': 'food', 'Fairs & Festivals': 'market', 'Art': 'art'}
+# Ticketmaster's own classification, onto our vocabulary. This is the best
+# signal in the whole pipeline for the listings whose titles say least: a
+# ballpark game is named after two teams and nothing else, and "Wicked (NY)"
+# names no kind at all — but Ticketmaster files them as Sports and as
+# Theatre/Musical respectively.
+SEGMENT = {
+    'Music': 'concert', 'Sports': 'sporting event', 'Arts & Theatre': 'play',
+    'Film': 'film',
+}
+# Read after the segment and allowed to replace it, since it is more specific.
+GENRE = {
+    'Comedy': 'comedy show', 'Theatre': 'play', 'Dance': 'dance',
+    'Musical': 'musical', 'Opera': 'musical', 'Classical': 'concert',
+    'Film': 'film', 'Fairs & Festivals': 'festival', 'Art': 'art exhibit',
+    'Food & Drink': 'tasting', 'Community/Civic': 'meetup', 'Lecture': 'talk',
+    'Circus & Specialty Acts': 'celebration', 'Family': 'other',
+}
 
 
 def get(url, tries=3):
@@ -45,14 +57,20 @@ def get(url, tries=3):
             raise
 
 
-def categories(ev):
+def kinds(ev):
+    """The listing's kinds, most specific first.
+
+    subGenre beats genre beats segment: "Arts & Theatre / Theatre / Musical"
+    should lead with musical, not with the department it sits in.
+    """
     out = []
     for c in ev.get('classifications') or []:
-        for key, table in (('segment', SEGMENT), ('genre', GENRE), ('subGenre', GENRE)):
+        for key, table in (('subGenre', GENRE), ('genre', GENRE), ('segment', SEGMENT)):
             name = (c.get(key) or {}).get('name')
-            if name and name in table and table[name] not in out:
-                out.append(table[name])
-    return out or ['community']
+            mapped = table.get(name) if name else None
+            if mapped and mapped != 'other' and mapped not in out:
+                out.append(mapped)
+    return out[:3]
 
 
 def price(ev):
@@ -157,7 +175,8 @@ def sweep(lat, lon, radius, days, key, seen, pages=3):
                 'lat': float(loc['latitude']) if loc.get('latitude') else None,
                 'lon': float(loc['longitude']) if loc.get('longitude') else None,
                 'price': price(ev),
-                'categories': categories(ev),
+                'types': kinds(ev),
+                'type': (kinds(ev) or [None])[0],
                 'description': ev.get('info') or ev.get('pleaseNote'),
                 'signupRequired': True,
                 'signupUrl': ev.get('url'),

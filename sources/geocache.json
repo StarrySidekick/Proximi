@@ -2224,5 +2224,12 @@
 "display": "33, Hoseye Coach Road, Newtown, Western Connecticut Planning Region, Connecticut, 06482, United States",
 "matched": "33 Hoseye Coach Rd",
 "precision": 0
+},
+"57 church hill rd": {
+"lat": 51.6412791,
+"lon": -0.1623879,
+"display": "Winston House, 57, Church Hill Road, Oakleigh Park, East Barnet, London Borough of Barnet, Greater London, England, EN4 8TB, United Kingdom",
+"matched": "57 Church Hill Rd",
+"precision": 0
 }
 }
