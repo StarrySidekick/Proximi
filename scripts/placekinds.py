@@ -97,7 +97,9 @@ OSM_RULES = [
                 '"landuse"="vineyard"']),
     ('brewery', ['"craft"~"^(brewery|distillery|cidery)$"', '"microbrewery"="yes"',
                  '"amenity"="biergarten"']),
-    ('farm', ['"shop"="farm"', '"tourism"="farm"', '"shop"="greengrocer"']),
+    # NOT shop=greengrocer: half of those are a town grocer, a natural foods
+    # shop, or in one case a chemist. shop=farm is the farm stand at the gate.
+    ('farm', ['"shop"="farm"', '"tourism"="farm"']),
     ('theatre', ['"amenity"="theatre"', '"amenity"="arts_centre"']),
     ('cinema', ['"amenity"="cinema"']),
     ('music venue', ['"amenity"="music_venue"', '"amenity"="nightclub"']),
