@@ -632,7 +632,9 @@ input:focus-visible, select:focus-visible, button:focus-visible, a:focus-visible
 }
 .place-tag.is-chain { opacity: .7; }
 .place-note, .place-hours {
-  margin: 5px 0 0; font-size: 13px; color: var(--ink-2);
+  /* OSM descriptions carry bare URLs, which are one unbreakable word and will
+     push the whole page sideways on a phone if allowed to. */
+  margin: 5px 0 0; font-size: 13px; color: var(--ink-2); overflow-wrap: anywhere;
 }
 .place-hours { color: var(--ink-3); font-variant-numeric: tabular-nums; }
 .place-actions {

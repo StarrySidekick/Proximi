@@ -119,7 +119,7 @@ def query(body, timeout=180, sweeps=3):
     raise RuntimeError(f'all Overpass mirrors failed (last: {last})')
 
 
-def settlements(center, radius):
+def settlements(center, radius, cache_dir='build/places-cache'):
     """Every named town in range, so a place with no addr:city still gets one.
 
     OSM puts addr:city on shop nodes and almost never on the ways that carry
@@ -127,6 +127,19 @@ def settlements(center, radius):
     Reverse-geocoding two thousand of them is out; one query for the towns and
     a nearest-neighbour lookup costs one request.
     """
+    # Cached like every other query. Without this a run that collects fine but
+    # loses the town lookup silently drops 800 town labels that the previous
+    # run had — which is what happened once, and looked like nothing.
+    path = os.path.join(cache_dir, 'towns.json')
+    if os.path.exists(path):
+        data = json.load(open(path))
+        towns = [(e['lat'], e['lon'], e['tags']['name'],
+                  STATE_NAMES.get(e['tags'].get('is_in:state', ''), None),
+                  {'city': 3, 'town': 2, 'village': 1, 'hamlet': 0}[e['tags']['place']])
+                 for e in data.get('elements', [])]
+        print(f'  {"towns":<16} {len(towns):>5}  (cached)')
+        return towns
+
     area = f'({bbox(center, radius + 15)})'
     try:
         # Deliberately a small budget. Town labels are a nicety — the places
@@ -140,6 +153,8 @@ def settlements(center, radius):
         print(f'  ! towns unavailable ({exc}) — places keep whatever addr:city they carry',
               file=sys.stderr)
         return []
+    os.makedirs(cache_dir, exist_ok=True)
+    json.dump(data, open(path, 'w'))
     towns = []
     for el in data.get('elements', []):
         tags = el.get('tags', {})
@@ -352,6 +367,24 @@ def substantial(kind, tags):
                 or tags.get('opening_hours') or tags.get('tourism'))
 
 
+# OSM descriptions are free text written for mappers, not readers: they run to
+# paragraphs and often park a bare URL in the middle, which is one unbreakable
+# word that shoves a phone layout sideways. The link is already on the place as
+# `url` where there is one.
+# A URL is usually inside a parenthetical — "(see https://…)" — so take the
+# whole bracket, or the stripped link leaves a dangling "(see" behind.
+URL_IN_TEXT = re.compile(r'\s*\([^)]*https?://[^)]*\)?|\s*\bhttps?://\S+')
+
+
+def describe(text, limit=180):
+    text = URL_IN_TEXT.sub('', (text or ''))
+    text = re.sub(r'\s{2,}', ' ', text).strip(' \t;,:-–—(')
+    if len(text) > limit:
+        cut = text[:limit].rsplit(' ', 1)[0]
+        text = cut.rstrip('.,;:') + '…'
+    return text or None
+
+
 def to_place(element, kinds, center):
     tags = element.get('tags', {})
     lat = element.get('lat') or (element.get('center') or {}).get('lat')
@@ -383,7 +416,7 @@ def to_place(element, kinds, center):
                        or 'antiquarian' in (tags.get('books') or '')) or None,
         'free': None if fee is None else (fee == 'no'),
         'wheelchair': tags.get('wheelchair'),
-        'description': (tags.get('description') or '').strip() or None,
+        'description': describe(tags.get('description')),
         'events': 0,
         'source': 'OpenStreetMap',
     }
@@ -533,7 +566,8 @@ def main():
         return 1
 
     places = dedupe(places)
-    towns = settlements(center, radius) if any(not p['city'] for p in places) else []
+    towns = (settlements(center, radius, args.cache)
+             if any(not p['city'] for p in places) else [])
     if towns:
         for place in places:
             if not place['city']:
