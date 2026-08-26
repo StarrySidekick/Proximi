@@ -388,6 +388,9 @@ def substantial(kind, tags):
 # `url` where there is one.
 # A URL is usually inside a parenthetical — "(see https://…)" — so take the
 # whole bracket, or the stripped link leaves a dangling "(see" behind.
+SECOND_HAND_NAME = re.compile(
+    r'\b(used|rare|antiquarian|second[- ]?hand|out[- ]of[- ]print|book ?barn)\b', re.I)
+
 URL_IN_TEXT = re.compile(r'\s*\([^)]*https?://[^)]*\)?|\s*\bhttps?://\S+')
 
 
@@ -424,11 +427,16 @@ def to_place(element, kinds, center):
         # client can offer "local only", which is the whole point of asking
         # for used book stores rather than book stores.
         'brand': tags.get('brand') or tags.get('operator:brand'),
-        # "used book store" was asked for by name, and OSM distinguishes it:
-        # second_hand=only is a used-books shop, =yes sells both.
+        # "used book store" was asked for by name. OSM has a tag for it and
+        # almost nobody sets it — 2 of 118 book shops in range — so the shop's
+        # own name is read as well. That still only finds three, which is the
+        # honest ceiling here: whether a shop sells used books is mostly not
+        # recorded anywhere. `brand` is the reliable half of the ask, and it
+        # is what the Independents-only toggle runs on.
         'secondHand': (tags.get('second_hand') in ('yes', 'only')
                        or 'second_hand' in (tags.get('books') or '')
-                       or 'antiquarian' in (tags.get('books') or '')) or None,
+                       or 'antiquarian' in (tags.get('books') or '')
+                       or bool(SECOND_HAND_NAME.search(tags.get('name', '')))) or None,
         'free': None if fee is None else (fee == 'no'),
         'wheelchair': tags.get('wheelchair'),
         'description': describe(tags.get('description')),
