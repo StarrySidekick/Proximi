@@ -139,11 +139,17 @@ is not reachable from automation here):
 
 > **Settings → Pages → Build and deployment**
 > Source: **Deploy from a branch**
-> Branch: **`claude/local-events-discovery-vfjgwr`** · folder: **`/ (root)`** → **Save**
+> Branch: **`main`** · folder: **`/ (root)`** → **Save**
 
 The site then publishes at `https://starrysidekick.github.io/Proximi/` within a
 minute or two, and republishes automatically on every push — including the
 weekly listing refresh, so no further action is ever needed.
+
+**`main` is the deploy branch.** It was `claude/local-events-discovery-vfjgwr`
+while the app was being built, and everything landed on `main` in one
+fast-forward once it was worth publishing. If the live site is not moving after
+a push to `main`, that Pages setting is still pointing at the old branch — it is
+the one part of this that no script can change.
 
 A `Validate listings` workflow checks `data/events.json` on every push (schema,
 unique ids, sign-up links, and that every venue really is inside the radius), so
