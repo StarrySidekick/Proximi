@@ -2451,5 +2451,75 @@
 "display": "Olin Hall, East 69th Street, Lenox Hill, Manhattan Community Board 8, Manhattan, New York County, New York, 10021, United States",
 "matched": "Olin Hall",
 "precision": 0
+},
+"48 main st, millerton, ny 12546": {
+"lat": 41.9535172,
+"lon": -73.5099079,
+"display": "The Moviehouse, 48, Main Street, Village of Millerton, Town of North East, Dutchess County, New York, 12546, United States",
+"matched": "48 Main St, Millerton, NY 12546",
+"precision": 0
+},
+"7 east main st, beacon, ny 12508": {
+"lat": 41.501649,
+"lon": -73.9630408,
+"display": "Hudson Valley Brewery, 7, East Main Street, City of Beacon, Dutchess County, New York, 12508, United States",
+"matched": "7 East Main St, Beacon, NY 12508",
+"precision": 0
+},
+"96 w bridge st, catskill, ny 12414": {
+"lat": 42.216739,
+"lon": -73.8729039,
+"display": "96, West Bridge Street, Village of Catskill, Town of Catskill, Greene County, New York, 12414, United States",
+"matched": "96 W Bridge St, Catskill, NY 12414",
+"precision": 0
+},
+"mod beacon, beacon, ny": {
+"lat": 41.5048402,
+"lon": -73.9695409,
+"display": "City of Beacon, Dutchess County, New York, 12508, United States",
+"matched": "Beacon, NY",
+"precision": 1
+},
+"memorial park, beacon, ny": {
+"lat": 41.5091195,
+"lon": -73.9617823,
+"display": "Beacon Memorial Park, Beacon, City of Beacon, Dutchess County, New York, United States",
+"matched": "Memorial Park, Beacon, NY",
+"precision": 0
+},
+"obercreek brewing co., wappingers falls, ny": {
+"lat": 41.587501,
+"lon": -73.9326633,
+"display": "Obercreek Brewing Company, 59, Marlorville Road, Village of Wappingers Falls, Town of Wappinger, Dutchess County, New York, 12590, United States",
+"matched": "Obercreek Brewing Co., Wappingers Falls, NY",
+"precision": 0
+},
+"232 main st, beacon, ny 12508": {
+"lat": 41.5068886,
+"lon": -73.9726576,
+"display": "232, Main Street, Beacon, City of Beacon, Dutchess County, New York, 12508, United States",
+"matched": "232 Main St, Beacon, NY 12508",
+"precision": 0
+},
+"newburgh brewing company, newburgh, ny": {
+"lat": 41.4973718,
+"lon": -74.0080001,
+"display": "Newburgh Brewing Company, 88, Colden Street, Varick Homes, City of Newburgh, Orange County, New York, 12550, United States",
+"matched": "Newburgh Brewing Company, Newburgh, NY",
+"precision": 0
+},
+"draught industries, beacon, ny": {
+"lat": 41.5048402,
+"lon": -73.9695409,
+"display": "City of Beacon, Dutchess County, New York, 12508, United States",
+"matched": "Beacon, NY",
+"precision": 1
+},
+"434 columbia st, hudson, ny 12534": {
+"lat": 42.251016,
+"lon": -73.7864197,
+"display": "Time & Space Limited, 434, Columbia Street, Oakdale, City of Hudson, Columbia County, New York, 12534, United States",
+"matched": "434 Columbia St, Hudson, NY 12534",
+"precision": 0
 }
 }

@@ -24,7 +24,12 @@
     "Marist has a working Liferay JSON API at /api/jsonws/events.maristevent/get-upcoming-events/limit/1000 (double-encoded JSON), but every entry is internal academic calendar — Semester Begins, Search Committee Meeting, Open House. Not registered: the campus rule would drop all of it.",
     "Assabet Interactive is the other library calendar platform beside LibCal, and it does publish schema.org Events on /calendar/. Its subdomain is not derivable from the library domain — fingerprint the homepage for an assabetinteractive.com link instead.",
     "Local cinemas are the hardest tier in the registry. Twenty-three were probed in the 2026-08 pass and one — the Fisher Center at Bard — had a feed. The rest run bespoke or client-side ticketing (Filmbot, Wix Thunderbolt, Veezi) with no iCal, no JSON-LD and no public API, so they are html and hand-read. Do not re-probe them hoping for a feed.",
-    "downingfilmcenter.com is NOT the Downing Film Center any more: the domain now serves an Indonesian gambling site (215 mentions of \"slot\", none of \"Downing\" or \"Newburgh\"). It is deliberately absent from this registry — a hand-read pass must not ingest it. Find the theatre's current home before adding it back."
+    "downingfilmcenter.com is NOT the Downing Film Center any more: the domain now serves an Indonesian gambling site (215 mentions of \"slot\", none of \"Downing\" or \"Newburgh\"). It is deliberately absent from this registry — a hand-read pass must not ingest it. Find the theatre's current home before adding it back.",
+    "storyscreenbeacon.com is NOT Story Screen any more: the domain now serves a Turkish gambling site (14 gambling markers, zero mentions of \"Story Screen\", \"Beacon\", \"movie\" or \"film\"). Story Screen itself is alive at storyscreenpresents.com, which is what this registry points at.",
+    "bethelcinema.com is NOT Bethel Cinema any more: the domain now serves an Indonesian togel/gambling storefront. It is deliberately absent from this registry.",
+    "rivertownfilm.org (Nyack) is a live site with real listings, but its WordPress has been SEO-spammed — paragraphs of Australian online-casino copy sit in the page body beside the film blurbs. Not registered: anything read off it would carry the spam into descriptions.",
+    "Three theatre domains in one 50-mile pass had lapsed and been re-registered by gambling operators (downingfilmcenter.com, storyscreenbeacon.com, bethelcinema.com). Small venues lose domains often, so a cinema URL that has not been fetched in a while is worth re-checking for content, not just for HTTP status — all three answer 200.",
+    "Of roughly two dozen independent cinemas inside fifty miles, five serve their schedule as HTML (Jacob Burns, Rosendale, and the three Independent Cinemas houses) and are read by scripts/cinema.py. The rest run a ticketing SPA — Indy Systems, Filmbot's hosted app, or Agile Ticketing behind Imperva — and are hand-read or disabled."
   ],
   "sources": [
     {
@@ -582,10 +587,10 @@
     {
       "id": "cin-storyscreen",
       "kind": "html",
-      "url": "https://storyscreenbeacon.com/",
-      "publisher": "Story Screen Beacon",
+      "url": "https://www.storyscreenpresents.com/special-screenings",
+      "publisher": "Story Screen",
       "scope": "local",
-      "note": "Showtimes render client-side; the served HTML carries no listing links and no JSON-LD."
+      "note": "Read by hand into sources/manual.json. Their pop-up screenings run at breweries and parks rather than at one address, so each listing carries its own venue. NOTE the domain change: storyscreenbeacon.com is no longer theirs and must not be fetched — see the hijack note above."
     },
     {
       "id": "cin-rosendale",
@@ -593,7 +598,7 @@
       "url": "https://rosendaletheatre.org/calendar/",
       "publisher": "Rosendale Theatre",
       "scope": "local",
-      "note": "Runs Filmbot. The calendar is server-rendered but as a bare month grid — titles and day numbers in separate cells, no JSON-LD, and the Filmbot plugin JS exposes no API. Parseable only by reading the grid, so hand-read for now."
+      "note": "Filmbot. The month grid is server-rendered and each day cell carries the whole show card in an escaped data-show-card attribute — title, link, blurb and that day's times. Month navigation is the path /calendar/YYYY-MM, not a query parameter. Read by scripts/cinema.py."
     },
     {
       "id": "cin-picturehouse",
@@ -601,7 +606,7 @@
       "url": "https://thepicturehouse.org/",
       "publisher": "The Picture House, Pelham",
       "scope": "local",
-      "note": "Homepage is an 8KB shell; showtimes load client-side."
+      "note": "Indy Systems SPA (Quasar). The 8KB shell talks to a same-origin /graphql endpoint; nothing is in the served HTML. No hand-read path either — the listing pages render entirely in JS."
     },
     {
       "id": "cin-timeandspace",
@@ -609,22 +614,23 @@
       "url": "https://timeandspace.org/",
       "publisher": "Time & Space Limited, Hudson",
       "scope": "local",
-      "note": "12KB shell, no structured data."
+      "note": "12KB shell to a scripted fetch; the listing renders client-side. Read by hand into sources/manual.json — only the screenings whose exact date and time the page spells out. Multi-day runs are listed without per-day times and are deliberately skipped rather than guessed at."
     },
     {
       "id": "cin-moviehouse",
       "kind": "html",
-      "url": "https://themoviehouse.net/",
+      "url": "https://www.themoviehouse.net/events",
       "publisher": "The Moviehouse, Millerton",
       "scope": "local",
-      "note": "Wix. Showtimes come from the Thunderbolt renderer, not the served HTML."
+      "note": "Wix. Showtimes come from the Thunderbolt renderer, and the Agile Ticketing schedule behind it sits behind an Imperva bot wall, so neither is fetchable. The /events page does render its special screenings as text — read by hand into sources/manual.json."
     },
     {
       "id": "cin-crandell",
       "kind": "html",
       "url": "https://crandelltheatre.org/",
       "publisher": "Crandell Theatre, Chatham",
-      "scope": "local"
+      "scope": "local",
+      "note": "Client-rendered listings. 55 mi out — inside the event radius, outside the 50-mile cinema pass."
     },
     {
       "id": "cin-avon",
@@ -639,14 +645,16 @@
       "kind": "html",
       "url": "https://prospectortheater.org/",
       "publisher": "Prospector Theater, Ridgefield",
-      "scope": "local"
+      "scope": "local",
+      "note": "Squarespace shell; /movies redirects to showtimes.prospectortheater.org, which is itself a client-rendered app — day tabs render, titles and times do not."
     },
     {
       "id": "cin-triplex",
       "kind": "html",
       "url": "https://thetriplex.org/",
       "publisher": "The Triplex Cinema, Great Barrington",
-      "scope": "local"
+      "scope": "local",
+      "note": "Client-rendered listings. 65 mi out — inside the event radius, outside the 50-mile cinema pass."
     },
     {
       "id": "cin-bearsville",
@@ -654,6 +662,84 @@
       "url": "https://bearsvilletheater.com/",
       "publisher": "Bearsville Theater, Woodstock",
       "scope": "local"
+    },
+    {
+      "id": "cin-jacobburns",
+      "kind": "html",
+      "url": "https://burnsfilmcenter.org/film",
+      "publisher": "Jacob Burns Film Center",
+      "scope": "local",
+      "note": "Every showtime carries an ISO data-showtime attribute in the served HTML. A rolling three-day window that ignores ?date=, so a weekly run keeps it current and there is nothing to page. Read by scripts/cinema.py.",
+      "venue": {
+        "name": "Jacob Burns Film Center",
+        "city": "Pleasantville, NY",
+        "address": "364 Manville Rd, Pleasantville, NY 10570",
+        "lat": 41.1352,
+        "lon": -73.7847
+      }
+    },
+    {
+      "id": "cin-lyceum",
+      "kind": "html",
+      "url": "https://greatmovieslowerprices.com/lyceum-cinemas/",
+      "publisher": "Independent Cinemas (Lyceum Cinemas, Red Hook)",
+      "scope": "local",
+      "note": "One small operator runs three Hudson Valley houses off one server-rendered page each: a date header, then alternating title and times lines. Times carry no meridiem because a cinema day starts at noon. Read by scripts/cinema.py.",
+      "venue": {
+        "name": "Lyceum Cinemas",
+        "city": "Red Hook, NY",
+        "address": "15 Old Farm Rd, Red Hook, NY 12571",
+        "lat": 41.9945,
+        "lon": -73.8716
+      }
+    },
+    {
+      "id": "cin-roosevelt",
+      "kind": "html",
+      "url": "https://greatmovieslowerprices.com/roosevelt-cinemas/",
+      "publisher": "Independent Cinemas (Roosevelt Cinemas, Hyde Park)",
+      "scope": "local",
+      "note": "Same operator and same page format as cin-lyceum. Read by scripts/cinema.py.",
+      "venue": {
+        "name": "Roosevelt Cinemas",
+        "city": "Hyde Park, NY",
+        "address": "4060 Albany Post Rd, Hyde Park, NY 12538",
+        "lat": 41.7846,
+        "lon": -73.933
+      }
+    },
+    {
+      "id": "cin-newpaltz",
+      "kind": "html",
+      "url": "https://greatmovieslowerprices.com/new-paltz-cinemas/",
+      "publisher": "Independent Cinemas (New Paltz Cinemas)",
+      "scope": "local",
+      "note": "Same operator and same page format as cin-lyceum. Read by scripts/cinema.py.",
+      "venue": {
+        "name": "New Paltz Cinemas",
+        "city": "New Paltz, NY",
+        "address": "2 New Paltz Plaza, New Paltz, NY 12561",
+        "lat": 41.7471,
+        "lon": -74.0868
+      }
+    },
+    {
+      "id": "cin-warwickdrivein",
+      "kind": "html",
+      "url": "https://www.warwickdrivein.com/movies",
+      "publisher": "Warwick Drive-In",
+      "scope": "local",
+      "enabled": false,
+      "note": "Day tabs render into the served HTML but the titles and times behind them do not. No hand-read path found; disabled until one is."
+    },
+    {
+      "id": "cin-bantam",
+      "kind": "html",
+      "url": "https://bantamcinema.org/",
+      "publisher": "Bantam Cinema & Arts Center",
+      "scope": "local",
+      "enabled": false,
+      "note": "Next.js shell, no listings server-side. bantamcinema.com 301s here. Disabled until a readable path is found."
     }
   ]
 }

@@ -607,6 +607,7 @@ def main():
     ap.add_argument('--social', default='build/social.json')
     ap.add_argument('--libcal', default='build/libcal.json')
     ap.add_argument('--songkick', default='build/songkick.json')
+    ap.add_argument('--cinema', default='build/cinema.json')
     ap.add_argument('--manual', default='sources/manual.json')
     ap.add_argument('--out', default='build/enriched.json')
     ap.add_argument('--registry', default='sources/registry.json')
@@ -700,14 +701,26 @@ def main():
     prepared = []
     for path, key in ((args.platform, 'events'), (args.jsonld, 'events'),
                       (args.social, 'events'), (args.libcal, 'events'),
-                      (args.songkick, 'events'), (args.manual, 'items')):
+                      (args.songkick, 'events'), (args.cinema, 'events'),
+                      (args.manual, 'items')):
         if os.path.exists(path):
             prepared.extend(json.load(open(path)).get(key, []))
 
     platform_kept = 0
     for e in prepared:
         # Hand-read entries were checked by a person; pass them through whole.
+        # Coordinates are the one thing a person reading a listing page does
+        # not have — a pop-up screening names a brewery, not a latitude — so
+        # those still go through the geocoder. Everything else stands as read.
         if str(e.get('id', '')).startswith('manual-'):
+            if e.get('lat') is None or e.get('lon') is None:
+                query = e.get('address') or (
+                    f"{e.get('venue')}, {e.get('city')}" if e.get('city') else e.get('venue'))
+                hit = geocode(query, cache, stats) if query else None
+                if not hit:
+                    dropped['ungeocodable'] += 1
+                    continue
+                e['lat'], e['lon'] = hit['lat'], hit['lon']
             if miles(center['lat'], center['lon'], e['lat'], e['lon']) > center['radiusMiles']:
                 dropped['out_of_radius'] += 1
                 continue

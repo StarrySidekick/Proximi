@@ -269,6 +269,7 @@ sources/manual.json       listings read by hand, versioned so they survive rerun
         ├─ social.py      Eventbrite + Meetup       → build/social.json
         ├─ libcal.py      library calendars         → build/libcal.json
         ├─ songkick.py    ticketed concerts         → build/songkick.json
+        ├─ cinema.py      independent film houses  → build/cinema.json
         ├─ enrich.py      geocode, radius-filter, classify
         ├─ merge.py       collapse repeats, dedupe → data/events.json
         └─ validate.py    gate before anything ships
@@ -304,6 +305,37 @@ actually looking at the places already inside it.
 
 The radius is now 75 miles, which additionally reaches New York City, New
 Haven, Hartford, Hudson and Great Barrington.
+
+### Cinemas are the hardest tier, and three of them had lost their domains
+
+A pass over every independent cinema within fifty miles of Beacon — Manhattan
+excluded — turned up two things worth writing down.
+
+The first is that **the cinema tier is almost entirely unreadable by script**.
+Of roughly two dozen theatres, five serve their schedule as HTML: Jacob Burns
+(an ISO `data-showtime` on every screening), Rosendale (a Filmbot month grid
+whose day cells carry the whole show card in an escaped attribute), and the
+three houses one small operator runs at Red Hook, Hyde Park and New Paltz off
+one plain page each. `scripts/cinema.py` reads those five. Everything else runs
+a ticketing SPA — Indy Systems, Filmbot's hosted app, or Agile Ticketing behind
+an Imperva bot wall — and serves a shell with no listings in it. Those are
+hand-read into `sources/manual.json` or disabled with the reason recorded.
+
+The second is that **three theatre domains had lapsed and been re-registered by
+gambling operators**: `downingfilmcenter.com`, `storyscreenbeacon.com` and
+`bethelcinema.com` now serve Indonesian and Turkish betting sites. All three
+answer HTTP 200, so a liveness check reads them as healthy. Story Screen is
+alive at a different domain; the other two are absent from the registry with a
+note. A fourth, `rivertownfilm.org`, is genuinely the film society's site but
+its WordPress has been SEO-spammed with online-casino copy sitting in the page
+body beside the film blurbs, so nothing is read off it either. Small venues lose
+domains often — for this tier, check what a URL *serves*, not just that it
+answers.
+
+The multiplex schedules are collapsed to one card per film per day rather than
+one per showtime, with the day's times in the card. Four rows of the same film
+four hours apart is the same answer to "what can I see tonight" printed four
+times; `merge.py` then folds the daily repeats into *Every day, through Sep 2*.
 
 ### The registry is the point
 
