@@ -69,7 +69,7 @@ STATE_NAMES = {'NY': 'NY', 'New York': 'NY', 'CT': 'CT', 'Connecticut': 'CT',
 # a private home with a plaque by the door. What separates a destination is
 # that somebody bothered to record a way in — a website, an opening time, a
 # heritage listing, a description. Kinds listed here have to show one.
-THIN = {'historic site', 'historic house'}
+THIN = {'historic site', 'historic house', 'garden'}
 
 
 def miles(lat1, lon1, lat2, lon2):
@@ -297,8 +297,22 @@ def test_selectors():
     return len(cases)
 
 
+# A garden that says what kind of garden it is has declared itself a
+# destination; the rest have not.
+VISITABLE_GARDENS = {'botanical', 'arboretum'}
+
+
 def substantial(kind, tags):
-    """Is this a destination, or a map feature that happens to have a name?"""
+    """Is this a destination, or a map feature that happens to have a name?
+
+    Of 363 named gardens inside fifty miles, 208 were a bare leisure=garden
+    with nothing else on them — "Rose Garden", "Butterfly Garden", "College
+    Courtyard", "9/11 Memorial Garden". Those are features *inside* somewhere
+    else, and listing them as places to go buries the dozen botanical gardens
+    and arboretums that are the reason anyone asked for gardens.
+    """
+    if kind == 'garden' and tags.get('garden:type') in VISITABLE_GARDENS:
+        return True
     if kind not in THIN:
         return True
     return bool(website_of(tags) or tags.get('wikidata') or tags.get('wikipedia')
