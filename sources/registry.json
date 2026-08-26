@@ -22,7 +22,9 @@
     "LibCal is read by scripts/libcal.py, not the registry: its iCal export returns an empty body and rss.php a feed with zero items, so the only working route is the per-day ajax endpoint the calendar page itself calls, walked day by day.",
     "Songkick is read by scripts/songkick.py (metro pages, JSON-LD MusicEvents): the ticketed-concert layer — Capitol Theatre, Tarrytown Music Hall, Daryl's House — whose own sites bot-challenge us or render in JavaScript. Their search/API endpoints 406; the metro pages serve plain HTML.",
     "Marist has a working Liferay JSON API at /api/jsonws/events.maristevent/get-upcoming-events/limit/1000 (double-encoded JSON), but every entry is internal academic calendar — Semester Begins, Search Committee Meeting, Open House. Not registered: the campus rule would drop all of it.",
-    "Assabet Interactive is the other library calendar platform beside LibCal, and it does publish schema.org Events on /calendar/. Its subdomain is not derivable from the library domain — fingerprint the homepage for an assabetinteractive.com link instead."
+    "Assabet Interactive is the other library calendar platform beside LibCal, and it does publish schema.org Events on /calendar/. Its subdomain is not derivable from the library domain — fingerprint the homepage for an assabetinteractive.com link instead.",
+    "Local cinemas are the hardest tier in the registry. Twenty-three were probed in the 2026-08 pass and one — the Fisher Center at Bard — had a feed. The rest run bespoke or client-side ticketing (Filmbot, Wix Thunderbolt, Veezi) with no iCal, no JSON-LD and no public API, so they are html and hand-read. Do not re-probe them hoping for a feed.",
+    "downingfilmcenter.com is NOT the Downing Film Center any more: the domain now serves an Indonesian gambling site (215 mentions of \"slot\", none of \"Downing\" or \"Newburgh\"). It is deliberately absent from this registry — a hand-read pass must not ingest it. Find the theatre's current home before adding it back."
   ],
   "sources": [
     {
@@ -569,6 +571,89 @@
       "scope": "local",
       "enabled": false,
       "note": "Found and disabled the same day, 2026-08: feed frozen since 2022-07-17."
+    },
+    {
+      "id": "fishercenter",
+      "kind": "ics",
+      "url": "https://fishercenter.bard.edu/events/?ical=1",
+      "publisher": "Fisher Center at Bard",
+      "scope": "regional"
+    },
+    {
+      "id": "cin-storyscreen",
+      "kind": "html",
+      "url": "https://storyscreenbeacon.com/",
+      "publisher": "Story Screen Beacon",
+      "scope": "local",
+      "note": "Showtimes render client-side; the served HTML carries no listing links and no JSON-LD."
+    },
+    {
+      "id": "cin-rosendale",
+      "kind": "html",
+      "url": "https://rosendaletheatre.org/calendar/",
+      "publisher": "Rosendale Theatre",
+      "scope": "local",
+      "note": "Runs Filmbot. The calendar is server-rendered but as a bare month grid — titles and day numbers in separate cells, no JSON-LD, and the Filmbot plugin JS exposes no API. Parseable only by reading the grid, so hand-read for now."
+    },
+    {
+      "id": "cin-picturehouse",
+      "kind": "html",
+      "url": "https://thepicturehouse.org/",
+      "publisher": "The Picture House, Pelham",
+      "scope": "local",
+      "note": "Homepage is an 8KB shell; showtimes load client-side."
+    },
+    {
+      "id": "cin-timeandspace",
+      "kind": "html",
+      "url": "https://timeandspace.org/",
+      "publisher": "Time & Space Limited, Hudson",
+      "scope": "local",
+      "note": "12KB shell, no structured data."
+    },
+    {
+      "id": "cin-moviehouse",
+      "kind": "html",
+      "url": "https://themoviehouse.net/",
+      "publisher": "The Moviehouse, Millerton",
+      "scope": "local",
+      "note": "Wix. Showtimes come from the Thunderbolt renderer, not the served HTML."
+    },
+    {
+      "id": "cin-crandell",
+      "kind": "html",
+      "url": "https://crandelltheatre.org/",
+      "publisher": "Crandell Theatre, Chatham",
+      "scope": "local"
+    },
+    {
+      "id": "cin-avon",
+      "kind": "html",
+      "url": "https://avontheatre.org/",
+      "publisher": "Avon Theatre, Stamford",
+      "scope": "local",
+      "note": "Answers HTTP 202 with a bot interstitial to scripted fetches."
+    },
+    {
+      "id": "cin-prospector",
+      "kind": "html",
+      "url": "https://prospectortheater.org/",
+      "publisher": "Prospector Theater, Ridgefield",
+      "scope": "local"
+    },
+    {
+      "id": "cin-triplex",
+      "kind": "html",
+      "url": "https://thetriplex.org/",
+      "publisher": "The Triplex Cinema, Great Barrington",
+      "scope": "local"
+    },
+    {
+      "id": "cin-bearsville",
+      "kind": "html",
+      "url": "https://bearsvilletheater.com/",
+      "publisher": "Bearsville Theater, Woodstock",
+      "scope": "local"
     }
   ]
 }

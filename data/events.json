@@ -1,7 +1,7 @@
 {
   "meta": {
     "schemaVersion": 2,
-    "scrapedAt": "2026-08-26T03:43:34+00:00",
+    "scrapedAt": "2026-08-26T03:51:33+00:00",
     "centerName": "Beacon, NY",
     "centerLat": 41.5048,
     "centerLon": -73.9696,
@@ -18,6 +18,7 @@
       "Emelin Theatre",
       "Eventbrite",
       "Fairfield University",
+      "Fisher Center at Bard",
       "Greenburgh Public Library",
       "Grinnell Library, Wappingers Falls",
       "Howland Public Library, Beacon",
@@ -53365,6 +53366,33 @@
       "placeKind": "brewery"
     },
     {
+      "id": "fishercenter-89657552",
+      "title": "The Life and Legacy of Friedrich Gernsheim",
+      "type": "other",
+      "types": [
+        "other"
+      ],
+      "repeats": false,
+      "audience": "all",
+      "setting": "indoor",
+      "timeOfDay": "daytime",
+      "hasFood": false,
+      "host": "Fisher Center at Bard",
+      "start": "2026-09-19T11:00:00-04:00",
+      "end": "2026-09-19T11:00:00-04:00",
+      "venue": "Olin Hall",
+      "city": null,
+      "address": "Olin Hall",
+      "lat": 40.76528,
+      "lon": -73.95554,
+      "price": null,
+      "signupRequired": false,
+      "url": "https://fishercenter.bard.edu/events/the-life-and-legacy-of-friedrich-gernsheim/",
+      "description": null,
+      "source": "Fisher Center at Bard",
+      "placeKind": "club"
+    },
+    {
       "id": "eventbrite-1507988",
       "title": "Ceramic Painting Workshops in Warwick, NY",
       "type": "art exhibit",
@@ -53644,6 +53672,33 @@
       "url": "https://www.meetup.com/fairfield-county-vegan-meetup/events/316064176/",
       "description": "It's time for my annual Vegan Cookbook Judging Contest Party! Each year, I am a vegan cookbook judge for the International Vegan Film Festival. They send me three cookbooks and I need to prepare several recipes from each book. Come help me eat this food! If the weather cooperates, I'll have lawn games set up, too!",
       "source": "Meetup"
+    },
+    {
+      "id": "fishercenter-19920817",
+      "title": "Gernsheim at the Piano",
+      "type": "other",
+      "types": [
+        "other"
+      ],
+      "repeats": false,
+      "audience": "all",
+      "setting": "indoor",
+      "timeOfDay": "daytime",
+      "hasFood": false,
+      "host": "Fisher Center at Bard",
+      "start": "2026-09-19T13:00:00-04:00",
+      "end": "2026-09-19T13:00:00-04:00",
+      "venue": "Olin Hall",
+      "city": null,
+      "address": "Olin Hall",
+      "lat": 40.76528,
+      "lon": -73.95554,
+      "price": null,
+      "signupRequired": false,
+      "url": "https://fishercenter.bard.edu/events/gernsheim-at-the-piano/",
+      "description": null,
+      "source": "Fisher Center at Bard",
+      "placeKind": "club"
     },
     {
       "id": "eventbrite-9750929",
@@ -55086,6 +55141,33 @@
       "types": [
         "meet & greet"
       ]
+    },
+    {
+      "id": "fishercenter-7537913",
+      "title": "The Romantic Arc",
+      "type": "other",
+      "types": [
+        "other"
+      ],
+      "repeats": false,
+      "audience": "all",
+      "setting": "indoor",
+      "timeOfDay": "daytime",
+      "hasFood": false,
+      "host": "Fisher Center at Bard",
+      "start": "2026-09-20T11:00:00-04:00",
+      "end": "2026-09-20T11:00:00-04:00",
+      "venue": "Olin Hall",
+      "city": null,
+      "address": "Olin Hall",
+      "lat": 40.76528,
+      "lon": -73.95554,
+      "price": null,
+      "signupRequired": false,
+      "url": "https://fishercenter.bard.edu/events/the-romantic-arc/",
+      "description": null,
+      "source": "Fisher Center at Bard",
+      "placeKind": "club"
     },
     {
       "id": "stormking-55297745",

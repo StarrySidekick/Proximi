@@ -2443,5 +2443,13 @@
 "display": "City of Rye, Westchester County, New York, 10580, United States",
 "matched": "Rye, NY",
 "precision": 3
+},
+"fisher center, sosnoff theater": null,
+"olin hall": {
+"lat": 40.7652784,
+"lon": -73.9555439,
+"display": "Olin Hall, East 69th Street, Lenox Hill, Manhattan Community Board 8, Manhattan, New York County, New York, 10021, United States",
+"matched": "Olin Hall",
+"precision": 0
 }
 }
