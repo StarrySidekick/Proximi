@@ -53,8 +53,8 @@ UA = 'Mozilla/5.0 (compatible; ProximiBot/0.1; +https://github.com/StarrySidekic
 # data here" rather than as a failure. A mirror that lies is worse than one
 # that is down.
 MIRRORS = [
-    'https://maps.mail.ru/osm/tools/overpass/api/interpreter',
     'https://overpass-api.de/api/interpreter',
+    'https://maps.mail.ru/osm/tools/overpass/api/interpreter',
     'https://overpass.kumi.systems/api/interpreter',
     'https://overpass.private.coffee/api/interpreter',
 ]
@@ -95,25 +95,40 @@ def bbox(center, radius):
             f"{center['lat'] + dlat:.4f},{center['lon'] + dlon:.4f}")
 
 
+# Which mirror answered last. The estate rotates — in one session the main
+# endpoint reset every connection for an hour and then came back while the
+# mirror that had been carrying the run went down — so a static order is
+# always wrong eventually, and a dead mirror at the front of the list costs
+# its full timeout on every single selector.
+_LAST_GOOD = None
+
+
 def query(body, timeout=180, sweeps=3):
-    """Every mirror, then the whole list again after a pause.
+    """Whatever worked last, then every mirror, then round again after a pause.
 
     A 504 here means one mirror is busy, not that the data is missing, and the
     busy one is rarely the same two minutes later. Giving up after a single
     sweep is what made an earlier run report "museum: 0" for a county with
     forty of them.
     """
+    global _LAST_GOOD
     last = None
     for sweep in range(sweeps):
-        for mirror in MIRRORS:
+        order = ([_LAST_GOOD] + [m for m in MIRRORS if m != _LAST_GOOD]
+                 if _LAST_GOOD else list(MIRRORS))
+        for mirror in order:
             try:
                 req = urllib.request.Request(
                     mirror, data=urllib.parse.urlencode({'data': body}).encode(),
                     headers={'User-Agent': UA})
                 with urllib.request.urlopen(req, timeout=timeout) as resp:
-                    return json.loads(resp.read().decode('utf-8', 'replace'))
+                    payload = json.loads(resp.read().decode('utf-8', 'replace'))
+                _LAST_GOOD = mirror
+                return payload
             except Exception as exc:
                 last = f'{mirror.split("/")[2]}: {exc}'
+                if mirror == _LAST_GOOD:
+                    _LAST_GOOD = None       # it stopped working; stop preferring it
         if sweep < sweeps - 1:
             time.sleep(20 * (sweep + 1))
     raise RuntimeError(f'all Overpass mirrors failed (last: {last})')
