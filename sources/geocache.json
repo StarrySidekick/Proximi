@@ -1929,5 +1929,285 @@
 "display": "160, Hanover Road, Brondesbury Park, Brondesbury, London Borough of Brent, Greater London, England, NW10 3DP, United Kingdom",
 "matched": "160 Hanover Road",
 "precision": 0
+},
+"small conference room, greenburgh public library, elmsford, ny": {
+"lat": 41.0464411,
+"lon": -73.806776,
+"display": "Greenburgh Public Library, 300, Tarrytown Road, Village of Elmsford, Town of Greenburgh, Westchester County, New York, 10523, United States",
+"matched": "Greenburgh Public Library, Elmsford, NY",
+"precision": 1
+},
+"multipurpose room, greenburgh public library, elmsford, ny": {
+"lat": 41.0464411,
+"lon": -73.806776,
+"display": "Greenburgh Public Library, 300, Tarrytown Road, Village of Elmsford, Town of Greenburgh, Westchester County, New York, 10523, United States",
+"matched": "Greenburgh Public Library, Elmsford, NY",
+"precision": 1
+},
+"local history room, greenburgh public library, elmsford, ny": {
+"lat": 41.0464411,
+"lon": -73.806776,
+"display": "Greenburgh Public Library, 300, Tarrytown Road, Village of Elmsford, Town of Greenburgh, Westchester County, New York, 10523, United States",
+"matched": "Greenburgh Public Library, Elmsford, NY",
+"precision": 1
+},
+"computer lab, greenburgh public library, elmsford, ny": {
+"lat": 41.0464411,
+"lon": -73.806776,
+"display": "Greenburgh Public Library, 300, Tarrytown Road, Village of Elmsford, Town of Greenburgh, Westchester County, New York, 10523, United States",
+"matched": "Greenburgh Public Library, Elmsford, NY",
+"precision": 1
+},
+"off-site, newburgh free library, newburgh, ny": {
+"lat": 41.5036031,
+"lon": -74.0084233,
+"display": "Newburgh Free Library, 124, Grand Street, Varick Homes, City of Newburgh, Orange County, New York, 12550, United States",
+"matched": "Newburgh Free Library, Newburgh, NY",
+"precision": 1
+},
+"town branch, newburgh free library, newburgh, ny": {
+"lat": 41.5036031,
+"lon": -74.0084233,
+"display": "Newburgh Free Library, 124, Grand Street, Varick Homes, City of Newburgh, Orange County, New York, 12550, United States",
+"matched": "Newburgh Free Library, Newburgh, NY",
+"precision": 1
+},
+"the hub, newburgh free library, newburgh, ny": {
+"lat": 41.5036031,
+"lon": -74.0084233,
+"display": "Newburgh Free Library, 124, Grand Street, Varick Homes, City of Newburgh, Orange County, New York, 12550, United States",
+"matched": "Newburgh Free Library, Newburgh, NY",
+"precision": 1
+},
+"reading room, mount kisco public library, mount kisco, ny": {
+"lat": 41.2067797,
+"lon": -73.7272905,
+"display": "Mount Kisco Public Library, Main Street, Village/Town of Mount Kisco, Westchester County, New York, 10549, United States",
+"matched": "Mount Kisco Public Library, Mount Kisco, NY",
+"precision": 1
+},
+"community room, brewster public library, brewster, ny": {
+"lat": 41.3943918,
+"lon": -73.6170896,
+"display": "Village of Brewster, Town of Southeast, Putnam County, New York, United States",
+"matched": "Brewster, NY",
+"precision": 3
+},
+"book cave, brewster public library, brewster, ny": {
+"lat": 41.3943918,
+"lon": -73.6170896,
+"display": "Village of Brewster, Town of Southeast, Putnam County, New York, United States",
+"matched": "Brewster, NY",
+"precision": 3
+},
+"program room, irvington public library, irvington, ny": {
+"lat": 41.0396316,
+"lon": -73.8726902,
+"display": "Irvington Public Library, South Astor Street, Village of Irvington, Town of Greenburgh, Westchester County, New York, 10533, United States",
+"matched": "Irvington Public Library, Irvington, NY",
+"precision": 1
+},
+"children's program room, greenburgh public library, elmsford, ny": {
+"lat": 41.0464411,
+"lon": -73.806776,
+"display": "Greenburgh Public Library, 300, Tarrytown Road, Village of Elmsford, Town of Greenburgh, Westchester County, New York, 10523, United States",
+"matched": "Greenburgh Public Library, Elmsford, NY",
+"precision": 1
+},
+"lobby-caf\u00e9, newburgh free library, newburgh, ny": {
+"lat": 41.5036031,
+"lon": -74.0084233,
+"display": "Newburgh Free Library, 124, Grand Street, Varick Homes, City of Newburgh, Orange County, New York, 12550, United States",
+"matched": "Newburgh Free Library, Newburgh, NY",
+"precision": 1
+},
+"riverview meeting room, newburgh free library, newburgh, ny": {
+"lat": 41.5036031,
+"lon": -74.0084233,
+"display": "Newburgh Free Library, 124, Grand Street, Varick Homes, City of Newburgh, Orange County, New York, 12550, United States",
+"matched": "Newburgh Free Library, Newburgh, NY",
+"precision": 1
+},
+"boe/library lobby, newburgh free library, newburgh, ny": {
+"lat": 41.5036031,
+"lon": -74.0084233,
+"display": "Newburgh Free Library, 124, Grand Street, Varick Homes, City of Newburgh, Orange County, New York, 12550, United States",
+"matched": "Newburgh Free Library, Newburgh, NY",
+"precision": 1
+},
+"green table 2nd floor, newburgh free library, newburgh, ny": {
+"lat": 41.5036031,
+"lon": -74.0084233,
+"display": "Newburgh Free Library, 124, Grand Street, Varick Homes, City of Newburgh, Orange County, New York, 12550, United States",
+"matched": "Newburgh Free Library, Newburgh, NY",
+"precision": 1
+},
+"storyhour room, newburgh free library, newburgh, ny": {
+"lat": 41.5036031,
+"lon": -74.0084233,
+"display": "Newburgh Free Library, 124, Grand Street, Varick Homes, City of Newburgh, Orange County, New York, 12550, United States",
+"matched": "Newburgh Free Library, Newburgh, NY",
+"precision": 1
+},
+"e-learning center, newburgh free library, newburgh, ny": {
+"lat": 41.5036031,
+"lon": -74.0084233,
+"display": "Newburgh Free Library, 124, Grand Street, Varick Homes, City of Newburgh, Orange County, New York, 12550, United States",
+"matched": "Newburgh Free Library, Newburgh, NY",
+"precision": 1
+},
+"community room, mount kisco public library, mount kisco, ny": {
+"lat": 41.2067797,
+"lon": -73.7272905,
+"display": "Mount Kisco Public Library, Main Street, Village/Town of Mount Kisco, Westchester County, New York, 10549, United States",
+"matched": "Mount Kisco Public Library, Mount Kisco, NY",
+"precision": 1
+},
+"study room b, mount kisco public library, mount kisco, ny": {
+"lat": 41.2067797,
+"lon": -73.7272905,
+"display": "Mount Kisco Public Library, Main Street, Village/Town of Mount Kisco, Westchester County, New York, 10549, United States",
+"matched": "Mount Kisco Public Library, Mount Kisco, NY",
+"precision": 1
+},
+"conference room, brewster public library, brewster, ny": {
+"lat": 41.3943918,
+"lon": -73.6170896,
+"display": "Village of Brewster, Town of Southeast, Putnam County, New York, United States",
+"matched": "Brewster, NY",
+"precision": 3
+},
+"lobby, mount kisco public library, mount kisco, ny": {
+"lat": 41.2067797,
+"lon": -73.7272905,
+"display": "Mount Kisco Public Library, Main Street, Village/Town of Mount Kisco, Westchester County, New York, 10549, United States",
+"matched": "Mount Kisco Public Library, Mount Kisco, NY",
+"precision": 1
+},
+"children's room, brewster public library, brewster, ny": {
+"lat": 41.3943918,
+"lon": -73.6170896,
+"display": "Village of Brewster, Town of Southeast, Putnam County, New York, United States",
+"matched": "Brewster, NY",
+"precision": 3
+},
+"teenburgh, greenburgh public library, elmsford, ny": {
+"lat": 41.0464411,
+"lon": -73.806776,
+"display": "Greenburgh Public Library, 300, Tarrytown Road, Village of Elmsford, Town of Greenburgh, Westchester County, New York, 10523, United States",
+"matched": "Greenburgh Public Library, Elmsford, NY",
+"precision": 1
+},
+"webinar/virtual, greenburgh public library, elmsford, ny": {
+"lat": 41.0464411,
+"lon": -73.806776,
+"display": "Greenburgh Public Library, 300, Tarrytown Road, Village of Elmsford, Town of Greenburgh, Westchester County, New York, 10523, United States",
+"matched": "Greenburgh Public Library, Elmsford, NY",
+"precision": 1
+},
+"storytime room, irvington public library, irvington, ny": {
+"lat": 41.0396316,
+"lon": -73.8726902,
+"display": "Irvington Public Library, South Astor Street, Village of Irvington, Town of Greenburgh, Westchester County, New York, 10533, United States",
+"matched": "Irvington Public Library, Irvington, NY",
+"precision": 1
+},
+"boe/library lobby, newburgh free library plaza, newburgh free library, newburgh, ny": {
+"lat": 41.5000767,
+"lon": -74.0098299,
+"display": "City of Newburgh, Orange County, New York, United States",
+"matched": "Newburgh, NY",
+"precision": 3
+},
+"conference room, mount kisco public library, mount kisco, ny": {
+"lat": 41.2067797,
+"lon": -73.7272905,
+"display": "Mount Kisco Public Library, Main Street, Village/Town of Mount Kisco, Westchester County, New York, 10549, United States",
+"matched": "Mount Kisco Public Library, Mount Kisco, NY",
+"precision": 1
+},
+"irvington library, irvington public library, irvington, ny": {
+"lat": 41.0396316,
+"lon": -73.8726902,
+"display": "Irvington Public Library, South Astor Street, Village of Irvington, Town of Greenburgh, Westchester County, New York, 10533, United States",
+"matched": "Irvington Public Library, Irvington, NY",
+"precision": 1
+},
+"children's program room, mount kisco public library, mount kisco, ny": {
+"lat": 41.2067797,
+"lon": -73.7272905,
+"display": "Mount Kisco Public Library, Main Street, Village/Town of Mount Kisco, Westchester County, New York, 10549, United States",
+"matched": "Mount Kisco Public Library, Mount Kisco, NY",
+"precision": 1
+},
+"boe/library lobby, e-learning center, newburgh free library plaza, riverview meeting room, newburgh free library, newburgh, ny": {
+"lat": 41.5000767,
+"lon": -74.0098299,
+"display": "City of Newburgh, Orange County, New York, United States",
+"matched": "Newburgh, NY",
+"precision": 3
+},
+"newburgh free library plaza, riverview meeting room, newburgh free library, newburgh, ny": {
+"lat": 41.5000767,
+"lon": -74.0098299,
+"display": "City of Newburgh, Orange County, New York, United States",
+"matched": "Newburgh, NY",
+"precision": 3
+},
+"endeavor therapuetic horsemanship, mount kisco public library, mount kisco, ny": {
+"lat": 41.2067797,
+"lon": -73.7272905,
+"display": "Mount Kisco Public Library, Main Street, Village/Town of Mount Kisco, Westchester County, New York, 10549, United States",
+"matched": "Mount Kisco Public Library, Mount Kisco, NY",
+"precision": 1
+},
+"front circle sidewalk, greenburgh public library, elmsford, ny": {
+"lat": 41.0464411,
+"lon": -73.806776,
+"display": "Greenburgh Public Library, 300, Tarrytown Road, Village of Elmsford, Town of Greenburgh, Westchester County, New York, 10523, United States",
+"matched": "Greenburgh Public Library, Elmsford, NY",
+"precision": 1
+},
+"montgomery street library entrance, newburgh free library, newburgh, ny": {
+"lat": 41.5036031,
+"lon": -74.0084233,
+"display": "Newburgh Free Library, 124, Grand Street, Varick Homes, City of Newburgh, Orange County, New York, 12550, United States",
+"matched": "Newburgh Free Library, Newburgh, NY",
+"precision": 1
+},
+"teen room, mount kisco public library, mount kisco, ny": {
+"lat": 41.2067797,
+"lon": -73.7272905,
+"display": "Mount Kisco Public Library, Main Street, Village/Town of Mount Kisco, Westchester County, New York, 10549, United States",
+"matched": "Mount Kisco Public Library, Mount Kisco, NY",
+"precision": 1
+},
+"tiffany reading room, irvington public library, irvington, ny": {
+"lat": 41.0396316,
+"lon": -73.8726902,
+"display": "Irvington Public Library, South Astor Street, Village of Irvington, Town of Greenburgh, Westchester County, New York, 10533, United States",
+"matched": "Irvington Public Library, Irvington, NY",
+"precision": 1
+},
+"children's room public floor, greenburgh public library, elmsford, ny": {
+"lat": 41.0464411,
+"lon": -73.806776,
+"display": "Greenburgh Public Library, 300, Tarrytown Road, Village of Elmsford, Town of Greenburgh, Westchester County, New York, 10523, United States",
+"matched": "Greenburgh Public Library, Elmsford, NY",
+"precision": 1
+},
+"early reader section, newburgh free library, newburgh, ny": {
+"lat": 41.5036031,
+"lon": -74.0084233,
+"display": "Newburgh Free Library, 124, Grand Street, Varick Homes, City of Newburgh, Orange County, New York, 12550, United States",
+"matched": "Newburgh Free Library, Newburgh, NY",
+"precision": 1
+},
+"e-learning center, the hub, newburgh free library, newburgh, ny": {
+"lat": 41.5000767,
+"lon": -74.0098299,
+"display": "City of Newburgh, Orange County, New York, United States",
+"matched": "Newburgh, NY",
+"precision": 3
 }
 }

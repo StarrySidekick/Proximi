@@ -17,6 +17,14 @@
       <span class="brand-name">Proximi</span>
     </div>
 
+    <button id="venues-btn" class="filters-btn is-quiet" type="button"
+            aria-haspopup="dialog" aria-expanded="false" aria-controls="venues-panel">
+      <svg viewBox="0 0 16 16" aria-hidden="true" class="ico">
+        <path d="M2 13V6.5L8 2l6 4.5V13H10V9H6v4Z" stroke="currentColor"
+              stroke-width="1.5" fill="none" stroke-linejoin="round"/>
+      </svg>
+      Places
+    </button>
     <button id="open-filters" class="filters-btn" type="button"
             aria-haspopup="dialog" aria-expanded="false" aria-controls="filter-sheet">
       <svg viewBox="0 0 16 16" aria-hidden="true" class="ico">
@@ -41,11 +49,36 @@
   <span class="context-scope" id="context-scope"></span>
 </div>
 
+<div class="wrap">
+  <p class="venue-banner" id="venue-banner" hidden>
+    Showing only <strong id="venue-banner-name"></strong>
+    <button type="button" id="venue-banner-clear">Show everywhere</button>
+  </p>
+</div>
+
+<section id="venues-panel" class="venues-panel" role="dialog" aria-modal="true"
+         aria-labelledby="venues-title" hidden>
+  <div class="venues-inner">
+    <div class="venues-head">
+      <h2 id="venues-title">Places</h2>
+      <button type="button" id="venues-close" class="venues-close"
+              aria-label="Close places">✕</button>
+    </div>
+    <input id="venues-search" type="search" placeholder="Search places or towns…"
+           autocomplete="off">
+    <p class="hint">Tap a place to see only its listings. The eye mutes a place
+      everywhere — useful when one venue's weekly night fills the feed.</p>
+    <ul id="venues-list" class="venues-list"></ul>
+  </div>
+</section>
+
 <main class="wrap">
   <p class="freshness" id="data-banner" hidden></p>
   <ul id="list" class="list"></ul>
   <p id="empty" class="empty" hidden></p>
 </main>
+
+<p class="build-stamp" id="build-stamp" hidden></p>
 
 <div id="toast" class="toast" role="status" aria-live="polite" hidden>
   <span class="toast-msg"></span>
@@ -90,7 +123,7 @@
     </section>
 
     <section class="group" aria-labelledby="g-when">
-      <h3 class="group-h" id="g-when">Happening within</h3>
+      <h3 class="group-h" id="g-when">When</h3>
       <div class="chips" id="horizon" role="group" aria-label="How far ahead to look"></div>
     </section>
 

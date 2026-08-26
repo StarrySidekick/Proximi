@@ -22,7 +22,7 @@ from datetime import datetime, timezone
 from math import radians, sin, cos, asin, sqrt
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from enrich import type_of, types_of, audience_of, place_name, STREET_ONLY
+from enrich import type_of, types_of, audience_of, place_name, STREET_ONLY, NOT_A_PLACE
 
 # Fields computed from a listing rather than reported by its source. They are
 # only ever as good as the code that derived them, so a listing already in the
@@ -400,12 +400,17 @@ def main():
         # prefer a name over a street, and venue is source data rather than a
         # derived field, so nothing else would ever revisit them. "1 Museum Rd"
         # becomes "Storm King Art Center" using only what the record carries.
-        if item.get('venue') and STREET_ONLY.match(str(item['venue']).strip()):
+        stored = str(item.get('venue') or '').strip()
+        if stored and (STREET_ONLY.match(stored) or stored.lower() in NOT_A_PLACE):
             better = place_name(item['venue'], item.get('host'), item.get('source'))
             if better and better != item['venue']:
                 if not item.get('address'):
                     item['address'] = item['venue']
                 item['venue'] = better
+            elif stored.lower() in NOT_A_PLACE:
+                # Nothing on the record names a place. Better to say so than to
+                # let a platform's name stand in for somewhere to go.
+                item['venue'] = 'See listing'
         if is_curated(item):
             continue
         fresh = types_of(item.get('title', ''), item.get('description') or '')

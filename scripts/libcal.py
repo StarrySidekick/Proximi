@@ -72,10 +72,16 @@ def to_event(rec, day, slug):
         'start': when.isoformat() + '-04:00',
         'end': None, 'allDay': all_day,
         'url': rec.get('url') or f'https://{slug}.libcal.com',
-        'venue': rec.get('location') or publisher,
+        # LibCal's location is the room — "Multipurpose Room", "Program Room" —
+        # which is where in the building, not which building. The library is
+        # the venue; the room belongs with the address.
+        'venue': publisher,
+        'room': (rec.get('location') or '').strip() or None,
         # Include the town: "Brewster Public Library" alone resolves to
         # Brewster, Washington, and every event was dropped as out of radius.
-        'city': town, 'address': f'{publisher}, {town}',
+        'city': town,
+        'address': ', '.join(filter(None, [(rec.get('location') or '').strip(),
+                                           publisher, town])),
         'lat': None, 'lon': None,
         'price': {'min': 0.0, 'max': 0.0, 'note': 'Free at the library'},
         'categories': ['community'],

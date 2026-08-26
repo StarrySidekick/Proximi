@@ -261,16 +261,28 @@ STREET_ONLY = re.compile(
     r"\.?\s*$", re.I)
 
 
+# The aggregators are not places. Falling back to the publisher put
+# "Eventbrite" in the venue field of ninety listings, which is no more a place
+# to go on a Friday than "email" is.
+NOT_A_PLACE = {'eventbrite', 'meetup', 'ticketmaster', 'songkick',
+               'see listing', 'online', 'tbd', 'tba', 'various', 'various locations'}
+
+
 def place_name(venue, *fallbacks):
     """The name of the place, preferring a real name over a street address.
 
     Falls back through the source's own venue block, the organiser and the
-    publisher — whichever first gives something that is not just an address.
+    publisher — whichever first gives something that is neither an address nor
+    the name of the platform the listing came through.
     """
     for candidate in (venue, *fallbacks):
-        if candidate and not STREET_ONLY.match(str(candidate).strip()):
-            return str(candidate).strip()
-    return venue or None
+        if not candidate:
+            continue
+        text = str(candidate).strip()
+        if text.lower() in NOT_A_PLACE or STREET_ONLY.match(text):
+            continue
+        return text
+    return None
 
 
 def audience_of(text, title=None, kind=None):

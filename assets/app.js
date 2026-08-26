@@ -36,13 +36,16 @@
   };
 
   // How far ahead to look. `days` is inclusive of today, so 0 means today only.
+  // "This weekend" is a window, not a horizon — it has a near edge as well as a
+  // far one, which is the whole point of asking for it on a Tuesday.
   const HORIZONS = [
-    { id: 'today', label: 'Today',        days: 0 },
-    { id: '3',     label: 'Next 3 days',  days: 3 },
-    { id: '7',     label: 'Next week',    days: 7 },
-    { id: '14',    label: 'Next 2 weeks', days: 14 },
-    { id: '30',    label: 'Next month',   days: 30 },
-    { id: 'any',   label: 'Anytime',      days: Infinity }
+    { id: 'today',   label: 'Today',        days: 0 },
+    { id: '3',       label: 'Next 3 days',  days: 3 },
+    { id: 'weekend', label: 'This weekend', weekend: true },
+    { id: '7',       label: 'Next week',    days: 7 },
+    { id: '14',      label: 'Next 2 weeks', days: 14 },
+    { id: '30',      label: 'Next month',   days: 30 },
+    { id: 'any',     label: 'Anytime',      days: Infinity }
   ];
 
   const REPEAT_MODES = [
@@ -95,6 +98,26 @@
     try { localStorage.setItem(DECISIONS_KEY, JSON.stringify(map)); } catch { /* not fatal */ }
   }
 
+  /* Venues the reader never wants to see again — a brewery whose trivia night
+     fills the feed, a chain that lists the same class in nine towns. Stored
+     next to the per-listing verdicts and read the same guarded way. */
+  const VENUES_KEY = 'proximi.hiddenVenues.v1';
+
+  function loadHiddenVenues() {
+    try {
+      return new Set(JSON.parse(localStorage.getItem(VENUES_KEY) || '[]'));
+    } catch { return new Set(); }
+  }
+
+  function saveHiddenVenues(set) {
+    try { localStorage.setItem(VENUES_KEY, JSON.stringify([...set])); } catch { /* not fatal */ }
+  }
+
+  // "See listing" is what a card says when nothing named a place; it is not
+  // itself a place, so it never becomes a row in Places or a filterable venue.
+  const venueOf = (item) =>
+    (item.venue && item.venue !== 'See listing') ? item.venue : null;
+
   const $ = (id) => document.getElementById(id);
 
   const el = {
@@ -108,6 +131,11 @@
     price: $('price'), priceOut: $('price-out'),
     freeOnly: $('free-only'), signupOnly: $('signup-only'), unitsKm: $('units-km'),
     toast: $('toast'), hiddenNote: $('hidden-note'), showHiddenBtn: $('show-hidden'),
+    venuesBtn: $('venues-btn'), venuesPanel: $('venues-panel'),
+    venuesList: $('venues-list'), venuesClose: $('venues-close'),
+    venuesSearch: $('venues-search'), venueBanner: $('venue-banner'),
+    buildStamp: $('build-stamp'),
+    venueBannerName: $('venue-banner-name'), venueBannerClear: $('venue-banner-clear'),
     clearHiddenBtn: $('clear-hidden'),
     locStatus: $('loc-status'), useMyLocation: $('use-my-location'),
     placeForm: $('place-form'), placeInput: $('place-input'),
@@ -125,6 +153,9 @@
     excludedTypes: new Set(),
     decisions: loadDecisions(),
     showHidden: false,
+    hiddenVenues: loadHiddenVenues(),
+    venueFilter: null,          // showing one venue's listings only
+    view: 'list',               // 'list' | 'venues'
     horizon: DEFAULTS.horizon,
     repeatMode: DEFAULTS.repeatMode,
     timeOfDay: DEFAULTS.timeOfDay,
@@ -162,14 +193,35 @@
 
   // Whole-day index (days since epoch) as observed in the listing timezone, so
   // day grouping never straddles a UTC midnight.
+  //
+  // The formatter is built once per timezone and the results are memoised.
+  // Constructing an Intl.DateTimeFormat is expensive, and this is the hottest
+  // function in the app — the sort comparator alone reaches it O(n log n)
+  // times. Built per call, it was 63% of a render, and a render took 2.9s.
+  let dayFmt = null;
+  let dayFmtTz;
+  let dayCache = new Map();
+
   function dayNumber(d) {
-    const p = new Intl.DateTimeFormat('en-US', {
-      ...zoneOpts(), year: 'numeric', month: '2-digit', day: '2-digit'
-    }).formatToParts(d).reduce((a, x) => (a[x.type] = x.value, a), {});
-    return Date.UTC(+p.year, +p.month - 1, +p.day) / 86400000;
+    const ms = d.getTime();
+    const hit = dayCache.get(ms);
+    if (hit !== undefined) return hit;
+    if (!dayFmt || dayFmtTz !== state.tz) {
+      dayFmt = new Intl.DateTimeFormat('en-US', {
+        ...zoneOpts(), year: 'numeric', month: '2-digit', day: '2-digit'
+      });
+      dayFmtTz = state.tz;
+      dayCache = new Map();
+    }
+    const p = dayFmt.formatToParts(d).reduce((a, x) => (a[x.type] = x.value, a), {});
+    const n = Date.UTC(+p.year, +p.month - 1, +p.day) / 86400000;
+    dayCache.set(ms, n);
+    return n;
   }
 
-  const todayNumber = () => dayNumber(new Date());
+  // Constant for the life of a render, and read on nearly every listing.
+  let todayCache = null;
+  const todayNumber = () => (todayCache ??= dayNumber(new Date()));
 
   // Turn a day index back into a Date at that civil day's UTC midnight, so it
   // can be formatted with timeZone:'UTC' without drifting.
@@ -192,7 +244,7 @@
   // The day a listing sorts and groups under. A multi-day run that started
   // before today is still happening, so it belongs under Today.
   function effectiveDay(item) {
-    return isOngoing(item) ? todayNumber() : dayNumber(item._start);
+    return item._day ??= (isOngoing(item) ? todayNumber() : dayNumber(item._start));
   }
 
   function isExpired(item) {
@@ -275,11 +327,32 @@
     return v >= Number(el.price.max) ? Infinity : v;
   };
 
+  // Day index 0 is 1970-01-01, a Thursday, so (n + 4) % 7 gives 0 = Sunday.
+  const weekdayOf = (dayNum) => (((dayNum % 7) + 4) % 7 + 7) % 7;
+
+  /* The coming Friday, Saturday and Sunday. Asked on one of those days it means
+     the weekend already under way, not the next one — nobody wants "this
+     weekend" on a Saturday to start showing them next Friday. */
+  function weekendWindow() {
+    const today = todayNumber();
+    const dow = weekdayOf(today);                 // 0 Sun … 5 Fri, 6 Sat
+    if (dow === 0) return [today, today];         // Sunday: today only
+    if (dow === 5 || dow === 6) return [today, today + (6 - dow) + 1];
+    return [today + (5 - dow), today + (7 - dow)];
+  }
+
   function matchesHorizon(item) {
-    const limit = horizonDays();
-    if (limit === Infinity) return true;
-    const days = effectiveDay(item) - todayNumber();
-    return days >= 0 && days <= limit;
+    const horizon = HORIZONS.find((h) => h.id === state.horizon) || HORIZONS[3];
+    const day = effectiveDay(item);
+    if (horizon.weekend) {
+      const [from, to] = weekendWindow();
+      // A run already under way counts if it covers any of the weekend.
+      const end = item._end ? dayNumber(item._end) : day;
+      return day <= to && end >= from;
+    }
+    if (horizon.days === Infinity) return true;
+    const days = day - todayNumber();
+    return days >= 0 && days <= horizon.days;
   }
 
   function matchesQuery(item) {
@@ -317,6 +390,12 @@
       // this is the whole point of a left swipe, so it runs before anything
       // else and is not softened by the other filters.
       if (!state.showHidden && state.decisions[item.id] === 'hidden') return false;
+      const venue = venueOf(item);
+      if (state.venueFilter) {
+        if (venue !== state.venueFilter) return false;
+      } else if (venue && state.hiddenVenues.has(venue)) {
+        return false;
+      }
       const kinds = typesOf(item);
       // Excluding wins over including: hiding Games should hide a listing that
       // is also a Class, or the exclusion does not do what it says.
@@ -481,11 +560,60 @@
     else delete state.decisions[item.id];
     saveDecisions(state.decisions);
     if (verdict === 'going') addToCalendar(item);
-    render();
+    // Touch only the card that changed. A verdict cannot alter which other
+    // listings match, so rebuilding the list to show one badge is work nobody
+    // asked for — and it is what the swipe was waiting on.
+    if (!patchCard(item)) render(); else { updateHiddenNote(); updateFilterCount(); }
     toast(verdict === 'going' ? `Added “${item.title}” to your calendar`
           : verdict === 'hidden' ? `Hid “${item.title}”`
           : `Restored “${item.title}”`,
           () => decide(item, previous || null));
+  }
+
+  /* Update one card in place. Returns false only when the list genuinely has
+     to be rebuilt — the caller falls back to a full render then. */
+  function patchCard(item) {
+    const slot = el.list.querySelector(`.card-slot[data-id="${CSS.escape(item.id)}"]`);
+    if (!slot) return false;
+    const verdict = state.decisions[item.id];
+    if (verdict === 'hidden' && !state.showHidden) return removeCard(item, slot);
+    slot.classList.toggle('is-going', verdict === 'going');
+    slot.classList.toggle('is-hidden', verdict === 'hidden');
+    const tags = slot.querySelector('.tags');
+    const badge = tags?.querySelector('.badge-going');
+    if (verdict === 'going' && !badge) {
+      const b = document.createElement('span');
+      b.className = 'badge badge-going';
+      b.textContent = 'Going';
+      tags.prepend(b);
+    } else if (verdict !== 'going') {
+      badge?.remove();
+    }
+    return true;
+  }
+
+  /* Hiding takes a card out of the list. Everything that changes as a result —
+     the day's count, the results line, the chip counts — is derivable from
+     what is already on screen, so none of it needs the list rebuilt. */
+  function removeCard(item, slot) {
+    const divider = slot.previousElementSibling?.classList.contains('day-head')
+      ? slot.previousElementSibling
+      : [...el.list.children].slice(0, [...el.list.children].indexOf(slot))
+          .reverse().find((n) => n.classList.contains('day-head'));
+    slot.remove();
+    if (divider) {
+      const n = divider.querySelector('.day-count');
+      const left = n ? Number(n.textContent) - 1 : 0;
+      if (left > 0 && n) n.textContent = String(left);
+      else divider.remove();          // that was the day's last listing
+    }
+    state.lastResults = (state.lastResults || []).filter((i) => i.id !== item.id);
+    for (const t of typesOf(item)) {
+      const chip = el.types.querySelector(`.chip[data-type="${CSS.escape(t)}"] .chip-n`);
+      if (chip) chip.textContent = String(Math.max(0, Number(chip.textContent) - 1));
+    }
+    updateContextBar(el.list.querySelectorAll('.card-slot').length);
+    return true;
   }
 
   let toastTimer = null;
@@ -509,7 +637,7 @@
   const SWIPE_COMMIT = 90;   // px past which the verdict sticks
 
   function attachSwipe(li, surface, item) {
-    let startX = 0, startY = 0, dx = 0, active = false, decided = false;
+    let startX = 0, startY = 0, dx = 0, active = false, decided = false, frame = null;
 
     li.addEventListener('pointerdown', (e) => {
       if (e.pointerType === 'mouse' && e.button !== 0) return;
@@ -530,12 +658,21 @@
         surface.classList.add('is-swiping');
       }
       dx = mx;
-      surface.style.setProperty('--dx', `${dx}px`);
-      li.dataset.swipe = dx > SWIPE_COMMIT ? 'going' : dx < -SWIPE_COMMIT ? 'hidden' : 'none';
+      // Pointer events can outpace the display; writing style on each one asks
+      // for style recalculation the frame will never show. One write per frame.
+      if (frame === null) {
+        frame = requestAnimationFrame(() => {
+          frame = null;
+          surface.style.setProperty('--dx', `${dx}px`);
+          const want = dx > SWIPE_COMMIT ? 'going' : dx < -SWIPE_COMMIT ? 'hidden' : 'none';
+          if (li.dataset.swipe !== want) li.dataset.swipe = want;
+        });
+      }
       e.preventDefault();
     });
 
     const finish = () => {
+      if (frame !== null) { cancelAnimationFrame(frame); frame = null; }
       if (!active) { startX = startY = 0; return; }
       const verdict = dx > SWIPE_COMMIT ? 'going' : dx < -SWIPE_COMMIT ? 'hidden' : null;
       li.classList.remove('is-swiping');
@@ -652,7 +789,19 @@
     return li;
   }
 
+  let lastRenderDay = null;
+
   function render() {
+    // today rolls over and the ongoing-run test moves with it.
+    todayCache = null;
+    const today = todayNumber();
+    if (lastRenderDay !== today) {
+      // A page left open past midnight holds per-item day indices that were
+      // true yesterday. Cheap to drop, and only ever once a day.
+      for (const item of state.items) item._day = undefined;
+      lastRenderDay = today;
+    }
+
     const results = sorted(filtered());
     const isGrouped = grouped();
     const nodes = [];
@@ -688,6 +837,8 @@
         : 'No upcoming listings.';
     }
 
+    state.lastResults = results;
+    updateVenueBanner();
     updateContextBar(results.length);
     updateHiddenNote();
     updateFilterCount();
@@ -706,11 +857,92 @@
     const bits = [];
     if (hidden) bits.push(`${hidden} hidden`);
     if (going) bits.push(`${going} going`);
+    if (state.hiddenVenues.size) bits.push(`${state.hiddenVenues.size} venues muted`);
     el.hiddenNote.textContent = bits.join(' · ') || 'Nothing hidden yet.';
     el.showHiddenBtn.hidden = !hidden;
     el.clearHiddenBtn.hidden = !hidden;
     el.showHiddenBtn.textContent = state.showHidden ? 'Hide them again' : 'Show hidden';
     el.showHiddenBtn.setAttribute('aria-pressed', String(state.showHidden));
+  }
+
+  /* ── Venues ────────────────────────────────────────────
+     A place is a better handle on a feed than a category is: people know they
+     like Storm King, and they know the brewery down the road lists trivia
+     every week. The panel lists every venue with a count, tapping one shows
+     just that venue, and the eye hides it from the feed for good.          */
+
+  function venueIndex() {
+    const counts = new Map();
+    for (const item of state.items) {
+      const v = venueOf(item);
+      if (!v) continue;
+      const entry = counts.get(v) || { name: v, n: 0, town: item.city };
+      entry.n++;
+      counts.set(v, entry);
+    }
+    return [...counts.values()].sort((a, b) => b.n - a.n || a.name.localeCompare(b.name));
+  }
+
+  function renderVenues() {
+    const q = (el.venuesSearch?.value || '').trim().toLowerCase();
+    const rows = venueIndex().filter((v) =>
+      !q || v.name.toLowerCase().includes(q) || (v.town || '').toLowerCase().includes(q));
+
+    el.venuesList.replaceChildren(...rows.map((v) => {
+      const li = document.createElement('li');
+      const hidden = state.hiddenVenues.has(v.name);
+      li.className = 'venue-row' + (hidden ? ' is-hidden' : '');
+      li.innerHTML = `
+        <button type="button" class="venue-open">
+          <span class="venue-name">${esc(v.name)}</span>
+          ${v.town ? `<span class="venue-town">${esc(v.town)}</span>` : ''}
+          <span class="venue-n">${v.n}</span>
+        </button>
+        <button type="button" class="venue-mute"
+                aria-pressed="${hidden}"
+                title="${hidden ? 'Show this venue again' : 'Never show this venue'}"
+                aria-label="${hidden ? 'Show' : 'Hide'} listings from ${esc(v.name)}">
+          ${hidden ? '🚫' : '👁'}
+        </button>`;
+      li.querySelector('.venue-open').addEventListener('click', () => {
+        state.venueFilter = v.name;
+        closeVenues();
+        render();
+      });
+      li.querySelector('.venue-mute').addEventListener('click', () => {
+        if (state.hiddenVenues.has(v.name)) state.hiddenVenues.delete(v.name);
+        else state.hiddenVenues.add(v.name);
+        saveHiddenVenues(state.hiddenVenues);
+        renderVenues();
+        render();
+      });
+      return li;
+    }));
+
+    if (!rows.length) {
+      const li = document.createElement('li');
+      li.className = 'venue-empty';
+      li.textContent = 'No venue matches that.';
+      el.venuesList.append(li);
+    }
+  }
+
+  function openVenues() {
+    renderVenues();
+    el.venuesPanel.hidden = false;
+    el.venuesBtn.setAttribute('aria-expanded', 'true');
+    el.venuesSearch?.focus();
+  }
+
+  function closeVenues() {
+    el.venuesPanel.hidden = true;
+    el.venuesBtn.setAttribute('aria-expanded', 'false');
+  }
+
+  function updateVenueBanner() {
+    if (!el.venueBanner) return;
+    el.venueBanner.hidden = !state.venueFilter;
+    if (state.venueFilter) el.venueBannerName.textContent = state.venueFilter;
   }
 
   /* ── Chrome ───────────────────────────────────────────── */
@@ -1012,6 +1244,18 @@
     node.addEventListener('input', rerender);
   }
 
+  el.venuesBtn?.addEventListener('click', () =>
+    (el.venuesPanel.hidden ? openVenues() : closeVenues()));
+  el.venuesClose?.addEventListener('click', closeVenues);
+  el.venuesSearch?.addEventListener('input', renderVenues);
+  el.venueBannerClear?.addEventListener('click', () => {
+    state.venueFilter = null;
+    render();
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && !el.venuesPanel.hidden) closeVenues();
+  });
+
   el.showHiddenBtn?.addEventListener('click', () => {
     state.showHidden = !state.showHidden;
     render();
@@ -1074,6 +1318,17 @@
       const res = await fetch('data/events.json', { cache: 'no-cache' });
       if (!res.ok) throw new Error(res.status);
       const data = await res.json();
+
+      // Pushing is the deploy, so the build number counts pushes. Missing file
+      // is not an error — the stamp simply stays hidden.
+      fetch('data/version.json', { cache: 'no-cache' })
+        .then((r) => (r.ok ? r.json() : null))
+        .then((v) => {
+          if (!v?.label || !el.buildStamp) return;
+          el.buildStamp.textContent = `Proximi ${v.label}`;
+          el.buildStamp.hidden = false;
+        })
+        .catch(() => { /* the stamp is decoration, never a failure */ });
 
       state.tz = data.meta?.timezone || null;
       const all = (data.items || []).map((item) => ({
