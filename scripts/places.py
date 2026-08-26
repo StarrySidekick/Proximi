@@ -69,7 +69,7 @@ STATE_NAMES = {'NY': 'NY', 'New York': 'NY', 'CT': 'CT', 'Connecticut': 'CT',
 # a private home with a plaque by the door. What separates a destination is
 # that somebody bothered to record a way in — a website, an opening time, a
 # heritage listing, a description. Kinds listed here have to show one.
-THIN = {'historic site', 'historic house', 'garden'}
+THIN = {'historic site', 'historic house', 'garden', 'park'}
 
 
 def miles(lat1, lon1, lat2, lon2):
@@ -301,6 +301,18 @@ def test_selectors():
 # destination; the rest have not.
 VISITABLE_GARDENS = {'botanical', 'arboretum'}
 
+# OSM's protection_title for land the public is invited onto. Deliberately not
+# a catch-all: the commonest value in range is "Watershed Recreation Unit" (464
+# of them), which is New York City's permit-only reservoir land — real, large,
+# and not somewhere you can decide to go on Saturday. "Forest Preserve Detached
+# Parcel" is likewise a deed, not a destination.
+PUBLIC_LAND = {
+    'State Park', 'State Forest', 'State Historic Site', 'Wild Forest',
+    'Wildlife Management Area', 'Wildlife Sanctuary', 'Nature Preserve',
+    'Multiple Use Area', 'Unique Area', 'County Park',
+    'National Park', 'National Wildlife Refuge', 'National Historic Site',
+}
+
 
 def substantial(kind, tags):
     """Is this a destination, or a map feature that happens to have a name?
@@ -313,6 +325,14 @@ def substantial(kind, tags):
     """
     if kind == 'garden' and tags.get('garden:type') in VISITABLE_GARDENS:
         return True
+    if kind == 'park':
+        # 6,297 named parks inside fifty miles, nearly all of them a municipal
+        # ballfield or a traffic island with a name. Two things separate a
+        # park worth the drive: an official public-land designation, or a
+        # Wikipedia article. Not wikidata — GNIS imports attached one to every
+        # pocket park in the country, so it says nothing.
+        return (tags.get('protection_title') in PUBLIC_LAND
+                or bool(tags.get('wikipedia')))
     if kind not in THIN:
         return True
     return bool(website_of(tags) or tags.get('wikidata') or tags.get('wikipedia')
