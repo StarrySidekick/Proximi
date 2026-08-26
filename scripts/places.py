@@ -69,7 +69,7 @@ STATE_NAMES = {'NY': 'NY', 'New York': 'NY', 'CT': 'CT', 'Connecticut': 'CT',
 # a private home with a plaque by the door. What separates a destination is
 # that somebody bothered to record a way in — a website, an opening time, a
 # heritage listing, a description. Kinds listed here have to show one.
-THIN = {'historic site', 'historic house', 'garden', 'park'}
+THIN = {'historic site', 'historic house', 'garden', 'park', 'attraction'}
 
 
 def miles(lat1, lon1, lat2, lon2):
@@ -301,6 +301,12 @@ def test_selectors():
 # destination; the rest have not.
 VISITABLE_GARDENS = {'botanical', 'arboretum'}
 
+# Tags that are a destination on their own terms — nobody labels a traffic
+# island a zoo. tourism=attraction and tourism=viewpoint are the opposite: the
+# first is a catch-all that collects boundary markers and historic districts,
+# and the second is 290 scenic overlooks, most of them "GWB View".
+SELF_EVIDENT = {'zoo', 'aquarium', 'theme_park', 'water_park', 'planetarium'}
+
 # OSM's protection_title for land the public is invited onto. Deliberately not
 # a catch-all: the commonest value in range is "Watershed Recreation Unit" (464
 # of them), which is New York City's permit-only reservoir land — real, large,
@@ -325,6 +331,12 @@ def substantial(kind, tags):
     """
     if kind == 'garden' and tags.get('garden:type') in VISITABLE_GARDENS:
         return True
+    if kind == 'attraction':
+        if (tags.get('tourism') in SELF_EVIDENT or tags.get('amenity') == 'planetarium'
+                or tags.get('leisure') == 'water_park'):
+            return True
+        return bool(website_of(tags) or tags.get('wikipedia')
+                    or tags.get('description') or tags.get('opening_hours'))
     if kind == 'park':
         # 6,297 named parks inside fifty miles, nearly all of them a municipal
         # ballfield or a traffic island with a name. Two things separate a
