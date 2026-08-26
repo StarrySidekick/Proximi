@@ -33,6 +33,8 @@ LIBRARIES = {
     'mountkiscolibrary':  ('Mount Kisco Public Library', 'Mount Kisco, NY'),
     'brewsterlibrary':    ('Brewster Public Library', 'Brewster, NY'),
     'irvingtonlibrary':   ('Irvington Public Library', 'Irvington, NY'),
+    'ryelibrary':         ('Rye Free Reading Room', 'Rye, NY'),
+    'grinnell-library':   ('Grinnell Library, Wappingers Falls', 'Wappingers Falls, NY'),
 }
 
 

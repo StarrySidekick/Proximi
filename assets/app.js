@@ -129,6 +129,7 @@
     toast: $('toast'), hiddenNote: $('hidden-note'), showHiddenBtn: $('show-hidden'),
     venuesBtn: $('venues-btn'), venuesPanel: $('venues-panel'),
     venuesList: $('venues-list'), venuesClose: $('venues-close'),
+    venuesKinds: $('venues-kinds'),
     venuesSearch: $('venues-search'), venueBanner: $('venue-banner'),
     buildStamp: $('build-stamp'),
     venueBannerName: $('venue-banner-name'), venueBannerClear: $('venue-banner-clear'),
@@ -151,6 +152,7 @@
     showHidden: false,
     hiddenVenues: loadHiddenVenues(),
     venueFilter: null,          // showing one venue's listings only
+    venueKind: null,            // Places narrowed to one sort of place
     view: 'list',               // 'list' | 'venues'
     horizon: DEFAULTS.horizon,
     repeatMode: DEFAULTS.repeatMode,
@@ -878,22 +880,58 @@
      every week. The panel lists every venue with a count, tapping one shows
      just that venue, and the eye hides it from the feed for good.          */
 
+  const PLACE_KIND_LABELS = {
+    'music venue': 'Music venues', theatre: 'Theatres', library: 'Libraries',
+    park: 'Parks & outdoors', stadium: 'Stadiums & arenas', brewery: 'Breweries & wineries',
+    club: 'Clubs & halls', museum: 'Museums', gallery: 'Galleries & studios',
+    'community centre': 'Community centres', 'place of worship': 'Places of worship',
+    school: 'Schools & colleges', restaurant: 'Restaurants', cafe: 'Cafés',
+    shop: 'Shops', other: 'Everywhere else'
+  };
+
   function venueIndex() {
     const counts = new Map();
     for (const item of state.items) {
       const v = venueOf(item);
       if (!v) continue;
-      const entry = counts.get(v) || { name: v, n: 0, town: item.city };
+      const entry = counts.get(v) || { name: v, n: 0, town: item.city, kind: item.placeKind };
       entry.n++;
+      entry.kind ||= item.placeKind;
       counts.set(v, entry);
     }
     return [...counts.values()].sort((a, b) => b.n - a.n || a.name.localeCompare(b.name));
   }
 
+  function renderVenueKindChips(rows) {
+    const counts = new Map();
+    for (const v of rows) counts.set(v.kind || 'other', (counts.get(v.kind || 'other') || 0) + 1);
+    const kinds = [...counts.keys()].sort((a, b) =>
+      (a === 'other') - (b === 'other')
+      || (PLACE_KIND_LABELS[a] || a).localeCompare(PLACE_KIND_LABELS[b] || b));
+
+    el.venuesKinds.replaceChildren(...kinds.map((k) => {
+      const b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'chip';
+      b.dataset.kind = k;
+      b.setAttribute('aria-pressed', String(state.venueKind === k));
+      b.innerHTML = `${esc(PLACE_KIND_LABELS[k] || k)}<span class="chip-n">${counts.get(k)}</span>`;
+      b.addEventListener('click', () => {
+        state.venueKind = state.venueKind === k ? null : k;
+        renderVenues();
+      });
+      return b;
+    }));
+  }
+
   function renderVenues() {
     const q = (el.venuesSearch?.value || '').trim().toLowerCase();
-    const rows = venueIndex().filter((v) =>
+    const all = venueIndex().filter((v) =>
       !q || v.name.toLowerCase().includes(q) || (v.town || '').toLowerCase().includes(q));
+    renderVenueKindChips(all);
+    const rows = state.venueKind
+      ? all.filter((v) => (v.kind || 'other') === state.venueKind)
+      : all;
 
     el.venuesList.replaceChildren(...rows.map((v) => {
       const li = document.createElement('li');
@@ -902,6 +940,7 @@
       li.innerHTML = `
         <button type="button" class="venue-open">
           <span class="venue-name">${esc(v.name)}</span>
+          ${v.kind ? `<span class="venue-kind">${esc(PLACE_KIND_LABELS[v.kind] || v.kind)}</span>` : ''}
           ${v.town ? `<span class="venue-town">${esc(v.town)}</span>` : ''}
           <span class="venue-n">${v.n}</span>
         </button>

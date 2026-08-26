@@ -62,8 +62,12 @@ Inside the sheet:
   show or restore hidden listings.
 - **Features** — food or drink, outdoors, and time of day (daytime / nighttime,
   split at 5pm).
-- **Places** — every venue with a count and a search. Tap one to see only its
-  listings; mute one to drop it from the feed for good.
+- **Places** — every venue with a count and a search, grouped by what sort of
+  place it is: libraries, museums, music venues, breweries, parks and so on.
+  Tap one to see only its listings; mute one to drop it from the feed for good.
+  A venue's sort comes from its name where the name says something, and from
+  its own programme where it does not — "Daryl's House" is a music room only
+  because of what it books.
 - **What** — free-text search.
 - **Cost** — max price, free-only, and needs-sign-up-only.
 - **Sort** — soonest (default), nearest, or cheapest. Day dividers appear only

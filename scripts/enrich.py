@@ -47,6 +47,21 @@ TYPES = [
                        r'shabbat|kiddush|jumu.?ah|puja|sangha|rosary|novena|'
                        r'communion|baptism|confirmation|sermon|prayer (service|meeting)|'
                        r'high holy days|yom kippur|rosh hashanah)\b'),
+    # Something is being handed out, free. A distinct thing from a sale and from
+    # a volunteer shift, and the reason people turn up.
+    ('giveaway',       r'\b(free (vegetable|produce|food|book|meal|lunch|dinner|'
+                       r'grocer\w*|clothing|coat|backpack|supplies|naloxone|narcan)|'
+                       r'giveaway|give[- ]?away|food (pantry|distribution)|'
+                       r'produce distribution|book cave|little free|'
+                       r'distribution (day|event)|swap shop|really really free)\b'),
+    # A staffed table you walk up to: a legislator's mobile office, an insurer
+    # signing people up, a librarian helping with a phone.
+    ('tabling',        r'\b(tabling|mobile office|office hours|navigator|'
+                       r'drop[- ]?in (tech|computer|legal|health|help)|'
+                       r'(tech|computer|legal|homework|resume) help|'
+                       r'enrollment assistance|sign[- ]?up (table|event)|'
+                       r'information table|resource (table|fair)|'
+                       r'assemblymember|state senator|councilmember)\b'),
     ('yoga',           r'\b(yoga|pilates|tai chi|qi ?gong|meditation|sound bath|'
                        r'breathwork|restorative|mindfulness)\b'),
     ('workout',        r'\b(workout|bootcamp|hiit|crossfit|spin class|zumba|'
@@ -95,23 +110,32 @@ TYPES = [
     # ── things to look at, learn from, or join ──────────────────
     ('art exhibit',    r'\b(art (exhibit\w*|show)|gallery|opening reception|'
                        r'installation|sculpture|paintings?|artist talk)\b'),
-    ('exhibit',        r'\b(exhibit\w*|on view|retrospective|showcase|'
-                       r'permanent collection|special collection)\b'),
-    ('museum',         r'\b(museums?|planetarium|observatory|aquarium|zoo\b|'
+    ('museum exhibit', r'\b(exhibit\w*|on view|retrospective|showcase|'
+                       r'permanent collection|special collection|museums?|'
+                       r'planetarium|observatory|aquarium|zoo\b|'
                        r'historic (house|site|home)|admission|general admission)\b'),
     ('tour',           r'\b(tours?|guided walk|house tour|behind the scenes|'
                        r'hike|hiking|walking tour|birding|paddle|kayak)\b'),
-    ('talk',           r'\b(talk|lecture|reading|panel|author|poet|keynote|symposium|'
+    # The libraries publish a real share of their programme in Spanish; read
+    # literally it is all "other". These are the words that actually appear.
+    ('talk',           r'\b(charla|conferencia|presentaci[oó]n|taller|'
+                       r'programa de|consejos|c[oó]mo\b|clase de)\b|'
+                       r'\b(talk|lecture|reading|panel|author|poet|keynote|symposium|'
                        r'seminar|presentation|storytime|story time|planetarium|'
                        r'astronomy|book club)\b'),
+    ('craft',          r'\b(knit\w*|crochet|quilt\w*|sewing|weaving|needlepoint|'
+                       r'embroider\w*|macram|pottery|ceramics?|kiln|collage|'
+                       r'printmaking|linocut|calligraphy|woodworking|whittl\w*|'
+                       r'jewel\w*[- ]making|scrapbook\w*|papercraft|origami|'
+                       r'make[- ]your[- ]own|make this|diy\b|craft(?!\ (beer|brew|'
+                       r'cocktail|distiller|cider|fair|show)))\b'),
     ('class',          r'\b(workshops?|class(es)?|lessons?|courses?|clinic|training|'
                        r'demo|certification|certificate|bootcamp|intro to|101|'
-                       r'paint[- ]?(and|n|&)[- ]?sip|pottery|ceramics?|knit\w*|'
-                       r'crochet|quilt\w*|sewing|weaving|collage|printmaking|'
-                       r'watercolou?r\w*|calligraphy|woodworking|make[- ]your[- ]own|diy)\b'),
-    ('club',           r'\b(club\b|society|guild|chapter meeting|circle\b)\b'),
-    ('meetup',         r'\b(meetup|meeting|social\b|forum|town hall|gathering|'
-                       r'networking|mixer|group)\b'),
+                       r'paint[- ]?(and|n|&)[- ]?sip|watercolou?r\w*)\b'),
+    ('club',           r'\b(club\b|society|guild|chapter meeting|circle\b|'
+                       r'meetup|town hall|forum|networking|gathering|'
+                       r'support group|social hour)\b'),
+
 ]
 
 # Is it under a roof? Only claimed when the text actually says so.
@@ -138,13 +162,74 @@ def blob_of(e):
 # "Wicked (NY)" names no kind at all. The building does: a ballpark holds
 # sport, a Broadway house holds theatre.
 VENUE_KINDS = [
+    # Comedy clubs before music rooms, or every one of them reads as a gig.
+    ('comedy show',    r'\b(comedy (club|cellar|works)|laugh (factory|lounge))\b'),
     ('sporting event', r'\b(stadium|ball ?park|arena|speedway|racetrack|raceway|'
                        r'coliseum|ballfield|athletic (field|complex)|ice rink)\b'),
+    # A room whose name says music. Reached only when the listing is a bare
+    # artist name — "Mad Caddies", "Kota the Friend" — which is most of what a
+    # music venue posts and none of what its title explains.
+    ('concert',        r'\b(ballroom|music hall|amphitheat\w*|bandshell|bowl\b|'
+                       r'lounge|tavern|jazz club|underground|sound ?stage|'
+                       r'concert hall|fairgrounds?)\b'),
     ('play',           r'\b(theatres?|theaters?|playhouse|opera house)\b'),
-    ('museum',         r'\b(museum|planetarium|observatory|aquarium|zoo)\b'),
+    ('museum exhibit', r'\b(museum|planetarium|observatory|aquarium|zoo)\b'),
     ('film',           r'\b(cinema|film center|drive[- ]in)\b'),
     ('art exhibit',    r'\b(gallery|art cent(er|re))\b'),
 ]
+
+
+# What sort of place this is, for grouping and filtering the Places list.
+# Ordered: the first match wins, so "Museum Cafe" is a museum, not a cafe.
+PLACE_KINDS = [
+    ('library',        r'\b(librar(y|ies)|biblioteca)\b'),
+    ('museum',         r'\b(museum|planetarium|observatory|aquarium|zoo\b|'
+                       r'historic (house|site|home)|mill house|manor|mansion)\b'),
+    ('theatre',        r'\b(theatres?|theaters?|playhouse|opera house|cinema|'
+                       r'film cent(er|re)|drive[- ]in)\b'),
+    ('music venue',    r'\b(ballroom|music hall|amphitheat\w*|bandshell|bowl\b|'
+                       r'lounge|jazz club|concert hall|sound ?stage|'
+                       r'performing arts|arts cent(er|re))\b'),
+    ('stadium',        r'\b(stadium|ball ?park|arena|speedway|racetrack|raceway|'
+                       r'coliseum|ballfield|fairgrounds?|ice rink)\b'),
+    ('gallery',        r'\b(galler(y|ies)|art cent(er|re)|studios?)\b'),
+    ('brewery',        r'\b(brew\w*|taproom|tap house|beer (garden|hall)|'
+                       r'cider\w*|distiller\w*|winer\w*|vineyards?|meader\w*)\b'),
+    ('cafe',           r'\b(caf[eé]|coffee|espresso|roaster\w*|tea (room|shop|house)|'
+                       r'bakery|patisserie|creamery|gelato|java)\b'),
+    ('restaurant',     r'\b(restaurant|kitchen|bistro|trattoria|osteria|tavern|'
+                       r'grill(e|house)?|diner|eatery|pizzeria|steakhouse|'
+                       r'bar\ ?&|pub\b|saloon)\b'),
+    ('park',           r'\b(park|preserve|sanctuary|trail|gardens?|arboretum|'
+                       r'nature cent(er|re)|conservation|farm\b|orchard|'
+                       r'lake|beach|woods|state forest)\b'),
+    ('community centre', r'\b(community cent(er|re)|civic cent(er|re)|rec(reation)? cent(er|re)|'
+                       r'senior cent(er|re)|ymca|ywca|jcc\b|grange|'
+                       r'american legion|elks|rotary|town hall|village hall|'
+                       r'city of\b|town of\b|firehouse|fire (department|company))\b'),
+    ('school',         r'\b(school|college|universit(y|ies)|academy|institute|campus)\b'),
+    ('place of worship', r'\b(church|temple|synagogue|chapel|cathedral|mosque|'
+                       r'meeting ?house|congregation|parish|sangha|monastery)\b'),
+    ('shop',           r'\b(shop|store|boutique|market\b|bookstore|books\b|'
+                       r'gallery shop|mall\b|emporium)\b'),
+    ('club',           r'\b(club|society|lodge|guild|hall\b)\b'),
+]
+
+
+def place_kind(venue):
+    """Categorise a venue by name, or None when the name gives nothing away."""
+    for name, pattern in PLACE_KINDS:
+        if venue and re.search(pattern, str(venue), re.I):
+            return name
+    return None
+
+
+# VENUE_KINDS and PLACE_KINDS are separate lists that name kinds from TYPES,
+# so a rename in one can silently leave the others emitting a dead value —
+# which renders fine and no filter can reach. Caught at import instead.
+_VOCABULARY = {name for name, _ in TYPES}
+_STRAY = {k for k, _ in VENUE_KINDS} - _VOCABULARY
+assert not _STRAY, f'VENUE_KINDS emits kinds outside the vocabulary: {sorted(_STRAY)}'
 
 
 def venue_kind(venue):

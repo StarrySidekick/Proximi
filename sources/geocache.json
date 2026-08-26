@@ -2231,5 +2231,217 @@
 "display": "Winston House, 57, Church Hill Road, Oakleigh Park, East Barnet, London Borough of Barnet, Greater London, England, EN4 8TB, United Kingdom",
 "matched": "57 Church Hill Rd",
 "precision": 0
+},
+"community room, kingston library, new york (uptown), 61 crown street, kingston, ny, 12401": {
+"lat": 41.9345405,
+"lon": -74.0076523,
+"display": "Community Room, Albany Avenue, Stockade District, City of Kingston, Ulster County, New York, 12401, United States",
+"matched": "Community Room, Kingston, NY",
+"precision": 2
+},
+"people's place, 775 broadway, kingston, ny, 12401": {
+"lat": 41.9320986,
+"lon": -74.0117173,
+"display": "775, Broadway, Stockade District, City of Kingston, Ulster County, New York, 12401, United States",
+"matched": "775 Broadway, Kingston, NY",
+"precision": 1
+},
+"book nook, lagrange association library, 1110 route 55, lagrangeville, ny, 12540": {
+"lat": 41.6504465,
+"lon": -73.7642453,
+"display": "Lagrangeville, Town of La Grange, Dutchess County, New York, 12540, United States",
+"matched": "LaGrangeville, NY",
+"precision": 3
+},
+"conference room, lagrange association library, 1110 route 55, lagrangeville, ny, 12540": {
+"lat": 41.6504465,
+"lon": -73.7642453,
+"display": "Lagrangeville, Town of La Grange, Dutchess County, New York, 12540, United States",
+"matched": "LaGrangeville, NY",
+"precision": 3
+},
+"community room, lagrange association library, 1110 route 55, lagrangeville, ny, 12540": {
+"lat": 41.6504465,
+"lon": -73.7642453,
+"display": "Lagrangeville, Town of La Grange, Dutchess County, New York, 12540, United States",
+"matched": "LaGrangeville, NY",
+"precision": 3
+},
+"located in the program room": null,
+"located in the conference room": null,
+"community room, pleasant valley library, 1584 main st, pleasant valley, ny, 12569": {
+"lat": 41.7443444,
+"lon": -73.8247785,
+"display": "Pleasant Valley, Town of Pleasant Valley, Dutchess County, New York, 12569, United States",
+"matched": "Pleasant Valley, NY",
+"precision": 3
+},
+"conference room, pleasant valley library, 1584 main st, pleasant valley, ny, 12569": {
+"lat": 41.7443444,
+"lon": -73.8247785,
+"display": "Pleasant Valley, Town of Pleasant Valley, Dutchess County, New York, 12569, United States",
+"matched": "Pleasant Valley, NY",
+"precision": 3
+},
+"study room, pleasant valley library, 1584 main st, pleasant valley, ny, 12569": {
+"lat": 41.7443444,
+"lon": -73.8247785,
+"display": "Pleasant Valley, Town of Pleasant Valley, Dutchess County, New York, 12569, United States",
+"matched": "Pleasant Valley, NY",
+"precision": 3
+},
+"teen room, red hook public library, 7444 s broadway, red hook, ny, 12571": {
+"lat": 41.9933277,
+"lon": -73.8768137,
+"display": "Red Hook Public Library, 7444, South Broadway, Village of Red Hook, Town of Red Hook, Dutchess County, New York, 12571, United States",
+"matched": "Red Hook Public Library, 7444 S Broadway, Red Hook, NY",
+"precision": 1
+},
+"zoom": {
+"lat": 37.3329622,
+"lon": -121.8950563,
+"display": "Zoom, 55, South Almaden Boulevard, Little Italy, Japantown, San Jose, Santa Clara County, California, 95113, United States",
+"matched": "Zoom",
+"precision": 0
+},
+"community room, red hook public library, 7444 s broadway, red hook, ny, 12571": {
+"lat": 41.9933277,
+"lon": -73.8768137,
+"display": "Red Hook Public Library, 7444, South Broadway, Village of Red Hook, Town of Red Hook, Dutchess County, New York, 12571, United States",
+"matched": "Red Hook Public Library, 7444 S Broadway, Red Hook, NY",
+"precision": 1
+},
+"children's section, red hook public library, 7444 s broadway, red hook, ny, 12571": {
+"lat": 41.9933277,
+"lon": -73.8768137,
+"display": "Red Hook Public Library, 7444, South Broadway, Village of Red Hook, Town of Red Hook, Dutchess County, New York, 12571, United States",
+"matched": "Red Hook Public Library, 7444 S Broadway, Red Hook, NY",
+"precision": 1
+},
+"lower level program room, beekman library, 11 town center blvd, hopewell jct, ny, 12533": {
+"lat": 41.5810881,
+"lon": -73.8106688,
+"display": "Hopewell Junction, Town of East Fishkill, Dutchess County, New York, United States",
+"matched": "Hopewell JCT, NY",
+"precision": 3
+},
+"community room, beekman library, 11 town center blvd, hopewell jct, ny, 12533": {
+"lat": 41.5810881,
+"lon": -73.8106688,
+"display": "Hopewell Junction, Town of East Fishkill, Dutchess County, New York, United States",
+"matched": "Hopewell JCT, NY",
+"precision": 3
+},
+"learning lab, mahopac public library, 668 route 6, mahopac, ny, 10541": {
+"lat": 41.3712985,
+"lon": -73.7390641,
+"display": "Mahopac, Mahopac Falls, Town of Carmel, Putnam County, New York, United States",
+"matched": "Mahopac, NY",
+"precision": 3
+},
+"third floor meeting room, mahopac public library, 668 route 6, mahopac, ny, 10541": {
+"lat": 41.3712985,
+"lon": -73.7390641,
+"display": "Mahopac, Mahopac Falls, Town of Carmel, Putnam County, New York, United States",
+"matched": "Mahopac, NY",
+"precision": 3
+},
+"virtual - no room needed, mahopac public library, 668 route 6, mahopac, ny, 10541": {
+"lat": 41.3712985,
+"lon": -73.7390641,
+"display": "Mahopac, Mahopac Falls, Town of Carmel, Putnam County, New York, United States",
+"matched": "Mahopac, NY",
+"precision": 3
+},
+"lake view room, mahopac public library, 668 route 6, mahopac, ny, 10541": {
+"lat": 41.3712985,
+"lon": -73.7390641,
+"display": "Mahopac, Mahopac Falls, Town of Carmel, Putnam County, New York, United States",
+"matched": "Mahopac, NY",
+"precision": 3
+},
+"community room, mahopac public library, 668 route 6, mahopac, ny, 10541": {
+"lat": 41.3712985,
+"lon": -73.7390641,
+"display": "Mahopac, Mahopac Falls, Town of Carmel, Putnam County, New York, United States",
+"matched": "Mahopac, NY",
+"precision": 3
+},
+"conference room, mahopac public library, 668 route 6, mahopac, ny, 10541": {
+"lat": 41.3712985,
+"lon": -73.7390641,
+"display": "Mahopac, Mahopac Falls, Town of Carmel, Putnam County, New York, United States",
+"matched": "Mahopac, NY",
+"precision": 3
+},
+"1st floor seating area, mahopac public library, 668 route 6, mahopac, ny, 10541": {
+"lat": 41.3712985,
+"lon": -73.7390641,
+"display": "Mahopac, Mahopac Falls, Town of Carmel, Putnam County, New York, United States",
+"matched": "Mahopac, NY",
+"precision": 3
+},
+"meeting room, rye free reading room, rye, ny": {
+"lat": 40.9821371,
+"lon": -73.6840902,
+"display": "City of Rye, Westchester County, New York, 10580, United States",
+"matched": "Rye, NY",
+"precision": 3
+},
+"teen room, rye free reading room, rye, ny": {
+"lat": 40.9821371,
+"lon": -73.6840902,
+"display": "City of Rye, Westchester County, New York, 10580, United States",
+"matched": "Rye, NY",
+"precision": 3
+},
+"community room, grinnell library, wappingers falls, wappingers falls, ny": {
+"lat": 41.5983619,
+"lon": -73.9184564,
+"display": "Grinnell Public Library, 2642, East Main Street, Village of Wappingers Falls, Town of Wappinger, Dutchess County, New York, 12590, United States",
+"matched": "Grinnell Library, Wappingers Falls, Wappingers Falls, NY",
+"precision": 1
+},
+"other, rye free reading room, rye, ny": {
+"lat": 40.9821371,
+"lon": -73.6840902,
+"display": "City of Rye, Westchester County, New York, 10580, United States",
+"matched": "Rye, NY",
+"precision": 3
+},
+"grinnell library, wappingers falls, wappingers falls, ny": {
+"lat": 41.5983619,
+"lon": -73.9184564,
+"display": "Grinnell Public Library, 2642, East Main Street, Village of Wappingers Falls, Town of Wappinger, Dutchess County, New York, 12590, United States",
+"matched": "Grinnell Library, Wappingers Falls, Wappingers Falls, NY",
+"precision": 0
+},
+"local history room, rye free reading room, rye, ny": {
+"lat": 40.9821371,
+"lon": -73.6840902,
+"display": "City of Rye, Westchester County, New York, 10580, United States",
+"matched": "Rye, NY",
+"precision": 3
+},
+"rye free reading room, rye, ny": {
+"lat": 40.9821371,
+"lon": -73.6840902,
+"display": "City of Rye, Westchester County, New York, 10580, United States",
+"matched": "Rye, NY",
+"precision": 1
+},
+"online, rye free reading room, rye, ny": {
+"lat": 40.9821371,
+"lon": -73.6840902,
+"display": "City of Rye, Westchester County, New York, 10580, United States",
+"matched": "Rye, NY",
+"precision": 3
+},
+"art gallery - meeting room, rye free reading room, rye, ny": {
+"lat": 40.9821371,
+"lon": -73.6840902,
+"display": "City of Rye, Westchester County, New York, 10580, United States",
+"matched": "Rye, NY",
+"precision": 3
 }
 }

@@ -21,7 +21,8 @@
     "campus:true marks a college calendar. Those are internal by default — orientation, registration, finals, involvement fairs — so merge.py keeps only what is genuinely open to the public (a lecture, concert, gallery opening, mass, 5K) plus home games, and drops the rest. An allowlist, not a blocklist: chasing \"Viking Days\" and \"Pie a Kappa\" by name never ends.",
     "LibCal is read by scripts/libcal.py, not the registry: its iCal export returns an empty body and rss.php a feed with zero items, so the only working route is the per-day ajax endpoint the calendar page itself calls, walked day by day.",
     "Songkick is read by scripts/songkick.py (metro pages, JSON-LD MusicEvents): the ticketed-concert layer — Capitol Theatre, Tarrytown Music Hall, Daryl's House — whose own sites bot-challenge us or render in JavaScript. Their search/API endpoints 406; the metro pages serve plain HTML.",
-    "Marist has a working Liferay JSON API at /api/jsonws/events.maristevent/get-upcoming-events/limit/1000 (double-encoded JSON), but every entry is internal academic calendar — Semester Begins, Search Committee Meeting, Open House. Not registered: the campus rule would drop all of it."
+    "Marist has a working Liferay JSON API at /api/jsonws/events.maristevent/get-upcoming-events/limit/1000 (double-encoded JSON), but every entry is internal academic calendar — Semester Begins, Search Committee Meeting, Open House. Not registered: the campus rule would drop all of it.",
+    "Assabet Interactive is the other library calendar platform beside LibCal, and it does publish schema.org Events on /calendar/. Its subdomain is not derivable from the library domain — fingerprint the homepage for an assabetinteractive.com link instead."
   ],
   "sources": [
     {
@@ -486,6 +487,88 @@
       "publisher": "Upstate Films (Starr Cinema, Rhinebeck)",
       "scope": "local",
       "note": "Answers HTTP 202 with a 169-byte bot interstitial to every scripted fetch. Needs a browser or hand-reading."
+    },
+    {
+      "id": "lib-kingston",
+      "kind": "html",
+      "url": "https://kingstonlibrary.assabetinteractive.com/calendar/",
+      "publisher": "Kingston Library",
+      "scope": "local",
+      "note": "Assabet Interactive — schema.org Events on the calendar page, read by jsonld.py. Found by fingerprinting the library homepage for an assabetinteractive.com link; guessing the subdomain from the domain name does not work."
+    },
+    {
+      "id": "lib-lagrange",
+      "kind": "html",
+      "url": "https://laglib.assabetinteractive.com/calendar/",
+      "publisher": "LaGrange Association Library",
+      "scope": "local",
+      "note": "Assabet Interactive — schema.org Events on the calendar page, read by jsonld.py. Found by fingerprinting the library homepage for an assabetinteractive.com link; guessing the subdomain from the domain name does not work."
+    },
+    {
+      "id": "lib-somers",
+      "kind": "html",
+      "url": "https://somerslibrary.assabetinteractive.com/calendar/",
+      "publisher": "Somers Library",
+      "scope": "local",
+      "note": "Assabet Interactive — schema.org Events on the calendar page, read by jsonld.py. Found by fingerprinting the library homepage for an assabetinteractive.com link; guessing the subdomain from the domain name does not work."
+    },
+    {
+      "id": "lib-putnamvalley",
+      "kind": "html",
+      "url": "https://putnamvalleylibrary.org/calendar/",
+      "publisher": "Putnam Valley Free Library",
+      "scope": "local",
+      "note": "Assabet Interactive — schema.org Events on the calendar page, read by jsonld.py. Found by fingerprinting the library homepage for an assabetinteractive.com link; guessing the subdomain from the domain name does not work. Its calendar page carried 159 JSON-LD events when probed but jsonld.py reads none — worth a re-check; the markup may be built client-side."
+    },
+    {
+      "id": "lib-pleasantvalley",
+      "kind": "html",
+      "url": "https://pleasantvalleylibrary.assabetinteractive.com/calendar/",
+      "publisher": "Pleasant Valley Free Library",
+      "scope": "local",
+      "note": "Assabet Interactive — schema.org Events on the calendar page, read by jsonld.py. Found by fingerprinting the library homepage for an assabetinteractive.com link; guessing the subdomain from the domain name does not work."
+    },
+    {
+      "id": "lib-redhook",
+      "kind": "html",
+      "url": "https://redhooklibrary.assabetinteractive.com/calendar/",
+      "publisher": "Red Hook Public Library",
+      "scope": "local",
+      "note": "Assabet Interactive — schema.org Events on the calendar page, read by jsonld.py. Found by fingerprinting the library homepage for an assabetinteractive.com link; guessing the subdomain from the domain name does not work."
+    },
+    {
+      "id": "lib-beekman",
+      "kind": "html",
+      "url": "https://beekmanlibrary.assabetinteractive.com/calendar/",
+      "publisher": "Beekman Library",
+      "scope": "local",
+      "note": "Assabet Interactive — schema.org Events on the calendar page, read by jsonld.py. Found by fingerprinting the library homepage for an assabetinteractive.com link; guessing the subdomain from the domain name does not work."
+    },
+    {
+      "id": "lib-mahopac",
+      "kind": "html",
+      "url": "https://mahopaclibrary.assabetinteractive.com/calendar/",
+      "publisher": "Mahopac Public Library",
+      "scope": "local",
+      "note": "Assabet Interactive — schema.org Events on the calendar page, read by jsonld.py. Found by fingerprinting the library homepage for an assabetinteractive.com link; guessing the subdomain from the domain name does not work."
+    },
+    {
+      "id": "lib-wisner",
+      "kind": "ics",
+      "url": "https://albertwisnerlibrary.org/events/?ical=1",
+      "publisher": "Albert Wisner Public Library, Warwick",
+      "scope": "local",
+      "enabled": false,
+      "note": "Found and disabled the same day, 2026-08: the ?ical=1 feed parses but its newest event is 2024-11-09 — an archive, not a calendar."
+    },
+    {
+      "id": "lib-dobbsferry",
+      "kind": "ics",
+      "url": "https://dobbsferrylibrary.org/events/?ical=1",
+      "publisher": "Dobbs Ferry Public Library",
+      "scope": "local",
+      "enabled": false,
+      "note": "Found and disabled the same day, 2026-08: feed frozen since 2022-07-17."
     }
   ]
 }

@@ -33,8 +33,8 @@ SEGMENT = {
 GENRE = {
     'Comedy': 'comedy show', 'Theatre': 'play', 'Dance': 'dance',
     'Musical': 'musical', 'Opera': 'musical', 'Classical': 'concert',
-    'Film': 'film', 'Fairs & Festivals': 'festival', 'Art': 'art exhibit',
-    'Food & Drink': 'tasting', 'Community/Civic': 'meetup', 'Lecture': 'talk',
+    'Film': 'film', 'Fairs & Festivals': 'festival', 'Art': 'art exhibit', 'Museum': 'museum exhibit',
+    'Food & Drink': 'tasting', 'Community/Civic': 'club', 'Lecture': 'talk',
     'Circus & Specialty Acts': 'celebration', 'Family': 'other',
 }
 

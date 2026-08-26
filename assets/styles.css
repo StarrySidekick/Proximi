@@ -600,6 +600,11 @@ input:focus-visible, select:focus-visible, button:focus-visible, a:focus-visible
 .venue-open:hover { color: var(--ink-3); }
 .venue-name { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .venue-town { font-size: 12px; color: var(--ink-3); flex: none; }
+.venue-kind {
+  font-size: 11px; letter-spacing: .03em; text-transform: uppercase;
+  color: var(--ink-3); opacity: .8; flex: none;
+}
+#venues-kinds { margin: 8px 0 2px; max-height: 96px; overflow-y: auto; }
 .venue-n {
   font-size: 12px; font-weight: 700; color: var(--ink-3);
   min-width: 2ch; text-align: right; flex: none;

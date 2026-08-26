@@ -22,7 +22,8 @@ from datetime import datetime, timezone
 from math import radians, sin, cos, asin, sqrt
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from enrich import type_of, types_of, audience_of, place_name, STREET_ONLY, NOT_A_PLACE
+from enrich import (type_of, types_of, audience_of, place_name, place_kind,
+                    STREET_ONLY, NOT_A_PLACE)
 
 # Fields computed from a listing rather than reported by its source. They are
 # only ever as good as the code that derived them, so a listing already in the
@@ -251,7 +252,61 @@ TYPE_ALIASES = {
     'comedy': 'comedy show', 'dating': 'speed dating', 'kids': 'other',
     'show': 'play', 'music': 'concert', 'community': 'meetup',
     'nightlife': 'party', 'family': 'other',
+    # Retired in favour of club, and of the museum/exhibit merge.
+    'meetup': 'club', 'exhibit': 'museum exhibit', 'museum': 'museum exhibit',
 }
+
+
+# What a venue's own programme says about it, for the venues whose names say
+# nothing — "Daryl's House" and "Tubby's" are music rooms, and only their
+# listings reveal it.
+KIND_FROM_TYPE = {
+    'concert': 'music venue', 'dj': 'music venue', 'open mic': 'music venue',
+    'play': 'theatre', 'musical': 'theatre', 'film': 'theatre',
+    'comedy show': 'theatre', 'dance': 'theatre',
+    'museum exhibit': 'museum', 'art exhibit': 'gallery',
+    'sporting event': 'stadium', 'religious ceremony': 'place of worship',
+    'tasting': 'brewery', 'animal encounter': 'park',
+}
+
+
+def assign_place_kinds(items):
+    """Name first, then the venue's own programme.
+
+    A name is only worth trusting when it says something — 'Public Library'
+    does, "Colony" does not — so where it does not, the kind of thing that
+    happens there decides, and only when one kind clearly dominates.
+    """
+    by_venue = defaultdict(list)
+    for it in items:
+        v = it.get('venue')
+        if v and v != 'See listing':
+            by_venue[v].append(it)
+
+    kinds = {}
+    for venue, listings in by_venue.items():
+        named = place_kind(venue)
+        if named:
+            kinds[venue] = named
+            continue
+        tally = defaultdict(int)
+        for it in listings:
+            for t in (it.get('types') or []):
+                if t in KIND_FROM_TYPE:
+                    tally[KIND_FROM_TYPE[t]] += 1
+        if tally:
+            top, n = max(tally.items(), key=lambda kv: kv[1])
+            # One clear kind, not a tie between two.
+            if n >= max(2, 0.5 * sum(tally.values())):
+                kinds[venue] = top
+
+    for it in items:
+        kind = kinds.get(it.get('venue'))
+        if kind:
+            it['placeKind'] = kind
+        else:
+            it.pop('placeKind', None)
+    return kinds
 
 
 def cadence_of(recurrence, repeats=False):
@@ -498,6 +553,26 @@ def main():
             item['audience'] = aud
             retyped += 1
 
+    place_kinds = assign_place_kinds(merged)
+
+    # A second look at what is still 'other', now that every venue has a kind.
+    # "Berlin" and "Elsewhere" name no kind of thing and neither do the acts
+    # they book, but both are known music rooms by the company their listings
+    # keep — so a bare artist name at one of them is a gig.
+    KIND_IMPLIES = {
+        'music venue': 'concert', 'theatre': 'play', 'museum': 'museum exhibit',
+        'stadium': 'sporting event', 'place of worship': 'religious ceremony',
+    }
+    from_venue = 0
+    for item in merged:
+        if item.get('types') != ['other']:
+            continue
+        implied = KIND_IMPLIES.get(item.get('placeKind'))
+        if implied:
+            item['types'] = [implied]
+            item['type'] = implied
+            from_venue += 1
+
     merged.sort(key=lambda x: x['start'])
 
     meta = dict(existing['meta'])
@@ -521,6 +596,12 @@ def main():
     print(f'  −{noise} internal meetings, −{collapsed} folded into recurring activities')
     print(f'  +{added} new, {replaced} upgraded, {refreshed} reclassified, '
           f'{retyped} retyped  →  {len(merged)} listings')
+    kinded = len({i['venue'] for i in merged if i.get('placeKind')})
+    allv = len({i['venue'] for i in merged if i.get('venue') and i['venue'] != 'See listing'})
+    print(f'  {kinded}/{allv} venues categorised '
+          f'({len(set(place_kinds.values()))} kinds)')
+    if from_venue:
+        print(f'  {from_venue} listings typed from the kind of place they are at')
     if args.dry_run:
         return 0
 
