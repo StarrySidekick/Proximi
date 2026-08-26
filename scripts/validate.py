@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
-"""Gate on data/events.json before it reaches the site.
+"""Gate on data/events.json and data/places.json before they reach the site.
 
-The weekly job writes this file unattended, so the checks here are the only
+The weekly job writes both files unattended, so the checks here are the only
 thing standing between a bad harvest and 121 wrong listings in public.
 
-  python3 scripts/validate.py [path]
+  python3 scripts/validate.py [events-path]
 """
 
 import json, os, re, sys
@@ -13,6 +13,7 @@ from math import radians, sin, cos, asin, sqrt
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from enrich import TYPES
+import placekinds
 
 # The one vocabulary. Anything outside it is invisible to every filter chip,
 # which is a silent failure — the listing renders and can never be found.
@@ -144,5 +145,76 @@ def main(path='data/events.json'):
     return 0
 
 
+def check_places(path='data/places.json'):
+    """The directory is advisory — a missing file is not a failure.
+
+    It carries no times and no prices, so the ways it can be wrong are narrow:
+    a kind outside the shared vocabulary (invisible to every chip), a place
+    outside the radius it claims, or a row with nowhere to put on a map.
+    """
+    if not os.path.exists(path):
+        print('places: not built yet — the site degrades to venues from the feed')
+        return 0
+
+    doc = json.load(open(path))
+    meta, items = doc.get('meta', {}), doc.get('items', [])
+    known = set(placekinds.ORDER)
+    errors = []
+
+    # A tag rule that matches nothing looks exactly like a region with none of
+    # that kind of place, so the rules are checked here rather than trusted.
+    try:
+        import places
+        places.test_selectors()
+    except Exception as exc:
+        errors.append(f'place selectors: {exc}')
+
+    if not ISO.match(meta.get('scrapedAt', '')):
+        errors.append('places meta.scrapedAt must be a full ISO timestamp with an offset')
+
+    ids = [i.get('id') for i in items]
+    for dup in {i for i in ids if ids.count(i) > 1}:
+        errors.append(f'places: duplicate id {dup}')
+
+    radius = meta.get('radiusMiles')
+    for place in items:
+        tag = place.get('id', '?')
+        if not place.get('name'):
+            errors.append(f'{tag}: no name')
+        if place.get('lat') is None or place.get('lon') is None:
+            errors.append(f'{tag}: no coordinates — it cannot be placed or sorted')
+            continue
+        for kind in [place.get('kind')] + list(place.get('kinds') or []):
+            if kind is not None and kind not in known:
+                errors.append(f'{tag}: unknown place kind {kind!r} — '
+                              'no chip on the Places page can reach it')
+        if radius and meta.get('centerLat') is not None:
+            d = miles(meta['centerLat'], meta['centerLon'],
+                          place['lat'], place['lon'])
+            if d > radius + 1:
+                errors.append(f'{tag}: {d:.1f} mi — outside the {radius} mi places radius')
+
+    if errors:
+        print(f'\nplaces FAILED — {len(errors)} problem(s):')
+        for e in errors[:20]:
+            print('  -', e)
+        if len(errors) > 20:
+            print(f'  … and {len(errors) - 20} more')
+        return 1
+
+    kinds = {}
+    for place in items:
+        kinds[place.get('kind') or 'other'] = kinds.get(place.get('kind') or 'other', 0) + 1
+    withev = sum(1 for p in items if p.get('events'))
+    top = ', '.join(f'{k} {n}' for k, n in
+                    sorted(kinds.items(), key=lambda kv: -kv[1])[:6])
+    print(f'{len(items)} places OK — {len(kinds)} kinds, {withev} with listings, '
+          f'within {radius} mi of {meta.get("centerName")} ({top})')
+    if meta.get('partial'):
+        print(f'warning: places is partial — {", ".join(meta["partial"])} could not be fetched')
+    return 0
+
+
 if __name__ == '__main__':
-    sys.exit(main(*sys.argv[1:]))
+    code = main(*sys.argv[1:])
+    sys.exit(code or check_places())

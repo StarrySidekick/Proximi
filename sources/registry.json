@@ -4,7 +4,8 @@
     "lat": 41.5048,
     "lon": -73.9696,
     "radiusMiles": 100,
-    "timezone": "America/New_York"
+    "timezone": "America/New_York",
+    "placesRadiusMiles": 50
   },
   "notes": [
     "kind: ics    — machine-readable feed, harvested by scripts/harvest.py",
@@ -29,7 +30,9 @@
     "bethelcinema.com is NOT Bethel Cinema any more: the domain now serves an Indonesian togel/gambling storefront. It is deliberately absent from this registry.",
     "rivertownfilm.org (Nyack) is a live site with real listings, but its WordPress has been SEO-spammed — paragraphs of Australian online-casino copy sit in the page body beside the film blurbs. Not registered: anything read off it would carry the spam into descriptions.",
     "Three theatre domains in one 50-mile pass had lapsed and been re-registered by gambling operators (downingfilmcenter.com, storyscreenbeacon.com, bethelcinema.com). Small venues lose domains often, so a cinema URL that has not been fetched in a while is worth re-checking for content, not just for HTTP status — all three answer 200.",
-    "Of roughly two dozen independent cinemas inside fifty miles, five serve their schedule as HTML (Jacob Burns, Rosendale, and the three Independent Cinemas houses) and are read by scripts/cinema.py. The rest run a ticketing SPA — Indy Systems, Filmbot's hosted app, or Agile Ticketing behind Imperva — and are hand-read or disabled."
+    "Of roughly two dozen independent cinemas inside fifty miles, five serve their schedule as HTML (Jacob Burns, Rosendale, and the three Independent Cinemas houses) and are read by scripts/cinema.py. The rest run a ticketing SPA — Indy Systems, Filmbot's hosted app, or Agile Ticketing behind Imperva — and are hand-read or disabled.",
+    "Places are collected at placesRadiusMiles (50), not the 100-mile event radius. An event is worth travelling for on a given night; a garden or an antique shop is a Sunday, and 100 miles of OpenStreetMap is tens of thousands of rows nobody scrolls.",
+    "The place taxonomy lives in scripts/placekinds.py and nowhere else. enrich.py reads it as name patterns (an event only tells us what its venue is called) and places.py reads it as OpenStreetMap tag rules; both name the same 26 kinds, and an import-time assert fails if either names one the list does not define."
   ],
   "sources": [
     {

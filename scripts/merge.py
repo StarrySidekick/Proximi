@@ -262,7 +262,7 @@ TYPE_ALIASES = {
 # listings reveal it.
 KIND_FROM_TYPE = {
     'concert': 'music venue', 'dj': 'music venue', 'open mic': 'music venue',
-    'play': 'theatre', 'musical': 'theatre', 'film': 'theatre',
+    'play': 'theatre', 'musical': 'theatre', 'film': 'cinema',
     'comedy show': 'theatre', 'dance': 'theatre',
     'museum exhibit': 'museum', 'art exhibit': 'gallery',
     'sporting event': 'stadium', 'religious ceremony': 'place of worship',
@@ -562,6 +562,9 @@ def main():
     KIND_IMPLIES = {
         'music venue': 'concert', 'theatre': 'play', 'museum': 'museum exhibit',
         'stadium': 'sporting event', 'place of worship': 'religious ceremony',
+        'cinema': 'film', 'gallery': 'art exhibit', 'winery': 'tasting',
+        'brewery': 'tasting', 'garden': 'tour', 'castle': 'tour',
+        'historic house': 'tour', 'historic site': 'tour',
     }
     from_venue = 0
     for item in merged:

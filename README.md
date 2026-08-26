@@ -270,6 +270,7 @@ sources/manual.json       listings read by hand, versioned so they survive rerun
         ├─ libcal.py      library calendars         → build/libcal.json
         ├─ songkick.py    ticketed concerts         → build/songkick.json
         ├─ cinema.py      independent film houses  → build/cinema.json
+        ├─ places.py      the place directory (OSM)  → data/places.json
         ├─ enrich.py      geocode, radius-filter, classify
         ├─ merge.py       collapse repeats, dedupe → data/events.json
         └─ validate.py    gate before anything ships
@@ -284,6 +285,7 @@ attention:
 | `jsonld` / `html` with structured data | `jsonld.py` extracts schema.org Events | none |
 | `social` | `social.py` reads the JSON Eventbrite and Meetup hand their own front end — no key, and it carries a **price** | none |
 | `html`, prose only | Claude reads the page and writes into `sources/manual.json` | manual, weekly |
+| `places` | `places.py` reads OpenStreetMap; no feed involved | none |
 
 `social` is where most of the volume now comes from. Eventbrite alone supplies
 roughly four listings in five, which is worth knowing when reading the feed:
@@ -305,6 +307,83 @@ actually looking at the places already inside it.
 
 The radius is now 75 miles, which additionally reaches New York City, New
 Haven, Hartford, Hudson and Great Barrington.
+
+### Places is a directory, not a projection of the feed
+
+The venue list started as a view onto the events: somewhere existed because
+something was scheduled there. That answers *where is this happening* and never
+*what is around here* — which leaves out most of what a region is actually good
+for. The gardens, the historic houses, the wineries, the antique shops and the
+castle do not publish calendars and most of them never will.
+
+So Places is now its own page and its own file. `scripts/places.py` pulls
+destinations from OpenStreetMap inside `center.placesRadiusMiles` and writes
+`data/places.json`; any events a place does have are attached to it, so a
+theatre carries its listings and a garden simply sits there being a garden.
+
+Two things make the result usable rather than a data dump:
+
+- **A room is not a place.** An event feed names rooms as often as buildings —
+  "Youth Services Program Room", "311 Learning Annex". A venue that OSM does
+  not know earns a directory row only by being recognisable as a *kind* of
+  place, or by carrying enough of a programme to prove it is a real one.
+- **The tag has to mean what it says.** `shop=wine` is the liquor store on the
+  corner, and including it buried the dozen actual vineyards you can drive out
+  to. `historic=memorial` is as often a plaque on a rock as a battlefield, so
+  those need some sign that somebody thought them worth describing.
+
+The places radius is 50 miles against the events' 100. An event is worth
+travelling for on a given night; a garden is a Sunday, and 100 miles of
+OpenStreetMap is tens of thousands of rows nobody scrolls.
+
+### Overpass is the flaky part, so the collector is resumable
+
+Public Overpass mirrors are not a dependable service. In one afternoon the main
+endpoint reset every connection, two mirrors answered 500/502, one served a
+Switzerland-only extract while reporting success — a mirror that lies is worse
+than one that is down — and the only healthy one took 35 seconds on a query
+that should take one.
+
+The single biggest win was not a mirror change. `around:` makes Overpass
+measure the distance to every candidate in the index, and over 80km that is
+slow enough that `out tags center` timed out on every mirror — while the
+*identical* query with `out count` came back in 35 seconds, which is what made
+it look like a mirror problem rather than a query problem. Asking for a
+**bounding box** instead is a cheap index lookup: the same museum query returns
+in 37 seconds. The bbox over-selects at the corners by up to 27%, which costs
+nothing, because the radius check that was already there drops them.
+
+So `places.py` asks for **one selector at a time** and caches each answer under
+`build/places-cache/`. OR-ing a kind's selectors into a single query makes the
+cheap ones wait behind the expensive one: `leisure=garden` covers every named
+garden polygon in fifty miles and times out, taking `leisure=nature_reserve`
+down with it. Caching per selector means a bad afternoon costs one selector on
+one run, not the whole sweep; the next run picks up only what is missing, and
+`--refresh` forces a refetch. A partial result is reported and written, never
+thrown away.
+
+One bug is worth recording because it was invisible. An Overpass selector comes
+in three shapes and the parser split them on `=` — which `"craft"~"^(brewery|
+distillery)$"` does not contain. Every regex rule therefore matched nothing, so
+monuments, breweries, distilleries, zoos and theme parks were fetched, failed
+to classify, and were dropped for having no kind. The counts looked plausible
+the whole time. `places.py --selftest` now checks that every selector parses
+and that each shape actually matches something, and `validate.py` runs it.
+
+### One taxonomy, two ways of reading it
+
+There are now 26 kinds of place, and they live in `scripts/placekinds.py` and
+nowhere else. Two things categorise places and they need different evidence:
+`enrich.py` matches a venue **name**, because an event only ever tells us what
+its venue is called, while `places.py` matches OpenStreetMap **tags**, because
+a directory has real structured data. Both name the same kinds, and an
+import-time assert fails if either names one the list does not define.
+
+Order in that file is significance, not alphabet — the first rule that matches
+wins. A used book store is a shop, a botanical garden is a park and a castle is
+a historic site, but nobody browsing for somewhere to go on Sunday wants those
+three filed under *shop*, *park* and *historic site*. That is the whole reason
+the old fifteen kinds were not enough: they were correct and useless.
 
 ### Cinemas are the hardest tier, and three of them had lost their domains
 

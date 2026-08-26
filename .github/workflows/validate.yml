@@ -15,18 +15,27 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Check data/events.json
+      - name: Check data/events.json and data/places.json
         run: python3 scripts/validate.py
+
+      - name: Check the place tag rules still match something
+        run: python3 scripts/places.py --selftest
 
       - name: Check the source registry parses
         run: |
           python3 -c "
-          import json
+          import json, sys
+          sys.path.insert(0, 'scripts')
+          import harvest
+          # Read the allowed kinds from the code rather than restating them.
+          # This list was hard-coded once and went stale the moment 'sqsp' was
+          # added, so the job failed on a registry that was perfectly fine.
+          KINDS = set(harvest.HANDLERS) | {'html', 'api', 'social'}
           reg = json.load(open('sources/registry.json'))
           ids = [s['id'] for s in reg['sources']]
           assert len(ids) == len(set(ids)), 'duplicate source ids'
           for s in reg['sources']:
-              assert s['kind'] in ('ics', 'html', 'api', 'social'), (s['id'], s['kind'])
+              assert s['kind'] in KINDS, (s['id'], s['kind'], sorted(KINDS))
               assert s['url'].startswith('http'), s['id']
-          print(f'{len(ids)} sources OK')
+          print(f'{len(ids)} sources OK across kinds {sorted(KINDS)}')
           "

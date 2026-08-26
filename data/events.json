@@ -1,7 +1,7 @@
 {
   "meta": {
     "schemaVersion": 2,
-    "scrapedAt": "2026-08-26T04:18:43+00:00",
+    "scrapedAt": "2026-08-26T05:48:37+00:00",
     "centerName": "Beacon, NY",
     "centerLat": 41.5048,
     "centerLon": -73.9696,
@@ -130,7 +130,7 @@
         "sale",
         "tour"
       ],
-      "placeKind": "park"
+      "placeKind": "historic site"
     },
     {
       "id": "ticketmaster-89180910",
@@ -1071,7 +1071,7 @@
         "concert"
       ],
       "cadence": "weekly",
-      "placeKind": "library"
+      "placeKind": "brewery"
     },
     {
       "id": "libcal:brewsterlibrary-19064128",
@@ -1920,7 +1920,8 @@
       "source": "Eventbrite",
       "types": [
         "art exhibit"
-      ]
+      ],
+      "placeKind": "mall"
     },
     {
       "id": "wildlife-play-days-hhnc",
@@ -2161,7 +2162,7 @@
         "craft",
         "class"
       ],
-      "placeKind": "park"
+      "placeKind": "farm"
     },
     {
       "id": "stormking-39402415",
@@ -3221,7 +3222,7 @@
         "film"
       ],
       "cadence": "occasional",
-      "placeKind": "theatre"
+      "placeKind": "cinema"
     },
     {
       "id": "ticketmaster-58772815",
@@ -3255,7 +3256,7 @@
         "concert"
       ],
       "cadence": "occasional",
-      "placeKind": "theatre"
+      "placeKind": "cinema"
     },
     {
       "id": "ticketmaster-14019323",
@@ -3846,7 +3847,7 @@
     {
       "id": "ticketmaster-70080365",
       "title": "The Rocky Horror Show",
-      "type": "other",
+      "type": "art exhibit",
       "repeats": true,
       "audience": "all",
       "setting": "indoor",
@@ -3868,7 +3869,7 @@
       "source": "Ticketmaster",
       "recurrence": "Every day, through Aug 29",
       "types": [
-        "other"
+        "art exhibit"
       ],
       "cadence": "daily",
       "placeKind": "gallery"
@@ -5758,7 +5759,7 @@
       "source": "Brewster Public Library",
       "recurrence": "Every Wednesday, through Oct 7",
       "cadence": "weekly",
-      "placeKind": "library"
+      "placeKind": "brewery"
     },
     {
       "id": "libcal:brewsterlibrary-42180755",
@@ -5859,7 +5860,8 @@
       "description": "Join Dawny Dew for a fun music and movement class! Sing, dance, and be silly with Dawn and all of her puppet friends. This program is for babies through pre-school! Three sessions are offered: 9:30, 10:15, or 11. Please only choose ONE session to attend. Registration is NOT required.",
       "source": "Rye Free Reading Room",
       "recurrence": "Every Wednesday, through Oct 7",
-      "cadence": "weekly"
+      "cadence": "weekly",
+      "placeKind": "library"
     },
     {
       "id": "libcal:ryelibrary-29654776",
@@ -5890,7 +5892,8 @@
       "signupUrl": null,
       "url": "https://ryelibrary.libcal.com/event/17514271",
       "description": "If you're interested in running a campaign at the library, please reach out to teen librarian Sarah! Students earn community service hours",
-      "source": "Rye Free Reading Room"
+      "source": "Rye Free Reading Room",
+      "placeKind": "library"
     },
     {
       "id": "libcal:grinnell-library-394290",
@@ -6418,7 +6421,7 @@
       "url": "https://www.eventbrite.com/e/martha-graham-the-mother-of-psychological-dance-gallery-tour-tickets-1993547004756",
       "description": "Gallery Tour for our new exhibition Martha Graham: The Mother of Psychological Dance.",
       "source": "Eventbrite",
-      "placeKind": "library"
+      "placeKind": "music venue"
     },
     {
       "id": "eventbrite-74632068",
@@ -6784,7 +6787,7 @@
       "source": "Jacob Burns Film Center",
       "recurrence": "6 dates, through Aug 27",
       "cadence": "occasional",
-      "placeKind": "theatre"
+      "placeKind": "cinema"
     },
     {
       "id": "cinema-lyceum-cinemas-spider-man-brand-new-day-2026-08-26-12-45",
@@ -6814,7 +6817,7 @@
       "source": "Independent Cinemas",
       "recurrence": "Every day, through Sep 2",
       "cadence": "daily",
-      "placeKind": "theatre"
+      "placeKind": "cinema"
     },
     {
       "id": "cinema-lyceum-cinemas-the-odyssey-2026-08-26-12-45",
@@ -6844,7 +6847,7 @@
       "source": "Independent Cinemas",
       "recurrence": "Every day, through Sep 2",
       "cadence": "daily",
-      "placeKind": "theatre"
+      "placeKind": "cinema"
     },
     {
       "id": "cinema-roosevelt-cinemas-the-magic-faraway-tree-2026-08-26-12-45",
@@ -6872,7 +6875,7 @@
       "url": "https://greatmovieslowerprices.com/roosevelt-cinemas/",
       "description": "Showtimes that day: 12:45, 3:00, 5:15 pm.",
       "source": "Independent Cinemas",
-      "placeKind": "theatre"
+      "placeKind": "cinema"
     },
     {
       "id": "cinema-roosevelt-cinemas-spider-man-brand-new-day-2026-08-26-12-45",
@@ -6902,7 +6905,7 @@
       "source": "Independent Cinemas",
       "recurrence": "Every day, through Sep 2",
       "cadence": "daily",
-      "placeKind": "theatre"
+      "placeKind": "cinema"
     },
     {
       "id": "cinema-roosevelt-cinemas-the-odyssey-2026-08-26-12-45",
@@ -6930,7 +6933,7 @@
       "url": "https://greatmovieslowerprices.com/roosevelt-cinemas/",
       "description": "Showtimes that day: 12:45, 4:05, 7:30 pm.",
       "source": "Independent Cinemas",
-      "placeKind": "theatre"
+      "placeKind": "cinema"
     },
     {
       "id": "cinema-new-paltz-cinemas-spider-man-brand-new-day-2026-08-26-12-45",
@@ -6960,7 +6963,7 @@
       "source": "Independent Cinemas",
       "recurrence": "Every day, through Sep 2",
       "cadence": "daily",
-      "placeKind": "theatre"
+      "placeKind": "cinema"
     },
     {
       "id": "stamfordmuseum-17237028",
@@ -7019,7 +7022,7 @@
       "source": "Independent Cinemas",
       "recurrence": "Every day, through Sep 2",
       "cadence": "daily",
-      "placeKind": "theatre"
+      "placeKind": "cinema"
     },
     {
       "id": "cinema-roosevelt-cinemas-paw-patrol-the-dino-movie-2026-08-26-13-00",
@@ -7049,7 +7052,7 @@
       "source": "Independent Cinemas",
       "recurrence": "Every day, through Sep 2",
       "cadence": "daily",
-      "placeKind": "theatre"
+      "placeKind": "cinema"
     },
     {
       "id": "cinema-new-paltz-cinemas-paw-patrol-the-dino-movie-2026-08-26-13-00",
@@ -7079,7 +7082,7 @@
       "source": "Independent Cinemas",
       "recurrence": "Every day, through Sep 2",
       "cadence": "daily",
-      "placeKind": "theatre"
+      "placeKind": "cinema"
     },
     {
       "id": "stormking-80175712",
@@ -7139,7 +7142,7 @@
       "source": "Independent Cinemas",
       "recurrence": "Every day, through Sep 2",
       "cadence": "daily",
-      "placeKind": "theatre"
+      "placeKind": "cinema"
     },
     {
       "id": "cinema-new-paltz-cinemas-insidious-out-of-the-further-2026-08-26-13-15",
@@ -7169,7 +7172,7 @@
       "source": "Independent Cinemas",
       "recurrence": "Every day, through Sep 2",
       "cadence": "daily",
-      "placeKind": "theatre"
+      "placeKind": "cinema"
     },
     {
       "id": "cinema-roosevelt-cinemas-mutiny-2026-08-26-13-20",
@@ -7199,7 +7202,7 @@
       "source": "Independent Cinemas",
       "recurrence": "Every day, through Sep 2",
       "cadence": "daily",
-      "placeKind": "theatre"
+      "placeKind": "cinema"
     },
     {
       "id": "cinema-lyceum-cinemas-tony-2026-08-26-13-25",
@@ -7229,7 +7232,7 @@
       "source": "Independent Cinemas",
       "recurrence": "Every day, through Sep 2",
       "cadence": "daily",
-      "placeKind": "theatre"
+      "placeKind": "cinema"
     },
     {
       "id": "cinema-lyceum-cinemas-the-end-of-oak-street-2026-08-26-13-25",
@@ -7259,7 +7262,7 @@
       "source": "Independent Cinemas",
       "recurrence": "Every day, through Sep 2",
       "cadence": "daily",
-      "placeKind": "theatre"
+      "placeKind": "cinema"
     },
     {
       "id": "cinema-roosevelt-cinemas-the-end-of-oak-street-2026-08-26-13-25",
@@ -7289,7 +7292,7 @@
       "source": "Independent Cinemas",
       "recurrence": "Every day, through Sep 2",
       "cadence": "daily",
-      "placeKind": "theatre"
+      "placeKind": "cinema"
     },
     {
       "id": "cinema-jacob-burns-film-center-cinderella-man-2026-08-26-13-30",
@@ -7317,7 +7320,7 @@
       "url": "https://burnsfilmcenter.org/booking/cinderella-man/",
       "description": null,
       "source": "Jacob Burns Film Center",
-      "placeKind": "theatre"
+      "placeKind": "cinema"
     },
     {
       "id": "cinema-roosevelt-cinemas-insidious-out-of-the-further-2026-08-26-13-30",
@@ -7347,7 +7350,7 @@
       "source": "Independent Cinemas",
       "recurrence": "Every day, through Sep 2",
       "cadence": "daily",
-      "placeKind": "theatre"
+      "placeKind": "cinema"
     },
     {
       "id": "cinema-new-paltz-cinemas-the-end-of-oak-street-2026-08-26-13-30",
@@ -7377,7 +7380,7 @@
       "source": "Independent Cinemas",
       "recurrence": "Every day, through Sep 2",
       "cadence": "daily",
-      "placeKind": "theatre"
+      "placeKind": "cinema"
     },
     {
       "id": "cinema-lyceum-cinemas-spa-weekend-2026-08-26-13-35",
@@ -7405,7 +7408,7 @@
       "url": "https://greatmovieslowerprices.com/lyceum-cinemas/",
       "description": "Showtimes that day: 1:35, 4:15, 7:15, 9:15 pm.",
       "source": "Independent Cinemas",
-      "placeKind": "theatre"
+      "placeKind": "cinema"
     },
     {
       "id": "cinema-jacob-burns-film-center-tony-2026-08-26-13-50",
@@ -7435,7 +7438,7 @@
       "source": "Jacob Burns Film Center",
       "recurrence": "6 dates, through Aug 27",
       "cadence": "occasional",
-      "placeKind": "theatre"
+      "placeKind": "cinema"
     },
     {
       "id": "cinema-jacob-burns-film-center-teenage-sex-and-death-at-camp-miasma-2026-08-26-13-55",
@@ -7465,7 +7468,7 @@
       "source": "Jacob Burns Film Center",
       "recurrence": "6 dates, through Aug 27",
       "cadence": "occasional",
-      "placeKind": "theatre"
+      "placeKind": "cinema"
     },
     {
       "id": "cinema-jacob-burns-film-center-six-the-musical-live-2026-08-26-14-00",
@@ -7493,7 +7496,7 @@
       "url": "https://burnsfilmcenter.org/booking/six-the-musical-live/",
       "description": null,
       "source": "Jacob Burns Film Center",
-      "placeKind": "theatre"
+      "placeKind": "cinema"
     },
     {
       "id": "cinema-rosendale-theatre-the-odyssey-2026-08-26-14-00",
@@ -7817,7 +7820,7 @@
       "url": "https://burnsfilmcenter.org/booking/union-county/",
       "description": null,
       "source": "Jacob Burns Film Center",
-      "placeKind": "theatre"
+      "placeKind": "cinema"
     },
     {
       "id": "cinema-jacob-burns-film-center-a-beautiful-mind-2026-08-26-17-00",
@@ -7845,7 +7848,7 @@
       "url": "https://burnsfilmcenter.org/booking/a-beautiful-mind/",
       "description": null,
       "source": "Jacob Burns Film Center",
-      "placeKind": "theatre"
+      "placeKind": "cinema"
     },
     {
       "id": "ticketmaster-74308491",
@@ -7993,7 +7996,7 @@
       "description": null,
       "host": "Time & Space Limited",
       "source": "Time & Space Limited",
-      "placeKind": "theatre"
+      "placeKind": "cinema"
     },
     {
       "id": "newburgh-brewing-trivia",
@@ -8085,7 +8088,7 @@
       "types": [
         "class"
       ],
-      "placeKind": "brewery"
+      "placeKind": "winery"
     },
     {
       "id": "eventbrite-95337323",
@@ -8117,7 +8120,7 @@
       "types": [
         "craft"
       ],
-      "placeKind": "brewery"
+      "placeKind": "winery"
     },
     {
       "id": "meetup-19918068",
@@ -8724,7 +8727,7 @@
       "types": [
         "class"
       ],
-      "placeKind": "brewery"
+      "placeKind": "winery"
     },
     {
       "id": "eventbrite-22348782",
@@ -9113,7 +9116,7 @@
         "other"
       ],
       "cadence": "monthly",
-      "placeKind": "shop"
+      "placeKind": "mall"
     },
     {
       "id": "songkick-95156346",
@@ -9253,7 +9256,7 @@
       "url": "https://burnsfilmcenter.org/booking/wild-inside/",
       "description": null,
       "source": "Jacob Burns Film Center",
-      "placeKind": "theatre"
+      "placeKind": "cinema"
     },
     {
       "id": "songkick-95052075",
@@ -9431,7 +9434,7 @@
         "concert"
       ],
       "cadence": "weekly",
-      "placeKind": "park"
+      "placeKind": "garden"
     },
     {
       "id": "songkick-90281789",
@@ -9493,7 +9496,7 @@
       "source": "Ticketmaster",
       "recurrence": "4 dates, through Aug 29",
       "cadence": "occasional",
-      "placeKind": "theatre"
+      "placeKind": "cinema"
     },
     {
       "id": "ticketmaster-58405679",
@@ -9558,7 +9561,7 @@
       "types": [
         "concert"
       ],
-      "placeKind": "theatre"
+      "placeKind": "cinema"
     },
     {
       "id": "ticketmaster-71920437",
@@ -12157,7 +12160,7 @@
       "source": "Brewster Public Library",
       "recurrence": "Every Thursday, through Oct 8",
       "cadence": "weekly",
-      "placeKind": "library"
+      "placeKind": "brewery"
     },
     {
       "id": "libcal:brewsterlibrary-50251025",
@@ -12191,7 +12194,7 @@
       "source": "Brewster Public Library",
       "recurrence": "Every Thursday, through Oct 8",
       "cadence": "weekly",
-      "placeKind": "library"
+      "placeKind": "brewery"
     },
     {
       "id": "libcal:newburghlibrary-72838619",
@@ -12256,7 +12259,8 @@
       "description": "Join Marilyn for songs, movement and fun in Spanish! This program is for children from 6 months-4 years.",
       "source": "Rye Free Reading Room",
       "recurrence": "Every Thursday, through Oct 8",
-      "cadence": "weekly"
+      "cadence": "weekly",
+      "placeKind": "library"
     },
     {
       "id": "libcal:ryelibrary-31986215",
@@ -12287,7 +12291,8 @@
       "signupUrl": null,
       "url": "https://ryelibrary.libcal.com/event/16821824",
       "description": null,
-      "source": "Rye Free Reading Room"
+      "source": "Rye Free Reading Room",
+      "placeKind": "library"
     },
     {
       "id": "libcal:ryelibrary-81192138",
@@ -12318,7 +12323,8 @@
       "signupUrl": null,
       "url": "https://ryelibrary.libcal.com/event/17505023",
       "description": "Led by Rye High School Students, this program is designed to introduce elementary and middle school students to core economic concepts through interactive games and hands-on activities rather than lectures. Make economics engaging and accessible through activities and small group challenges on a broad range of concepts.",
-      "source": "Rye Free Reading Room"
+      "source": "Rye Free Reading Room",
+      "placeKind": "library"
     },
     {
       "id": "libcal:ryelibrary-61356884",
@@ -12349,7 +12355,8 @@
       "signupUrl": null,
       "url": "https://ryelibrary.libcal.com/event/16802906",
       "description": "Join us over 8 weeks as we create projects that explore different STEM topics! Supplies are limited, register and save your spot! This event is open to those entering grades 6-12 in Fall 2026.",
-      "source": "Rye Free Reading Room"
+      "source": "Rye Free Reading Room",
+      "placeKind": "library"
     },
     {
       "id": "libcal:grinnell-library-76326895",
@@ -12564,7 +12571,7 @@
       "source": "Ticketmaster",
       "recurrence": "3 dates, through Aug 30",
       "cadence": "occasional",
-      "placeKind": "park"
+      "placeKind": "garden"
     },
     {
       "id": "ticketmaster-29750640",
@@ -13141,7 +13148,7 @@
       "url": "https://greatmovieslowerprices.com/roosevelt-cinemas/",
       "description": "Showtimes that day: 12:45 pm.",
       "source": "Independent Cinemas",
-      "placeKind": "theatre"
+      "placeKind": "cinema"
     },
     {
       "id": "manual-moviehouse-troutbeck",
@@ -13169,7 +13176,7 @@
       "description": "2026 Summer Edition of the Troutbeck Symposium student film showcase.",
       "host": "The Moviehouse",
       "source": "The Moviehouse",
-      "placeKind": "theatre"
+      "placeKind": "cinema"
     },
     {
       "id": "cinema-lyceum-cinemas-coyote-vs-acme-2026-08-27-13-15",
@@ -13200,7 +13207,7 @@
       "source": "Independent Cinemas",
       "recurrence": "Every day, through Sep 2",
       "cadence": "daily",
-      "placeKind": "theatre"
+      "placeKind": "cinema"
     },
     {
       "id": "cinema-roosevelt-cinemas-coyote-vs-acme-2026-08-27-13-15",
@@ -13231,7 +13238,7 @@
       "source": "Independent Cinemas",
       "recurrence": "Every day, through Sep 2",
       "cadence": "daily",
-      "placeKind": "theatre"
+      "placeKind": "cinema"
     },
     {
       "id": "cinema-new-paltz-cinemas-coyote-vs-acme-2026-08-27-13-25",
@@ -13262,7 +13269,7 @@
       "source": "Independent Cinemas",
       "recurrence": "Every day, through Sep 2",
       "cadence": "daily",
-      "placeKind": "theatre"
+      "placeKind": "cinema"
     },
     {
       "id": "cinema-jacob-burns-film-center-frost-nixon-2026-08-27-13-30",
@@ -13290,7 +13297,7 @@
       "url": "https://burnsfilmcenter.org/booking/frost-nixon/",
       "description": null,
       "source": "Jacob Burns Film Center",
-      "placeKind": "theatre"
+      "placeKind": "cinema"
     },
     {
       "id": "cinema-lyceum-cinemas-spa-weekend-2026-08-27-13-35",
@@ -13318,7 +13325,7 @@
       "url": "https://greatmovieslowerprices.com/lyceum-cinemas/",
       "description": "Showtimes that day: 1:35 pm.",
       "source": "Independent Cinemas",
-      "placeKind": "theatre"
+      "placeKind": "cinema"
     },
     {
       "id": "eventbrite-2854989",
@@ -13378,7 +13385,7 @@
       "url": "https://burnsfilmcenter.org/booking/late-fame/",
       "description": null,
       "source": "Jacob Burns Film Center",
-      "placeKind": "theatre"
+      "placeKind": "cinema"
     },
     {
       "id": "tubbys-89943738",
@@ -13436,7 +13443,7 @@
       "source": "Independent Cinemas",
       "recurrence": "Every day, through Sep 2",
       "cadence": "daily",
-      "placeKind": "theatre"
+      "placeKind": "cinema"
     },
     {
       "id": "cinema-roosevelt-cinemas-the-dog-stars-2026-08-27-16-20",
@@ -13466,7 +13473,7 @@
       "source": "Independent Cinemas",
       "recurrence": "Every day, through Sep 2",
       "cadence": "daily",
-      "placeKind": "theatre"
+      "placeKind": "cinema"
     },
     {
       "id": "cinema-jacob-burns-film-center-union-county-2026-08-27-16-45",
@@ -13494,7 +13501,7 @@
       "url": "https://burnsfilmcenter.org/booking/union-county/",
       "description": null,
       "source": "Jacob Burns Film Center",
-      "placeKind": "theatre"
+      "placeKind": "cinema"
     },
     {
       "id": "compilation-of-creatives",
@@ -13736,7 +13743,7 @@
       "url": "https://burnsfilmcenter.org/booking/sounds-of-summer-live-music-in-take-3/",
       "description": null,
       "source": "Jacob Burns Film Center",
-      "placeKind": "theatre"
+      "placeKind": "cinema"
     },
     {
       "id": "beacon-drum-circle",
@@ -13863,7 +13870,7 @@
         "class",
         "art exhibit"
       ],
-      "placeKind": "brewery"
+      "placeKind": "winery"
     },
     {
       "id": "songkick-84647536",
@@ -14103,7 +14110,7 @@
       "types": [
         "art exhibit"
       ],
-      "placeKind": "brewery"
+      "placeKind": "winery"
     },
     {
       "id": "eventbrite-20128734",
@@ -14135,7 +14142,7 @@
       "types": [
         "yoga"
       ],
-      "placeKind": "brewery"
+      "placeKind": "winery"
     },
     {
       "id": "songkick-64491280",
@@ -14340,7 +14347,7 @@
       "url": "https://burnsfilmcenter.org/booking/les-blank-shorts-the-blues-accordin-to-lightnin-hopkins-a-well-spent-life/",
       "description": null,
       "source": "Jacob Burns Film Center",
-      "placeKind": "theatre"
+      "placeKind": "cinema"
     },
     {
       "id": "cinema-rosendale-theatre-sherman-s-march-1986-2026-08-27-19-00",
@@ -14397,7 +14404,7 @@
       "url": "https://burnsfilmcenter.org/booking/framing-agnes/",
       "description": null,
       "source": "Jacob Burns Film Center",
-      "placeKind": "theatre"
+      "placeKind": "cinema"
     },
     {
       "id": "eventbrite-67630487",
@@ -14690,7 +14697,7 @@
       "types": [
         "concert"
       ],
-      "placeKind": "park"
+      "placeKind": "garden"
     },
     {
       "id": "ticketmaster-32421184",
@@ -14722,7 +14729,7 @@
       "types": [
         "film"
       ],
-      "placeKind": "theatre"
+      "placeKind": "cinema"
     },
     {
       "id": "ticketmaster-81855815",
@@ -14754,7 +14761,7 @@
       "types": [
         "film"
       ],
-      "placeKind": "theatre"
+      "placeKind": "cinema"
     },
     {
       "id": "ticketmaster-22504124",
@@ -15604,7 +15611,7 @@
         "film",
         "festival"
       ],
-      "placeKind": "theatre"
+      "placeKind": "cinema"
     },
     {
       "id": "ticketmaster-25145584",
@@ -16290,7 +16297,7 @@
       "source": "Brewster Public Library",
       "recurrence": "Every Friday, through Oct 9",
       "cadence": "weekly",
-      "placeKind": "library"
+      "placeKind": "brewery"
     },
     {
       "id": "libcal:ryelibrary-22767575",
@@ -16322,7 +16329,8 @@
       "signupUrl": null,
       "url": "https://ryelibrary.libcal.com/event/15872827",
       "description": "Join us at Rye Town Park and Beach every Friday during the summer for some storytime fun! This all-ages storytime (geared towards babies - preschool) will include fingerplays, movements, songs, rhymes, books, and of course, sunshine! Address: 95 Dearborn Ave, Rye, NY 10580 Location: Under the Pavilion",
-      "source": "Rye Free Reading Room"
+      "source": "Rye Free Reading Room",
+      "placeKind": "library"
     },
     {
       "id": "libcal:ryelibrary-14419306",
@@ -16354,7 +16362,8 @@
       "signupUrl": null,
       "url": "https://ryelibrary.libcal.com/event/16804193",
       "description": "Join us as we sip and snack on different treats from around the world as we make a painting! Space is limited, and registration is not required but highly recommended to reserve your spot. This event is open those entering grades 6-12 in Fall 2026.",
-      "source": "Rye Free Reading Room"
+      "source": "Rye Free Reading Room",
+      "placeKind": "library"
     },
     {
       "id": "ticketmaster-20678125",
@@ -17097,16 +17106,16 @@
       "source": "destinationdutchess.com",
       "repeats": true,
       "audience": "all",
-      "type": "other",
+      "type": "tasting",
       "setting": "unknown",
       "timeOfDay": "nighttime",
       "hasFood": true,
       "host": "destinationdutchess.com",
       "types": [
-        "other"
+        "tasting"
       ],
       "cadence": "weekly",
-      "placeKind": "brewery"
+      "placeKind": "winery"
     },
     {
       "id": "travelhudsonvalley-43531144",
@@ -17198,7 +17207,7 @@
       "types": [
         "craft"
       ],
-      "placeKind": "park"
+      "placeKind": "farm"
     },
     {
       "id": "eventbrite-29518316",
@@ -17230,7 +17239,7 @@
       "types": [
         "yoga"
       ],
-      "placeKind": "park"
+      "placeKind": "farm"
     },
     {
       "id": "songkick-24419361",
@@ -17318,7 +17327,7 @@
         "concert",
         "volunteer"
       ],
-      "placeKind": "park"
+      "placeKind": "historic site"
     },
     {
       "id": "opus40-39212480",
@@ -17556,7 +17565,7 @@
     {
       "id": "eventbrite-75637517",
       "title": "Comedian ZANE LAMPREY in Chester, NY",
-      "type": "other",
+      "type": "tasting",
       "repeats": false,
       "audience": "all",
       "setting": "unknown",
@@ -17581,7 +17590,7 @@
       "description": "Amazon Prime comedian ZANE LAMPREY • Tin Barn Brewing • Chester, NY",
       "source": "Eventbrite",
       "types": [
-        "other"
+        "tasting"
       ],
       "placeKind": "brewery"
     },
@@ -18187,7 +18196,7 @@
       "source": "Ticketmaster",
       "recurrence": "3 dates, through Aug 29",
       "cadence": "occasional",
-      "placeKind": "theatre"
+      "placeKind": "cinema"
     },
     {
       "id": "ticketmaster-9919212",
@@ -18251,7 +18260,7 @@
       "url": "https://www.ticketweb.com/event/the-triplets-of-belleville-2003-williams-center-cinema-tickets/14271504",
       "description": "When professional cyclist Champion disappears during the Tour de France, his grandmother follows the trail to the city of Belleville with help from a cartoonish trio of retired performers. Sylvain Chomets first feature earned critical acclaim for its 1930s homage, with Academy Award nominations for both Best Animated Feature and, most notably for fans, Best Original Song.",
       "source": "Ticketmaster",
-      "placeKind": "theatre"
+      "placeKind": "cinema"
     },
     {
       "id": "eventbrite-22201825",
@@ -19084,7 +19093,7 @@
     {
       "id": "ticketmaster-56376333",
       "title": "Divorced Dad Rock Night",
-      "type": "other",
+      "type": "tasting",
       "repeats": false,
       "audience": "all",
       "setting": "unknown",
@@ -19105,7 +19114,7 @@
       "description": null,
       "source": "Ticketmaster",
       "types": [
-        "other"
+        "tasting"
       ],
       "placeKind": "brewery"
     },
@@ -19723,7 +19732,7 @@
       "source": "Brewster Public Library",
       "recurrence": "Every Saturday, through Oct 3",
       "cadence": "weekly",
-      "placeKind": "library"
+      "placeKind": "brewery"
     },
     {
       "id": "libcal:irvingtonlibrary-15786499",
@@ -19822,7 +19831,8 @@
       "signupUrl": null,
       "url": "https://ryelibrary.libcal.com/event/17045083",
       "description": "Bring your 'Unearth A Story' Adult Take and Make embroidery kit and craft along with others! Participants are welcome to meet up at the library on Saturdays in the summer at 10:30 am to craft and socialize!",
-      "source": "Rye Free Reading Room"
+      "source": "Rye Free Reading Room",
+      "placeKind": "library"
     },
     {
       "id": "libcal:grinnell-library-42718780",
@@ -19859,7 +19869,7 @@
     {
       "id": "ticketmaster-9498564",
       "title": "Harry Styles: Together, Together",
-      "type": "other",
+      "type": "tour",
       "repeats": false,
       "audience": "all",
       "setting": "outdoor",
@@ -19880,9 +19890,9 @@
       "description": "PLEASE NOTE: Pricing is all-in and includes fees (before taxes if applicable). By purchasing tickets to this event, you agree to abide by the health and safety measures in effect at the time of the event. Government mandates, venue protocols, and event requirements are subject to change. For more information, please search your event on msg.com.",
       "source": "Ticketmaster",
       "types": [
-        "other"
+        "tour"
       ],
-      "placeKind": "park"
+      "placeKind": "garden"
     },
     {
       "id": "ticketmaster-32509488",
@@ -20580,7 +20590,7 @@
         "concert",
         "sporting event"
       ],
-      "placeKind": "stadium"
+      "placeKind": "historic site"
     },
     {
       "id": "ticketmaster-53171007",
@@ -20888,7 +20898,7 @@
         "market"
       ],
       "cadence": "weekly",
-      "placeKind": "park"
+      "placeKind": "garden"
     },
     {
       "id": "meetup-43140972",
@@ -20915,7 +20925,8 @@
       "source": "Meetup",
       "types": [
         "tour"
-      ]
+      ],
+      "placeKind": "historic house"
     },
     {
       "id": "eventbrite-7028286",
@@ -21115,7 +21126,7 @@
       "types": [
         "tour"
       ],
-      "placeKind": "park"
+      "placeKind": "historic site"
     },
     {
       "id": "eventbrite-38466873",
@@ -21299,7 +21310,7 @@
       "description": "Events Community events bring people together to protect and celebrate what makes this region so special. From volunteer and educational opportunities to festivals and block parties, find out what’s up next in the Hudson Valley. 12 events found. Events Today Upcoming Upcoming Select date.",
       "source": "Scenic Hudson",
       "cadence": "occasional",
-      "placeKind": "park"
+      "placeKind": "farm"
     },
     {
       "id": "dia-beacon-play-sets",
@@ -21356,7 +21367,7 @@
         "party"
       ],
       "cadence": "occasional",
-      "placeKind": "museum"
+      "placeKind": "historic house"
     },
     {
       "id": "eventbrite-85602250",
@@ -21448,7 +21459,7 @@
         "yoga"
       ],
       "cadence": "bookable",
-      "placeKind": "park"
+      "placeKind": "farm"
     },
     {
       "id": "millbrookwine-23811641",
@@ -21467,15 +21478,15 @@
       "source": "Millbrook Vineyards & Winery",
       "repeats": false,
       "audience": "all",
-      "type": "other",
+      "type": "tasting",
       "setting": "unknown",
       "timeOfDay": "daytime",
       "hasFood": true,
       "host": "Millbrook Vineyards & Winery",
       "types": [
-        "other"
+        "tasting"
       ],
-      "placeKind": "brewery"
+      "placeKind": "winery"
     },
     {
       "id": "bau-gallery-beacon",
@@ -21635,12 +21646,12 @@
         "class",
         "art exhibit"
       ],
-      "placeKind": "brewery"
+      "placeKind": "winery"
     },
     {
       "id": "eventbrite-99549796",
       "title": "Cheese Fondue Dip & Sip",
-      "type": "other",
+      "type": "tasting",
       "repeats": false,
       "audience": "all",
       "setting": "unknown",
@@ -21665,9 +21676,9 @@
       "description": "Savor an exquisite cheese fondue experience",
       "source": "Eventbrite",
       "types": [
-        "other"
+        "tasting"
       ],
-      "placeKind": "brewery"
+      "placeKind": "winery"
     },
     {
       "id": "eventbrite-47879349",
@@ -21730,7 +21741,7 @@
       "types": [
         "party"
       ],
-      "placeKind": "park"
+      "placeKind": "farm"
     },
     {
       "id": "eventbrite-90242252",
@@ -22390,7 +22401,7 @@
       "types": [
         "concert"
       ],
-      "placeKind": "brewery"
+      "placeKind": "winery"
     },
     {
       "id": "ticketmaster-37269899",
@@ -22644,7 +22655,7 @@
       "types": [
         "concert"
       ],
-      "placeKind": "brewery"
+      "placeKind": "winery"
     },
     {
       "id": "ticketmaster-82614882",
@@ -22921,7 +22932,7 @@
     {
       "id": "eventbrite-70392019",
       "title": "Comedian ZANE LAMPREY in Elmsford, NY",
-      "type": "other",
+      "type": "tasting",
       "repeats": false,
       "audience": "all",
       "setting": "unknown",
@@ -22946,7 +22957,7 @@
       "description": "Amazon Prime comedian ZANE LAMPREY • Captain Lawrence Brewing • Elmsford, NY",
       "source": "Eventbrite",
       "types": [
-        "other"
+        "tasting"
       ],
       "placeKind": "brewery"
     },
@@ -23506,7 +23517,7 @@
       "types": [
         "concert"
       ],
-      "placeKind": "park"
+      "placeKind": "garden"
     },
     {
       "id": "stamfordmuseum-96618959",
@@ -24720,7 +24731,8 @@
       "signupUrl": null,
       "url": "https://ryelibrary.libcal.com/event/17039539",
       "description": "Join us for weekly adult Mahjong taught by instructor Regina Klenosky. Starting on 3/15, Mahjong registration will open 5 days in advance on the Tuesday prior to the session. One slot per person at this time.",
-      "source": "Rye Free Reading Room"
+      "source": "Rye Free Reading Room",
+      "placeKind": "library"
     },
     {
       "id": "ticketmaster-72601849",
@@ -25862,7 +25874,7 @@
       "types": [
         "concert"
       ],
-      "placeKind": "brewery"
+      "placeKind": "winery"
     },
     {
       "id": "stormking-70841960",
@@ -25960,7 +25972,7 @@
     {
       "id": "eventbrite-20888089",
       "title": "Color Between the Wines",
-      "type": "other",
+      "type": "tasting",
       "repeats": false,
       "audience": "all",
       "setting": "unknown",
@@ -25985,9 +25997,9 @@
       "description": "Relax and spend the evening coloring and sipping on your favorite Aquila's Nest wine! Coloring book is provided by Independent Usborne Books",
       "source": "Eventbrite",
       "types": [
-        "other"
+        "tasting"
       ],
-      "placeKind": "brewery"
+      "placeKind": "winery"
     },
     {
       "id": "eventbrite-32891870",
@@ -26019,7 +26031,7 @@
       "types": [
         "tasting"
       ],
-      "placeKind": "brewery"
+      "placeKind": "winery"
     },
     {
       "id": "travelhudsonvalley-84698530",
@@ -26377,7 +26389,7 @@
       "types": [
         "tour"
       ],
-      "placeKind": "park"
+      "placeKind": "garden"
     },
     {
       "id": "stamfordmuseum-39068142",
@@ -26411,7 +26423,7 @@
         "craft",
         "museum exhibit"
       ],
-      "placeKind": "museum"
+      "placeKind": "historic house"
     },
     {
       "id": "eventbrite-49161759",
@@ -26735,7 +26747,7 @@
     {
       "id": "eventbrite-47430433",
       "title": "2026 Minnie Untermyer Series: Sonnambula - Renaissance and Baroque Music",
-      "type": "other",
+      "type": "tour",
       "repeats": false,
       "audience": "all",
       "setting": "unknown",
@@ -26760,9 +26772,9 @@
       "description": "Sonnambula is a historically informed ensemble that brings to light unknown music for early instruments.",
       "source": "Eventbrite",
       "types": [
-        "other"
+        "tour"
       ],
-      "placeKind": "park"
+      "placeKind": "garden"
     },
     {
       "id": "cornwall-music-in-the-park",
@@ -26827,7 +26839,7 @@
         "trivia",
         "dj"
       ],
-      "placeKind": "brewery"
+      "placeKind": "winery"
     },
     {
       "id": "songkick-99154258",
@@ -27120,7 +27132,7 @@
       "description": null,
       "host": "Time & Space Limited",
       "source": "Time & Space Limited",
-      "placeKind": "theatre"
+      "placeKind": "cinema"
     },
     {
       "id": "manual-bethelwoods-jerrygarcia",
@@ -27236,7 +27248,7 @@
         "concert"
       ],
       "cadence": "occasional",
-      "placeKind": "park"
+      "placeKind": "garden"
     },
     {
       "id": "ticketmaster-96181936",
@@ -27700,14 +27712,14 @@
       "source": "Brewster Public Library",
       "recurrence": "Every day, through Sep 5",
       "cadence": "daily",
-      "placeKind": "library"
+      "placeKind": "brewery"
     },
     {
       "id": "libcal:brewsterlibrary-20264771",
       "title": "Wii Bowling ",
-      "type": "other",
+      "type": "tasting",
       "types": [
-        "other"
+        "tasting"
       ],
       "repeats": true,
       "audience": "all",
@@ -27734,7 +27746,7 @@
       "source": "Brewster Public Library",
       "recurrence": "Every Monday, through Oct 5",
       "cadence": "weekly",
-      "placeKind": "library"
+      "placeKind": "brewery"
     },
     {
       "id": "libcal:ryelibrary-38706246",
@@ -27767,7 +27779,8 @@
       "description": "Tales for Tots with Miss Debbie! An inclusive story time for children and their caregivers featuring stories, songs, fingerplays, movement activities and more! Practice early concepts like counting, ABCs and rhyming words in a fun community setting.",
       "source": "Rye Free Reading Room",
       "recurrence": "Every Monday, through Oct 5",
-      "cadence": "weekly"
+      "cadence": "weekly",
+      "placeKind": "library"
     },
     {
       "id": "libcal:ryelibrary-60976617",
@@ -27798,7 +27811,8 @@
       "signupUrl": null,
       "url": "https://ryelibrary.libcal.com/event/16883330",
       "description": null,
-      "source": "Rye Free Reading Room"
+      "source": "Rye Free Reading Room",
+      "placeKind": "library"
     },
     {
       "id": "ticketmaster-87799166",
@@ -27855,7 +27869,7 @@
       "description": null,
       "host": "Time & Space Limited",
       "source": "Time & Space Limited",
-      "placeKind": "theatre"
+      "placeKind": "cinema"
     },
     {
       "id": "eventbrite-80058646",
@@ -28128,7 +28142,7 @@
       "types": [
         "concert"
       ],
-      "placeKind": "park"
+      "placeKind": "garden"
     },
     {
       "id": "songkick-13974331",
@@ -28805,7 +28819,7 @@
       "source": "Brewster Public Library",
       "recurrence": "Every Tuesday, through Oct 6",
       "cadence": "weekly",
-      "placeKind": "library"
+      "placeKind": "brewery"
     },
     {
       "id": "libcal:brewsterlibrary-58816421",
@@ -28839,7 +28853,7 @@
       "source": "Brewster Public Library",
       "recurrence": "Every Tuesday, through Oct 6",
       "cadence": "weekly",
-      "placeKind": "library"
+      "placeKind": "brewery"
     },
     {
       "id": "libcal:ryelibrary-53423718",
@@ -28872,7 +28886,8 @@
       "description": "Join Robert the Guitar Guy LIVE and in-person every Thursday morning for a fun, high-energy music and movement program. Robert Markowitz is a children's singer, guitarist, songwriter, educator, and recording artist. Robert has developed a method of musical play with kindergarten and pre-school children incorporating music, rhythm, movement, humor, role-playing, storytelling and props which makes…",
       "source": "Rye Free Reading Room",
       "recurrence": "Every Tuesday, through Oct 6",
-      "cadence": "weekly"
+      "cadence": "weekly",
+      "placeKind": "library"
     },
     {
       "id": "libcal:grinnell-library-56650563",
@@ -29162,7 +29177,7 @@
         "meet & greet",
         "concert"
       ],
-      "placeKind": "shop"
+      "placeKind": "bookshop"
     },
     {
       "id": "eventbrite-70059038",
@@ -29551,7 +29566,7 @@
       "types": [
         "concert"
       ],
-      "placeKind": "park"
+      "placeKind": "garden"
     },
     {
       "id": "songkick-42081215",
@@ -29579,7 +29594,7 @@
       "types": [
         "concert"
       ],
-      "placeKind": "brewery"
+      "placeKind": "winery"
     },
     {
       "id": "songkick-15008813",
@@ -30160,7 +30175,7 @@
         "yoga",
         "class"
       ],
-      "placeKind": "brewery"
+      "placeKind": "winery"
     },
     {
       "id": "eventbrite-62261426",
@@ -30193,7 +30208,7 @@
         "art exhibit",
         "class"
       ],
-      "placeKind": "brewery"
+      "placeKind": "winery"
     },
     {
       "id": "songkick-99499571",
@@ -30250,7 +30265,7 @@
         "party",
         "sporting event"
       ],
-      "placeKind": "club"
+      "placeKind": "castle"
     },
     {
       "id": "tubbys-89275768",
@@ -30392,7 +30407,7 @@
       "types": [
         "concert"
       ],
-      "placeKind": "brewery"
+      "placeKind": "winery"
     },
     {
       "id": "songkick-92690530",
@@ -30806,7 +30821,8 @@
       "signupUrl": null,
       "url": "https://ryelibrary.libcal.com/event/17372737",
       "description": null,
-      "source": "Rye Free Reading Room"
+      "source": "Rye Free Reading Room",
+      "placeKind": "library"
     },
     {
       "id": "libcal:ryelibrary-35006946",
@@ -30838,7 +30854,8 @@
       "signupUrl": null,
       "url": "https://ryelibrary.libcal.com/event/15500642",
       "description": "Join the Thursday Afternoon Book Club! Great books! Great people! Thoughtful conversations! This month we will be discussing The Maid by Nita Prose. We meet the first Thursday of every month!! You can attend in-person or via Zoom!",
-      "source": "Rye Free Reading Room"
+      "source": "Rye Free Reading Room",
+      "placeKind": "library"
     },
     {
       "id": "libcal:ryelibrary-57655397",
@@ -30869,7 +30886,8 @@
       "signupUrl": null,
       "url": "https://ryelibrary.libcal.com/event/16810440",
       "description": "Turn a loved piece of clothing into a mended masterpiece, or add some personal flair to something new! Patches provided by the library, registrants can bring a piece off clothing from home or use the library's fabric. Supplies are limited, register to save your space. This event is for teens in grades 6-12.",
-      "source": "Rye Free Reading Room"
+      "source": "Rye Free Reading Room",
+      "placeKind": "library"
     },
     {
       "id": "libcal:grinnell-library-78348332",
@@ -31053,7 +31071,7 @@
     {
       "id": "eventbrite-69724104",
       "title": "Paint Your Own Animal Succulent Planter",
-      "type": "other",
+      "type": "tasting",
       "repeats": false,
       "audience": "all",
       "setting": "unknown",
@@ -31078,9 +31096,9 @@
       "description": "Enjoy a cozy creative break at Aquila’s Nest Vineyards with our Paint Your Own Animal Succulent Planter activity!",
       "source": "Eventbrite",
       "types": [
-        "other"
+        "tasting"
       ],
-      "placeKind": "brewery"
+      "placeKind": "winery"
     },
     {
       "id": "eventbrite-63777437",
@@ -31515,7 +31533,7 @@
       "types": [
         "concert"
       ],
-      "placeKind": "park"
+      "placeKind": "garden"
     },
     {
       "id": "songkick-7001914",
@@ -31599,7 +31617,7 @@
       "description": "Outdoor screening with Beacon Recreation at Memorial Park.",
       "host": "Story Screen",
       "source": "Story Screen",
-      "placeKind": "park"
+      "placeKind": "historic site"
     },
     {
       "id": "eventbrite-72460870",
@@ -31940,7 +31958,8 @@
       "description": "Shake your sillies out with this movement based, interactive storytime. Let's move to our favorite books, stretch, and dance together! This program is for children 12 months and up (geared toward toddlers-preschool).",
       "source": "Rye Free Reading Room",
       "recurrence": "Every Friday, through Oct 9",
-      "cadence": "weekly"
+      "cadence": "weekly",
+      "placeKind": "library"
     },
     {
       "id": "libcal:ryelibrary-45318221",
@@ -31971,7 +31990,8 @@
       "signupUrl": null,
       "url": "https://ryelibrary.libcal.com/event/16810353",
       "description": "Make your own personalized bookbag charms! Supplies are limited, save your spot! Drop-ins welcome if there is room. This event is for grades 6-12.",
-      "source": "Rye Free Reading Room"
+      "source": "Rye Free Reading Room",
+      "placeKind": "library"
     },
     {
       "id": "ticketmaster-16098574",
@@ -32255,15 +32275,15 @@
       "source": "Millbrook Vineyards & Winery",
       "repeats": false,
       "audience": "all",
-      "type": "other",
+      "type": "tasting",
       "setting": "unknown",
       "timeOfDay": "nighttime",
       "hasFood": true,
       "host": "Millbrook Vineyards & Winery",
       "types": [
-        "other"
+        "tasting"
       ],
-      "placeKind": "brewery"
+      "placeKind": "winery"
     },
     {
       "id": "hv-balloon-festival-2026",
@@ -32408,7 +32428,7 @@
       "types": [
         "parade"
       ],
-      "placeKind": "park"
+      "placeKind": "historic site"
     },
     {
       "id": "eventbrite-41023738",
@@ -32627,9 +32647,9 @@
     {
       "id": "eventbrite-48848298",
       "title": "Llamas and Llibations",
-      "type": "other",
+      "type": "tasting",
       "types": [
-        "other"
+        "tasting"
       ],
       "repeats": false,
       "audience": "all",
@@ -32654,7 +32674,7 @@
       "url": "https://www.eventbrite.com/e/llamas-and-llibations-tickets-1998630738340",
       "description": "Join Rowanwood Farm for a llamazing special afternoon at Aquila’s Nest Vineyards for LLAMA TIME & WINE!",
       "source": "Eventbrite",
-      "placeKind": "brewery"
+      "placeKind": "winery"
     },
     {
       "id": "lit-lit-open-mic-sep",
@@ -32777,7 +32797,7 @@
         "class",
         "concert"
       ],
-      "placeKind": "brewery"
+      "placeKind": "winery"
     },
     {
       "id": "meetup-73516108",
@@ -32948,7 +32968,7 @@
       "types": [
         "film"
       ],
-      "placeKind": "theatre"
+      "placeKind": "cinema"
     },
     {
       "id": "eventbrite-47321957",
@@ -33013,7 +33033,7 @@
         "other"
       ],
       "cadence": "bookable",
-      "placeKind": "cafe"
+      "placeKind": "park"
     },
     {
       "id": "eventbrite-9420886",
@@ -34293,7 +34313,7 @@
       "types": [
         "class"
       ],
-      "placeKind": "park"
+      "placeKind": "farm"
     },
     {
       "id": "eventbrite-83586771",
@@ -34344,15 +34364,15 @@
       "source": "Millbrook Vineyards & Winery",
       "repeats": false,
       "audience": "all",
-      "type": "other",
+      "type": "tasting",
       "setting": "unknown",
       "timeOfDay": "daytime",
       "hasFood": true,
       "host": "Millbrook Vineyards & Winery",
       "types": [
-        "other"
+        "tasting"
       ],
-      "placeKind": "brewery"
+      "placeKind": "winery"
     },
     {
       "id": "teatown-39876067",
@@ -34379,7 +34399,7 @@
       "types": [
         "animal encounter"
       ],
-      "placeKind": "park"
+      "placeKind": "farm"
     },
     {
       "id": "eventbrite-84667415",
@@ -34475,7 +34495,7 @@
       "types": [
         "class"
       ],
-      "placeKind": "brewery"
+      "placeKind": "winery"
     },
     {
       "id": "eventbrite-86384470",
@@ -34507,7 +34527,7 @@
       "types": [
         "tasting"
       ],
-      "placeKind": "brewery"
+      "placeKind": "winery"
     },
     {
       "id": "eventbrite-29164731",
@@ -34541,7 +34561,7 @@
         "tour",
         "tasting"
       ],
-      "placeKind": "park"
+      "placeKind": "farm"
     },
     {
       "id": "wcsu-69160745",
@@ -34595,7 +34615,7 @@
       "types": [
         "animal encounter"
       ],
-      "placeKind": "park"
+      "placeKind": "historic site"
     },
     {
       "id": "eventbrite-63938399",
@@ -34985,7 +35005,7 @@
       "url": "https://www.eventbrite.com/e/totally-trees-tour-with-levi-obrien-registration-1993144232052",
       "description": "Join arborist, educator and tree enthusiast Levi O'Brien to explore the world of trees at Untermyer",
       "source": "Eventbrite",
-      "placeKind": "park"
+      "placeKind": "garden"
     },
     {
       "id": "manual-tsl-gallery-0905",
@@ -35013,7 +35033,7 @@
       "description": null,
       "host": "Time & Space Limited",
       "source": "Time & Space Limited",
-      "placeKind": "theatre"
+      "placeKind": "cinema"
     },
     {
       "id": "millbrookwine-36039939",
@@ -35040,7 +35060,7 @@
       "types": [
         "concert"
       ],
-      "placeKind": "brewery"
+      "placeKind": "winery"
     },
     {
       "id": "songkick-69441652",
@@ -35192,7 +35212,7 @@
       "types": [
         "comedy show"
       ],
-      "placeKind": "brewery"
+      "placeKind": "winery"
     },
     {
       "id": "songkick-49439414",
@@ -35397,7 +35417,7 @@
       "types": [
         "film"
       ],
-      "placeKind": "theatre"
+      "placeKind": "cinema"
     },
     {
       "id": "eventbrite-13986490",
@@ -35873,7 +35893,8 @@
       "signupUrl": null,
       "url": "https://ryelibrary.libcal.com/event/16744318",
       "description": null,
-      "source": "Rye Free Reading Room"
+      "source": "Rye Free Reading Room",
+      "placeKind": "library"
     },
     {
       "id": "ticketmaster-9031310",
@@ -35995,7 +36016,7 @@
       "types": [
         "class"
       ],
-      "placeKind": "park"
+      "placeKind": "farm"
     },
     {
       "id": "meetup-42287451",
@@ -36085,7 +36106,7 @@
         "class",
         "art exhibit"
       ],
-      "placeKind": "brewery"
+      "placeKind": "winery"
     },
     {
       "id": "eventbrite-31221771",
@@ -36117,7 +36138,7 @@
       "types": [
         "other"
       ],
-      "placeKind": "park"
+      "placeKind": "farm"
     },
     {
       "id": "travelhudsonvalley-36727895",
@@ -36149,7 +36170,7 @@
     {
       "id": "eventbrite-34868022",
       "title": "Tataki-Zome: The Art of Flower Pounding",
-      "type": "museum exhibit",
+      "type": "tour",
       "repeats": false,
       "audience": "all",
       "setting": "unknown",
@@ -36174,9 +36195,9 @@
       "description": "Practice the art of flower pounding and make beautiful, botanical prints on greeting cards. Materials and instruction included.",
       "source": "Eventbrite",
       "types": [
-        "museum exhibit"
+        "tour"
       ],
-      "placeKind": "museum"
+      "placeKind": "historic house"
     },
     {
       "id": "eventbrite-37028435",
@@ -36208,7 +36229,7 @@
       "types": [
         "craft"
       ],
-      "placeKind": "brewery"
+      "placeKind": "winery"
     },
     {
       "id": "eventbrite-51603586",
@@ -36267,7 +36288,7 @@
         "tour",
         "volunteer"
       ],
-      "placeKind": "park"
+      "placeKind": "garden"
     },
     {
       "id": "savagewonder-55927370",
@@ -36357,7 +36378,7 @@
       "types": [
         "tasting"
       ],
-      "placeKind": "park"
+      "placeKind": "farm"
     },
     {
       "id": "eventbrite-39480547",
@@ -36708,7 +36729,7 @@
       "types": [
         "concert"
       ],
-      "placeKind": "brewery"
+      "placeKind": "winery"
     },
     {
       "id": "eventbrite-1860109",
@@ -37216,7 +37237,7 @@
     {
       "id": "libcal:brewsterlibrary-30531165",
       "title": "Closed for Labor Day",
-      "type": "other",
+      "type": "tasting",
       "repeats": false,
       "audience": "all",
       "setting": "indoor",
@@ -37241,9 +37262,9 @@
       "description": "The library will be closed in observance of Labor Day.",
       "source": "Brewster Public Library",
       "types": [
-        "other"
+        "tasting"
       ],
-      "placeKind": "library"
+      "placeKind": "brewery"
     },
     {
       "id": "libcal:irvingtonlibrary-50553756",
@@ -37306,7 +37327,8 @@
       "signupUrl": null,
       "url": "https://ryelibrary.libcal.com/event/16744319",
       "description": null,
-      "source": "Rye Free Reading Room"
+      "source": "Rye Free Reading Room",
+      "placeKind": "library"
     },
     {
       "id": "libcal:grinnell-library-73355943",
@@ -37570,7 +37592,7 @@
       "types": [
         "concert"
       ],
-      "placeKind": "park"
+      "placeKind": "garden"
     },
     {
       "id": "songkick-79413973",
@@ -38107,7 +38129,8 @@
       "description": "Book donations begin September 8. Please bring donations to the Meeting Room. Limit of 5 boxes/bags of donations per family. Rye Free Reading Room Book Sale When is the Rye Free Reading Room Book Sale? The 2025 Book Sale will take place on Saturday, September 19th and Sunday, September 20th, 2026. The book sale is open from 10 am to 5 pm on Saturday, and from 10 am to 3 pm on Sunday.",
       "source": "Rye Free Reading Room",
       "recurrence": "Every day, through Sep 16",
-      "cadence": "daily"
+      "cadence": "daily",
+      "placeKind": "library"
     },
     {
       "id": "libcal:ryelibrary-9004056",
@@ -38139,7 +38162,8 @@
       "signupUrl": null,
       "url": "https://ryelibrary.libcal.com/event/16847382",
       "description": "Join us for a topical discussion. This month we will discuss 1929: Inside the Greatest Crash in Wall Street History--and How It Shattered a Nation by Andrew Ross Sorkin.",
-      "source": "Rye Free Reading Room"
+      "source": "Rye Free Reading Room",
+      "placeKind": "library"
     },
     {
       "id": "libcal:ryelibrary-1173493",
@@ -38170,7 +38194,8 @@
       "signupUrl": null,
       "url": "https://ryelibrary.libcal.com/event/17302975",
       "description": null,
-      "source": "Rye Free Reading Room"
+      "source": "Rye Free Reading Room",
+      "placeKind": "library"
     },
     {
       "id": "eventbrite-62428975",
@@ -39394,7 +39419,7 @@
       "types": [
         "tour"
       ],
-      "placeKind": "library"
+      "placeKind": "historic site"
     },
     {
       "id": "eventbrite-3375388",
@@ -39428,7 +39453,7 @@
         "museum exhibit",
         "class"
       ],
-      "placeKind": "museum"
+      "placeKind": "park"
     },
     {
       "id": "desmondfish-library-55773143",
@@ -39670,7 +39695,7 @@
         "yoga",
         "class"
       ],
-      "placeKind": "park"
+      "placeKind": "garden"
     },
     {
       "id": "eventbrite-56555543",
@@ -39765,7 +39790,7 @@
       "types": [
         "talk"
       ],
-      "placeKind": "shop"
+      "placeKind": "bookshop"
     },
     {
       "id": "eventbrite-62380511",
@@ -39884,7 +39909,7 @@
       "types": [
         "speed dating"
       ],
-      "placeKind": "brewery"
+      "placeKind": "winery"
     },
     {
       "id": "eventbrite-85291004",
@@ -40562,7 +40587,7 @@
     {
       "id": "libcal:irvingtonlibrary-22279712",
       "title": "NYS DEC public comment session",
-      "type": "other",
+      "type": "art exhibit",
       "repeats": false,
       "audience": "all",
       "setting": "indoor",
@@ -40587,7 +40612,7 @@
       "description": "The NY State Department of Environmental Conservation Invites Public Comment About Cleanup Proposal for State Superfund Site on Main St., Irvington; Public Meeting Scheduled This link opens a fact sheet that invites public comment about a proposed cleanup to address contamination related to the Irvington Rugs and Cleaners site #360175 (Irvington, Westchester County) within New York’s State…",
       "source": "Irvington Public Library",
       "types": [
-        "other"
+        "art exhibit"
       ],
       "placeKind": "gallery"
     },
@@ -40616,7 +40641,7 @@
       "url": "https://travelhudsonvalley.com/event/the-oldtone-music-festival-2026/",
       "description": "Oldtone preserves roots music and traditional folkways through artist and audience participation; connecting neighbors, bridging cultures, and sharing insight and wisdom across generations. Multi-day event…..come for the day or stay overnight!",
       "source": "Hudson Valley Tourism",
-      "placeKind": "park"
+      "placeKind": "farm"
     },
     {
       "id": "libcal:ryelibrary-49531135",
@@ -40647,7 +40672,8 @@
       "signupUrl": null,
       "url": "https://ryelibrary.libcal.com/event/16820680",
       "description": "Join us each month for a different STEM project!",
-      "source": "Rye Free Reading Room"
+      "source": "Rye Free Reading Room",
+      "placeKind": "library"
     },
     {
       "id": "eventbrite-61726796",
@@ -40744,7 +40770,7 @@
         "museum exhibit",
         "class"
       ],
-      "placeKind": "museum"
+      "placeKind": "park"
     },
     {
       "id": "wcsu-2545267",
@@ -40888,7 +40914,7 @@
         "club"
       ],
       "cadence": "occasional",
-      "placeKind": "park"
+      "placeKind": "historic site"
     },
     {
       "id": "whitememorial-84236267",
@@ -40915,7 +40941,8 @@
       "types": [
         "craft"
       ],
-      "cadence": "occasional"
+      "cadence": "occasional",
+      "placeKind": "historic site"
     },
     {
       "id": "travelhudsonvalley-60772549",
@@ -41100,7 +41127,7 @@
         "meet & greet",
         "sporting event"
       ],
-      "placeKind": "shop"
+      "placeKind": "bookshop"
     },
     {
       "id": "eventbrite-68470266",
@@ -41132,7 +41159,7 @@
       "types": [
         "yoga"
       ],
-      "placeKind": "brewery"
+      "placeKind": "winery"
     },
     {
       "id": "eventbrite-56702799",
@@ -42028,7 +42055,8 @@
       "signupUrl": null,
       "url": "https://ryelibrary.libcal.com/event/16744324",
       "description": "Book donations begin August 31. Please bring donations to the Meeting Room. Limit of 5 boxes/bags of donations per family. Rye Free Reading Room Book Sale When is the Rye Free Reading Room Book Sale? The 2025 Book Sale will take place on Saturday, September 19th and Sunday, September 20th, 2026. The book sale is open from 10 am to 5 pm on Saturday, and from 10 am to 3 pm on Sunday.",
-      "source": "Rye Free Reading Room"
+      "source": "Rye Free Reading Room",
+      "placeKind": "library"
     },
     {
       "id": "libcal:ryelibrary-15343824",
@@ -42059,7 +42087,8 @@
       "signupUrl": null,
       "url": "https://ryelibrary.libcal.com/event/16818277",
       "description": "Take command of your troops and battle for your side in this recreation of historical conflicts before learning about how the actual battle went down. In partnership with the Historical Miniatures Gaming Society (HMGS), learn the intricacies of battlefield strategy while playing this MASSIVE tabletop game!",
-      "source": "Rye Free Reading Room"
+      "source": "Rye Free Reading Room",
+      "placeKind": "library"
     },
     {
       "id": "ticketmaster-46812838",
@@ -42442,7 +42471,7 @@
       "types": [
         "class"
       ],
-      "placeKind": "brewery"
+      "placeKind": "winery"
     },
     {
       "id": "wcsu-2396551",
@@ -42716,7 +42745,7 @@
       "types": [
         "film"
       ],
-      "placeKind": "library"
+      "placeKind": "music venue"
     },
     {
       "id": "tubbys-73841719",
@@ -42979,7 +43008,8 @@
       "source": "Eventbrite",
       "types": [
         "volunteer"
-      ]
+      ],
+      "placeKind": "historic site"
     },
     {
       "id": "eventbrite-94265131",
@@ -43634,7 +43664,7 @@
       "types": [
         "talk"
       ],
-      "placeKind": "park"
+      "placeKind": "garden"
     },
     {
       "id": "scenichudson-42865387",
@@ -43662,7 +43692,7 @@
       "description": "Events Community events bring people together to protect and celebrate what makes this region so special. From volunteer and educational opportunities to festivals and block parties, find out what’s up next in the Hudson Valley. 12 events found. Events Today Upcoming Upcoming Select date.",
       "source": "Scenic Hudson",
       "cadence": "occasional",
-      "placeKind": "park"
+      "placeKind": "farm"
     },
     {
       "id": "eventbrite-90669455",
@@ -43775,7 +43805,7 @@
       "types": [
         "market"
       ],
-      "placeKind": "park"
+      "placeKind": "garden"
     },
     {
       "id": "whitememorial-28054047",
@@ -43802,7 +43832,7 @@
       "types": [
         "tour"
       ],
-      "placeKind": "park"
+      "placeKind": "historic site"
     },
     {
       "id": "eventbrite-30594079",
@@ -43932,7 +43962,7 @@
       "types": [
         "sale"
       ],
-      "placeKind": "shop"
+      "placeKind": "mall"
     },
     {
       "id": "eventbrite-88968782",
@@ -43963,8 +43993,7 @@
       "source": "Eventbrite",
       "types": [
         "class"
-      ],
-      "placeKind": "museum"
+      ]
     },
     {
       "id": "eventbrite-23674532",
@@ -44062,7 +44091,7 @@
         "art exhibit",
         "tour"
       ],
-      "placeKind": "library"
+      "placeKind": "music venue"
     },
     {
       "id": "eventbrite-56281451",
@@ -44126,7 +44155,7 @@
       "types": [
         "market"
       ],
-      "placeKind": "park"
+      "placeKind": "farm"
     },
     {
       "id": "eventbrite-45112891",
@@ -44192,7 +44221,7 @@
         "trivia",
         "party"
       ],
-      "placeKind": "brewery"
+      "placeKind": "winery"
     },
     {
       "id": "hudsonvalleybrewery-21075228",
@@ -44282,7 +44311,7 @@
       "types": [
         "other"
       ],
-      "placeKind": "park"
+      "placeKind": "farm"
     },
     {
       "id": "eventbrite-46977739",
@@ -44443,7 +44472,7 @@
     {
       "id": "whitememorial-58491155",
       "title": "Meet our Radical Raptors with Colleen Harrak",
-      "type": "other",
+      "type": "tour",
       "repeats": false,
       "audience": "family",
       "setting": "outdoor",
@@ -44463,9 +44492,9 @@
       "description": "Saturday, September 12, 2026 For Ages 8 and up Just who-who-whoo are those big, beautiful birds of prey you see perched atop fenceposts by day or hear calling outside your window by night? Environmental Educator Colleen Harrak highlights some of the hawks, owls, eagles, and falcons that call northwest CT home. You’ll even get to meet our Avian Ambassadors up close and personal! 2 p.m., A. B.",
       "source": "White Memorial Conservation Center",
       "types": [
-        "other"
+        "tour"
       ],
-      "placeKind": "park"
+      "placeKind": "historic site"
     },
     {
       "id": "teatown-79233108",
@@ -44526,7 +44555,7 @@
     {
       "id": "eventbrite-79577059",
       "title": "Raiders of the Lost Greenhouse Complex",
-      "type": "museum exhibit",
+      "type": "tour",
       "repeats": false,
       "audience": "all",
       "setting": "outdoor",
@@ -44551,9 +44580,9 @@
       "description": "Discover the remnants of Staatsburgh's once-thriving nursery complex and make a garden in a glass!",
       "source": "Eventbrite",
       "types": [
-        "museum exhibit"
+        "tour"
       ],
-      "placeKind": "museum"
+      "placeKind": "historic house"
     },
     {
       "id": "msmc-47668529",
@@ -45004,7 +45033,7 @@
       "types": [
         "dance"
       ],
-      "placeKind": "park"
+      "placeKind": "garden"
     },
     {
       "id": "eventbrite-52775176",
@@ -45069,7 +45098,7 @@
         "dance",
         "concert"
       ],
-      "placeKind": "brewery"
+      "placeKind": "winery"
     },
     {
       "id": "songkick-26296797",
@@ -45446,7 +45475,7 @@
       "url": "https://www.eventbrite.com/e/children-of-the-corn-and-a-corn-maze-tickets-1996764219532",
       "description": "Watch the classic Stephen King adaptation Children of the Corn (1984) by a corn maze and then navigate the maze by flashlight",
       "source": "Eventbrite",
-      "placeKind": "park"
+      "placeKind": "farm"
     },
     {
       "id": "eventbrite-90442123",
@@ -45714,7 +45743,7 @@
       "types": [
         "dance"
       ],
-      "placeKind": "park"
+      "placeKind": "garden"
     },
     {
       "id": "libcal:greenburghlibrary-25877735",
@@ -45846,7 +45875,8 @@
       "description": "There will be no session this week. Join us for weekly adult Mahjong taught by instructor Regina Klenosky. Starting on 3/15, Mahjong registration will open 5 days in advance on the Tuesday prior to the session. One slot per person at this time.",
       "source": "Rye Free Reading Room",
       "recurrence": "Every Sunday, through Oct 4",
-      "cadence": "weekly"
+      "cadence": "weekly",
+      "placeKind": "library"
     },
     {
       "id": "libcal:ryelibrary-72731128",
@@ -45877,7 +45907,8 @@
       "signupUrl": null,
       "url": "https://ryelibrary.libcal.com/event/17039484",
       "description": "Take command of your troops and battle for your side in this recreation of historical conflicts before learning about how the actual battle went down. In partnership with the Historical Miniatures Gaming Society (HMGS), learn the intricacies of battlefield strategy while playing this MASSIVE tabletop game!",
-      "source": "Rye Free Reading Room"
+      "source": "Rye Free Reading Room",
+      "placeKind": "library"
     },
     {
       "id": "ticketmaster-6163849",
@@ -46022,7 +46053,7 @@
         "market",
         "sale"
       ],
-      "placeKind": "shop"
+      "placeKind": "antique shop"
     },
     {
       "id": "eventbrite-35761970",
@@ -46233,7 +46264,7 @@
       "types": [
         "meet & greet"
       ],
-      "placeKind": "shop"
+      "placeKind": "bookshop"
     },
     {
       "id": "eventbrite-57993690",
@@ -46298,7 +46329,7 @@
         "club",
         "celebration"
       ],
-      "placeKind": "park"
+      "placeKind": "farm"
     },
     {
       "id": "eventbrite-89235833",
@@ -46507,7 +46538,7 @@
       "types": [
         "other"
       ],
-      "placeKind": "park"
+      "placeKind": "farm"
     },
     {
       "id": "eventbrite-34706151",
@@ -46539,7 +46570,7 @@
       "types": [
         "class"
       ],
-      "placeKind": "park"
+      "placeKind": "farm"
     },
     {
       "id": "eventbrite-10074971",
@@ -46634,7 +46665,7 @@
       "types": [
         "class"
       ],
-      "placeKind": "park"
+      "placeKind": "garden"
     },
     {
       "id": "untermyer-85886323",
@@ -46661,7 +46692,7 @@
       "types": [
         "tour"
       ],
-      "placeKind": "park"
+      "placeKind": "garden"
     },
     {
       "id": "desmondfish-library-47434437",
@@ -47051,7 +47082,7 @@
       "description": "Filmed stage production, encore screening.",
       "host": "Time & Space Limited",
       "source": "Time & Space Limited",
-      "placeKind": "theatre"
+      "placeKind": "cinema"
     },
     {
       "id": "ticketmaster-86228974",
@@ -47172,7 +47203,7 @@
       "types": [
         "concert"
       ],
-      "placeKind": "brewery"
+      "placeKind": "winery"
     },
     {
       "id": "songkick-75993388",
@@ -47431,7 +47462,7 @@
       "types": [
         "concert"
       ],
-      "placeKind": "park"
+      "placeKind": "garden"
     },
     {
       "id": "songkick-57480532",
@@ -48131,7 +48162,8 @@
       "signupUrl": null,
       "url": "https://ryelibrary.libcal.com/event/17175451",
       "description": "Come to the Rye Free Reading Room to hear Annabel Monaghan in conversation with Elizabeth Wellington Rollins, discussing Elizabeth's new book, The Three Graces of Pearl Street. Elizabeth Wellington Rollins is a writer and award-winning copywriter. She grew up in Rye and graduated from both Rye High School and Davidson College.",
-      "source": "Rye Free Reading Room"
+      "source": "Rye Free Reading Room",
+      "placeKind": "library"
     },
     {
       "id": "whitememorial-54599695",
@@ -48160,7 +48192,7 @@
         "museum exhibit"
       ],
       "cadence": "fortnightly",
-      "placeKind": "park"
+      "placeKind": "historic site"
     },
     {
       "id": "eventbrite-83751880",
@@ -48226,7 +48258,7 @@
       "types": [
         "class"
       ],
-      "placeKind": "shop"
+      "placeKind": "bookshop"
     },
     {
       "id": "desmondfish-library-48463030",
@@ -48314,7 +48346,7 @@
         "yoga",
         "concert"
       ],
-      "placeKind": "park"
+      "placeKind": "garden"
     },
     {
       "id": "songkick-52751168",
@@ -49036,7 +49068,8 @@
       "signupUrl": null,
       "url": "https://ryelibrary.libcal.com/event/17017316",
       "description": null,
-      "source": "Rye Free Reading Room"
+      "source": "Rye Free Reading Room",
+      "placeKind": "library"
     },
     {
       "id": "eventbrite-34797623",
@@ -49381,7 +49414,7 @@
     {
       "id": "eventbrite-61005738",
       "title": "Whispers From Heaven with  Medium Patricia Griffin @ Aquila's Nest Vineyard",
-      "type": "other",
+      "type": "tasting",
       "repeats": false,
       "audience": "all",
       "setting": "unknown",
@@ -49406,14 +49439,14 @@
       "description": "Join us for an unforgettable evening of love with Medium Patricia Griffin, as she connects us to your loved ones on the other side",
       "source": "Eventbrite",
       "types": [
-        "other"
+        "tasting"
       ],
-      "placeKind": "brewery"
+      "placeKind": "winery"
     },
     {
       "id": "eventbrite-50036831",
       "title": "Money Mindset 1.0: Find Your Baseline (In-person)",
-      "type": "other",
+      "type": "tasting",
       "repeats": false,
       "audience": "all",
       "setting": "unknown",
@@ -49438,7 +49471,7 @@
       "description": "Get ready to uncover your true money habits and start building a smarter financial future.",
       "source": "Eventbrite",
       "types": [
-        "other"
+        "tasting"
       ],
       "placeKind": "brewery"
     },
@@ -49619,7 +49652,7 @@
       "description": null,
       "host": "The Moviehouse",
       "source": "The Moviehouse",
-      "placeKind": "theatre"
+      "placeKind": "cinema"
     },
     {
       "id": "songkick-59591049",
@@ -50160,7 +50193,8 @@
       "source": "Mount Kisco Public Library",
       "types": [
         "other"
-      ]
+      ],
+      "placeKind": "library"
     },
     {
       "id": "libcal:mountkiscolibrary-1885672",
@@ -50257,7 +50291,8 @@
       "signupUrl": null,
       "url": "https://ryelibrary.libcal.com/event/16874520",
       "description": "Julia Strayer and Liz Maccarone will lead a lively and informative discussion on today’s financial markets and how they might fit into your portfolio. Hosted by the Darien Library. Click Here To Register Bios: Julia Strayer, CPWA®, CIMA®, CRPC™ Senior Vice President, Wealth Management Advisor Prior to joining Merrill Lynch Wealth Management in 2000, Julia was a vice president and private banker…",
-      "source": "Rye Free Reading Room"
+      "source": "Rye Free Reading Room",
+      "placeKind": "library"
     },
     {
       "id": "libcal:ryelibrary-4396841",
@@ -50288,7 +50323,8 @@
       "signupUrl": null,
       "url": "https://ryelibrary.libcal.com/event/17263580",
       "description": "Join the Rye Readers Book Group for a lively discussion of An Invisible Thread, by Laura Schroff. Books will be available for check - out from the circulation desk, starting August 19th.",
-      "source": "Rye Free Reading Room"
+      "source": "Rye Free Reading Room",
+      "placeKind": "library"
     },
     {
       "id": "libcal:ryelibrary-31080373",
@@ -50320,7 +50356,8 @@
       "signupUrl": null,
       "url": "https://ryelibrary.libcal.com/event/17062413",
       "description": "Successfully Navigating College Admissions This Fall We are offering this Zoom presentation to help families of high school juniors, sophomores, and freshmen better understand the college admissions process and how to successfully navigate today’s changing landscape.",
-      "source": "Rye Free Reading Room"
+      "source": "Rye Free Reading Room",
+      "placeKind": "library"
     },
     {
       "id": "eventbrite-61785226",
@@ -50352,7 +50389,7 @@
       "types": [
         "sporting event"
       ],
-      "placeKind": "museum"
+      "placeKind": "historic house"
     },
     {
       "id": "eventbrite-680418",
@@ -50413,7 +50450,7 @@
       "types": [
         "tour"
       ],
-      "placeKind": "park"
+      "placeKind": "historic site"
     },
     {
       "id": "eventbrite-57863866",
@@ -50571,7 +50608,7 @@
         "workout",
         "class"
       ],
-      "placeKind": "brewery"
+      "placeKind": "winery"
     },
     {
       "id": "songkick-43766303",
@@ -51280,7 +51317,8 @@
       "source": "Mount Kisco Public Library",
       "types": [
         "film"
-      ]
+      ],
+      "placeKind": "library"
     },
     {
       "id": "libcal:irvingtonlibrary-52142213",
@@ -51376,7 +51414,8 @@
       "signupUrl": null,
       "url": "https://ryelibrary.libcal.com/event/16744321",
       "description": "Book donations begin August 31. Please bring donations to the Meeting Room. Limit of 5 boxes/bags of donations per family. Rye Free Reading Room Book Sale When is the Rye Free Reading Room Book Sale? The 2025 Book Sale will take place on Saturday, September 19th and Sunday, September 20th, 2026. The book sale is open from 10 am to 5 pm on Saturday, and from 10 am to 3 pm on Sunday.",
-      "source": "Rye Free Reading Room"
+      "source": "Rye Free Reading Room",
+      "placeKind": "library"
     },
     {
       "id": "libcal:ryelibrary-75877603",
@@ -51410,7 +51449,8 @@
       "description": "Susan Deshkensky is a fiber and fabric artist. Her designs and quilts have been published in thirty magazines. Susan is an award winning quilter on both a national and regional level. Susan is a Certified instructor for Quiltworx and an Alumni Ambassador for Lumin Fabrics/Island Batik. She loves to make t-shirt and memory quilts for customers. Susan's new found passion is long arm quilting.",
       "source": "Rye Free Reading Room",
       "recurrence": "4 dates, through Oct 4",
-      "cadence": "occasional"
+      "cadence": "occasional",
+      "placeKind": "library"
     },
     {
       "id": "libcal:ryelibrary-1747081",
@@ -51441,7 +51481,8 @@
       "signupUrl": null,
       "url": "https://ryelibrary.libcal.com/event/16818834",
       "description": "Make your own stained-glass inspired to go tumbler! Please note: projects will take 24 hours to cure, and pick-up will begin on Friday afternoon. Supplies are limited, register to save your spot today.",
-      "source": "Rye Free Reading Room"
+      "source": "Rye Free Reading Room",
+      "placeKind": "library"
     },
     {
       "id": "libcal:ryelibrary-38462992",
@@ -51472,7 +51513,8 @@
       "signupUrl": null,
       "url": "https://ryelibrary.libcal.com/event/17242458",
       "description": null,
-      "source": "Rye Free Reading Room"
+      "source": "Rye Free Reading Room",
+      "placeKind": "library"
     },
     {
       "id": "ticketmaster-18159185",
@@ -51868,7 +51910,7 @@
       "types": [
         "tour"
       ],
-      "placeKind": "park"
+      "placeKind": "garden"
     },
     {
       "id": "eventbrite-72109703",
@@ -51962,7 +52004,7 @@
       "types": [
         "dinner"
       ],
-      "placeKind": "park"
+      "placeKind": "farm"
     },
     {
       "id": "eventbrite-79070906",
@@ -52026,7 +52068,7 @@
       "types": [
         "class"
       ],
-      "placeKind": "park"
+      "placeKind": "farm"
     },
     {
       "id": "songkick-63572723",
@@ -52207,7 +52249,7 @@
       "types": [
         "talk"
       ],
-      "placeKind": "club"
+      "placeKind": "museum"
     },
     {
       "id": "eventbrite-12164285",
@@ -52477,7 +52519,7 @@
       "types": [
         "concert"
       ],
-      "placeKind": "park"
+      "placeKind": "garden"
     },
     {
       "id": "songkick-68454117",
@@ -52841,7 +52883,7 @@
       "source": "Brewster Public Library",
       "recurrence": "Every Friday, through Oct 9",
       "cadence": "weekly",
-      "placeKind": "library"
+      "placeKind": "brewery"
     },
     {
       "id": "libcal:ryelibrary-80670952",
@@ -52872,7 +52914,8 @@
       "signupUrl": null,
       "url": "https://ryelibrary.libcal.com/event/17339526",
       "description": "As a special thank you, Friends are invited to shop the book sale early! Books of all genres and for all ages are up for grabs - find your next read before the public sale begins. Visit our book sale website for more details.",
-      "source": "Rye Free Reading Room"
+      "source": "Rye Free Reading Room",
+      "placeKind": "library"
     },
     {
       "id": "libcal:ryelibrary-79441737",
@@ -52903,7 +52946,8 @@
       "signupUrl": null,
       "url": "https://ryelibrary.libcal.com/event/16744328",
       "description": null,
-      "source": "Rye Free Reading Room"
+      "source": "Rye Free Reading Room",
+      "placeKind": "library"
     },
     {
       "id": "ticketmaster-99620893",
@@ -53311,7 +53355,7 @@
       "types": [
         "tour"
       ],
-      "placeKind": "museum"
+      "placeKind": "historic house"
     },
     {
       "id": "songkick-88760586",
@@ -53491,7 +53535,7 @@
       "types": [
         "class"
       ],
-      "placeKind": "brewery"
+      "placeKind": "winery"
     },
     {
       "id": "eventbrite-73337686",
@@ -53703,7 +53747,7 @@
       "types": [
         "speed dating"
       ],
-      "placeKind": "brewery"
+      "placeKind": "winery"
     },
     {
       "id": "tubbys-75006777",
@@ -53786,7 +53830,7 @@
       "description": null,
       "host": "Time & Space Limited",
       "source": "Time & Space Limited",
-      "placeKind": "theatre"
+      "placeKind": "cinema"
     },
     {
       "id": "eventbrite-86330068",
@@ -53819,7 +53863,7 @@
       "url": "https://www.eventbrite.com/e/sleepy-hollow-cinema-presents-join-or-die-2023-tickets-1997271425599",
       "description": "A 2023 documentary that explores America's civic unraveling, focusing on the importance of community groups, and local club participation.",
       "source": "Eventbrite",
-      "placeKind": "theatre"
+      "placeKind": "cinema"
     },
     {
       "id": "eventbrite-36089662",
@@ -53972,7 +54016,7 @@
         "party",
         "talk"
       ],
-      "placeKind": "park"
+      "placeKind": "historic site"
     },
     {
       "id": "eventbrite-99552805",
@@ -54462,7 +54506,8 @@
       "signupUrl": null,
       "url": "https://ryelibrary.libcal.com/event/16744331",
       "description": null,
-      "source": "Rye Free Reading Room"
+      "source": "Rye Free Reading Room",
+      "placeKind": "library"
     },
     {
       "id": "libcal:grinnell-library-49689571",
@@ -54895,7 +54940,7 @@
       "types": [
         "museum exhibit"
       ],
-      "placeKind": "park"
+      "placeKind": "historic site"
     },
     {
       "id": "eventbrite-90514304",
@@ -54960,7 +55005,7 @@
         "art exhibit",
         "class"
       ],
-      "placeKind": "park"
+      "placeKind": "farm"
     },
     {
       "id": "meetup-97182157",
@@ -55227,7 +55272,7 @@
       "types": [
         "yoga"
       ],
-      "placeKind": "brewery"
+      "placeKind": "winery"
     },
     {
       "id": "fishercenter-89657552",
@@ -55380,7 +55425,8 @@
       "types": [
         "trivia",
         "volunteer"
-      ]
+      ],
+      "placeKind": "castle"
     },
     {
       "id": "eventbrite-43709163",
@@ -55413,7 +55459,7 @@
         "art exhibit",
         "class"
       ],
-      "placeKind": "brewery"
+      "placeKind": "winery"
     },
     {
       "id": "eventbrite-29005823",
@@ -55445,7 +55491,7 @@
       "types": [
         "other"
       ],
-      "placeKind": "park"
+      "placeKind": "farm"
     },
     {
       "id": "eventbrite-3427163",
@@ -55591,7 +55637,7 @@
       "description": null,
       "host": "Time & Space Limited",
       "source": "Time & Space Limited",
-      "placeKind": "theatre"
+      "placeKind": "cinema"
     },
     {
       "id": "eventbrite-9750929",
@@ -55650,7 +55696,7 @@
       "types": [
         "other"
       ],
-      "placeKind": "park"
+      "placeKind": "farm"
     },
     {
       "id": "eventbrite-58102363",
@@ -55710,7 +55756,7 @@
         "tour",
         "volunteer"
       ],
-      "placeKind": "park"
+      "placeKind": "garden"
     },
     {
       "id": "eventbrite-1296362",
@@ -55913,7 +55959,7 @@
       "types": [
         "tour"
       ],
-      "placeKind": "park"
+      "placeKind": "historic site"
     },
     {
       "id": "eventbrite-54908270",
@@ -56008,7 +56054,7 @@
       "types": [
         "concert"
       ],
-      "placeKind": "park"
+      "placeKind": "farm"
     },
     {
       "id": "eventbrite-94736813",
@@ -56072,14 +56118,14 @@
       "types": [
         "concert"
       ],
-      "placeKind": "brewery"
+      "placeKind": "winery"
     },
     {
       "id": "eventbrite-43048358",
       "title": "'Jay Collins and the Northern Resistance' In The Garden",
-      "type": "other",
+      "type": "tour",
       "types": [
-        "other"
+        "tour"
       ],
       "repeats": false,
       "audience": "all",
@@ -56100,7 +56146,7 @@
       "url": "https://www.eventbrite.com/e/jay-collins-and-the-northern-resistance-in-the-garden-tickets-1997388036385",
       "description": "Get ready to rock out and feel the energy with Jay Collins and the Northern Resistance at Colony Woodstock – Saturday, September 19th!",
       "source": "Eventbrite",
-      "placeKind": "park"
+      "placeKind": "garden"
     },
     {
       "id": "eventbrite-16869432",
@@ -56757,7 +56803,8 @@
       "signupUrl": null,
       "url": "https://ryelibrary.libcal.com/event/17039542",
       "description": "Join us for weekly adult Mahjong taught by instructor Regina Klenosky. Starting on 3/15, Mahjong registration will open 5 days in advance on the Tuesday prior to the session. One slot per person at this time.",
-      "source": "Rye Free Reading Room"
+      "source": "Rye Free Reading Room",
+      "placeKind": "library"
     },
     {
       "id": "libcal:ryelibrary-33441310",
@@ -56788,7 +56835,8 @@
       "signupUrl": null,
       "url": "https://ryelibrary.libcal.com/event/16744339",
       "description": null,
-      "source": "Rye Free Reading Room"
+      "source": "Rye Free Reading Room",
+      "placeKind": "library"
     },
     {
       "id": "ticketmaster-39375207",
@@ -57088,7 +57136,7 @@
       "description": null,
       "host": "Time & Space Limited",
       "source": "Time & Space Limited",
-      "placeKind": "theatre"
+      "placeKind": "cinema"
     },
     {
       "id": "stormking-55297745",
@@ -57240,7 +57288,7 @@
       "types": [
         "other"
       ],
-      "placeKind": "park"
+      "placeKind": "farm"
     },
     {
       "id": "eventbrite-34056695",
@@ -57391,12 +57439,12 @@
       "description": null,
       "host": "The Moviehouse",
       "source": "The Moviehouse",
-      "placeKind": "theatre"
+      "placeKind": "cinema"
     },
     {
       "id": "eventbrite-74167136",
       "title": "Behind the Closet:  Exclusive Meet Up",
-      "type": "other",
+      "type": "art exhibit",
       "repeats": false,
       "audience": "all",
       "setting": "unknown",
@@ -57421,7 +57469,7 @@
       "description": "Hola Bellezas, Hey Beauties! Join me for an afternoon of connection, inspiration, and unforgettable moments with our amazing community.",
       "source": "Eventbrite",
       "types": [
-        "other"
+        "art exhibit"
       ],
       "placeKind": "gallery"
     },
@@ -57509,7 +57557,7 @@
       "types": [
         "tour"
       ],
-      "placeKind": "park"
+      "placeKind": "garden"
     },
     {
       "id": "savagewonder-23683207",
@@ -57599,7 +57647,7 @@
       "types": [
         "other"
       ],
-      "placeKind": "park"
+      "placeKind": "farm"
     },
     {
       "id": "ticketmaster-13793686",
@@ -57660,7 +57708,7 @@
       "types": [
         "concert"
       ],
-      "placeKind": "brewery"
+      "placeKind": "winery"
     },
     {
       "id": "ticketmaster-68296736",
@@ -58172,7 +58220,7 @@
       "url": "https://brewsterlibrary.libcal.com/event/17380328",
       "description": "It’s never too early to discover the joy of a new language! Join Nancy Hershatter, M.Ed., for a fun-filled morning of English & Spanish songs, stories, and playful activities designed to introduce young children to Spanish in an engaging and welcoming way. Come sing, listen, play, and learn together! For ages 0-3 Registration required for each session.",
       "source": "Brewster Public Library",
-      "placeKind": "library"
+      "placeKind": "brewery"
     },
     {
       "id": "libcal:ryelibrary-55767379",
@@ -58203,7 +58251,8 @@
       "signupUrl": null,
       "url": "https://ryelibrary.libcal.com/event/17122262",
       "description": "Are you in need of some food inspiration? Get the whole family involved in the kitchen with this kid-friendly cooking program! Gather together in the library with a handful of simple ingredients and get ready to create a tasty snack together with children’s librarian Ms. Lisa. Cooking with Kids meets select Mondays at 4 pm. THIS EVENT IS FOR KIDS IN KINDERGARTEN-5TH GRADE ONLY.",
-      "source": "Rye Free Reading Room"
+      "source": "Rye Free Reading Room",
+      "placeKind": "library"
     },
     {
       "id": "libcal:ryelibrary-50530583",
@@ -58234,7 +58283,8 @@
       "signupUrl": null,
       "url": "https://ryelibrary.libcal.com/event/17220273",
       "description": null,
-      "source": "Rye Free Reading Room"
+      "source": "Rye Free Reading Room",
+      "placeKind": "library"
     },
     {
       "id": "libcal:ryelibrary-44346728",
@@ -58265,7 +58315,8 @@
       "signupUrl": null,
       "url": "https://ryelibrary.libcal.com/event/17252913",
       "description": "Community Service Opportunity! Join this peer led crafting group to make art, keepsakes, and other crafts for local organizations that will make a difference in people's lives. There are 12 spots at the table. Registration is recommended, but not required.",
-      "source": "Rye Free Reading Room"
+      "source": "Rye Free Reading Room",
+      "placeKind": "library"
     },
     {
       "id": "eventbrite-90508816",
@@ -59028,7 +59079,8 @@
       "signupUrl": null,
       "url": "https://ryelibrary.libcal.com/event/17220274",
       "description": null,
-      "source": "Rye Free Reading Room"
+      "source": "Rye Free Reading Room",
+      "placeKind": "library"
     },
     {
       "id": "libcal:ryelibrary-13871701",
@@ -59059,7 +59111,8 @@
       "signupUrl": null,
       "url": "https://ryelibrary.libcal.com/event/17493549",
       "description": "Led by local teen Hannah F. participants will learn about the impacts of social media, how to love the person in the mirror, and question the supposed \"realities\" we see online. Everyone will get to bring home some ready information and an affirmation mirror that they'll be able to decorate at the event as well. This event is open to middle schoolers only at this time.",
-      "source": "Rye Free Reading Room"
+      "source": "Rye Free Reading Room",
+      "placeKind": "library"
     },
     {
       "id": "eventbrite-69086840",
@@ -59225,7 +59278,7 @@
         "museum exhibit",
         "class"
       ],
-      "placeKind": "museum"
+      "placeKind": "park"
     },
     {
       "id": "eventbrite-35944790",
@@ -60075,7 +60128,8 @@
       "description": "Each week come to the library for a fun craft that you get to take home! This program encourages creativity and the development of fine motor skills in a relaxed social setting. This week's craft: Straw Pan Flute This program is for children between Kindergarten and 5th grade. Please note the age limit. Space is limited and pre-registration is required. Signups open one week before event.",
       "source": "Rye Free Reading Room",
       "recurrence": "Every Wednesday, through Oct 7",
-      "cadence": "weekly"
+      "cadence": "weekly",
+      "placeKind": "library"
     },
     {
       "id": "libcal:ryelibrary-16063858",
@@ -60106,7 +60160,8 @@
       "signupUrl": null,
       "url": "https://ryelibrary.libcal.com/event/17101606",
       "description": "Would you be able to step up and serve as a coach without any notice? It's the fall of 1979, and Michael Eck and his teammates have just stepped up to serve as their own coaches during the Pittsburgh teacher's strike. Can these teens lead their team after the coaches walked out?",
-      "source": "Rye Free Reading Room"
+      "source": "Rye Free Reading Room",
+      "placeKind": "library"
     },
     {
       "id": "ticketmaster-98465425",
@@ -60232,7 +60287,7 @@
         "museum exhibit",
         "class"
       ],
-      "placeKind": "museum"
+      "placeKind": "park"
     },
     {
       "id": "eventbrite-70841467",
@@ -60263,7 +60318,8 @@
       "source": "Eventbrite",
       "types": [
         "celebration"
-      ]
+      ],
+      "placeKind": "castle"
     },
     {
       "id": "fairfield-u-93709557",
@@ -60323,7 +60379,7 @@
       "types": [
         "meet & greet"
       ],
-      "placeKind": "shop"
+      "placeKind": "bookshop"
     },
     {
       "id": "eventbrite-91597477",
@@ -60387,7 +60443,7 @@
       "types": [
         "club"
       ],
-      "placeKind": "brewery"
+      "placeKind": "winery"
     },
     {
       "id": "songkick-84416041",
@@ -60508,7 +60564,7 @@
         "tasting",
         "dinner"
       ],
-      "placeKind": "park"
+      "placeKind": "farm"
     },
     {
       "id": "eventbrite-96656724",
@@ -61099,7 +61155,8 @@
       "signupUrl": null,
       "url": "https://ryelibrary.libcal.com/event/17255207",
       "description": "Harrison High School student Zach brings city development to life with his new city-building game. Log on and discover the ins and outs of urban planning, budgeting, and systems thinking. This workshop is for 4th to 5th grade students. Laptops will be provided, or students can bring their own.",
-      "source": "Rye Free Reading Room"
+      "source": "Rye Free Reading Room",
+      "placeKind": "library"
     },
     {
       "id": "libcal:ryelibrary-9295128",
@@ -61130,7 +61187,8 @@
       "signupUrl": null,
       "url": "https://ryelibrary.libcal.com/event/16819636",
       "description": "Make a beautiful warm scented candle to take home. Supplies are limited, register to reserve your spot! This event is open to grades 6-12.",
-      "source": "Rye Free Reading Room"
+      "source": "Rye Free Reading Room",
+      "placeKind": "library"
     },
     {
       "id": "libcal:ryelibrary-98362841",
@@ -61161,7 +61219,8 @@
       "signupUrl": null,
       "url": "https://ryelibrary.libcal.com/event/17438803",
       "description": null,
-      "source": "Rye Free Reading Room"
+      "source": "Rye Free Reading Room",
+      "placeKind": "library"
     },
     {
       "id": "libcal:ryelibrary-11997769",
@@ -61193,7 +61252,8 @@
       "signupUrl": null,
       "url": "https://ryelibrary.libcal.com/event/16404450",
       "description": "Where will reading take you? Let’s hop into the world of books together! Come chat, eat a snack, and do an activity inspired by each month’s book. This book club is for kids in 3rd - 5th grade. Registration is required. This month’s book: The Last Last Day of Summer by Lamar Giles Registration opens four weeks before the event.",
-      "source": "Rye Free Reading Room"
+      "source": "Rye Free Reading Room",
+      "placeKind": "library"
     },
     {
       "id": "ticketmaster-24173655",
@@ -61382,7 +61442,7 @@
       "types": [
         "class"
       ],
-      "placeKind": "brewery"
+      "placeKind": "winery"
     },
     {
       "id": "eventbrite-83075169",
@@ -61415,7 +61475,7 @@
         "class",
         "craft"
       ],
-      "placeKind": "brewery"
+      "placeKind": "winery"
     },
     {
       "id": "songkick-40215173",
@@ -61602,7 +61662,7 @@
       "types": [
         "other"
       ],
-      "placeKind": "shop"
+      "placeKind": "bookshop"
     },
     {
       "id": "eventbrite-53316867",
@@ -62039,7 +62099,8 @@
       "signupUrl": null,
       "url": "https://ryelibrary.libcal.com/event/16819578",
       "description": "Join us as we try out snacks from around the world! Registration strongly encouraged to save your spot, we start promptly at 4pm. Open to grades 6-12. Please note: The Rye Free Reading Room cannot guarantee an allergen free atmosphere and library staff do not oversee food for potential allergens. This program may involve ingredients such as dairy, nuts, tree nuts, soy, or other allergens.",
-      "source": "Rye Free Reading Room"
+      "source": "Rye Free Reading Room",
+      "placeKind": "library"
     },
     {
       "id": "ticketmaster-64598083",
@@ -62310,7 +62371,7 @@
       "types": [
         "festival"
       ],
-      "placeKind": "park"
+      "placeKind": "farm"
     },
     {
       "id": "eventbrite-82283017",
@@ -62379,7 +62440,7 @@
     {
       "id": "eventbrite-17466047",
       "title": "Brie Blossom Foodie Night",
-      "type": "other",
+      "type": "tasting",
       "repeats": false,
       "audience": "all",
       "setting": "unknown",
@@ -62404,9 +62465,9 @@
       "description": "Indulge in the perfect pairing of freshly crafted brie and the exquisite wines from Aquila's Nest.",
       "source": "Eventbrite",
       "types": [
-        "other"
+        "tasting"
       ],
-      "placeKind": "brewery"
+      "placeKind": "winery"
     },
     {
       "id": "eventbrite-96450972",
@@ -62438,7 +62499,7 @@
       "types": [
         "tasting"
       ],
-      "placeKind": "brewery"
+      "placeKind": "winery"
     },
     {
       "id": "songkick-71591689",
@@ -63230,7 +63291,8 @@
       "signupUrl": null,
       "url": "https://ryelibrary.libcal.com/event/17089306",
       "description": null,
-      "source": "Rye Free Reading Room"
+      "source": "Rye Free Reading Room",
+      "placeKind": "library"
     },
     {
       "id": "ticketmaster-4341526",
@@ -63512,7 +63574,7 @@
       "types": [
         "other"
       ],
-      "placeKind": "park"
+      "placeKind": "farm"
     },
     {
       "id": "eventbrite-37811306",
@@ -63544,7 +63606,7 @@
       "types": [
         "art exhibit"
       ],
-      "placeKind": "park"
+      "placeKind": "castle"
     },
     {
       "id": "eventbrite-54621008",
@@ -63635,7 +63697,8 @@
       "source": "Eventbrite",
       "types": [
         "class"
-      ]
+      ],
+      "placeKind": "historic site"
     },
     {
       "id": "eventbrite-61258462",
@@ -63667,7 +63730,7 @@
       "types": [
         "other"
       ],
-      "placeKind": "park"
+      "placeKind": "farm"
     },
     {
       "id": "scenichudson-49214836",
@@ -63695,7 +63758,7 @@
       "description": "Events Community events bring people together to protect and celebrate what makes this region so special. From volunteer and educational opportunities to festivals and block parties, find out what’s up next in the Hudson Valley. 12 events found. Events Today Upcoming Upcoming Select date.",
       "source": "Scenic Hudson",
       "cadence": "occasional",
-      "placeKind": "park"
+      "placeKind": "farm"
     },
     {
       "id": "whitememorial-62682713",
@@ -63723,7 +63786,7 @@
         "animal encounter",
         "celebration"
       ],
-      "placeKind": "park"
+      "placeKind": "historic site"
     },
     {
       "id": "eventbrite-44683727",
@@ -63757,7 +63820,7 @@
         "festival"
       ],
       "cadence": "bookable",
-      "placeKind": "brewery"
+      "placeKind": "winery"
     },
     {
       "id": "eventbrite-75241756",
@@ -63920,7 +63983,7 @@
     {
       "id": "eventbrite-15921383",
       "title": "Sip & Shimmy Belly Dancing",
-      "type": "other",
+      "type": "tasting",
       "repeats": false,
       "audience": "all",
       "setting": "unknown",
@@ -63945,9 +64008,9 @@
       "description": "Join us for an exhilarating and culturally enriching experience at our Sip & Shimmy Belly Dancing",
       "source": "Eventbrite",
       "types": [
-        "other"
+        "tasting"
       ],
-      "placeKind": "brewery"
+      "placeKind": "winery"
     },
     {
       "id": "millbrookwine-39512038",
@@ -63975,7 +64038,7 @@
         "tasting",
         "class"
       ],
-      "placeKind": "brewery"
+      "placeKind": "winery"
     },
     {
       "id": "scenichudson-25623906",
@@ -64035,12 +64098,12 @@
       "types": [
         "tour"
       ],
-      "placeKind": "park"
+      "placeKind": "farm"
     },
     {
       "id": "untermyer-45514049",
       "title": "Fungi Walk - September 26",
-      "type": "other",
+      "type": "tour",
       "repeats": false,
       "audience": "all",
       "setting": "unknown",
@@ -64060,9 +64123,9 @@
       "description": "https://fungiwalk091325.eventbrite.com Discover the many fungi that emerge in the autumn in the northeast on this walk through the wilder areas of Untermyer Gardens. Click for information and tickets. https://www.eventbrite.com/e/1984573443593?aff=oddtdtcreator",
       "source": "Untermyer Gardens Conservancy",
       "types": [
-        "other"
+        "tour"
       ],
-      "placeKind": "park"
+      "placeKind": "garden"
     },
     {
       "id": "teatown-76764000",
@@ -64237,7 +64300,7 @@
       "description": "Filmed stage production.",
       "host": "Time & Space Limited",
       "source": "Time & Space Limited",
-      "placeKind": "theatre"
+      "placeKind": "cinema"
     },
     {
       "id": "eventbrite-71640947",
@@ -64589,7 +64652,7 @@
         "festival",
         "volunteer"
       ],
-      "placeKind": "park"
+      "placeKind": "farm"
     },
     {
       "id": "eventbrite-88517612",
@@ -64832,7 +64895,7 @@
       "description": "Screening followed by a Q&A.",
       "host": "The Moviehouse",
       "source": "The Moviehouse",
-      "placeKind": "theatre"
+      "placeKind": "cinema"
     },
     {
       "id": "ticketmaster-77710804",
@@ -65195,7 +65258,8 @@
       "signupUrl": null,
       "url": "https://ryelibrary.libcal.com/event/16902278",
       "description": "Long before it was a quiet commuter suburb, Rye was a battleground. DJ Hennes, local resident, RHS Board Member and author of Whispers of Liberty, brings to life the whaleboat wars — the brutal, no-quarter guerrilla campaign fought by raiders across Long Island Sound, where Rye residents themselves took up arms in a conflict as vicious as any battlefield of the Revolution.",
-      "source": "Rye Free Reading Room"
+      "source": "Rye Free Reading Room",
+      "placeKind": "library"
     },
     {
       "id": "ticketmaster-84111482",
@@ -65432,7 +65496,7 @@
       "types": [
         "yoga"
       ],
-      "placeKind": "park"
+      "placeKind": "farm"
     },
     {
       "id": "spirit-of-beacon-day-2026",
@@ -65613,7 +65677,7 @@
       "types": [
         "class"
       ],
-      "placeKind": "brewery"
+      "placeKind": "winery"
     },
     {
       "id": "eventbrite-67302231",
@@ -65645,7 +65709,7 @@
       "types": [
         "trivia"
       ],
-      "placeKind": "brewery"
+      "placeKind": "winery"
     },
     {
       "id": "songkick-70284944",
@@ -65737,7 +65801,7 @@
       "types": [
         "other"
       ],
-      "placeKind": "park"
+      "placeKind": "farm"
     },
     {
       "id": "songkick-63431404",
@@ -65797,7 +65861,7 @@
       "types": [
         "talk"
       ],
-      "placeKind": "club"
+      "placeKind": "museum"
     },
     {
       "id": "eventbrite-56538106",
@@ -65887,7 +65951,7 @@
       "types": [
         "tour"
       ],
-      "placeKind": "park"
+      "placeKind": "garden"
     },
     {
       "id": "eventbrite-93527254",
@@ -66016,7 +66080,7 @@
       "types": [
         "class"
       ],
-      "placeKind": "shop"
+      "placeKind": "bookshop"
     },
     {
       "id": "cinema-rosendale-theatre-the-woodpecker-work-in-progress-showing-2026-09-27-16-00",
@@ -66642,7 +66706,8 @@
       "signupUrl": null,
       "url": "https://ryelibrary.libcal.com/event/15773300",
       "description": "Join our newest book club offering at the Rye Free Reading Room, perfect for all people who love to cook and experiment with new recipes! Each month we will choose a different cookbook to explore. On the evening the club meets, we will all bring in one recipe from the cookbook to share at the library. A great opportunity for socializing, discussion, and tasty treats!",
-      "source": "Rye Free Reading Room"
+      "source": "Rye Free Reading Room",
+      "placeKind": "library"
     },
     {
       "id": "ticketmaster-92795698",
@@ -66762,7 +66827,7 @@
       "types": [
         "meet & greet"
       ],
-      "placeKind": "shop"
+      "placeKind": "bookshop"
     },
     {
       "id": "eventbrite-80098882",
@@ -66794,7 +66859,7 @@
       "types": [
         "celebration"
       ],
-      "placeKind": "shop"
+      "placeKind": "bookshop"
     },
     {
       "id": "eventbrite-83093240",
@@ -67342,7 +67407,7 @@
     {
       "id": "libcal:irvingtonlibrary-85096902",
       "title": "Stories & Crafts for 4-6 Year Olds",
-      "type": "other",
+      "type": "art exhibit",
       "repeats": false,
       "audience": "all",
       "setting": "indoor",
@@ -67367,7 +67432,7 @@
       "description": "For 4-6 Year Olds Fall into Fall! \"Fall\" into the library to listen to some stories and to make a cute seasonal door decoration.",
       "source": "Irvington Public Library",
       "types": [
-        "other"
+        "art exhibit"
       ],
       "placeKind": "gallery"
     },
@@ -67400,7 +67465,8 @@
       "signupUrl": null,
       "url": "https://ryelibrary.libcal.com/event/17205902",
       "description": null,
-      "source": "Rye Free Reading Room"
+      "source": "Rye Free Reading Room",
+      "placeKind": "library"
     },
     {
       "id": "libcal:ryelibrary-37359378",
@@ -67431,7 +67497,8 @@
       "signupUrl": null,
       "url": "https://ryelibrary.libcal.com/event/15925741",
       "description": "Monthly meeting of the Board of Trustees",
-      "source": "Rye Free Reading Room"
+      "source": "Rye Free Reading Room",
+      "placeKind": "library"
     },
     {
       "id": "eventbrite-57757795",
@@ -67554,7 +67621,7 @@
       "types": [
         "meet & greet"
       ],
-      "placeKind": "shop"
+      "placeKind": "bookshop"
     },
     {
       "id": "eventbrite-56280351",
@@ -67649,7 +67716,7 @@
       "types": [
         "talk"
       ],
-      "placeKind": "shop"
+      "placeKind": "bookshop"
     },
     {
       "id": "eventbrite-15563483",
@@ -67858,7 +67925,7 @@
       "source": "The Moviehouse",
       "recurrence": "Last Tuesday of the month — also October 27",
       "cadence": "monthly",
-      "placeKind": "theatre"
+      "placeKind": "cinema"
     },
     {
       "id": "songkick-31325889",
@@ -67914,7 +67981,7 @@
       "types": [
         "concert"
       ],
-      "placeKind": "park"
+      "placeKind": "garden"
     },
     {
       "id": "songkick-94502211",
@@ -68219,7 +68286,8 @@
       "signupUrl": null,
       "url": "https://ryelibrary.libcal.com/event/16809685",
       "description": "Join us each month on the last Wednesday as we discuss a different manga series. Pick up your copy (and keep it!) at the beginning of the month to discuss at the end. This month's manga will be: One Piece, vol 1-2-3 Copies of the omnibus will be available as soon as June's meeting since we won't be meeting July/August! \"As a child, Monkey D.",
-      "source": "Rye Free Reading Room"
+      "source": "Rye Free Reading Room",
+      "placeKind": "library"
     },
     {
       "id": "libcal:ryelibrary-58917745",
@@ -68250,7 +68318,8 @@
       "signupUrl": null,
       "url": "https://ryelibrary.libcal.com/event/16960024",
       "description": null,
-      "source": "Rye Free Reading Room"
+      "source": "Rye Free Reading Room",
+      "placeKind": "library"
     },
     {
       "id": "libcal:ryelibrary-93975144",
@@ -68281,7 +68350,8 @@
       "signupUrl": null,
       "url": "https://ryelibrary.libcal.com/event/17339135",
       "description": "Special Friends of the Library Author Event Join J.M. Hirsch for a friendly evening of food and fizz as we celebrate National Library Card Sign-Up Month. Enjoy conversation about food writing and mixology, while enjoying tasty bites and beverages. Attendees will receive a copy of Freezer Door Cocktails: 75 Cocktails that are ready when you are. ﻿ J.M.",
-      "source": "Rye Free Reading Room"
+      "source": "Rye Free Reading Room",
+      "placeKind": "library"
     },
     {
       "id": "songkick-55304538",
@@ -68314,7 +68384,7 @@
     {
       "id": "eventbrite-90383890",
       "title": "Toasting to a Healthy Westchester",
-      "type": "museum exhibit",
+      "type": "tour",
       "repeats": false,
       "audience": "all",
       "setting": "unknown",
@@ -68339,9 +68409,9 @@
       "description": "An Evening to Celebrate WCA’s Healthcare Advocacy & Initiatives and Honor Healthcare Excellence",
       "source": "Eventbrite",
       "types": [
-        "museum exhibit"
+        "tour"
       ],
-      "placeKind": "museum"
+      "placeKind": "historic house"
     },
     {
       "id": "eventbrite-44571230",
@@ -68373,7 +68443,7 @@
       "types": [
         "class"
       ],
-      "placeKind": "brewery"
+      "placeKind": "winery"
     },
     {
       "id": "eventbrite-59286142",
@@ -68405,7 +68475,7 @@
       "types": [
         "class"
       ],
-      "placeKind": "brewery"
+      "placeKind": "winery"
     },
     {
       "id": "songkick-99915605",
@@ -68977,7 +69047,8 @@
       "signupUrl": null,
       "url": "https://ryelibrary.libcal.com/event/15500643",
       "description": "Join the Thursday Afternoon Book Club! Great books! Great people! Thoughtful conversations! This month we will be discussing TBD. We meet the first Thursday of every month!! You can attend in-person or via Zoom!",
-      "source": "Rye Free Reading Room"
+      "source": "Rye Free Reading Room",
+      "placeKind": "library"
     },
     {
       "id": "libcal:grinnell-library-37292872",
@@ -69040,7 +69111,8 @@
       "signupUrl": null,
       "url": "https://ryelibrary.libcal.com/event/16819664",
       "description": "Oozes and slimes and ooblecks, oh my! Make a seasonally themed slime. Spots are limited, register to reserve your spot. This event is for grades 6-12.",
-      "source": "Rye Free Reading Room"
+      "source": "Rye Free Reading Room",
+      "placeKind": "library"
     },
     {
       "id": "libcal:ryelibrary-11351814",
@@ -69073,7 +69145,8 @@
       "description": null,
       "source": "Rye Free Reading Room",
       "recurrence": "5 dates, through Oct 9",
-      "cadence": "occasional"
+      "cadence": "occasional",
+      "placeKind": "library"
     },
     {
       "id": "libcal:grinnell-library-89294535",
@@ -69256,7 +69329,7 @@
         "art exhibit",
         "craft"
       ],
-      "placeKind": "brewery"
+      "placeKind": "winery"
     },
     {
       "id": "songkick-48184773",
@@ -69567,7 +69640,7 @@
       "types": [
         "tour"
       ],
-      "placeKind": "park"
+      "placeKind": "garden"
     },
     {
       "id": "ticketmaster-38217020",
@@ -69756,7 +69829,8 @@
       "signupUrl": null,
       "url": "https://ryelibrary.libcal.com/event/15455966",
       "description": null,
-      "source": "Rye Free Reading Room"
+      "source": "Rye Free Reading Room",
+      "placeKind": "library"
     },
     {
       "id": "libcal:ryelibrary-15287592",
@@ -69787,7 +69861,8 @@
       "signupUrl": null,
       "url": "https://ryelibrary.libcal.com/event/17135522",
       "description": "Reading to a therapy dog is a proven and effective way to help children improve their literacy and communication skills. Reading aloud to specially trained, calm, and nonjudgmental animal companions creates a relaxed and welcoming environment where children feel comfortable and uninhibited, leading to increased confidence and reduced stress.",
-      "source": "Rye Free Reading Room"
+      "source": "Rye Free Reading Room",
+      "placeKind": "library"
     },
     {
       "id": "ticketmaster-31638510",
@@ -69944,7 +70019,7 @@
       "types": [
         "volunteer"
       ],
-      "placeKind": "park"
+      "placeKind": "garden"
     },
     {
       "id": "songkick-92149252",
@@ -70720,7 +70795,8 @@
       "signupUrl": null,
       "url": "https://ryelibrary.libcal.com/event/16737480",
       "description": "Learn the basics you will need to know about: finding babysitting gigs how to interview how to be the best babysitter on the block! This event is for teen patrons who will be turning 12 (or older) within the next 6 months. Space is limited to 24 participants at this time. Please bring a pencil, some paper, and a light snack for this program!",
-      "source": "Rye Free Reading Room"
+      "source": "Rye Free Reading Room",
+      "placeKind": "library"
     },
     {
       "id": "ticketmaster-3065793",
@@ -70898,7 +70974,7 @@
         "protest",
         "class"
       ],
-      "placeKind": "park"
+      "placeKind": "historic site"
     },
     {
       "id": "eventbrite-68622015",
@@ -70956,7 +71032,7 @@
       "types": [
         "class"
       ],
-      "placeKind": "park"
+      "placeKind": "historic site"
     },
     {
       "id": "eventbrite-10755682",
@@ -71019,7 +71095,7 @@
       "types": [
         "tour"
       ],
-      "placeKind": "club"
+      "placeKind": "museum"
     },
     {
       "id": "scenichudson-13761006",
@@ -71048,7 +71124,7 @@
       "description": "Events Community events bring people together to protect and celebrate what makes this region so special. From volunteer and educational opportunities to festivals and block parties, find out what’s up next in the Hudson Valley. 12 events found. Events Today Upcoming Upcoming Select date.",
       "source": "Scenic Hudson",
       "cadence": "occasional",
-      "placeKind": "park"
+      "placeKind": "farm"
     },
     {
       "id": "eventbrite-61749701",
@@ -71110,7 +71186,8 @@
       "source": "Eventbrite",
       "types": [
         "other"
-      ]
+      ],
+      "placeKind": "mall"
     },
     {
       "id": "eventbrite-1783088",
@@ -71180,7 +71257,7 @@
     {
       "id": "eventbrite-30986766",
       "title": "Hudson Oktoberfest presented by Upper Depot Brewing",
-      "type": "other",
+      "type": "tasting",
       "repeats": false,
       "audience": "all",
       "setting": "unknown",
@@ -71205,7 +71282,7 @@
       "description": "Join us at Upper Depot Brewing Co. for Hudson Oktoberfest 2026 – great beer, bites, and good vibes!",
       "source": "Eventbrite",
       "types": [
-        "other"
+        "tasting"
       ],
       "placeKind": "brewery"
     },
@@ -71871,7 +71948,7 @@
       "description": "Meet the cast — screening followed by a Q&A.",
       "host": "The Moviehouse",
       "source": "The Moviehouse",
-      "placeKind": "theatre"
+      "placeKind": "cinema"
     },
     {
       "id": "songkick-74916984",
@@ -72419,7 +72496,7 @@
       "types": [
         "class"
       ],
-      "placeKind": "park"
+      "placeKind": "historic site"
     },
     {
       "id": "eventbrite-47094582",
@@ -72534,7 +72611,7 @@
       "types": [
         "class"
       ],
-      "placeKind": "park"
+      "placeKind": "historic site"
     },
     {
       "id": "eventbrite-28647258",
@@ -72624,7 +72701,7 @@
         "tour",
         "volunteer"
       ],
-      "placeKind": "park"
+      "placeKind": "garden"
     },
     {
       "id": "eventbrite-99540073",
@@ -72656,7 +72733,7 @@
       "types": [
         "other"
       ],
-      "placeKind": "park"
+      "placeKind": "farm"
     },
     {
       "id": "eventbrite-69843949",
@@ -73442,7 +73519,8 @@
       "signupUrl": null,
       "url": "https://ryelibrary.libcal.com/event/17252914",
       "description": "Community Service Opportunity! Join this peer led crafting group to make art, keepsakes, and other crafts for local organizations that will make a difference in people's lives. There are 12 spots at the table. Registration is recommended, but not required.",
-      "source": "Rye Free Reading Room"
+      "source": "Rye Free Reading Room",
+      "placeKind": "library"
     },
     {
       "id": "libcal:ryelibrary-8148976",
@@ -73473,7 +73551,8 @@
       "signupUrl": null,
       "url": "https://ryelibrary.libcal.com/event/17122344",
       "description": "Are you in need of some food inspiration? Get the whole family involved in the kitchen with this kid-friendly cooking program! Gather together in the library with a handful of simple ingredients and get ready to create a tasty snack together with children’s librarian Ms. Lisa. Cooking with Kids meets select Mondays at 4 pm. THIS EVENT IS FOR KIDS IN KINDERGARTEN-5TH GRADE ONLY.",
-      "source": "Rye Free Reading Room"
+      "source": "Rye Free Reading Room",
+      "placeKind": "library"
     },
     {
       "id": "libcal:ryelibrary-26362540",
@@ -73506,7 +73585,8 @@
       "signupUrl": null,
       "url": "https://ryelibrary.libcal.com/event/17175035",
       "description": "Calling all Graphic Novel lovers! This book club will meet monthly to read and discuss graphic novels together. Come chat, eat a snack, and do an activity inspired by each month’s book. This book club is for kids in 3rd - 5th grade. Registration is required. This month’s book: Mr. Wolf's Class by Aron Nels Steinke Registration opens four weeks before the event.",
-      "source": "Rye Free Reading Room"
+      "source": "Rye Free Reading Room",
+      "placeKind": "library"
     },
     {
       "id": "ridgefieldplayhouse-57316437",
@@ -73789,7 +73869,7 @@
       "types": [
         "concert"
       ],
-      "placeKind": "park"
+      "placeKind": "garden"
     },
     {
       "id": "songkick-27530893",
@@ -74197,7 +74277,8 @@
       "signupUrl": null,
       "url": "https://ryelibrary.libcal.com/event/17228163",
       "description": null,
-      "source": "Rye Free Reading Room"
+      "source": "Rye Free Reading Room",
+      "placeKind": "library"
     },
     {
       "id": "libcal:ryelibrary-23381382",
@@ -74228,7 +74309,8 @@
       "signupUrl": null,
       "url": "https://ryelibrary.libcal.com/event/16957760",
       "description": null,
-      "source": "Rye Free Reading Room"
+      "source": "Rye Free Reading Room",
+      "placeKind": "library"
     },
     {
       "id": "libcal:grinnell-library-94701614",
@@ -74321,7 +74403,7 @@
         "tour",
         "club"
       ],
-      "placeKind": "park"
+      "placeKind": "historic site"
     },
     {
       "id": "eventbrite-24398736",
@@ -74385,7 +74467,7 @@
       "types": [
         "other"
       ],
-      "placeKind": "park"
+      "placeKind": "farm"
     },
     {
       "id": "songkick-79405924",
@@ -74509,7 +74591,7 @@
     {
       "id": "eventbrite-77247670",
       "title": "Book Launch: Imbolo Mbue, EVERY STORY IS A LOVE STORY",
-      "type": "other",
+      "type": "tour",
       "repeats": false,
       "audience": "all",
       "setting": "indoor",
@@ -74534,9 +74616,9 @@
       "description": "In conversation with Andrew Solomon. Presented in partnership with Morton Memorial Library.",
       "source": "Eventbrite",
       "types": [
-        "other"
+        "tour"
       ],
-      "placeKind": "library"
+      "placeKind": "historic site"
     },
     {
       "id": "eventbrite-46773155",
@@ -74653,7 +74735,7 @@
         "concert",
         "play"
       ],
-      "placeKind": "theatre"
+      "placeKind": "garden"
     },
     {
       "id": "songkick-17160810",
@@ -74961,7 +75043,7 @@
         "museum exhibit",
         "class"
       ],
-      "placeKind": "museum"
+      "placeKind": "park"
     },
     {
       "id": "eventbrite-51318845",
@@ -75238,7 +75320,7 @@
       "types": [
         "talk"
       ],
-      "placeKind": "shop"
+      "placeKind": "bookshop"
     },
     {
       "id": "songkick-53864222",
@@ -75874,7 +75956,8 @@
       "signupUrl": null,
       "url": "https://ryelibrary.libcal.com/event/17210818",
       "description": "Presented by WLS & Senior Law Day Collaborative Senior Law Day is a free annual event that provides older Westchester residents with access to resources and advice on elder law and related topics. The Senior Law Day Collaborative will return to the Westchester County Center in White Plains for the annual Senior Law Day event.",
-      "source": "Rye Free Reading Room"
+      "source": "Rye Free Reading Room",
+      "placeKind": "library"
     },
     {
       "id": "libcal:ryelibrary-1723964",
@@ -75906,7 +75989,8 @@
       "signupUrl": null,
       "url": "https://ryelibrary.libcal.com/event/16930502",
       "description": "Discover the secret world of magic in this interactive beginner magic workshop with professional magician Magic Evan! Participants will learn impressive, beginner-friendly tricks using everyday objects while exploring performance, presentation, and the art of creating wonder.",
-      "source": "Rye Free Reading Room"
+      "source": "Rye Free Reading Room",
+      "placeKind": "library"
     },
     {
       "id": "libcal:grinnell-library-79984434",
@@ -76003,7 +76087,7 @@
         "museum exhibit",
         "class"
       ],
-      "placeKind": "museum"
+      "placeKind": "park"
     },
     {
       "id": "whitememorial-51375527",
@@ -76032,7 +76116,7 @@
         "club",
         "museum exhibit"
       ],
-      "placeKind": "park"
+      "placeKind": "historic site"
     },
     {
       "id": "songkick-59931880",
@@ -76599,7 +76683,8 @@
       "signupUrl": null,
       "url": "https://ryelibrary.libcal.com/event/16818278",
       "description": "Take command of your troops and battle for your side in this recreation of historical conflicts before learning about how the actual battle went down. In partnership with the Historical Miniatures Gaming Society (HMGS), learn the intricacies of battlefield strategy while playing this MASSIVE tabletop game!",
-      "source": "Rye Free Reading Room"
+      "source": "Rye Free Reading Room",
+      "placeKind": "library"
     },
     {
       "id": "libcal:ryelibrary-45348751",
@@ -76631,7 +76716,8 @@
       "signupUrl": null,
       "url": "https://ryelibrary.libcal.com/event/17111551",
       "description": "Travel back in time and across the country with this monthly book club featuring the American Girl Series! Each month learn about a different American Girl and her time period through a book, games, crafts, and snacks. This book club is for kids in 2nd - 5th grade. Registration is required and opens four weeks before the event.",
-      "source": "Rye Free Reading Room"
+      "source": "Rye Free Reading Room",
+      "placeKind": "library"
     },
     {
       "id": "ticketmaster-98969951",
@@ -76720,7 +76806,7 @@
       "types": [
         "tour"
       ],
-      "placeKind": "park"
+      "placeKind": "historic site"
     },
     {
       "id": "eventbrite-15301268",
@@ -76838,7 +76924,7 @@
         "celebration",
         "volunteer"
       ],
-      "placeKind": "park"
+      "placeKind": "garden"
     },
     {
       "id": "eventbrite-6181494",
@@ -76870,7 +76956,7 @@
       "types": [
         "breakfast"
       ],
-      "placeKind": "brewery"
+      "placeKind": "winery"
     },
     {
       "id": "songkick-76205350",
@@ -77440,12 +77526,12 @@
         "museum exhibit",
         "tour"
       ],
-      "placeKind": "park"
+      "placeKind": "historic site"
     },
     {
       "id": "eventbrite-61669907",
       "title": "Fungi Walk - October 10",
-      "type": "other",
+      "type": "tour",
       "repeats": false,
       "audience": "all",
       "setting": "unknown",
@@ -77470,9 +77556,9 @@
       "description": "Discover the fungi making their appearance in the fall on this walk through the wilder areas of Untermyer Gardens.",
       "source": "Eventbrite",
       "types": [
-        "other"
+        "tour"
       ],
-      "placeKind": "park"
+      "placeKind": "garden"
     },
     {
       "id": "eventbrite-96011632",
@@ -77536,7 +77622,7 @@
       "types": [
         "other"
       ],
-      "placeKind": "park"
+      "placeKind": "farm"
     },
     {
       "id": "eventbrite-79852749",
@@ -77568,7 +77654,7 @@
       "types": [
         "talk"
       ],
-      "placeKind": "museum"
+      "placeKind": "historic house"
     },
     {
       "id": "eventbrite-38123189",
@@ -77831,7 +77917,7 @@
       "types": [
         "concert"
       ],
-      "placeKind": "brewery"
+      "placeKind": "winery"
     },
     {
       "id": "songkick-10189533",
@@ -78565,7 +78651,7 @@
       "types": [
         "class"
       ],
-      "placeKind": "park"
+      "placeKind": "farm"
     },
     {
       "id": "eventbrite-70141734",
@@ -78597,7 +78683,7 @@
       "types": [
         "concert"
       ],
-      "placeKind": "brewery"
+      "placeKind": "winery"
     },
     {
       "id": "albany-u-76619682",
@@ -78657,7 +78743,7 @@
     {
       "id": "untermyer-54788395",
       "title": "Fall Bird Walk - October 11",
-      "type": "other",
+      "type": "tour",
       "repeats": false,
       "audience": "all",
       "setting": "unknown",
@@ -78677,9 +78763,9 @@
       "description": "Join Michael Bochnik for a morning of birdwatching at Untermyer Gardens on this 90-minute bird walk. Click here for information and tickets. https://www.eventbrite.com/e/1997910886243?aff=oddtdtcreator",
       "source": "Untermyer Gardens Conservancy",
       "types": [
-        "other"
+        "tour"
       ],
-      "placeKind": "park"
+      "placeKind": "garden"
     },
     {
       "id": "eventbrite-94057355",
@@ -78739,7 +78825,7 @@
       "description": "Meet the director — screening followed by a Q&A.",
       "host": "The Moviehouse",
       "source": "The Moviehouse",
-      "placeKind": "theatre"
+      "placeKind": "cinema"
     },
     {
       "id": "songkick-72735782",
@@ -78822,7 +78908,7 @@
       "types": [
         "tour"
       ],
-      "placeKind": "park"
+      "placeKind": "garden"
     },
     {
       "id": "eventbrite-14665445",
@@ -79238,7 +79324,7 @@
       "types": [
         "concert"
       ],
-      "placeKind": "brewery"
+      "placeKind": "winery"
     },
     {
       "id": "songkick-96568183",
@@ -79303,7 +79389,7 @@
     {
       "id": "whitememorial-39417887",
       "title": "Columbus Day / Indigenous Peoples Day",
-      "type": "other",
+      "type": "tour",
       "repeats": false,
       "audience": "all",
       "setting": "unknown",
@@ -79323,9 +79409,9 @@
       "description": "Monday, October 12, 2026 Offices Closed",
       "source": "White Memorial Conservation Center",
       "types": [
-        "other"
+        "tour"
       ],
-      "placeKind": "park"
+      "placeKind": "historic site"
     },
     {
       "id": "albany-u-268157",
@@ -79380,7 +79466,7 @@
       "types": [
         "concert"
       ],
-      "placeKind": "park"
+      "placeKind": "garden"
     },
     {
       "id": "eventbrite-91119702",
@@ -79641,7 +79727,7 @@
     {
       "id": "eventbrite-21903710",
       "title": "Money Mindset 2.0: Build Your Foundation (In-person)",
-      "type": "other",
+      "type": "tasting",
       "repeats": false,
       "audience": "all",
       "setting": "unknown",
@@ -79666,7 +79752,7 @@
       "description": "Get your basics in order to lay the foundation for successful financial health",
       "source": "Eventbrite",
       "types": [
-        "other"
+        "tasting"
       ],
       "placeKind": "brewery"
     },
@@ -80571,7 +80657,7 @@
       "types": [
         "club"
       ],
-      "placeKind": "brewery"
+      "placeKind": "winery"
     },
     {
       "id": "eventbrite-21750556",
@@ -80906,7 +80992,7 @@
       "types": [
         "concert"
       ],
-      "placeKind": "brewery"
+      "placeKind": "winery"
     },
     {
       "id": "songkick-45678484",
@@ -82001,7 +82087,7 @@
       "types": [
         "craft"
       ],
-      "placeKind": "park"
+      "placeKind": "farm"
     },
     {
       "id": "eventbrite-81164983",
@@ -82064,7 +82150,7 @@
       "types": [
         "other"
       ],
-      "placeKind": "park"
+      "placeKind": "farm"
     },
     {
       "id": "teatown-11407236",
@@ -82119,7 +82205,7 @@
         "breakfast"
       ],
       "cadence": "occasional",
-      "placeKind": "park"
+      "placeKind": "historic site"
     },
     {
       "id": "eventbrite-40849043",
@@ -82180,7 +82266,7 @@
         "talk",
         "club"
       ],
-      "placeKind": "park"
+      "placeKind": "historic site"
     },
     {
       "id": "ticketmaster-46344917",
@@ -82582,7 +82668,7 @@
       "description": "Screening followed by a Q&A.",
       "host": "The Moviehouse",
       "source": "The Moviehouse",
-      "placeKind": "theatre"
+      "placeKind": "cinema"
     },
     {
       "id": "eventbrite-98392999",
@@ -82731,7 +82817,7 @@
         "concert",
         "play"
       ],
-      "placeKind": "theatre"
+      "placeKind": "garden"
     },
     {
       "id": "ticketmaster-87474641",
@@ -83084,7 +83170,7 @@
     {
       "id": "eventbrite-12896270",
       "title": "Ramapo M.C. 2026 Fall Foliage Run",
-      "type": "other",
+      "type": "tour",
       "repeats": false,
       "audience": "all",
       "setting": "unknown",
@@ -83109,8 +83195,9 @@
       "description": "Join us for the Ramapo M.C. 2026 Fall Foliage Run, a scenic motorcycle ride through the vibrant autumn colors of the NY Tri-State region!",
       "source": "Eventbrite",
       "types": [
-        "other"
-      ]
+        "tour"
+      ],
+      "placeKind": "historic site"
     },
     {
       "id": "eventbrite-49701692",
@@ -83206,7 +83293,7 @@
       "types": [
         "class"
       ],
-      "placeKind": "park"
+      "placeKind": "farm"
     },
     {
       "id": "manual-tsl-caliban",
@@ -83234,7 +83321,7 @@
       "description": null,
       "host": "Time & Space Limited",
       "source": "Time & Space Limited",
-      "placeKind": "theatre"
+      "placeKind": "cinema"
     },
     {
       "id": "clearwater-78667716",
@@ -83295,7 +83382,7 @@
       "types": [
         "craft"
       ],
-      "placeKind": "brewery"
+      "placeKind": "winery"
     },
     {
       "id": "mahaiwe-18316195",
@@ -83359,7 +83446,7 @@
     {
       "id": "eventbrite-60214046",
       "title": "We R Women Tea - Wise Women build Wealth",
-      "type": "other",
+      "type": "tour",
       "repeats": false,
       "audience": "all",
       "setting": "outdoor",
@@ -83384,9 +83471,9 @@
       "description": "Whether you're building a business. strengthening your finances, growing your career, or simply looking to connect with inspiring women.",
       "source": "Eventbrite",
       "types": [
-        "other"
+        "tour"
       ],
-      "placeKind": "park"
+      "placeKind": "historic site"
     },
     {
       "id": "eventbrite-8073899",
@@ -83445,7 +83532,7 @@
       "types": [
         "tour"
       ],
-      "placeKind": "park"
+      "placeKind": "garden"
     },
     {
       "id": "eventbrite-38931490",
@@ -83541,7 +83628,7 @@
       "types": [
         "other"
       ],
-      "placeKind": "park"
+      "placeKind": "farm"
     },
     {
       "id": "eventbrite-44870281",
@@ -83950,7 +84037,7 @@
         "concert",
         "market"
       ],
-      "placeKind": "shop"
+      "placeKind": "mall"
     },
     {
       "id": "eventbrite-16516690",
@@ -84474,7 +84561,7 @@
         "museum exhibit",
         "class"
       ],
-      "placeKind": "museum"
+      "placeKind": "park"
     },
     {
       "id": "songkick-12859454",
@@ -84846,12 +84933,12 @@
         "museum exhibit",
         "class"
       ],
-      "placeKind": "museum"
+      "placeKind": "park"
     },
     {
       "id": "eventbrite-77055433",
       "title": "Decoupage Foam  Pumpkin",
-      "type": "other",
+      "type": "tasting",
       "repeats": false,
       "audience": "all",
       "setting": "unknown",
@@ -84876,9 +84963,9 @@
       "description": "Join us for a fun hands-on session making a cute foam pumpkin with decoupage – perfect fall vibes!",
       "source": "Eventbrite",
       "types": [
-        "other"
+        "tasting"
       ],
-      "placeKind": "brewery"
+      "placeKind": "winery"
     },
     {
       "id": "eventbrite-62406320",
@@ -85525,7 +85612,7 @@
       "types": [
         "lunch"
       ],
-      "placeKind": "park"
+      "placeKind": "historic site"
     },
     {
       "id": "songkick-21591520",
@@ -86235,7 +86322,7 @@
       "types": [
         "concert"
       ],
-      "placeKind": "brewery"
+      "placeKind": "winery"
     },
     {
       "id": "stormking-57075940",
@@ -86958,7 +87045,7 @@
       "types": [
         "tour"
       ],
-      "placeKind": "park"
+      "placeKind": "historic site"
     },
     {
       "id": "eventbrite-54738739",
@@ -87025,7 +87112,7 @@
     {
       "id": "untermyer-56719996",
       "title": "Early Morning Phone Photography",
-      "type": "other",
+      "type": "tour",
       "repeats": false,
       "audience": "all",
       "setting": "unknown",
@@ -87045,9 +87132,9 @@
       "description": "https://PhonePhotography072625.eventbrite.com Join photographer/gardener John Jacono in the gardens for an exclusive early morning session of phone photography. Click for information and tickets. https://www.eventbrite.com/e/1998111222454?aff=oddtdtcreator",
       "source": "Untermyer Gardens Conservancy",
       "types": [
-        "other"
+        "tour"
       ],
-      "placeKind": "park"
+      "placeKind": "garden"
     },
     {
       "id": "eventbrite-3193522",
@@ -87248,7 +87335,7 @@
       "types": [
         "tour"
       ],
-      "placeKind": "park"
+      "placeKind": "historic site"
     },
     {
       "id": "eventbrite-94742966",
@@ -87313,7 +87400,7 @@
       "types": [
         "concert"
       ],
-      "placeKind": "brewery"
+      "placeKind": "winery"
     },
     {
       "id": "songkick-20492691",
@@ -87427,7 +87514,7 @@
       "url": "https://www.songkick.com/concerts/42544042-eros-ramazzotti-at-theater-at-madison-square-garden?utm_medium=organic&utm_source=microformat",
       "description": null,
       "source": "Songkick",
-      "placeKind": "theatre"
+      "placeKind": "garden"
     },
     {
       "id": "ticketmaster-26441834",
@@ -87719,7 +87806,7 @@
     {
       "id": "eventbrite-25899223",
       "title": "Riverside Moguls, Part 3: Five Sleeping Giants",
-      "type": "other",
+      "type": "museum exhibit",
       "repeats": false,
       "audience": "all",
       "setting": "unknown",
@@ -87744,9 +87831,9 @@
       "description": "Alex Prizgintas discusses five Hudson Valley estates that generally are not open to the public and have received little popular attention.",
       "source": "Eventbrite",
       "types": [
-        "other"
+        "museum exhibit"
       ],
-      "placeKind": "club"
+      "placeKind": "museum"
     },
     {
       "id": "ridgefieldplayhouse-14051951",
@@ -87801,7 +87888,7 @@
       "types": [
         "tour"
       ],
-      "placeKind": "park"
+      "placeKind": "garden"
     },
     {
       "id": "msmc-77522431",
@@ -88271,7 +88358,7 @@
       "types": [
         "talk"
       ],
-      "placeKind": "shop"
+      "placeKind": "bookshop"
     },
     {
       "id": "eventbrite-32650141",
@@ -88982,7 +89069,7 @@
       "types": [
         "tour"
       ],
-      "placeKind": "park"
+      "placeKind": "garden"
     },
     {
       "id": "fairfield-u-49635799",
@@ -89424,7 +89511,7 @@
       "types": [
         "concert"
       ],
-      "placeKind": "brewery"
+      "placeKind": "winery"
     },
     {
       "id": "ticketmaster-77836802",
@@ -90225,7 +90312,7 @@
       "types": [
         "tasting"
       ],
-      "placeKind": "brewery"
+      "placeKind": "winery"
     },
     {
       "id": "eventbrite-15390143",
@@ -91331,7 +91418,7 @@
         "museum exhibit",
         "class"
       ],
-      "placeKind": "museum"
+      "placeKind": "park"
     },
     {
       "id": "eventbrite-77852665",
@@ -91574,7 +91661,7 @@
         "museum exhibit",
         "class"
       ],
-      "placeKind": "museum"
+      "placeKind": "park"
     },
     {
       "id": "eventbrite-63996440",
@@ -91728,7 +91815,7 @@
       "url": "https://www.eventbrite.com/e/1112-zoo-babies-herbivores-tickets-1997045294234",
       "description": "Caregiver and Child class for children ages 18 months to 3 years old.",
       "source": "Eventbrite",
-      "placeKind": "museum"
+      "placeKind": "park"
     },
     {
       "id": "eventbrite-17787690",
@@ -91854,7 +91941,7 @@
       "types": [
         "talk"
       ],
-      "placeKind": "shop"
+      "placeKind": "bookshop"
     },
     {
       "id": "eventbrite-2864110",
@@ -91946,7 +92033,7 @@
       "description": null,
       "host": "The Moviehouse",
       "source": "The Moviehouse",
-      "placeKind": "theatre"
+      "placeKind": "cinema"
     },
     {
       "id": "ticketmaster-20666880",
@@ -92101,7 +92188,7 @@
       "types": [
         "concert"
       ],
-      "placeKind": "brewery"
+      "placeKind": "winery"
     },
     {
       "id": "eventbrite-63500295",
@@ -92435,7 +92522,7 @@
       "types": [
         "tour"
       ],
-      "placeKind": "park"
+      "placeKind": "farm"
     },
     {
       "id": "stormking-38468406",
@@ -92937,7 +93024,7 @@
       "description": null,
       "host": "The Moviehouse",
       "source": "The Moviehouse",
-      "placeKind": "theatre"
+      "placeKind": "cinema"
     },
     {
       "id": "eventbrite-50736087",
@@ -93425,7 +93512,7 @@
       "description": "Filmed stage production.",
       "host": "The Moviehouse",
       "source": "The Moviehouse",
-      "placeKind": "theatre"
+      "placeKind": "cinema"
     },
     {
       "id": "emelin-58392200",
@@ -94480,7 +94567,7 @@
       "description": "Filmed stage production.",
       "host": "The Moviehouse",
       "source": "The Moviehouse",
-      "placeKind": "theatre"
+      "placeKind": "cinema"
     },
     {
       "id": "eventbrite-45195506",
@@ -94726,7 +94813,7 @@
     {
       "id": "eventbrite-12653689",
       "title": "Dried Orange Garland and Simmer Pot Kit",
-      "type": "other",
+      "type": "tasting",
       "repeats": false,
       "audience": "all",
       "setting": "unknown",
@@ -94751,9 +94838,9 @@
       "description": "Get crafty in person making a festive dried orange garland and cozy simmer pot kit for a fresh holiday vibe!",
       "source": "Eventbrite",
       "types": [
-        "other"
+        "tasting"
       ],
-      "placeKind": "brewery"
+      "placeKind": "winery"
     },
     {
       "id": "eventbrite-95677178",
@@ -95088,7 +95175,7 @@
         "museum exhibit",
         "class"
       ],
-      "placeKind": "museum"
+      "placeKind": "park"
     },
     {
       "id": "ridgefieldplayhouse-24244438",
@@ -95151,7 +95238,7 @@
         "museum exhibit",
         "class"
       ],
-      "placeKind": "museum"
+      "placeKind": "park"
     },
     {
       "id": "emelin-43258801",
@@ -95762,7 +95849,7 @@
       "types": [
         "craft"
       ],
-      "placeKind": "park"
+      "placeKind": "farm"
     },
     {
       "id": "eventbrite-20859399",
@@ -95828,7 +95915,7 @@
         "museum exhibit",
         "class"
       ],
-      "placeKind": "museum"
+      "placeKind": "park"
     },
     {
       "id": "eventbrite-64229369",
@@ -95922,7 +96009,7 @@
         "museum exhibit",
         "class"
       ],
-      "placeKind": "museum"
+      "placeKind": "park"
     },
     {
       "id": "eventbrite-83304659",
@@ -95956,7 +96043,7 @@
       "url": "https://www.eventbrite.com/e/1217-zoo-babies-animals-in-the-dark-tickets-1997053233982",
       "description": "Caregiver and Child class for children ages 18 months to 3 years old.",
       "source": "Eventbrite",
-      "placeKind": "museum"
+      "placeKind": "park"
     },
     {
       "id": "albany-u-33555517",
@@ -96042,7 +96129,7 @@
       "types": [
         "other"
       ],
-      "placeKind": "park"
+      "placeKind": "farm"
     },
     {
       "id": "eventbrite-14485206",
@@ -96074,7 +96161,7 @@
       "types": [
         "concert"
       ],
-      "placeKind": "brewery"
+      "placeKind": "winery"
     },
     {
       "id": "ridgefieldplayhouse-88961516",
@@ -96135,7 +96222,7 @@
         "dance",
         "celebration"
       ],
-      "placeKind": "brewery"
+      "placeKind": "winery"
     },
     {
       "id": "eventbrite-49955958",

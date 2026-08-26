@@ -13,6 +13,10 @@ import argparse, html, json, os, re, sys, time, urllib.parse, urllib.request
 from datetime import datetime
 from math import radians, sin, cos, asin, sqrt
 
+import os as _os, sys as _sys
+_sys.path.insert(0, _os.path.dirname(_os.path.abspath(__file__)))
+import placekinds
+
 UA = 'ProximiBot/0.1 (github.com/StarrySidekick/Proximi)'
 NOMINATIM = 'https://nominatim.openstreetmap.org/search'
 CACHE = 'sources/geocache.json'
@@ -179,41 +183,11 @@ VENUE_KINDS = [
 ]
 
 
-# What sort of place this is, for grouping and filtering the Places list.
-# Ordered: the first match wins, so "Museum Cafe" is a museum, not a cafe.
-PLACE_KINDS = [
-    ('library',        r'\b(librar(y|ies)|biblioteca)\b'),
-    ('museum',         r'\b(museum|planetarium|observatory|aquarium|zoo\b|'
-                       r'historic (house|site|home)|mill house|manor|mansion)\b'),
-    ('theatre',        r'\b(theatres?|theaters?|playhouse|opera house|cinema|'
-                       r'film cent(er|re)|drive[- ]in)\b'),
-    ('music venue',    r'\b(ballroom|music hall|amphitheat\w*|bandshell|bowl\b|'
-                       r'lounge|jazz club|concert hall|sound ?stage|'
-                       r'performing arts|arts cent(er|re))\b'),
-    ('stadium',        r'\b(stadium|ball ?park|arena|speedway|racetrack|raceway|'
-                       r'coliseum|ballfield|fairgrounds?|ice rink)\b'),
-    ('gallery',        r'\b(galler(y|ies)|art cent(er|re)|studios?)\b'),
-    ('brewery',        r'\b(brew\w*|taproom|tap house|beer (garden|hall)|'
-                       r'cider\w*|distiller\w*|winer\w*|vineyards?|meader\w*)\b'),
-    ('cafe',           r'\b(caf[eé]|coffee|espresso|roaster\w*|tea (room|shop|house)|'
-                       r'bakery|patisserie|creamery|gelato|java)\b'),
-    ('restaurant',     r'\b(restaurant|kitchen|bistro|trattoria|osteria|tavern|'
-                       r'grill(e|house)?|diner|eatery|pizzeria|steakhouse|'
-                       r'bar\ ?&|pub\b|saloon)\b'),
-    ('park',           r'\b(park|preserve|sanctuary|trail|gardens?|arboretum|'
-                       r'nature cent(er|re)|conservation|farm\b|orchard|'
-                       r'lake|beach|woods|state forest)\b'),
-    ('community centre', r'\b(community cent(er|re)|civic cent(er|re)|rec(reation)? cent(er|re)|'
-                       r'senior cent(er|re)|ymca|ywca|jcc\b|grange|'
-                       r'american legion|elks|rotary|town hall|village hall|'
-                       r'city of\b|town of\b|firehouse|fire (department|company))\b'),
-    ('school',         r'\b(school|college|universit(y|ies)|academy|institute|campus)\b'),
-    ('place of worship', r'\b(church|temple|synagogue|chapel|cathedral|mosque|'
-                       r'meeting ?house|congregation|parish|sangha|monastery)\b'),
-    ('shop',           r'\b(shop|store|boutique|market\b|bookstore|books\b|'
-                       r'gallery shop|mall\b|emporium)\b'),
-    ('club',           r'\b(club|society|lodge|guild|hall\b)\b'),
-]
+# What sort of place this is, for grouping and filtering the Places page.
+# The rules live in scripts/placekinds.py now, shared with places.py, which
+# reads the same kinds off OpenStreetMap tags. Two lists naming the same kinds
+# is how one of them ends up emitting a value no filter can reach.
+PLACE_KINDS = placekinds.NAME_RULES
 
 
 def place_kind(venue):

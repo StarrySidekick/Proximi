@@ -17,14 +17,6 @@
       <span class="brand-name">Proximi</span>
     </div>
 
-    <button id="venues-btn" class="filters-btn is-quiet" type="button"
-            aria-haspopup="dialog" aria-expanded="false" aria-controls="venues-panel">
-      <svg viewBox="0 0 16 16" aria-hidden="true" class="ico">
-        <path d="M2 13V6.5L8 2l6 4.5V13H10V9H6v4Z" stroke="currentColor"
-              stroke-width="1.5" fill="none" stroke-linejoin="round"/>
-      </svg>
-      Places
-    </button>
     <button id="open-filters" class="filters-btn" type="button"
             aria-haspopup="dialog" aria-expanded="false" aria-controls="filter-sheet">
       <svg viewBox="0 0 16 16" aria-hidden="true" class="ico">
@@ -36,6 +28,17 @@
     </button>
   </div>
 </header>
+
+<nav class="wrap viewtabs" role="tablist" aria-label="What to browse">
+  <button type="button" id="tab-events" class="viewtab is-on" role="tab"
+          aria-selected="true" aria-controls="events-view">
+    Events<span class="viewtab-n" id="tab-events-n"></span>
+  </button>
+  <button type="button" id="tab-places" class="viewtab" role="tab"
+          aria-selected="false" aria-controls="places-view">
+    Places<span class="viewtab-n" id="tab-places-n"></span>
+  </button>
+</nav>
 
 <div class="wrap contextbar">
   <button id="open-location" class="context-chip" type="button">
@@ -56,27 +59,42 @@
   </p>
 </div>
 
-<section id="venues-panel" class="venues-panel" role="dialog" aria-modal="true"
-         aria-labelledby="venues-title" hidden>
-  <div class="venues-inner">
-    <div class="venues-head">
-      <h2 id="venues-title">Places</h2>
-      <button type="button" id="venues-close" class="venues-close"
-              aria-label="Close places">✕</button>
-    </div>
-    <input id="venues-search" type="search" placeholder="Search places or towns…"
-           autocomplete="off">
-    <div class="chips" id="venues-kinds" role="group" aria-label="Kind of place"></div>
-    <p class="hint">Tap a place to see only its listings. The eye mutes a place
-      everywhere — useful when one venue's weekly night fills the feed.</p>
-    <ul id="venues-list" class="venues-list"></ul>
-  </div>
-</section>
-
 <main class="wrap">
-  <p class="freshness" id="data-banner" hidden></p>
-  <ul id="list" class="list"></ul>
-  <p id="empty" class="empty" hidden></p>
+  <div id="events-view" role="tabpanel" aria-labelledby="tab-events">
+    <p class="freshness" id="data-banner" hidden></p>
+    <ul id="list" class="list"></ul>
+    <p id="empty" class="empty" hidden></p>
+  </div>
+
+  <div id="places-view" role="tabpanel" aria-labelledby="tab-places" hidden>
+    <p class="places-intro">Somewhere to go, whether or not anything is on.</p>
+    <div class="places-controls">
+      <input id="places-search" type="search" placeholder="Search places or towns…"
+             autocomplete="off" aria-label="Search places">
+      <label class="places-sort">
+        <span class="sr-only">Sort places</span>
+        <select id="places-sort">
+          <option value="near">Nearest first</option>
+          <option value="events">Most going on</option>
+          <option value="name">By name</option>
+        </select>
+      </label>
+    </div>
+    <div class="places-toggles">
+      <label class="places-toggle">
+        <input type="checkbox" id="places-saved"> Want to go
+      </label>
+      <label class="places-toggle">
+        <input type="checkbox" id="places-local"> Independents only
+      </label>
+    </div>
+    <div class="chips" id="places-kinds" role="group" aria-label="Kind of place"></div>
+    <p class="places-summary" id="places-summary"></p>
+    <ul id="places-list" class="places-list"></ul>
+    <p class="fine places-credit">Place data from
+      <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors (ODbL),
+      plus venues we know from the event feed.</p>
+  </div>
 </main>
 
 <p class="build-stamp" id="build-stamp" hidden></p>

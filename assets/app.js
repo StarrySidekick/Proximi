@@ -109,6 +109,22 @@
     try { localStorage.setItem(VENUES_KEY, JSON.stringify([...set])); } catch { /* not fatal */ }
   }
 
+  /* Places the reader means to get to. The feed has a yes/no per listing; a
+     directory needs the same gesture, or it is a read-only list of facts.
+     Stored under the same guarded pattern — a browser with storage blocked
+     loses the marks, never the page. */
+  const SAVED_KEY = 'proximi.savedPlaces.v1';
+
+  function loadSavedPlaces() {
+    try {
+      return new Set(JSON.parse(localStorage.getItem(SAVED_KEY) || '[]'));
+    } catch { return new Set(); }
+  }
+
+  function saveSavedPlaces(set) {
+    try { localStorage.setItem(SAVED_KEY, JSON.stringify([...set])); } catch { /* not fatal */ }
+  }
+
   // "See listing" is what a card says when nothing named a place; it is not
   // itself a place, so it never becomes a row in Places or a filterable venue.
   const venueOf = (item) =>
@@ -127,10 +143,14 @@
     price: $('price'), priceOut: $('price-out'),
     freeOnly: $('free-only'), signupOnly: $('signup-only'), unitsKm: $('units-km'),
     toast: $('toast'), hiddenNote: $('hidden-note'), showHiddenBtn: $('show-hidden'),
-    venuesBtn: $('venues-btn'), venuesPanel: $('venues-panel'),
-    venuesList: $('venues-list'), venuesClose: $('venues-close'),
-    venuesKinds: $('venues-kinds'),
-    venuesSearch: $('venues-search'), venueBanner: $('venue-banner'),
+    tabEvents: $('tab-events'), tabPlaces: $('tab-places'),
+    tabEventsN: $('tab-events-n'), tabPlacesN: $('tab-places-n'),
+    eventsView: $('events-view'), placesView: $('places-view'),
+    placesList: $('places-list'), placesKinds: $('places-kinds'),
+    placesSearch: $('places-search'), placesSort: $('places-sort'),
+    placesLocal: $('places-local'), placesSaved: $('places-saved'),
+    placesSummary: $('places-summary'),
+    venueBanner: $('venue-banner'),
     buildStamp: $('build-stamp'),
     venueBannerName: $('venue-banner-name'), venueBannerClear: $('venue-banner-clear'),
     clearHiddenBtn: $('clear-hidden'),
@@ -152,8 +172,13 @@
     showHidden: false,
     hiddenVenues: loadHiddenVenues(),
     venueFilter: null,          // showing one venue's listings only
-    venueKind: null,            // Places narrowed to one sort of place
-    view: 'list',               // 'list' | 'venues'
+    places: [],                 // the directory, loaded alongside the feed
+    placeKind: null,            // Places narrowed to one sort of place
+    placeSort: 'near',
+    placesLocalOnly: false,
+    savedPlaces: loadSavedPlaces(),
+    placesSavedOnly: false,
+    view: 'events',             // 'events' | 'places'
     horizon: DEFAULTS.horizon,
     repeatMode: DEFAULTS.repeatMode,
     timeOfDay: DEFAULTS.timeOfDay,
@@ -874,120 +899,297 @@
     el.showHiddenBtn.setAttribute('aria-pressed', String(state.showHidden));
   }
 
-  /* ── Venues ────────────────────────────────────────────
-     A place is a better handle on a feed than a category is: people know they
-     like Storm King, and they know the brewery down the road lists trivia
-     every week. The panel lists every venue with a count, tapping one shows
-     just that venue, and the eye hides it from the feed for good.          */
+  /* ── Places ────────────────────────────────────────────
+     Places used to be a projection of the feed: somewhere existed because
+     something was scheduled there. That answers "where is this happening" and
+     never "what is around here", which leaves out most of what a region is
+     actually good for — the gardens, the historic houses, the wineries, the
+     antique shops, the castle. data/places.json carries those on their own
+     terms, and any events they do have get attached to them.               */
 
   const PLACE_KIND_LABELS = {
-    'music venue': 'Music venues', theatre: 'Theatres', library: 'Libraries',
-    park: 'Parks & outdoors', stadium: 'Stadiums & arenas', brewery: 'Breweries & wineries',
-    club: 'Clubs & halls', museum: 'Museums', gallery: 'Galleries & studios',
-    'community centre': 'Community centres', 'place of worship': 'Places of worship',
-    school: 'Schools & colleges', restaurant: 'Restaurants', cafe: 'Cafés',
-    shop: 'Shops', other: 'Everywhere else'
+    museum: 'Museums', gallery: 'Galleries & studios',
+    'historic house': 'Historic houses & mansions', castle: 'Castles',
+    'historic site': 'Historic sites', garden: 'Gardens & arboretums',
+    park: 'Parks & nature', attraction: 'Attractions',
+    winery: 'Wineries & vineyards', brewery: 'Breweries & distilleries',
+    farm: 'Farms & orchards', theatre: 'Theatres', cinema: 'Cinemas',
+    'music venue': 'Music venues', stadium: 'Stadiums & arenas',
+    library: 'Libraries', bookshop: 'Book shops', 'antique shop': 'Antique shops',
+    mall: 'Malls & markets', shop: 'Shops', cafe: 'Cafés',
+    restaurant: 'Restaurants & bars', 'community centre': 'Community centres',
+    'place of worship': 'Places of worship', school: 'Schools & colleges',
+    club: 'Clubs & halls', other: 'Everywhere else'
   };
 
-  function venueIndex() {
+  const kindLabel = (k) => PLACE_KIND_LABELS[k] || k || 'Everywhere else';
+
+  // The order the server used, so chips read the same way twice.
+  let placeKindOrder = Object.keys(PLACE_KIND_LABELS);
+
+  /* A place carries the distance the build computed, from the coverage
+     centre. Once the reader sets their own location that number is wrong, so
+     it is recomputed here and the stored one only ever serves as a fallback. */
+  function placeMiles(place) {
+    if (!state.origin || place.lat == null) return place.miles ?? null;
+    return haversineMiles(state.origin, { lat: place.lat, lon: place.lon });
+  }
+
+  function eventCounts() {
     const counts = new Map();
     for (const item of state.items) {
       const v = venueOf(item);
-      if (!v) continue;
-      const entry = counts.get(v) || { name: v, n: 0, town: item.city, kind: item.placeKind };
-      entry.n++;
-      entry.kind ||= item.placeKind;
-      counts.set(v, entry);
+      if (v) counts.set(v, (counts.get(v) || 0) + 1);
     }
-    return [...counts.values()].sort((a, b) => b.n - a.n || a.name.localeCompare(b.name));
+    return counts;
   }
 
-  function renderVenueKindChips(rows) {
-    const counts = new Map();
-    for (const v of rows) counts.set(v.kind || 'other', (counts.get(v.kind || 'other') || 0) + 1);
-    const kinds = [...counts.keys()].sort((a, b) =>
-      (a === 'other') - (b === 'other')
-      || (PLACE_KIND_LABELS[a] || a).localeCompare(PLACE_KIND_LABELS[b] || b));
+  /* Every place worth showing: the directory, plus any venue that turned up
+     on an event but that OpenStreetMap did not know about.
 
-    el.venuesKinds.replaceChildren(...kinds.map((k) => {
+     This walks the whole feed and the whole directory — thousands of rows on
+     each side — so it is built once and kept until something it depends on
+     actually changes. Search-as-you-type filters the cached array; it does not
+     rebuild it. (Rebuilding per keystroke is the same mistake that made
+     swiping laggy: correct, cheap-looking, and quadratic in practice.) */
+  let placeCache = null;
+  let placeCacheKey = '';
+
+  function invalidatePlaces() { placeCache = null; }
+
+  function placeIndex() {
+    const key = `${state.items.length}|${state.places.length}|`
+      + (state.origin ? `${state.origin.lat},${state.origin.lon}` : '-');
+    if (placeCache && placeCacheKey === key) return placeCache;
+    placeCacheKey = key;
+    placeCache = buildPlaceIndex();
+    return placeCache;
+  }
+
+  function buildPlaceIndex() {
+    const counts = eventCounts();
+    const rows = [];
+    const claimed = new Set();
+
+    for (const place of state.places) {
+      const n = counts.get(place.name) || place.events || 0;
+      claimed.add(place.name);
+      rows.push({ ...place, events: n, _miles: placeMiles(place) });
+    }
+
+    // A venue the directory missed still belongs in the list — it demonstrably
+    // exists, because something is happening there tonight. But an event feed
+    // names rooms as often as it names buildings ("Youth Services Program
+    // Room", "311 Learning Annex"), and a room is not somewhere to go. A
+    // venue earns a row by being recognisable as a kind of place, or by
+    // carrying a programme big enough that it is plainly a real one.
+    const extra = new Map();
+    for (const item of state.items) {
+      const v = venueOf(item);
+      if (!v || claimed.has(v) || item.lat == null) continue;
+      const row = extra.get(v);
+      if (row) { row.events++; continue; }
+      extra.set(v, {
+        id: `feed-${v}`, name: v, kind: item.placeKind || null,
+        kinds: item.placeKind ? [item.placeKind] : [],
+        lat: item.lat, lon: item.lon, city: item.city, address: item.address,
+        url: null, phone: null, openingHours: null, brand: null, secondHand: null,
+        description: null, events: 1, source: 'Event listings',
+        _miles: placeMiles(item)
+      });
+    }
+    const REAL_PLACE_EVENTS = 3;
+    return rows.concat([...extra.values()].filter(
+      (p) => p.kind || p.events >= REAL_PLACE_EVENTS));
+  }
+
+  function placesMatching(all) {
+    const q = (el.placesSearch?.value || '').trim().toLowerCase();
+    return all.filter((p) => {
+      if (state.placesSavedOnly && !state.savedPlaces.has(p.name)) return false;
+      if (state.placesLocalOnly && p.brand) return false;
+      if (!q) return true;
+      return p.name.toLowerCase().includes(q)
+          || (p.city || '').toLowerCase().includes(q)
+          || kindLabel(p.kind).toLowerCase().includes(q);
+    });
+  }
+
+  function sortPlaces(rows) {
+    const byName = (a, b) => a.name.localeCompare(b.name);
+    if (state.placeSort === 'name') return rows.sort(byName);
+    if (state.placeSort === 'events') {
+      return rows.sort((a, b) => b.events - a.events
+        || (a._miles ?? 1e9) - (b._miles ?? 1e9) || byName(a, b));
+    }
+    return rows.sort((a, b) => (a._miles ?? 1e9) - (b._miles ?? 1e9) || byName(a, b));
+  }
+
+  function renderPlaceKindChips(rows) {
+    const counts = new Map();
+    for (const p of rows) counts.set(p.kind || 'other', (counts.get(p.kind || 'other') || 0) + 1);
+    const kinds = [...counts.keys()].sort((a, b) => {
+      if ((a === 'other') !== (b === 'other')) return a === 'other' ? 1 : -1;
+      const ia = placeKindOrder.indexOf(a), ib = placeKindOrder.indexOf(b);
+      return (ia < 0 ? 1e3 : ia) - (ib < 0 ? 1e3 : ib);
+    });
+
+    el.placesKinds.replaceChildren(...kinds.map((k) => {
       const b = document.createElement('button');
       b.type = 'button';
       b.className = 'chip';
       b.dataset.kind = k;
-      b.setAttribute('aria-pressed', String(state.venueKind === k));
-      b.innerHTML = `${esc(PLACE_KIND_LABELS[k] || k)}<span class="chip-n">${counts.get(k)}</span>`;
+      b.setAttribute('aria-pressed', String(state.placeKind === k));
+      b.innerHTML = `${esc(kindLabel(k))}<span class="chip-n">${counts.get(k)}</span>`;
       b.addEventListener('click', () => {
-        state.venueKind = state.venueKind === k ? null : k;
-        renderVenues();
+        state.placeKind = state.placeKind === k ? null : k;
+        renderPlaces();
       });
       return b;
     }));
   }
 
-  function renderVenues() {
-    const q = (el.venuesSearch?.value || '').trim().toLowerCase();
-    const all = venueIndex().filter((v) =>
-      !q || v.name.toLowerCase().includes(q) || (v.town || '').toLowerCase().includes(q));
-    renderVenueKindChips(all);
-    const rows = state.venueKind
-      ? all.filter((v) => (v.kind || 'other') === state.venueKind)
-      : all;
+  function placeRow(p) {
+    // The eye mutes a venue in the *feed*. On a place with nothing on it would
+    // be a control that does nothing, on every row of a very long list — so it
+    // appears once there is something to mute, or once it is already muted.
+    const li = document.createElement('li');
+    const hidden = state.hiddenVenues.has(p.name);
+    li.className = 'place-row' + (hidden ? ' is-hidden' : '');
 
-    el.venuesList.replaceChildren(...rows.map((v) => {
-      const li = document.createElement('li');
-      const hidden = state.hiddenVenues.has(v.name);
-      li.className = 'venue-row' + (hidden ? ' is-hidden' : '');
-      li.innerHTML = `
-        <button type="button" class="venue-open">
-          <span class="venue-name">${esc(v.name)}</span>
-          ${v.kind ? `<span class="venue-kind">${esc(PLACE_KIND_LABELS[v.kind] || v.kind)}</span>` : ''}
-          ${v.town ? `<span class="venue-town">${esc(v.town)}</span>` : ''}
-          <span class="venue-n">${v.n}</span>
-        </button>
-        <button type="button" class="venue-mute"
-                aria-pressed="${hidden}"
-                title="${hidden ? 'Show this venue again' : 'Never show this venue'}"
-                aria-label="${hidden ? 'Show' : 'Hide'} listings from ${esc(v.name)}">
-          ${hidden ? '🚫' : '👁'}
-        </button>`;
-      li.querySelector('.venue-open').addEventListener('click', () => {
-        state.venueFilter = v.name;
-        closeVenues();
-        render();
-      });
-      li.querySelector('.venue-mute').addEventListener('click', () => {
-        if (state.hiddenVenues.has(v.name)) state.hiddenVenues.delete(v.name);
-        else state.hiddenVenues.add(v.name);
-        saveHiddenVenues(state.hiddenVenues);
-        renderVenues();
-        render();
-      });
-      return li;
-    }));
+    const meta = [p.city, p._miles == null ? '' : formatDistance(p._miles)]
+      .filter(Boolean).join(' · ');
+    const hours = p.openingHours && p.openingHours.length <= 60 ? p.openingHours : '';
+
+    const saved = state.savedPlaces.has(p.name);
+    li.innerHTML = `
+      <button type="button" class="place-save" aria-pressed="${saved}"
+              title="${saved ? 'Remove from want to go' : 'Want to go'}"
+              aria-label="${saved ? 'Remove' : 'Add'} ${esc(p.name)} ${saved ? 'from' : 'to'} want to go">
+        ${saved ? '★' : '☆'}
+      </button>
+      <div class="place-main">
+        <p class="place-name">${esc(p.name)}</p>
+        <p class="place-meta">
+          <span class="place-kind">${esc(kindLabel(p.kind))}</span>
+          ${p.secondHand ? '<span class="place-tag">used &amp; rare</span>' : ''}
+          ${p.brand ? '<span class="place-tag is-chain">chain</span>' : ''}
+          ${meta ? `<span class="place-where">${esc(meta)}</span>` : ''}
+        </p>
+        ${p.description ? `<p class="place-note">${esc(p.description)}</p>` : ''}
+        ${hours ? `<p class="place-hours">${esc(hours)}</p>` : ''}
+        <p class="place-actions">
+          ${p.events ? `<button type="button" class="place-events">${p.events}
+             ${p.events === 1 ? 'listing' : 'listings'} →</button>` : ''}
+          ${p.url ? `<a class="place-link" href="${esc(p.url)}" target="_blank"
+             rel="noopener noreferrer">Website</a>` : ''}
+          <a class="place-link" target="_blank" rel="noopener noreferrer"
+             href="https://www.openstreetmap.org/?mlat=${p.lat}&mlon=${p.lon}#map=17/${p.lat}/${p.lon}">Map</a>
+        </p>
+      </div>
+      ${p.events || hidden ? `
+      <button type="button" class="place-mute" aria-pressed="${hidden}"
+              title="${hidden ? 'Show this place again' : 'Never show this place'}"
+              aria-label="${hidden ? 'Show' : 'Hide'} listings from ${esc(p.name)}">
+        ${hidden ? '🚫' : '👁'}
+      </button>` : ''}`;
+
+    li.querySelector('.place-events')?.addEventListener('click', () => {
+      state.venueFilter = p.name;
+      showView('events');
+      render();
+    });
+    li.querySelector('.place-save').addEventListener('click', () => {
+      if (state.savedPlaces.has(p.name)) state.savedPlaces.delete(p.name);
+      else state.savedPlaces.add(p.name);
+      saveSavedPlaces(state.savedPlaces);
+      renderPlaces();
+    });
+    li.querySelector('.place-mute')?.addEventListener('click', () => {
+      if (state.hiddenVenues.has(p.name)) state.hiddenVenues.delete(p.name);
+      else state.hiddenVenues.add(p.name);
+      saveHiddenVenues(state.hiddenVenues);
+      renderPlaces();
+      render();
+    });
+    return li;
+  }
+
+  function renderPlaces() {
+    if (!el.placesList) return;
+    const matched = placesMatching(placeIndex());
+    renderPlaceKindChips(matched);
+    const rows = sortPlaces(state.placeKind
+      ? matched.filter((p) => (p.kind || 'other') === state.placeKind)
+      : matched);
+
+    if (el.placesSummary) {
+      const withEvents = rows.filter((p) => p.events).length;
+      const saved = state.savedPlaces.size;
+      el.placesSummary.textContent = rows.length
+        ? `${rows.length} ${rows.length === 1 ? 'place' : 'places'}`
+          + (withEvents ? ` · ${withEvents} with something on` : '')
+          + (saved ? ` · ${saved} on your list` : '')
+        : '';
+    }
+
+    // The directory runs to thousands of rows and the reader is scrolling a
+    // phone. Cap the render and say so, rather than building 3,000 nodes.
+    const CAP = 300;
+    const shown = rows.slice(0, CAP);
+    el.placesList.replaceChildren(...shown.map(placeRow));
 
     if (!rows.length) {
       const li = document.createElement('li');
       li.className = 'venue-empty';
-      li.textContent = 'No venue matches that.';
-      el.venuesList.append(li);
+      li.textContent = !state.places.length
+        ? 'The places directory has not been built yet.'
+        : state.placesSavedOnly
+          ? 'Nothing on your list yet — tap ☆ on a place to add it.'
+          : 'No place matches that.';
+      el.placesList.append(li);
+    } else if (rows.length > CAP) {
+      const li = document.createElement('li');
+      li.className = 'venue-empty';
+      li.textContent = `Showing the ${CAP} nearest of ${rows.length}. `
+        + 'Search or pick a kind to narrow it down.';
+      el.placesList.append(li);
     }
   }
 
-  function openVenues() {
-    renderVenues();
-    el.venuesPanel.hidden = false;
-    el.venuesBtn.setAttribute('aria-expanded', 'true');
-    el.venuesSearch?.focus();
+  function updateTabCounts() {
+    if (el.tabEventsN) el.tabEventsN.textContent = state.items.length || '';
+    if (el.tabPlacesN) {
+      const n = state.places.length;
+      el.tabPlacesN.textContent = n ? (n > 999 ? `${Math.floor(n / 100) / 10}k` : n) : '';
+    }
   }
 
-  function closeVenues() {
-    el.venuesPanel.hidden = true;
-    el.venuesBtn.setAttribute('aria-expanded', 'false');
+  /* ── The two views ─────────────────────────────────────── */
+
+  function showView(view) {
+    state.view = view;
+    const onPlaces = view === 'places';
+    el.eventsView.hidden = onPlaces;
+    el.placesView.hidden = !onPlaces;
+    el.tabEvents.classList.toggle('is-on', !onPlaces);
+    el.tabPlaces.classList.toggle('is-on', onPlaces);
+    el.tabEvents.setAttribute('aria-selected', String(!onPlaces));
+    el.tabPlaces.setAttribute('aria-selected', String(onPlaces));
+    // Filters, the result count and the one-venue banner all describe the
+    // feed. On Places they would be describing something the reader is not
+    // looking at. The location chip stays — it is what place distances are
+    // measured from.
+    if (el.openFilters) el.openFilters.hidden = onPlaces;
+    if (el.contextScope) el.contextScope.hidden = onPlaces;
+    if (el.venueBanner) el.venueBanner.hidden = onPlaces || !state.venueFilter;
+    if (onPlaces) renderPlaces();
+    window.scrollTo({ top: 0 });
   }
 
   function updateVenueBanner() {
     if (!el.venueBanner) return;
-    el.venueBanner.hidden = !state.venueFilter;
+    el.venueBanner.hidden = !state.venueFilter || state.view === 'places';
     if (state.venueFilter) el.venueBannerName.textContent = state.venueFilter;
   }
 
@@ -1233,6 +1435,9 @@
     el.locStatus.className = 'loc-status is-set';
     el.locStatus.textContent = `Showing distances from ${name}.`;
     render();
+    // Place distances are measured from here too, so the directory is stale
+    // the moment this changes — and the reader may be looking at it.
+    if (state.view === 'places') renderPlaces();
   }
 
   function locationError(msg) {
@@ -1290,16 +1495,24 @@
     node.addEventListener('input', rerender);
   }
 
-  el.venuesBtn?.addEventListener('click', () =>
-    (el.venuesPanel.hidden ? openVenues() : closeVenues()));
-  el.venuesClose?.addEventListener('click', closeVenues);
-  el.venuesSearch?.addEventListener('input', renderVenues);
+  el.tabEvents?.addEventListener('click', () => showView('events'));
+  el.tabPlaces?.addEventListener('click', () => showView('places'));
+  el.placesSearch?.addEventListener('input', renderPlaces);
+  el.placesSort?.addEventListener('change', () => {
+    state.placeSort = el.placesSort.value;
+    renderPlaces();
+  });
+  el.placesLocal?.addEventListener('change', () => {
+    state.placesLocalOnly = el.placesLocal.checked;
+    renderPlaces();
+  });
+  el.placesSaved?.addEventListener('change', () => {
+    state.placesSavedOnly = el.placesSaved.checked;
+    renderPlaces();
+  });
   el.venueBannerClear?.addEventListener('click', () => {
     state.venueFilter = null;
     render();
-  });
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && !el.venuesPanel.hidden) closeVenues();
   });
 
   el.showHiddenBtn?.addEventListener('click', () => {
@@ -1376,6 +1589,22 @@
         })
         .catch(() => { /* the stamp is decoration, never a failure */ });
 
+      // The directory is a separate file so a places rebuild never risks the
+      // feed, and a missing one degrades to "venues we know from events".
+      fetch('data/places.json', { cache: 'no-cache' })
+        .then((r) => (r.ok ? r.json() : null))
+        .then((d) => {
+          if (!d) return;
+          state.places = d.items || [];
+          if (Array.isArray(d.meta?.kinds) && d.meta.kinds.length) {
+            placeKindOrder = d.meta.kinds;
+          }
+          invalidatePlaces();
+          updateTabCounts();
+          if (state.view === 'places') renderPlaces();
+        })
+        .catch(() => { /* the feed still works without the directory */ });
+
       state.tz = data.meta?.timezone || null;
       const all = (data.items || []).map((item) => ({
         ...item, _start: resolveStart(item), _end: resolveEnd(item)
@@ -1385,6 +1614,7 @@
 
       buildTypeChips();
       showDataAge(data.meta);
+      updateTabCounts();
 
       const m = data.meta;
       if (m?.centerLat != null && m?.centerLon != null) {
