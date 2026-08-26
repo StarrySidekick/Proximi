@@ -110,7 +110,12 @@ OSM_RULES = [
     # `brand` is set on a Barnes & Noble and absent on a village book shop.
     ('bookshop', ['"shop"="books"']),
     ('antique shop', ['"shop"="antiques"']),
-    ('mall', ['"shop"="mall"', '"shop"="department_store"', '"amenity"="marketplace"']),
+    # NOT shop=department_store: that is Marshalls, TJ Maxx, Macy's and Sears —
+    # 270 of 464 results, and each one is a shop inside a mall rather than
+    # somewhere you set out for. amenity=marketplace stays: it is the farmers
+    # markets and the flea markets, which are exactly the kind of thing worth
+    # a Saturday.
+    ('mall', ['"shop"="mall"', '"amenity"="marketplace"']),
     ('shop', []),
     ('cafe', []),
     ('restaurant', []),

@@ -34,7 +34,7 @@ selector on one run; the next run picks up what is missing.
   python3 scripts/places.py --refresh       # ignore the cache
 """
 
-import argparse, json, math, os, re, sys, time, urllib.error, urllib.parse, urllib.request
+import argparse, hashlib, json, math, os, re, sys, time, urllib.error, urllib.parse, urllib.request
 from datetime import datetime, timezone
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -78,6 +78,17 @@ def miles(lat1, lon1, lat2, lon2):
     dp, dl = math.radians(lat2 - lat1), math.radians(lon2 - lon1)
     a = math.sin(dp / 2) ** 2 + math.cos(p1) * math.cos(p2) * math.sin(dl / 2) ** 2
     return 2 * r * math.asin(math.sqrt(a))
+
+
+def slot(selector):
+    """Cache key for one selector — its content, never its position.
+
+    Keying on the index within a kind meant that removing a selector from the
+    middle of a list silently remapped every cached answer after it to the
+    wrong query. Nothing errors; the counts just quietly become someone else's.
+    Selector lists get tuned constantly, so this had to stop being positional.
+    """
+    return hashlib.sha1(selector.encode()).hexdigest()[:10]
 
 
 def bbox(center, radius):
@@ -207,8 +218,8 @@ def fetch_kind(kind, selectors, center, radius, cache_dir):
     """
     area = f'({bbox(center, radius)})'
     elements, missed = [], 0
-    for i, sel in enumerate(selectors):
-        path = os.path.join(cache_dir, f'{kind.replace(" ", "-")}-{i}.json')
+    for sel in selectors:
+        path = os.path.join(cache_dir, f'{kind.replace(" ", "-")}-{slot(sel)}.json')
         if os.path.exists(path):
             elements.extend(json.load(open(path)).get('elements', []))
             continue
