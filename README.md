@@ -336,6 +336,52 @@ The places radius is 50 miles against the events' 100. An event is worth
 travelling for on a given night; a garden is a Sunday, and 100 miles of
 OpenStreetMap is tens of thousands of rows nobody scrolls.
 
+### "Attraction" was a label, not a category
+
+One bucket held planetariums, water parks, overlooks, theme parks, zoos,
+aquariums, fire towers, dinner theatres and a handful of notable rocks. Every
+one of those is a real thing to do and none of them belong behind the same
+filter chip, so it split into **Zoos & aquariums**, **Theme & water parks**,
+**Lookouts & towers** and **Landmarks & monuments**. Planetariums went to
+Museums, which is what a science museum with a dome is.
+
+Two related fixes came out of the same look at the data:
+
+- **A bowling alley is not a stadium.** It was sharing a kind with Dutchess
+  Stadium because both are `leisure=*` sports venues. It has its own now.
+- **Being old is not the same as being visitable.** A heritage listing is a
+  designation, not an invitation — and it is what put "Broadway", "Old Albany
+  Post Road", "Storm King Highway" and the New Haven Line in the directory as
+  historic sites. Roads and railways are excluded outright, and historic sites,
+  historic houses and landmarks now need a real sign you can go: a website,
+  opening hours, an access or fee tag, a Wikipedia article. Historic sites went
+  from 544 to 291.
+
+Those roads also arrived *once per way segment* — seven rows of "Broadway",
+five of "Old Albany Post Road". The coordinate-grid dedupe cannot see that
+segments strung across ten miles are one thing, so a second pass collapses
+identical name + kind + town. Including the town is what keeps two different
+Memorial Parks apart, and keeps all three Bowlero locations.
+
+### A room is not a venue, and the feed already knew
+
+Library calendars name the room: "Youth Services Program Room", "Third Floor
+Meeting Room", "311 Learning Annex". Each event already carries
+`host="Howland Public Library"`, so the room defers to its host.
+
+This turned out to be hiding a worse bug. Half a dozen libraries each publish
+events in their "Community Room", and all of those were collapsing into a
+single directory entry called Community Room. They now resolve to seven
+different libraries.
+
+The rule is deliberately narrow, because the failure mode is silently
+relabelling a real venue. A bare "room" or "lounge" is not enough — the word
+has to follow one a library actually uses — so "Charlotte's Tea Room" and
+"Cy's Restaurant & Lounge" stay themselves. And where a venue already names its
+building, the venue wins over the host: "Stern Auditorium, Carnegie Hall"
+resolves to Carnegie Hall, not to the Berliner Philharmoniker, who are the act
+and not the address.
+
 ### Overpass is the flaky part, so the collector is resumable
 
 Public Overpass mirrors are not a dependable service. In one afternoon the main

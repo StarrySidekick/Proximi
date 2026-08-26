@@ -37,6 +37,13 @@ selector on one run; the next run picks up what is missing.
 import argparse, hashlib, json, math, os, re, sys, time, urllib.error, urllib.parse, urllib.request
 from datetime import datetime, timezone
 
+# This run takes half an hour and is watched through a log file. Python buffers
+# stdout when it is redirected, so the per-kind counts sat in the buffer while
+# the failures — stderr, unbuffered — appeared immediately, which read as
+# "every kind is failing" when nothing of the sort was happening.
+if hasattr(sys.stdout, 'reconfigure'):
+    sys.stdout.reconfigure(line_buffering=True)
+
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import placekinds
 
@@ -69,7 +76,8 @@ STATE_NAMES = {'NY': 'NY', 'New York': 'NY', 'CT': 'CT', 'Connecticut': 'CT',
 # a private home with a plaque by the door. What separates a destination is
 # that somebody bothered to record a way in — a website, an opening time, a
 # heritage listing, a description. Kinds listed here have to show one.
-THIN = {'historic site', 'historic house', 'garden', 'park', 'attraction'}
+THIN = {'historic site', 'historic house', 'garden', 'park', 'landmark',
+        'lookout'}
 
 
 def miles(lat1, lon1, lat2, lon2):
@@ -316,8 +324,15 @@ def test_selectors():
         ({'heritage': '2'}, 'historic site'),
         ({'craft': 'brewery'}, 'brewery'),
         ({'craft': 'distillery'}, 'brewery'),
-        ({'tourism': 'attraction'}, 'attraction'),
-        ({'tourism': 'zoo'}, 'attraction'),
+        ({'tourism': 'attraction'}, 'landmark'),
+        ({'tourism': 'zoo'}, 'zoo'),
+        ({'tourism': 'aquarium'}, 'zoo'),
+        ({'tourism': 'theme_park'}, 'theme park'),
+        ({'leisure': 'water_park'}, 'theme park'),
+        ({'tourism': 'viewpoint'}, 'lookout'),
+        ({'leisure': 'bowling_alley'}, 'bowling alley'),
+        ({'amenity': 'planetarium'}, 'museum'),
+        ({'shop': 'gift'}, 'shop'),
         ({'tourism': 'museum'}, 'museum'),
         ({'leisure': 'garden'}, 'garden'),
         ({'historic': 'castle'}, 'castle'),
@@ -335,6 +350,8 @@ def test_selectors():
     assert 'brewery' not in classify({'craft': 'bakery'}), 'craft regex is too loose'
     assert 'historic site' not in classify({'historic': 'castle'}), \
         'historic regex swallowed castle'
+    assert 'stadium' not in classify({'leisure': 'bowling_alley'}), \
+        'a bowling alley is not a stadium'
     return len(cases)
 
 
@@ -361,6 +378,23 @@ PUBLIC_LAND = {
 }
 
 
+# A road is not a place you visit, however historic. "Broadway", "Old Albany
+# Post Road", "Storm King Highway" and the New Haven Line all carry heritage
+# tags, and each arrives once per way segment — 22 rows between them.
+LINEAR = ('highway', 'railway', 'route', 'waterway')
+
+# What "you can go there" looks like in tags. A heritage listing on its own is
+# a designation, not an invitation: it is what put the roads in.
+VISIT_SIGNALS = ('website', 'contact:website', 'url', 'opening_hours',
+                 'tourism', 'wikipedia', 'description', 'fee', 'access')
+
+
+def visitable(tags):
+    if any(k in tags for k in LINEAR):
+        return False
+    return any(tags.get(k) for k in VISIT_SIGNALS)
+
+
 def substantial(kind, tags):
     """Is this a destination, or a map feature that happens to have a name?
 
@@ -378,6 +412,19 @@ def substantial(kind, tags):
             return True
         return bool(website_of(tags) or tags.get('wikipedia')
                     or tags.get('description') or tags.get('opening_hours'))
+    if kind == 'lookout':
+        # A tower built to be climbed is a destination by construction — the
+        # fire towers and the lookout towers. A radio mast and a clock tower
+        # are not, whatever man_made says.
+        if tags.get('tower:type') in ('observation', 'fire'):
+            return True
+        if tags.get('man_made') == 'tower':
+            return False
+        # Everything else is tourism=viewpoint, which is 285 named pull-offs in
+        # range — "GWB View", "HBP 187 View". Same test the rest of the soft
+        # kinds get: somebody has to have written it up.
+        return bool(website_of(tags) or tags.get('wikipedia')
+                    or tags.get('description') or tags.get('wikidata'))
     if kind == 'park':
         # 6,297 named parks inside fifty miles, nearly all of them a municipal
         # ballfield or a traffic island with a name. Two things separate a
@@ -386,6 +433,9 @@ def substantial(kind, tags):
         # pocket park in the country, so it says nothing.
         return (tags.get('protection_title') in PUBLIC_LAND
                 or bool(tags.get('wikipedia')))
+    if kind in ('historic site', 'historic house', 'landmark'):
+        # These three are where "it is old" gets mistaken for "you can see it".
+        return visitable(tags)
     if kind not in THIN:
         return True
     return bool(website_of(tags) or tags.get('wikidata') or tags.get('wikipedia')
@@ -456,6 +506,24 @@ def to_place(element, kinds, center):
     }
 
 
+def collapse_repeats(places):
+    """A second pass: same name, same kind, same town is one place.
+
+    dedupe() keys on a coarse coordinate grid, which cannot see that seven
+    segments of "Broadway" strung across ten miles are one entry. Including the
+    town keeps two genuinely different Memorial Parks apart, and keeps all
+    three Bowlero locations, which are in three different towns.
+    """
+    best = {}
+    for place in places:
+        key = (norm(place['name']), place['kind'], (place.get('city') or '').lower())
+        rival = best.get(key)
+        if not rival or filled(place) > filled(rival) or (
+                filled(place) == filled(rival) and place['miles'] < rival['miles']):
+            best[key] = place
+    return list(best.values())
+
+
 def dedupe(places):
     """One business, one row.
 
@@ -513,6 +581,39 @@ def collect(center, radius, only=None, cache_dir='build/places-cache'):
     return places, failed
 
 
+# A library feed names the room, not the building: "Youth Services Program
+# Room", "Riverview Meeting Room", "Third Floor Meeting Room", "311 Learning
+# Annex". The event itself already knows better — it carries host="Howland
+# Public Library" — so the room defers to its host.
+#
+# Deliberately narrow. "Charlotte's Tea Room" and "Cy's Restaurant & Lounge"
+# are venues in their own right, so a bare "room" or "lounge" is not enough:
+# the word has to be preceded by one of the words a library actually uses.
+ROOM_NAME = re.compile(
+    r"\b(program|meeting|community|conference|reading|storyhour|story|activity|"
+    r"multi-?purpose|craft|computer|quiet|study|board|history|children'?s|teen|"
+    r"youth services|lower level|upper level)\s+room\b"
+    r"|\broom\s*\d|\bannex\b|\bauditorium\b|\bclassroom\b|\bgymnasium\b"
+    r"|\b(lower|upper|ground|first|second|third|fourth)\s+(level|floor)\b", re.I)
+
+
+def building_of(item):
+    """The place an event is really at, not the room it booked."""
+    venue, host = item.get('venue'), item.get('host')
+    if not venue or not ROOM_NAME.search(venue):
+        return venue
+    # "Stern Auditorium, Carnegie Hall" already names its building, and its
+    # host is the Berliner Philharmoniker — the act, not the address. When the
+    # venue spells out where it is, believe the venue over the host.
+    if ',' in venue:
+        tail = venue.rsplit(',', 1)[1].strip()
+        if tail and not ROOM_NAME.search(tail):
+            return tail
+    if host and host != venue and not ROOM_NAME.search(host):
+        return host
+    return venue
+
+
 def norm(name):
     return re.sub(r'[^a-z0-9]+', ' ', (name or '').lower()).strip()
 
@@ -529,7 +630,7 @@ def merge_events(places, events_path, center, radius):
 
     extra = {}
     for item in items:
-        venue = item.get('venue')
+        venue = building_of(item)
         if not venue or not item.get('lat'):
             continue
         key = norm(venue)
@@ -606,6 +707,12 @@ def main():
         for place in places:
             if not place['city']:
                 place['city'] = nearest_town(place['lat'], place['lon'], towns)
+    # Only now — the collapse keys on town, so it has to run once every place
+    # has one.
+    before_collapse = len(places)
+    places = collapse_repeats(places)
+    if before_collapse != len(places):
+        print(f'  collapsed {before_collapse - len(places)} repeated rows')
     before = len(places)
     places = merge_events(places, args.events, center, radius)
     places.sort(key=lambda p: (p['miles'], p['name']))
@@ -622,6 +729,10 @@ def main():
             'centerName': center['name'], 'centerLat': center['lat'],
             'centerLon': center['lon'], 'radiusMiles': radius,
             'kinds': placekinds.ORDER,
+            # Shipped with the data so the client cannot drift from the
+            # taxonomy. Its own map is a fallback for an older file; five new
+            # kinds rendered as raw "lookout42" chips before this existed.
+            'kindLabels': placekinds.LABELS,
             'partial': sorted(set(failed) | set(skipped)) or None,
             'note': 'Places from OpenStreetMap (ODbL), plus venues known only '
                     'from the event feed. A place needs no events to be listed.',

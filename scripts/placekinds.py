@@ -29,7 +29,10 @@ KINDS = [
     ('historic site',    'Historic sites'),
     ('garden',           'Gardens & arboretums'),
     ('park',             'Parks & nature'),
-    ('attraction',       'Attractions'),
+    ('lookout',          'Lookouts & towers'),
+    ('landmark',         'Landmarks & monuments'),
+    ('zoo',              'Zoos & aquariums'),
+    ('theme park',       'Theme & water parks'),
     ('winery',           'Wineries & vineyards'),
     ('brewery',          'Breweries & distilleries'),
     ('farm',             'Farms & orchards'),
@@ -37,11 +40,12 @@ KINDS = [
     ('cinema',           'Cinemas'),
     ('music venue',      'Music venues'),
     ('stadium',          'Stadiums & arenas'),
+    ('bowling alley',    'Bowling alleys'),
     ('library',          'Libraries'),
     ('bookshop',         'Book shops'),
     ('antique shop',     'Antique shops'),
     ('mall',             'Malls & markets'),
-    ('shop',             'Shops'),
+    ('shop',             'Specialty shops'),
     ('cafe',             'Cafés'),
     ('restaurant',       'Restaurants & bars'),
     ('community centre', 'Community centres'),
@@ -58,8 +62,9 @@ ORDER = [name for name, _ in KINDS]
 # enter the directory by hosting an event.
 DESTINATIONS = {
     'museum', 'gallery', 'historic house', 'castle', 'historic site', 'garden',
-    'park', 'attraction', 'winery', 'brewery', 'farm', 'theatre', 'cinema',
-    'music venue', 'stadium', 'library', 'bookshop', 'antique shop', 'mall',
+    'park', 'lookout', 'landmark', 'zoo', 'theme park', 'winery', 'brewery',
+    'farm', 'theatre', 'cinema', 'music venue', 'stadium', 'bowling alley',
+    'library', 'bookshop', 'antique shop', 'mall', 'shop',
 }
 
 # --- reading OSM tags -------------------------------------------------------
@@ -71,8 +76,9 @@ DESTINATIONS = {
 # These are also what places.py *queries* — a kind with no selectors is never
 # fetched, only ever inferred from an event venue's name.
 OSM_RULES = [
-    ('museum', ['"tourism"="museum"', '"historic"="museum"']),
-    ('gallery', ['"tourism"="gallery"', '"shop"="art"']),
+    ('museum', ['"tourism"="museum"', '"historic"="museum"',
+                '"amenity"="planetarium"']),
+    ('gallery', ['"tourism"="gallery"']),
     # historic=manor is OSM's tag for a country house open to visitors, which
     # is most of what people mean by "a mansion you can go and look at".
     # historic=house alone is any old house; it needs a reason to be on a map
@@ -88,8 +94,18 @@ OSM_RULES = [
                 '"tourism"="botanical_garden"', '"leisure"="arboretum"']),
     ('park', ['"leisure"="nature_reserve"', '"leisure"="park"',
               '"boundary"="protected_area"']),
-    ('attraction', ['"tourism"~"^(attraction|zoo|aquarium|theme_park|viewpoint)$"',
-                    '"amenity"="planetarium"', '"leisure"="water_park"']),
+    # "Attractions" was one bucket holding planetariums, water parks, overlooks,
+    # theme parks, zoos, fire towers and a handful of notable rocks. That is a
+    # label, not a category — nobody browsing wants a zoo and a roadside marker
+    # behind the same chip. Split into the things people actually go to.
+    ('zoo', ['"tourism"="zoo"', '"tourism"="aquarium"']),
+    ('theme park', ['"tourism"="theme_park"', '"leisure"="water_park"']),
+    # Overlooks, summits, and the fire and observation towers you climb for the
+    # same reason.
+    ('lookout', ['"tourism"="viewpoint"', '"man_made"="tower"']),
+    # Whatever is left of tourism=attraction: the arches, the boulders, the
+    # markers, the notable bridges. Worth seeing, not worth an afternoon.
+    ('landmark', ['"tourism"="attraction"', '"natural"="arch"']),
     # NOT shop=wine: that is the liquor store on the corner, and it swamps the
     # dozen actual vineyards you can drive out to. landuse=vineyard needs a
     # name to count, or every planted hillside arrives.
@@ -103,8 +119,9 @@ OSM_RULES = [
     ('theatre', ['"amenity"="theatre"', '"amenity"="arts_centre"']),
     ('cinema', ['"amenity"="cinema"']),
     ('music venue', ['"amenity"="music_venue"', '"amenity"="nightclub"']),
-    ('stadium', ['"leisure"="stadium"', '"leisure"="ice_rink"',
-                 '"leisure"="bowling_alley"']),
+    ('stadium', ['"leisure"="stadium"', '"leisure"="ice_rink"']),
+    # Pat Tarsio Lanes is not a stadium.
+    ('bowling alley', ['"leisure"="bowling_alley"']),
     ('library', ['"amenity"="library"']),
     # Chains are the thing the user does not want here, and OSM marks them:
     # `brand` is set on a Barnes & Noble and absent on a village book shop.
@@ -116,7 +133,16 @@ OSM_RULES = [
     # markets and the flea markets, which are exactly the kind of thing worth
     # a Saturday.
     ('mall', ['"shop"="mall"', '"amenity"="marketplace"']),
-    ('shop', []),
+    # A category of one is silly. These are the shop types people make a trip
+    # for, which is the same reason antique shops and book shops earned their
+    # own kinds — not the supermarket and the phone repair place.
+    ('shop', ['"shop"="gift"', '"shop"="craft"', '"shop"="art"',
+              '"shop"="music"', '"shop"="musical_instrument"',
+              '"shop"="second_hand"', '"shop"="charity"',
+              '"shop"="garden_centre"', '"shop"="pottery"',
+              '"shop"="chocolate"', '"shop"="cheese"', '"shop"="tea"',
+              '"shop"="games"', '"shop"="collector"', '"shop"="comics"',
+              '"shop"="record"', '"shop"="frame"', '"shop"="fabric"']),
     ('cafe', []),
     ('restaurant', []),
     ('community centre', []),
@@ -143,6 +169,11 @@ NAME_RULES = [
     ('music venue',    r'\b(ballroom|music hall|amphitheat\w*|bandshell|bowl\b|'
                        r'lounge|jazz club|concert hall|sound ?stage|'
                        r'performing arts|arts cent(er|re))\b'),
+    ('bowling alley',  r'\b(bowl(ing)?\s*(alley|lanes?|centre|center)|lanes\b|bowlero)\b'),
+    ('zoo',            r'\b(zoo\b|aquarium|safari park|wildlife cent(er|re))\b'),
+    ('theme park',     r'\b(theme park|amusement park|water ?park|fun ?plex|playland)\b'),
+    ('lookout',        r'\b(overlook|lookout|fire tower|observation (tower|deck)|'
+                       r'watchtower|scenic (vista|view))\b'),
     ('stadium',        r'\b(stadium|ball ?park|arena|speedway|racetrack|raceway|'
                        r'coliseum|ballfield|fairgrounds?|ice rink)\b'),
     ('gallery',        r'\b(galler(y|ies)|art cent(er|re)|studios?)\b'),

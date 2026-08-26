@@ -606,12 +606,39 @@ input:focus-visible, select:focus-visible, button:focus-visible, a:focus-visible
 .places-credit { margin: 22px 0 0; }
 
 .places-list { list-style: none; margin: 8px 0 0; padding: 0; }
+
+/* A place swipes like a listing does: left mutes it, right marks it
+   Interested. Same slot/rail/surface shape as .card-slot so the physics and
+   the commit distance are literally the same code. */
+.place-slot {
+  position: relative;
+  border-bottom: 1px solid var(--line-soft);
+  overflow: hidden;
+  touch-action: pan-y;                  /* vertical drags still scroll */
+}
 .place-row {
   display: flex; align-items: flex-start; gap: 8px;
-  padding: 12px 2px; border-bottom: 1px solid var(--line-soft);
+  padding: 12px 2px;
+  background: var(--bg);
 }
+.place-row.is-swiping {
+  position: relative;
+  transform: translateX(var(--dx, 0));
+  transition: none;
+  user-select: none;
+}
+.place-slot[data-swipe="hidden"] .swipe-rail { background: var(--act-bg); }
+.place-slot[data-swipe="going"]  .swipe-rail { background: var(--rep-bg); }
+.place-slot[data-swipe="going"]  .rail-no,
+.place-slot[data-swipe="hidden"] .rail-yes { opacity: .25; }
+.place-slot.is-saved .place-name { font-weight: 600; }
+.place-slot.is-saved::before {
+  content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px;
+  background: var(--rep-ink);
+}
+.place-slot.is-muted .place-row { opacity: .5; }
 .place-main { flex: 1; min-width: 0; }
-.place-row.is-hidden .place-name { text-decoration: line-through; opacity: .55; }
+.place-slot.is-muted .place-name { text-decoration: line-through; }
 .place-name {
   margin: 0; font-family: var(--serif); font-size: 16.5px; color: var(--ink);
   overflow-wrap: anywhere;
@@ -672,3 +699,11 @@ input:focus-visible, select:focus-visible, button:focus-visible, a:focus-visible
   color: var(--ink-3); opacity: .65;
 }
 .build-stamp[hidden] { display: none; }
+
+/* The count beside "Only places I'm interested in", so the toggle says how
+   much it will actually narrow to before it is used. */
+.check-n {
+  font-size: 11.5px; font-weight: 700; color: var(--accent);
+  margin-left: 4px;
+}
+.check input:disabled + * , .check input:disabled { opacity: .5; }

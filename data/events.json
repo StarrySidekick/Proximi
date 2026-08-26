@@ -1,7 +1,7 @@
 {
   "meta": {
     "schemaVersion": 2,
-    "scrapedAt": "2026-08-26T05:48:37+00:00",
+    "scrapedAt": "2026-08-26T15:21:36+00:00",
     "centerName": "Beacon, NY",
     "centerLat": 41.5048,
     "centerLon": -73.9696,
@@ -32228,7 +32228,8 @@
       "source": "Eventbrite",
       "types": [
         "other"
-      ]
+      ],
+      "placeKind": "theme park"
     },
     {
       "id": "songkick-32792556",
@@ -39453,7 +39454,7 @@
         "museum exhibit",
         "class"
       ],
-      "placeKind": "park"
+      "placeKind": "zoo"
     },
     {
       "id": "desmondfish-library-55773143",
@@ -40770,7 +40771,7 @@
         "museum exhibit",
         "class"
       ],
-      "placeKind": "park"
+      "placeKind": "zoo"
     },
     {
       "id": "wcsu-2545267",
@@ -59278,7 +59279,7 @@
         "museum exhibit",
         "class"
       ],
-      "placeKind": "park"
+      "placeKind": "zoo"
     },
     {
       "id": "eventbrite-35944790",
@@ -60287,7 +60288,7 @@
         "museum exhibit",
         "class"
       ],
-      "placeKind": "park"
+      "placeKind": "zoo"
     },
     {
       "id": "eventbrite-70841467",
@@ -75043,7 +75044,7 @@
         "museum exhibit",
         "class"
       ],
-      "placeKind": "park"
+      "placeKind": "zoo"
     },
     {
       "id": "eventbrite-51318845",
@@ -76087,7 +76088,7 @@
         "museum exhibit",
         "class"
       ],
-      "placeKind": "park"
+      "placeKind": "zoo"
     },
     {
       "id": "whitememorial-51375527",
@@ -81667,7 +81668,8 @@
       "source": "Songkick",
       "types": [
         "concert"
-      ]
+      ],
+      "placeKind": "bowling alley"
     },
     {
       "id": "songkick-39063302",
@@ -84561,7 +84563,7 @@
         "museum exhibit",
         "class"
       ],
-      "placeKind": "park"
+      "placeKind": "zoo"
     },
     {
       "id": "songkick-12859454",
@@ -84933,7 +84935,7 @@
         "museum exhibit",
         "class"
       ],
-      "placeKind": "park"
+      "placeKind": "zoo"
     },
     {
       "id": "eventbrite-77055433",
@@ -91418,7 +91420,7 @@
         "museum exhibit",
         "class"
       ],
-      "placeKind": "park"
+      "placeKind": "zoo"
     },
     {
       "id": "eventbrite-77852665",
@@ -91661,7 +91663,7 @@
         "museum exhibit",
         "class"
       ],
-      "placeKind": "park"
+      "placeKind": "zoo"
     },
     {
       "id": "eventbrite-63996440",
@@ -91815,7 +91817,7 @@
       "url": "https://www.eventbrite.com/e/1112-zoo-babies-herbivores-tickets-1997045294234",
       "description": "Caregiver and Child class for children ages 18 months to 3 years old.",
       "source": "Eventbrite",
-      "placeKind": "park"
+      "placeKind": "zoo"
     },
     {
       "id": "eventbrite-17787690",
@@ -95175,7 +95177,7 @@
         "museum exhibit",
         "class"
       ],
-      "placeKind": "park"
+      "placeKind": "zoo"
     },
     {
       "id": "ridgefieldplayhouse-24244438",
@@ -95238,7 +95240,7 @@
         "museum exhibit",
         "class"
       ],
-      "placeKind": "park"
+      "placeKind": "zoo"
     },
     {
       "id": "emelin-43258801",
@@ -95915,7 +95917,7 @@
         "museum exhibit",
         "class"
       ],
-      "placeKind": "park"
+      "placeKind": "zoo"
     },
     {
       "id": "eventbrite-64229369",
@@ -96009,7 +96011,7 @@
         "museum exhibit",
         "class"
       ],
-      "placeKind": "park"
+      "placeKind": "zoo"
     },
     {
       "id": "eventbrite-83304659",
@@ -96043,7 +96045,7 @@
       "url": "https://www.eventbrite.com/e/1217-zoo-babies-animals-in-the-dark-tickets-1997053233982",
       "description": "Caregiver and Child class for children ages 18 months to 3 years old.",
       "source": "Eventbrite",
-      "placeKind": "park"
+      "placeKind": "zoo"
     },
     {
       "id": "albany-u-33555517",

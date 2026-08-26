@@ -142,6 +142,7 @@
     radius: $('radius'), radiusOut: $('radius-out'),
     price: $('price'), priceOut: $('price-out'),
     freeOnly: $('free-only'), signupOnly: $('signup-only'), unitsKm: $('units-km'),
+    interestedOnly: $('interested-only'), interestedN: $('interested-n'),
     toast: $('toast'), hiddenNote: $('hidden-note'), showHiddenBtn: $('show-hidden'),
     tabEvents: $('tab-events'), tabPlaces: $('tab-places'),
     tabEventsN: $('tab-events-n'), tabPlacesN: $('tab-places-n'),
@@ -439,6 +440,10 @@
       if (state.activeTypes.size && !kinds.some((t) => state.activeTypes.has(t))) return false;
       if (el.foodOnly.checked && !item.hasFood) return false;
       if (el.outdoorOnly.checked && item.setting !== 'outdoor') return false;
+      // The directory's Interested list, used as a lens on the feed: show me
+      // only what is on at the places I already said I want to go to.
+      if (el.interestedOnly?.checked
+          && !state.savedPlaces.has(venueOf(item))) return false;
       const tod = TIME_OF_DAY.find((t) => t.id === state.timeOfDay);
       if (tod && tod.match && !tod.match(item.timeOfDay)) return false;
       if (el.freeOnly.checked && !isFree(item)) return false;
@@ -672,7 +677,11 @@
 
   const SWIPE_COMMIT = 90;   // px past which the verdict sticks
 
-  function attachSwipe(li, surface, item) {
+  /* One gesture, two lists. The feed swipes a listing to hidden/going; the
+     directory swipes a place to muted/interested. Same physics, same commit
+     distance, same implicit-capture trap avoided below — so it takes a verdict
+     callback rather than knowing what it is swiping. */
+  function attachSwipe(li, surface, onVerdict) {
     let startX = 0, startY = 0, dx = 0, active = false, decided = false, frame = null;
 
     li.addEventListener('pointerdown', (e) => {
@@ -716,7 +725,7 @@
       surface.style.removeProperty('--dx');
       delete li.dataset.swipe;
       active = false; startX = startY = 0;
-      if (verdict && !decided) { decided = true; decide(item, verdict); }
+      if (verdict && !decided) { decided = true; onVerdict(verdict); }
     };
     // pointerup and pointercancel are enough: capturing the pointer guarantees
     // both are delivered here. lostpointercapture must NOT end the gesture —
@@ -810,7 +819,7 @@
         decide(item, verdict === want ? null : want);
       });
     }
-    attachSwipe(li, surface, item);
+    attachSwipe(li, surface, (verdict) => decide(item, verdict));
     return li;
   }
 
@@ -911,12 +920,15 @@
     museum: 'Museums', gallery: 'Galleries & studios',
     'historic house': 'Historic houses & mansions', castle: 'Castles',
     'historic site': 'Historic sites', garden: 'Gardens & arboretums',
-    park: 'Parks & nature', attraction: 'Attractions',
+    park: 'Parks & nature', lookout: 'Lookouts & towers',
+    landmark: 'Landmarks & monuments', zoo: 'Zoos & aquariums',
+    'theme park': 'Theme & water parks',
     winery: 'Wineries & vineyards', brewery: 'Breweries & distilleries',
     farm: 'Farms & orchards', theatre: 'Theatres', cinema: 'Cinemas',
     'music venue': 'Music venues', stadium: 'Stadiums & arenas',
+    'bowling alley': 'Bowling alleys',
     library: 'Libraries', bookshop: 'Book shops', 'antique shop': 'Antique shops',
-    mall: 'Malls & markets', shop: 'Shops', cafe: 'Cafés',
+    mall: 'Malls & markets', shop: 'Specialty shops', cafe: 'Cafés',
     restaurant: 'Restaurants & bars', 'community centre': 'Community centres',
     'place of worship': 'Places of worship', school: 'Schools & colleges',
     club: 'Clubs & halls', other: 'Everywhere else'
@@ -1049,23 +1061,50 @@
     }));
   }
 
+  function togglePlaceSaved(p) {
+    if (state.savedPlaces.has(p.name)) state.savedPlaces.delete(p.name);
+    else state.savedPlaces.add(p.name);
+    saveSavedPlaces(state.savedPlaces);
+    syncInterested();
+    renderPlaces();
+    render();               // the feed can be filtered on this list
+  }
+
+  function togglePlaceMuted(p) {
+    if (state.hiddenVenues.has(p.name)) state.hiddenVenues.delete(p.name);
+    else state.hiddenVenues.add(p.name);
+    saveHiddenVenues(state.hiddenVenues);
+    renderPlaces();
+    render();
+  }
+
   function placeRow(p) {
-    // The eye mutes a venue in the *feed*. On a place with nothing on it would
-    // be a control that does nothing, on every row of a very long list — so it
-    // appears once there is something to mute, or once it is already muted.
+    // Same shape as a listing card: a slot that clips, a rail underneath, and
+    // a surface that slides. Left mutes the place, right adds it to Interested
+    // — the same directions the feed uses, so the gesture transfers.
     const li = document.createElement('li');
     const hidden = state.hiddenVenues.has(p.name);
-    li.className = 'place-row' + (hidden ? ' is-hidden' : '');
+    const saved = state.savedPlaces.has(p.name);
+    li.className = 'place-slot'
+      + (hidden ? ' is-muted' : '') + (saved ? ' is-saved' : '');
+
+    const rail = document.createElement('div');
+    rail.className = 'swipe-rail';
+    rail.innerHTML = `<span class="rail-no">${hidden ? 'Unmute' : 'Mute'}</span>`
+      + `<span class="rail-yes">${saved ? 'Remove' : 'Interested'}</span>`;
+    li.append(rail);
+
+    const row = document.createElement('div');
+    row.className = 'place-row';
 
     const meta = [p.city, p._miles == null ? '' : formatDistance(p._miles)]
       .filter(Boolean).join(' · ');
     const hours = p.openingHours && p.openingHours.length <= 60 ? p.openingHours : '';
 
-    const saved = state.savedPlaces.has(p.name);
-    li.innerHTML = `
+    row.innerHTML = `
       <button type="button" class="place-save" aria-pressed="${saved}"
-              title="${saved ? 'Remove from want to go' : 'Want to go'}"
-              aria-label="${saved ? 'Remove' : 'Add'} ${esc(p.name)} ${saved ? 'from' : 'to'} want to go">
+              title="${saved ? 'Remove from Interested' : 'Add to Interested'}"
+              aria-label="${saved ? 'Remove' : 'Add'} ${esc(p.name)} ${saved ? 'from' : 'to'} Interested">
         ${saved ? '★' : '☆'}
       </button>
       <div class="place-main">
@@ -1094,24 +1133,17 @@
         ${hidden ? '🚫' : '👁'}
       </button>` : ''}`;
 
-    li.querySelector('.place-events')?.addEventListener('click', () => {
+    li.append(row);
+
+    row.querySelector('.place-events')?.addEventListener('click', () => {
       state.venueFilter = p.name;
       showView('events');
       render();
     });
-    li.querySelector('.place-save').addEventListener('click', () => {
-      if (state.savedPlaces.has(p.name)) state.savedPlaces.delete(p.name);
-      else state.savedPlaces.add(p.name);
-      saveSavedPlaces(state.savedPlaces);
-      renderPlaces();
-    });
-    li.querySelector('.place-mute')?.addEventListener('click', () => {
-      if (state.hiddenVenues.has(p.name)) state.hiddenVenues.delete(p.name);
-      else state.hiddenVenues.add(p.name);
-      saveHiddenVenues(state.hiddenVenues);
-      renderPlaces();
-      render();
-    });
+    row.querySelector('.place-save').addEventListener('click', () => togglePlaceSaved(p));
+    row.querySelector('.place-mute')?.addEventListener('click', () => togglePlaceMuted(p));
+    attachSwipe(li, row, (verdict) =>
+      (verdict === 'going' ? togglePlaceSaved(p) : togglePlaceMuted(p)));
     return li;
   }
 
@@ -1129,7 +1161,7 @@
       el.placesSummary.textContent = rows.length
         ? `${rows.length} ${rows.length === 1 ? 'place' : 'places'}`
           + (withEvents ? ` · ${withEvents} with something on` : '')
-          + (saved ? ` · ${saved} on your list` : '')
+          + (saved ? ` · ${saved} interested` : '')
         : '';
     }
 
@@ -1145,7 +1177,7 @@
       li.textContent = !state.places.length
         ? 'The places directory has not been built yet.'
         : state.placesSavedOnly
-          ? 'Nothing on your list yet — tap ☆ on a place to add it.'
+          ? 'Nothing marked interested yet — swipe a place right, or tap ☆.'
           : 'No place matches that.';
       el.placesList.append(li);
     } else if (rows.length > CAP) {
@@ -1155,6 +1187,15 @@
         + 'Search or pick a kind to narrow it down.';
       el.placesList.append(li);
     }
+  }
+
+  function syncInterested() {
+    if (!el.interestedOnly) return;
+    const n = state.savedPlaces.size;
+    if (el.interestedN) el.interestedN.textContent = n ? String(n) : '';
+    // An empty list would filter the feed to nothing and read as a bug.
+    el.interestedOnly.disabled = n === 0;
+    if (!n) el.interestedOnly.checked = false;
   }
 
   function updateTabCounts() {
@@ -1221,6 +1262,7 @@
     if (state.timeOfDay !== DEFAULTS.timeOfDay) n++;
     if (el.foodOnly.checked) n++;
     if (el.outdoorOnly.checked) n++;
+    if (el.interestedOnly?.checked) n++;
     if (state.repeatMode !== DEFAULTS.repeatMode) n++;
     if (el.showKids.checked !== DEFAULTS.showKids) n++;
     if (el.showSeniors.checked !== DEFAULTS.showSeniors) n++;
@@ -1491,7 +1533,8 @@
 
   for (const node of [el.q, el.sort, el.radius, el.price,
                       el.freeOnly, el.signupOnly, el.unitsKm,
-                      el.showKids, el.showSeniors, el.showAdults, el.foodOnly, el.outdoorOnly]) {
+                      el.showKids, el.showSeniors, el.showAdults, el.foodOnly,
+                      el.outdoorOnly, el.interestedOnly]) {
     node.addEventListener('input', rerender);
   }
 
@@ -1548,6 +1591,7 @@
     el.showAdults.checked = DEFAULTS.showAdults;
     el.foodOnly.checked = DEFAULTS.foodOnly;
     el.outdoorOnly.checked = DEFAULTS.outdoorOnly;
+    if (el.interestedOnly) el.interestedOnly.checked = false;
     state.activeTypes.clear();
     state.excludedTypes.clear();
     for (const chip of el.types.children) chip.classList.remove('chip-exclude');
@@ -1599,6 +1643,9 @@
           if (Array.isArray(d.meta?.kinds) && d.meta.kinds.length) {
             placeKindOrder = d.meta.kinds;
           }
+          // The build ships its own labels, so a kind added in Python can
+          // never render as a raw slug here again.
+          if (d.meta?.kindLabels) Object.assign(PLACE_KIND_LABELS, d.meta.kindLabels);
           invalidatePlaces();
           updateTabCounts();
           if (state.view === 'places') renderPlaces();
@@ -1615,6 +1662,7 @@
       buildTypeChips();
       showDataAge(data.meta);
       updateTabCounts();
+      syncInterested();
 
       const m = data.meta;
       if (m?.centerLat != null && m?.centerLon != null) {

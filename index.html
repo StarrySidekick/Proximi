@@ -67,7 +67,8 @@
   </div>
 
   <div id="places-view" role="tabpanel" aria-labelledby="tab-places" hidden>
-    <p class="places-intro">Somewhere to go, whether or not anything is on.</p>
+    <p class="places-intro">Somewhere to go, whether or not anything is on.
+      Swipe a place left to mute it, right to mark it interesting.</p>
     <div class="places-controls">
       <input id="places-search" type="search" placeholder="Search places or towns…"
              autocomplete="off" aria-label="Search places">
@@ -82,7 +83,7 @@
     </div>
     <div class="places-toggles">
       <label class="places-toggle">
-        <input type="checkbox" id="places-saved"> Want to go
+        <input type="checkbox" id="places-saved"> Interested only
       </label>
       <label class="places-toggle">
         <input type="checkbox" id="places-local"> Independents only
@@ -202,6 +203,10 @@
       <h3 class="group-h" id="g-feat">Features</h3>
       <label class="check"><input type="checkbox" id="food-only"> Food or drink</label>
       <label class="check"><input type="checkbox" id="outdoor-only"> Outdoors</label>
+      <label class="check"><input type="checkbox" id="interested-only">
+        Only places I'm interested in
+        <span class="check-n" id="interested-n"></span>
+      </label>
       <div class="field" style="margin-top:11px">
         <span class="field-label">Time of day</span>
         <div id="tod" class="chips" role="group" aria-label="Filter by time of day"></div>
