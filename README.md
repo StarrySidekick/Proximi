@@ -42,9 +42,11 @@ Inside the sheet:
   OpenStreetMap's Nominatim), or a one-tap preset from the covered region.
 - **Happening within** — today, 3 days, a week, 2 weeks, a month, or anytime.
 - **Distance** — search radius, with a miles/kilometres toggle.
-- **Repeating** — all, one-off only, or repeating only.
-- **Who it's for** — children's, family and senior-focused listings are
-  **hidden by default**; 21+ ones are shown. All three are toggles.
+- **Repeating** — all, one-off, daily, weekly or monthly. Knowing a thing comes
+  round again is less useful than knowing how often, which is what decides
+  whether you can catch it.
+- **Who it's for** — family & kids and senior-focused listings are **hidden by
+  default**; 21+ ones are shown. All three are toggles.
 - **Kind of thing** — type chips (Concert, Market, Tour, Film…) with live
   match counts. Each cycles through three states: click once to show only that
   kind, again to hide it everywhere, a third time to clear it. Excluding is
@@ -58,7 +60,10 @@ Inside the sheet:
   "hide" does not mean anything.
 - **Your picks** — a count of what you've hidden or said yes to, with a way to
   show or restore hidden listings.
-- **Features** — food or drink, outdoors, and time of day (daytime / evening).
+- **Features** — food or drink, outdoors, and time of day (daytime / nighttime,
+  split at 5pm).
+- **Places** — every venue with a count and a search. Tap one to see only its
+  listings; mute one to drop it from the feed for good.
 - **What** — free-text search.
 - **Cost** — max price, free-only, and needs-sign-up-only.
 - **Sort** — soonest (default), nearest, or cheapest. Day dividers appear only

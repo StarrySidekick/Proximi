@@ -2209,5 +2209,20 @@
 "display": "City of Newburgh, Orange County, New York, United States",
 "matched": "Newburgh, NY",
 "precision": 3
+},
+"maxcy quad": null,
+"richter park golf course, 100 aunt hack road, danbury, ct": {
+"lat": 41.412397,
+"lon": -73.5205622,
+"display": "Richter Park Golf Course, 100, Aunt Hack Road, Aunt Hack, Mill Plain, Danbury, Western Connecticut Planning Region, Connecticut, 06811, United States",
+"matched": "Richter Park Golf Course, 100 Aunt Hack Road, Danbury, CT",
+"precision": 0
+},
+"33 hoseye coach rd": {
+"lat": 41.3899784,
+"lon": -73.2458209,
+"display": "33, Hoseye Coach Road, Newtown, Western Connecticut Planning Region, Connecticut, 06482, United States",
+"matched": "33 Hoseye Coach Rd",
+"precision": 0
 }
 }

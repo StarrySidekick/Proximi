@@ -7,13 +7,20 @@ thing standing between a bad harvest and 121 wrong listings in public.
   python3 scripts/validate.py [path]
 """
 
-import json, re, sys
+import json, os, re, sys
 from datetime import datetime, timedelta, timezone
 from math import radians, sin, cos, asin, sqrt
 
-AUDIENCES = {'all', 'kids', 'family', 'seniors', 'adults'}
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from enrich import TYPES
+
+# The one vocabulary. Anything outside it is invisible to every filter chip,
+# which is a silent failure — the listing renders and can never be found.
+KINDS = {name for name, _ in TYPES} | {'other'}
+
+AUDIENCES = {'all', 'family', 'seniors', 'adults'}
 SETTINGS = {'indoor', 'outdoor', 'unknown'}
-TIMES = {'morning', 'afternoon', 'evening', 'night'}
+TIMES = {'daytime', 'nighttime'}
 ISO = re.compile(r'^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}([+-]\d{2}:\d{2}|Z)$')
 
 
@@ -83,6 +90,9 @@ def main(path='data/events.json'):
         kinds = i.get('types')
         if not isinstance(kinds, list) or not kinds:
             errors.append(f'{tag}: types must be a non-empty list')
+        elif [k for k in kinds if k not in KINDS]:
+            errors.append(f'{tag}: unknown kind(s) {[k for k in kinds if k not in KINDS]!r} — '
+                          f'not in the vocabulary, so no filter can reach it')
         elif i.get('type') != kinds[0]:
             errors.append(f'{tag}: type {i.get("type")!r} must be the first of '
                           f'types {kinds!r} — the badge and the filter would disagree')
@@ -123,12 +133,11 @@ def main(path='data/events.json'):
     outdoor = sum(1 for i in items if i.get('setting') == 'outdoor')
     food = sum(1 for i in items if i.get('hasFood'))
     types = len({t for i in items for t in (i.get('types') or [])})
-    kids = sum(1 for i in items if i.get('audience') == 'kids')
     family = sum(1 for i in items if i.get('audience') == 'family')
     seniors = sum(1 for i in items if i.get('audience') == 'seniors')
     adults = sum(1 for i in items if i.get('audience') == 'adults')
     print(f'{len(items)} listings OK — {priced} priced, {len(items) - priced} "see listing", '
-          f'{repeat} repeating, {kids} children-only, {family} family, {seniors} seniors, {adults} 21+, '
+          f'{repeat} repeating, {family} family, {seniors} seniors, {adults} 21+, '
           f'{outdoor} outdoor, {food} with food, {types} types, '
           f'all within {meta["radiusMiles"]} mi of {meta["centerName"]}'
           + (f' ({len(warnings)} warning(s))' if warnings else ''))

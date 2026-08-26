@@ -29,7 +29,7 @@ from enrich import type_of, types_of, audience_of, place_name, STREET_ONLY, NOT_
 # set must not keep a classification made by an older vocabulary — otherwise
 # improving the rules only ever fixes listings we happen to be seeing for the
 # first time. Curated records (manual-) are exempt: a person checked those.
-DERIVED = ('type', 'types', 'categories', 'audience', 'setting', 'timeOfDay',
+DERIVED = ('type', 'types', 'audience', 'setting', 'timeOfDay', 'cadence',
            'hasFood', 'repeats', 'recurrence')
 
 
@@ -238,6 +238,45 @@ def cadence(dates):
     return None
 
 
+# How often a thing comes round, as one of a few words a filter can offer.
+# The recurrence string is written for a reader ("Every fourth Tuesday of the
+# month"); this is the same fact in a form the UI can group by.
+# Old vocabulary to new. Records not re-derived this run — because their text
+# yields nothing and their type was asserted by a source — would otherwise keep
+# names the filter no longer offers, so they would be invisible to every chip.
+TYPE_ALIASES = {
+    'theater': 'play', 'creative': 'class', 'art': 'art exhibit',
+    'science': 'talk', 'sports': 'sporting event', 'wellness': 'yoga',
+    'outdoors': 'tour', 'open-mic': 'open mic', 'food': 'dinner',
+    'comedy': 'comedy show', 'dating': 'speed dating', 'kids': 'other',
+    'show': 'play', 'music': 'concert', 'community': 'meetup',
+    'nightlife': 'party', 'family': 'other',
+}
+
+
+def cadence_of(recurrence, repeats=False):
+    if not recurrence:
+        return 'occasional' if repeats else None
+    text = str(recurrence).lower()
+    if 'every day' in text or 'runs most days' in text:
+        return 'daily'
+    if 'weekday' in text:
+        return 'weekday'
+    if 'every other week' in text:
+        return 'fortnightly'
+    if 'of the month' in text or 'every month' in text or 'monthly' in text:
+        return 'monthly'
+    if re.search(r'every (other )?(monday|tuesday|wednesday|thursday|friday|'
+                 r'saturday|sunday)', text):
+        return 'fortnightly' if 'every other' in text else 'weekly'
+    if re.search(r'\b(mondays?|tuesdays?|wednesdays?|thursdays?|fridays?|'
+                 r'saturdays?|sundays?)\b', text):
+        return 'weekly'
+    if 'bookable' in text:
+        return 'bookable'
+    return 'occasional'
+
+
 def collapse_repeats(items, threshold=3):
     """Turn a title repeated across many dates into one recurring activity."""
     groups = defaultdict(list)
@@ -396,6 +435,25 @@ def main():
         # filling a new field from the one it generalises is not reclassifying.
         if not item.get('types'):
             item['types'] = [item.get('type') or 'other']
+        # One vocabulary now; the parallel category list is gone.
+        item.pop('categories', None)
+        # Vocabulary migrations, applied to every listing including hand-checked
+        # ones: renaming the values a field may hold is not reclassifying what
+        # a listing is, and leaving old values behind would fail validation.
+        if item.get('timeOfDay') in ('morning', 'afternoon'):
+            item['timeOfDay'] = 'daytime'
+        elif item.get('timeOfDay') in ('evening', 'night'):
+            item['timeOfDay'] = 'nighttime'
+        if item.get('audience') == 'kids':
+            item['audience'] = 'family'
+        kinds = [TYPE_ALIASES.get(t, t) for t in (item.get('types') or [])]
+        kinds = [t for i, t in enumerate(kinds) if t not in kinds[:i]]
+        if kinds:
+            item['types'] = kinds
+            item['type'] = kinds[0]
+        item['cadence'] = cadence_of(item.get('recurrence'), item.get('repeats'))
+        if item['cadence'] is None:
+            item.pop('cadence', None)
         # Listings already held were stored before venue resolution learned to
         # prefer a name over a street, and venue is source data rather than a
         # derived field, so nothing else would ever revisit them. "1 Museum Rd"

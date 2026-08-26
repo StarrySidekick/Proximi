@@ -10,30 +10,22 @@
 
   // The single primary answer to "what kind of thing is this?". Anything not
   // listed still works — it just gets title-cased.
+  // The vocabulary is written the way it reads on a card, so most labels are
+  // just the name with its words capitalised; only the odd ones are listed.
   const TYPE_LABELS = {
-    concert: 'Concert', dj: 'DJ / Party', 'open-mic': 'Open Mic', comedy: 'Comedy',
-    theater: 'Theater', dance: 'Dance', film: 'Film', art: 'Art Exhibit',
-    tour: 'Tour', outdoors: 'Outdoors', class: 'Class', talk: 'Talk',
-    market: 'Market', sale: 'Sale', festival: 'Festival', parade: 'Parade',
-    celebration: 'Celebration', protest: 'Protest', sports: 'Sports',
-    food: 'Food & Drink', volunteer: 'Volunteer', kids: 'Kids Program',
-    meetup: 'Meetup', dating: 'Dating', trivia: 'Trivia', game: 'Games',
-    science: 'Science', wellness: 'Wellness', creative: 'Creative', other: 'Other'
+    dj: 'DJ', 'q&a': 'Q&A', 'meet & greet': 'Meet & Greet',
+    'open mic': 'Open Mic', 'art exhibit': 'Art Exhibit',
+    'comedy show': 'Comedy Show', 'sporting event': 'Sporting Event',
+    'scavenger hunt': 'Scavenger Hunt', 'open studio': 'Open Studio',
+    'speed dating': 'Speed Dating', other: 'Other'
   };
 
   const TIME_OF_DAY = [
-    { id: 'any',     label: 'Any time' },
-    { id: 'daytime', label: 'Daytime',  match: (t) => t === 'morning' || t === 'afternoon' },
-    { id: 'evening', label: 'Evening',  match: (t) => t === 'evening' || t === 'night' },
+    { id: 'any',       label: 'Any time' },
+    { id: 'daytime',   label: 'Daytime',   match: (t) => t === 'daytime' },
+    { id: 'nighttime', label: 'Nighttime', match: (t) => t === 'nighttime' }
   ];
 
-  const CATEGORY_LABELS = {
-    music: 'Music', show: 'Shows', art: 'Art', market: 'Markets',
-    sale: 'Sales', parade: 'Parades', tour: 'Tours', protest: 'Protests',
-    food: 'Food', sports: 'Sports', class: 'Classes', outdoors: 'Outdoors',
-    family: 'Family', film: 'Film', comedy: 'Comedy', community: 'Community',
-    nightlife: 'Nightlife'
-  };
 
   // How far ahead to look. `days` is inclusive of today, so 0 means today only.
   // "This weekend" is a window, not a horizon — it has a near edge as well as a
@@ -48,10 +40,14 @@
     { id: 'any',     label: 'Anytime',      days: Infinity }
   ];
 
+  // "Repeating only" told a reader a thing came round again but never how
+  // often, which is the part that decides whether they can catch it.
   const REPEAT_MODES = [
     { id: 'any',    label: 'All' },
-    { id: 'once',   label: 'One-off only' },
-    { id: 'repeat', label: 'Repeating only' },
+    { id: 'once',   label: 'One-off' },
+    { id: 'daily',  label: 'Daily',   match: (c) => c === 'daily' || c === 'weekday' },
+    { id: 'weekly', label: 'Weekly',  match: (c) => c === 'weekly' || c === 'fortnightly' },
+    { id: 'monthly', label: 'Monthly', match: (c) => c === 'monthly' }
   ];
 
   const PRESETS = [
@@ -369,6 +365,13 @@
   const typesOf = (item) => (item.types?.length ? item.types : [item.type || 'other']);
 
   const repeatsOf = (item) => item.repeats === true || !!item.recurrence;
+
+  const CADENCE_LABELS = {
+    daily: 'Every day', weekday: 'Weekdays', weekly: 'Every week',
+    fortnightly: 'Every 2 weeks', monthly: 'Every month',
+    bookable: 'Book any day', occasional: 'Repeats'
+  };
+  const cadenceLabel = (item) => CADENCE_LABELS[item.cadence] || 'Repeats';
   const audienceOf = (item) => item.audience || 'all';
 
   function filtered() {
@@ -381,11 +384,17 @@
       // children. One control hides both — an adult browsing for themselves
       // wants neither, and splitting them across two checkboxes only asks the
       // reader to understand a distinction the data draws for its own reasons.
-      if ((audience === 'kids' || audience === 'family') && !el.showKids.checked) return false;
+      if (audience === 'family' && !el.showKids.checked) return false;
       if (audience === 'seniors' && !el.showSeniors.checked) return false;
       if (audience === 'adults' && !el.showAdults.checked) return false;
-      if (state.repeatMode === 'once' && repeatsOf(item)) return false;
-      if (state.repeatMode === 'repeat' && !repeatsOf(item)) return false;
+      if (state.repeatMode !== 'any') {
+        const mode = REPEAT_MODES.find((m) => m.id === state.repeatMode);
+        if (state.repeatMode === 'once') {
+          if (repeatsOf(item)) return false;
+        } else if (!mode?.match?.(item.cadence)) {
+          return false;
+        }
+      }
       // A hidden listing is gone until the reader asks to see hidden ones —
       // this is the whole point of a left swipe, so it runs before anything
       // else and is not softened by the other filters.
@@ -442,8 +451,8 @@
 
   /* ── Rendering ────────────────────────────────────────── */
 
-  const catLabel = (c) => CATEGORY_LABELS[c] || c.charAt(0).toUpperCase() + c.slice(1);
-  const typeLabel = (t) => TYPE_LABELS[t] || (t ? t.charAt(0).toUpperCase() + t.slice(1) : 'Other');
+  const typeLabel = (t) => TYPE_LABELS[t]
+    || (t ? t.replace(/\b\w/g, (c) => c.toUpperCase()) : 'Other');
 
   const esc = (s) => String(s).replace(/[&<>"']/g, (c) => (
     { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]
@@ -743,14 +752,12 @@
           ${typesOf(item).slice(1).map((t) =>
             `<span class="badge badge-type is-secondary">${esc(typeLabel(t))}</span>`).join('')}
           ${state.decisions[item.id] === 'going' ? '<span class="badge badge-going">Going</span>' : ''}
-          ${repeatsOf(item) ? '<span class="badge badge-repeat">Repeats</span>' : ''}
-          ${audienceOf(item) === 'kids' ? '<span class="badge badge-kids">Children only</span>' : ''}
-          ${audienceOf(item) === 'family' ? '<span class="badge badge-kids">Family</span>' : ''}
+          ${repeatsOf(item)
+            ? `<span class="badge badge-repeat">${esc(cadenceLabel(item))}</span>` : ''}
+          ${audienceOf(item) === 'family' ? '<span class="badge badge-kids">Family &amp; kids</span>' : ''}
           ${audienceOf(item) === 'seniors' ? '<span class="badge badge-kids">Seniors</span>' : ''}
           ${audienceOf(item) === 'adults' ? '<span class="badge badge-adults">21+</span>' : ''}
-          ${(item.categories || [])
-            .filter((c) => !typesOf(item).includes(c))
-            .map((c) => `<span class="tag">${esc(catLabel(c))}</span>`).join('')}
+
         </div>
         ${links.join('')}
       </div>

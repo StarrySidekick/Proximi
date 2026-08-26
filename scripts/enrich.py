@@ -24,74 +24,82 @@ RATE = 1.1
 # The single primary answer to "what kind of thing is this?", shown on the card
 # where the event/activity badge used to be. Ordered most-specific first: the
 # first pattern that matches wins, so "open mic comedy night" is an Open Mic.
+# One vocabulary. Ordered specific to generic: the first match becomes the
+# primary kind — the badge and the sort key — so "Speed Dating" must be read
+# before "meetup" and "Paint & Sip" before "class".
 TYPES = [
-    ('parade',      r'\bparade\b'),
-    # "march" alone also matches the month, which tagged a family nature day as
-    # a protest — so it only counts with a protest sense attached.
-    ('protest',     r'\b(rally|protest|demonstration|vigil|picket|walkout)\b|'
-                    r'\bmarch(es|ing)? (for|on|against|to demand)\b'),
-    ('open-mic',    r'\bopen[- ]mic\b'),
-    # Professional certifications grade in "belts" too, so a Lean Six Sigma
-    # Black Belt course reads as martial arts unless it is caught first.
-    ('class',       r'\b(six sigma|scrum|pmp|osha|servsafe|notary|cpr|aed|'
-                    r'forklift|phlebotomy|real estate licens\w*)\b'),
-    # Specific-before-generic: a speed dating night is "social", a trivia night
-    # is a "meetup", and a martial-arts grading is "training", so each of these
-    # must be read before the catch-alls at the bottom of the list.
-    ('dating',      r'\b(speed dating|singles|matchmaking|blind date|'
-                    r'date night|mixer for singles)\b'),
-    ('trivia',      r'\b(trivia|pub quiz|quizzo|bingo)\b'),
-    ('game',        r'\b(scavenger hunt|game night|board ?games?|trading cards?|'
-                    r'escape room|chess|mahjong|bridge club|dungeons|karaoke|'
-                    r'random acts of kindness)\b'),
-    ('science',     r'\b(planetarium|astronomy|telescope|observatory|stargaz\w*|'
-                    r'science|entomolog\w*|geolog\w*)\b'),
-    ('wellness',    r'\b(meditation|mindfulness|pilates|sound bath|breathwork|'
-                    r'reiki|wellness|healing|qi ?gong|tai chi|restorative)\b'),
-    ('comedy',      r'\b(comedy|stand-?up|improv)\b'),
-    ('film',        r'\b(film|movie|screening|cinema|documentar\w*)\b'),
-    ('art',         r'\b(exhibition|exhibit|gallery|opening reception|artist talk|'
-                    r'installation|sculpture|paintings?)\b'),
-    # Making something, as opposed to looking at something made. "craft" needs
-    # the guard or every craft beer night becomes a workshop.
-    ('creative',    r'\b(paint[- ]?(and|n|&)[- ]?sip|pottery|ceramics?|kiln|'
-                    r'knit\w*|crochet|quilt\w*|sewing|weaving|collage|printmaking|'
-                    r'linocut|watercolou?r\w*|calligraphy|jewel\w*[- ]making|'
-                    r'woodworking|zine|scrapbook\w*|florals?[- ]arranging|'
-                    r'make[- ]your[- ]own|diy|hands[- ]on|'
-                    r'craft(?!\ (beer|brew|cocktail|distiller|cider|fair|show)))\b'),
-    # "play" as a bare word is a verb far more often than a stage play — "free
-    # to play" made a pub trivia night theatre — so it must look like a noun.
-    ('theater',     r'\b(theat(er|re)|musicals?|opera|cabaret|drag show|puppet)\b|'
-                    r'\b(?:a|the|new|one[- ]act)\ plays?\b|\bplay\ (?:by|reading)\b'),
-    ('dance',       r'\b(dance|ballet|salsa|swing|tango|contra)\b'),
-    ('concert',     r'\b(concert|music|band|recital|symphony|orchestra|quartet|'
-                    r'trio|songwriter|acoustic|jazz|blues|folk|choir|singer)\b'),
-    ('dj',          r'\b(dj|party|nightlife|dance party|after ?party)\b'),
-    ('market',      r'\b(market|bazaar|makers?|vendors?|craft fair)\b'),
-    ('sale',        r'\b(sale|flea|rummage|tag sale|book sale|swap)\b'),
-    ('festival',    r'\b(festival|fest|fair)\b'),
-    ('celebration', r'\b(celebration|anniversary|birthday|gala|holiday|'
-                    r'tree lighting|fireworks|opening day)\b'),
-    ('tour',        r'\b(tour|guided walk|house tour|behind the scenes)\b'),
-    ('kids',        r'\b(storytime|story time|lego|play ?days?|kids? program)\b'),
-    ('sports',      r'\b(yoga|runs?|race|5k|10k|fitness|pickleball|hockey|baseball|'
-                    r'soccer|tournament|golf|paddle|kayak|climb\w*|basketball|'
-                    r'tennis|martial arts|karate|taekwondo|jiu[- ]?jitsu|judo|'
-                    r'black ?belt|boxing|self[- ]defense|swim\w*|cycling)\b'),
-    ('outdoors',    r'\b(hikes?|hiking|walks?|birds?|birding|trails?|nature|forest|'
-                    r'cleanups?|foraging?|canoe|camping|orchard)\b'),
-    ('food',        r'\b(dinner|dining|dine|tasting|brunch|supper|bbq|barbecue|'
-                    r'breakfast|food truck|potluck|wine|beer|cider|cocktail|'
-                    r'farm[- ]to[- ]table|long table)\b'),
-    ('class',       r'\b(workshops?|class(es)?|lessons?|courses?|seminar|clinic|'
-                    r'training|demo|certification|certificate|bootcamp|'
-                    r'paint[- ]and[- ]sip|paint ?n ?sip|intro to|101)\b'),
-    ('talk',        r'\b(talk|lecture|reading|panel|author|discussion|book club)\b'),
-    ('volunteer',   r'\b(volunteer|work ?day|stewardship|planting|fundraiser|benefit|'
-                    r'(blood|food|coat|toy|book|clothing|donation|canned[- ]food)\ drive|'
-                    r'donation day|give ?back|charity|clean[- ]?up day)\b'),
-    ('meetup',      r'\b(meetup|meeting|social|club|forum|town hall|gathering)\b'),
+    # ── unmistakable single things ──────────────────────────────
+    ('scavenger hunt', r'\b(scavenger hunt|treasure hunt|geocach\w*|photo hunt)\b'),
+    ('speed dating',   r'\b(speed dating|singles (night|mixer|event)|matchmaking|'
+                       r'blind date|date night mixer)\b'),
+    ('trivia',         r'\b(trivia|pub quiz|quizzo|bingo)\b'),
+    ('open mic',       r'\b(open[- ]mic|open mike)\b'),
+    ('open studio',    r'\b(open studio\w*|studio tour|maker\w* space night)\b'),
+    ('q&a',            r'\b(q\s*&\s*a|q and a|ask me anything|fireside chat|'
+                       r'audience questions)\b'),
+    ('meet & greet',   r'\b(meet[ &and]*greet|meet the (artist|author|maker|brewer)|'
+                       r'book signing|autograph)\b'),
+    ('yoga',           r'\b(yoga|pilates|tai chi|qi ?gong|meditation|sound bath|'
+                       r'breathwork|restorative|mindfulness)\b'),
+    ('workout',        r'\b(workout|bootcamp|hiit|crossfit|spin class|zumba|'
+                       r'strength (class|training)|fitness class|barre)\b'),
+    ('tasting',        r'\b(tasting|flight night|cellar|sommelier|cupping|'
+                       r'wine (dinner|pairing)|beer pairing)\b'),
+    ('breakfast',      r'\b(breakfast|brunch|pancake|coffee hour|morning social)\b'),
+    ('lunch',          r'\b(lunch(eon)?|midday meal)\b'),
+    ('dinner',         r'\b(dinner|supper|bbq|barbecue|clambake|fish fry|'
+                       r'pot ?luck|feast|banquet)\b'),
+
+    # ── performance ─────────────────────────────────────────────
+    ('musical',        r'\b(musicals?|operas?|operetta)\b'),
+    ('comedy show',    r'\b(comedy|stand[- ]?up|improv|sketch show)\b'),
+    ('play',           r'\b(theat(er|re)|cabaret|drag show|puppet show)\b|'
+                       r'\b(?:a|the|new|one[- ]act) plays?\b|\bplay (?:by|reading)\b'),
+    ('film',           r'\b(films?|movies?|screening|cinema|documentar\w*|matinee)\b'),
+    ('dj',             r'\b(dj\b|turntabl\w*|vinyl night|silent disco)\b'),
+    ('dance',          r'\b(dance|ballet|salsa|swing|tango|contra|line dancing)\b'),
+    ('concert',        r'\b(concert|live music|bands?|recital|symphony|orchestra|'
+                       r'quartet|trio|songwriter|acoustic|jazz|blues|folk|choir|'
+                       r'singer|tribute|residency|tour dates?)\b'),
+
+    # ── gatherings ──────────────────────────────────────────────
+    ('party',          r'\b(party|bash|afterparty|after[- ]party|nightlife|'
+                       r'block party|mixer)\b'),
+    ('celebration',    r'\b(celebration|anniversary|birthday|gala|jubilee|'
+                       r'tree lighting|fireworks|opening day|ceremony)\b'),
+    ('festival',       r'\b(festival|fest\b|fair(?! (booth|trade))|carnival|jamboree)\b'),
+    ('parade',         r'\bparade\b'),
+    ('protest',        r'\b(rally|protest|demonstration|vigil|picket|walkout)\b|'
+                       r'\bmarch(es|ing)? (for|on|against|to demand)\b'),
+    ('market',         r'\b(market|bazaar|makers?\b|vendors?|craft fair|swap meet)\b'),
+    ('sale',           r'\b(sale|flea|rummage|tag sale|book sale|clearance)\b'),
+    ('volunteer',      r'\b(volunteer|work ?day|stewardship|planting|fundraiser|benefit|'
+                       r'(blood|food|coat|toy|book|clothing|donation|canned[- ]food) drive|'
+                       r'give ?back|charity|clean[- ]?up day)\b'),
+    ('game',           r'\b(game night|board ?games?|trading cards?|escape room|chess|'
+                       r'mahjong|bridge club|dungeons|karaoke|tabletop|video ?game)\b'),
+    ('sporting event', r'\b(basketball|soccer|volleyball|baseball|softball|hockey|'
+                       r'lacrosse|tennis|golf|swimming|diving|cross country|'
+                       r'field hockey|football|rugby|pickleball|race|5k|10k|marathon|'
+                       r'tournament|martial arts|karate|taekwondo|jiu[- ]?jitsu|judo|'
+                       r'boxing|regatta|derby)\b'),
+
+    # ── things to look at, learn from, or join ──────────────────
+    ('art exhibit',    r'\b(exhibition|exhibit\w*|gallery|opening reception|'
+                       r'installation|sculpture|paintings?|artist talk)\b'),
+    ('tour',           r'\b(tours?|guided walk|house tour|behind the scenes|'
+                       r'hike|hiking|walking tour|birding|paddle|kayak)\b'),
+    ('talk',           r'\b(talk|lecture|reading|panel|author|poet|keynote|symposium|'
+                       r'seminar|presentation|storytime|story time|planetarium|'
+                       r'astronomy|book club)\b'),
+    ('class',          r'\b(workshops?|class(es)?|lessons?|courses?|clinic|training|'
+                       r'demo|certification|certificate|bootcamp|intro to|101|'
+                       r'paint[- ]?(and|n|&)[- ]?sip|pottery|ceramics?|knit\w*|'
+                       r'crochet|quilt\w*|sewing|weaving|collage|printmaking|'
+                       r'watercolou?r\w*|calligraphy|woodworking|make[- ]your[- ]own|diy)\b'),
+    ('club',           r'\b(club\b|society|guild|chapter meeting|circle\b)\b'),
+    ('meetup',         r'\b(meetup|meeting|social\b|forum|town hall|gathering|'
+                       r'networking|mixer|group)\b'),
 ]
 
 # Is it under a roof? Only claimed when the text actually says so.
@@ -156,15 +164,14 @@ def setting_of(text):
 
 
 def time_of_day(dt):
-    """Bucket by local clock hour: what a person means by morning or evening."""
-    h = dt.hour
-    if h < 12:
-        return 'morning'
-    if h < 17:
-        return 'afternoon'
-    if h < 21:
-        return 'evening'
-    return 'night'
+    """Daytime or nighttime, split at 5pm.
+
+    Four buckets asked the reader to care about the seam between afternoon and
+    evening, which nobody browsing for something to do on a Friday does. Five
+    is where a listing stops being something you fit into a day and starts
+    being the evening itself.
+    """
+    return 'daytime' if dt.hour < 17 else 'nighttime'
 
 
 KEYWORDS = [
@@ -286,7 +293,7 @@ def place_name(venue, *fallbacks):
 
 
 def audience_of(text, title=None, kind=None):
-    """Who a listing is for: 'kids', 'family', 'seniors', 'adults' or 'all'.
+    """Who a listing is for: 'family', 'seniors', 'adults' or 'all'.
 
     'kids' means children only — a drop-off programme or an age-capped class.
     'family' means aimed at families with young children: open to an adult, but
@@ -300,11 +307,10 @@ def audience_of(text, title=None, kind=None):
     if ADULTS_ONLY.search(text):
         return 'adults'
     if KIDS_ONLY.search(text):
-        # A child-aged programme in a family context ("ages 2-5 with a
-        # caregiver") is aimed at families, not children alone. The first
-        # version used family context as a veto and sent every library
-        # storytime to 'all' — the opposite of what the veto was for.
-        return 'family' if FAMILY.search(text) else 'kids'
+        # Children-only and family-with-young-children are one audience now:
+        # both are hidden by the same switch, and the distinction only ever
+        # mattered to the code that drew it.
+        return 'family'
     heading = title if title is not None else text
     if CHILD_FOCUSED.search(heading):
         # Music listings must say so outright, or every band with "Baby" in its
@@ -540,7 +546,6 @@ def main():
             'timeOfDay': time_of_day(started),
             'hasFood': bool(FOOD.search(blob)),
             'host': c.get('organizer') or c['sourceName'],
-            'categories': categorise(blob),
             'start': c['start'],
             'end': c.get('end'),
             'venue': venue or 'See listing',
@@ -610,7 +615,6 @@ def main():
                 datetime.fromisoformat(e['start'].replace('Z', '+00:00'))),
             'hasFood': e.get('hasFood', bool(FOOD.search(blob))),
             'host': e.get('host') or e.get('venue') or e.get('sourceName'),
-            'categories': e.get('categories') or categorise(blob),
             'start': e['start'], 'end': e.get('end'),
             'venue': place_name(e.get('venue'), e.get('host'), e.get('sourceName'))
                      or 'See listing',
