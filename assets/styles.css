@@ -598,7 +598,15 @@ input:focus-visible, select:focus-visible, button:focus-visible, a:focus-visible
   background: none; border: 0; padding: 2px 4px 2px 0; color: var(--ink-3);
 }
 .place-save[aria-pressed="true"] { color: var(--accent); }
-#places-kinds { margin: 10px 0 2px; }
+/* Thirty kinds is four hundred pixels of chips — the whole first screen of a
+   phone, before a single place. Capped to about three rows and scrolled, so
+   the list itself is above the fold and the chips are still all reachable. */
+#places-kinds {
+  margin: 10px 0 2px;
+  max-height: 124px; overflow-y: auto; -webkit-overflow-scrolling: touch;
+  padding-right: 2px;
+  overscroll-behavior: contain;         /* scrolling chips must not scroll the page */
+}
 .places-summary {
   margin: 10px 0 0; font-size: 12.5px; color: var(--ink-3);
   letter-spacing: .02em;
@@ -617,12 +625,17 @@ input:focus-visible, select:focus-visible, button:focus-visible, a:focus-visible
   touch-action: pan-y;                  /* vertical drags still scroll */
 }
 .place-row {
+  /* Positioned, always. The rail is absolute, and an absolutely-positioned
+     element paints above a static sibling however it is ordered in the markup
+     — so a static row sat *underneath* its own rail and every place on the
+     page rendered as a blank strip reading "Mute … Interested". .card has
+     carried position:relative for the same reason since it was written. */
+  position: relative;
   display: flex; align-items: flex-start; gap: 8px;
   padding: 12px 2px;
   background: var(--bg);
 }
 .place-row.is-swiping {
-  position: relative;
   transform: translateX(var(--dx, 0));
   transition: none;
   user-select: none;
