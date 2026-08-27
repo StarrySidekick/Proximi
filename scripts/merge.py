@@ -62,6 +62,39 @@ def adopt_derived(old, new):
     return merged
 
 
+# A library feed names the room, not the building: "Youth Services Program
+# Room", "Riverview Meeting Room", "Third Floor Meeting Room", "311 Learning
+# Annex". The event itself already knows better — it carries host="Howland
+# Public Library" — so the room defers to its host.
+#
+# Deliberately narrow. "Charlotte's Tea Room" and "Cy's Restaurant & Lounge"
+# are venues in their own right, so a bare "room" or "lounge" is not enough:
+# the word has to be preceded by one of the words a library actually uses.
+ROOM_NAME = re.compile(
+    r"\b(program|meeting|community|conference|reading|storyhour|story|activity|"
+    r"multi-?purpose|craft|computer|quiet|study|board|history|children'?s|teen|"
+    r"youth services|lower level|upper level)\s+room\b"
+    r"|\broom\s*\d|\bannex\b|\bauditorium\b|\bclassroom\b|\bgymnasium\b"
+    r"|\b(lower|upper|ground|first|second|third|fourth)\s+(level|floor)\b", re.I)
+
+
+def building_of(item):
+    """The place an event is really at, not the room it booked."""
+    venue, host = item.get('venue'), item.get('host')
+    if not venue or not ROOM_NAME.search(venue):
+        return venue
+    # "Stern Auditorium, Carnegie Hall" already names its building, and its
+    # host is the Berliner Philharmoniker — the act, not the address. When the
+    # venue spells out where it is, believe the venue over the host.
+    if ',' in venue:
+        tail = venue.rsplit(',', 1)[1].strip()
+        if tail and not ROOM_NAME.search(tail):
+            return tail
+    if host and host != venue and not ROOM_NAME.search(host):
+        return host
+    return venue
+
+
 # Internal governance that is not "something to do".
 NOISE = re.compile(r'\b(board meeting|planning meeting|committee meeting|'
                    r'staff meeting|agm|annual general meeting)\b', re.I)
@@ -585,6 +618,14 @@ def main():
             item['types'] = [implied]
             item['type'] = implied
             from_venue += 1
+
+    # The venue a listing is *at*, resolved once here so the Places count and
+    # the Places filter cannot disagree. They did: the room-to-building rule
+    # lived only in places.py, so the directory credited Howland Public Library
+    # with seven events while every one of them still said "Community Room",
+    # and tapping through to them found nothing.
+    for item in merged:
+        item['venueKey'] = building_of(item)
 
     merged.sort(key=lambda x: x['start'])
 

@@ -68,7 +68,7 @@
 
   <div id="places-view" role="tabpanel" aria-labelledby="tab-places" hidden>
     <p class="places-intro">Somewhere to go, whether or not anything is on.
-      Swipe a place left to mute it, right to mark it interesting.</p>
+      Swipe a place right to like it, left to mute it.</p>
     <div class="places-controls">
       <input id="places-search" type="search" placeholder="Search places or towns…"
              autocomplete="off" aria-label="Search places">
@@ -81,15 +81,15 @@
         </select>
       </label>
     </div>
-    <div class="places-toggles">
-      <label class="places-toggle">
-        <input type="checkbox" id="places-saved"> Interested only
+    <div class="places-controls">
+      <label class="places-kind-field">
+        <span class="sr-only">Kind of place</span>
+        <select id="places-kinds"></select>
       </label>
       <label class="places-toggle">
-        <input type="checkbox" id="places-local"> Independents only
+        <input type="checkbox" id="places-saved"> Liked only
       </label>
     </div>
-    <div class="chips" id="places-kinds" role="group" aria-label="Kind of place"></div>
     <p class="places-summary" id="places-summary"></p>
     <ul id="places-list" class="places-list"></ul>
     <p class="fine places-credit">Place data from
@@ -204,7 +204,7 @@
       <label class="check"><input type="checkbox" id="food-only"> Food or drink</label>
       <label class="check"><input type="checkbox" id="outdoor-only"> Outdoors</label>
       <label class="check"><input type="checkbox" id="interested-only">
-        Only places I'm interested in
+        Only places I like
         <span class="check-n" id="interested-n"></span>
       </label>
       <div class="field" style="margin-top:11px">

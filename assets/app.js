@@ -149,7 +149,7 @@
       horizon: state.horizon, repeatMode: state.repeatMode,
       timeOfDay: state.timeOfDay, view: state.view,
       placeKind: state.placeKind, placeSort: state.placeSort,
-      placesLocalOnly: state.placesLocalOnly, placesSavedOnly: state.placesSavedOnly
+      placesSavedOnly: state.placesSavedOnly
     };
     for (const [name, prop] of PREF_FIELDS) {
       if (el[name]) prefs[name] = el[name][prop];
@@ -178,9 +178,7 @@
     if (prefs.timeOfDay) state.timeOfDay = prefs.timeOfDay;
     if (prefs.placeKind !== undefined) state.placeKind = prefs.placeKind;
     if (prefs.placeSort) state.placeSort = prefs.placeSort;
-    state.placesLocalOnly = !!prefs.placesLocalOnly;
     state.placesSavedOnly = !!prefs.placesSavedOnly;
-    if (el.placesLocal) el.placesLocal.checked = state.placesLocalOnly;
     if (el.placesSaved) el.placesSaved.checked = state.placesSavedOnly;
     if (el.placesSort) el.placesSort.value = state.placeSort;
     syncInterested();
@@ -189,8 +187,14 @@
 
   // "See listing" is what a card says when nothing named a place; it is not
   // itself a place, so it never becomes a row in Places or a filterable venue.
-  const venueOf = (item) =>
-    (item.venue && item.venue !== 'See listing') ? item.venue : null;
+  /* The venue a listing is *at*. merge.py resolves rooms to their building and
+     writes the answer into venueKey, so "Community Room" counts and filters as
+     Howland Public Library. Computing that here instead is what made the
+     directory say seven events and the filter find none. */
+  const venueOf = (item) => {
+    const v = item.venueKey || item.venue;
+    return (v && v !== 'See listing') ? v : null;
+  };
 
   const $ = (id) => document.getElementById(id);
 
@@ -211,7 +215,7 @@
     eventsView: $('events-view'), placesView: $('places-view'),
     placesList: $('places-list'), placesKinds: $('places-kinds'),
     placesSearch: $('places-search'), placesSort: $('places-sort'),
-    placesLocal: $('places-local'), placesSaved: $('places-saved'),
+    placesSaved: $('places-saved'),
     placesSummary: $('places-summary'),
     venueBanner: $('venue-banner'),
     buildStamp: $('build-stamp'),
@@ -239,7 +243,6 @@
     places: [],                 // the directory, loaded alongside the feed
     placeKind: null,            // Places narrowed to one sort of place
     placeSort: 'near',
-    placesLocalOnly: false,
     savedPlaces: loadSavedPlaces(),
     placesSavedOnly: false,
     view: 'events',             // 'events' | 'places'
@@ -1188,7 +1191,6 @@
     const q = (el.placesSearch?.value || '').trim().toLowerCase();
     return all.filter((p) => {
       if (state.placesSavedOnly && !state.savedPlaces.has(p.name)) return false;
-      if (state.placesLocalOnly && p.brand) return false;
       if (!q) return true;
       return p.name.toLowerCase().includes(q)
           || (p.city || '').toLowerCase().includes(q)
@@ -1206,7 +1208,9 @@
     return rows.sort((a, b) => (a._miles ?? 1e9) - (b._miles ?? 1e9) || byName(a, b));
   }
 
-  function renderPlaceKindChips(rows) {
+  /* Thirty kinds is a wall of chips — four hundred pixels before a single
+     place. A select says the same thing in one line and carries the counts. */
+  function renderPlaceKinds(rows) {
     const counts = new Map();
     for (const p of rows) counts.set(p.kind || 'other', (counts.get(p.kind || 'other') || 0) + 1);
     const kinds = [...counts.keys()].sort((a, b) => {
@@ -1215,37 +1219,19 @@
       return (ia < 0 ? 1e3 : ia) - (ib < 0 ? 1e3 : ib);
     });
 
-    el.placesKinds.replaceChildren(...kinds.map((k) => {
-      const b = document.createElement('button');
-      b.type = 'button';
-      b.className = 'chip';
-      b.dataset.kind = k;
-      b.setAttribute('aria-pressed', String(state.placeKind === k));
-      b.innerHTML = `${esc(kindLabel(k))}<span class="chip-n">${counts.get(k)}</span>`;
-      b.addEventListener('click', () => {
-        state.placeKind = state.placeKind === k ? null : k;
-        savePrefs();
-        renderPlaces();
-      });
-      return b;
-    }));
-  }
-
-  function togglePlaceSaved(p) {
-    if (state.savedPlaces.has(p.name)) state.savedPlaces.delete(p.name);
-    else state.savedPlaces.add(p.name);
-    saveSavedPlaces(state.savedPlaces);
-    syncInterested();
-    renderPlaces();
-    render();               // the feed can be filtered on this list
-  }
-
-  function togglePlaceMuted(p) {
-    if (state.hiddenVenues.has(p.name)) state.hiddenVenues.delete(p.name);
-    else state.hiddenVenues.add(p.name);
-    saveHiddenVenues(state.hiddenVenues);
-    renderPlaces();
-    render();
+    const total = rows.length;
+    const opts = [`<option value="">All kinds (${total})</option>`];
+    for (const k of kinds) {
+      opts.push(`<option value="${esc(k)}"${state.placeKind === k ? ' selected' : ''}>`
+        + `${esc(kindLabel(k))} (${counts.get(k)})</option>`);
+    }
+    // A kind chosen and then filtered out of existence by a search must still
+    // appear, or the select silently jumps to "All kinds" underneath the reader.
+    if (state.placeKind && !kinds.includes(state.placeKind)) {
+      opts.push(`<option value="${esc(state.placeKind)}" selected>`
+        + `${esc(kindLabel(state.placeKind))} (0)</option>`);
+    }
+    el.placesKinds.innerHTML = opts.join('');
   }
 
   function placeRow(p) {
@@ -1260,8 +1246,11 @@
 
     const rail = document.createElement('div');
     rail.className = 'swipe-rail';
-    rail.innerHTML = `<span class="rail-no">${hidden ? 'Unmute' : 'Mute'}</span>`
-      + `<span class="rail-yes">${saved ? 'Remove' : 'Interested'}</span>`;
+    // A right swipe slides the row right and reveals the *left* half of the
+    // rail, so the yes label lives on the left — the same order the feed uses.
+    // Reversed, they read as each other's opposite.
+    rail.innerHTML = `<span class="rail-yes">${saved ? '★ Liked' : '♥ Like'}</span>`
+      + `<span class="rail-no">${hidden ? 'Unmute' : 'Mute'}</span>`;
     li.append(rail);
 
     const row = document.createElement('div');
@@ -1273,9 +1262,9 @@
 
     row.innerHTML = `
       <button type="button" class="place-save" aria-pressed="${saved}"
-              title="${saved ? 'Remove from Interested' : 'Add to Interested'}"
-              aria-label="${saved ? 'Remove' : 'Add'} ${esc(p.name)} ${saved ? 'from' : 'to'} Interested">
-        ${saved ? '★' : '☆'}
+              title="${saved ? 'Unlike' : 'Like'}"
+              aria-label="${saved ? 'Unlike' : 'Like'} ${esc(p.name)}">
+        ${saved ? '♥' : '♡'}
       </button>
       <div class="place-main">
         <p class="place-name">${esc(p.name)}</p>
@@ -1320,7 +1309,7 @@
   function renderPlaces() {
     if (!el.placesList) return;
     const matched = placesMatching(placeIndex());
-    renderPlaceKindChips(matched);
+    renderPlaceKinds(matched);
     const rows = sortPlaces(state.placeKind
       ? matched.filter((p) => (p.kind || 'other') === state.placeKind)
       : matched);
@@ -1331,7 +1320,7 @@
       el.placesSummary.textContent = rows.length
         ? `${rows.length} ${rows.length === 1 ? 'place' : 'places'}`
           + (withEvents ? ` · ${withEvents} with something on` : '')
-          + (saved ? ` · ${saved} interested` : '')
+          + (saved ? ` · ${saved} liked` : '')
         : '';
     }
 
@@ -1347,7 +1336,7 @@
       li.textContent = !state.places.length
         ? 'The places directory has not been built yet.'
         : state.placesSavedOnly
-          ? 'Nothing marked interested yet — swipe a place right, or tap ☆.'
+          ? 'Nothing liked yet — swipe a place right, or tap the heart.'
           : 'No place matches that.';
       el.placesList.append(li);
     } else if (rows.length > CAP) {
@@ -1721,11 +1710,6 @@
   el.placesSearch?.addEventListener('input', renderPlaces);
   el.placesSort?.addEventListener('change', () => {
     state.placeSort = el.placesSort.value;
-    savePrefs();
-    renderPlaces();
-  });
-  el.placesLocal?.addEventListener('change', () => {
-    state.placesLocalOnly = el.placesLocal.checked;
     savePrefs();
     renderPlaces();
   });

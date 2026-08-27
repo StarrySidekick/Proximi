@@ -581,39 +581,6 @@ def collect(center, radius, only=None, cache_dir='build/places-cache'):
     return places, failed
 
 
-# A library feed names the room, not the building: "Youth Services Program
-# Room", "Riverview Meeting Room", "Third Floor Meeting Room", "311 Learning
-# Annex". The event itself already knows better — it carries host="Howland
-# Public Library" — so the room defers to its host.
-#
-# Deliberately narrow. "Charlotte's Tea Room" and "Cy's Restaurant & Lounge"
-# are venues in their own right, so a bare "room" or "lounge" is not enough:
-# the word has to be preceded by one of the words a library actually uses.
-ROOM_NAME = re.compile(
-    r"\b(program|meeting|community|conference|reading|storyhour|story|activity|"
-    r"multi-?purpose|craft|computer|quiet|study|board|history|children'?s|teen|"
-    r"youth services|lower level|upper level)\s+room\b"
-    r"|\broom\s*\d|\bannex\b|\bauditorium\b|\bclassroom\b|\bgymnasium\b"
-    r"|\b(lower|upper|ground|first|second|third|fourth)\s+(level|floor)\b", re.I)
-
-
-def building_of(item):
-    """The place an event is really at, not the room it booked."""
-    venue, host = item.get('venue'), item.get('host')
-    if not venue or not ROOM_NAME.search(venue):
-        return venue
-    # "Stern Auditorium, Carnegie Hall" already names its building, and its
-    # host is the Berliner Philharmoniker — the act, not the address. When the
-    # venue spells out where it is, believe the venue over the host.
-    if ',' in venue:
-        tail = venue.rsplit(',', 1)[1].strip()
-        if tail and not ROOM_NAME.search(tail):
-            return tail
-    if host and host != venue and not ROOM_NAME.search(host):
-        return host
-    return venue
-
-
 def norm(name):
     return re.sub(r'[^a-z0-9]+', ' ', (name or '').lower()).strip()
 
@@ -630,7 +597,9 @@ def merge_events(places, events_path, center, radius):
 
     extra = {}
     for item in items:
-        venue = building_of(item)
+        # merge.py resolved rooms to their building and wrote the answer down;
+        # recomputing it here is how the count and the filter came to disagree.
+        venue = item.get('venueKey') or item.get('venue')
         if not venue or not item.get('lat'):
             continue
         key = norm(venue)

@@ -598,14 +598,14 @@ input:focus-visible, select:focus-visible, button:focus-visible, a:focus-visible
   background: none; border: 0; padding: 2px 4px 2px 0; color: var(--ink-3);
 }
 .place-save[aria-pressed="true"] { color: var(--accent); }
-/* Thirty kinds is four hundred pixels of chips — the whole first screen of a
-   phone, before a single place. Capped to about three rows and scrolled, so
-   the list itself is above the fold and the chips are still all reachable. */
+/* Thirty kinds was four hundred pixels of chips — the whole first screen of a
+   phone before a single place. One select says the same thing in a line. */
+.places-kind-field { flex: 1; min-width: 0; }
 #places-kinds {
-  margin: 10px 0 2px;
-  max-height: 124px; overflow-y: auto; -webkit-overflow-scrolling: touch;
-  padding-right: 2px;
-  overscroll-behavior: contain;         /* scrolling chips must not scroll the page */
+  font: inherit; font-size: 14px; width: 100%;
+  padding: 9px 10px; color: var(--ink);
+  border-radius: var(--radius); border: 1px solid var(--line);
+  background: var(--surface);
 }
 .places-summary {
   margin: 10px 0 0; font-size: 12.5px; color: var(--ink-3);
@@ -618,9 +618,13 @@ input:focus-visible, select:focus-visible, button:focus-visible, a:focus-visible
 /* A place swipes like a listing does: left mutes it, right marks it
    Interested. Same slot/rail/surface shape as .card-slot so the physics and
    the commit distance are literally the same code. */
+/* A place reads as a card, like a listing does: the two lists are the same
+   kind of object seen from different sides, so a bare divided list made Places
+   look like a debug dump next to the feed. */
 .place-slot {
   position: relative;
-  border-bottom: 1px solid var(--line-soft);
+  margin-bottom: 8px;
+  border-radius: var(--radius);
   overflow: hidden;
   touch-action: pan-y;                  /* vertical drags still scroll */
 }
@@ -628,13 +632,18 @@ input:focus-visible, select:focus-visible, button:focus-visible, a:focus-visible
   /* Positioned, always. The rail is absolute, and an absolutely-positioned
      element paints above a static sibling however it is ordered in the markup
      — so a static row sat *underneath* its own rail and every place on the
-     page rendered as a blank strip reading "Mute … Interested". .card has
-     carried position:relative for the same reason since it was written. */
+     page rendered as a blank strip reading "Mute … Like". .card has carried
+     position:relative for the same reason since it was written. */
   position: relative;
-  display: flex; align-items: flex-start; gap: 8px;
-  padding: 12px 2px;
-  background: var(--bg);
+  display: flex; align-items: flex-start; gap: 10px;
+  padding: 13px 14px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--panel), var(--shadow);
+  transition: border-color .12s;
 }
+.place-row:hover { border-color: var(--accent); }
 .place-row.is-swiping {
   transform: translateX(var(--dx, 0));
   transition: none;
@@ -645,10 +654,7 @@ input:focus-visible, select:focus-visible, button:focus-visible, a:focus-visible
 .place-slot[data-swipe="going"]  .rail-no,
 .place-slot[data-swipe="hidden"] .rail-yes { opacity: .25; }
 .place-slot.is-saved .place-name { font-weight: 600; }
-.place-slot.is-saved::before {
-  content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px;
-  background: var(--rep-ink);
-}
+.place-slot.is-saved .place-row { border-color: var(--rep-ink); }
 .place-slot.is-muted .place-row { opacity: .5; }
 .place-main { flex: 1; min-width: 0; }
 .place-slot.is-muted .place-name { text-decoration: line-through; }
