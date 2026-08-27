@@ -2521,5 +2521,535 @@
 "display": "Time & Space Limited, 434, Columbia Street, Oakdale, City of Hudson, Columbia County, New York, 12534, United States",
 "matched": "434 Columbia St, Hudson, NY 12534",
 "precision": 0
+},
+"adult/teen services desk, west milford": null,
+"ya, west milford": {
+"lat": 39.2009243,
+"lon": -80.4042579,
+"display": "West Milford, Harrison County, West Virginia, 26451, United States",
+"matched": "YA, West Milford",
+"precision": 0
+},
+"room 6 & 7, west milford": null,
+"library conference room, west milford": null,
+"savage wonderground art gallery, beacon, ny": {
+"lat": 41.5048402,
+"lon": -73.9695409,
+"display": "City of Beacon, Dutchess County, New York, 12508, United States",
+"matched": "Beacon, NY",
+"precision": 1
+},
+"library teen room, briarcliff manor, ny": {
+"lat": 41.1456512,
+"lon": -73.8237456,
+"display": "Village of Briarcliff Manor, Town of Ossining, Westchester County, New York, 10510, United States",
+"matched": "Briarcliff Manor, NY",
+"precision": 1
+},
+"desmond-fish public library, garrison, ny": {
+"lat": 41.3764434,
+"lon": -73.9424,
+"display": "Desmond-Fish Public Library, 472, State Highway 403, Forsonville, Garrison, Town of Philipstown, Putnam County, New York, 10524, United States",
+"matched": "Desmond-Fish Public Library, Garrison, NY",
+"precision": 0
+},
+"library children\u2019s program room, briarcliff manor, ny": {
+"lat": 41.1456512,
+"lon": -73.8237456,
+"display": "Village of Briarcliff Manor, Town of Ossining, Westchester County, New York, 10510, United States",
+"matched": "Briarcliff Manor, NY",
+"precision": 1
+},
+"60th street, west new york, nj, 07093, united states": {
+"lat": 40.7903762,
+"lon": -74.0193857,
+"display": "60th Street, West New York, Hudson County, New Jersey, 07093, United States",
+"matched": "60th Street, West New York, NJ",
+"precision": 0
+},
+"caf\u00e9, the westport library, 20 jesup road, westport, ct, 06880, united states": {
+"lat": 41.1396873,
+"lon": -73.3612903,
+"display": "The Westport Library, 20, Jesup Road, Westport, Western Connecticut Planning Region, Connecticut, 06880, United States",
+"matched": "The Westport Library, 20 Jesup Road, Westport, CT",
+"precision": 1
+},
+"pier i, pier i at w 70th street, ny": null,
+"the parlor, beacon, ny": {
+"lat": 41.5048402,
+"lon": -73.9695409,
+"display": "City of Beacon, Dutchess County, New York, 12508, United States",
+"matched": "Beacon, NY",
+"precision": 1
+},
+"w 145th street lawn, new york": null,
+"the castle fun center, 109 brookside avenue, chester, 10918, united states": {
+"lat": 41.3544798,
+"lon": -74.254514,
+"display": "Brookside Avenue, Greycourt, Village of Chester, Town of Chester, Orange County, New York, 10918, United States",
+"matched": "109 Brookside Avenue, Chester",
+"precision": 1
+},
+"w 68th street & riverside blvd, w 68th street & riverside blvd": null,
+"lasdon park, 2610 amawalk road, route 35, katonah, ny, 10536": {
+"lat": 41.2558715,
+"lon": -73.6847453,
+"display": "Katonah, Town of Bedford, Westchester County, New York, United States",
+"matched": "Katonah, NY",
+"precision": 3
+},
+"other, 20 jesup road, westport, ct, 06880, united states": {
+"lat": 41.1396873,
+"lon": -73.3612903,
+"display": "The Westport Library, 20, Jesup Road, Westport, Western Connecticut Planning Region, Connecticut, 06880, United States",
+"matched": "20 Jesup Road, Westport, CT",
+"precision": 1
+},
+"room 210, the westport library, 20 jesup road, westport, ct, 06880, united states": {
+"lat": 41.1396873,
+"lon": -73.3612903,
+"display": "The Westport Library, 20, Jesup Road, Westport, Western Connecticut Planning Region, Connecticut, 06880, United States",
+"matched": "The Westport Library, 20 Jesup Road, Westport, CT",
+"precision": 1
+},
+"jennys garden, jenny's garden, ny": {
+"lat": 41.6072088,
+"lon": -73.9736452,
+"display": "Jenny\u2019s Garden, Marlboro, Town of Marlborough, Ulster County, New York, United States",
+"matched": "Jenny's Garden, NY",
+"precision": 1
+},
+"dyckman farmhouse museum, 4881 broadway, new york, ny, 10034-3101, united states": {
+"lat": 40.8673822,
+"lon": -73.9228859,
+"display": "Dyckman Farmhouse Museum, 4881, Broadway, Inwood, Manhattan Community Board 12, Manhattan, New York County, New York, 10034, United States",
+"matched": "Dyckman Farmhouse Museum, 4881 Broadway, New York, NY",
+"precision": 0
+},
+"the burnham library, 62 main street south, burnham library, bridgewater, ct, 06798, united states": {
+"lat": 41.5350949,
+"lon": -73.3662305,
+"display": "Bridgewater, Western Connecticut Planning Region, Connecticut, 06752, United States",
+"matched": "Bridgewater, CT",
+"precision": 3
+},
+"w 125th & marginal streets, w 125th & marginal streets": null,
+"nissen carousel, 30 west broad street, stamford, ct, 06902, united states": {
+"lat": 41.0556096,
+"lon": -73.5466316,
+"display": "30, West Broad Street, West Side, Northfield, Stamford, Western Connecticut Planning Region, Connecticut, 06902, United States",
+"matched": "30 West Broad Street, Stamford, CT",
+"precision": 1
+},
+"nj, verona": {
+"lat": 40.829822,
+"lon": -74.2401466,
+"display": "Verona, Essex County, New Jersey, 07044, United States",
+"matched": "NJ, Verona",
+"precision": 0
+},
+"95th street compost compound, edgewater": null,
+"lasdon welcome center, whitehall corners": null,
+"gallery on the 2nd floor, west milford": null,
+"the institute for american indian studies, 38 curtis road, washington, ct, 06793, united states": {
+"lat": 41.6105285,
+"lon": -73.3227346,
+"display": "Institute for American Indian Studies Research and Education Library, 38, Curtis Road, Washington, Northwest Hills Planning Region, Connecticut, 06793, United States",
+"matched": "38 Curtis Road, Washington, CT",
+"precision": 1
+},
+"w 143rd street & riverside drive, w 143rd street & riverside drive": null,
+"kleinert james gallery, woodstock": null,
+"102nd street field house, 102nd street field house": null,
+"soldiers and sailors monument, soldiers' and sailors' monument, ny": {
+"lat": 40.6729893,
+"lon": -73.9699031,
+"display": "Soldiers' and Sailors' Arch, Grand Army Plaza, Prospect Heights, Brooklyn, Kings County, New York, 11238, United States",
+"matched": "Soldiers' and Sailors' Monument, NY",
+"precision": 1
+},
+"garden peoples garden, the garden people": null,
+"verona public library, 17 gould st., verona, nj, nj, 07044, united states": {
+"lat": 40.8329262,
+"lon": -74.2464137,
+"display": "Verona Public Library, 17, Gould Street, Verona, Essex County, New Jersey, 07044, United States",
+"matched": "Verona Public Library, 17 Gould St., Verona, NJ, NJ",
+"precision": 0
+},
+"ralph ellison plaza, riverside dr & w 150th st,, new york, ny, 10031, united states": {
+"lat": 40.7127281,
+"lon": -74.0060152,
+"display": "New York, United States",
+"matched": "New York, NY",
+"precision": 3
+},
+"nj": {
+"lat": 40.0757384,
+"lon": -74.4041622,
+"display": "New Jersey, United States",
+"matched": "NJ",
+"precision": 0
+},
+"komansky room, the westport library": null,
+"children\u2019s room, west milford": null,
+"zoom, guttenberg": null,
+"lower parking lot/ monarch meadow, whitehall corners": null,
+"the westport library board room, 20 jesup road, westport, ct, 06880, united states": {
+"lat": 41.1396873,
+"lon": -73.3612903,
+"display": "The Westport Library, 20, Jesup Road, Westport, Western Connecticut Planning Region, Connecticut, 06880, United States",
+"matched": "20 Jesup Road, Westport, CT",
+"precision": 1
+},
+"the westport library, 20 jesup road, westport, ct, 06880, united states": {
+"lat": 41.1396873,
+"lon": -73.3612903,
+"display": "The Westport Library, 20, Jesup Road, Westport, Western Connecticut Planning Region, Connecticut, 06880, United States",
+"matched": "The Westport Library, 20 Jesup Road, Westport, CT",
+"precision": 0
+},
+"carol stafford meeting room \u2013 library lower level, 17 gould st., verona, nj, 07044, united states": {
+"lat": 40.8329262,
+"lon": -74.2464137,
+"display": "Verona Public Library, 17, Gould Street, Verona, Essex County, New Jersey, 07044, United States",
+"matched": "17 Gould St., Verona, NJ",
+"precision": 1
+},
+"keating hall, 130": {
+"lat": 44.8727892,
+"lon": -117.5477918,
+"display": "Keating Grange Hall Road, Baker County, Oregon, United States",
+"matched": "Keating Hall, 130",
+"precision": 0
+},
+"riverbank (camel) playground, 675 riverside dr, new york, ny, 10031, united states": {
+"lat": 42.1107747,
+"lon": -75.9661954,
+"display": "675, Riverside Drive, Village of Johnson City, Town of Union, Broome County, New York, 13790, United States",
+"matched": "675 Riverside Dr, New York, NY",
+"precision": 1
+},
+"various, edgewater": null,
+"sakura park, sakura park, ny": {
+"lat": 40.8129879,
+"lon": -73.9621515,
+"display": "Sakura Park, Manhattan Community Board 9, Manhattan, New York County, New York, United States",
+"matched": "Sakura Park, NY",
+"precision": 1
+},
+"virtual event, westport, ct": {
+"lat": 41.1414855,
+"lon": -73.3578955,
+"display": "Westport, Western Connecticut Planning Region, Connecticut, 06880, United States",
+"matched": "Westport, CT",
+"precision": 1
+},
+"sheffer room, the westport library, 20 jesup road, westport, ct, 06880, united states": {
+"lat": 41.1396873,
+"lon": -73.3612903,
+"display": "The Westport Library, 20, Jesup Road, Westport, Western Connecticut Planning Region, Connecticut, 06880, United States",
+"matched": "The Westport Library, 20 Jesup Road, Westport, CT",
+"precision": 1
+},
+"room 212, the westport library, 20 jesup road, westport, ct, 06880, united states": {
+"lat": 41.1396873,
+"lon": -73.3612903,
+"display": "The Westport Library, 20, Jesup Road, Westport, Western Connecticut Planning Region, Connecticut, 06880, United States",
+"matched": "The Westport Library, 20 Jesup Road, Westport, CT",
+"precision": 1
+},
+"66th street plaza, 66th street plaza, ny": {
+"lat": 41.6321107,
+"lon": -93.7073786,
+"display": "66th Street, Plaza Manor Apartments, Urbandale, Polk County, Iowa, 50322, United States",
+"matched": "66th Street Plaza, NY",
+"precision": 1
+},
+"the trefz forum, the westport library, 20 jesup road, westport, ct, 06880, united states": {
+"lat": 41.1396873,
+"lon": -73.3612903,
+"display": "The Westport Library, 20, Jesup Road, Westport, Western Connecticut Planning Region, Connecticut, 06880, United States",
+"matched": "The Westport Library, 20 Jesup Road, Westport, CT",
+"precision": 1
+},
+"online only, cliffside park, nj": {
+"lat": 40.8214894,
+"lon": -73.9876388,
+"display": "Cliffside Park, Bergen County, New Jersey, 07010, United States",
+"matched": "Cliffside Park, NJ",
+"precision": 1
+},
+"maker space, verona": null,
+"youth activity room \u2013 library lower level, 17 gould st., verona, nj, 07044, united states": {
+"lat": 40.8329262,
+"lon": -74.2464137,
+"display": "Verona Public Library, 17, Gould Street, Verona, Essex County, New Jersey, 07044, United States",
+"matched": "17 Gould St., Verona, NJ",
+"precision": 1
+},
+"kaplan hall": {
+"lat": 34.0714634,
+"lon": -118.4412209,
+"display": "Kaplan Hall, Portola Plaza, Bel Air, Westwood, Los Angeles, Los Angeles County, California, 90095, United States",
+"matched": "Kaplan Hall",
+"precision": 0
+},
+"carlini field / washington, d.c.": {
+"lat": 38.9462309,
+"lon": -77.0016486,
+"display": "Carlini Field, Bates Road Northeast, University Heights, Fort Totten, Ward 5, Washington, District of Columbia, 20317, United States",
+"matched": "Carlini Field / Washington, D.C.",
+"precision": 0
+},
+"trailside nature museum, reservation road, pound ridge, 10576, united states": {
+"lat": 41.2574675,
+"lon": -73.589042,
+"display": "Trailside Nature Museum, Reservation Road, Town of Pound Ridge, Westchester County, New York, 10518, United States",
+"matched": "Trailside Nature Museum, Reservation Road, Pound Ridge",
+"precision": 0
+},
+"lincoln depot museum, 10 s water street, peekskill, ny, 10566, united states": {
+"lat": 41.287703,
+"lon": -73.9298161,
+"display": "Lincoln Depot Museum, 10, South Water Street, City of Peekskill, Westchester County, New York, 10566, United States",
+"matched": "Lincoln Depot Museum, 10 S Water Street, Peekskill, NY",
+"precision": 0
+},
+"ct": {
+"lat": 41.8523094,
+"lon": 1.5745043,
+"display": "Catalunya, Espa\u00f1a",
+"matched": "CT",
+"precision": 0
+},
+"grand steps, 1040 washington boulevard, stamford, ct, 06901, united states": {
+"lat": 41.0534311,
+"lon": -73.5438766,
+"display": "Whittingham Discovery Center, 1040, Washington Boulevard, Northfield, Stamford, Western Connecticut Planning Region, Connecticut, 06901, United States",
+"matched": "1040 Washington Boulevard, Stamford, CT",
+"precision": 1
+},
+"ridgefield library, 472 main street, ridgefield, ct, 06877, united states": {
+"lat": 41.2837548,
+"lon": -73.4978148,
+"display": "Ridgefield Library, 472, Main Street, Titicus, Ridgefield, Western Connecticut Planning Region, Connecticut, 06877, United States",
+"matched": "Ridgefield Library, 472 Main Street, Ridgefield, CT",
+"precision": 0
+},
+"briarcliff manor public library, briarcliff manor, ny": {
+"lat": 41.1465398,
+"lon": -73.8243608,
+"display": "Briarcliff Manor Public Library, 1, Library Road, Village of Briarcliff Manor, Town of Ossining, Westchester County, New York, 10510, United States",
+"matched": "Briarcliff Manor Public Library, Briarcliff Manor, NY",
+"precision": 0
+},
+"cohen display fountain, 1040 washington blvd, stamford, 06902, united states": {
+"lat": 41.0534311,
+"lon": -73.5438766,
+"display": "Whittingham Discovery Center, 1040, Washington Boulevard, Northfield, Stamford, Western Connecticut Planning Region, Connecticut, 06901, United States",
+"matched": "1040 Washington Blvd, Stamford",
+"precision": 1
+},
+"the corner bookstore, 1313 madison avenue, new york, ny, 10128, united states": {
+"lat": 40.7851513,
+"lon": -73.955491,
+"display": "The Corner Bookstore, 1313, Madison Avenue, Carnegie Hill, Manhattan Community Board 8, Manhattan, New York County, New York, 10128, United States",
+"matched": "The Corner Bookstore, 1313 Madison Avenue, New York, NY",
+"precision": 0
+},
+"glen island park, weyman avenue, new rochelle, ny, 10805": {
+"lat": 40.887613,
+"lon": -73.7834322,
+"display": "Weyman Avenue, City of New Rochelle, Westchester County, New York, 10805, United States",
+"matched": "Weyman Avenue, New Rochelle, NY",
+"precision": 1
+},
+"eisenhower park - red course / east meadow, ny": null,
+"observatory and planetarium, 43 lake ave. extension, danbury, ct": {
+"lat": 41.3861161,
+"lon": -73.4966139,
+"display": "43, Lake Avenue Extension, Mill Plain, Danbury, Western Connecticut Planning Region, Connecticut, 06810, United States",
+"matched": "43 Lake Ave. Extension, Danbury, CT",
+"precision": 1
+},
+"regina a. quick center for the arts, fairfield university": null,
+"watertown library association, 470 main st, watertown, ct 06795, usa": {
+"lat": 41.6037061,
+"lon": -73.1176002,
+"display": "Watertown Library Association, 470, Main Street, Oakville, Watertown, Naugatuck Valley Planning Region, Connecticut, 06795, United States",
+"matched": "Watertown Library Association, 470 Main St, Watertown, CT 06795",
+"precision": 0
+},
+"verona community garden, verona": null,
+"bellarmine campus, bellarmine campus": null,
+"ny, whitehall corners": {
+"lat": 41.2748119,
+"lon": -73.7101179,
+"display": "Whitehall Corners, Town of Somers, Westchester County, New York, 10536, United States",
+"matched": "NY, Whitehall Corners",
+"precision": 0
+},
+"mill river park, 1040 washington blvd., stamford, ct, 06901, united states": {
+"lat": 41.0534311,
+"lon": -73.5438766,
+"display": "Whittingham Discovery Center, 1040, Washington Boulevard, Northfield, Stamford, Western Connecticut Planning Region, Connecticut, 06901, United States",
+"matched": "1040 Washington Blvd., Stamford, CT",
+"precision": 1
+},
+"byrdcliffe barn, 485 upper byrdcliffe rd, woodstock, ny, 12498, united states": {
+"lat": 42.0537854,
+"lon": -74.1465629,
+"display": "485, Upper Byrdcliffe Road, Byrdcliffe, Town of Woodstock, Ulster County, New York, 12498, United States",
+"matched": "485 Upper Byrdcliffe Rd, Woodstock, NY",
+"precision": 1
+},
+"in the garden, guttenberg": null,
+"the links at union vale / lagrangeville, ny": {
+"lat": 41.6761444,
+"lon": -73.7353437,
+"display": "The Links at Union Vale, 153, North Parliman Road, Lagrangeville, Town of Union Vale, Dutchess County, New York, 12540, United States",
+"matched": "The Links at Union Vale / Lagrangeville, NY",
+"precision": 0
+},
+"library, 2nd floor": {
+"lat": 40.2863153,
+"lon": -80.0230188,
+"display": "Library, South Park Township, Allegheny County, Pennsylvania, 15129, United States",
+"matched": "Library, 2nd floor",
+"precision": 0
+},
+"white pines @ byrdcliffe colony, 454 upper byrdcliffe rd, woodstock, ny, 12498, united states": {
+"lat": 42.0547181,
+"lon": -74.1454424,
+"display": "454, Upper Byrdcliffe Road, Byrdcliffe, Town of Woodstock, Ulster County, New York, 12498, United States",
+"matched": "454 Upper Byrdcliffe Rd, Woodstock, NY",
+"precision": 1
+},
+"villetta inn @ byrdcliffe colony, 3 upper byrdcliffe way, woodstock, ny, 12498, united states": {
+"lat": 42.0561228,
+"lon": -74.1384098,
+"display": "3, Upper Byrdcliffe Way, Byrdcliffe, Town of Woodstock, Ulster County, New York, 12498, United States",
+"matched": "3 Upper Byrdcliffe Way, Woodstock, NY",
+"precision": 1
+},
+"byrdcliffe theatre, 380 upper byrdcliffe rd, woodstock, ny, 12498, united states": {
+"lat": 42.0559869,
+"lon": -74.1388885,
+"display": "380, Upper Byrdcliffe Road, Byrdcliffe, Town of Woodstock, Ulster County, New York, 12498, United States",
+"matched": "380 Upper Byrdcliffe Rd, Woodstock, NY",
+"precision": 1
+},
+"seasons, 644 pascack road, | washington township, nj, 07676, united states": {
+"lat": 40.996881,
+"lon": -74.0600183,
+"display": "644, Pascack Road, Township of Washington, Bergen County, New Jersey, 07676, United States",
+"matched": "644 Pascack Road, | Washington Township, NJ",
+"precision": 1
+},
+"four brothers drive-in parking lot,4957 ny-22, amenia, ny 12501, usa": {
+"lat": 41.8502761,
+"lon": -73.5575343,
+"display": "Four Brothers Drive-In, 4957, North Street, Town of Amenia, Dutchess County, New York, 12501, United States",
+"matched": "4957 NY-22, Amenia, NY 12501",
+"precision": 1
+},
+"scoville memorial library, 38 main street, salisbury, ct, 06068": {
+"lat": 41.9809185,
+"lon": -73.4225979,
+"display": "Scoville Library, 38, Main Street, Lakeville, Salisbury, Northwest Hills Planning Region, Connecticut, 06068, United States",
+"matched": "38 Main Street, Salisbury, CT",
+"precision": 1
+},
+"shaker ridge country club / albany, ny": {
+"lat": 42.7515006,
+"lon": -73.8260779,
+"display": "Shaker Ridge Country Club, 802, Albany Shaker Road, Shakers, Town of Colonie, Albany County, New York, 12211, United States",
+"matched": "Shaker Ridge Country Club / Albany, NY",
+"precision": 0
+},
+"garden city country club": {
+"lat": 40.719533,
+"lon": -73.6682195,
+"display": "Garden City Country Club, 206, Stewart Avenue, Country Club Estates, Village of Garden City, Town of Hempstead, Nassau County, New York, 11530, United States",
+"matched": "Garden City Country Club",
+"precision": 0
+},
+"river vale country club / river vale, ny": null,
+"carriage barn arts center, 681 south avenue, new canaan, ct, 06840, united states": {
+"lat": 41.1228516,
+"lon": -73.4892135,
+"display": "Carriage Barn Arts Center, 681, South Avenue, New Canaan, Western Connecticut Planning Region, Connecticut, 06840, United States",
+"matched": "Carriage Barn Arts Center, 681 South Avenue, New canaan, CT",
+"precision": 0
+},
+"pound ridge golf club / pound ridge, ny": null,
+"the powelton club / newburgh, ny": null,
+"18th ward brewing, 40 division st, new rochelle, ny 10801, usa": {
+"lat": 40.909302,
+"lon": -73.784038,
+"display": "40, Division Street, City of New Rochelle, Westchester County, New York, 10801, United States",
+"matched": "40 Division St, New Rochelle, NY 10801",
+"precision": 1
+},
+"the golf club at mansion ridge / monroe, ny": null,
+"webb institute, 298 crescent beach road, glen cove, ny, 11542, united states": {
+"lat": 40.8845423,
+"lon": -73.6447775,
+"display": "Webb Institute, Crescent Beach Road, City of Glen Cove, Nassau County, New York, 11471, United States",
+"matched": "Webb Institute, 298 Crescent Beach Road, Glen Cove, NY",
+"precision": 0
+},
+"aquinas hall theatre": null,
+"etec, first floor atrium": null,
+"drone lab, page hall, downtown campus, basement": null,
+"etec, b037 & b042": {
+"lat": -1.3850876,
+"lon": -48.4695578,
+"display": "ETEC, Val-de-C\u00e3es, Entroncamento, Bel\u00e9m, Par\u00e1, Regi\u00e3o Norte, Brasil",
+"matched": "ETEC, B037 & B042",
+"precision": 0
+},
+"bellarmine campus": {
+"lat": 41.1580718,
+"lon": -73.2577748,
+"display": "Pedro Arrupe Campus Ministry Center, Bellarmine Road, Fairfield, Greater Bridgeport Planning Region, Connecticut, 06824, United States",
+"matched": "Bellarmine Campus",
+"precision": 0
+},
+"orthodox room in the interchurch center, 475 riverside drive, new york, 10115, united states": {
+"lat": 40.8107933,
+"lon": -73.9637438,
+"display": "Interchurch Center, 475, Riverside Drive, Morningside Heights, Manhattan Community Board 9, Manhattan, New York County, New York, 10115, United States",
+"matched": "475 Riverside Drive, New York",
+"precision": 1
+},
+"w 116th street & riverside drive, w 116th street & riverside drive, new york, united states": null,
+"higgins room, the westport library, 20 jesup road, westport, ct, 06880, united states": {
+"lat": 41.1396873,
+"lon": -73.3612903,
+"display": "The Westport Library, 20, Jesup Road, Westport, Western Connecticut Planning Region, Connecticut, 06880, United States",
+"matched": "The Westport Library, 20 Jesup Road, Westport, CT",
+"precision": 1
+},
+"the westport library mccall room, 20 jesup road, westport, ct, 06880, united states": {
+"lat": 41.1396873,
+"lon": -73.3612903,
+"display": "The Westport Library, 20, Jesup Road, Westport, Western Connecticut Planning Region, Connecticut, 06880, United States",
+"matched": "20 Jesup Road, Westport, CT",
+"precision": 1
+},
+"bergami center for science, technology, and innovation, 301": {
+"lat": 36.0419462,
+"lon": -94.1685386,
+"display": "South Innovation Way, Arkansas Research and Technology Park, Fayetteville, Washington County, Arkansas, 72701, United States",
+"matched": "Technology, and Innovation, 301",
+"precision": 1
+},
+"wprr visitor center, ward pound ridge reservation, cross river, ny, 10518, united states": {
+"lat": 41.265141,
+"lon": -73.6753585,
+"display": "Cross River, Katonah Ridge, Town of Bedford, Westchester County, New York, 10536, United States",
+"matched": "Cross River, NY",
+"precision": 3
 }
 }

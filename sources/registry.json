@@ -32,7 +32,8 @@
     "Three theatre domains in one 50-mile pass had lapsed and been re-registered by gambling operators (downingfilmcenter.com, storyscreenbeacon.com, bethelcinema.com). Small venues lose domains often, so a cinema URL that has not been fetched in a while is worth re-checking for content, not just for HTTP status — all three answer 200.",
     "Of roughly two dozen independent cinemas inside fifty miles, five serve their schedule as HTML (Jacob Burns, Rosendale, and the three Independent Cinemas houses) and are read by scripts/cinema.py. The rest run a ticketing SPA — Indy Systems, Filmbot's hosted app, or Agile Ticketing behind Imperva — and are hand-read or disabled.",
     "Places are collected at placesRadiusMiles (50), not the 100-mile event radius. An event is worth travelling for on a given night; a garden or an antique shop is a Sunday, and 100 miles of OpenStreetMap is tens of thousands of rows nobody scrolls.",
-    "The place taxonomy lives in scripts/placekinds.py and nowhere else. enrich.py reads it as name patterns (an event only tells us what its venue is called) and places.py reads it as OpenStreetMap tag rules; both name the same 26 kinds, and an import-time assert fails if either names one the list does not define."
+    "The place taxonomy lives in scripts/placekinds.py and nowhere else. enrich.py reads it as name patterns (an event only tells us what its venue is called) and places.py reads it as OpenStreetMap tag rules; both name the same 26 kinds, and an import-time assert fails if either names one the list does not define.",
+    "data/places.json is itself a source list. Probing the places that carry a website the registry did not know found 30 live feeds in 582 domains — a 5% yield, in line with the 7% the registry was built on, and it reached venues no search would name: Lasdon Public Gardens, Dyckman Farmhouse, the Woodstock Guild, and the Four Brothers Drive-In, whose Tockify feed the cinema pass had failed to find by hand."
   ],
   "sources": [
     {
@@ -743,6 +744,486 @@
       "scope": "local",
       "enabled": false,
       "note": "Next.js shell, no listings server-side. bantamcinema.com 301s here. Disabled until a readable path is found."
+    },
+    {
+      "id": "osm-lincolndepotmuseum",
+      "kind": "ics",
+      "url": "https://lincolndepotmuseum.org/events/?ical=1",
+      "publisher": "Lincoln Depot Museum",
+      "scope": "venue",
+      "note": "Found by discover.py --probe over data/places.json (6 future events at registration).",
+      "venue": {
+        "name": "Lincoln Depot Museum",
+        "city": "Peekskill",
+        "address": null,
+        "lat": 41.287703,
+        "lon": -73.929816
+      },
+      "homepage": "https://lincolndepotmuseum.org/"
+    },
+    {
+      "id": "osm-thecastlefuncenter",
+      "kind": "ics",
+      "url": "https://thecastlefuncenter.com/events/?ical=1&eventDisplay=list",
+      "publisher": "The Castle Fun Center",
+      "scope": "venue",
+      "note": "Found by discover.py --probe over data/places.json (3 future events at registration).",
+      "venue": {
+        "name": "The Castle Fun Center",
+        "city": "Chester",
+        "address": null,
+        "lat": 41.361691,
+        "lon": -74.286868
+      },
+      "homepage": "https://thecastlefuncenter.com/"
+    },
+    {
+      "id": "osm-lasdonpublicgardens",
+      "kind": "ics",
+      "url": "https://lasdonpublicgardens.org/events/?ical=1",
+      "publisher": "Lasdon Public Gardens and & Veterans Memorial",
+      "scope": "venue",
+      "note": "Found by discover.py --probe over data/places.json (30 future events at registration).",
+      "venue": {
+        "name": "Lasdon Public Gardens and & Veterans Memorial",
+        "city": "Whitehall Corners",
+        "address": null,
+        "lat": 41.276438,
+        "lon": -73.737699
+      },
+      "homepage": "https://lasdonpublicgardens.org/"
+    },
+    {
+      "id": "osm-briarcliffmanorlibrary",
+      "kind": "ics",
+      "url": "https://briarcliffmanorlibrary.org/events/?ical=1",
+      "publisher": "Briarcliff Manor Public Library",
+      "scope": "venue",
+      "note": "Found by discover.py --probe over data/places.json (15 future events at registration).",
+      "venue": {
+        "name": "Briarcliff Manor Public Library",
+        "city": "Briarcliff Manor, NY",
+        "address": "1 Library Road, Briarcliff Manor, NY",
+        "lat": 41.146542,
+        "lon": -73.824442
+      },
+      "homepage": "https://briarcliffmanorlibrary.org/"
+    },
+    {
+      "id": "osm-friendsoftrailside",
+      "kind": "ics",
+      "url": "https://friendsoftrailside.org/events/?ical=1",
+      "publisher": "Trailside Nature Museum",
+      "scope": "venue",
+      "note": "Found by discover.py --probe over data/places.json (4 future events at registration).",
+      "venue": {
+        "name": "Trailside Nature Museum",
+        "city": "Boutonville",
+        "address": "Reservation Road",
+        "lat": 41.257495,
+        "lon": -73.589039
+      },
+      "homepage": "https://friendsoftrailside.org/"
+    },
+    {
+      "id": "osm-booksonthecommon",
+      "kind": "ics",
+      "url": "https://booksonthecommon.com/events/?ical=1",
+      "publisher": "Books On The Common",
+      "scope": "venue",
+      "note": "Found by discover.py --probe over data/places.json (5 future events at registration).",
+      "venue": {
+        "name": "Books On The Common",
+        "city": "Ridgefield, CT",
+        "address": "404 Main Street, Ridgefield, CT",
+        "lat": 41.281756,
+        "lon": -73.498131
+      },
+      "homepage": "https://booksonthecommon.com/"
+    },
+    {
+      "id": "osm-hurleyheritagesociety",
+      "kind": "ics",
+      "url": "https://calendar.google.com/calendar/ical/youtube%40hurleyheritagesociety.org/public/basic.ics",
+      "publisher": "Hurley Heritage Museum",
+      "scope": "venue",
+      "note": "Found by discover.py --probe over data/places.json (3 future events at registration).",
+      "venue": {
+        "name": "Hurley Heritage Museum",
+        "city": "Hurley, NY",
+        "address": "52 Main Street, Hurley, NY",
+        "lat": 41.925034,
+        "lon": -74.063226
+      },
+      "homepage": "https://hurleyheritagesociety.org/"
+    },
+    {
+      "id": "osm-njbg",
+      "kind": "ics",
+      "url": "https://njbg.org/events/?ical=1",
+      "publisher": "New Jersey Botanical Garden",
+      "scope": "venue",
+      "note": "Found by discover.py --probe over data/places.json (4 future events at registration).",
+      "venue": {
+        "name": "New Jersey Botanical Garden",
+        "city": "Ringwood",
+        "address": null,
+        "lat": 41.124325,
+        "lon": -74.237356
+      },
+      "homepage": "https://njbg.org/"
+    },
+    {
+      "id": "osm-burnhamlibrary",
+      "kind": "ics",
+      "url": "https://burnhamlibrary.org/events/?ical=1&eventDisplay=list",
+      "publisher": "Burnham Library",
+      "scope": "venue",
+      "note": "Found by discover.py --probe over data/places.json (30 future events at registration).",
+      "venue": {
+        "name": "Burnham Library",
+        "city": "Bridgewater",
+        "address": "62 Main Street South, Bridgewater",
+        "lat": 41.533361,
+        "lon": -73.365302
+      },
+      "homepage": "https://burnhamlibrary.org/"
+    },
+    {
+      "id": "osm-playeatdrink",
+      "kind": "ics",
+      "url": "https://tockify.com/api/feeds/ics/fourbrothers",
+      "publisher": "Four Brothers Drive-In",
+      "scope": "venue",
+      "note": "Found by discover.py --probe over data/places.json (1 future events at registration).",
+      "venue": {
+        "name": "Four Brothers Drive-In",
+        "city": "Amenia",
+        "address": null,
+        "lat": 41.850276,
+        "lon": -73.557534
+      },
+      "homepage": "https://playeatdrink.com/"
+    },
+    {
+      "id": "osm-wmtl",
+      "kind": "ics",
+      "url": "https://wmtl.org/events/?ical=1&eventDisplay=list",
+      "publisher": "West Milford Township Library",
+      "scope": "venue",
+      "note": "Found by discover.py --probe over data/places.json (30 future events at registration).",
+      "venue": {
+        "name": "West Milford Township Library",
+        "city": "West Milford",
+        "address": null,
+        "lat": 41.128725,
+        "lon": -74.369482
+      },
+      "homepage": "https://wmtl.org/"
+    },
+    {
+      "id": "osm-iaismuseum",
+      "kind": "ics",
+      "url": "https://iaismuseum.org/events/?ical=1",
+      "publisher": "Institute for American Indian Studies Research and Education Library",
+      "scope": "venue",
+      "note": "Found by discover.py --probe over data/places.json (6 future events at registration).",
+      "venue": {
+        "name": "Institute for American Indian Studies Research and Education Library",
+        "city": "Washington, CT",
+        "address": "38 Curtis Road, Washington, CT",
+        "lat": 41.610529,
+        "lon": -73.322735
+      },
+      "homepage": "https://iaismuseum.org/"
+    },
+    {
+      "id": "osm-olivefreelibrary",
+      "kind": "ics",
+      "url": "https://calendar.google.com/calendar/ical/olivefreelibrary.org_n1uea9lrc9kdordsqco54pcpoo%40group.calendar.google.com/public/basic.ics",
+      "publisher": "Olive Free Library",
+      "scope": "venue",
+      "note": "Found by discover.py --probe over data/places.json (55 future events at registration).",
+      "venue": {
+        "name": "Olive Free Library",
+        "city": "West Shokan, NY",
+        "address": "4033 Route 28A, West Shokan, NY",
+        "lat": 41.963817,
+        "lon": -74.275271
+      },
+      "homepage": "https://olivefreelibrary.org/"
+    },
+    {
+      "id": "osm-carriagebarn",
+      "kind": "ics",
+      "url": "https://carriagebarn.org/events/?ical=1",
+      "publisher": "Carriage Barn Arts Center",
+      "scope": "venue",
+      "note": "Found by discover.py --probe over data/places.json (25 future events at registration).",
+      "venue": {
+        "name": "Carriage Barn Arts Center",
+        "city": "New Canaan, CT",
+        "address": "681 South Avenue, New Canaan, CT",
+        "lat": 41.122852,
+        "lon": -73.489214
+      },
+      "homepage": "https://carriagebarn.org/"
+    },
+    {
+      "id": "osm-woodstockguild",
+      "kind": "ics",
+      "url": "https://woodstockguild.org/events/?ical=1",
+      "publisher": "Woodstock Byrdcliffe Guild",
+      "scope": "venue",
+      "note": "Found by discover.py --probe over data/places.json (6 future events at registration).",
+      "venue": {
+        "name": "Woodstock Byrdcliffe Guild",
+        "city": "Woodstock",
+        "address": "34 Tinker Street, Woodstock",
+        "lat": 42.040564,
+        "lon": -74.119592
+      },
+      "homepage": "https://woodstockguild.org/"
+    },
+    {
+      "id": "osm-millriverpark",
+      "kind": "ics",
+      "url": "https://millriverpark.org/events/?ical=1",
+      "publisher": "Whittingham Discovery Center",
+      "scope": "venue",
+      "note": "Found by discover.py --probe over data/places.json (30 future events at registration).",
+      "venue": {
+        "name": "Whittingham Discovery Center",
+        "city": "Stamford, CT",
+        "address": "1040 Washington Boulevard, Stamford, CT",
+        "lat": 41.053433,
+        "lon": -73.544025
+      },
+      "homepage": "https://millriverpark.org/"
+    },
+    {
+      "id": "osm-westportlibrary",
+      "kind": "ics",
+      "url": "https://westportlibrary.org/events/?ical=1&eventDisplay=list",
+      "publisher": "The Westport Library",
+      "scope": "venue",
+      "note": "Found by discover.py --probe over data/places.json (30 future events at registration).",
+      "venue": {
+        "name": "The Westport Library",
+        "city": "Westport, CT",
+        "address": "20 Jesup Road, Westport, CT",
+        "lat": 41.13972,
+        "lon": -73.361289
+      },
+      "homepage": "https://westportlibrary.org/"
+    },
+    {
+      "id": "osm-thomaspainecottage",
+      "kind": "ics",
+      "url": "https://calendar.google.com/calendar/ical/8sg5f71esfmgdb11enr94nf9d0%40group.calendar.google.com/public/basic.ics",
+      "publisher": "Thomas Paine Cottage and Museum",
+      "scope": "venue",
+      "note": "Found by discover.py --probe over data/places.json (17 future events at registration).",
+      "venue": {
+        "name": "Thomas Paine Cottage and Museum",
+        "city": "Beechmont",
+        "address": "20 Sicard Avenue",
+        "lat": 40.934444,
+        "lon": -73.791111
+      },
+      "homepage": "https://thomaspainecottage.org/"
+    },
+    {
+      "id": "osm-salisburyassociation",
+      "kind": "ics",
+      "url": "https://salisburyassociation.org/events/?ical=1",
+      "publisher": "Holley Williams House Museum",
+      "scope": "venue",
+      "note": "Found by discover.py --probe over data/places.json (2 future events at registration).",
+      "venue": {
+        "name": "Holley Williams House Museum",
+        "city": "Salisbury, CT",
+        "address": "24 Main Street, Salisbury, CT",
+        "lat": 41.965926,
+        "lon": -73.44151
+      },
+      "homepage": "https://salisburyassociation.org/"
+    },
+    {
+      "id": "osm-dyckmanfarmhouse",
+      "kind": "ics",
+      "url": "https://dyckmanfarmhouse.org/events/?ical=1&eventDisplay=list",
+      "publisher": "Dyckman Farmhouse Museum",
+      "scope": "venue",
+      "note": "Found by discover.py --probe over data/places.json (6 future events at registration).",
+      "venue": {
+        "name": "Dyckman Farmhouse Museum",
+        "city": "New York, NY",
+        "address": "4881 Broadway, New York, NY",
+        "lat": 40.867382,
+        "lon": -73.922886
+      },
+      "homepage": "https://dyckmanfarmhouse.org/"
+    },
+    {
+      "id": "osm-watertownlibrary",
+      "kind": "ics",
+      "url": "https://calendar.google.com/calendar/ical/wtnlib%40gmail.com/public/basic.ics",
+      "publisher": "Watertown Library Association",
+      "scope": "venue",
+      "note": "Found by discover.py --probe over data/places.json (11 future events at registration).",
+      "venue": {
+        "name": "Watertown Library Association",
+        "city": "Watertown, CT",
+        "address": "470 Main Street, Watertown, CT",
+        "lat": 41.603732,
+        "lon": -73.1176
+      },
+      "homepage": "https://watertownlibrary.org/"
+    },
+    {
+      "id": "osm-webb",
+      "kind": "ics",
+      "url": "https://webb.edu/events/?ical=1",
+      "publisher": "Livingston Library",
+      "scope": "venue",
+      "note": "Found by discover.py --probe over data/places.json (1 future events at registration).",
+      "venue": {
+        "name": "Livingston Library",
+        "city": "Glen Cove",
+        "address": null,
+        "lat": 40.884374,
+        "lon": -73.645336
+      },
+      "homepage": "https://webb.edu/"
+    },
+    {
+      "id": "osm-derbynecklibrary",
+      "kind": "ics",
+      "url": "https://derbynecklibrary.org/events/?ical=1",
+      "publisher": "Derby Neck Library",
+      "scope": "venue",
+      "note": "Found by discover.py --probe over data/places.json (22 future events at registration).",
+      "venue": {
+        "name": "Derby Neck Library",
+        "city": "Derby, CT",
+        "address": "307 Hawthorne Avenue, Derby, CT",
+        "lat": 41.330804,
+        "lon": -73.100745
+      },
+      "homepage": "https://derbynecklibrary.org/"
+    },
+    {
+      "id": "osm-riversideparknyc",
+      "kind": "ics",
+      "url": "https://riversideparknyc.org/events/?ical=1&eventDisplay=list",
+      "publisher": "Riverside Valley Community Garden",
+      "scope": "venue",
+      "note": "Found by discover.py --probe over data/places.json (30 future events at registration).",
+      "venue": {
+        "name": "Riverside Valley Community Garden",
+        "city": "Edgewater",
+        "address": null,
+        "lat": 40.823615,
+        "lon": -73.955888
+      },
+      "homepage": "https://riversideparknyc.org/"
+    },
+    {
+      "id": "osm-cliffsideparklibrary",
+      "kind": "ics",
+      "url": "https://cliffsideparklibrary.org/events/?ical=1&eventDisplay=list",
+      "publisher": "Cliffside Park Public Library",
+      "scope": "venue",
+      "note": "Found by discover.py --probe over data/places.json (30 future events at registration).",
+      "venue": {
+        "name": "Cliffside Park Public Library",
+        "city": "Cliffside Park, NJ",
+        "address": "505 Palisade Avenue, Cliffside Park, NJ",
+        "lat": 40.820833,
+        "lon": -73.988704
+      },
+      "homepage": "https://cliffsideparklibrary.org/"
+    },
+    {
+      "id": "osm-veronalibrary",
+      "kind": "ics",
+      "url": "https://veronalibrary.org/events/?ical=1",
+      "publisher": "Verona Public Library",
+      "scope": "venue",
+      "note": "Found by discover.py --probe over data/places.json (30 future events at registration).",
+      "venue": {
+        "name": "Verona Public Library",
+        "city": "Verona",
+        "address": "17 Gould Street, Verona",
+        "lat": 40.832916,
+        "lon": -74.24639
+      },
+      "homepage": "https://veronalibrary.org/"
+    },
+    {
+      "id": "osm-plantingfields",
+      "kind": "ics",
+      "url": "https://plantingfields.org/events/?ical=1",
+      "publisher": "Piet Oudolf Garden",
+      "scope": "venue",
+      "note": "Found by discover.py --probe over data/places.json (19 future events at registration).",
+      "venue": {
+        "name": "Piet Oudolf Garden",
+        "city": "Upper Brookville",
+        "address": null,
+        "lat": 40.863534,
+        "lon": -73.55782
+      },
+      "homepage": "https://plantingfields.org/"
+    },
+    {
+      "id": "osm-westsidecommunitygarden",
+      "kind": "ics",
+      "url": "https://westsidecommunitygarden.org/events/?ical=1",
+      "publisher": "West Side Community Garden",
+      "scope": "venue",
+      "note": "Found by discover.py --probe over data/places.json (11 future events at registration).",
+      "venue": {
+        "name": "West Side Community Garden",
+        "city": "Guttenberg",
+        "address": null,
+        "lat": 40.789287,
+        "lon": -73.971834
+      },
+      "homepage": "https://westsidecommunitygarden.org/"
+    },
+    {
+      "id": "osm-wnypl",
+      "kind": "ics",
+      "url": "https://wnypl.org/?post_type=tribe_events&ical=1",
+      "publisher": "West New York Public Library",
+      "scope": "venue",
+      "note": "Found by discover.py --probe over data/places.json (1 future events at registration).",
+      "venue": {
+        "name": "West New York Public Library",
+        "city": "West New York",
+        "address": null,
+        "lat": 40.788128,
+        "lon": -74.015471
+      },
+      "homepage": "https://wnypl.org/"
+    },
+    {
+      "id": "osm-cornerbookstorenyc",
+      "kind": "ics",
+      "url": "https://cornerbookstorenyc.com/events/?ical=1",
+      "publisher": "The Corner Bookstore",
+      "scope": "venue",
+      "note": "Found by discover.py --probe over data/places.json (8 future events at registration).",
+      "venue": {
+        "name": "The Corner Bookstore",
+        "city": "Guttenberg",
+        "address": "1313 Madison Avenue",
+        "lat": 40.785151,
+        "lon": -73.955491
+      },
+      "homepage": "https://cornerbookstorenyc.com/"
     }
   ]
 }

@@ -627,6 +627,17 @@ def main():
     for item in merged:
         item['venueKey'] = building_of(item)
 
+    # A listing with nothing to link to cannot render and validate.py rejects
+    # the whole file for it. They arrived from a Google Calendar ICS, which
+    # carries no URL property; harvest.py now falls back to the venue's own
+    # page, but records merged before that fix are still here and merge keeps
+    # what it already has. Drop what we know the gate will refuse rather than
+    # shipping a file that fails.
+    unlinkable = [i for i in merged if not i.get('url')]
+    if unlinkable:
+        merged = [i for i in merged if i.get('url')]
+        print(f'  −{len(unlinkable)} with no link to follow')
+
     merged.sort(key=lambda x: x['start'])
 
     meta = dict(existing['meta'])

@@ -1,7 +1,7 @@
 {
   "meta": {
     "schemaVersion": 1,
-    "scrapedAt": "2026-08-26T15:52:48+00:00",
+    "scrapedAt": "2026-08-27T19:40:15+00:00",
     "centerName": "Beacon, NY",
     "centerLat": 41.5048,
     "centerLon": -73.9696,
@@ -163,7 +163,28 @@
       "free": null,
       "wheelchair": null,
       "description": null,
-      "events": 7,
+      "events": 8,
+      "source": "Event listings"
+    },
+    {
+      "id": "venue-the-parlor",
+      "name": "The Parlor",
+      "kind": null,
+      "kinds": [],
+      "lat": 41.50484,
+      "lon": -73.96954,
+      "miles": 0.0,
+      "city": null,
+      "address": "The Parlor",
+      "url": "https://www.savagewonder.org/event/hot-wrk-ensemble/2026-08-27/",
+      "phone": null,
+      "openingHours": null,
+      "brand": null,
+      "secondHand": null,
+      "free": null,
+      "wheelchair": null,
+      "description": null,
+      "events": 15,
       "source": "Event listings"
     },
     {
@@ -597,7 +618,7 @@
       "free": null,
       "wheelchair": "yes",
       "description": null,
-      "events": 3,
+      "events": 4,
       "source": "OpenStreetMap"
     },
     {
@@ -3333,6 +3354,29 @@
       "source": "OpenStreetMap"
     },
     {
+      "id": "venue-jennys-garden",
+      "name": "Jennys Garden",
+      "kind": "garden",
+      "kinds": [
+        "garden"
+      ],
+      "lat": 41.60721,
+      "lon": -73.97365,
+      "miles": 7.1,
+      "city": "Jenny's Garden, NY",
+      "address": "Jennys Garden, Jenny's Garden, NY",
+      "url": "https://riversideparknyc.org/event/placepartner-opportunity-goat-patrol/2026-08-28/",
+      "phone": null,
+      "openingHours": null,
+      "brand": null,
+      "secondHand": null,
+      "free": null,
+      "wheelchair": null,
+      "description": null,
+      "events": 1,
+      "source": "Event listings"
+    },
+    {
       "id": "osm-node-8788823247",
       "name": "Garage Sales Unlimited",
       "kind": "antique shop",
@@ -3537,7 +3581,7 @@
       "free": null,
       "wheelchair": null,
       "description": "Outdoor Museum",
-      "events": 19,
+      "events": 20,
       "source": "OpenStreetMap"
     },
     {
@@ -7026,7 +7070,7 @@
       "free": null,
       "wheelchair": null,
       "description": null,
-      "events": 0,
+      "events": 6,
       "source": "OpenStreetMap"
     },
     {
@@ -9785,7 +9829,7 @@
       "free": null,
       "wheelchair": null,
       "description": null,
-      "events": 0,
+      "events": 1,
       "source": "OpenStreetMap"
     },
     {
@@ -12360,7 +12404,7 @@
       "free": null,
       "wheelchair": null,
       "description": null,
-      "events": 1,
+      "events": 2,
       "source": "Event listings"
     },
     {
@@ -12935,6 +12979,29 @@
       "description": null,
       "events": 0,
       "source": "OpenStreetMap"
+    },
+    {
+      "id": "venue-lasdon-park",
+      "name": "Lasdon Park",
+      "kind": "park",
+      "kinds": [
+        "park"
+      ],
+      "lat": 41.25587,
+      "lon": -73.68475,
+      "miles": 22.7,
+      "city": "Katonah, NY",
+      "address": "Lasdon Park, 2610 Amawalk Road, Route 35, Katonah, NY, 10536",
+      "url": "https://www.lasdonpublicgardens.org/event/a-plant-story-from-fern-to-flower/2026-08-28/",
+      "phone": null,
+      "openingHours": null,
+      "brand": null,
+      "secondHand": null,
+      "free": null,
+      "wheelchair": null,
+      "description": null,
+      "events": 10,
+      "source": "Event listings"
     },
     {
       "id": "osm-way-1263955275",
@@ -15838,6 +15905,29 @@
       "source": "OpenStreetMap"
     },
     {
+      "id": "venue-observatory-and-planetarium",
+      "name": "Observatory and Planetarium",
+      "kind": "museum",
+      "kinds": [
+        "museum"
+      ],
+      "lat": 41.38612,
+      "lon": -73.49661,
+      "miles": 25.8,
+      "city": "Danbury, CT",
+      "address": "Observatory and Planetarium, 43 Lake Ave. Extension, Danbury, CT",
+      "url": "https://campus-events.wcsu.edu/calendar/planetarium-show-welcoming-the-autumnal-equinox/",
+      "phone": null,
+      "openingHours": null,
+      "brand": null,
+      "secondHand": null,
+      "free": null,
+      "wheelchair": null,
+      "description": null,
+      "events": 1,
+      "source": "Event listings"
+    },
+    {
       "id": "venue-studio-theatre-visual-and-performing-arts-center-at-wcsu",
       "name": "Studio Theatre - Visual and Performing Arts Center at WCSU",
       "kind": "theatre",
@@ -16064,8 +16154,31 @@
       "free": null,
       "wheelchair": null,
       "description": null,
-      "events": 0,
+      "events": 7,
       "source": "OpenStreetMap"
+    },
+    {
+      "id": "venue-library",
+      "name": "Library",
+      "kind": "library",
+      "kinds": [
+        "library"
+      ],
+      "lat": 41.14654,
+      "lon": -73.82444,
+      "miles": 25.9,
+      "city": "Briarcliff Manor, NY",
+      "address": "Library, 2nd floor",
+      "url": "https://briarcliffmanorlibrary.org/event/brown-bag-discussion-the-magicians-assistant/",
+      "phone": null,
+      "openingHours": null,
+      "brand": null,
+      "secondHand": null,
+      "free": null,
+      "wheelchair": null,
+      "description": null,
+      "events": 1,
+      "source": "Event listings"
     },
     {
       "id": "osm-node-4088944233",
@@ -16202,7 +16315,7 @@
       "free": null,
       "wheelchair": "yes",
       "description": null,
-      "events": 0,
+      "events": 3,
       "source": "OpenStreetMap"
     },
     {
@@ -19676,7 +19789,7 @@
       "free": null,
       "wheelchair": "yes",
       "description": null,
-      "events": 0,
+      "events": 5,
       "source": "OpenStreetMap"
     },
     {
@@ -22024,7 +22137,7 @@
       "free": null,
       "wheelchair": null,
       "description": null,
-      "events": 0,
+      "events": 4,
       "source": "OpenStreetMap"
     },
     {
@@ -24029,6 +24142,29 @@
       "source": "OpenStreetMap"
     },
     {
+      "id": "venue-the-burnham-library",
+      "name": "The Burnham Library",
+      "kind": "library",
+      "kinds": [
+        "library"
+      ],
+      "lat": 41.53509,
+      "lon": -73.36623,
+      "miles": 31.3,
+      "city": "Bridgewater, CT",
+      "address": "The Burnham Library, 62 Main Street South, Burnham Library, Bridgewater, CT, 06798, United States",
+      "url": "https://burnhamlibrary.org/events/burnham-beer-garden-6/",
+      "phone": null,
+      "openingHours": null,
+      "brand": null,
+      "secondHand": null,
+      "free": null,
+      "wheelchair": null,
+      "description": null,
+      "events": 24,
+      "source": "Event listings"
+    },
+    {
       "id": "osm-node-3730431972",
       "name": "The Phantom Gardener",
       "kind": "shop",
@@ -24949,6 +25085,29 @@
       "description": null,
       "events": 0,
       "source": "OpenStreetMap"
+    },
+    {
+      "id": "venue-four-brothers-drive-in-parking-lot",
+      "name": "Four Brothers Drive-In Parking Lot",
+      "kind": "cinema",
+      "kinds": [
+        "cinema"
+      ],
+      "lat": 41.85028,
+      "lon": -73.55753,
+      "miles": 32.0,
+      "city": null,
+      "address": "Four Brothers Drive-In Parking Lot,4957 NY-22, Amenia, NY 12501, USA",
+      "url": "https://tockify.com/fourbrothers/detail/75/1790517600000",
+      "phone": null,
+      "openingHours": null,
+      "brand": null,
+      "secondHand": null,
+      "free": null,
+      "wheelchair": null,
+      "description": null,
+      "events": 1,
+      "source": "Event listings"
     },
     {
       "id": "osm-node-10203221902",
@@ -26138,6 +26297,29 @@
       "source": "OpenStreetMap"
     },
     {
+      "id": "venue-gallery-on-the-2nd-floor",
+      "name": "Gallery on the 2nd floor",
+      "kind": "gallery",
+      "kinds": [
+        "gallery"
+      ],
+      "lat": 41.12873,
+      "lon": -74.36948,
+      "miles": 33.3,
+      "city": "West Milford",
+      "address": "Gallery on the 2nd floor",
+      "url": "https://www.wmtl.org/event/collective-narratives-2026-art-exhibit-reception/",
+      "phone": null,
+      "openingHours": null,
+      "brand": null,
+      "secondHand": null,
+      "free": null,
+      "wheelchair": null,
+      "description": null,
+      "events": 1,
+      "source": "Event listings"
+    },
+    {
       "id": "osm-node-9891613689",
       "name": "Janet Van Gelder Wildlife Sanctuary",
       "kind": "park",
@@ -26295,7 +26477,7 @@
       "free": null,
       "wheelchair": null,
       "description": null,
-      "events": 0,
+      "events": 16,
       "source": "OpenStreetMap"
     },
     {
@@ -27165,7 +27347,7 @@
       "free": null,
       "wheelchair": null,
       "description": null,
-      "events": 0,
+      "events": 1,
       "source": "OpenStreetMap"
     },
     {
@@ -27259,6 +27441,29 @@
       "description": null,
       "events": 0,
       "source": "OpenStreetMap"
+    },
+    {
+      "id": "venue-the-institute-for-american-indian-studies",
+      "name": "The Institute for American Indian Studies",
+      "kind": "school",
+      "kinds": [
+        "school"
+      ],
+      "lat": 41.61053,
+      "lon": -73.32273,
+      "miles": 34.2,
+      "city": "Washington, CT",
+      "address": "The Institute for American Indian Studies, 38 Curtis Road, Washington, CT, 06793, United States",
+      "url": "https://www.iaismuseum.org/event/indigenous-soldiers-of-the-american-revolution/",
+      "phone": null,
+      "openingHours": null,
+      "brand": null,
+      "secondHand": null,
+      "free": null,
+      "wheelchair": null,
+      "description": null,
+      "events": 5,
+      "source": "Event listings"
     },
     {
       "id": "osm-node-3013650235",
@@ -27762,7 +27967,7 @@
       "free": null,
       "wheelchair": null,
       "description": null,
-      "events": 7,
+      "events": 9,
       "source": "Event listings"
     },
     {
@@ -30897,7 +31102,7 @@
       "free": null,
       "wheelchair": null,
       "description": null,
-      "events": 0,
+      "events": 17,
       "source": "OpenStreetMap"
     },
     {
@@ -33359,7 +33564,7 @@
       "free": null,
       "wheelchair": null,
       "description": null,
-      "events": 17,
+      "events": 18,
       "source": "Event listings"
     },
     {
@@ -34122,6 +34327,29 @@
       "description": null,
       "events": 0,
       "source": "OpenStreetMap"
+    },
+    {
+      "id": "venue-kleinert-james-gallery",
+      "name": "Kleinert James Gallery",
+      "kind": "gallery",
+      "kinds": [
+        "gallery"
+      ],
+      "lat": 42.04056,
+      "lon": -74.11959,
+      "miles": 37.8,
+      "city": "Woodstock",
+      "address": "Kleinert James Gallery",
+      "url": "https://www.woodstockguild.org/event/going-upstate-the-avery-family-in-woodstock-gallery-talk-with-curator-dr-bruce-weber-2/",
+      "phone": null,
+      "openingHours": null,
+      "brand": null,
+      "secondHand": null,
+      "free": null,
+      "wheelchair": null,
+      "description": null,
+      "events": 1,
+      "source": "Event listings"
     },
     {
       "id": "osm-node-10543670266",
@@ -35045,6 +35273,27 @@
       "source": "OpenStreetMap"
     },
     {
+      "id": "venue-nissen-carousel",
+      "name": "Nissen Carousel",
+      "kind": null,
+      "kinds": [],
+      "lat": 41.05561,
+      "lon": -73.54663,
+      "miles": 38.0,
+      "city": "Stamford, CT",
+      "address": "Nissen Carousel, 30 West Broad Street, Stamford, CT, 06902, United States",
+      "url": "https://millriverpark.org/event/david-marion-nissen-carousel/2026-08-29/",
+      "phone": null,
+      "openingHours": null,
+      "brand": null,
+      "secondHand": null,
+      "free": null,
+      "wheelchair": null,
+      "description": null,
+      "events": 3,
+      "source": "Event listings"
+    },
+    {
       "id": "osm-way-886849933",
       "name": "Port Chester Public Library",
       "kind": "library",
@@ -35317,7 +35566,7 @@
       "free": null,
       "wheelchair": null,
       "description": null,
-      "events": 1,
+      "events": 2,
       "source": "Event listings"
     },
     {
@@ -35434,6 +35683,29 @@
       "description": null,
       "events": 1,
       "source": "OpenStreetMap"
+    },
+    {
+      "id": "venue-cohen-display-fountain",
+      "name": "Cohen Display Fountain",
+      "kind": "theatre",
+      "kinds": [
+        "theatre"
+      ],
+      "lat": 41.05343,
+      "lon": -73.54388,
+      "miles": 38.2,
+      "city": null,
+      "address": "Cohen Display Fountain, 1040 Washington Blvd, Stamford, 06902, United States",
+      "url": "https://millriverpark.org/event/fall-cornhole-leage/2026-09-10/",
+      "phone": null,
+      "openingHours": null,
+      "brand": null,
+      "secondHand": null,
+      "free": null,
+      "wheelchair": null,
+      "description": null,
+      "events": 3,
+      "source": "Event listings"
     },
     {
       "id": "osm-node-367138709",
@@ -35800,7 +36072,7 @@
       "free": null,
       "wheelchair": null,
       "description": null,
-      "events": 0,
+      "events": 1,
       "source": "OpenStreetMap"
     },
     {
@@ -38039,6 +38311,29 @@
       "description": null,
       "events": 12,
       "source": "OpenStreetMap"
+    },
+    {
+      "id": "venue-byrdcliffe-theatre",
+      "name": "Byrdcliffe Theatre",
+      "kind": "theatre",
+      "kinds": [
+        "theatre"
+      ],
+      "lat": 42.05599,
+      "lon": -74.13889,
+      "miles": 39.1,
+      "city": "Woodstock, NY",
+      "address": "Byrdcliffe Theatre, 380 Upper Byrdcliffe Rd, Woodstock, NY, 12498, United States",
+      "url": "https://www.woodstockguild.org/event/an-evening-with-tim-moore/",
+      "phone": null,
+      "openingHours": null,
+      "brand": null,
+      "secondHand": null,
+      "free": null,
+      "wheelchair": null,
+      "description": null,
+      "events": 2,
+      "source": "Event listings"
     },
     {
       "id": "osm-node-12153302832",
@@ -42879,6 +43174,29 @@
       "source": "OpenStreetMap"
     },
     {
+      "id": "venue-caf",
+      "name": "Café",
+      "kind": "cafe",
+      "kinds": [
+        "cafe"
+      ],
+      "lat": 41.13969,
+      "lon": -73.36129,
+      "miles": 40.4,
+      "city": "Westport, CT",
+      "address": "Café, The Westport Library, 20 Jesup Road, Westport, CT, 06880, United States",
+      "url": "https://westportlibrary.org/event/verso-university-presents-mah-jongg-open-play/2026-08-27/",
+      "phone": null,
+      "openingHours": null,
+      "brand": null,
+      "secondHand": null,
+      "free": null,
+      "wheelchair": null,
+      "description": null,
+      "events": 1,
+      "source": "Event listings"
+    },
+    {
       "id": "osm-node-7702716771",
       "name": "CardSmart",
       "kind": "shop",
@@ -43156,6 +43474,29 @@
       "source": "OpenStreetMap"
     },
     {
+      "id": "venue-sheffer-room",
+      "name": "Sheffer Room",
+      "kind": "gallery",
+      "kinds": [
+        "gallery"
+      ],
+      "lat": 41.13969,
+      "lon": -73.36129,
+      "miles": 40.4,
+      "city": "Westport, CT",
+      "address": "Sheffer Room, The Westport Library, 20 Jesup Road, Westport, CT, 06880, United States",
+      "url": "https://westportlibrary.org/event/tell-a-yarn-off-the-top-of-my-head/2026-09-02/",
+      "phone": null,
+      "openingHours": null,
+      "brand": null,
+      "secondHand": null,
+      "free": null,
+      "wheelchair": null,
+      "description": null,
+      "events": 2,
+      "source": "Event listings"
+    },
+    {
       "id": "osm-way-1002882913",
       "name": "The Cornwall Library",
       "kind": "library",
@@ -43221,8 +43562,31 @@
       "free": null,
       "wheelchair": null,
       "description": null,
-      "events": 0,
+      "events": 17,
       "source": "OpenStreetMap"
+    },
+    {
+      "id": "venue-the-westport-library-mccall-room",
+      "name": "The Westport Library McCall Room",
+      "kind": "library",
+      "kinds": [
+        "library"
+      ],
+      "lat": 41.13972,
+      "lon": -73.36129,
+      "miles": 40.4,
+      "city": "Westport, CT",
+      "address": "The Westport Library McCall Room, 20 Jesup Road, Westport, CT, 06880, United States",
+      "url": "https://westportlibrary.org/event/sit-stitch/2026-09-02/",
+      "phone": null,
+      "openingHours": null,
+      "brand": null,
+      "secondHand": null,
+      "free": null,
+      "wheelchair": null,
+      "description": null,
+      "events": 2,
+      "source": "Event listings"
     },
     {
       "id": "osm-way-666736015",
@@ -49234,6 +49598,29 @@
       "source": "OpenStreetMap"
     },
     {
+      "id": "venue-scoville-memorial-library",
+      "name": "Scoville Memorial Library",
+      "kind": "historic site",
+      "kinds": [
+        "historic site"
+      ],
+      "lat": 41.98092,
+      "lon": -73.4226,
+      "miles": 43.3,
+      "city": "Salisbury, CT",
+      "address": "Scoville Memorial Library, 38 Main Street, Salisbury, CT, 06068",
+      "url": "https://salisburyassociation.org/event/rewilding-talk-with-jon-leibowitz-and-susan-masino/",
+      "phone": null,
+      "openingHours": null,
+      "brand": null,
+      "secondHand": null,
+      "free": null,
+      "wheelchair": null,
+      "description": null,
+      "events": 2,
+      "source": "Event listings"
+    },
+    {
       "id": "osm-node-8564378959",
       "name": "Terrace Farm",
       "kind": "farm",
@@ -49995,6 +50382,29 @@
       "source": "OpenStreetMap"
     },
     {
+      "id": "venue-glen-island-park",
+      "name": "Glen Island Park",
+      "kind": "park",
+      "kinds": [
+        "park"
+      ],
+      "lat": 40.88761,
+      "lon": -73.78343,
+      "miles": 43.7,
+      "city": "New Rochelle, NY",
+      "address": "Glen Island Park, Weyman Avenue, New Rochelle, NY, 10805",
+      "url": "https://travelhudsonvalley.com/event/autumn-glow-festival/",
+      "phone": null,
+      "openingHours": null,
+      "brand": null,
+      "secondHand": null,
+      "free": null,
+      "wheelchair": null,
+      "description": null,
+      "events": 1,
+      "source": "Event listings"
+    },
+    {
       "id": "osm-node-367138464",
       "name": "Helga J. Ingraham Memorial Library",
       "kind": "library",
@@ -50731,6 +51141,29 @@
       "source": "OpenStreetMap"
     },
     {
+      "id": "venue-bellarmine-campus",
+      "name": "Bellarmine Campus",
+      "kind": "school",
+      "kinds": [
+        "school"
+      ],
+      "lat": 41.15807,
+      "lon": -73.25777,
+      "miles": 44.0,
+      "city": null,
+      "address": "Bellarmine Campus",
+      "url": "https://events.fairfield.edu/event/cafe-con-libros-winter-reading-challenge-info-book-recommendations",
+      "phone": null,
+      "openingHours": null,
+      "brand": null,
+      "secondHand": null,
+      "free": null,
+      "wheelchair": null,
+      "description": null,
+      "events": 1,
+      "source": "Event listings"
+    },
+    {
       "id": "venue-egan-chapel-of-st-ignatius-loyola",
       "name": "Egan Chapel of St. Ignatius Loyola",
       "kind": "place of worship",
@@ -51095,7 +51528,7 @@
       "free": null,
       "wheelchair": null,
       "description": null,
-      "events": 4,
+      "events": 5,
       "source": "OpenStreetMap"
     },
     {
@@ -51118,7 +51551,7 @@
       "free": null,
       "wheelchair": "no",
       "description": "Museum in the city's only remaining Dutch colonial farmhouse (built circa 1764) and its garden.",
-      "events": 0,
+      "events": 3,
       "source": "OpenStreetMap"
     },
     {
@@ -58375,6 +58808,29 @@
       "source": "OpenStreetMap"
     },
     {
+      "id": "venue-webb-institute",
+      "name": "Webb Institute",
+      "kind": "school",
+      "kinds": [
+        "school"
+      ],
+      "lat": 40.88454,
+      "lon": -73.64478,
+      "miles": 46.1,
+      "city": "Glen Cove, NY",
+      "address": "Webb Institute, 298 Crescent Beach Road, Glen Cove, NY, 11542, United States",
+      "url": "https://www.webb.edu/event/sustainability-and-innovation-in-ship-design-and-operations-conference-2026/",
+      "phone": null,
+      "openingHours": null,
+      "brand": null,
+      "secondHand": null,
+      "free": null,
+      "wheelchair": null,
+      "description": null,
+      "events": 1,
+      "source": "Event listings"
+    },
+    {
       "id": "osm-node-2797189043",
       "name": "Word Up Community Bookshop",
       "kind": "bookshop",
@@ -59984,7 +60440,7 @@
       "free": null,
       "wheelchair": null,
       "description": null,
-      "events": 0,
+      "events": 20,
       "source": "OpenStreetMap"
     },
     {
@@ -61782,6 +62238,29 @@
       "source": "OpenStreetMap"
     },
     {
+      "id": "venue-garden-peoples-garden",
+      "name": "Garden Peoples Garden",
+      "kind": "garden",
+      "kinds": [
+        "garden"
+      ],
+      "lat": 40.82361,
+      "lon": -73.95589,
+      "miles": 47.1,
+      "city": "Edgewater",
+      "address": "Garden Peoples Garden, The Garden People",
+      "url": "https://riversideparknyc.org/event/sketch-jam-8/",
+      "phone": null,
+      "openingHours": null,
+      "brand": null,
+      "secondHand": null,
+      "free": null,
+      "wheelchair": null,
+      "description": null,
+      "events": 1,
+      "source": "Event listings"
+    },
+    {
       "id": "osm-way-254594897",
       "name": "Hope Steven Garden",
       "kind": "garden",
@@ -61920,6 +62399,29 @@
       "source": "OpenStreetMap"
     },
     {
+      "id": "venue-pier-i",
+      "name": "Pier i",
+      "kind": "theatre",
+      "kinds": [
+        "theatre"
+      ],
+      "lat": 40.82361,
+      "lon": -73.95589,
+      "miles": 47.1,
+      "city": "Pier i at W 70th Street",
+      "address": "Pier i, Pier i at W 70th Street, NY",
+      "url": "https://riversideparknyc.org/event/bodyweight-blast-2/2026-08-27/",
+      "phone": null,
+      "openingHours": null,
+      "brand": null,
+      "secondHand": null,
+      "free": null,
+      "wheelchair": null,
+      "description": null,
+      "events": 5,
+      "source": "Event listings"
+    },
+    {
       "id": "osm-node-8849041817",
       "name": "Prestige Home Linen",
       "kind": "shop",
@@ -61962,7 +62464,7 @@
       "free": true,
       "wheelchair": null,
       "description": "Community Garden run under the auspices of the Riverside Park Conservancy and NYC Green Thumb.",
-      "events": 0,
+      "events": 2,
       "source": "OpenStreetMap"
     },
     {
@@ -62056,6 +62558,52 @@
       "description": null,
       "events": 0,
       "source": "OpenStreetMap"
+    },
+    {
+      "id": "venue-w-125th-marginal-streets",
+      "name": "W 125th & Marginal Streets",
+      "kind": "theatre",
+      "kinds": [
+        "theatre"
+      ],
+      "lat": 40.82361,
+      "lon": -73.95589,
+      "miles": 47.1,
+      "city": "Edgewater",
+      "address": "W 125th & Marginal Streets, W 125th & Marginal Streets",
+      "url": "https://riversideparknyc.org/event/friday-night-jams-featuring-ilana-morris/",
+      "phone": null,
+      "openingHours": null,
+      "brand": null,
+      "secondHand": null,
+      "free": null,
+      "wheelchair": null,
+      "description": null,
+      "events": 2,
+      "source": "Event listings"
+    },
+    {
+      "id": "venue-w-145th-street-lawn",
+      "name": "W 145th Street Lawn",
+      "kind": "theatre",
+      "kinds": [
+        "theatre"
+      ],
+      "lat": 40.82361,
+      "lon": -73.95589,
+      "miles": 47.1,
+      "city": "W 145th Street Lawn",
+      "address": "W 145th Street Lawn, New York",
+      "url": "https://riversideparknyc.org/event/sunset-yoga-6/2026-08-27/",
+      "phone": null,
+      "openingHours": null,
+      "brand": null,
+      "secondHand": null,
+      "free": null,
+      "wheelchair": null,
+      "description": null,
+      "events": 4,
+      "source": "Event listings"
     },
     {
       "id": "osm-way-316153085",
@@ -62378,7 +62926,7 @@
       "free": null,
       "wheelchair": null,
       "description": null,
-      "events": 0,
+      "events": 9,
       "source": "OpenStreetMap"
     },
     {
@@ -62541,6 +63089,27 @@
       "description": null,
       "events": 0,
       "source": "OpenStreetMap"
+    },
+    {
+      "id": "venue-online-only",
+      "name": "Online only",
+      "kind": null,
+      "kinds": [],
+      "lat": 40.82083,
+      "lon": -73.9887,
+      "miles": 47.3,
+      "city": "Cliffside Park, NJ",
+      "address": "Online only",
+      "url": "https://cliffsideparklibrary.org/event/adult-drawing-class-188/",
+      "phone": null,
+      "openingHours": null,
+      "brand": null,
+      "secondHand": null,
+      "free": null,
+      "wheelchair": null,
+      "description": null,
+      "events": 3,
+      "source": "Event listings"
     },
     {
       "id": "osm-node-11938628419",
@@ -65053,6 +65622,29 @@
       "description": null,
       "events": 0,
       "source": "OpenStreetMap"
+    },
+    {
+      "id": "venue-sakura-park",
+      "name": "Sakura Park",
+      "kind": "park",
+      "kinds": [
+        "park"
+      ],
+      "lat": 40.81299,
+      "lon": -73.96215,
+      "miles": 47.8,
+      "city": "Sakura Park, NY",
+      "address": "Sakura Park, Sakura Park, NY",
+      "url": "https://riversideparknyc.org/event/volunteer-at-sakura-park-and-claremont-3/2026-09-02/",
+      "phone": null,
+      "openingHours": null,
+      "brand": null,
+      "secondHand": null,
+      "free": null,
+      "wheelchair": null,
+      "description": null,
+      "events": 1,
+      "source": "Event listings"
     },
     {
       "id": "osm-way-601451410",
@@ -69431,6 +70023,29 @@
       "source": "OpenStreetMap"
     },
     {
+      "id": "venue-verona-community-garden",
+      "name": "Verona Community Garden",
+      "kind": "garden",
+      "kinds": [
+        "garden"
+      ],
+      "lat": 40.83292,
+      "lon": -74.24639,
+      "miles": 48.6,
+      "city": "Verona",
+      "address": "Verona Community Garden",
+      "url": "https://www.veronalibrary.org/events/roots-and-reads-fall/2026-09-15/",
+      "phone": null,
+      "openingHours": null,
+      "brand": null,
+      "secondHand": null,
+      "free": null,
+      "wheelchair": null,
+      "description": null,
+      "events": 1,
+      "source": "Event listings"
+    },
+    {
       "id": "osm-way-306069138",
       "name": "Verona Public Library",
       "kind": "library",
@@ -69450,7 +70065,7 @@
       "free": null,
       "wheelchair": null,
       "description": null,
-      "events": 0,
+      "events": 20,
       "source": "OpenStreetMap"
     },
     {
@@ -72726,7 +73341,7 @@
       "free": null,
       "wheelchair": null,
       "description": null,
-      "events": 0,
+      "events": 19,
       "source": "OpenStreetMap"
     },
     {
@@ -72773,7 +73388,7 @@
       "free": null,
       "wheelchair": null,
       "description": null,
-      "events": 0,
+      "events": 1,
       "source": "OpenStreetMap"
     },
     {
@@ -73797,6 +74412,29 @@
       "description": null,
       "events": 0,
       "source": "OpenStreetMap"
+    },
+    {
+      "id": "venue-in-the-garden",
+      "name": "In the Garden",
+      "kind": "garden",
+      "kinds": [
+        "garden"
+      ],
+      "lat": 40.78929,
+      "lon": -73.97183,
+      "miles": 49.4,
+      "city": "Guttenberg",
+      "address": "In the Garden",
+      "url": "https://www.westsidecommunitygarden.org/event/arts-and-crafts-festival/2026-09-19/",
+      "phone": null,
+      "openingHours": null,
+      "brand": null,
+      "secondHand": null,
+      "free": null,
+      "wheelchair": null,
+      "description": null,
+      "events": 4,
+      "source": "Event listings"
     },
     {
       "id": "osm-node-14088520162",
@@ -75684,7 +76322,7 @@
       "free": null,
       "wheelchair": null,
       "description": null,
-      "events": 0,
+      "events": 8,
       "source": "OpenStreetMap"
     },
     {

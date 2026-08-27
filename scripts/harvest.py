@@ -96,7 +96,12 @@ def harvest_ics(src, tz):
             'start': e['start'].isoformat(),
             'end': e['end'].isoformat() if e.get('end') else None,
             'allDay': e.get('all_day', False),
-            'url': e.get('url'),
+            # A Google Calendar ICS carries no URL property at all, so 24
+            # perfectly good library listings arrived with nothing to link to
+            # and validate.py — correctly — refused the whole file. The venue's
+            # own page is the honest fallback: it is where you would go to read
+            # about the event anyway.
+            'url': e.get('url') or src.get('homepage') or src['url'],
             'location': e.get('location'),
             'description': (e.get('description') or '')[:1200] or None,
             'feedCategories': e.get('categories'),
