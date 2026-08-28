@@ -1,0 +1,3164 @@
+{
+"west point tours, 2107 new south post rd, west point, ny, 10996, united states": {
+"lat": 41.3912693,
+"lon": -73.9658803,
+"display": "United States Military Academy, 845, Brewerton Road, Town of Highlands, Orange County, New York, 10996, United States",
+"matched": "West Point, NY",
+"precision": 3
+},
+"anywhere": {
+"lat": 16.0392874,
+"lon": 108.2220415,
+"display": "Anywhere, 381, \u0110\u01b0\u1eddng N\u00fai Th\u00e0nh, T\u1ed5 d\u00e2n ph\u1ed1 41, Ph\u01b0\u1eddng H\u00f2a C\u01b0\u1eddng, Th\u00e0nh ph\u1ed1 \u0110\u00e0 N\u1eb5ng, 02363, Vi\u1ec7t Nam",
+"matched": "Anywhere",
+"precision": 0
+},
+"long dock park, 23 long dock rd, beacon, ny, 12508, united states": {
+"lat": 41.5038406,
+"lon": -73.9873484,
+"display": "Kayak Storage, 23, Long Dock Road, City of Beacon, Dutchess County, New York, 12508, United States",
+"matched": "23 Long Dock Rd, Beacon, NY",
+"precision": 1
+},
+"the northside hub \u2013 community meeting room, 58 parker ave, poughkeepsie, ny, 12601, united states": {
+"lat": 41.7112164,
+"lon": -73.924615,
+"display": "58, Parker Avenue, City of Poughkeepsie, Dutchess County, New York, 12601, United States",
+"matched": "58 Parker Ave, Poughkeepsie, NY",
+"precision": 1
+},
+"savage wonderground art gallery": null,
+"desmond-fish public library": {
+"lat": 41.3764434,
+"lon": -73.9424,
+"display": "Desmond-Fish Public Library, 472, State Highway 403, Forsonville, Garrison, Town of Philipstown, Putnam County, New York, 10524, United States",
+"matched": "Desmond-Fish Public Library",
+"precision": 0
+},
+"the parlor": {
+"lat": 47.6218626,
+"lon": -52.6551469,
+"display": "The Parlor, Logy Bay-Middle Cove-Outer Cove, Newfoundland, Newfoundland and Labrador, A1K 3B3, Canada",
+"matched": "The Parlor",
+"precision": 0
+},
+"bear mountain inn, 3020 seven lakes drive, bear mountain, ny, 10986, united states": {
+"lat": 41.3129068,
+"lon": -74.0061627,
+"display": "Bear Mountain, Town of Highlands, Orange County, New York, 10922, United States",
+"matched": "Bear Mountain, NY",
+"precision": 3
+},
+"philipsburg manor, 381 n. broadway, sleepy hollow, ny, 10591": {
+"lat": 41.0886008,
+"lon": -73.863984,
+"display": "Philipsburg Manor, 381, North Broadway, Village of Sleepy Hollow, Town of Mount Pleasant, Westchester County, New York, 10591, United States",
+"matched": "Philipsburg Manor, 381 N. Broadway, Sleepy Hollow, NY",
+"precision": 0
+},
+"dutchess county fairgrounds, 6636 route 9, rhinebeck, ny, 12572, united states": {
+"lat": 41.9374935,
+"lon": -73.9091277,
+"display": "Dutchess County Fairgrounds, Spring Brook Avenue, Village of Rhinebeck, Town of Rhinebeck, Dutchess County, New York, 12572, United States",
+"matched": "Dutchess County Fairgrounds, Rhinebeck, NY",
+"precision": 2
+},
+"village of irvington, irvington, ny, 10533": {
+"lat": 41.0393579,
+"lon": -73.8679491,
+"display": "Village of Irvington, 85, Main Street, Village of Irvington, Town of Greenburgh, Westchester County, New York, 10533, United States",
+"matched": "Village of Irvington, Irvington, NY",
+"precision": 0
+},
+"nyack, s. broadway & hudson avenue, nyack, ny, 10960": {
+"lat": 41.0987407,
+"lon": -73.9269347,
+"display": "Nyack Hospital Staff & Visitor Parking, Village of Nyack, Town of Orangetown, Rockland County, New York, United States",
+"matched": "Nyack, Nyack, NY",
+"precision": 2
+},
+"the northside hub \u2013 pavilion, 58 parker ave, poughkeepsie, ny, 12601, united states": {
+"lat": 41.7112164,
+"lon": -73.924615,
+"display": "58, Parker Avenue, City of Poughkeepsie, Dutchess County, New York, 12601, United States",
+"matched": "58 Parker Ave, Poughkeepsie, NY",
+"precision": 1
+},
+"catskill village, main street, catskill, ny, 12414, united states": {
+"lat": 42.2205056,
+"lon": -73.8657072,
+"display": "Catskill Municipal Building, 422, Main Street, Village of Catskill, Town of Catskill, Greene County, New York, 12414, United States",
+"matched": "Catskill Village, Main Street, Catskill, NY",
+"precision": 0
+},
+"ulster county fairgrounds, 249 libertyville road, new paltz, ny, 12561, united states": {
+"lat": 41.7220225,
+"lon": -74.1224184,
+"display": "249, Libertyville Road, Town of New Paltz, Ulster County, New York, 12561, United States",
+"matched": "249 Libertyville Road, New Paltz, NY",
+"precision": 1
+},
+"tymor park, 249 duncan road, lagrangeville, ny, 12540, united states": {
+"lat": 41.6532873,
+"lon": -73.7006076,
+"display": "Union Vale Town Hall, 249, Duncan Road, Lagrangeville, Town of Union Vale, Dutchess County, New York, 12540, United States",
+"matched": "249 Duncan Road, Lagrangeville, NY",
+"precision": 1
+},
+"caramoor, 149 girdle ridge rd, katonah, ny, 10536, united states": {
+"lat": 41.2390867,
+"lon": -73.6419848,
+"display": "149, Girdle Ridge Road, Town of Bedford, Westchester County, New York, 10536, United States",
+"matched": "149 Girdle Ridge Rd, Katonah, NY",
+"precision": 1
+},
+"clover stadium, 1 palisades credit union park, pomona, ny, 10970, united states": {
+"lat": 41.189153,
+"lon": -74.054249,
+"display": "Village of Pomona, Town of Haverstraw, Rockland County, New York, United States",
+"matched": "Pomona, NY",
+"precision": 3
+},
+"barton orchards, 63 apple tree lane, poughquag, ny, 12570, united states": {
+"lat": 41.6081305,
+"lon": -73.7068399,
+"display": "63, Apple Tree Lane, Poughquag, Town of Beekman, Dutchess County, New York, 12570, United States",
+"matched": "63 Apple Tree Lane, Poughquag, NY",
+"precision": 1
+},
+"german masonic park, 120 western highway, tappan, ny, 10983, united states": {
+"lat": 41.0268288,
+"lon": -73.9532599,
+"display": "120, Western Highway, Tappan, Town of Orangetown, Rockland County, New York, 10983, United States",
+"matched": "120 Western Highway, Tappan, NY",
+"precision": 1
+},
+"yorktown grange fair, 99 moseman rd., yorktown heights, ny, 10598": {
+"lat": 41.269464,
+"lon": -73.769254,
+"display": "99, Moseman Road, Yorktown Heights, Town of Yorktown, Westchester County, New York, 10598, United States",
+"matched": "99 Moseman Rd., Yorktown Heights, NY",
+"precision": 1
+},
+"boscobel house and gardens, 1601 ny-9d, garrison, new york, 10524, united states": {
+"lat": 41.3807494,
+"lon": -73.9393475,
+"display": "State Highway 9D, Garrison, Town of Philipstown, Putnam County, New York, 10997, United States",
+"matched": "1601 NY-9D, Garrison, New York",
+"precision": 1
+},
+"louis b. engel waterfront park": null,
+"blackthorne resort, 348 sunside road, east durham, ny, 12423, united states": {
+"lat": 42.3525991,
+"lon": -74.0713578,
+"display": "Sunside Road, East Durham, Town of Durham, Greene County, New York, 12405, United States",
+"matched": "348 Sunside Road, East Durham, NY",
+"precision": 1
+},
+"clay art center, 40 beech st., port chester, ny, 10573, united states": {
+"lat": 40.9962558,
+"lon": -73.6632836,
+"display": "40, Beech Street, Purdys Grove, Village of Port Chester, Town of Rye, Westchester County, New York, 10573, United States",
+"matched": "40 Beech St., Port Chester, NY",
+"precision": 1
+},
+"washington irving\u2019s sunnyside, 3 w. sunnyside ln., irvington, ny, 10533": {
+"lat": 41.0466719,
+"lon": -73.8652054,
+"display": "3, West Sunnyside Lane, Village of Irvington, Town of Greenburgh, Westchester County, New York, 10533, United States",
+"matched": "3 W. Sunnyside Ln., Irvington, NY",
+"precision": 1
+},
+"van cortlandt manor, 525 s riverside, croton-on-hudson, ny, 10520": {
+"lat": 41.1916544,
+"lon": -73.8764948,
+"display": "Van Cortlandt Manor, South Riverside Avenue, Village of Croton-on-Hudson, Town of Cortlandt, Westchester County, New York, 10520, United States",
+"matched": "Van Cortlandt Manor, 525 S Riverside, Croton-on-Hudson, ny",
+"precision": 0
+},
+"the antrim playhouse, 32 old tappan road, tappan, ny, 10983": {
+"lat": 41.022876,
+"lon": -73.9495648,
+"display": "32, Old Tappan Road, Tappan, Town of Orangetown, Rockland County, New York, 10983, United States",
+"matched": "32 Old Tappan Road, Tappan, NY",
+"precision": 1
+},
+"new century, 517 neversink drive, port jervis, ny, 12771, united states": {
+"lat": 41.4076751,
+"lon": -74.6369844,
+"display": "517, Neversink Drive, City of Port Jervis, Town of Deerpark, Orange County, New York, 12771, United States",
+"matched": "517 Neversink Drive, Port Jervis, NY",
+"precision": 1
+},
+"twin star orchards, 155 n. ohioville road, new paltz, ny, 12561": {
+"lat": 41.7572925,
+"lon": -74.0496252,
+"display": "Twin Star Orchards, 155, North Ohioville Road, Ohioville, Town of New Paltz, Ulster County, New York, 12561, United States",
+"matched": "Twin Star Orchards, 155 N. Ohioville Road, New Paltz, NY",
+"precision": 0
+},
+"grey barn at the hudson river maritime museum, 50 rondout landing, kingston, 12401, united states": null,
+"pete + toshi riverfront park, 2 red flynn dr, beacon, new york, 12508, united states": {
+"lat": 41.5061342,
+"lon": -73.9852439,
+"display": "Red Flynn Drive, City of Beacon, Dutchess County, New York, 12508, United States",
+"matched": "2 Red Flynn Dr, Beacon, New York",
+"precision": 1
+},
+"mamaroneck public library, 136 prospect ave, mamaroneck, 10543, united states": {
+"lat": 40.9495211,
+"lon": -73.7341327,
+"display": "Mamaroneck Public Library, 136, Prospect Avenue, Village of Mamaroneck, Westchester County, New York, 10543, United States",
+"matched": "mamaroneck public library, 136 Prospect Ave, Mamaroneck",
+"precision": 0
+},
+"teatown, 1600 spring valley rd, ossining, ny, 10562": {
+"lat": 41.2113642,
+"lon": -73.826753,
+"display": "Teatown Visitor Center, 1600, Spring Valley Road, Town of Ossining, Westchester County, New York, 10562, United States",
+"matched": "Teatown, 1600 Spring Valley Rd, Ossining, NY",
+"precision": 0
+},
+"cliffdale farm, 85 teatown rd, croton-on-hudson, ny, 10520, united states": {
+"lat": 41.2060242,
+"lon": -73.8518702,
+"display": "85, Teatown Road, Town of Cortlandt, Westchester County, New York, 10520, United States",
+"matched": "85 Teatown Rd, Croton-on-Hudson, NY",
+"precision": 1
+},
+"john c. hart memorial library, 1130 e main st, shrub oak, ny, 10588, united states": {
+"lat": 41.3300951,
+"lon": -73.8294194,
+"display": "John C. Hart Memorial Library, 1130, East Main Street, Shrub Oak, Town of Yorktown, Westchester County, New York, 10588, United States",
+"matched": "John C. Hart Memorial Library, 1130 E Main St, Shrub Oak, NY",
+"precision": 0
+},
+"white memorial \u2013 a.b. ceder room": null,
+"eastchester public library, 11 oakridge pl, eastchester, ny, 10709, united states": {
+"lat": 40.9572539,
+"lon": -73.8117797,
+"display": "Eastchester Public Library, 11, Oakridge Place, Waverly, Town of Eastchester, Westchester County, New York, 10709, United States",
+"matched": "Eastchester Public Library, 11 Oakridge Pl, Eastchester, NY",
+"precision": 0
+},
+"port chester-rye brook public library, 1 haseco ave, port chester, new york, 10573, united states": {
+"lat": 41.0036424,
+"lon": -73.6685959,
+"display": "Port Chester Public Library, 1, Haseco Avenue, Village of Port Chester, Town of Rye, Westchester County, New York, 10573, United States",
+"matched": "1 Haseco Ave, Port Chester, New York",
+"precision": 1
+},
+"greenburgh public library, 300 tarrytown road, elmsford, ny, 10523, united states": {
+"lat": 41.0464411,
+"lon": -73.806776,
+"display": "Greenburgh Public Library, 300, Tarrytown Road, Village of Elmsford, Town of Greenburgh, Westchester County, New York, 10523, United States",
+"matched": "Greenburgh Public Library, 300 Tarrytown Road, Elmsford, NY",
+"precision": 0
+},
+"emelin theatre, 153 library lane, mamaroneck, ny, 10543, united states": {
+"lat": 40.9492601,
+"lon": -73.7340177,
+"display": "Emelin Theatre, 151, Library Lane, Village of Mamaroneck, Westchester County, New York, 10543, United States",
+"matched": "Emelin Theatre, 153 Library Lane, Mamaroneck, NY",
+"precision": 0
+},
+"new york botanical garden, 2950 southern boulevard, bronx, ny, 10458, united states": {
+"lat": 40.8622431,
+"lon": -73.8771541,
+"display": "New York Botanical Garden, 2900, Southern Boulevard, The Bronx, Bronx County, New York, 10458, United States",
+"matched": "New York Botanical Garden, 2950 Southern Boulevard, Bronx, NY",
+"precision": 0
+},
+"astronomy center &#038; planetarium, 151 scofieldtown road, stamford, ct": {
+"lat": 41.1240443,
+"lon": -73.5480499,
+"display": "151, Scofieldtown Road, Scofieldtown, North Stamford, Stamford, Western Connecticut Planning Region, Connecticut, 06903, United States",
+"matched": "151 Scofieldtown Road, Stamford, CT",
+"precision": 1
+},
+"farmhouse parking lot (north gate), 151 scofieldtown road, stamford, ct": {
+"lat": 41.1240443,
+"lon": -73.5480499,
+"display": "151, Scofieldtown Road, Scofieldtown, North Stamford, Stamford, Western Connecticut Planning Region, Connecticut, 06903, United States",
+"matched": "151 Scofieldtown Road, Stamford, CT",
+"precision": 1
+},
+"heckscher wild!, 39 scofieldtown road, stamford, ct": {
+"lat": 41.1238143,
+"lon": -73.5450704,
+"display": "39, Scofieldtown Road, North Stamford, Stamford, Western Connecticut Planning Region, Connecticut, 06903, United States",
+"matched": "39 Scofieldtown Road, Stamford, CT",
+"precision": 1
+},
+"bendel mansion, 39 scofieldtown road, stamford, ct": {
+"lat": 41.1238143,
+"lon": -73.5450704,
+"display": "39, Scofieldtown Road, North Stamford, Stamford, Western Connecticut Planning Region, Connecticut, 06903, United States",
+"matched": "39 Scofieldtown Road, Stamford, CT",
+"precision": 1
+},
+"796 main st": {
+"lat": 33.9931724,
+"lon": -118.4746758,
+"display": "Barrique, 796, Main Street, Venice, Los Angeles, Los Angeles County, California, 90291, United States",
+"matched": "796 Main St",
+"precision": 0
+},
+"424 main st, ridgefield, ct 06877": {
+"lat": 41.2819856,
+"lon": -73.4983281,
+"display": "424, Main Street, Titicus, Ridgefield, Western Connecticut Planning Region, Connecticut, 06877, United States",
+"matched": "424 Main St, Ridgefield, CT 06877",
+"precision": 0
+},
+"194 washington st": {
+"lat": 41.7566548,
+"lon": -72.6821854,
+"display": "194, Washington Street, Jefferson\u2013Seymour Historic District, Frog Hollow, Clay Arsenal, Hartford, Connecticut, 06106, United States",
+"matched": "194 Washington St",
+"precision": 0
+},
+"15 backus avenue,": {
+"lat": 41.3687658,
+"lon": -73.4929058,
+"display": "15, Backus Avenue, Miry Brook, Danbury, Western Connecticut Planning Region, Connecticut, 06810, United States",
+"matched": "15 Backus Avenue",
+"precision": 0
+},
+"181 mamaroneck avenue": {
+"lat": 41.0283543,
+"lon": -73.7644817,
+"display": "181, Mamaroneck Avenue, City of White Plains, Westchester County, New York, 10601, United States",
+"matched": "181 Mamaroneck Avenue",
+"precision": 0
+},
+"2402 ny-32": {
+"lat": 41.4471874,
+"lon": -74.0561832,
+"display": "Brothers BBQ, 2402, State Route 32, Firthcliffe Heights, Town of New Windsor, Orange County, New York, 12553, United States",
+"matched": "2402 NY-32",
+"precision": 0
+},
+"152 mamaroneck ave": {
+"lat": 41.0287858,
+"lon": -73.7653395,
+"display": "152, Mamaroneck Avenue, City of White Plains, Westchester County, New York, 10601, United States",
+"matched": "152 Mamaroneck Ave",
+"precision": 0
+},
+"4661 palisades center dr.": {
+"lat": 41.0971202,
+"lon": -73.9548124,
+"display": "4661, Palisades Center Drive, Central Nyack, West Nyack, Town of Clarkstown, Rockland County, New York, 10994, United States",
+"matched": "4661 Palisades Center Dr.",
+"precision": 0
+},
+"route 9": {
+"lat": 33.8696342,
+"lon": 35.5432372,
+"display": "\u0637\u0631\u064a\u0642 9, \u062f\u0643\u0648\u0627\u0646\u0629, \u0642\u0636\u0627\u0621 \u0627\u0644\u0645\u062a\u0646, \u0645\u062d\u0627\u0641\u0638\u0629 \u062c\u0628\u0644 \u0644\u0628\u0646\u0627\u0646, 2703, \u0644\u0628\u0646\u0627\u0646",
+"matched": "Route 9",
+"precision": 0
+},
+"2 churchill st.": {
+"lat": -37.7021555,
+"lon": 144.9204864,
+"display": "2, Churchill Street, Glenroy, Melbourne, Victoria, 3046, Australia",
+"matched": "2 churchill St.",
+"precision": 0
+},
+"kensico dam park": {
+"lat": 41.0722463,
+"lon": -73.7663936,
+"display": "Kensico Dam Plaza, 1, North White Plains, Town of North Castle, Westchester County, New York, United States",
+"matched": "Kensico Dam Park",
+"precision": 0
+},
+"to be advised to attendees": null,
+"2087 u.s. 9w": {
+"lat": 49.6746743,
+"lon": 9.5585074,
+"display": "Unterer See, Uissigheim, K\u00fclsheim, Main-Tauber-Kreis, Baden-W\u00fcrttemberg, 97900, Deutschland",
+"matched": "2087 U.S. 9W",
+"precision": 0
+},
+"3206 bear mountain-beacon hwy": {
+"lat": 41.4396868,
+"lon": -73.9736921,
+"display": "3206, Bear Mountain-Beacon Highway, Town of Philipstown, Putnam County, New York, 10516, United States",
+"matched": "3206 Bear Mountain-Beacon Hwy",
+"precision": 0
+},
+"rte 9d": {
+"lat": 41.3694526,
+"lon": -73.9476435,
+"display": "Route 9D, Glenclyffe, Garrison, Town of Philipstown, Putnam County, New York, 10997, United States",
+"matched": "Rte 9D",
+"precision": 0
+},
+"265 federal road": {
+"lat": 41.446411,
+"lon": -73.4032593,
+"display": "265, Federal Road, Brookfield, Western Connecticut Planning Region, Connecticut, 06804, United States",
+"matched": "265 Federal Road",
+"precision": 0
+},
+"1348 rte 9w": {
+"lat": 41.6061923,
+"lon": -73.9708823,
+"display": "The Falcon, 1348, Route 9W, Marlboro, Town of Marlborough, Ulster County, New York, 12528, United States",
+"matched": "1348 Rte 9W",
+"precision": 0
+},
+"15 ethan allen hwy": {
+"lat": 41.2654505,
+"lon": -73.4413017,
+"display": "Soccer & Rugby Imports, 15, Ethan Allen Highway, Branchville, Ridgefield, Western Connecticut Planning Region, Connecticut, 06877, United States",
+"matched": "15 Ethan Allen Hwy",
+"precision": 0
+},
+"6636 springbrook ave, rte. 9,": null,
+"online event": null,
+"125 westchester ave": {
+"lat": 41.1237985,
+"lon": -73.7745645,
+"display": "125, Westchester Avenue, Thornwood, Town of Mount Pleasant, Westchester County, New York, 10594, United States",
+"matched": "125 Westchester Ave",
+"precision": 0
+},
+"82 john st": {
+"lat": -33.8203308,
+"lon": 151.0468504,
+"display": "82, John Street, Rydalmere, Sydney, New South Wales, 2116, Australia",
+"matched": "82 John St",
+"precision": 0
+},
+"6565 spring brook avenue,": {
+"lat": 41.937261,
+"lon": -73.91003,
+"display": "Rhinebeck Spa Nails, 6565, Spring Brook Avenue, Village of Rhinebeck, Town of Rhinebeck, Dutchess County, New York, 12572, United States",
+"matched": "6565 spring Brook avenue",
+"precision": 0
+},
+"6565 spring brook avenue ,": {
+"lat": 41.937261,
+"lon": -73.91003,
+"display": "Rhinebeck Spa Nails, 6565, Spring Brook Avenue, Village of Rhinebeck, Town of Rhinebeck, Dutchess County, New York, 12572, United States",
+"matched": "6565 spring Brook avenue",
+"precision": 0
+},
+"330 boston post rd": {
+"lat": 41.2635523,
+"lon": -73.0046539,
+"display": "330, Boston Post Road, Orange, South Central Connecticut Planning Region, Connecticut, 06477, United States",
+"matched": "330 Boston Post Rd",
+"precision": 0
+},
+"487 delaware ave": {
+"lat": 43.66972,
+"lon": -79.43126,
+"display": "487, Delaware Avenue, Dovercourt Village, Davenport, Toronto, Golden Horseshoe, Ontario, M6H 1Z6, Canada",
+"matched": "487 Delaware Ave",
+"precision": 0
+},
+"400 ridge road": {
+"lat": 41.2648177,
+"lon": -73.04161,
+"display": "400, Ridge Road, Orange, South Central Connecticut Planning Region, Connecticut, 06477, United States",
+"matched": "400 Ridge Road",
+"precision": 0
+},
+"end of washington st. at the waterfront": null,
+"659 danbury rd": {
+"lat": 41.2396514,
+"lon": -73.432966,
+"display": "659, Danbury Road, Wilton, Western Connecticut Planning Region, Connecticut, 06897, United States",
+"matched": "659 Danbury Rd",
+"precision": 0
+},
+"1 duchess terrance": null,
+"244 fair street": {
+"lat": 41.9327423,
+"lon": -74.0173789,
+"display": "Ulster County Office Building, 244, Fair Street, Stockade District, City of Kingston, Ulster County, New York, 12401, United States",
+"matched": "244 Fair Street",
+"precision": 0
+},
+"185 east flat hill road": {
+"lat": 41.466597,
+"lon": -73.2591384,
+"display": "185, East Flat Hill Road, South Britain Historic District, Traditions, South Britain, Southbury, Naugatuck Valley Planning Region, Connecticut, 06488, United States",
+"matched": "185 East Flat Hill Road",
+"precision": 0
+},
+"723 south broadway": {
+"lat": 39.2829215,
+"lon": -76.5928143,
+"display": "723, South Broadway, Fell's Point, Baltimore, Maryland, 21231, United States",
+"matched": "723 South Broadway",
+"precision": 0
+},
+"490 danbury road": {
+"lat": 41.2232816,
+"lon": -73.4255194,
+"display": "490, Danbury Road, Cannondale, Wilton, Western Connecticut Planning Region, Connecticut, 06897, United States",
+"matched": "490 Danbury Road",
+"precision": 0
+},
+"1079 ny-35": {
+"lat": 41.2774801,
+"lon": -73.5888013,
+"display": "1079, Old Post Road, South Salem, Town of Lewisboro, Westchester County, New York, 10590, United States",
+"matched": "1079 NY-35",
+"precision": 0
+},
+"156 highland avenue": {
+"lat": 42.913908,
+"lon": -78.8755343,
+"display": "156, Highland Avenue, Elmwood Village, West Side, Buffalo, Erie County, New York, 14222, United States",
+"matched": "156 Highland Avenue",
+"precision": 0
+},
+"42 bayview avenue,": {
+"lat": -38.3797919,
+"lon": 144.9145186,
+"display": "42, Bayview Avenue, Rosebud, Melbourne, Victoria, 3939, Australia",
+"matched": "42 Bayview Avenue",
+"precision": 0
+},
+"225 ct-37": {
+"lat": 41.5295702,
+"lon": -73.5094941,
+"display": "225, Route 37 South, Sherman, Western Connecticut Planning Region, Connecticut, 06784, United States",
+"matched": "225 CT-37",
+"precision": 0
+},
+"149 aaron ct": {
+"lat": 38.0714846,
+"lon": -122.560504,
+"display": "149, Aaron Court, Rafael Village, Novato, Marin County, California, 94949, United States",
+"matched": "149 Aaron Ct",
+"precision": 0
+},
+"75-77 spring street": {
+"lat": 36.403657,
+"lon": -93.7373044,
+"display": "75-77, Spring Street, Eureka Springs, Carroll County, Arkansas, 72632, United States",
+"matched": "75-77 Spring Street",
+"precision": 0
+},
+"astronomy center & planetarium, 151 scofieldtown road, stamford, ct": {
+"lat": 41.1240443,
+"lon": -73.5480499,
+"display": "151, Scofieldtown Road, Scofieldtown, North Stamford, Stamford, Western Connecticut Planning Region, Connecticut, 06903, United States",
+"matched": "151 Scofieldtown Road, Stamford, CT",
+"precision": 1
+},
+"110 route 303": {
+"lat": 45.5836255,
+"lon": -76.6369575,
+"display": "110, Route 303, Clarendon, Pontiac, Outaouais, Qu\u00e9bec, J0X 2T0, Canada",
+"matched": "110 Route 303",
+"precision": 0
+},
+"200 central avenue,": {
+"lat": 40.6983326,
+"lon": -73.92596,
+"display": "200, Central Avenue, Bushwick, Brooklyn, Kings County, New York, 11221, United States",
+"matched": "200 Central Avenue",
+"precision": 0
+},
+"midtown campus, 181 white st., danbury, ct": {
+"lat": 41.4004954,
+"lon": -73.445022,
+"display": "Western Connecticut State University, 181, White Street, Main Street Historic District, Germantown, Danbury, Western Connecticut Planning Region, Connecticut, 06810, United States",
+"matched": "181 White St., Danbury, CT",
+"precision": 1
+},
+"mount saint mary college": {
+"lat": 41.5118052,
+"lon": -74.0129321,
+"display": "Mount Saint Mary College, Liberty Street, Varick Homes, City of Newburgh, Orange County, New York, 12550, United States",
+"matched": "Mount Saint Mary College",
+"precision": 0
+},
+"suny westchester yonkers, 843 kimball avenue, yonkers, ny, 10704, united states": {
+"lat": 40.9287424,
+"lon": -73.8490589,
+"display": "843, Kimball Avenue, City of Yonkers, Westchester County, New York, 10704, United States",
+"matched": "843 Kimball Avenue, Yonkers, NY",
+"precision": 1
+},
+"midtown old main, 181 white street, danbury, ct": {
+"lat": 41.4004954,
+"lon": -73.445022,
+"display": "Western Connecticut State University, 181, White Street, Main Street Historic District, Germantown, Danbury, Western Connecticut Planning Region, Connecticut, 06810, United States",
+"matched": "181 White Street, Danbury, CT",
+"precision": 1
+},
+"westside campus center north plaza, 43 lake ave. extension, danbury, ct": {
+"lat": 41.3861161,
+"lon": -73.4966139,
+"display": "43, Lake Avenue Extension, Mill Plain, Danbury, Western Connecticut Planning Region, Connecticut, 06810, United States",
+"matched": "43 Lake Ave. Extension, Danbury, CT",
+"precision": 1
+},
+"bixler hall, bixler mail room": null,
+"egan school of nursing & health studies, 210": null,
+"virtual": {
+"lat": 57.9110833,
+"lon": 59.9823317,
+"display": "Virtual, \u043f\u0440\u043e\u0441\u043f\u0435\u043a\u0442 \u041b\u0435\u043d\u0438\u043d\u0430, \u041b\u0435\u043d\u0438\u043d\u0441\u043a\u0438\u0439 \u0440\u0430\u0439\u043e\u043d, \u041d\u0438\u0436\u043d\u0438\u0439 \u0422\u0430\u0433\u0438\u043b, \u043c\u0443\u043d\u0438\u0446\u0438\u043f\u0430\u043b\u044c\u043d\u044b\u0439 \u043e\u043a\u0440\u0443\u0433 \u041d\u0438\u0436\u043d\u0438\u0439 \u0422\u0430\u0433\u0438\u043b, \u0421\u0432\u0435\u0440\u0434\u043b\u043e\u0432\u0441\u043a\u0430\u044f \u043e\u0431\u043b\u0430\u0441\u0442\u044c, \u0423\u0440\u0430\u043b\u044c\u0441\u043a\u0438\u0439 \u0444\u0435\u0434\u0435\u0440\u0430\u043b\u044c\u043d\u044b\u0439 \u043e\u043a\u0440\u0443\u0433, 622034, \u0420\u043e\u0441\u0441\u0438\u044f",
+"matched": "Virtual",
+"precision": 0
+},
+"hudson hall, glass lounge": null,
+"online": {
+"lat": 43.5904719,
+"lon": 3.8595132,
+"display": "Online, Croix d'Argent, Montpellier, H\u00e9rault, Occitanie, France m\u00e9tropolitaine, France",
+"matched": "Online",
+"precision": 0
+},
+"hudson hall, auditorium": null,
+"mahaiwe performing arts center, 14 castle street, great barrington, ma, 01230": {
+"lat": 42.1942002,
+"lon": -73.3635508,
+"display": "Mahaiwe Performing Arts Center, 14, Castle Street, Berkshire Heights, Great Barrington, Berkshire County, Massachusetts, 01230, United States",
+"matched": "Mahaiwe Performing Arts Center, 14 Castle Street, Great Barrington, MA",
+"precision": 0
+},
+"lakewood, n.j.": {
+"lat": 40.0940995,
+"lon": -74.2149889,
+"display": "Lakewood Township, Ocean County, New Jersey, 08701, United States",
+"matched": "Lakewood, N.J.",
+"precision": 0
+},
+"dominican center, cafe": null,
+"university hall atrium": null,
+"chapel of the most holy rosary": {
+"lat": 52.8014338,
+"lon": -6.7331348,
+"display": "Church of the Most Holy Rosary, New Chapel Lane, Tullowphelim, Tullow, The Municipal District of Tullow, County Carlow, Leinster, \u00c9ire / Ireland",
+"matched": "Chapel of the Most Holy Rosary",
+"precision": 0
+},
+"sod field, hudson hall rain location": null,
+"suny westchester peekskill, 27 north division street, peekskill, ny, 10566, united states": {
+"lat": 41.2913802,
+"lon": -73.9195198,
+"display": "27, North Division Street, City of Peekskill, Westchester County, New York, 10566, United States",
+"matched": "27 North Division Street, Peekskill, NY",
+"precision": 1
+},
+"sod field": {
+"lat": 42.6172171,
+"lon": -83.5575384,
+"display": "Sod Farm Field Trial Area, White Lake Charter Township, Oakland County, Michigan, United States",
+"matched": "Sod Field",
+"precision": 0
+},
+"wolves den (mt student center, lower level), 181 white st., danbury, ct": {
+"lat": 41.394817,
+"lon": -73.4540111,
+"display": "Danbury, Western Connecticut Planning Region, Connecticut, United States",
+"matched": "Danbury, CT",
+"precision": 3
+},
+"david a. beckerman recreation center": {
+"lat": 41.2913765,
+"lon": -72.9628676,
+"display": "David A. Beckerman Recreation Center, Boston Post Road, Allingtown, West Haven, South Central Connecticut Planning Region, Connecticut, 06516, United States",
+"matched": "David A. Beckerman Recreation Center",
+"precision": 0
+},
+"hudson hall, parking lot": null,
+"midtown campus quad, 181 white street, danbury, ct": {
+"lat": 41.4004954,
+"lon": -73.445022,
+"display": "Western Connecticut State University, 181, White Street, Main Street Historic District, Germantown, Danbury, Western Connecticut Planning Region, Connecticut, 06810, United States",
+"matched": "181 White Street, Danbury, CT",
+"precision": 1
+},
+"suny westchester mount vernon, 17 south fifth avenue, mount vernon, ny, 10550, united states": {
+"lat": 40.9125085,
+"lon": -73.8386504,
+"display": "City of Mount Vernon, Westchester County, New York, United States",
+"matched": "Mount Vernon, NY",
+"precision": 3
+},
+"cambridge, ma": {
+"lat": 42.3656347,
+"lon": -71.1040018,
+"display": "Cambridge, Middlesex County, Massachusetts, United States",
+"matched": "Cambridge, MA",
+"precision": 0
+},
+"westside campus center ballroom, 43 lake ave. extension, danbury, ct": {
+"lat": 41.3861161,
+"lon": -73.4966139,
+"display": "43, Lake Avenue Extension, Mill Plain, Danbury, Western Connecticut Planning Region, Connecticut, 06810, United States",
+"matched": "43 Lake Ave. Extension, Danbury, CT",
+"precision": 1
+},
+"storrs, conn.": {
+"lat": 41.8085955,
+"lon": -72.2512807,
+"display": "Storrs, Mansfield, Capitol Planning Region, Connecticut, United States",
+"matched": "Storrs, Conn.",
+"precision": 0
+},
+"bob ford field at tom & mary casey stadium": null,
+"various locations": null,
+"rec field \u2013 science building lawn, 181 white st., danbury, ct": {
+"lat": 41.4004954,
+"lon": -73.445022,
+"display": "Western Connecticut State University, 181, White Street, Main Street Historic District, Germantown, Danbury, Western Connecticut Planning Region, Connecticut, 06810, United States",
+"matched": "181 White St., Danbury, CT",
+"precision": 1
+},
+"aquinas hall, atrium": null,
+"knoxville, tenn.": {
+"lat": 35.9603948,
+"lon": -83.9210261,
+"display": "Knoxville, Knox County, East Tennessee, Tennessee, United States",
+"matched": "Knoxville, Tenn.",
+"precision": 0
+},
+"west haven, conn., ralph f. dellacamera stadium": null,
+"wilkes-barre, pa": {
+"lat": 41.2464824,
+"lon": -75.8817316,
+"display": "Wilkes-Barre, Luzerne County, Pennsylvania, United States",
+"matched": "Wilkes-Barre, PA",
+"precision": 0
+},
+"gender & sexuality resource center (gsrc), campus center cc 190": null,
+"suny westchester valhalla, 75 grasslands road, valhalla, ny, 10595, united states": {
+"lat": 41.0689722,
+"lon": -73.7898784,
+"display": "75, Grasslands Road, Valhalla, Town of Mount Pleasant, Westchester County, New York, 10595, United States",
+"matched": "75 Grasslands Road, Valhalla, NY",
+"precision": 1
+},
+"mount saint mary college, tennis courts": null,
+"downtown bookstore, fairfield forest": null,
+"west haven, ct, ralph f. dellacamera stadium": null,
+"scranton, pa": {
+"lat": 41.4086874,
+"lon": -75.6621294,
+"display": "Scranton, Lackawanna County, Pennsylvania, United States",
+"matched": "Scranton, PA",
+"precision": 0
+},
+"egan chapel of st. ignatius loyola": {
+"lat": 41.1579842,
+"lon": -73.257784,
+"display": "Egan Chapel of Saint Ignatius Loyola, Bellarmine Road, Fairfield, Greater Bridgeport Planning Region, Connecticut, 06824, United States",
+"matched": "Egan Chapel of St. Ignatius Loyola",
+"precision": 0
+},
+"rosary hall chapel, 480 western highway, blauvelt, ny, 10913, united states": {
+"lat": 41.078064,
+"lon": -73.9633235,
+"display": "Western Highway North, Blauvelt, Town of Orangetown, Rockland County, New York, 10913, United States",
+"matched": "480 Western Highway, Blauvelt, NY",
+"precision": 1
+},
+"west haven, conn., kathy zolad stadium": null,
+"berkshire hall lawn, 181 white st., danbury, ct": {
+"lat": 41.4004954,
+"lon": -73.445022,
+"display": "Western Connecticut State University, 181, White Street, Main Street Historic District, Germantown, Danbury, Western Connecticut Planning Region, Connecticut, 06810, United States",
+"matched": "181 White St., Danbury, CT",
+"precision": 1
+},
+"aquinas hall, outside the view": null,
+"hennessy center, 495 western highway, blauvelt, ny, 10913, united states": {
+"lat": 41.0541367,
+"lon": -73.9525411,
+"display": "495, Western Highway, Blauvelt, Town of Orangetown, Rockland County, New York, 10913, United States",
+"matched": "495 Western Highway, Blauvelt, NY",
+"precision": 1
+},
+"lecture center concourse, lcs": null,
+"taconic building, ta 302": null,
+"bucknall theater": null,
+"westside athletic complex, 43 lake ave. extension, danbury, ct": {
+"lat": 41.3861161,
+"lon": -73.4966139,
+"display": "43, Lake Avenue Extension, Mill Plain, Danbury, Western Connecticut Planning Region, Connecticut, 06810, United States",
+"matched": "43 Lake Ave. Extension, Danbury, CT",
+"precision": 1
+},
+"newburgh, ny, kaplan field": null,
+"newburgh, ny, kaplan center": {
+"lat": 41.51106,
+"lon": -74.0141048,
+"display": "Kaplan Family Library/Dominican Center, 320, Powell Avenue, Varick Homes, City of Newburgh, Orange County, New York, 12550, United States",
+"matched": "Newburgh, NY, Kaplan Center",
+"precision": 0
+},
+"fairfield, conn., lessing field": {
+"lat": 41.1616939,
+"lon": -73.2581919,
+"display": "Lessing Field, Leeber Road, Fairfield, Greater Bridgeport Planning Region, Connecticut, 06824, United States",
+"matched": "Fairfield, Conn., Lessing Field",
+"precision": 0
+},
+"etec, b042": {
+"lat": -1.3850876,
+"lon": -48.4695578,
+"display": "ETEC, Val-de-C\u00e3es, Entroncamento, Bel\u00e9m, Par\u00e1, Regi\u00e3o Norte, Brasil",
+"matched": "ETEC, B042",
+"precision": 0
+},
+"west haven, conn., the hazell center": null,
+"midtown student center, 181 white st., danbury, ct": {
+"lat": 41.4004954,
+"lon": -73.445022,
+"display": "Western Connecticut State University, 181, White Street, Main Street Historic District, Germantown, Danbury, Western Connecticut Planning Region, Connecticut, 06810, United States",
+"matched": "181 White St., Danbury, CT",
+"precision": 1
+},
+"bellarmine hall": {
+"lat": 42.0033232,
+"lon": -87.6612306,
+"display": "Bellarmine Hall, 6628, North Sheridan Road, Glenwood Arts District, Rogers Park, Chicago, Rogers Park Township, Cook County, Illinois, 60626, United States",
+"matched": "Bellarmine Hall",
+"precision": 0
+},
+"aquila's nest vineyards": null,
+"teaneck, nj": {
+"lat": 40.8860164,
+"lon": -74.0072568,
+"display": "Teaneck Township, Bergen County, New Jersey, United States",
+"matched": "Teaneck, NJ",
+"precision": 0
+},
+"performing arts center pac main theatre": null,
+"career success center, westside campus center suite 300, 43 lake ave. extension, danbury": {
+"lat": 41.3861161,
+"lon": -73.4966139,
+"display": "43, Lake Avenue Extension, Mill Plain, Danbury, Western Connecticut Planning Region, Connecticut, 06810, United States",
+"matched": "43 Lake Ave. Extension, Danbury",
+"precision": 3
+},
+"massry school of business": null,
+"white hall 122, 181 white st., danbury, ct": {
+"lat": 41.4004954,
+"lon": -73.445022,
+"display": "Western Connecticut State University, 181, White Street, Main Street Historic District, Germantown, Danbury, Western Connecticut Planning Region, Connecticut, 06810, United States",
+"matched": "181 White St., Danbury, CT",
+"precision": 1
+},
+"campus center cc multipurpose room": null,
+"newburgh, ny, mount saint mary college tennis courts": null,
+"poughkeepsie, n.y.": {
+"lat": 41.7065539,
+"lon": -73.9283672,
+"display": "City of Poughkeepsie, Dutchess County, New York, 12601, United States",
+"matched": "Poughkeepsie, N.Y.",
+"precision": 0
+},
+"gettysburg, pa": {
+"lat": 39.8308973,
+"lon": -77.231012,
+"display": "Gettysburg, Adams County, Pennsylvania, United States",
+"matched": "Gettysburg, PA",
+"precision": 0
+},
+"cambridge, mass.": {
+"lat": 42.3656347,
+"lon": -71.1040018,
+"display": "Cambridge, Middlesex County, Massachusetts, United States",
+"matched": "Cambridge, Mass.",
+"precision": 0
+},
+"boston, mass.": {
+"lat": 42.3588336,
+"lon": -71.0578303,
+"display": "Boston, Suffolk County, Massachusetts, United States",
+"matched": "Boston, Mass.",
+"precision": 0
+},
+"new haven, ct": {
+"lat": 41.3082138,
+"lon": -72.9250518,
+"display": "New Haven, South Central Connecticut Planning Region, Connecticut, United States",
+"matched": "New Haven, CT",
+"precision": 0
+},
+"new york, n.y.": {
+"lat": 40.7127281,
+"lon": -74.0060152,
+"display": "New York, United States",
+"matched": "New York, N.Y.",
+"precision": 0
+},
+"washington, dc": {
+"lat": 38.8950982,
+"lon": -77.0363849,
+"display": "Washington, District of Columbia, United States",
+"matched": "Washington, DC",
+"precision": 0
+},
+"dimenna-nyselius library": {
+"lat": 41.1576938,
+"lon": -73.2558973,
+"display": "DiMenna-Nyselius Library, McInnes Road, Fairfield, Greater Bridgeport Planning Region, Connecticut, 06824, United States",
+"matched": "DiMenna-Nyselius Library",
+"precision": 0
+},
+"lawn \u2013 litchfield/newbury, 181 white st., danbury, ct, 06810": {
+"lat": 41.4004954,
+"lon": -73.445022,
+"display": "Western Connecticut State University, 181, White Street, Main Street Historic District, Germantown, Danbury, Western Connecticut Planning Region, Connecticut, 06810, United States",
+"matched": "181 White St., Danbury, CT",
+"precision": 1
+},
+"rockland community college, technology center, ellipse, 145 college rd, suffern, ny, 10901, united states": {
+"lat": 41.1330926,
+"lon": -74.0886395,
+"display": "Rockland Community College, 145, College Road, Village of Suffern, Town of Ramapo, Rockland County, New York, 10901, United States",
+"matched": "Rockland Community College, Suffern, NY",
+"precision": 2
+},
+"aquinas/mst atrium": null,
+"new paltz, ny": {
+"lat": 41.7464972,
+"lon": -74.0844894,
+"display": "Town of New Paltz, Ulster County, New York, 12561, United States",
+"matched": "New Paltz, NY",
+"precision": 0
+},
+"bronx, ny": {
+"lat": 40.8466508,
+"lon": -73.8785937,
+"display": "The Bronx, Bronx County, New York, United States",
+"matched": "Bronx, NY",
+"precision": 0
+},
+"delhi, ny": {
+"lat": 42.2781401,
+"lon": -74.9159946,
+"display": "Village of Delhi, Town of Delhi, Delaware County, New York, United States",
+"matched": "Delhi, NY",
+"precision": 0
+},
+"humanities hu 290": {
+"lat": 27.7132307,
+"lon": 111.9969151,
+"display": "\u6e56\u5357\u4eba\u6587\u79d1\u6280\u5b66\u9662, \u5b66\u9662\u8def, \u5927\u79d1\u8857\u9053, \u5a04\u661f\u533a, \u5a04\u5e95\u5e02, \u6e56\u5357\u7701, 417000, \u4e2d\u56fd",
+"matched": "Humanities HU 290",
+"precision": 0
+},
+"westside commuter lot, 43 lake ave. extension, danbury, ct": {
+"lat": 41.3861161,
+"lon": -73.4966139,
+"display": "43, Lake Avenue Extension, Mill Plain, Danbury, Western Connecticut Planning Region, Connecticut, 06810, United States",
+"matched": "43 Lake Ave. Extension, Danbury, CT",
+"precision": 1
+},
+"westside tennis courts, 43 lake ave. extension, danbury, ct": {
+"lat": 41.3861161,
+"lon": -73.4966139,
+"display": "43, Lake Avenue Extension, Mill Plain, Danbury, Western Connecticut Planning Region, Connecticut, 06810, United States",
+"matched": "43 Lake Ave. Extension, Danbury, CT",
+"precision": 1
+},
+"bellarmine campus (lawn), bellarmine campus": null,
+"art gallery, vpac, 43 lake ave. extension, danbury, ct": {
+"lat": 41.394817,
+"lon": -73.4540111,
+"display": "Danbury, Western Connecticut Planning Region, Connecticut, United States",
+"matched": "Danbury, CT",
+"precision": 3
+},
+"catskill 204": {
+"lat": 42.2208752,
+"lon": -73.8673136,
+"display": "204, Water Street, Village of Catskill, Town of Catskill, Greene County, New York, 12414, United States",
+"matched": "Catskill 204",
+"precision": 0
+},
+"regina a. quick center for the arts kelley theatre": null,
+"hanover, n.h.": {
+"lat": 43.7023545,
+"lon": -72.2892164,
+"display": "Hanover, Grafton County, New Hampshire, United States",
+"matched": "Hanover, N.H.",
+"precision": 0
+},
+"barone campus center, dogwood room": null,
+"fairfield university": {
+"lat": 41.1596756,
+"lon": -73.2574031,
+"display": "Fairfield University, 1073, North Benson Road, Fairfield, Greater Bridgeport Planning Region, Connecticut, 06824, United States",
+"matched": "Fairfield University",
+"precision": 0
+},
+"fairfield, conn.": {
+"lat": 41.1412078,
+"lon": -73.2637258,
+"display": "Fairfield, Greater Bridgeport Planning Region, Connecticut, United States",
+"matched": "Fairfield, Conn.",
+"precision": 0
+},
+"outside, stag statue, main campus": null,
+"hempstead, n.y.": {
+"lat": 40.6736812,
+"lon": -73.6190736,
+"display": "Town of Hempstead, Nassau County, New York, United States",
+"matched": "Hempstead, N.Y.",
+"precision": 0
+},
+"hamden, conn.": {
+"lat": 41.3836233,
+"lon": -72.9020069,
+"display": "Hamden, South Central Connecticut Planning Region, Connecticut, United States",
+"matched": "Hamden, Conn.",
+"precision": 0
+},
+"state quad, field": null,
+"yankee stadium": {
+"lat": 40.8295828,
+"lon": -73.9265212,
+"display": "Yankee Stadium, 1, East 161st Street, The Bronx, Bronx County, New York, 10451, United States",
+"matched": "Yankee Stadium",
+"precision": 0
+},
+"brooklawn country club": {
+"lat": 41.1883072,
+"lon": -73.2250322,
+"display": "Brooklawn Country Club, 500, Algonquin Road, Melville Village, Fairfield, Greater Bridgeport Planning Region, Connecticut, 06825, United States",
+"matched": "Brooklawn Country Club",
+"precision": 0
+},
+"regina a. quick center for the arts": {
+"lat": 41.1561561,
+"lon": -73.2554702,
+"display": "Regina A Quick Center for the Arts, McInnes Road, Fairfield, Greater Bridgeport Planning Region, Connecticut, 06824, United States",
+"matched": "Regina A. Quick Center for the Arts",
+"precision": 0
+},
+"page hall auditorium, downtown campus": null,
+"minerva room - reading room, university main library": null,
+"thrive hub - campus center west": null,
+"etec, b037": {
+"lat": -1.3850876,
+"lon": -48.4695578,
+"display": "ETEC, Val-de-C\u00e3es, Entroncamento, Bel\u00e9m, Par\u00e1, Regi\u00e3o Norte, Brasil",
+"matched": "ETEC, B037",
+"precision": 0
+},
+"the admiral": {
+"lat": -33.997871,
+"lon": 25.6616782,
+"display": "The Admiral, Nelson Mandela Bay Ward 1, Gqeberha, Nelson Mandela Bay Metropolitan Municipality, Eastern Cape, 6031, South Africa",
+"matched": "The Admiral",
+"precision": 0
+},
+"wayne, nj": {
+"lat": 40.9491723,
+"lon": -74.2376802,
+"display": "Wayne, Passaic County, New Jersey, 07470, United States",
+"matched": "Wayne, NJ",
+"precision": 0
+},
+"university main library, library main entrance": null,
+"performing arts center pac recital hall": null,
+"fairfield university, dolan school of business, event hall": null,
+"fairfield, conn., leo d. mahoney arena": null,
+"fairfield university art museum, bellarmine hall, bellarmine hall galleries": null,
+"regina a. quick center for the arts wien experimental theatre": null,
+"fairfield, conn., wac tennis courts": null,
+"guilderland, n.y., pinehaven country club": {
+"lat": 42.7180964,
+"lon": -73.9003466,
+"display": "Pinehaven Country Club, Papa Place, Town of Guilderland, Albany County, New York, 12303, United States",
+"matched": "Guilderland, N.Y., Pinehaven Country Club",
+"precision": 0
+},
+"bellarmine hall, great hall": null,
+"indigo room, 20 castle street, great barrington, ma, 01230, united states": {
+"lat": 42.1940587,
+"lon": -73.3635446,
+"display": "Castle Street, Berkshire Heights, Great Barrington, Berkshire County, Massachusetts, 01230, United States",
+"matched": "20 Castle Street, Great Barrington, MA",
+"precision": 1
+},
+"middletown, n.y.": {
+"lat": 41.45011,
+"lon": -74.4164807,
+"display": "City of Middletown, Orange County, New York, 10940, United States",
+"matched": "Middletown, N.Y.",
+"precision": 0
+},
+"sekonk, mass.": null,
+"loudonville, ny": {
+"lat": 42.7032355,
+"lon": -73.7636489,
+"display": "Loudonville, Town of Colonie, Albany County, New York, United States",
+"matched": "Loudonville, NY",
+"precision": 0
+},
+"dr. davies farm, 306 ny-304, congers, new york, 10920": {
+"lat": 41.1711362,
+"lon": -73.9507989,
+"display": "306, State Highway 304, Congers, Town of Clarkstown, Rockland County, New York, 10920, United States",
+"matched": "306 NY-304, Congers, New York",
+"precision": 1
+},
+"blue hill golf course, pearl river, ny, united states": {
+"lat": 41.0491021,
+"lon": -73.9936553,
+"display": "Blue Hill Golf Course, Veterans Memorial Drive, Pearl River, Town of Orangetown, Rockland County, New York, 10965, United States",
+"matched": "Blue Hill Golf Course, Pearl River, NY",
+"precision": 0
+},
+"barone campus center, oakroom": null,
+"aloysius p. kelley center, presentation room": null,
+"dimenna-nyselius library, 114": {
+"lat": 41.1576938,
+"lon": -73.2558973,
+"display": "DiMenna-Nyselius Library, McInnes Road, Fairfield, Greater Bridgeport Planning Region, Connecticut, 06824, United States",
+"matched": "DiMenna-Nyselius Library, 114",
+"precision": 0
+},
+"etec": {
+"lat": -1.3850876,
+"lon": -48.4695578,
+"display": "ETEC, Val-de-C\u00e3es, Entroncamento, Bel\u00e9m, Par\u00e1, Regi\u00e3o Norte, Brasil",
+"matched": "ETEC",
+"precision": 0
+},
+"brooklyn, ny": {
+"lat": 40.6526006,
+"lon": -73.9497211,
+"display": "Brooklyn, Kings County, New York, United States",
+"matched": "Brooklyn, NY",
+"precision": 0
+},
+"charles f. dolan school of business, dolan school of business event hall": null,
+"barone campus center, oak room and dogwood room": null,
+"fairfield university, bellarmine hall galleries, museum classroom": null,
+"dolan school of business, main campus": null,
+"west haven, conn.": {
+"lat": 41.2706527,
+"lon": -72.9470471,
+"display": "West Haven, South Central Connecticut Planning Region, Connecticut, 06516, United States",
+"matched": "West Haven, Conn.",
+"precision": 0
+},
+"west point, n.y.": {
+"lat": 41.3912693,
+"lon": -73.9658803,
+"display": "United States Military Academy, 845, Brewerton Road, Town of Highlands, Orange County, New York, 10996, United States",
+"matched": "West Point, N.Y.",
+"precision": 0
+},
+"niagara university, n.y.": {
+"lat": 43.1366031,
+"lon": -79.0348892,
+"display": "Niagara University, Vincentian Drive, Town of Lewiston, Niagara County, New York, 14109, United States",
+"matched": "Niagara University, N.Y.",
+"precision": 0
+},
+"gym - physical education": {
+"lat": 10.5539421,
+"lon": 76.2242923,
+"display": "Dept. of Physical Education and gym, Viyyur - Thanikkudam Road, Viyyur, Thrissur, Kerala, 680009, India",
+"matched": "Gym - Physical Education",
+"precision": 0
+},
+"farmingdale, ny": {
+"lat": 40.7328811,
+"lon": -73.4458564,
+"display": "Village of Farmingdale, Town of Oyster Bay, Nassau County, New York, United States",
+"matched": "Farmingdale, NY",
+"precision": 0
+},
+"patchogue, ny": {
+"lat": 40.7656539,
+"lon": -73.0151084,
+"display": "Village of Patchogue, Town of Brookhaven, Suffolk County, New York, United States",
+"matched": "Patchogue, NY",
+"precision": 0
+},
+"emmitsburg, md": {
+"lat": 39.7045417,
+"lon": -77.3269307,
+"display": "Emmitsburg, Frederick County, Maryland, United States",
+"matched": "Emmitsburg, MD",
+"precision": 0
+},
+"west hartford, ct": {
+"lat": 41.7620447,
+"lon": -72.7420399,
+"display": "West Hartford, Capitol Planning Region, Connecticut, United States",
+"matched": "West Hartford, CT",
+"precision": 0
+},
+"buffalo, n.y.": {
+"lat": 42.8864163,
+"lon": -78.8781493,
+"display": "Buffalo, Erie County, New York, United States",
+"matched": "Buffalo, N.Y.",
+"precision": 0
+},
+"hampden, mass.": {
+"lat": 42.1285315,
+"lon": -72.6063441,
+"display": "Hampden County, Massachusetts, United States",
+"matched": "Hampden, Mass.",
+"precision": 0
+},
+"throggs neck, ny": {
+"lat": 40.8230305,
+"lon": -73.8200756,
+"display": "Throggs Neck, The Bronx, Bronx County, New York, 10465, United States",
+"matched": "Throggs Neck, NY",
+"precision": 0
+},
+"annandale-on-hudson, ny": {
+"lat": 42.0128695,
+"lon": -73.9081901,
+"display": "Annandale-on-Hudson, Town of Red Hook, Dutchess County, New York, 12504, United States",
+"matched": "Annandale-on-Hudson, NY",
+"precision": 0
+},
+"fairfield, conn. (at shu)": null,
+"main campus": {
+"lat": 47.9006809,
+"lon": -122.3019919,
+"display": "Main Campus, 10801, Harbour Pointe Boulevard, Mukilteo, Snohomish County, Washington, 98275, United States",
+"matched": "Main Campus",
+"precision": 0
+},
+"jersey city, n.j.": {
+"lat": 40.7215682,
+"lon": -74.047455,
+"display": "Jersey City, Hudson County, New Jersey, United States",
+"matched": "Jersey City, N.J.",
+"precision": 0
+},
+"bethlehem, pa.": {
+"lat": -1.45056,
+"lon": -48.4682453,
+"display": "Bel\u00e9m, Par\u00e1, Regi\u00e3o Norte, Brasil",
+"matched": "Bethlehem, Pa.",
+"precision": 0
+},
+"fairfield, conn., recplex pool": null,
+"barone campus center  , bcc - dogwood room": null,
+"west haven, conn., new haven tennis courts": {
+"lat": 41.3534197,
+"lon": -73.0155545,
+"display": "Center Tennis Courts, Woodbridge, South Central Connecticut Planning Region, Connecticut, United States",
+"matched": "Conn., New Haven Tennis Courts",
+"precision": 1
+},
+"worcester, ma": {
+"lat": 42.2625621,
+"lon": -71.8018877,
+"display": "Worcester, Worcester County, Massachusetts, United States",
+"matched": "Worcester, MA",
+"precision": 0
+},
+"prusmack center, 3 campus drive, blauvelt, ny, united states": {
+"lat": 41.0530708,
+"lon": -73.9514571,
+"display": "3, Campus Drive, Blauvelt, Town of Orangetown, Rockland County, New York, 10913, United States",
+"matched": "3 Campus Drive, Blauvelt, NY",
+"precision": 1
+},
+"ijamsville, md.": {
+"lat": 39.3603809,
+"lon": -77.3227621,
+"display": "Ijamsville, Frederick County, Maryland, 21754, United States",
+"matched": "Ijamsville, Md.",
+"precision": 0
+},
+"boston park plaza": {
+"lat": 42.3515011,
+"lon": -71.0693963,
+"display": "Park Plaza, Downtown, Boston, Suffolk County, Massachusetts, 02117, United States",
+"matched": "Boston Park Plaza",
+"precision": 0
+},
+"new york, ny": {
+"lat": 40.7127281,
+"lon": -74.0060152,
+"display": "New York, United States",
+"matched": "New York, NY",
+"precision": 0
+},
+"kings point, ny": {
+"lat": 40.8197813,
+"lon": -73.7351337,
+"display": "Village of Kings Point, Town of North Hempstead, Nassau County, New York, 11024, United States",
+"matched": "Kings Point, NY",
+"precision": 0
+},
+"lecture center concourse, lcs, uptown campus": null,
+"poughkeepsie, ny": {
+"lat": 41.7065539,
+"lon": -73.9283672,
+"display": "City of Poughkeepsie, Dutchess County, New York, 12601, United States",
+"matched": "Poughkeepsie, NY",
+"precision": 0
+},
+"new haven, conn.": {
+"lat": 41.3082138,
+"lon": -72.9250518,
+"display": "New Haven, South Central Connecticut Planning Region, Connecticut, United States",
+"matched": "New Haven, Conn.",
+"precision": 0
+},
+"fairfield university - bellarmine hall,  bellarmine hall galleries": null,
+"smithfield, ri": {
+"lat": 41.9220433,
+"lon": -71.549507,
+"display": "Smithfield, Providence County, Rhode Island, United States",
+"matched": "Smithfield, RI",
+"precision": 0
+},
+"purchase, ny": {
+"lat": 41.0405953,
+"lon": -73.7144803,
+"display": "Purchase, Town/Village of Harrison, Westchester County, New York, 10577, United States",
+"matched": "Purchase, NY",
+"precision": 0
+},
+"great river golf club": {
+"lat": 41.274851,
+"lon": -73.0830108,
+"display": "Great River Golf Club, 130, Coram Lane, Milford, South Central Connecticut Planning Region, Connecticut, 06461, United States",
+"matched": "Great River Golf Club",
+"precision": 0
+},
+"emmitsburg, md.": {
+"lat": 39.7045417,
+"lon": -77.3269307,
+"display": "Emmitsburg, Frederick County, Maryland, United States",
+"matched": "Emmitsburg, Md.",
+"precision": 0
+},
+"delmar, n.y., normanside country club": {
+"lat": 42.6391722,
+"lon": -73.8162315,
+"display": "Normanside Country Club, Wedgewood Drive, Elsmere, Town of Bethlehem, Albany County, New York, 10254, United States",
+"matched": "Delmar, N.Y., Normanside Country Club",
+"precision": 0
+},
+"milford, conn.": {
+"lat": 41.2222218,
+"lon": -73.0570603,
+"display": "Milford, South Central Connecticut Planning Region, Connecticut, United States",
+"matched": "Milford, Conn.",
+"precision": 0
+},
+"university club of chicago": {
+"lat": 41.8810139,
+"lon": -87.6249695,
+"display": "University Club of Chicago, 76, East Monroe Street, Jewelers Row, Loop, Chicago, South Chicago Township, Cook County, Illinois, 60603, United States",
+"matched": "University Club of Chicago",
+"precision": 0
+},
+"pelham country club": {
+"lat": 40.8932358,
+"lon": -73.7956982,
+"display": "Pelham Country Club, Esplanade, Village of Pelham Manor, Town of Pelham, Westchester County, New York, 10803, United States",
+"matched": "Pelham Country Club",
+"precision": 0
+},
+"fairfield university - barone campus center, dogwood room": null,
+"patterson mansion": {
+"lat": 39.0844378,
+"lon": -84.497176,
+"display": "Patterson Street, Clifton, Newport, Campbell County, Kentucky, 41071, United States",
+"matched": "Patterson Mansion",
+"precision": 0
+},
+"dolan school of business event hall": null,
+"fairfield university - dogwood room, barone campus center": null,
+"farmingdale, n.y.": {
+"lat": 40.7328811,
+"lon": -73.4458564,
+"display": "Village of Farmingdale, Town of Oyster Bay, Nassau County, New York, United States",
+"matched": "Farmingdale, N.Y.",
+"precision": 0
+},
+"new rochelle, n.y.": {
+"lat": 40.9115386,
+"lon": -73.7826363,
+"display": "City of New Rochelle, Westchester County, New York, United States",
+"matched": "New Rochelle, N.Y.",
+"precision": 0
+},
+"niagara falls, ny": {
+"lat": 43.084841,
+"lon": -79.0701786,
+"display": "Niagara Falls, City of Niagara Falls, Niagara County, New York, United States",
+"matched": "Niagara Falls, NY",
+"precision": 0
+},
+"loudonville, n.y.": {
+"lat": 42.7032355,
+"lon": -73.7636489,
+"display": "Loudonville, Town of Colonie, Albany County, New York, United States",
+"matched": "Loudonville, N.Y.",
+"precision": 0
+},
+"metlife stadium": {
+"lat": 40.8135071,
+"lon": -74.0743442,
+"display": "MetLife Stadium, 1, MetLife Stadium Drive, East Rutherford, Bergen County, New Jersey, 07073, United States",
+"matched": "MetLife Stadium",
+"precision": 0
+},
+"glen cove, n.y.": {
+"lat": 40.8642028,
+"lon": -73.6317807,
+"display": "City of Glen Cove, Nassau County, New York, United States",
+"matched": "Glen Cove, N.Y.",
+"precision": 0
+},
+"etec 149/151": {
+"lat": -1.3850876,
+"lon": -48.4695578,
+"display": "ETEC, Val-de-C\u00e3es, Entroncamento, Bel\u00e9m, Par\u00e1, Regi\u00e3o Norte, Brasil",
+"matched": "ETEC 149/151",
+"precision": 0
+},
+"regina a. quick center for the arts, kelley theatre": null,
+"aloysius p. kelley center, kelley presentation room": null,
+"binghamton, n.y.": {
+"lat": 42.098698,
+"lon": -75.9125187,
+"display": "City of Binghamton, Broome County, New York, 13905, United States",
+"matched": "Binghamton, N.Y.",
+"precision": 0
+},
+"blackhawk country club": {
+"lat": 43.0782524,
+"lon": -89.4586616,
+"display": "Blackhawk Country Club, 3606, Blackhawk Drive, Shorewood, Shorewood Hills, Dane County, Wisconsin, 53705, United States",
+"matched": "Blackhawk Country Club",
+"precision": 0
+},
+"elicit brewing co.": {
+"lat": 41.1619472,
+"lon": -73.2317575,
+"display": "Elicit Brewing Co, Black Rock Turnpike, Fairfield, Greater Bridgeport Planning Region, Connecticut, 06430, United States",
+"matched": "Elicit Brewing Co.",
+"precision": 0
+},
+"riverdale, ny": {
+"lat": 40.90056,
+"lon": -73.90639,
+"display": "Riverdale, The Bronx, Bronx County, New York, 10471, United States",
+"matched": "Riverdale, NY",
+"precision": 0
+},
+"bronxville, ny": {
+"lat": 40.9381544,
+"lon": -73.8320784,
+"display": "Village of Bronxville, Town of Eastchester, Westchester County, New York, 10708, United States",
+"matched": "Bronxville, NY",
+"precision": 0
+},
+"broadview center": {
+"lat": 42.6821683,
+"lon": -73.8282597,
+"display": "Broadview Center, Athletic Complex, McKownville, Town of Guilderland, Albany County, New York, 12203, United States",
+"matched": "Broadview Center",
+"precision": 0
+},
+"etec, and the campus center": null,
+"north andover, mass.": {
+"lat": 42.7029687,
+"lon": -71.1309117,
+"display": "North Andover, Essex County, Massachusetts, 01845, United States",
+"matched": "North Andover, Mass.",
+"precision": 0
+},
+"old westbury, ny": {
+"lat": 40.7887113,
+"lon": -73.5995717,
+"display": "Village of Old Westbury, Town of North Hempstead, Nassau County, New York, 11568, United States",
+"matched": "Old Westbury, NY",
+"precision": 0
+},
+"fairfield, ct (at shu)": null,
+"lawrenceville, n.j.": {
+"lat": 40.3009876,
+"lon": -74.7373728,
+"display": "Lawrenceville, Lawrence Township, Mercer County, New Jersey, United States",
+"matched": "Lawrenceville, N.J.",
+"precision": 0
+},
+"smithfield, r.i.": {
+"lat": 41.9220433,
+"lon": -71.549507,
+"display": "Smithfield, Providence County, Rhode Island, United States",
+"matched": "Smithfield, R.I.",
+"precision": 0
+},
+"tbd (higher seed hosts)": null,
+"madison, wis.": {
+"lat": 43.07469,
+"lon": -89.3841663,
+"display": "Madison, Dane County, Wisconsin, United States",
+"matched": "Madison, Wis.",
+"precision": 0
+},
+"tbd": {
+"lat": 21.2364995,
+"lon": 81.6710617,
+"display": "Telibandha, Atal Path Expressway Flyover, Raipur, Raipur Tahsil, Raipur, Chhattisgarh, 493332, India",
+"matched": "TBD",
+"precision": 0
+},
+"boston, ma": {
+"lat": 42.3588336,
+"lon": -71.0578303,
+"display": "Boston, Suffolk County, Massachusetts, United States",
+"matched": "Boston, MA",
+"precision": 0
+},
+"charles f. dolan school of business, event hall": null,
+"terre haute, ind.": {
+"lat": 39.4667025,
+"lon": -87.4139119,
+"display": "Terre Haute, Vigo County, Indiana, United States",
+"matched": "Terre Haute, Ind.",
+"precision": 0
+},
+"brooklyn, n.y.": {
+"lat": 40.6526006,
+"lon": -73.9497211,
+"display": "Brooklyn, Kings County, New York, United States",
+"matched": "Brooklyn, N.Y.",
+"precision": 0
+},
+"st. petersburg, fla.": {
+"lat": 27.7712264,
+"lon": -82.6340259,
+"display": "Saint Petersburg, Pinellas County, Florida, United States",
+"matched": "St. Petersburg, Fla.",
+"precision": 0
+},
+"gonzaga hall auditorium": null,
+"providence, r.i.": {
+"lat": 41.8239891,
+"lon": -71.4128343,
+"display": "Providence, Providence County, Rhode Island, United States",
+"matched": "Providence, R.I.",
+"precision": 0
+},
+"durham, n.h.": {
+"lat": 43.1214141,
+"lon": -70.9177186,
+"display": "Durham, Strafford County, New Hampshire, 03824, United States",
+"matched": "Durham, N.H.",
+"precision": 0
+},
+"albany, n.y.": {
+"lat": 42.6511674,
+"lon": -73.754968,
+"display": "City of Albany, Albany County, New York, United States",
+"matched": "Albany, N.Y.",
+"precision": 0
+},
+"new rochelle, ny": {
+"lat": 40.9115386,
+"lon": -73.7826363,
+"display": "City of New Rochelle, Westchester County, New York, United States",
+"matched": "New Rochelle, NY",
+"precision": 0
+},
+"geneva, ohio": {
+"lat": 41.8052539,
+"lon": -80.9476206,
+"display": "Geneva, Ashtabula County, Ohio, 44041, United States",
+"matched": "Geneva, Ohio",
+"precision": 0
+},
+"atlantic city, n.j.": {
+"lat": 39.3642852,
+"lon": -74.4229351,
+"display": "Atlantic City, Atlantic County, New Jersey, United States",
+"matched": "Atlantic City, N.J.",
+"precision": 0
+},
+"ocala, fla.": {
+"lat": 29.1871986,
+"lon": -82.1400923,
+"display": "Ocala, Marion County, Florida, United States",
+"matched": "Ocala, Fla.",
+"precision": 0
+},
+"austin, tx": {
+"lat": 30.2711286,
+"lon": -97.7436995,
+"display": "Austin, Travis County, Texas, United States",
+"matched": "Austin, TX",
+"precision": 0
+},
+"untermyer gardens,945 n broadway, yonkers, ny 10701, usa": {
+"lat": 40.9659947,
+"lon": -73.8860174,
+"display": "Cola Community Center, 945, North Broadway, Greystone, City of Yonkers, Westchester County, New York, 10701, United States",
+"matched": "945 N Broadway, Yonkers, NY 10701",
+"precision": 1
+},
+"greenburgh public library": {
+"lat": 41.0464411,
+"lon": -73.806776,
+"display": "Greenburgh Public Library, 300, Tarrytown Road, Village of Elmsford, Town of Greenburgh, Westchester County, New York, 10523, United States",
+"matched": "Greenburgh Public Library",
+"precision": 0
+},
+"newburgh free library": {
+"lat": 41.5036031,
+"lon": -74.0084233,
+"display": "Newburgh Free Library, 124, Grand Street, Varick Homes, City of Newburgh, Orange County, New York, 12550, United States",
+"matched": "Newburgh Free Library",
+"precision": 0
+},
+"irvington public library": {
+"lat": 41.0396316,
+"lon": -73.8726902,
+"display": "Irvington Public Library, South Astor Street, Village of Irvington, Town of Greenburgh, Westchester County, New York, 10533, United States",
+"matched": "Irvington Public Library",
+"precision": 0
+},
+"mount kisco public library": {
+"lat": 41.2067797,
+"lon": -73.7272905,
+"display": "Mount Kisco Public Library, Main Street, Village/Town of Mount Kisco, Westchester County, New York, 10549, United States",
+"matched": "Mount Kisco Public Library",
+"precision": 0
+},
+"greenburgh public library, elmsford, ny": {
+"lat": 41.0464411,
+"lon": -73.806776,
+"display": "Greenburgh Public Library, 300, Tarrytown Road, Village of Elmsford, Town of Greenburgh, Westchester County, New York, 10523, United States",
+"matched": "Greenburgh Public Library, Elmsford, NY",
+"precision": 0
+},
+"newburgh free library, newburgh, ny": {
+"lat": 41.5036031,
+"lon": -74.0084233,
+"display": "Newburgh Free Library, 124, Grand Street, Varick Homes, City of Newburgh, Orange County, New York, 12550, United States",
+"matched": "Newburgh Free Library, Newburgh, NY",
+"precision": 0
+},
+"brewster public library, brewster, ny": {
+"lat": 41.3943918,
+"lon": -73.6170896,
+"display": "Village of Brewster, Town of Southeast, Putnam County, New York, United States",
+"matched": "Brewster, NY",
+"precision": 1
+},
+"irvington public library, irvington, ny": {
+"lat": 41.0396316,
+"lon": -73.8726902,
+"display": "Irvington Public Library, South Astor Street, Village of Irvington, Town of Greenburgh, Westchester County, New York, 10533, United States",
+"matched": "Irvington Public Library, Irvington, NY",
+"precision": 0
+},
+"mount kisco public library, mount kisco, ny": {
+"lat": 41.2067797,
+"lon": -73.7272905,
+"display": "Mount Kisco Public Library, Main Street, Village/Town of Mount Kisco, Westchester County, New York, 10549, United States",
+"matched": "Mount Kisco Public Library, Mount Kisco, NY",
+"precision": 0
+},
+"tubby's, 586 broadway, kingston, ny": {
+"lat": 41.9294229,
+"lon": -74.0036218,
+"display": "Tubby's, 586, Broadway, Stockade District, City of Kingston, Ulster County, New York, 12401, United States",
+"matched": "Tubby's, 586 Broadway, Kingston, NY",
+"precision": 0
+},
+"opus 40, 356 george sickle rd, saugerties, ny, 12477, united states": {
+"lat": 42.0544453,
+"lon": -74.0261736,
+"display": "356, George Sickle Road, High Woods, Town of Saugerties, Ulster County, New York, 12477, United States",
+"matched": "356 George Sickle Rd, Saugerties, NY",
+"precision": 1
+},
+"idilko butler gallery, lowenstein center": null,
+"bixler/gerber quad": {
+"lat": 41.2905375,
+"lon": -72.9624043,
+"display": "Bixler/Gerber Quad, Allingtown, West Haven, South Central Connecticut Planning Region, Connecticut, United States",
+"matched": "Bixler/Gerber Quad",
+"precision": 0
+},
+"aquinas hall, room 105": null,
+"maverick concert hall, 120 maverick road, woodstock, ny, 12498": {
+"lat": 42.0144292,
+"lon": -74.1179381,
+"display": "Maverick Concerts, 120, Maverick Road, Glenford, West Hurley, Town of Woodstock, Ulster County, New York, 12498, United States",
+"matched": "Maverick Concert Hall, 120 Maverick Road, Woodstock, NY",
+"precision": 0
+},
+"arthur\u2019s point farm, 274 normung rd, ghent, ny, 12075, united states": {
+"lat": 42.2675186,
+"lon": -73.6461499,
+"display": "Normung Road, Town of Ghent, Columbia County, New York, 12565, United States",
+"matched": "274 Normung Rd, Ghent, NY",
+"precision": 1
+},
+"ny": {
+"lat": 43.1561681,
+"lon": -75.8449946,
+"display": "New York, United States",
+"matched": "NY",
+"precision": 0
+},
+"old dutch church, 272 wall street, kingston, ny": {
+"lat": 41.9329351,
+"lon": -74.0189411,
+"display": "Old Dutch Church, 272, Wall Street, Stockade District, City of Kingston, Ulster County, New York, 12401, United States",
+"matched": "Old Dutch Church, 272 Wall Street, Kingston, NY",
+"precision": 0
+},
+"dutch quad circle": null,
+"hudson hall, 109": {
+"lat": 35.7866545,
+"lon": -78.6845768,
+"display": "Hudson Hall, 2760, Wolf Village Way, Method, Raleigh, Wake County, North Carolina, 27695, United States",
+"matched": "Hudson Hall, 109",
+"precision": 0
+},
+"lecture center concourse, lcs, hallway": null,
+"taconic building, 302": null,
+"university main library, minerva room (garden level)": null,
+"columbia county fairgrounds, 182 hudson avenue, chatham, ny, 12037, united states": {
+"lat": 42.3508405,
+"lon": -73.6036962,
+"display": "182, Hudson Avenue, Buckleyville, Village of Chatham, Town of Ghent, Columbia County, New York, 12037, United States",
+"matched": "182 Hudson Avenue, Chatham, NY",
+"precision": 1
+},
+"levity live, 4210 palisades center drive, west nyack, ny, 10994, united states": {
+"lat": 41.09811,
+"lon": -73.9580208,
+"display": "4210, Palisades Center Drive, West Nyack, Town of Clarkstown, Rockland County, New York, 10994, United States",
+"matched": "4210 Palisades Center Drive, West Nyack, NY",
+"precision": 1
+},
+"cool whisper farm, 1011 county route 21, hillsdale, ny, 12529, united states": {
+"lat": 42.2690963,
+"lon": -73.5758641,
+"display": "1011, County Route 21, Harlemville, Town of Ghent, Columbia County, New York, 12075, United States",
+"matched": "1011 County Route 21, Hillsdale, NY",
+"precision": 1
+},
+"westside campus center, 43 lake ave. extension, danbury, ct": {
+"lat": 41.3861161,
+"lon": -73.4966139,
+"display": "43, Lake Avenue Extension, Mill Plain, Danbury, Western Connecticut Planning Region, Connecticut, 06810, United States",
+"matched": "43 Lake Ave. Extension, Danbury, CT",
+"precision": 1
+},
+"troy, ny": {
+"lat": 42.7284117,
+"lon": -73.6917878,
+"display": "City of Troy, Rensselaer County, New York, United States",
+"matched": "Troy, NY",
+"precision": 0
+},
+"the clubhouse westport": {
+"lat": 39.063511,
+"lon": -94.5727353,
+"display": "The Dashery Clubhouse, Harrison Street, North Hyde Park, Westport, Kansas City, Jackson County, Missouri, 64109, United States",
+"matched": "The Clubhouse Westport",
+"precision": 0
+},
+"branch brook park, nj": {
+"lat": 40.7713635,
+"lon": -74.1756347,
+"display": "Branch Brook Park, Roseville, Newark, Essex County, New Jersey, 07109, United States",
+"matched": "Branch Brook Park, NJ",
+"precision": 0
+},
+"stony brook, ny": {
+"lat": 40.908482,
+"lon": -73.1325471,
+"display": "Stony Brook, Town of Brookhaven, Suffolk County, New York, United States",
+"matched": "Stony Brook, NY",
+"precision": 0
+},
+"hartford, ct": {
+"lat": 41.764582,
+"lon": -72.6908547,
+"display": "Hartford, Capitol Planning Region, Connecticut, United States",
+"matched": "Hartford, CT",
+"precision": 0
+},
+"carlton, mn": {
+"lat": 46.5799933,
+"lon": -92.7206334,
+"display": "Carlton County, Minnesota, United States",
+"matched": "Carlton, MN",
+"precision": 0
+},
+"north andover, ma": {
+"lat": 42.7029687,
+"lon": -71.1309117,
+"display": "North Andover, Essex County, Massachusetts, 01845, United States",
+"matched": "North Andover, MA",
+"precision": 0
+},
+"buffalo, ny": {
+"lat": 42.8864163,
+"lon": -78.8781493,
+"display": "Buffalo, Erie County, New York, United States",
+"matched": "Buffalo, NY",
+"precision": 0
+},
+"lawrenceville, nj": {
+"lat": 40.3009876,
+"lon": -74.7373728,
+"display": "Lawrenceville, Lawrence Township, Mercer County, New Jersey, United States",
+"matched": "Lawrenceville, NJ",
+"precision": 0
+},
+"jersey city, nj": {
+"lat": 40.7215682,
+"lon": -74.047455,
+"display": "Jersey City, Hudson County, New Jersey, United States",
+"matched": "Jersey City, NJ",
+"precision": 0
+},
+"hamden, ct": {
+"lat": 41.3836233,
+"lon": -72.9020069,
+"display": "Hamden, South Central Connecticut Planning Region, Connecticut, United States",
+"matched": "Hamden, CT",
+"precision": 0
+},
+"bedford playhouse": {
+"lat": 41.2044385,
+"lon": -73.6441006,
+"display": "Bedford Playhouse, 633, Old Post Road, Bedford Center, Town of Bedford, Westchester County, New York, 10506, United States",
+"matched": "Bedford Playhouse",
+"precision": 0
+},
+"community room, howland public library, 313 main street, beacon, ny, 12508": {
+"lat": 41.5053602,
+"lon": -73.9710687,
+"display": "Howland Public Library, 313, Main Street, City of Beacon, Dutchess County, New York, 12508, United States",
+"matched": "Howland Public Library, 313 Main Street, Beacon, NY",
+"precision": 1
+},
+"youth services program room, howland public library, 313 main street, beacon, ny, 12508": {
+"lat": 41.5053602,
+"lon": -73.9710687,
+"display": "Howland Public Library, 313, Main Street, City of Beacon, Dutchess County, New York, 12508, United States",
+"matched": "Howland Public Library, 313 Main Street, Beacon, NY",
+"precision": 1
+},
+"311 learning annex, howland public library, 313 main street, beacon, ny, 12508": {
+"lat": 41.5053602,
+"lon": -73.9710687,
+"display": "Howland Public Library, 313, Main Street, City of Beacon, Dutchess County, New York, 12508, United States",
+"matched": "Howland Public Library, 313 Main Street, Beacon, NY",
+"precision": 1
+},
+"mount beacon trailhead": null,
+"1 depot square": {
+"lat": 40.9504431,
+"lon": -73.8283531,
+"display": "Starbucks, 1, Depot Square, Village of Tuckahoe, Town of Eastchester, Westchester County, New York, 10707, United States",
+"matched": "1 Depot Square",
+"precision": 0
+},
+"7 east main street, beacon, ny": {
+"lat": 41.501649,
+"lon": -73.9630408,
+"display": "Hudson Valley Brewery, 7, East Main Street, City of Beacon, Dutchess County, New York, 12508, United States",
+"matched": "7 East Main Street, Beacon, NY",
+"precision": 0
+},
+"ny, west hurley, ny": {
+"lat": 41.9953263,
+"lon": -74.0902006,
+"display": "State Route 28, West Hurley, Town of Hurley, Ulster County, New York, 12491, United States",
+"matched": "NY, West Hurley, NY",
+"precision": 0
+},
+"moulton lounge": {
+"lat": 52.8043862,
+"lon": -0.0970101,
+"display": "The Baytree Coffee Lounge, High Road, Weston, Weston CP, Moulton, South Holland, Lincolnshire, Greater Lincolnshire, England, PE12 6JU, United Kingdom",
+"matched": "Moulton Lounge",
+"precision": 0
+},
+"white memorial \u2013 a.b. ceder room, litchfield, ct": {
+"lat": 41.747319,
+"lon": -73.1887243,
+"display": "Litchfield, Northwest Hills Planning Region, Connecticut, United States",
+"matched": "Litchfield, CT",
+"precision": 1
+},
+"41 main st.": {
+"lat": 54.2117685,
+"lon": -3.2747913,
+"display": "The Plough Inn, 41, Holborn Hill, Knott End, Haverigg, Millom, Cumberland, England, LA18 5BH, United Kingdom",
+"matched": "41 Main St.",
+"precision": 0
+},
+"103 burroughs drive": {
+"lat": 51.4487702,
+"lon": 0.2235746,
+"display": "103, Burroughs Drive, Brooklands, Temple Hill, Dartford, Kent, England, DA1 5TW, United Kingdom",
+"matched": "103 Burroughs Drive",
+"precision": 0
+},
+"160 hanover road": {
+"lat": 51.5420062,
+"lon": -0.2248385,
+"display": "160, Hanover Road, Brondesbury Park, Brondesbury, London Borough of Brent, Greater London, England, NW10 3DP, United Kingdom",
+"matched": "160 Hanover Road",
+"precision": 0
+},
+"small conference room, greenburgh public library, elmsford, ny": {
+"lat": 41.0464411,
+"lon": -73.806776,
+"display": "Greenburgh Public Library, 300, Tarrytown Road, Village of Elmsford, Town of Greenburgh, Westchester County, New York, 10523, United States",
+"matched": "Greenburgh Public Library, Elmsford, NY",
+"precision": 1
+},
+"multipurpose room, greenburgh public library, elmsford, ny": {
+"lat": 41.0464411,
+"lon": -73.806776,
+"display": "Greenburgh Public Library, 300, Tarrytown Road, Village of Elmsford, Town of Greenburgh, Westchester County, New York, 10523, United States",
+"matched": "Greenburgh Public Library, Elmsford, NY",
+"precision": 1
+},
+"local history room, greenburgh public library, elmsford, ny": {
+"lat": 41.0464411,
+"lon": -73.806776,
+"display": "Greenburgh Public Library, 300, Tarrytown Road, Village of Elmsford, Town of Greenburgh, Westchester County, New York, 10523, United States",
+"matched": "Greenburgh Public Library, Elmsford, NY",
+"precision": 1
+},
+"computer lab, greenburgh public library, elmsford, ny": {
+"lat": 41.0464411,
+"lon": -73.806776,
+"display": "Greenburgh Public Library, 300, Tarrytown Road, Village of Elmsford, Town of Greenburgh, Westchester County, New York, 10523, United States",
+"matched": "Greenburgh Public Library, Elmsford, NY",
+"precision": 1
+},
+"off-site, newburgh free library, newburgh, ny": {
+"lat": 41.5036031,
+"lon": -74.0084233,
+"display": "Newburgh Free Library, 124, Grand Street, Varick Homes, City of Newburgh, Orange County, New York, 12550, United States",
+"matched": "Newburgh Free Library, Newburgh, NY",
+"precision": 1
+},
+"town branch, newburgh free library, newburgh, ny": {
+"lat": 41.5036031,
+"lon": -74.0084233,
+"display": "Newburgh Free Library, 124, Grand Street, Varick Homes, City of Newburgh, Orange County, New York, 12550, United States",
+"matched": "Newburgh Free Library, Newburgh, NY",
+"precision": 1
+},
+"the hub, newburgh free library, newburgh, ny": {
+"lat": 41.5036031,
+"lon": -74.0084233,
+"display": "Newburgh Free Library, 124, Grand Street, Varick Homes, City of Newburgh, Orange County, New York, 12550, United States",
+"matched": "Newburgh Free Library, Newburgh, NY",
+"precision": 1
+},
+"reading room, mount kisco public library, mount kisco, ny": {
+"lat": 41.2067797,
+"lon": -73.7272905,
+"display": "Mount Kisco Public Library, Main Street, Village/Town of Mount Kisco, Westchester County, New York, 10549, United States",
+"matched": "Mount Kisco Public Library, Mount Kisco, NY",
+"precision": 1
+},
+"community room, brewster public library, brewster, ny": {
+"lat": 41.3943918,
+"lon": -73.6170896,
+"display": "Village of Brewster, Town of Southeast, Putnam County, New York, United States",
+"matched": "Brewster, NY",
+"precision": 3
+},
+"book cave, brewster public library, brewster, ny": {
+"lat": 41.3943918,
+"lon": -73.6170896,
+"display": "Village of Brewster, Town of Southeast, Putnam County, New York, United States",
+"matched": "Brewster, NY",
+"precision": 3
+},
+"program room, irvington public library, irvington, ny": {
+"lat": 41.0396316,
+"lon": -73.8726902,
+"display": "Irvington Public Library, South Astor Street, Village of Irvington, Town of Greenburgh, Westchester County, New York, 10533, United States",
+"matched": "Irvington Public Library, Irvington, NY",
+"precision": 1
+},
+"children's program room, greenburgh public library, elmsford, ny": {
+"lat": 41.0464411,
+"lon": -73.806776,
+"display": "Greenburgh Public Library, 300, Tarrytown Road, Village of Elmsford, Town of Greenburgh, Westchester County, New York, 10523, United States",
+"matched": "Greenburgh Public Library, Elmsford, NY",
+"precision": 1
+},
+"lobby-caf\u00e9, newburgh free library, newburgh, ny": {
+"lat": 41.5036031,
+"lon": -74.0084233,
+"display": "Newburgh Free Library, 124, Grand Street, Varick Homes, City of Newburgh, Orange County, New York, 12550, United States",
+"matched": "Newburgh Free Library, Newburgh, NY",
+"precision": 1
+},
+"riverview meeting room, newburgh free library, newburgh, ny": {
+"lat": 41.5036031,
+"lon": -74.0084233,
+"display": "Newburgh Free Library, 124, Grand Street, Varick Homes, City of Newburgh, Orange County, New York, 12550, United States",
+"matched": "Newburgh Free Library, Newburgh, NY",
+"precision": 1
+},
+"boe/library lobby, newburgh free library, newburgh, ny": {
+"lat": 41.5036031,
+"lon": -74.0084233,
+"display": "Newburgh Free Library, 124, Grand Street, Varick Homes, City of Newburgh, Orange County, New York, 12550, United States",
+"matched": "Newburgh Free Library, Newburgh, NY",
+"precision": 1
+},
+"green table 2nd floor, newburgh free library, newburgh, ny": {
+"lat": 41.5036031,
+"lon": -74.0084233,
+"display": "Newburgh Free Library, 124, Grand Street, Varick Homes, City of Newburgh, Orange County, New York, 12550, United States",
+"matched": "Newburgh Free Library, Newburgh, NY",
+"precision": 1
+},
+"storyhour room, newburgh free library, newburgh, ny": {
+"lat": 41.5036031,
+"lon": -74.0084233,
+"display": "Newburgh Free Library, 124, Grand Street, Varick Homes, City of Newburgh, Orange County, New York, 12550, United States",
+"matched": "Newburgh Free Library, Newburgh, NY",
+"precision": 1
+},
+"e-learning center, newburgh free library, newburgh, ny": {
+"lat": 41.5036031,
+"lon": -74.0084233,
+"display": "Newburgh Free Library, 124, Grand Street, Varick Homes, City of Newburgh, Orange County, New York, 12550, United States",
+"matched": "Newburgh Free Library, Newburgh, NY",
+"precision": 1
+},
+"community room, mount kisco public library, mount kisco, ny": {
+"lat": 41.2067797,
+"lon": -73.7272905,
+"display": "Mount Kisco Public Library, Main Street, Village/Town of Mount Kisco, Westchester County, New York, 10549, United States",
+"matched": "Mount Kisco Public Library, Mount Kisco, NY",
+"precision": 1
+},
+"study room b, mount kisco public library, mount kisco, ny": {
+"lat": 41.2067797,
+"lon": -73.7272905,
+"display": "Mount Kisco Public Library, Main Street, Village/Town of Mount Kisco, Westchester County, New York, 10549, United States",
+"matched": "Mount Kisco Public Library, Mount Kisco, NY",
+"precision": 1
+},
+"conference room, brewster public library, brewster, ny": {
+"lat": 41.3943918,
+"lon": -73.6170896,
+"display": "Village of Brewster, Town of Southeast, Putnam County, New York, United States",
+"matched": "Brewster, NY",
+"precision": 3
+},
+"lobby, mount kisco public library, mount kisco, ny": {
+"lat": 41.2067797,
+"lon": -73.7272905,
+"display": "Mount Kisco Public Library, Main Street, Village/Town of Mount Kisco, Westchester County, New York, 10549, United States",
+"matched": "Mount Kisco Public Library, Mount Kisco, NY",
+"precision": 1
+},
+"children's room, brewster public library, brewster, ny": {
+"lat": 41.3943918,
+"lon": -73.6170896,
+"display": "Village of Brewster, Town of Southeast, Putnam County, New York, United States",
+"matched": "Brewster, NY",
+"precision": 3
+},
+"teenburgh, greenburgh public library, elmsford, ny": {
+"lat": 41.0464411,
+"lon": -73.806776,
+"display": "Greenburgh Public Library, 300, Tarrytown Road, Village of Elmsford, Town of Greenburgh, Westchester County, New York, 10523, United States",
+"matched": "Greenburgh Public Library, Elmsford, NY",
+"precision": 1
+},
+"webinar/virtual, greenburgh public library, elmsford, ny": {
+"lat": 41.0464411,
+"lon": -73.806776,
+"display": "Greenburgh Public Library, 300, Tarrytown Road, Village of Elmsford, Town of Greenburgh, Westchester County, New York, 10523, United States",
+"matched": "Greenburgh Public Library, Elmsford, NY",
+"precision": 1
+},
+"storytime room, irvington public library, irvington, ny": {
+"lat": 41.0396316,
+"lon": -73.8726902,
+"display": "Irvington Public Library, South Astor Street, Village of Irvington, Town of Greenburgh, Westchester County, New York, 10533, United States",
+"matched": "Irvington Public Library, Irvington, NY",
+"precision": 1
+},
+"boe/library lobby, newburgh free library plaza, newburgh free library, newburgh, ny": {
+"lat": 41.5000767,
+"lon": -74.0098299,
+"display": "City of Newburgh, Orange County, New York, United States",
+"matched": "Newburgh, NY",
+"precision": 3
+},
+"conference room, mount kisco public library, mount kisco, ny": {
+"lat": 41.2067797,
+"lon": -73.7272905,
+"display": "Mount Kisco Public Library, Main Street, Village/Town of Mount Kisco, Westchester County, New York, 10549, United States",
+"matched": "Mount Kisco Public Library, Mount Kisco, NY",
+"precision": 1
+},
+"irvington library, irvington public library, irvington, ny": {
+"lat": 41.0396316,
+"lon": -73.8726902,
+"display": "Irvington Public Library, South Astor Street, Village of Irvington, Town of Greenburgh, Westchester County, New York, 10533, United States",
+"matched": "Irvington Public Library, Irvington, NY",
+"precision": 1
+},
+"children's program room, mount kisco public library, mount kisco, ny": {
+"lat": 41.2067797,
+"lon": -73.7272905,
+"display": "Mount Kisco Public Library, Main Street, Village/Town of Mount Kisco, Westchester County, New York, 10549, United States",
+"matched": "Mount Kisco Public Library, Mount Kisco, NY",
+"precision": 1
+},
+"boe/library lobby, e-learning center, newburgh free library plaza, riverview meeting room, newburgh free library, newburgh, ny": {
+"lat": 41.5000767,
+"lon": -74.0098299,
+"display": "City of Newburgh, Orange County, New York, United States",
+"matched": "Newburgh, NY",
+"precision": 3
+},
+"newburgh free library plaza, riverview meeting room, newburgh free library, newburgh, ny": {
+"lat": 41.5000767,
+"lon": -74.0098299,
+"display": "City of Newburgh, Orange County, New York, United States",
+"matched": "Newburgh, NY",
+"precision": 3
+},
+"endeavor therapuetic horsemanship, mount kisco public library, mount kisco, ny": {
+"lat": 41.2067797,
+"lon": -73.7272905,
+"display": "Mount Kisco Public Library, Main Street, Village/Town of Mount Kisco, Westchester County, New York, 10549, United States",
+"matched": "Mount Kisco Public Library, Mount Kisco, NY",
+"precision": 1
+},
+"front circle sidewalk, greenburgh public library, elmsford, ny": {
+"lat": 41.0464411,
+"lon": -73.806776,
+"display": "Greenburgh Public Library, 300, Tarrytown Road, Village of Elmsford, Town of Greenburgh, Westchester County, New York, 10523, United States",
+"matched": "Greenburgh Public Library, Elmsford, NY",
+"precision": 1
+},
+"montgomery street library entrance, newburgh free library, newburgh, ny": {
+"lat": 41.5036031,
+"lon": -74.0084233,
+"display": "Newburgh Free Library, 124, Grand Street, Varick Homes, City of Newburgh, Orange County, New York, 12550, United States",
+"matched": "Newburgh Free Library, Newburgh, NY",
+"precision": 1
+},
+"teen room, mount kisco public library, mount kisco, ny": {
+"lat": 41.2067797,
+"lon": -73.7272905,
+"display": "Mount Kisco Public Library, Main Street, Village/Town of Mount Kisco, Westchester County, New York, 10549, United States",
+"matched": "Mount Kisco Public Library, Mount Kisco, NY",
+"precision": 1
+},
+"tiffany reading room, irvington public library, irvington, ny": {
+"lat": 41.0396316,
+"lon": -73.8726902,
+"display": "Irvington Public Library, South Astor Street, Village of Irvington, Town of Greenburgh, Westchester County, New York, 10533, United States",
+"matched": "Irvington Public Library, Irvington, NY",
+"precision": 1
+},
+"children's room public floor, greenburgh public library, elmsford, ny": {
+"lat": 41.0464411,
+"lon": -73.806776,
+"display": "Greenburgh Public Library, 300, Tarrytown Road, Village of Elmsford, Town of Greenburgh, Westchester County, New York, 10523, United States",
+"matched": "Greenburgh Public Library, Elmsford, NY",
+"precision": 1
+},
+"early reader section, newburgh free library, newburgh, ny": {
+"lat": 41.5036031,
+"lon": -74.0084233,
+"display": "Newburgh Free Library, 124, Grand Street, Varick Homes, City of Newburgh, Orange County, New York, 12550, United States",
+"matched": "Newburgh Free Library, Newburgh, NY",
+"precision": 1
+},
+"e-learning center, the hub, newburgh free library, newburgh, ny": {
+"lat": 41.5000767,
+"lon": -74.0098299,
+"display": "City of Newburgh, Orange County, New York, United States",
+"matched": "Newburgh, NY",
+"precision": 3
+},
+"maxcy quad": null,
+"richter park golf course, 100 aunt hack road, danbury, ct": {
+"lat": 41.412397,
+"lon": -73.5205622,
+"display": "Richter Park Golf Course, 100, Aunt Hack Road, Aunt Hack, Mill Plain, Danbury, Western Connecticut Planning Region, Connecticut, 06811, United States",
+"matched": "Richter Park Golf Course, 100 Aunt Hack Road, Danbury, CT",
+"precision": 0
+},
+"33 hoseye coach rd": {
+"lat": 41.3899784,
+"lon": -73.2458209,
+"display": "33, Hoseye Coach Road, Newtown, Western Connecticut Planning Region, Connecticut, 06482, United States",
+"matched": "33 Hoseye Coach Rd",
+"precision": 0
+},
+"57 church hill rd": {
+"lat": 51.6412791,
+"lon": -0.1623879,
+"display": "Winston House, 57, Church Hill Road, Oakleigh Park, East Barnet, London Borough of Barnet, Greater London, England, EN4 8TB, United Kingdom",
+"matched": "57 Church Hill Rd",
+"precision": 0
+},
+"community room, kingston library, new york (uptown), 61 crown street, kingston, ny, 12401": {
+"lat": 41.9345405,
+"lon": -74.0076523,
+"display": "Community Room, Albany Avenue, Stockade District, City of Kingston, Ulster County, New York, 12401, United States",
+"matched": "Community Room, Kingston, NY",
+"precision": 2
+},
+"people's place, 775 broadway, kingston, ny, 12401": {
+"lat": 41.9320986,
+"lon": -74.0117173,
+"display": "775, Broadway, Stockade District, City of Kingston, Ulster County, New York, 12401, United States",
+"matched": "775 Broadway, Kingston, NY",
+"precision": 1
+},
+"book nook, lagrange association library, 1110 route 55, lagrangeville, ny, 12540": {
+"lat": 41.6504465,
+"lon": -73.7642453,
+"display": "Lagrangeville, Town of La Grange, Dutchess County, New York, 12540, United States",
+"matched": "LaGrangeville, NY",
+"precision": 3
+},
+"conference room, lagrange association library, 1110 route 55, lagrangeville, ny, 12540": {
+"lat": 41.6504465,
+"lon": -73.7642453,
+"display": "Lagrangeville, Town of La Grange, Dutchess County, New York, 12540, United States",
+"matched": "LaGrangeville, NY",
+"precision": 3
+},
+"community room, lagrange association library, 1110 route 55, lagrangeville, ny, 12540": {
+"lat": 41.6504465,
+"lon": -73.7642453,
+"display": "Lagrangeville, Town of La Grange, Dutchess County, New York, 12540, United States",
+"matched": "LaGrangeville, NY",
+"precision": 3
+},
+"located in the program room": null,
+"located in the conference room": null,
+"community room, pleasant valley library, 1584 main st, pleasant valley, ny, 12569": {
+"lat": 41.7443444,
+"lon": -73.8247785,
+"display": "Pleasant Valley, Town of Pleasant Valley, Dutchess County, New York, 12569, United States",
+"matched": "Pleasant Valley, NY",
+"precision": 3
+},
+"conference room, pleasant valley library, 1584 main st, pleasant valley, ny, 12569": {
+"lat": 41.7443444,
+"lon": -73.8247785,
+"display": "Pleasant Valley, Town of Pleasant Valley, Dutchess County, New York, 12569, United States",
+"matched": "Pleasant Valley, NY",
+"precision": 3
+},
+"study room, pleasant valley library, 1584 main st, pleasant valley, ny, 12569": {
+"lat": 41.7443444,
+"lon": -73.8247785,
+"display": "Pleasant Valley, Town of Pleasant Valley, Dutchess County, New York, 12569, United States",
+"matched": "Pleasant Valley, NY",
+"precision": 3
+},
+"teen room, red hook public library, 7444 s broadway, red hook, ny, 12571": {
+"lat": 41.9933277,
+"lon": -73.8768137,
+"display": "Red Hook Public Library, 7444, South Broadway, Village of Red Hook, Town of Red Hook, Dutchess County, New York, 12571, United States",
+"matched": "Red Hook Public Library, 7444 S Broadway, Red Hook, NY",
+"precision": 1
+},
+"zoom": {
+"lat": 37.3329622,
+"lon": -121.8950563,
+"display": "Zoom, 55, South Almaden Boulevard, Little Italy, Japantown, San Jose, Santa Clara County, California, 95113, United States",
+"matched": "Zoom",
+"precision": 0
+},
+"community room, red hook public library, 7444 s broadway, red hook, ny, 12571": {
+"lat": 41.9933277,
+"lon": -73.8768137,
+"display": "Red Hook Public Library, 7444, South Broadway, Village of Red Hook, Town of Red Hook, Dutchess County, New York, 12571, United States",
+"matched": "Red Hook Public Library, 7444 S Broadway, Red Hook, NY",
+"precision": 1
+},
+"children's section, red hook public library, 7444 s broadway, red hook, ny, 12571": {
+"lat": 41.9933277,
+"lon": -73.8768137,
+"display": "Red Hook Public Library, 7444, South Broadway, Village of Red Hook, Town of Red Hook, Dutchess County, New York, 12571, United States",
+"matched": "Red Hook Public Library, 7444 S Broadway, Red Hook, NY",
+"precision": 1
+},
+"lower level program room, beekman library, 11 town center blvd, hopewell jct, ny, 12533": {
+"lat": 41.5810881,
+"lon": -73.8106688,
+"display": "Hopewell Junction, Town of East Fishkill, Dutchess County, New York, United States",
+"matched": "Hopewell JCT, NY",
+"precision": 3
+},
+"community room, beekman library, 11 town center blvd, hopewell jct, ny, 12533": {
+"lat": 41.5810881,
+"lon": -73.8106688,
+"display": "Hopewell Junction, Town of East Fishkill, Dutchess County, New York, United States",
+"matched": "Hopewell JCT, NY",
+"precision": 3
+},
+"learning lab, mahopac public library, 668 route 6, mahopac, ny, 10541": {
+"lat": 41.3712985,
+"lon": -73.7390641,
+"display": "Mahopac, Mahopac Falls, Town of Carmel, Putnam County, New York, United States",
+"matched": "Mahopac, NY",
+"precision": 3
+},
+"third floor meeting room, mahopac public library, 668 route 6, mahopac, ny, 10541": {
+"lat": 41.3712985,
+"lon": -73.7390641,
+"display": "Mahopac, Mahopac Falls, Town of Carmel, Putnam County, New York, United States",
+"matched": "Mahopac, NY",
+"precision": 3
+},
+"virtual - no room needed, mahopac public library, 668 route 6, mahopac, ny, 10541": {
+"lat": 41.3712985,
+"lon": -73.7390641,
+"display": "Mahopac, Mahopac Falls, Town of Carmel, Putnam County, New York, United States",
+"matched": "Mahopac, NY",
+"precision": 3
+},
+"lake view room, mahopac public library, 668 route 6, mahopac, ny, 10541": {
+"lat": 41.3712985,
+"lon": -73.7390641,
+"display": "Mahopac, Mahopac Falls, Town of Carmel, Putnam County, New York, United States",
+"matched": "Mahopac, NY",
+"precision": 3
+},
+"community room, mahopac public library, 668 route 6, mahopac, ny, 10541": {
+"lat": 41.3712985,
+"lon": -73.7390641,
+"display": "Mahopac, Mahopac Falls, Town of Carmel, Putnam County, New York, United States",
+"matched": "Mahopac, NY",
+"precision": 3
+},
+"conference room, mahopac public library, 668 route 6, mahopac, ny, 10541": {
+"lat": 41.3712985,
+"lon": -73.7390641,
+"display": "Mahopac, Mahopac Falls, Town of Carmel, Putnam County, New York, United States",
+"matched": "Mahopac, NY",
+"precision": 3
+},
+"1st floor seating area, mahopac public library, 668 route 6, mahopac, ny, 10541": {
+"lat": 41.3712985,
+"lon": -73.7390641,
+"display": "Mahopac, Mahopac Falls, Town of Carmel, Putnam County, New York, United States",
+"matched": "Mahopac, NY",
+"precision": 3
+},
+"meeting room, rye free reading room, rye, ny": {
+"lat": 40.9821371,
+"lon": -73.6840902,
+"display": "City of Rye, Westchester County, New York, 10580, United States",
+"matched": "Rye, NY",
+"precision": 3
+},
+"teen room, rye free reading room, rye, ny": {
+"lat": 40.9821371,
+"lon": -73.6840902,
+"display": "City of Rye, Westchester County, New York, 10580, United States",
+"matched": "Rye, NY",
+"precision": 3
+},
+"community room, grinnell library, wappingers falls, wappingers falls, ny": {
+"lat": 41.5983619,
+"lon": -73.9184564,
+"display": "Grinnell Public Library, 2642, East Main Street, Village of Wappingers Falls, Town of Wappinger, Dutchess County, New York, 12590, United States",
+"matched": "Grinnell Library, Wappingers Falls, Wappingers Falls, NY",
+"precision": 1
+},
+"other, rye free reading room, rye, ny": {
+"lat": 40.9821371,
+"lon": -73.6840902,
+"display": "City of Rye, Westchester County, New York, 10580, United States",
+"matched": "Rye, NY",
+"precision": 3
+},
+"grinnell library, wappingers falls, wappingers falls, ny": {
+"lat": 41.5983619,
+"lon": -73.9184564,
+"display": "Grinnell Public Library, 2642, East Main Street, Village of Wappingers Falls, Town of Wappinger, Dutchess County, New York, 12590, United States",
+"matched": "Grinnell Library, Wappingers Falls, Wappingers Falls, NY",
+"precision": 0
+},
+"local history room, rye free reading room, rye, ny": {
+"lat": 40.9821371,
+"lon": -73.6840902,
+"display": "City of Rye, Westchester County, New York, 10580, United States",
+"matched": "Rye, NY",
+"precision": 3
+},
+"rye free reading room, rye, ny": {
+"lat": 40.9821371,
+"lon": -73.6840902,
+"display": "City of Rye, Westchester County, New York, 10580, United States",
+"matched": "Rye, NY",
+"precision": 1
+},
+"online, rye free reading room, rye, ny": {
+"lat": 40.9821371,
+"lon": -73.6840902,
+"display": "City of Rye, Westchester County, New York, 10580, United States",
+"matched": "Rye, NY",
+"precision": 3
+},
+"art gallery - meeting room, rye free reading room, rye, ny": {
+"lat": 40.9821371,
+"lon": -73.6840902,
+"display": "City of Rye, Westchester County, New York, 10580, United States",
+"matched": "Rye, NY",
+"precision": 3
+},
+"fisher center, sosnoff theater": null,
+"olin hall": {
+"lat": 40.7652784,
+"lon": -73.9555439,
+"display": "Olin Hall, East 69th Street, Lenox Hill, Manhattan Community Board 8, Manhattan, New York County, New York, 10021, United States",
+"matched": "Olin Hall",
+"precision": 0
+},
+"48 main st, millerton, ny 12546": {
+"lat": 41.9535172,
+"lon": -73.5099079,
+"display": "The Moviehouse, 48, Main Street, Village of Millerton, Town of North East, Dutchess County, New York, 12546, United States",
+"matched": "48 Main St, Millerton, NY 12546",
+"precision": 0
+},
+"7 east main st, beacon, ny 12508": {
+"lat": 41.501649,
+"lon": -73.9630408,
+"display": "Hudson Valley Brewery, 7, East Main Street, City of Beacon, Dutchess County, New York, 12508, United States",
+"matched": "7 East Main St, Beacon, NY 12508",
+"precision": 0
+},
+"96 w bridge st, catskill, ny 12414": {
+"lat": 42.216739,
+"lon": -73.8729039,
+"display": "96, West Bridge Street, Village of Catskill, Town of Catskill, Greene County, New York, 12414, United States",
+"matched": "96 W Bridge St, Catskill, NY 12414",
+"precision": 0
+},
+"mod beacon, beacon, ny": {
+"lat": 41.5048402,
+"lon": -73.9695409,
+"display": "City of Beacon, Dutchess County, New York, 12508, United States",
+"matched": "Beacon, NY",
+"precision": 1
+},
+"memorial park, beacon, ny": {
+"lat": 41.5091195,
+"lon": -73.9617823,
+"display": "Beacon Memorial Park, Beacon, City of Beacon, Dutchess County, New York, United States",
+"matched": "Memorial Park, Beacon, NY",
+"precision": 0
+},
+"obercreek brewing co., wappingers falls, ny": {
+"lat": 41.587501,
+"lon": -73.9326633,
+"display": "Obercreek Brewing Company, 59, Marlorville Road, Village of Wappingers Falls, Town of Wappinger, Dutchess County, New York, 12590, United States",
+"matched": "Obercreek Brewing Co., Wappingers Falls, NY",
+"precision": 0
+},
+"232 main st, beacon, ny 12508": {
+"lat": 41.5068886,
+"lon": -73.9726576,
+"display": "232, Main Street, Beacon, City of Beacon, Dutchess County, New York, 12508, United States",
+"matched": "232 Main St, Beacon, NY 12508",
+"precision": 0
+},
+"newburgh brewing company, newburgh, ny": {
+"lat": 41.4973718,
+"lon": -74.0080001,
+"display": "Newburgh Brewing Company, 88, Colden Street, Varick Homes, City of Newburgh, Orange County, New York, 12550, United States",
+"matched": "Newburgh Brewing Company, Newburgh, NY",
+"precision": 0
+},
+"draught industries, beacon, ny": {
+"lat": 41.5048402,
+"lon": -73.9695409,
+"display": "City of Beacon, Dutchess County, New York, 12508, United States",
+"matched": "Beacon, NY",
+"precision": 1
+},
+"434 columbia st, hudson, ny 12534": {
+"lat": 42.251016,
+"lon": -73.7864197,
+"display": "Time & Space Limited, 434, Columbia Street, Oakdale, City of Hudson, Columbia County, New York, 12534, United States",
+"matched": "434 Columbia St, Hudson, NY 12534",
+"precision": 0
+},
+"adult/teen services desk, west milford": null,
+"ya, west milford": {
+"lat": 39.2009243,
+"lon": -80.4042579,
+"display": "West Milford, Harrison County, West Virginia, 26451, United States",
+"matched": "YA, West Milford",
+"precision": 0
+},
+"room 6 & 7, west milford": null,
+"library conference room, west milford": null,
+"savage wonderground art gallery, beacon, ny": {
+"lat": 41.5048402,
+"lon": -73.9695409,
+"display": "City of Beacon, Dutchess County, New York, 12508, United States",
+"matched": "Beacon, NY",
+"precision": 1
+},
+"library teen room, briarcliff manor, ny": {
+"lat": 41.1456512,
+"lon": -73.8237456,
+"display": "Village of Briarcliff Manor, Town of Ossining, Westchester County, New York, 10510, United States",
+"matched": "Briarcliff Manor, NY",
+"precision": 1
+},
+"desmond-fish public library, garrison, ny": {
+"lat": 41.3764434,
+"lon": -73.9424,
+"display": "Desmond-Fish Public Library, 472, State Highway 403, Forsonville, Garrison, Town of Philipstown, Putnam County, New York, 10524, United States",
+"matched": "Desmond-Fish Public Library, Garrison, NY",
+"precision": 0
+},
+"library children\u2019s program room, briarcliff manor, ny": {
+"lat": 41.1456512,
+"lon": -73.8237456,
+"display": "Village of Briarcliff Manor, Town of Ossining, Westchester County, New York, 10510, United States",
+"matched": "Briarcliff Manor, NY",
+"precision": 1
+},
+"60th street, west new york, nj, 07093, united states": {
+"lat": 40.7903762,
+"lon": -74.0193857,
+"display": "60th Street, West New York, Hudson County, New Jersey, 07093, United States",
+"matched": "60th Street, West New York, NJ",
+"precision": 0
+},
+"caf\u00e9, the westport library, 20 jesup road, westport, ct, 06880, united states": {
+"lat": 41.1396873,
+"lon": -73.3612903,
+"display": "The Westport Library, 20, Jesup Road, Westport, Western Connecticut Planning Region, Connecticut, 06880, United States",
+"matched": "The Westport Library, 20 Jesup Road, Westport, CT",
+"precision": 1
+},
+"pier i, pier i at w 70th street, ny": null,
+"the parlor, beacon, ny": {
+"lat": 41.5048402,
+"lon": -73.9695409,
+"display": "City of Beacon, Dutchess County, New York, 12508, United States",
+"matched": "Beacon, NY",
+"precision": 1
+},
+"w 145th street lawn, new york": null,
+"the castle fun center, 109 brookside avenue, chester, 10918, united states": {
+"lat": 41.3544798,
+"lon": -74.254514,
+"display": "Brookside Avenue, Greycourt, Village of Chester, Town of Chester, Orange County, New York, 10918, United States",
+"matched": "109 Brookside Avenue, Chester",
+"precision": 1
+},
+"w 68th street & riverside blvd, w 68th street & riverside blvd": null,
+"lasdon park, 2610 amawalk road, route 35, katonah, ny, 10536": {
+"lat": 41.2558715,
+"lon": -73.6847453,
+"display": "Katonah, Town of Bedford, Westchester County, New York, United States",
+"matched": "Katonah, NY",
+"precision": 3
+},
+"other, 20 jesup road, westport, ct, 06880, united states": {
+"lat": 41.1396873,
+"lon": -73.3612903,
+"display": "The Westport Library, 20, Jesup Road, Westport, Western Connecticut Planning Region, Connecticut, 06880, United States",
+"matched": "20 Jesup Road, Westport, CT",
+"precision": 1
+},
+"room 210, the westport library, 20 jesup road, westport, ct, 06880, united states": {
+"lat": 41.1396873,
+"lon": -73.3612903,
+"display": "The Westport Library, 20, Jesup Road, Westport, Western Connecticut Planning Region, Connecticut, 06880, United States",
+"matched": "The Westport Library, 20 Jesup Road, Westport, CT",
+"precision": 1
+},
+"jennys garden, jenny's garden, ny": {
+"lat": 41.6072088,
+"lon": -73.9736452,
+"display": "Jenny\u2019s Garden, Marlboro, Town of Marlborough, Ulster County, New York, United States",
+"matched": "Jenny's Garden, NY",
+"precision": 1
+},
+"dyckman farmhouse museum, 4881 broadway, new york, ny, 10034-3101, united states": {
+"lat": 40.8673822,
+"lon": -73.9228859,
+"display": "Dyckman Farmhouse Museum, 4881, Broadway, Inwood, Manhattan Community Board 12, Manhattan, New York County, New York, 10034, United States",
+"matched": "Dyckman Farmhouse Museum, 4881 Broadway, New York, NY",
+"precision": 0
+},
+"the burnham library, 62 main street south, burnham library, bridgewater, ct, 06798, united states": {
+"lat": 41.5350949,
+"lon": -73.3662305,
+"display": "Bridgewater, Western Connecticut Planning Region, Connecticut, 06752, United States",
+"matched": "Bridgewater, CT",
+"precision": 3
+},
+"w 125th & marginal streets, w 125th & marginal streets": null,
+"nissen carousel, 30 west broad street, stamford, ct, 06902, united states": {
+"lat": 41.0556096,
+"lon": -73.5466316,
+"display": "30, West Broad Street, West Side, Northfield, Stamford, Western Connecticut Planning Region, Connecticut, 06902, United States",
+"matched": "30 West Broad Street, Stamford, CT",
+"precision": 1
+},
+"nj, verona": {
+"lat": 40.829822,
+"lon": -74.2401466,
+"display": "Verona, Essex County, New Jersey, 07044, United States",
+"matched": "NJ, Verona",
+"precision": 0
+},
+"95th street compost compound, edgewater": null,
+"lasdon welcome center, whitehall corners": null,
+"gallery on the 2nd floor, west milford": null,
+"the institute for american indian studies, 38 curtis road, washington, ct, 06793, united states": {
+"lat": 41.6105285,
+"lon": -73.3227346,
+"display": "Institute for American Indian Studies Research and Education Library, 38, Curtis Road, Washington, Northwest Hills Planning Region, Connecticut, 06793, United States",
+"matched": "38 Curtis Road, Washington, CT",
+"precision": 1
+},
+"w 143rd street & riverside drive, w 143rd street & riverside drive": null,
+"kleinert james gallery, woodstock": null,
+"102nd street field house, 102nd street field house": null,
+"soldiers and sailors monument, soldiers' and sailors' monument, ny": {
+"lat": 40.6729893,
+"lon": -73.9699031,
+"display": "Soldiers' and Sailors' Arch, Grand Army Plaza, Prospect Heights, Brooklyn, Kings County, New York, 11238, United States",
+"matched": "Soldiers' and Sailors' Monument, NY",
+"precision": 1
+},
+"garden peoples garden, the garden people": null,
+"verona public library, 17 gould st., verona, nj, nj, 07044, united states": {
+"lat": 40.8329262,
+"lon": -74.2464137,
+"display": "Verona Public Library, 17, Gould Street, Verona, Essex County, New Jersey, 07044, United States",
+"matched": "Verona Public Library, 17 Gould St., Verona, NJ, NJ",
+"precision": 0
+},
+"ralph ellison plaza, riverside dr & w 150th st,, new york, ny, 10031, united states": {
+"lat": 40.7127281,
+"lon": -74.0060152,
+"display": "New York, United States",
+"matched": "New York, NY",
+"precision": 3
+},
+"nj": {
+"lat": 40.0757384,
+"lon": -74.4041622,
+"display": "New Jersey, United States",
+"matched": "NJ",
+"precision": 0
+},
+"komansky room, the westport library": null,
+"children\u2019s room, west milford": null,
+"zoom, guttenberg": null,
+"lower parking lot/ monarch meadow, whitehall corners": null,
+"the westport library board room, 20 jesup road, westport, ct, 06880, united states": {
+"lat": 41.1396873,
+"lon": -73.3612903,
+"display": "The Westport Library, 20, Jesup Road, Westport, Western Connecticut Planning Region, Connecticut, 06880, United States",
+"matched": "20 Jesup Road, Westport, CT",
+"precision": 1
+},
+"the westport library, 20 jesup road, westport, ct, 06880, united states": {
+"lat": 41.1396873,
+"lon": -73.3612903,
+"display": "The Westport Library, 20, Jesup Road, Westport, Western Connecticut Planning Region, Connecticut, 06880, United States",
+"matched": "The Westport Library, 20 Jesup Road, Westport, CT",
+"precision": 0
+},
+"carol stafford meeting room \u2013 library lower level, 17 gould st., verona, nj, 07044, united states": {
+"lat": 40.8329262,
+"lon": -74.2464137,
+"display": "Verona Public Library, 17, Gould Street, Verona, Essex County, New Jersey, 07044, United States",
+"matched": "17 Gould St., Verona, NJ",
+"precision": 1
+},
+"keating hall, 130": {
+"lat": 44.8727892,
+"lon": -117.5477918,
+"display": "Keating Grange Hall Road, Baker County, Oregon, United States",
+"matched": "Keating Hall, 130",
+"precision": 0
+},
+"riverbank (camel) playground, 675 riverside dr, new york, ny, 10031, united states": {
+"lat": 42.1107747,
+"lon": -75.9661954,
+"display": "675, Riverside Drive, Village of Johnson City, Town of Union, Broome County, New York, 13790, United States",
+"matched": "675 Riverside Dr, New York, NY",
+"precision": 1
+},
+"various, edgewater": null,
+"sakura park, sakura park, ny": {
+"lat": 40.8129879,
+"lon": -73.9621515,
+"display": "Sakura Park, Manhattan Community Board 9, Manhattan, New York County, New York, United States",
+"matched": "Sakura Park, NY",
+"precision": 1
+},
+"virtual event, westport, ct": {
+"lat": 41.1414855,
+"lon": -73.3578955,
+"display": "Westport, Western Connecticut Planning Region, Connecticut, 06880, United States",
+"matched": "Westport, CT",
+"precision": 1
+},
+"sheffer room, the westport library, 20 jesup road, westport, ct, 06880, united states": {
+"lat": 41.1396873,
+"lon": -73.3612903,
+"display": "The Westport Library, 20, Jesup Road, Westport, Western Connecticut Planning Region, Connecticut, 06880, United States",
+"matched": "The Westport Library, 20 Jesup Road, Westport, CT",
+"precision": 1
+},
+"room 212, the westport library, 20 jesup road, westport, ct, 06880, united states": {
+"lat": 41.1396873,
+"lon": -73.3612903,
+"display": "The Westport Library, 20, Jesup Road, Westport, Western Connecticut Planning Region, Connecticut, 06880, United States",
+"matched": "The Westport Library, 20 Jesup Road, Westport, CT",
+"precision": 1
+},
+"66th street plaza, 66th street plaza, ny": {
+"lat": 41.6321107,
+"lon": -93.7073786,
+"display": "66th Street, Plaza Manor Apartments, Urbandale, Polk County, Iowa, 50322, United States",
+"matched": "66th Street Plaza, NY",
+"precision": 1
+},
+"the trefz forum, the westport library, 20 jesup road, westport, ct, 06880, united states": {
+"lat": 41.1396873,
+"lon": -73.3612903,
+"display": "The Westport Library, 20, Jesup Road, Westport, Western Connecticut Planning Region, Connecticut, 06880, United States",
+"matched": "The Westport Library, 20 Jesup Road, Westport, CT",
+"precision": 1
+},
+"online only, cliffside park, nj": {
+"lat": 40.8214894,
+"lon": -73.9876388,
+"display": "Cliffside Park, Bergen County, New Jersey, 07010, United States",
+"matched": "Cliffside Park, NJ",
+"precision": 1
+},
+"maker space, verona": null,
+"youth activity room \u2013 library lower level, 17 gould st., verona, nj, 07044, united states": {
+"lat": 40.8329262,
+"lon": -74.2464137,
+"display": "Verona Public Library, 17, Gould Street, Verona, Essex County, New Jersey, 07044, United States",
+"matched": "17 Gould St., Verona, NJ",
+"precision": 1
+},
+"kaplan hall": {
+"lat": 34.0714634,
+"lon": -118.4412209,
+"display": "Kaplan Hall, Portola Plaza, Bel Air, Westwood, Los Angeles, Los Angeles County, California, 90095, United States",
+"matched": "Kaplan Hall",
+"precision": 0
+},
+"carlini field / washington, d.c.": {
+"lat": 38.9462309,
+"lon": -77.0016486,
+"display": "Carlini Field, Bates Road Northeast, University Heights, Fort Totten, Ward 5, Washington, District of Columbia, 20317, United States",
+"matched": "Carlini Field / Washington, D.C.",
+"precision": 0
+},
+"trailside nature museum, reservation road, pound ridge, 10576, united states": {
+"lat": 41.2574675,
+"lon": -73.589042,
+"display": "Trailside Nature Museum, Reservation Road, Town of Pound Ridge, Westchester County, New York, 10518, United States",
+"matched": "Trailside Nature Museum, Reservation Road, Pound Ridge",
+"precision": 0
+},
+"lincoln depot museum, 10 s water street, peekskill, ny, 10566, united states": {
+"lat": 41.287703,
+"lon": -73.9298161,
+"display": "Lincoln Depot Museum, 10, South Water Street, City of Peekskill, Westchester County, New York, 10566, United States",
+"matched": "Lincoln Depot Museum, 10 S Water Street, Peekskill, NY",
+"precision": 0
+},
+"ct": {
+"lat": 41.8523094,
+"lon": 1.5745043,
+"display": "Catalunya, Espa\u00f1a",
+"matched": "CT",
+"precision": 0
+},
+"grand steps, 1040 washington boulevard, stamford, ct, 06901, united states": {
+"lat": 41.0534311,
+"lon": -73.5438766,
+"display": "Whittingham Discovery Center, 1040, Washington Boulevard, Northfield, Stamford, Western Connecticut Planning Region, Connecticut, 06901, United States",
+"matched": "1040 Washington Boulevard, Stamford, CT",
+"precision": 1
+},
+"ridgefield library, 472 main street, ridgefield, ct, 06877, united states": {
+"lat": 41.2837548,
+"lon": -73.4978148,
+"display": "Ridgefield Library, 472, Main Street, Titicus, Ridgefield, Western Connecticut Planning Region, Connecticut, 06877, United States",
+"matched": "Ridgefield Library, 472 Main Street, Ridgefield, CT",
+"precision": 0
+},
+"briarcliff manor public library, briarcliff manor, ny": {
+"lat": 41.1465398,
+"lon": -73.8243608,
+"display": "Briarcliff Manor Public Library, 1, Library Road, Village of Briarcliff Manor, Town of Ossining, Westchester County, New York, 10510, United States",
+"matched": "Briarcliff Manor Public Library, Briarcliff Manor, NY",
+"precision": 0
+},
+"cohen display fountain, 1040 washington blvd, stamford, 06902, united states": {
+"lat": 41.0534311,
+"lon": -73.5438766,
+"display": "Whittingham Discovery Center, 1040, Washington Boulevard, Northfield, Stamford, Western Connecticut Planning Region, Connecticut, 06901, United States",
+"matched": "1040 Washington Blvd, Stamford",
+"precision": 1
+},
+"the corner bookstore, 1313 madison avenue, new york, ny, 10128, united states": {
+"lat": 40.7851513,
+"lon": -73.955491,
+"display": "The Corner Bookstore, 1313, Madison Avenue, Carnegie Hill, Manhattan Community Board 8, Manhattan, New York County, New York, 10128, United States",
+"matched": "The Corner Bookstore, 1313 Madison Avenue, New York, NY",
+"precision": 0
+},
+"glen island park, weyman avenue, new rochelle, ny, 10805": {
+"lat": 40.887613,
+"lon": -73.7834322,
+"display": "Weyman Avenue, City of New Rochelle, Westchester County, New York, 10805, United States",
+"matched": "Weyman Avenue, New Rochelle, NY",
+"precision": 1
+},
+"eisenhower park - red course / east meadow, ny": null,
+"observatory and planetarium, 43 lake ave. extension, danbury, ct": {
+"lat": 41.3861161,
+"lon": -73.4966139,
+"display": "43, Lake Avenue Extension, Mill Plain, Danbury, Western Connecticut Planning Region, Connecticut, 06810, United States",
+"matched": "43 Lake Ave. Extension, Danbury, CT",
+"precision": 1
+},
+"regina a. quick center for the arts, fairfield university": null,
+"watertown library association, 470 main st, watertown, ct 06795, usa": {
+"lat": 41.6037061,
+"lon": -73.1176002,
+"display": "Watertown Library Association, 470, Main Street, Oakville, Watertown, Naugatuck Valley Planning Region, Connecticut, 06795, United States",
+"matched": "Watertown Library Association, 470 Main St, Watertown, CT 06795",
+"precision": 0
+},
+"verona community garden, verona": null,
+"bellarmine campus, bellarmine campus": null,
+"ny, whitehall corners": {
+"lat": 41.2748119,
+"lon": -73.7101179,
+"display": "Whitehall Corners, Town of Somers, Westchester County, New York, 10536, United States",
+"matched": "NY, Whitehall Corners",
+"precision": 0
+},
+"mill river park, 1040 washington blvd., stamford, ct, 06901, united states": {
+"lat": 41.0534311,
+"lon": -73.5438766,
+"display": "Whittingham Discovery Center, 1040, Washington Boulevard, Northfield, Stamford, Western Connecticut Planning Region, Connecticut, 06901, United States",
+"matched": "1040 Washington Blvd., Stamford, CT",
+"precision": 1
+},
+"byrdcliffe barn, 485 upper byrdcliffe rd, woodstock, ny, 12498, united states": {
+"lat": 42.0537854,
+"lon": -74.1465629,
+"display": "485, Upper Byrdcliffe Road, Byrdcliffe, Town of Woodstock, Ulster County, New York, 12498, United States",
+"matched": "485 Upper Byrdcliffe Rd, Woodstock, NY",
+"precision": 1
+},
+"in the garden, guttenberg": null,
+"the links at union vale / lagrangeville, ny": {
+"lat": 41.6761444,
+"lon": -73.7353437,
+"display": "The Links at Union Vale, 153, North Parliman Road, Lagrangeville, Town of Union Vale, Dutchess County, New York, 12540, United States",
+"matched": "The Links at Union Vale / Lagrangeville, NY",
+"precision": 0
+},
+"library, 2nd floor": {
+"lat": 40.2863153,
+"lon": -80.0230188,
+"display": "Library, South Park Township, Allegheny County, Pennsylvania, 15129, United States",
+"matched": "Library, 2nd floor",
+"precision": 0
+},
+"white pines @ byrdcliffe colony, 454 upper byrdcliffe rd, woodstock, ny, 12498, united states": {
+"lat": 42.0547181,
+"lon": -74.1454424,
+"display": "454, Upper Byrdcliffe Road, Byrdcliffe, Town of Woodstock, Ulster County, New York, 12498, United States",
+"matched": "454 Upper Byrdcliffe Rd, Woodstock, NY",
+"precision": 1
+},
+"villetta inn @ byrdcliffe colony, 3 upper byrdcliffe way, woodstock, ny, 12498, united states": {
+"lat": 42.0561228,
+"lon": -74.1384098,
+"display": "3, Upper Byrdcliffe Way, Byrdcliffe, Town of Woodstock, Ulster County, New York, 12498, United States",
+"matched": "3 Upper Byrdcliffe Way, Woodstock, NY",
+"precision": 1
+},
+"byrdcliffe theatre, 380 upper byrdcliffe rd, woodstock, ny, 12498, united states": {
+"lat": 42.0559869,
+"lon": -74.1388885,
+"display": "380, Upper Byrdcliffe Road, Byrdcliffe, Town of Woodstock, Ulster County, New York, 12498, United States",
+"matched": "380 Upper Byrdcliffe Rd, Woodstock, NY",
+"precision": 1
+},
+"seasons, 644 pascack road, | washington township, nj, 07676, united states": {
+"lat": 40.996881,
+"lon": -74.0600183,
+"display": "644, Pascack Road, Township of Washington, Bergen County, New Jersey, 07676, United States",
+"matched": "644 Pascack Road, | Washington Township, NJ",
+"precision": 1
+},
+"four brothers drive-in parking lot,4957 ny-22, amenia, ny 12501, usa": {
+"lat": 41.8502761,
+"lon": -73.5575343,
+"display": "Four Brothers Drive-In, 4957, North Street, Town of Amenia, Dutchess County, New York, 12501, United States",
+"matched": "4957 NY-22, Amenia, NY 12501",
+"precision": 1
+},
+"scoville memorial library, 38 main street, salisbury, ct, 06068": {
+"lat": 41.9809185,
+"lon": -73.4225979,
+"display": "Scoville Library, 38, Main Street, Lakeville, Salisbury, Northwest Hills Planning Region, Connecticut, 06068, United States",
+"matched": "38 Main Street, Salisbury, CT",
+"precision": 1
+},
+"shaker ridge country club / albany, ny": {
+"lat": 42.7515006,
+"lon": -73.8260779,
+"display": "Shaker Ridge Country Club, 802, Albany Shaker Road, Shakers, Town of Colonie, Albany County, New York, 12211, United States",
+"matched": "Shaker Ridge Country Club / Albany, NY",
+"precision": 0
+},
+"garden city country club": {
+"lat": 40.719533,
+"lon": -73.6682195,
+"display": "Garden City Country Club, 206, Stewart Avenue, Country Club Estates, Village of Garden City, Town of Hempstead, Nassau County, New York, 11530, United States",
+"matched": "Garden City Country Club",
+"precision": 0
+},
+"river vale country club / river vale, ny": null,
+"carriage barn arts center, 681 south avenue, new canaan, ct, 06840, united states": {
+"lat": 41.1228516,
+"lon": -73.4892135,
+"display": "Carriage Barn Arts Center, 681, South Avenue, New Canaan, Western Connecticut Planning Region, Connecticut, 06840, United States",
+"matched": "Carriage Barn Arts Center, 681 South Avenue, New canaan, CT",
+"precision": 0
+},
+"pound ridge golf club / pound ridge, ny": null,
+"the powelton club / newburgh, ny": null,
+"18th ward brewing, 40 division st, new rochelle, ny 10801, usa": {
+"lat": 40.909302,
+"lon": -73.784038,
+"display": "40, Division Street, City of New Rochelle, Westchester County, New York, 10801, United States",
+"matched": "40 Division St, New Rochelle, NY 10801",
+"precision": 1
+},
+"the golf club at mansion ridge / monroe, ny": null,
+"webb institute, 298 crescent beach road, glen cove, ny, 11542, united states": {
+"lat": 40.8845423,
+"lon": -73.6447775,
+"display": "Webb Institute, Crescent Beach Road, City of Glen Cove, Nassau County, New York, 11471, United States",
+"matched": "Webb Institute, 298 Crescent Beach Road, Glen Cove, NY",
+"precision": 0
+},
+"aquinas hall theatre": null,
+"etec, first floor atrium": null,
+"drone lab, page hall, downtown campus, basement": null,
+"etec, b037 & b042": {
+"lat": -1.3850876,
+"lon": -48.4695578,
+"display": "ETEC, Val-de-C\u00e3es, Entroncamento, Bel\u00e9m, Par\u00e1, Regi\u00e3o Norte, Brasil",
+"matched": "ETEC, B037 & B042",
+"precision": 0
+},
+"bellarmine campus": {
+"lat": 41.1580718,
+"lon": -73.2577748,
+"display": "Pedro Arrupe Campus Ministry Center, Bellarmine Road, Fairfield, Greater Bridgeport Planning Region, Connecticut, 06824, United States",
+"matched": "Bellarmine Campus",
+"precision": 0
+},
+"orthodox room in the interchurch center, 475 riverside drive, new york, 10115, united states": {
+"lat": 40.8107933,
+"lon": -73.9637438,
+"display": "Interchurch Center, 475, Riverside Drive, Morningside Heights, Manhattan Community Board 9, Manhattan, New York County, New York, 10115, United States",
+"matched": "475 Riverside Drive, New York",
+"precision": 1
+},
+"w 116th street & riverside drive, w 116th street & riverside drive, new york, united states": null,
+"higgins room, the westport library, 20 jesup road, westport, ct, 06880, united states": {
+"lat": 41.1396873,
+"lon": -73.3612903,
+"display": "The Westport Library, 20, Jesup Road, Westport, Western Connecticut Planning Region, Connecticut, 06880, United States",
+"matched": "The Westport Library, 20 Jesup Road, Westport, CT",
+"precision": 1
+},
+"the westport library mccall room, 20 jesup road, westport, ct, 06880, united states": {
+"lat": 41.1396873,
+"lon": -73.3612903,
+"display": "The Westport Library, 20, Jesup Road, Westport, Western Connecticut Planning Region, Connecticut, 06880, United States",
+"matched": "20 Jesup Road, Westport, CT",
+"precision": 1
+},
+"bergami center for science, technology, and innovation, 301": {
+"lat": 36.0419462,
+"lon": -94.1685386,
+"display": "South Innovation Way, Arkansas Research and Technology Park, Fayetteville, Washington County, Arkansas, 72701, United States",
+"matched": "Technology, and Innovation, 301",
+"precision": 1
+},
+"wprr visitor center, ward pound ridge reservation, cross river, ny, 10518, united states": {
+"lat": 41.265141,
+"lon": -73.6753585,
+"display": "Cross River, Katonah Ridge, Town of Bedford, Westchester County, New York, 10536, United States",
+"matched": "Cross River, NY",
+"precision": 3
+},
+"virtual event": null,
+"food bartels hall, campus center, boston post road, west haven, ct, usa (rm: alumni annex)": null,
+"room 4, west milford": null,
+"tulsa, okla.": {
+"lat": 36.1563122,
+"lon": -95.9927516,
+"display": "Tulsa, Oklahoma, United States",
+"matched": "Tulsa, Okla.",
+"precision": 0
+},
+"room 1 & 2, west milford": {
+"lat": 41.1281414,
+"lon": -74.3393437,
+"display": "Safari 2, West Milford, Passaic County, New Jersey, 07421, United States",
+"matched": "Room 1 & 2, West Milford",
+"precision": 0
+},
+"outside library": {
+"lat": 37.365699,
+"lon": -120.4249913,
+"display": "Outside Library, 5200, Scholar's Lane, Merced, Merced County, California, 95343, United States",
+"matched": "Outside Library",
+"precision": 0
+},
+"185 e flat hill road": {
+"lat": 41.466597,
+"lon": -73.2591384,
+"display": "185, East Flat Hill Road, South Britain Historic District, Traditions, South Britain, Southbury, Naugatuck Valley Planning Region, Connecticut, 06488, United States",
+"matched": "185 E Flat Hill Road",
+"precision": 0
+},
+"1 playland parkway": {
+"lat": 40.9659452,
+"lon": -73.6731284,
+"display": "Rye Playland, 1, Playland Parkway, Milton, City of Rye, Westchester County, New York, 10580, United States",
+"matched": "1 Playland Parkway",
+"precision": 0
+},
+"430 bedford rd.": {
+"lat": 41.13383,
+"lon": -73.7906007,
+"display": "430, Bedford Road, Village of Pleasantville, Town of Mount Pleasant, Westchester County, New York, 10570, United States",
+"matched": "430 Bedford Rd.",
+"precision": 0
+},
+"206 route 303": {
+"lat": 45.5816231,
+"lon": -76.6314353,
+"display": "Route 303, Clarendon, Pontiac, Outaouais, Qu\u00e9bec, J0X 2T0, Canada",
+"matched": "206 Route 303",
+"precision": 0
+},
+"35 main st": {
+"lat": 53.4547429,
+"lon": -1.368714,
+"display": "35 Main Street (owned by 33 Main Street), Parkgate, Greasbrough, Rotherham, South Yorkshire, England, United Kingdom",
+"matched": "35 Main St",
+"precision": 0
+},
+"7 main st": {
+"lat": 54.2117575,
+"lon": -3.2709758,
+"display": "7, Holborn Hill, Knott End, Haverigg, Millom, Cumberland, England, LA18 5BS, United Kingdom",
+"matched": "7 Main St",
+"precision": 0
+},
+"472 main st": {
+"lat": 43.693655,
+"lon": -79.3045161,
+"display": "472,474, Main Street, Taylor-Massey, Beaches\u2014East York, East York, Toronto, Golden Horseshoe, Ontario, M4C 2C3, Canada",
+"matched": "472 Main St",
+"precision": 0
+},
+"163 main street": {
+"lat": -37.6784036,
+"lon": 144.994151,
+"display": "163, Main Street, Thomastown, Melbourne, Victoria, 3074, Australia",
+"matched": "163 Main Street",
+"precision": 0
+},
+"pavilion street": {
+"lat": 51.5303186,
+"lon": 0.0331125,
+"display": "Pavilion Street, Upton Park, London Borough of Newham, Greater London, England, E13 9DF, United Kingdom",
+"matched": "Pavilion Street",
+"precision": 0
+},
+"corner of tate and piermont avenues": null,
+"children's room, grinnell library, wappingers falls, wappingers falls, ny": {
+"lat": 41.5983619,
+"lon": -73.9184564,
+"display": "Grinnell Public Library, 2642, East Main Street, Village of Wappingers Falls, Town of Wappinger, Dutchess County, New York, 12590, United States",
+"matched": "Grinnell Library, Wappingers Falls, Wappingers Falls, NY",
+"precision": 1
+},
+"backyard, grinnell library, wappingers falls, wappingers falls, ny": {
+"lat": 41.5983619,
+"lon": -73.9184564,
+"display": "Grinnell Public Library, 2642, East Main Street, Village of Wappingers Falls, Town of Wappinger, Dutchess County, New York, 12590, United States",
+"matched": "Grinnell Library, Wappingers Falls, Wappingers Falls, NY",
+"precision": 1
+},
+"655 pitcher rd, west point, ny": {
+"lat": 41.3912693,
+"lon": -73.9658803,
+"display": "United States Military Academy, 845, Brewerton Road, Town of Highlands, Orange County, New York, 10996, United States",
+"matched": "West Point, NY",
+"precision": 1
+}
+}

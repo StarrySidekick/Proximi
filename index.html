@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Proximi — find things to do near you</title>
+<meta name="description" content="Find events and activities happening near wherever you are.">
+<meta name="theme-color" content="#E9E1CC" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#241C14" media="(prefers-color-scheme: dark)">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="stylesheet" href="assets/styles.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='26'>📍</text></svg>">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap topbar-inner">
+    <div class="brand">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span class="brand-name">Proximi</span>
+    </div>
+
+    <button id="open-filters" class="filters-btn" type="button"
+            aria-haspopup="dialog" aria-expanded="false" aria-controls="filter-sheet">
+      <svg viewBox="0 0 16 16" aria-hidden="true" class="ico">
+        <path d="M2 4h12M4 8h8M6.5 12h3" stroke="currentColor" stroke-width="1.6"
+              stroke-linecap="round" fill="none"/>
+      </svg>
+      Filters
+      <span class="filters-count" id="filters-count" hidden></span>
+    </button>
+  </div>
+</header>
+
+<nav class="wrap viewtabs" role="tablist" aria-label="What to browse">
+  <button type="button" id="tab-events" class="viewtab is-on" role="tab"
+          aria-selected="true" aria-controls="events-view">
+    Events<span class="viewtab-n" id="tab-events-n"></span>
+  </button>
+  <button type="button" id="tab-places" class="viewtab" role="tab"
+          aria-selected="false" aria-controls="places-view">
+    Places<span class="viewtab-n" id="tab-places-n"></span>
+  </button>
+</nav>
+
+<div class="wrap contextbar">
+  <button id="open-location" class="context-chip" type="button">
+    <svg viewBox="0 0 16 16" aria-hidden="true" class="ico">
+      <path d="M8 15s5-4.6 5-8.4A5 5 0 0 0 3 6.6C3 10.4 8 15 8 15Z"
+            stroke="currentColor" stroke-width="1.5" fill="none"/>
+      <circle cx="8" cy="6.5" r="1.8" fill="currentColor"/>
+    </svg>
+    <span id="context-place">Loading…</span>
+  </button>
+  <span class="context-scope" id="context-scope"></span>
+</div>
+
+<div class="wrap">
+  <p class="venue-banner" id="venue-banner" hidden>
+    Showing only <strong id="venue-banner-name"></strong>
+    <button type="button" id="venue-banner-clear">Show everywhere</button>
+  </p>
+</div>
+
+<main class="wrap">
+  <div id="events-view" role="tabpanel" aria-labelledby="tab-events">
+    <p class="freshness" id="data-banner" hidden></p>
+    <ul id="list" class="list"></ul>
+    <p id="empty" class="empty" hidden></p>
+  </div>
+
+  <div id="places-view" role="tabpanel" aria-labelledby="tab-places" hidden>
+    <p class="places-intro">Somewhere to go, whether or not anything is on.
+      Swipe a place right to like it, left to mute it.</p>
+    <div class="places-controls">
+      <input id="places-search" type="search" placeholder="Search places or towns…"
+             autocomplete="off" aria-label="Search places">
+      <label class="places-sort">
+        <span class="sr-only">Sort places</span>
+        <select id="places-sort">
+          <option value="near">Nearest first</option>
+          <option value="events">Most going on</option>
+          <option value="name">By name</option>
+        </select>
+      </label>
+    </div>
+    <div class="places-controls">
+      <label class="places-kind-field">
+        <span class="sr-only">Kind of place</span>
+        <select id="places-kinds"></select>
+      </label>
+      <label class="places-toggle">
+        <input type="checkbox" id="places-saved"> Liked only
+      </label>
+    </div>
+    <p class="places-summary" id="places-summary"></p>
+    <ul id="places-list" class="places-list"></ul>
+    <p class="fine places-credit">Place data from
+      <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors (ODbL),
+      plus venues we know from the event feed.</p>
+  </div>
+</main>
+
+<p class="build-stamp" id="build-stamp" hidden></p>
+
+<div id="toast" class="toast" role="status" aria-live="polite" hidden>
+  <span class="toast-msg"></span>
+  <button type="button" class="toast-undo">Undo</button>
+</div>
+
+<footer class="footer wrap">
+  <p>Proximi · <a href="https://github.com/StarrySidekick/Proximi">source on GitHub</a></p>
+  <p class="fine">Place search by <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> / Nominatim.</p>
+</footer>
+
+
+<!-- ── Filter sheet ─────────────────────────────────────── -->
+<div class="scrim" id="scrim" hidden></div>
+
+<aside class="sheet" id="filter-sheet" role="dialog" aria-modal="true"
+       aria-labelledby="sheet-title" hidden>
+
+  <header class="sheet-head">
+    <h2 id="sheet-title">Filters</h2>
+    <button id="close-filters" class="icon-btn" type="button" aria-label="Close filters">
+      <svg viewBox="0 0 16 16" aria-hidden="true" class="ico">
+        <path d="M4 4l8 8M12 4l-8 8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+      </svg>
+    </button>
+  </header>
+
+  <div class="sheet-body">
+
+    <section class="group" aria-labelledby="g-loc">
+      <h3 class="group-h" id="g-loc">Location</h3>
+      <div class="loc-row">
+        <button id="use-my-location" class="btn btn-primary" type="button">Use my location</button>
+      </div>
+      <form id="place-form" class="place-form" role="search">
+        <label class="sr-only" for="place-input">Search for a place</label>
+        <input id="place-input" type="text" placeholder="Town, city or address…" autocomplete="off">
+        <button class="btn" type="submit">Go</button>
+      </form>
+      <div class="chips" id="presets"></div>
+      <p class="loc-status" id="loc-status" role="status" aria-live="polite"></p>
+    </section>
+
+    <section class="group" aria-labelledby="g-when">
+      <h3 class="group-h" id="g-when">When</h3>
+      <div class="chips" id="horizon" role="group" aria-label="How far ahead to look"></div>
+    </section>
+
+    <section class="group" aria-labelledby="g-dist">
+      <h3 class="group-h" id="g-dist">Distance</h3>
+      <label class="field-label" for="radius">
+        Search radius — <output id="radius-out"></output>
+      </label>
+      <input id="radius" type="range" min="5" max="105" step="5" value="75">
+      <div class="range-ends"><span>5</span><span>Any distance</span></div>
+      <label class="check"><input type="checkbox" id="units-km"> Show kilometers</label>
+    </section>
+
+    <section class="group" aria-labelledby="g-rep">
+      <h3 class="group-h" id="g-rep">Repeating</h3>
+      <div class="chips" id="repeats" role="group" aria-label="One-off or repeating"></div>
+      <p class="hint">Things like a weekly market or a monthly clinic come round again.</p>
+    </section>
+
+    <section class="group" aria-labelledby="g-who">
+      <h3 class="group-h" id="g-who">Who it's for</h3>
+      <label class="check"><input type="checkbox" id="show-kids"> Family &amp; kids events</label>
+      <label class="check"><input type="checkbox" id="show-seniors"> Senior-focused events</label>
+      <label class="check"><input type="checkbox" id="show-adults" checked> 21+ events</label>
+      <div class="field decided">
+        <span class="field-label">Your picks</span>
+        <p class="hint" id="hidden-note">Nothing hidden yet.</p>
+        <div class="decided-actions">
+          <button type="button" id="show-hidden" class="chip" aria-pressed="false" hidden>Show hidden</button>
+          <button type="button" id="clear-hidden" class="chip" hidden>Restore all hidden</button>
+        </div>
+        <p class="hint">Swipe a card left to hide it, right to add it to your
+          calendar — or use the buttons on the card. Kept in this browser only.</p>
+      </div>
+
+      <p class="hint">Family &amp; kids covers anything aimed at children or at
+        families with young children; senior-focused means a programme for older
+        adults, like a senior breakfast club. A listing merely open to everyone —
+        a county fair, an outdoor concert — always shows.</p>
+    </section>
+
+    <section class="group" aria-labelledby="g-what">
+      <h3 class="group-h" id="g-what">What</h3>
+      <div class="field">
+        <label class="field-label" for="q">Search</label>
+        <input id="q" type="search" placeholder="Keyword, venue or town…">
+      </div>
+      <div class="field">
+        <span class="field-label">Kind of thing</span>
+        <div id="types" class="chips" role="group" aria-label="Filter by type"></div>
+        <p class="hint">Click once to show only that kind, twice to hide it
+          everywhere (struck through), a third time to clear it.</p>
+      </div>
+    </section>
+
+    <section class="group" aria-labelledby="g-feat">
+      <h3 class="group-h" id="g-feat">Features</h3>
+      <label class="check"><input type="checkbox" id="food-only"> Food or drink</label>
+      <label class="check"><input type="checkbox" id="outdoor-only"> Outdoors</label>
+      <label class="check"><input type="checkbox" id="interested-only">
+        Only places I like
+        <span class="check-n" id="interested-n"></span>
+      </label>
+      <div class="field" style="margin-top:11px">
+        <span class="field-label">Time of day</span>
+        <div id="tod" class="chips" role="group" aria-label="Filter by time of day"></div>
+      </div>
+    </section>
+
+    <section class="group" aria-labelledby="g-cost">
+      <h3 class="group-h" id="g-cost">Cost</h3>
+      <label class="field-label" for="price">
+        Max price — <output id="price-out"></output>
+      </label>
+      <input id="price" type="range" min="0" max="101" step="1" value="100">
+      <div class="range-ends"><span>Free</span><span>Any price</span></div>
+      <label class="check"><input type="checkbox" id="free-only"> Free only</label>
+      <label class="check"><input type="checkbox" id="signup-only"> Needs sign-up</label>
+    </section>
+
+    <section class="group" aria-labelledby="g-sort">
+      <h3 class="group-h" id="g-sort">Sort</h3>
+      <div class="field">
+        <label class="sr-only" for="sort">Sort by</label>
+        <select id="sort">
+          <option value="soonest">Soonest, then nearest</option>
+          <option value="nearest">Nearest first</option>
+          <option value="cheapest">Cheapest first</option>
+        </select>
+      </div>
+      <p class="hint">Day headings show only when sorting by soonest.</p>
+    </section>
+
+  </div>
+
+  <footer class="sheet-foot">
+    <button id="reset-filters" class="btn btn-ghost" type="button">Reset</button>
+    <button id="apply-filters" class="btn btn-primary" type="button">Show results</button>
+  </footer>
+</aside>
+
+<script src="assets/app.js"></script>
+</body>
+</html>

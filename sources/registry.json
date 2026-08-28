@@ -1,0 +1,1232 @@
+{
+  "center": {
+    "name": "Beacon, NY",
+    "lat": 41.5048,
+    "lon": -73.9696,
+    "radiusMiles": 100,
+    "timezone": "America/New_York",
+    "placesRadiusMiles": 50
+  },
+  "notes": [
+    "kind: ics    — machine-readable feed, harvested by scripts/harvest.py",
+    "kind: html   — no feed; the weekly job reads the page and extracts",
+    "kind: api    — needs a key or token; see scripts/platforms.py",
+    "kind: social — big listing platform read through its own embedded JSON, no key; scripts/social.py",
+    "A feed that parses but has no future events is STALE, not empty. Feeds are",
+    "re-checked every run, so a source going stale is reported, never silently",
+    "dropped. Confirmed stale feeds are kept here with enabled:false and a note,",
+    "so we do not rediscover and re-trust them later.",
+    "Connecticut was invisible for a different reason than distance: Danbury is 27.8 mi from Beacon and was always inside the radius, but the registry had no CT sources at all. Coverage gaps look like radius gaps — check the registry before widening the circle.",
+    "Eventbrite and Meetup were previously assumed to need paid API access. Both hand their front end public JSON, which is why the registry now carries them: check what a site gives its own browser before concluding there is no free path.",
+    "Localist runs the calendar at events.<domain>/calendar.ics, not on the main domain, so no FEED_PATHS probe reaches it. discover.py now tries that host directly — six college feeds came from that one pattern.",
+    "campus:true marks a college calendar. Those are internal by default — orientation, registration, finals, involvement fairs — so merge.py keeps only what is genuinely open to the public (a lecture, concert, gallery opening, mass, 5K) plus home games, and drops the rest. An allowlist, not a blocklist: chasing \"Viking Days\" and \"Pie a Kappa\" by name never ends.",
+    "LibCal is read by scripts/libcal.py, not the registry: its iCal export returns an empty body and rss.php a feed with zero items, so the only working route is the per-day ajax endpoint the calendar page itself calls, walked day by day.",
+    "Songkick is read by scripts/songkick.py (metro pages, JSON-LD MusicEvents): the ticketed-concert layer — Capitol Theatre, Tarrytown Music Hall, Daryl's House — whose own sites bot-challenge us or render in JavaScript. Their search/API endpoints 406; the metro pages serve plain HTML.",
+    "Marist has a working Liferay JSON API at /api/jsonws/events.maristevent/get-upcoming-events/limit/1000 (double-encoded JSON), but every entry is internal academic calendar — Semester Begins, Search Committee Meeting, Open House. Not registered: the campus rule would drop all of it.",
+    "Assabet Interactive is the other library calendar platform beside LibCal, and it does publish schema.org Events on /calendar/. Its subdomain is not derivable from the library domain — fingerprint the homepage for an assabetinteractive.com link instead.",
+    "Local cinemas are the hardest tier in the registry. Twenty-three were probed in the 2026-08 pass and one — the Fisher Center at Bard — had a feed. The rest run bespoke or client-side ticketing (Filmbot, Wix Thunderbolt, Veezi) with no iCal, no JSON-LD and no public API, so they are html and hand-read. Do not re-probe them hoping for a feed.",
+    "downingfilmcenter.com is NOT the Downing Film Center any more: the domain now serves an Indonesian gambling site (215 mentions of \"slot\", none of \"Downing\" or \"Newburgh\"). It is deliberately absent from this registry — a hand-read pass must not ingest it. Find the theatre's current home before adding it back.",
+    "storyscreenbeacon.com is NOT Story Screen any more: the domain now serves a Turkish gambling site (14 gambling markers, zero mentions of \"Story Screen\", \"Beacon\", \"movie\" or \"film\"). Story Screen itself is alive at storyscreenpresents.com, which is what this registry points at.",
+    "bethelcinema.com is NOT Bethel Cinema any more: the domain now serves an Indonesian togel/gambling storefront. It is deliberately absent from this registry.",
+    "rivertownfilm.org (Nyack) is a live site with real listings, but its WordPress has been SEO-spammed — paragraphs of Australian online-casino copy sit in the page body beside the film blurbs. Not registered: anything read off it would carry the spam into descriptions.",
+    "Three theatre domains in one 50-mile pass had lapsed and been re-registered by gambling operators (downingfilmcenter.com, storyscreenbeacon.com, bethelcinema.com). Small venues lose domains often, so a cinema URL that has not been fetched in a while is worth re-checking for content, not just for HTTP status — all three answer 200.",
+    "Of roughly two dozen independent cinemas inside fifty miles, five serve their schedule as HTML (Jacob Burns, Rosendale, and the three Independent Cinemas houses) and are read by scripts/cinema.py. The rest run a ticketing SPA — Indy Systems, Filmbot's hosted app, or Agile Ticketing behind Imperva — and are hand-read or disabled.",
+    "Places are collected at placesRadiusMiles (50), not the 100-mile event radius. An event is worth travelling for on a given night; a garden or an antique shop is a Sunday, and 100 miles of OpenStreetMap is tens of thousands of rows nobody scrolls.",
+    "The place taxonomy lives in scripts/placekinds.py and nowhere else. enrich.py reads it as name patterns (an event only tells us what its venue is called) and places.py reads it as OpenStreetMap tag rules; both name the same 26 kinds, and an import-time assert fails if either names one the list does not define.",
+    "data/places.json is itself a source list. Probing the places that carry a website the registry did not know found 30 live feeds in 582 domains — a 5% yield, in line with the 7% the registry was built on, and it reached venues no search would name: Lasdon Public Gardens, Dyckman Farmhouse, the Woodstock Guild, and the Four Brothers Drive-In, whose Tockify feed the cinema pass had failed to find by hand."
+  ],
+  "sources": [
+    {
+      "id": "travelhudsonvalley",
+      "kind": "ics",
+      "url": "https://travelhudsonvalley.com/events/?ical=1",
+      "publisher": "Hudson Valley Tourism",
+      "scope": "regional"
+    },
+    {
+      "id": "opus40",
+      "kind": "ics",
+      "url": "https://opus40.org/calendar/?ical=1",
+      "publisher": "Opus 40",
+      "scope": "venue",
+      "venue": {
+        "name": "Opus 40",
+        "city": "Saugerties, NY",
+        "address": "50 Fite Rd, Saugerties, NY",
+        "lat": 42.0345,
+        "lon": -74.079
+      },
+      "note": "2026-08-28: feed blocked by SiteGround captcha (HTTP 202 → /.well-known/sgcaptcha/) from datacenter IPs; browser UA does not help. Left enabled in case the challenge lifts or the weekly run gets a friendlier IP."
+    },
+    {
+      "id": "desmondfish-library",
+      "kind": "ics",
+      "url": "https://desmondfishlibrary.org/events/?ical=1&eventDisplay=list",
+      "publisher": "Desmond-Fish Library, Garrison",
+      "scope": "venue",
+      "venue": {
+        "name": "Desmond-Fish Public Library",
+        "city": "Garrison, NY",
+        "address": "472 Route 403, Garrison, NY",
+        "lat": 41.3819,
+        "lon": -73.947
+      }
+    },
+    {
+      "id": "maverickconcerts",
+      "kind": "ics",
+      "url": "https://maverickconcerts.org/events/?ical=1",
+      "publisher": "Maverick Concerts",
+      "scope": "venue",
+      "venue": {
+        "name": "Maverick Concert Hall",
+        "city": "West Hurley, NY",
+        "address": "120 Maverick Rd, West Hurley, NY",
+        "lat": 42.018,
+        "lon": -74.087
+      },
+      "note": "2026-08-28: same SiteGround captcha block as opus40 (HTTP 202, text/html). Left enabled in case the challenge lifts."
+    },
+    {
+      "id": "clearwater",
+      "kind": "ics",
+      "url": "https://clearwater.org/events/?ical=1",
+      "publisher": "Hudson River Sloop Clearwater",
+      "scope": "org"
+    },
+    {
+      "id": "stormking",
+      "kind": "ics",
+      "url": "https://stormking.org/events/?ical=1",
+      "publisher": "Storm King Art Center",
+      "scope": "venue",
+      "venue": {
+        "name": "Storm King Art Center",
+        "city": "New Windsor, NY",
+        "address": "1 Museum Rd, New Windsor, NY",
+        "lat": 41.4249,
+        "lon": -74.0568
+      }
+    },
+    {
+      "id": "savagewonder",
+      "kind": "ics",
+      "url": "https://savagewonder.org/events/?ical=1",
+      "publisher": "Savage Wonder, Beacon",
+      "scope": "venue",
+      "venue": {
+        "name": "Savage Wonder",
+        "city": "Beacon, NY",
+        "address": "139 Main St, Beacon, NY",
+        "lat": 41.505,
+        "lon": -73.969
+      }
+    },
+    {
+      "id": "scenichudson",
+      "kind": "ics",
+      "url": "https://scenichudson.org/events/?ical=1",
+      "publisher": "Scenic Hudson",
+      "scope": "org"
+    },
+    {
+      "id": "millbrookwine",
+      "kind": "ics",
+      "url": "https://millbrookwine.com/?post_type=tribe_events&ical=1",
+      "publisher": "Millbrook Vineyards & Winery",
+      "scope": "venue",
+      "note": "Found by scripts/discover.py --probe. Exactly the long-tail case: winery dinners and tastings that never reach a county calendar.",
+      "venue": {
+        "name": "Millbrook Vineyards & Winery",
+        "city": "Millbrook, NY",
+        "address": "26 Wing Rd, Millbrook, NY",
+        "lat": 41.786,
+        "lon": -73.69
+      }
+    },
+    {
+      "id": "whitememorial",
+      "kind": "ics",
+      "url": "https://whitememorialcc.org/events/?ical=1",
+      "publisher": "White Memorial Conservation Center",
+      "scope": "venue",
+      "venue": {
+        "name": "White Memorial Conservation Center",
+        "city": "Litchfield, CT",
+        "address": "80 Whitehall Rd, Litchfield, CT",
+        "lat": 41.73,
+        "lon": -73.21
+      }
+    },
+    {
+      "id": "emelin",
+      "kind": "ics",
+      "url": "https://emelin.org/events/?ical=1",
+      "publisher": "Emelin Theatre",
+      "scope": "venue",
+      "venue": {
+        "name": "Emelin Theatre",
+        "city": "Mamaroneck, NY",
+        "address": "153 Library Ln, Mamaroneck, NY",
+        "lat": 40.949,
+        "lon": -73.733
+      }
+    },
+    {
+      "id": "teatown",
+      "kind": "ics",
+      "url": "https://teatown.org/events/?ical=1",
+      "publisher": "Teatown Lake Reservation",
+      "scope": "venue",
+      "venue": {
+        "name": "Teatown Lake Reservation",
+        "city": "Ossining, NY",
+        "address": "1600 Spring Valley Rd, Ossining, NY",
+        "lat": 41.205,
+        "lon": -73.833
+      }
+    },
+    {
+      "id": "thebeaconbeaconny",
+      "kind": "html",
+      "url": "https://thebeaconbeaconny.com/event-listings/",
+      "publisher": "The Beacon",
+      "scope": "local",
+      "note": "Its ?ical=1 feed is frozen at Mar-Apr 2026 while the HTML listing stays current. Every feed URL variant returns the same dead window — read the page instead."
+    },
+    {
+      "id": "townecrier",
+      "kind": "html",
+      "url": "https://townecrier.com/events/",
+      "publisher": "Towne Crier Cafe, Beacon",
+      "scope": "venue",
+      "note": "Same problem: ?ical=1 serves a 2024 archive though the venue is active."
+    },
+    {
+      "id": "alittlebeaconblog",
+      "kind": "html",
+      "url": "https://www.alittlebeaconblog.com/annual-events",
+      "publisher": "A Little Beacon Blog",
+      "scope": "local"
+    },
+    {
+      "id": "destinationdutchess",
+      "kind": "html",
+      "url": "https://destinationdutchess.com/calendar",
+      "publisher": "Destination Dutchess",
+      "scope": "regional"
+    },
+    {
+      "id": "hudsonvalleyone",
+      "kind": "html",
+      "url": "https://hudsonvalleyone.com/calendar/",
+      "publisher": "Hudson Valley One",
+      "scope": "regional"
+    },
+    {
+      "id": "timeshudsonvalley",
+      "kind": "html",
+      "url": "https://www.timeshudsonvalley.com/calendar/",
+      "publisher": "Times Hudson Valley",
+      "scope": "regional"
+    },
+    {
+      "id": "hvmag",
+      "kind": "html",
+      "url": "https://hvmag.com/things-to-do/this-week/",
+      "publisher": "Hudson Valley Magazine",
+      "scope": "regional"
+    },
+    {
+      "id": "hamlethub-danbury",
+      "kind": "html",
+      "url": "https://news.hamlethub.com/danbury/events",
+      "publisher": "HamletHub Danbury",
+      "scope": "local",
+      "note": "Disabled 2026-08-24: HamletHub's own events backend errors with getaddrinfo ENOTFOUND on its execute-api.amazonaws.com host, so the page renders no listings. Their outage, not ours — recheck later.",
+      "enabled": false
+    },
+    {
+      "id": "ridgefieldplayhouse",
+      "kind": "html",
+      "url": "https://ridgefieldplayhouse.org/events/",
+      "publisher": "Ridgefield Playhouse",
+      "scope": "venue",
+      "note": "No iCal, but the page carries schema.org Event JSON-LD — parse that."
+    },
+    {
+      "id": "palacedanbury",
+      "kind": "html",
+      "url": "https://palacedanbury.com",
+      "publisher": "Palace Danbury",
+      "scope": "venue",
+      "note": "2026-08-28: domain 301s to dqi.ear.mybluehost.me (their own site on a Bluehost dev URL, misconfigured — content there is stale, newest datable item July 2025). Legit site, broken hosting. Recheck; hand-read if it recovers."
+    },
+    {
+      "id": "stamfordmuseum",
+      "kind": "html",
+      "url": "https://stamfordmuseum.org/events/",
+      "publisher": "Stamford Museum & Nature Center",
+      "scope": "venue",
+      "note": "schema.org Event JSON-LD present."
+    },
+    {
+      "id": "ctvisit",
+      "kind": "html",
+      "url": "https://www.ctvisit.com/events",
+      "publisher": "CTvisit (CT state tourism)",
+      "scope": "regional"
+    },
+    {
+      "id": "bethelwoods",
+      "kind": "html",
+      "url": "https://www.bethelwoodscenter.org/events",
+      "publisher": "Bethel Woods Center for the Arts",
+      "scope": "venue",
+      "note": "48.9 mi — was inside the old radius too, just never registered."
+    },
+    {
+      "id": "bedfordplayhouse",
+      "kind": "html",
+      "url": "https://bedfordplayhouse.org/",
+      "publisher": "Bedford Playhouse",
+      "scope": "venue",
+      "note": "JSON-LD Event data present."
+    },
+    {
+      "id": "ticketmaster",
+      "kind": "api",
+      "url": "https://app.ticketmaster.com/discovery/v2/events.json",
+      "publisher": "Ticketmaster Discovery",
+      "scope": "regional",
+      "keyEnv": "TICKETMASTER_API_KEY",
+      "note": "Free key from developer.ticketmaster.com. Native radius+date search and it returns price ranges. Skipped automatically when the env var is unset."
+    },
+    {
+      "id": "eventbrite",
+      "kind": "social",
+      "url": "https://www.eventbrite.com/d/ny--beacon/events/",
+      "publisher": "Eventbrite",
+      "scope": "regional",
+      "note": "No key. The place page sets a csrftoken cookie and carries the numeric placeId in window.__SERVER_DATA__; that pair authorises their internal destination-search endpoint, which paginates the whole place. Swept across 9 place slugs by scripts/social.py and filtered to the radius. Needs a browser User-Agent — ProximiBot gets a challenge."
+    },
+    {
+      "id": "meetup",
+      "kind": "social",
+      "url": "https://www.meetup.com/find/?location=us--ny--Beacon&source=EVENTS",
+      "publisher": "Meetup",
+      "scope": "regional",
+      "note": "No key. The GraphQL API needs a paid Pro subscription, but the find page ships its Apollo cache in __NEXT_DATA__ with hydrated Event objects. Venue names and cities are present; coordinates are not, so these records go through the geocoder."
+    },
+    {
+      "id": "sunywcc",
+      "kind": "ics",
+      "url": "https://sunywcc.edu/events/?ical=1",
+      "publisher": "Westchester Community College",
+      "scope": "regional",
+      "campus": true
+    },
+    {
+      "id": "wcsu",
+      "kind": "ics",
+      "url": "https://wcsu.edu/events/?ical=1",
+      "publisher": "Western Connecticut State University",
+      "scope": "regional",
+      "campus": true
+    },
+    {
+      "id": "sunyrockland",
+      "kind": "ics",
+      "url": "https://sunyrockland.edu/events/?ical=1",
+      "publisher": "SUNY Rockland",
+      "scope": "regional",
+      "campus": true
+    },
+    {
+      "id": "dominican-ny",
+      "kind": "ics",
+      "url": "https://duny.edu/events/?ical=1&eventDisplay=list",
+      "publisher": "Dominican University New York",
+      "scope": "regional",
+      "campus": true
+    },
+    {
+      "id": "msmc",
+      "kind": "ics",
+      "url": "https://events.msmc.edu/calendar.ics",
+      "publisher": "Mount Saint Mary College, Newburgh",
+      "scope": "regional",
+      "campus": true
+    },
+    {
+      "id": "fairfield-u",
+      "kind": "ics",
+      "url": "https://events.fairfield.edu/calendar.ics",
+      "publisher": "Fairfield University",
+      "scope": "regional",
+      "campus": true
+    },
+    {
+      "id": "fordham",
+      "kind": "ics",
+      "url": "https://calendar.fordham.edu/calendar.ics",
+      "publisher": "Fordham University",
+      "scope": "regional",
+      "campus": true
+    },
+    {
+      "id": "albany-u",
+      "kind": "ics",
+      "url": "https://events.albany.edu/calendar.ics",
+      "publisher": "University at Albany",
+      "scope": "regional",
+      "campus": true
+    },
+    {
+      "id": "wpunj",
+      "kind": "ics",
+      "url": "https://wpunj.edu/calendar.ics",
+      "publisher": "William Paterson University",
+      "scope": "regional",
+      "enabled": false,
+      "note": "Feed parses but its newest event is 2012-10-24 — abandoned, not empty. Kept disabled so a later discovery pass does not re-trust it.",
+      "campus": true
+    },
+    {
+      "id": "newhaven-u",
+      "kind": "ics",
+      "url": "https://events.newhaven.edu/calendar.ics",
+      "publisher": "University of New Haven",
+      "scope": "regional",
+      "campus": true
+    },
+    {
+      "id": "mahaiwe",
+      "kind": "ics",
+      "url": "https://mahaiwe.org/events/?ical=1",
+      "publisher": "Mahaiwe Performing Arts Center",
+      "scope": "regional"
+    },
+    {
+      "id": "ikehall",
+      "kind": "html",
+      "url": "https://ikehall.com/events/",
+      "publisher": "Eisenhower Hall Theatre, West Point",
+      "scope": "regional",
+      "note": "JSON-LD gone 2026-08-28: /events/ now serves a 2018 archive page; current shows live on season pages (/2026-2027-season/), no structured data. Hand-read into sources/manual.json — 6 shows added 2026-08-28."
+    },
+    {
+      "id": "untermyer",
+      "kind": "ics",
+      "url": "https://tockify.com/api/feeds/ics/untermyer.gardens.conservancy",
+      "publisher": "Untermyer Gardens Conservancy",
+      "scope": "regional",
+      "note": "Tockify. The feed name is the data-tockify-calendar attribute on the embed (untermyer.gardens.conservancy), not the domain — guessing from the domain 404s."
+    },
+    {
+      "id": "paramount-hv",
+      "kind": "ics",
+      "url": "https://paramounthudsonvalley.com/events/?ical=1",
+      "publisher": "Paramount Hudson Valley, Peekskill",
+      "scope": "local",
+      "note": "Found in the 2026-08 music-venue pass, then disabled the same day: the ?ical=1 feed parses (50 VEVENTs) but its newest event is 2026-03-06 — an archive, not a calendar. Same failure mode as Towne Crier. Their live listings render in JavaScript; recheck later.",
+      "enabled": false
+    },
+    {
+      "id": "tubbys",
+      "kind": "sqsp",
+      "url": "https://tubbyskingston.com/calendar",
+      "publisher": "Tubby's, Kingston",
+      "scope": "local",
+      "venue": {
+        "name": "Tubby's",
+        "city": "Kingston, NY",
+        "address": "Tubby's, 586 Broadway, Kingston, NY",
+        "lat": 41.9256,
+        "lon": -73.9971
+      },
+      "note": "Squarespace collection JSON. ?format=ical answers 200 with an empty body; item map coordinates are Squarespace's SoHo placeholder, so the venue string above is what gets geocoded."
+    },
+    {
+      "id": "howland-beacon",
+      "kind": "html",
+      "url": "https://beaconlibrary.assabetinteractive.com/calendar/",
+      "publisher": "Howland Public Library, Beacon",
+      "scope": "local",
+      "note": "Assabet Interactive, not LibCal. 77 schema.org Events on the calendar page, read by jsonld.py. beaconlibrary.org itself is a Squarespace brochure site with no feed."
+    },
+    {
+      "id": "hudsonvalleybrewery",
+      "kind": "sqsp",
+      "url": "https://hudsonvalleybrewery.com/calendar",
+      "publisher": "Hudson Valley Brewery, Beacon",
+      "scope": "local",
+      "venue": {
+        "name": "Hudson Valley Brewery",
+        "city": "Beacon, NY",
+        "address": "7 East Main St, Beacon, NY",
+        "lat": 41.5056,
+        "lon": -73.9776
+      }
+    },
+    {
+      "id": "compassarts",
+      "kind": "html",
+      "url": "https://www.compassarts.org/calendar/",
+      "publisher": "Compass Arts, Beacon",
+      "scope": "local",
+      "note": "WordPress with no event post type — the calendar is hand-built pages, and wp-json exposes only pages/posts. No JSON-LD. Hand-read."
+    },
+    {
+      "id": "jacobburns",
+      "kind": "html",
+      "url": "https://burnsfilmcenter.org/film/",
+      "publisher": "Jacob Burns Film Center",
+      "scope": "regional",
+      "note": "WordPress but wp-json answers 401 rest_not_logged_in, and the film listings carry no JSON-LD. Screenings live at /booking/<film>. Hand-read."
+    },
+    {
+      "id": "cosm",
+      "kind": "html",
+      "url": "https://www.cosm.org/calendar",
+      "publisher": "Chapel of Sacred Mirrors (CoSM)",
+      "scope": "regional",
+      "note": "Calendar is an Elfsight widget rendered entirely client-side; nothing in the served HTML. Hand-read."
+    },
+    {
+      "id": "upstatefilms",
+      "kind": "html",
+      "url": "https://upstatefilms.org/",
+      "publisher": "Upstate Films (Starr Cinema, Rhinebeck)",
+      "scope": "local",
+      "note": "Answers HTTP 202 with a 169-byte bot interstitial to every scripted fetch. Needs a browser or hand-reading."
+    },
+    {
+      "id": "lib-kingston",
+      "kind": "html",
+      "url": "https://kingstonlibrary.assabetinteractive.com/calendar/",
+      "publisher": "Kingston Library",
+      "scope": "local",
+      "note": "Assabet Interactive — schema.org Events on the calendar page, read by jsonld.py. Found by fingerprinting the library homepage for an assabetinteractive.com link; guessing the subdomain from the domain name does not work."
+    },
+    {
+      "id": "lib-lagrange",
+      "kind": "html",
+      "url": "https://laglib.assabetinteractive.com/calendar/",
+      "publisher": "LaGrange Association Library",
+      "scope": "local",
+      "note": "Assabet Interactive — schema.org Events on the calendar page, read by jsonld.py. Found by fingerprinting the library homepage for an assabetinteractive.com link; guessing the subdomain from the domain name does not work."
+    },
+    {
+      "id": "lib-somers",
+      "kind": "html",
+      "url": "https://somerslibrary.assabetinteractive.com/calendar/",
+      "publisher": "Somers Library",
+      "scope": "local",
+      "note": "Assabet Interactive — schema.org Events on the calendar page, read by jsonld.py. Found by fingerprinting the library homepage for an assabetinteractive.com link; guessing the subdomain from the domain name does not work."
+    },
+    {
+      "id": "lib-putnamvalley",
+      "kind": "html",
+      "url": "https://putnamvalleylibrary.org/calendar/",
+      "publisher": "Putnam Valley Free Library",
+      "scope": "local",
+      "note": "Assabet Interactive — schema.org Events on the calendar page, read by jsonld.py. Found by fingerprinting the library homepage for an assabetinteractive.com link; guessing the subdomain from the domain name does not work. Its calendar page carried 159 JSON-LD events when probed but jsonld.py reads none — worth a re-check; the markup may be built client-side."
+    },
+    {
+      "id": "lib-pleasantvalley",
+      "kind": "html",
+      "url": "https://pleasantvalleylibrary.assabetinteractive.com/calendar/",
+      "publisher": "Pleasant Valley Free Library",
+      "scope": "local",
+      "note": "Assabet Interactive — schema.org Events on the calendar page, read by jsonld.py. Found by fingerprinting the library homepage for an assabetinteractive.com link; guessing the subdomain from the domain name does not work."
+    },
+    {
+      "id": "lib-redhook",
+      "kind": "html",
+      "url": "https://redhooklibrary.assabetinteractive.com/calendar/",
+      "publisher": "Red Hook Public Library",
+      "scope": "local",
+      "note": "Assabet Interactive — schema.org Events on the calendar page, read by jsonld.py. Found by fingerprinting the library homepage for an assabetinteractive.com link; guessing the subdomain from the domain name does not work."
+    },
+    {
+      "id": "lib-beekman",
+      "kind": "html",
+      "url": "https://beekmanlibrary.assabetinteractive.com/calendar/",
+      "publisher": "Beekman Library",
+      "scope": "local",
+      "note": "Assabet Interactive — schema.org Events on the calendar page, read by jsonld.py. Found by fingerprinting the library homepage for an assabetinteractive.com link; guessing the subdomain from the domain name does not work."
+    },
+    {
+      "id": "lib-mahopac",
+      "kind": "html",
+      "url": "https://mahopaclibrary.assabetinteractive.com/calendar/",
+      "publisher": "Mahopac Public Library",
+      "scope": "local",
+      "note": "Assabet Interactive — schema.org Events on the calendar page, read by jsonld.py. Found by fingerprinting the library homepage for an assabetinteractive.com link; guessing the subdomain from the domain name does not work."
+    },
+    {
+      "id": "lib-wisner",
+      "kind": "ics",
+      "url": "https://albertwisnerlibrary.org/events/?ical=1",
+      "publisher": "Albert Wisner Public Library, Warwick",
+      "scope": "local",
+      "enabled": false,
+      "note": "Found and disabled the same day, 2026-08: the ?ical=1 feed parses but its newest event is 2024-11-09 — an archive, not a calendar."
+    },
+    {
+      "id": "lib-dobbsferry",
+      "kind": "ics",
+      "url": "https://dobbsferrylibrary.org/events/?ical=1",
+      "publisher": "Dobbs Ferry Public Library",
+      "scope": "local",
+      "enabled": false,
+      "note": "Found and disabled the same day, 2026-08: feed frozen since 2022-07-17."
+    },
+    {
+      "id": "fishercenter",
+      "kind": "ics",
+      "url": "https://fishercenter.bard.edu/events/?ical=1",
+      "publisher": "Fisher Center at Bard",
+      "scope": "regional"
+    },
+    {
+      "id": "cin-storyscreen",
+      "kind": "html",
+      "url": "https://www.storyscreenpresents.com/special-screenings",
+      "publisher": "Story Screen",
+      "scope": "local",
+      "note": "Read by hand into sources/manual.json. Their pop-up screenings run at breweries and parks rather than at one address, so each listing carries its own venue. NOTE the domain change: storyscreenbeacon.com is no longer theirs and must not be fetched — see the hijack note above."
+    },
+    {
+      "id": "cin-rosendale",
+      "kind": "html",
+      "url": "https://rosendaletheatre.org/calendar/",
+      "publisher": "Rosendale Theatre",
+      "scope": "local",
+      "note": "Filmbot. The month grid is server-rendered and each day cell carries the whole show card in an escaped data-show-card attribute — title, link, blurb and that day's times. Month navigation is the path /calendar/YYYY-MM, not a query parameter. Read by scripts/cinema.py."
+    },
+    {
+      "id": "cin-picturehouse",
+      "kind": "html",
+      "url": "https://thepicturehouse.org/",
+      "publisher": "The Picture House, Pelham",
+      "scope": "local",
+      "note": "Indy Systems SPA (Quasar). The 8KB shell talks to a same-origin /graphql endpoint; nothing is in the served HTML. No hand-read path either — the listing pages render entirely in JS."
+    },
+    {
+      "id": "cin-timeandspace",
+      "kind": "html",
+      "url": "https://timeandspace.org/",
+      "publisher": "Time & Space Limited, Hudson",
+      "scope": "local",
+      "note": "12KB shell to a scripted fetch; the listing renders client-side. Read by hand into sources/manual.json — only the screenings whose exact date and time the page spells out. Multi-day runs are listed without per-day times and are deliberately skipped rather than guessed at."
+    },
+    {
+      "id": "cin-moviehouse",
+      "kind": "html",
+      "url": "https://www.themoviehouse.net/events",
+      "publisher": "The Moviehouse, Millerton",
+      "scope": "local",
+      "note": "Wix. Showtimes come from the Thunderbolt renderer, and the Agile Ticketing schedule behind it sits behind an Imperva bot wall, so neither is fetchable. The /events page does render its special screenings as text — read by hand into sources/manual.json."
+    },
+    {
+      "id": "cin-crandell",
+      "kind": "html",
+      "url": "https://crandelltheatre.org/",
+      "publisher": "Crandell Theatre, Chatham",
+      "scope": "local",
+      "note": "Client-rendered listings. 55 mi out — inside the event radius, outside the 50-mile cinema pass."
+    },
+    {
+      "id": "cin-avon",
+      "kind": "html",
+      "url": "https://avontheatre.org/",
+      "publisher": "Avon Theatre, Stamford",
+      "scope": "local",
+      "note": "Answers HTTP 202 with a bot interstitial to scripted fetches."
+    },
+    {
+      "id": "cin-prospector",
+      "kind": "html",
+      "url": "https://prospectortheater.org/",
+      "publisher": "Prospector Theater, Ridgefield",
+      "scope": "local",
+      "note": "Squarespace shell; /movies redirects to showtimes.prospectortheater.org, which is itself a client-rendered app — day tabs render, titles and times do not."
+    },
+    {
+      "id": "cin-triplex",
+      "kind": "html",
+      "url": "https://thetriplex.org/",
+      "publisher": "The Triplex Cinema, Great Barrington",
+      "scope": "local",
+      "note": "Client-rendered listings. 65 mi out — inside the event radius, outside the 50-mile cinema pass."
+    },
+    {
+      "id": "cin-bearsville",
+      "kind": "html",
+      "url": "https://bearsvilletheater.com/",
+      "publisher": "Bearsville Theater, Woodstock",
+      "scope": "local"
+    },
+    {
+      "id": "cin-jacobburns",
+      "kind": "html",
+      "url": "https://burnsfilmcenter.org/film",
+      "publisher": "Jacob Burns Film Center",
+      "scope": "local",
+      "note": "Every showtime carries an ISO data-showtime attribute in the served HTML. A rolling three-day window that ignores ?date=, so a weekly run keeps it current and there is nothing to page. Read by scripts/cinema.py.",
+      "venue": {
+        "name": "Jacob Burns Film Center",
+        "city": "Pleasantville, NY",
+        "address": "364 Manville Rd, Pleasantville, NY 10570",
+        "lat": 41.1352,
+        "lon": -73.7847
+      }
+    },
+    {
+      "id": "cin-lyceum",
+      "kind": "html",
+      "url": "https://greatmovieslowerprices.com/lyceum-cinemas/",
+      "publisher": "Independent Cinemas (Lyceum Cinemas, Red Hook)",
+      "scope": "local",
+      "note": "One small operator runs three Hudson Valley houses off one server-rendered page each: a date header, then alternating title and times lines. Times carry no meridiem because a cinema day starts at noon. Read by scripts/cinema.py.",
+      "venue": {
+        "name": "Lyceum Cinemas",
+        "city": "Red Hook, NY",
+        "address": "15 Old Farm Rd, Red Hook, NY 12571",
+        "lat": 41.9945,
+        "lon": -73.8716
+      }
+    },
+    {
+      "id": "cin-roosevelt",
+      "kind": "html",
+      "url": "https://greatmovieslowerprices.com/roosevelt-cinemas/",
+      "publisher": "Independent Cinemas (Roosevelt Cinemas, Hyde Park)",
+      "scope": "local",
+      "note": "Same operator and same page format as cin-lyceum. Read by scripts/cinema.py.",
+      "venue": {
+        "name": "Roosevelt Cinemas",
+        "city": "Hyde Park, NY",
+        "address": "4060 Albany Post Rd, Hyde Park, NY 12538",
+        "lat": 41.7846,
+        "lon": -73.933
+      }
+    },
+    {
+      "id": "cin-newpaltz",
+      "kind": "html",
+      "url": "https://greatmovieslowerprices.com/new-paltz-cinemas/",
+      "publisher": "Independent Cinemas (New Paltz Cinemas)",
+      "scope": "local",
+      "note": "Same operator and same page format as cin-lyceum. Read by scripts/cinema.py.",
+      "venue": {
+        "name": "New Paltz Cinemas",
+        "city": "New Paltz, NY",
+        "address": "2 New Paltz Plaza, New Paltz, NY 12561",
+        "lat": 41.7471,
+        "lon": -74.0868
+      }
+    },
+    {
+      "id": "cin-warwickdrivein",
+      "kind": "html",
+      "url": "https://www.warwickdrivein.com/movies",
+      "publisher": "Warwick Drive-In",
+      "scope": "local",
+      "enabled": false,
+      "note": "Day tabs render into the served HTML but the titles and times behind them do not. No hand-read path found; disabled until one is."
+    },
+    {
+      "id": "cin-bantam",
+      "kind": "html",
+      "url": "https://bantamcinema.org/",
+      "publisher": "Bantam Cinema & Arts Center",
+      "scope": "local",
+      "enabled": false,
+      "note": "Next.js shell, no listings server-side. bantamcinema.com 301s here. Disabled until a readable path is found."
+    },
+    {
+      "id": "osm-lincolndepotmuseum",
+      "kind": "ics",
+      "url": "https://lincolndepotmuseum.org/events/?ical=1",
+      "publisher": "Lincoln Depot Museum",
+      "scope": "venue",
+      "note": "Found by discover.py --probe over data/places.json (6 future events at registration).",
+      "venue": {
+        "name": "Lincoln Depot Museum",
+        "city": "Peekskill",
+        "address": null,
+        "lat": 41.287703,
+        "lon": -73.929816
+      },
+      "homepage": "https://lincolndepotmuseum.org/"
+    },
+    {
+      "id": "osm-thecastlefuncenter",
+      "kind": "ics",
+      "url": "https://thecastlefuncenter.com/events/?ical=1&eventDisplay=list",
+      "publisher": "The Castle Fun Center",
+      "scope": "venue",
+      "note": "Found by discover.py --probe over data/places.json (3 future events at registration).",
+      "venue": {
+        "name": "The Castle Fun Center",
+        "city": "Chester",
+        "address": null,
+        "lat": 41.361691,
+        "lon": -74.286868
+      },
+      "homepage": "https://thecastlefuncenter.com/"
+    },
+    {
+      "id": "osm-lasdonpublicgardens",
+      "kind": "ics",
+      "url": "https://lasdonpublicgardens.org/events/?ical=1",
+      "publisher": "Lasdon Public Gardens and & Veterans Memorial",
+      "scope": "venue",
+      "note": "Found by discover.py --probe over data/places.json (30 future events at registration).",
+      "venue": {
+        "name": "Lasdon Public Gardens and & Veterans Memorial",
+        "city": "Whitehall Corners",
+        "address": null,
+        "lat": 41.276438,
+        "lon": -73.737699
+      },
+      "homepage": "https://lasdonpublicgardens.org/"
+    },
+    {
+      "id": "osm-briarcliffmanorlibrary",
+      "kind": "ics",
+      "url": "https://briarcliffmanorlibrary.org/events/?ical=1",
+      "publisher": "Briarcliff Manor Public Library",
+      "scope": "venue",
+      "note": "Found by discover.py --probe over data/places.json (15 future events at registration).",
+      "venue": {
+        "name": "Briarcliff Manor Public Library",
+        "city": "Briarcliff Manor, NY",
+        "address": "1 Library Road, Briarcliff Manor, NY",
+        "lat": 41.146542,
+        "lon": -73.824442
+      },
+      "homepage": "https://briarcliffmanorlibrary.org/"
+    },
+    {
+      "id": "osm-friendsoftrailside",
+      "kind": "ics",
+      "url": "https://friendsoftrailside.org/events/?ical=1",
+      "publisher": "Trailside Nature Museum",
+      "scope": "venue",
+      "note": "Found by discover.py --probe over data/places.json (4 future events at registration).",
+      "venue": {
+        "name": "Trailside Nature Museum",
+        "city": "Boutonville",
+        "address": "Reservation Road",
+        "lat": 41.257495,
+        "lon": -73.589039
+      },
+      "homepage": "https://friendsoftrailside.org/"
+    },
+    {
+      "id": "osm-booksonthecommon",
+      "kind": "ics",
+      "url": "https://booksonthecommon.com/events/?ical=1",
+      "publisher": "Books On The Common",
+      "scope": "venue",
+      "note": "Found by discover.py --probe over data/places.json (5 future events at registration).",
+      "venue": {
+        "name": "Books On The Common",
+        "city": "Ridgefield, CT",
+        "address": "404 Main Street, Ridgefield, CT",
+        "lat": 41.281756,
+        "lon": -73.498131
+      },
+      "homepage": "https://booksonthecommon.com/"
+    },
+    {
+      "id": "osm-hurleyheritagesociety",
+      "kind": "ics",
+      "url": "https://calendar.google.com/calendar/ical/youtube%40hurleyheritagesociety.org/public/basic.ics",
+      "publisher": "Hurley Heritage Museum",
+      "scope": "venue",
+      "note": "Found by discover.py --probe over data/places.json (3 future events at registration).",
+      "venue": {
+        "name": "Hurley Heritage Museum",
+        "city": "Hurley, NY",
+        "address": "52 Main Street, Hurley, NY",
+        "lat": 41.925034,
+        "lon": -74.063226
+      },
+      "homepage": "https://hurleyheritagesociety.org/"
+    },
+    {
+      "id": "osm-njbg",
+      "kind": "ics",
+      "url": "https://njbg.org/events/?ical=1",
+      "publisher": "New Jersey Botanical Garden",
+      "scope": "venue",
+      "note": "Found by discover.py --probe over data/places.json (4 future events at registration).",
+      "venue": {
+        "name": "New Jersey Botanical Garden",
+        "city": "Ringwood",
+        "address": null,
+        "lat": 41.124325,
+        "lon": -74.237356
+      },
+      "homepage": "https://njbg.org/"
+    },
+    {
+      "id": "osm-burnhamlibrary",
+      "kind": "ics",
+      "url": "https://burnhamlibrary.org/events/?ical=1&eventDisplay=list",
+      "publisher": "Burnham Library",
+      "scope": "venue",
+      "note": "Found by discover.py --probe over data/places.json (30 future events at registration).",
+      "venue": {
+        "name": "Burnham Library",
+        "city": "Bridgewater",
+        "address": "62 Main Street South, Bridgewater",
+        "lat": 41.533361,
+        "lon": -73.365302
+      },
+      "homepage": "https://burnhamlibrary.org/"
+    },
+    {
+      "id": "osm-playeatdrink",
+      "kind": "ics",
+      "url": "https://tockify.com/api/feeds/ics/fourbrothers",
+      "publisher": "Four Brothers Drive-In",
+      "scope": "venue",
+      "note": "Found by discover.py --probe over data/places.json (1 future events at registration).",
+      "venue": {
+        "name": "Four Brothers Drive-In",
+        "city": "Amenia",
+        "address": null,
+        "lat": 41.850276,
+        "lon": -73.557534
+      },
+      "homepage": "https://playeatdrink.com/"
+    },
+    {
+      "id": "osm-wmtl",
+      "kind": "ics",
+      "url": "https://wmtl.org/events/?ical=1&eventDisplay=list",
+      "publisher": "West Milford Township Library",
+      "scope": "venue",
+      "note": "Found by discover.py --probe over data/places.json (30 future events at registration).",
+      "venue": {
+        "name": "West Milford Township Library",
+        "city": "West Milford",
+        "address": null,
+        "lat": 41.128725,
+        "lon": -74.369482
+      },
+      "homepage": "https://wmtl.org/"
+    },
+    {
+      "id": "osm-iaismuseum",
+      "kind": "ics",
+      "url": "https://iaismuseum.org/events/?ical=1",
+      "publisher": "Institute for American Indian Studies Research and Education Library",
+      "scope": "venue",
+      "note": "Found by discover.py --probe over data/places.json (6 future events at registration).",
+      "venue": {
+        "name": "Institute for American Indian Studies Research and Education Library",
+        "city": "Washington, CT",
+        "address": "38 Curtis Road, Washington, CT",
+        "lat": 41.610529,
+        "lon": -73.322735
+      },
+      "homepage": "https://iaismuseum.org/"
+    },
+    {
+      "id": "osm-olivefreelibrary",
+      "kind": "ics",
+      "url": "https://calendar.google.com/calendar/ical/olivefreelibrary.org_n1uea9lrc9kdordsqco54pcpoo%40group.calendar.google.com/public/basic.ics",
+      "publisher": "Olive Free Library",
+      "scope": "venue",
+      "note": "Found by discover.py --probe over data/places.json (55 future events at registration).",
+      "venue": {
+        "name": "Olive Free Library",
+        "city": "West Shokan, NY",
+        "address": "4033 Route 28A, West Shokan, NY",
+        "lat": 41.963817,
+        "lon": -74.275271
+      },
+      "homepage": "https://olivefreelibrary.org/"
+    },
+    {
+      "id": "osm-carriagebarn",
+      "kind": "ics",
+      "url": "https://carriagebarn.org/events/?ical=1",
+      "publisher": "Carriage Barn Arts Center",
+      "scope": "venue",
+      "note": "Found by discover.py --probe over data/places.json (25 future events at registration).",
+      "venue": {
+        "name": "Carriage Barn Arts Center",
+        "city": "New Canaan, CT",
+        "address": "681 South Avenue, New Canaan, CT",
+        "lat": 41.122852,
+        "lon": -73.489214
+      },
+      "homepage": "https://carriagebarn.org/"
+    },
+    {
+      "id": "osm-woodstockguild",
+      "kind": "ics",
+      "url": "https://woodstockguild.org/events/?ical=1",
+      "publisher": "Woodstock Byrdcliffe Guild",
+      "scope": "venue",
+      "note": "Found by discover.py --probe over data/places.json (6 future events at registration).",
+      "venue": {
+        "name": "Woodstock Byrdcliffe Guild",
+        "city": "Woodstock",
+        "address": "34 Tinker Street, Woodstock",
+        "lat": 42.040564,
+        "lon": -74.119592
+      },
+      "homepage": "https://woodstockguild.org/"
+    },
+    {
+      "id": "osm-millriverpark",
+      "kind": "ics",
+      "url": "https://millriverpark.org/events/?ical=1",
+      "publisher": "Whittingham Discovery Center",
+      "scope": "venue",
+      "note": "Found by discover.py --probe over data/places.json (30 future events at registration).",
+      "venue": {
+        "name": "Whittingham Discovery Center",
+        "city": "Stamford, CT",
+        "address": "1040 Washington Boulevard, Stamford, CT",
+        "lat": 41.053433,
+        "lon": -73.544025
+      },
+      "homepage": "https://millriverpark.org/"
+    },
+    {
+      "id": "osm-westportlibrary",
+      "kind": "ics",
+      "url": "https://westportlibrary.org/events/?ical=1&eventDisplay=list",
+      "publisher": "The Westport Library",
+      "scope": "venue",
+      "note": "Found by discover.py --probe over data/places.json (30 future events at registration).",
+      "venue": {
+        "name": "The Westport Library",
+        "city": "Westport, CT",
+        "address": "20 Jesup Road, Westport, CT",
+        "lat": 41.13972,
+        "lon": -73.361289
+      },
+      "homepage": "https://westportlibrary.org/"
+    },
+    {
+      "id": "osm-thomaspainecottage",
+      "kind": "ics",
+      "url": "https://calendar.google.com/calendar/ical/8sg5f71esfmgdb11enr94nf9d0%40group.calendar.google.com/public/basic.ics",
+      "publisher": "Thomas Paine Cottage and Museum",
+      "scope": "venue",
+      "note": "Found by discover.py --probe over data/places.json (17 future events at registration).",
+      "venue": {
+        "name": "Thomas Paine Cottage and Museum",
+        "city": "Beechmont",
+        "address": "20 Sicard Avenue",
+        "lat": 40.934444,
+        "lon": -73.791111
+      },
+      "homepage": "https://thomaspainecottage.org/"
+    },
+    {
+      "id": "osm-salisburyassociation",
+      "kind": "ics",
+      "url": "https://salisburyassociation.org/events/?ical=1",
+      "publisher": "Holley Williams House Museum",
+      "scope": "venue",
+      "note": "Found by discover.py --probe over data/places.json (2 future events at registration).",
+      "venue": {
+        "name": "Holley Williams House Museum",
+        "city": "Salisbury, CT",
+        "address": "24 Main Street, Salisbury, CT",
+        "lat": 41.965926,
+        "lon": -73.44151
+      },
+      "homepage": "https://salisburyassociation.org/"
+    },
+    {
+      "id": "osm-dyckmanfarmhouse",
+      "kind": "ics",
+      "url": "https://dyckmanfarmhouse.org/events/?ical=1&eventDisplay=list",
+      "publisher": "Dyckman Farmhouse Museum",
+      "scope": "venue",
+      "note": "Found by discover.py --probe over data/places.json (6 future events at registration).",
+      "venue": {
+        "name": "Dyckman Farmhouse Museum",
+        "city": "New York, NY",
+        "address": "4881 Broadway, New York, NY",
+        "lat": 40.867382,
+        "lon": -73.922886
+      },
+      "homepage": "https://dyckmanfarmhouse.org/"
+    },
+    {
+      "id": "osm-watertownlibrary",
+      "kind": "ics",
+      "url": "https://calendar.google.com/calendar/ical/wtnlib%40gmail.com/public/basic.ics",
+      "publisher": "Watertown Library Association",
+      "scope": "venue",
+      "note": "Found by discover.py --probe over data/places.json (11 future events at registration).",
+      "venue": {
+        "name": "Watertown Library Association",
+        "city": "Watertown, CT",
+        "address": "470 Main Street, Watertown, CT",
+        "lat": 41.603732,
+        "lon": -73.1176
+      },
+      "homepage": "https://watertownlibrary.org/"
+    },
+    {
+      "id": "osm-webb",
+      "kind": "ics",
+      "url": "https://webb.edu/events/?ical=1",
+      "publisher": "Livingston Library",
+      "scope": "venue",
+      "note": "Found by discover.py --probe over data/places.json (1 future events at registration).",
+      "venue": {
+        "name": "Livingston Library",
+        "city": "Glen Cove",
+        "address": null,
+        "lat": 40.884374,
+        "lon": -73.645336
+      },
+      "homepage": "https://webb.edu/"
+    },
+    {
+      "id": "osm-derbynecklibrary",
+      "kind": "ics",
+      "url": "https://derbynecklibrary.org/events/?ical=1",
+      "publisher": "Derby Neck Library",
+      "scope": "venue",
+      "note": "Found by discover.py --probe over data/places.json (22 future events at registration).",
+      "venue": {
+        "name": "Derby Neck Library",
+        "city": "Derby, CT",
+        "address": "307 Hawthorne Avenue, Derby, CT",
+        "lat": 41.330804,
+        "lon": -73.100745
+      },
+      "homepage": "https://derbynecklibrary.org/"
+    },
+    {
+      "id": "osm-riversideparknyc",
+      "kind": "ics",
+      "url": "https://riversideparknyc.org/events/?ical=1&eventDisplay=list",
+      "publisher": "Riverside Valley Community Garden",
+      "scope": "venue",
+      "note": "Found by discover.py --probe over data/places.json (30 future events at registration).",
+      "venue": {
+        "name": "Riverside Valley Community Garden",
+        "city": "Edgewater",
+        "address": null,
+        "lat": 40.823615,
+        "lon": -73.955888
+      },
+      "homepage": "https://riversideparknyc.org/"
+    },
+    {
+      "id": "osm-cliffsideparklibrary",
+      "kind": "ics",
+      "url": "https://cliffsideparklibrary.org/events/?ical=1&eventDisplay=list",
+      "publisher": "Cliffside Park Public Library",
+      "scope": "venue",
+      "note": "Found by discover.py --probe over data/places.json (30 future events at registration).",
+      "venue": {
+        "name": "Cliffside Park Public Library",
+        "city": "Cliffside Park, NJ",
+        "address": "505 Palisade Avenue, Cliffside Park, NJ",
+        "lat": 40.820833,
+        "lon": -73.988704
+      },
+      "homepage": "https://cliffsideparklibrary.org/"
+    },
+    {
+      "id": "osm-veronalibrary",
+      "kind": "ics",
+      "url": "https://veronalibrary.org/events/?ical=1",
+      "publisher": "Verona Public Library",
+      "scope": "venue",
+      "note": "Found by discover.py --probe over data/places.json (30 future events at registration).",
+      "venue": {
+        "name": "Verona Public Library",
+        "city": "Verona",
+        "address": "17 Gould Street, Verona",
+        "lat": 40.832916,
+        "lon": -74.24639
+      },
+      "homepage": "https://veronalibrary.org/"
+    },
+    {
+      "id": "osm-plantingfields",
+      "kind": "ics",
+      "url": "https://plantingfields.org/events/?ical=1",
+      "publisher": "Piet Oudolf Garden",
+      "scope": "venue",
+      "note": "Found by discover.py --probe over data/places.json (19 future events at registration).",
+      "venue": {
+        "name": "Piet Oudolf Garden",
+        "city": "Upper Brookville",
+        "address": null,
+        "lat": 40.863534,
+        "lon": -73.55782
+      },
+      "homepage": "https://plantingfields.org/"
+    },
+    {
+      "id": "osm-westsidecommunitygarden",
+      "kind": "ics",
+      "url": "https://westsidecommunitygarden.org/events/?ical=1",
+      "publisher": "West Side Community Garden",
+      "scope": "venue",
+      "note": "Found by discover.py --probe over data/places.json (11 future events at registration).",
+      "venue": {
+        "name": "West Side Community Garden",
+        "city": "Guttenberg",
+        "address": null,
+        "lat": 40.789287,
+        "lon": -73.971834
+      },
+      "homepage": "https://westsidecommunitygarden.org/"
+    },
+    {
+      "id": "osm-wnypl",
+      "kind": "ics",
+      "url": "https://wnypl.org/?post_type=tribe_events&ical=1",
+      "publisher": "West New York Public Library",
+      "scope": "venue",
+      "note": "Disabled 2026-08-28: wnypl.org now 301s to the West New York town site (westnewyorknj.org) and the tribe_events feed 404s there — the library’s standalone WordPress is gone. Was: Found by discover.py --probe over data/places.json (1 future events at registration).",
+      "venue": {
+        "name": "West New York Public Library",
+        "city": "West New York",
+        "address": null,
+        "lat": 40.788128,
+        "lon": -74.015471
+      },
+      "homepage": "https://wnypl.org/",
+      "enabled": false
+    },
+    {
+      "id": "osm-cornerbookstorenyc",
+      "kind": "ics",
+      "url": "https://cornerbookstorenyc.com/events/?ical=1",
+      "publisher": "The Corner Bookstore",
+      "scope": "venue",
+      "note": "Found by discover.py --probe over data/places.json (8 future events at registration).",
+      "venue": {
+        "name": "The Corner Bookstore",
+        "city": "Guttenberg",
+        "address": "1313 Madison Avenue",
+        "lat": 40.785151,
+        "lon": -73.955491
+      },
+      "homepage": "https://cornerbookstorenyc.com/"
+    }
+  ]
+}
