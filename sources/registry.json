@@ -55,7 +55,8 @@
         "address": "50 Fite Rd, Saugerties, NY",
         "lat": 42.0345,
         "lon": -74.079
-      }
+      },
+      "note": "2026-08-28: feed blocked by SiteGround captcha (HTTP 202 → /.well-known/sgcaptcha/) from datacenter IPs; browser UA does not help. Left enabled in case the challenge lifts or the weekly run gets a friendlier IP."
     },
     {
       "id": "desmondfish-library",
@@ -83,7 +84,8 @@
         "address": "120 Maverick Rd, West Hurley, NY",
         "lat": 42.018,
         "lon": -74.087
-      }
+      },
+      "note": "2026-08-28: same SiteGround captcha block as opus40 (HTTP 202, text/html). Left enabled in case the challenge lifts."
     },
     {
       "id": "clearwater",
@@ -258,7 +260,7 @@
       "url": "https://palacedanbury.com",
       "publisher": "Palace Danbury",
       "scope": "venue",
-      "note": "Event listings live on the root page; /events/ 404s. Carries JSON-LD."
+      "note": "2026-08-28: domain 301s to dqi.ear.mybluehost.me (their own site on a Bluehost dev URL, misconfigured — content there is stale, newest datable item July 2025). Legit site, broken hosting. Recheck; hand-read if it recovers."
     },
     {
       "id": "stamfordmuseum",
@@ -411,7 +413,7 @@
       "url": "https://ikehall.com/events/",
       "publisher": "Eisenhower Hall Theatre, West Point",
       "scope": "regional",
-      "note": "JSON-LD Events, no iCal. Read by scripts/jsonld.py."
+      "note": "JSON-LD gone 2026-08-28: /events/ now serves a 2018 archive page; current shows live on season pages (/2026-2027-season/), no structured data. Hand-read into sources/manual.json — 6 shows added 2026-08-28."
     },
     {
       "id": "untermyer",
@@ -1199,7 +1201,7 @@
       "url": "https://wnypl.org/?post_type=tribe_events&ical=1",
       "publisher": "West New York Public Library",
       "scope": "venue",
-      "note": "Found by discover.py --probe over data/places.json (1 future events at registration).",
+      "note": "Disabled 2026-08-28: wnypl.org now 301s to the West New York town site (westnewyorknj.org) and the tribe_events feed 404s there — the library’s standalone WordPress is gone. Was: Found by discover.py --probe over data/places.json (1 future events at registration).",
       "venue": {
         "name": "West New York Public Library",
         "city": "West New York",
@@ -1207,7 +1209,8 @@
         "lat": 40.788128,
         "lon": -74.015471
       },
-      "homepage": "https://wnypl.org/"
+      "homepage": "https://wnypl.org/",
+      "enabled": false
     },
     {
       "id": "osm-cornerbookstorenyc",

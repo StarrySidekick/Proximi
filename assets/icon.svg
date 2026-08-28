@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <!-- The brand mark at install size: a brass pin on parchment, matching the
+       desk palette in styles.css. One SVG serves every size the manifest asks
+       for, and a 20% safe margin keeps it whole when maskable icons crop. -->
+  <rect width="512" height="512" rx="96" fill="#E9E1CC"/>
+  <rect x="16" y="16" width="480" height="480" rx="84" fill="none"
+        stroke="#C7BB9C" stroke-width="8"/>
+  <path d="M256 448s138-124.5 138-227.4C394 145.5 332.2 84 256 84S118 145.5 118 220.6C118 323.5 256 448 256 448Z"
+        fill="#A9793F" stroke="#2A241C" stroke-width="14"/>
+  <circle cx="256" cy="216" r="56" fill="#FBF6E7" stroke="#2A241C" stroke-width="12"/>
+</svg>

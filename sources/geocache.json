@@ -3051,5 +3051,114 @@
 "display": "Cross River, Katonah Ridge, Town of Bedford, Westchester County, New York, 10536, United States",
 "matched": "Cross River, NY",
 "precision": 3
+},
+"virtual event": null,
+"food bartels hall, campus center, boston post road, west haven, ct, usa (rm: alumni annex)": null,
+"room 4, west milford": null,
+"tulsa, okla.": {
+"lat": 36.1563122,
+"lon": -95.9927516,
+"display": "Tulsa, Oklahoma, United States",
+"matched": "Tulsa, Okla.",
+"precision": 0
+},
+"room 1 & 2, west milford": {
+"lat": 41.1281414,
+"lon": -74.3393437,
+"display": "Safari 2, West Milford, Passaic County, New Jersey, 07421, United States",
+"matched": "Room 1 & 2, West Milford",
+"precision": 0
+},
+"outside library": {
+"lat": 37.365699,
+"lon": -120.4249913,
+"display": "Outside Library, 5200, Scholar's Lane, Merced, Merced County, California, 95343, United States",
+"matched": "Outside Library",
+"precision": 0
+},
+"185 e flat hill road": {
+"lat": 41.466597,
+"lon": -73.2591384,
+"display": "185, East Flat Hill Road, South Britain Historic District, Traditions, South Britain, Southbury, Naugatuck Valley Planning Region, Connecticut, 06488, United States",
+"matched": "185 E Flat Hill Road",
+"precision": 0
+},
+"1 playland parkway": {
+"lat": 40.9659452,
+"lon": -73.6731284,
+"display": "Rye Playland, 1, Playland Parkway, Milton, City of Rye, Westchester County, New York, 10580, United States",
+"matched": "1 Playland Parkway",
+"precision": 0
+},
+"430 bedford rd.": {
+"lat": 41.13383,
+"lon": -73.7906007,
+"display": "430, Bedford Road, Village of Pleasantville, Town of Mount Pleasant, Westchester County, New York, 10570, United States",
+"matched": "430 Bedford Rd.",
+"precision": 0
+},
+"206 route 303": {
+"lat": 45.5816231,
+"lon": -76.6314353,
+"display": "Route 303, Clarendon, Pontiac, Outaouais, Qu\u00e9bec, J0X 2T0, Canada",
+"matched": "206 Route 303",
+"precision": 0
+},
+"35 main st": {
+"lat": 53.4547429,
+"lon": -1.368714,
+"display": "35 Main Street (owned by 33 Main Street), Parkgate, Greasbrough, Rotherham, South Yorkshire, England, United Kingdom",
+"matched": "35 Main St",
+"precision": 0
+},
+"7 main st": {
+"lat": 54.2117575,
+"lon": -3.2709758,
+"display": "7, Holborn Hill, Knott End, Haverigg, Millom, Cumberland, England, LA18 5BS, United Kingdom",
+"matched": "7 Main St",
+"precision": 0
+},
+"472 main st": {
+"lat": 43.693655,
+"lon": -79.3045161,
+"display": "472,474, Main Street, Taylor-Massey, Beaches\u2014East York, East York, Toronto, Golden Horseshoe, Ontario, M4C 2C3, Canada",
+"matched": "472 Main St",
+"precision": 0
+},
+"163 main street": {
+"lat": -37.6784036,
+"lon": 144.994151,
+"display": "163, Main Street, Thomastown, Melbourne, Victoria, 3074, Australia",
+"matched": "163 Main Street",
+"precision": 0
+},
+"pavilion street": {
+"lat": 51.5303186,
+"lon": 0.0331125,
+"display": "Pavilion Street, Upton Park, London Borough of Newham, Greater London, England, E13 9DF, United Kingdom",
+"matched": "Pavilion Street",
+"precision": 0
+},
+"corner of tate and piermont avenues": null,
+"children's room, grinnell library, wappingers falls, wappingers falls, ny": {
+"lat": 41.5983619,
+"lon": -73.9184564,
+"display": "Grinnell Public Library, 2642, East Main Street, Village of Wappingers Falls, Town of Wappinger, Dutchess County, New York, 12590, United States",
+"matched": "Grinnell Library, Wappingers Falls, Wappingers Falls, NY",
+"precision": 1
+},
+"backyard, grinnell library, wappingers falls, wappingers falls, ny": {
+"lat": 41.5983619,
+"lon": -73.9184564,
+"display": "Grinnell Public Library, 2642, East Main Street, Village of Wappingers Falls, Town of Wappinger, Dutchess County, New York, 12590, United States",
+"matched": "Grinnell Library, Wappingers Falls, Wappingers Falls, NY",
+"precision": 1
+},
+"655 pitcher rd, west point, ny": {
+"lat": 41.3912693,
+"lon": -73.9658803,
+"display": "United States Military Academy, 845, Brewerton Road, Town of Highlands, Orange County, New York, 10996, United States",
+"matched": "West Point, NY",
+"precision": 1
 }
 }

@@ -47,7 +47,12 @@ TYPES = [
                        r'raptor|falconry|reptile show|aquarium feeding|zoo ?(kids|babies|tots)|'
                        r'meet (the|our) (animals|raptors|reptiles|owls)|'
                        r'critter|creature feature|read to (a )?(dog|rover))\b'),
-    ('religious ceremony', r'\b(mass\b|worship|service\b|liturgy|vespers|evensong|'
+    # "service" only counts with religious context: a hike's "paved service
+    # road" filed 6.4 miles of Mt. Beacon under religious ceremony, and
+    # descriptions are full of shuttle/food/customer services.
+    ('religious ceremony', r'\b(mass\b|worship|'
+                       r'(?:church|sunday|sabbath|candlelight|interfaith|healing)\s+services?\b|'
+                       r'liturgy|vespers|evensong|'
                        r'shabbat|kiddush|jumu.?ah|puja|sangha|rosary|novena|'
                        r'communion|baptism|confirmation|sermon|prayer (service|meeting)|'
                        r'high holy days|yom kippur|rosh hashanah)\b'),
@@ -357,6 +362,14 @@ SENIORS = re.compile(r'''(?<!\w)(?:55|60|62|65)\s*\+(?!\w)|\b(?:
  senior\ (?:breakfast|lunch(?:eon)?|social|club|bingo|movie|matinee|fitness|
          yoga|stretch|chair|tech|hour|day|center|centre|swim|walk|exercise)
 )\b''', re.I | re.X)
+# "$14 seniors (62+)" is a discount, not an audience. Most of the "senior"s
+# and age-caps in a description live in the ticket table — a manor tour, a
+# college football game and a trick-or-treat tour were all filed under
+# seniors (hidden by default) on the strength of their price lines. So each
+# dollar amount and the clause it prices is scrubbed before any audience
+# pattern reads the text.
+PRICE_CLAUSE = re.compile(r'\$\s*\d+(?:\.\d{2})?[^.|;\n]{0,60}')
+
 # Lookarounds, not \b: a word boundary cannot match after the "+" in "21+",
 # so \b(21\+)\b silently never fires.
 ADULTS_ONLY = re.compile(
@@ -409,11 +422,14 @@ def audience_of(text, title=None, kind=None):
     merely happens to be family friendly. 'seniors' is the same idea at the
     other end of the age range.
     """
-    if SENIORS.search(text):
+    # The adults check reads the unscrubbed text: "$10 cover, 21+" is a real
+    # age gate, where "$14 seniors" is a discount.
+    scrubbed = PRICE_CLAUSE.sub(' ', text)
+    if SENIORS.search(scrubbed):
         return 'seniors'
     if ADULTS_ONLY.search(text):
         return 'adults'
-    if KIDS_ONLY.search(text):
+    if KIDS_ONLY.search(scrubbed):
         # Children-only and family-with-young-children are one audience now:
         # both are hidden by the same switch, and the distinction only ever
         # mattered to the code that drew it.

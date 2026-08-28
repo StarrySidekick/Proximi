@@ -180,6 +180,22 @@ def canonicalise_venues(items):
 NOISE = re.compile(r'\b(board meeting|planning meeting|committee meeting|'
                    r'staff meeting|agm|annual general meeting)\b', re.I)
 
+# A closure is the opposite of a listing. Library calendars publish "Library
+# Closed — Labor Day" as an all-day event, and a cancelled session arrives as
+# "[closed] Teen D&D"; 29 of these were live on the site at once. Anchored to
+# closure phrasings, not the bare word: "Closed-door rehearsal, open showing"
+# or a gallery's "Closing Reception" must not match.
+CLOSURE = re.compile(
+    r'^\s*\[closed\]'                           # "[closed] Teen D&D session"
+    # A leading "Closed" only when the rest reads as a closure notice —
+    # "Closed - Labor Day", "Closed for Labor Day", bare "CLOSED" — and not
+    # a hyphenated compound like "Closed-door rehearsal".
+    r'|^\s*closed(?!-)\s*(?:$|[-–—:(]|for\b|to the public|all day|on\b|in observance|until\b)'
+    r'|\b(?:library|office|building|branch|museum|center|centre|cottage|gallery|park)'
+    r'\s+clos(?:ed|ing)\b'
+    r'|\bclosed\s+(?:to the public|all day|in observance|for\s+(?:a\s+)?private\b)'
+    r'|\bclosing\s+(?:early\b|at\s+\d)', re.I)
+
 # The running of a school, which reaches us through district, campus and
 # aggregator feeds alike. Kept separate from the campus rule below because it
 # is not tied to a source: a K-12 calendar can arrive via a library or a town,
@@ -559,7 +575,8 @@ def main():
                       if s.get('campus')}
 
     def wanted(item):
-        if NOISE.search(item['title']) or SCHOOL_INTERNAL.search(item['title']):
+        if (NOISE.search(item['title']) or SCHOOL_INTERNAL.search(item['title'])
+                or CLOSURE.search(item['title'])):
             return False
         if item.get('source') in campus_sources and not public_on_campus(item['title']):
             return False

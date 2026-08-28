@@ -1,0 +1,14 @@
+{
+  "name": "Proximi — find things to do near you",
+  "short_name": "Proximi",
+  "description": "Find events and activities happening near wherever you are.",
+  "start_url": ".",
+  "scope": ".",
+  "display": "standalone",
+  "background_color": "#E9E1CC",
+  "theme_color": "#E9E1CC",
+  "icons": [
+    { "src": "assets/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" },
+    { "src": "assets/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "maskable" }
+  ]
+}

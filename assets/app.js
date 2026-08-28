@@ -477,9 +477,6 @@
 
   /* ── Filtering ────────────────────────────────────────── */
 
-  const horizonDays = () =>
-    (HORIZONS.find((h) => h.id === state.horizon) || HORIZONS[2]).days;
-
   const radiusMiles = () => {
     const v = Number(el.radius.value);
     if (v >= ANY_DISTANCE) return Infinity;
@@ -635,6 +632,12 @@
   const esc = (s) => String(s).replace(/[&<>"']/g, (c) => (
     { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]
   ));
+
+  // esc() keeps a value inside its attribute; it does not make it a web URL.
+  // The feeds are scraped, and scraped domains get hijacked — so a link is
+  // only a link when it actually starts http(s).
+  const safeUrl = (u) =>
+    (typeof u === 'string' && /^https?:\/\//i.test(u.trim()) ? u.trim() : null);
 
   function formatDuration(min) {
     if (min < 60) return `${min} min`;
@@ -903,12 +906,14 @@
     }
 
     const links = [];
-    if (item.signupRequired && item.signupUrl) {
-      links.push(`<a class="link-btn is-signup" href="${esc(item.signupUrl)}"
+    const signupHref = item.signupRequired ? safeUrl(item.signupUrl) : null;
+    const detailsHref = safeUrl(item.url);
+    if (signupHref) {
+      links.push(`<a class="link-btn is-signup" href="${esc(signupHref)}"
                      target="_blank" rel="noopener noreferrer">Sign up ↗</a>`);
     }
-    if (item.url) {
-      links.push(`<a class="link-btn" href="${esc(item.url)}"
+    if (detailsHref) {
+      links.push(`<a class="link-btn" href="${esc(detailsHref)}"
                      target="_blank" rel="noopener noreferrer">Details ↗</a>`);
     }
 
@@ -962,7 +967,11 @@
     for (const btn of surface.querySelectorAll('.verdict-btn')) {
       btn.addEventListener('click', () => {
         const want = btn.dataset.verdict;
-        decide(item, verdict === want ? null : want);
+        // Read the verdict at click time: patchCard updates a card in place,
+        // so the one captured when the card was built goes stale after the
+        // first tap — and a second ✓ re-fired "going" (and re-downloaded the
+        // calendar file) instead of toggling it off.
+        decide(item, state.decisions[item.id] === want ? null : want);
       });
     }
     attachSwipe(li, surface, (verdict) => decide(item, verdict));
@@ -1234,6 +1243,33 @@
     el.placesKinds.innerHTML = opts.join('');
   }
 
+  /* Restored 2026-08-28: the Places-page tidy (d1a359d) deleted these while
+     reworking placeRow, so every heart tap, mute tap and place swipe threw a
+     ReferenceError and the whole like/mute feature was dead on the live site. */
+  function togglePlaceSaved(p) {
+    const had = state.savedPlaces.has(p.name);
+    if (had) state.savedPlaces.delete(p.name);
+    else state.savedPlaces.add(p.name);
+    saveSavedPlaces(state.savedPlaces);
+    syncInterested();
+    renderPlaces();
+    render();               // the feed can be filtered on this list
+    toast(had ? `Removed “${p.name}” from your liked places`
+              : `Liked “${p.name}”`,
+          () => togglePlaceSaved(p));
+  }
+
+  function togglePlaceMuted(p) {
+    const had = state.hiddenVenues.has(p.name);
+    if (had) state.hiddenVenues.delete(p.name);
+    else state.hiddenVenues.add(p.name);
+    saveHiddenVenues(state.hiddenVenues);
+    renderPlaces();
+    render();
+    toast(had ? `Unmuted “${p.name}”` : `Muted “${p.name}”`,
+          () => togglePlaceMuted(p));
+  }
+
   function placeRow(p) {
     // Same shape as a listing card: a slot that clips, a rail underneath, and
     // a surface that slides. Left mutes the place, right adds it to Interested
@@ -1269,7 +1305,7 @@
       <div class="place-main">
         <p class="place-name">${esc(p.name)}</p>
         <p class="place-meta">
-          <span class="place-kind">${esc(kindLabel(p.kind))}</span>
+          ${p.kind ? `<span class="place-kind">${esc(kindLabel(p.kind))}</span>` : ''}
           ${p.secondHand ? '<span class="place-tag">used &amp; rare</span>' : ''}
           ${p.brand ? '<span class="place-tag is-chain">chain</span>' : ''}
           ${meta ? `<span class="place-where">${esc(meta)}</span>` : ''}
@@ -1279,7 +1315,7 @@
         <p class="place-actions">
           ${p.events ? `<button type="button" class="place-events">${p.events}
              ${p.events === 1 ? 'listing' : 'listings'} →</button>` : ''}
-          ${p.url ? `<a class="place-link" href="${esc(p.url)}" target="_blank"
+          ${safeUrl(p.url) ? `<a class="place-link" href="${esc(safeUrl(p.url))}" target="_blank"
              rel="noopener noreferrer">Website</a>` : ''}
           <a class="place-link" target="_blank" rel="noopener noreferrer"
              href="https://www.openstreetmap.org/?mlat=${p.lat}&mlon=${p.lon}#map=17/${p.lat}/${p.lon}">Map</a>
@@ -1342,7 +1378,9 @@
     } else if (rows.length > CAP) {
       const li = document.createElement('li');
       li.className = 'venue-empty';
-      li.textContent = `Showing the ${CAP} nearest of ${rows.length}. `
+      const capWord = state.placeSort === 'near' ? 'nearest'
+        : state.placeSort === 'events' ? 'busiest' : 'first';
+      li.textContent = `Showing the ${CAP} ${capWord} of ${rows.length}. `
         + 'Search or pick a kind to narrow it down.';
       el.placesList.append(li);
     }
@@ -1399,7 +1437,8 @@
   function updateContextBar(n) {
     el.contextPlace.textContent = state.origin ? state.origin.name : 'Set a location';
 
-    const horizon = HORIZONS.find((h) => h.id === state.horizon) || HORIZONS[2];
+    // Same fallback as matchesHorizon — the 7-day default, not the weekend.
+    const horizon = HORIZONS.find((h) => h.id === state.horizon) || HORIZONS[3];
     const bits = [horizon.label.toLowerCase()];
     const r = Number(el.radius.value);
     bits.push(r >= ANY_DISTANCE ? 'any distance' : `within ${r} ${distanceUnit()}`);
