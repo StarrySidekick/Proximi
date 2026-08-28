@@ -152,6 +152,29 @@ def main(path='data/events.json'):
     return 0
 
 
+def check_id_stability():
+    """Ids must be derived, not hashed with Python's salted hash().
+
+    `hash()` is randomised per process, so every run gave the same event a new
+    id. Nothing errored: merge deduped on content, so the file stayed the right
+    size while every listing's identity churned weekly — which silently
+    orphaned every swipe verdict, since those are stored per id in the reader's
+    browser. Cheap to check, invisible otherwise.
+    """
+    import subprocess
+    bad = subprocess.run(
+        ['grep', '-rnE', r'\bhash\(', 'scripts/enrich.py', 'scripts/merge.py',
+         'scripts/harvest.py'], capture_output=True, text=True).stdout
+    offenders = [l for l in bad.splitlines()
+                 if 'hashlib' not in l and not l.split(':', 2)[2].strip().startswith('#')]
+    if offenders:
+        print('\nFAILED — ids built with a salted hash():')
+        for o in offenders:
+            print('  -', o.strip())
+        return 1
+    return 0
+
+
 def check_places(path='data/places.json'):
     """The directory is advisory — a missing file is not a failure.
 
@@ -224,4 +247,4 @@ def check_places(path='data/places.json'):
 
 if __name__ == '__main__':
     code = main(*sys.argv[1:])
-    sys.exit(code or check_places())
+    sys.exit(code or check_places() or check_id_stability())

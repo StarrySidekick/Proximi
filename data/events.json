@@ -1,7 +1,7 @@
 {
   "meta": {
     "schemaVersion": 2,
-    "scrapedAt": "2026-08-27T19:39:57+00:00",
+    "scrapedAt": "2026-08-28T01:02:13+00:00",
     "centerName": "Beacon, NY",
     "centerLat": 41.5048,
     "centerLon": -73.9696,
@@ -34,6 +34,7 @@
       "Hudson River Sloop Clearwater",
       "Hudson Valley Brewery, Beacon",
       "Hudson Valley Tourism",
+      "Hurley Heritage Museum",
       "Independent Cinemas",
       "Institute for American Indian Studies Research and Education Library",
       "Irvington Public Library",
@@ -52,6 +53,7 @@
       "Mount Saint Mary College, Newburgh",
       "New Jersey Botanical Garden",
       "Newburgh Free Library",
+      "Olive Free Library",
       "Opus 40",
       "Piet Oudolf Garden",
       "Pleasant Valley Free Library",
@@ -71,6 +73,7 @@
       "The Corner Bookstore",
       "The Moviehouse",
       "The Westport Library",
+      "Thomas Paine Cottage and Museum",
       "Ticketmaster",
       "Time & Space Limited",
       "Trailside Nature Museum",
@@ -79,6 +82,7 @@
       "University of New Haven",
       "Untermyer Gardens Conservancy",
       "Verona Public Library",
+      "Watertown Library Association",
       "West Milford Township Library",
       "West New York Public Library",
       "West Side Community Garden",
@@ -333,6 +337,34 @@
       "venueKey": "Adult/Teen Services Desk"
     },
     {
+      "id": "osm-thomaspainecottage-67399898",
+      "title": "Paine Cottage will reopen for private member, group tours & special seasonal events September 2026.",
+      "type": "tour",
+      "types": [
+        "tour"
+      ],
+      "repeats": false,
+      "audience": "all",
+      "setting": "indoor",
+      "timeOfDay": "daytime",
+      "hasFood": false,
+      "host": "Thomas Paine Cottage and Museum",
+      "start": "2026-08-01T00:00:00-04:00",
+      "end": "2026-09-10T00:00:00-04:00",
+      "venue": "Thomas Paine Cottage and Museum",
+      "city": "Beechmont",
+      "address": "20 Sicard Avenue",
+      "lat": 40.93444,
+      "lon": -73.79111,
+      "price": null,
+      "signupRequired": false,
+      "url": "https://thomaspainecottage.org/",
+      "description": "Members and groups visit thomspainecottage.org for instructions on booking a free private tour. Special seasonal events and tours through December 2026 listed on our website Public tours will resume 2027 season.",
+      "source": "Thomas Paine Cottage and Museum",
+      "placeKind": "museum",
+      "venueKey": "Thomas Paine Cottage and Museum"
+    },
+    {
       "id": "osm-derbynecklibrary-12251018",
       "title": "YOUTH PROGRAMMING PAUSE",
       "type": "other",
@@ -542,7 +574,7 @@
         "dance",
         "class"
       ],
-      "venueKey": "See listing"
+      "venueKey": null
     },
     {
       "id": "eventbrite-37446700",
@@ -727,7 +759,7 @@
         "dance",
         "class"
       ],
-      "venueKey": "See listing"
+      "venueKey": null
     },
     {
       "id": "songkick-48676210",
@@ -1494,7 +1526,7 @@
         "class"
       ],
       "cadence": "bookable",
-      "venueKey": "See listing"
+      "venueKey": null
     },
     {
       "id": "eventbrite-40934508",
@@ -1595,7 +1627,7 @@
         "class"
       ],
       "cadence": "bookable",
-      "venueKey": "See listing"
+      "venueKey": null
     },
     {
       "id": "eventbrite-57481290",
@@ -1630,7 +1662,7 @@
         "club"
       ],
       "cadence": "bookable",
-      "venueKey": "See listing"
+      "venueKey": null
     },
     {
       "id": "eventbrite-20653191",
@@ -1665,7 +1697,7 @@
         "workout"
       ],
       "cadence": "bookable",
-      "venueKey": "See listing"
+      "venueKey": null
     },
     {
       "id": "dutchess-county-fair-2026",
@@ -2852,7 +2884,7 @@
       "types": [
         "class"
       ],
-      "venueKey": "See listing"
+      "venueKey": null
     },
     {
       "id": "eventbrite-83810687",
@@ -3133,7 +3165,7 @@
         "club"
       ],
       "placeKind": "brewery",
-      "venueKey": "Elicit Brewing Co. - Danbury"
+      "venueKey": "Elicit Brewing Co - Danbury"
     },
     {
       "id": "tubbys-79571113",
@@ -3918,7 +3950,7 @@
       "types": [
         "tour"
       ],
-      "venueKey": "Capital One City Parks Foundation SummerStage"
+      "venueKey": "Capital One City Parks Foundation Summerstage"
     },
     {
       "id": "ticketmaster-30960915",
@@ -6670,7 +6702,7 @@
         "workout"
       ],
       "cadence": "bookable",
-      "venueKey": "See listing"
+      "venueKey": null
     },
     {
       "id": "eventbrite-52867698",
@@ -6704,7 +6736,7 @@
         "class"
       ],
       "cadence": "bookable",
-      "venueKey": "See listing"
+      "venueKey": null
     },
     {
       "id": "eventbrite-50189794",
@@ -6739,7 +6771,7 @@
         "class"
       ],
       "cadence": "bookable",
-      "venueKey": "See listing"
+      "venueKey": null
     },
     {
       "id": "stamfordmuseum-65694147",
@@ -13665,7 +13697,7 @@
       "types": [
         "yoga"
       ],
-      "venueKey": "See listing"
+      "venueKey": null
     },
     {
       "id": "eventbrite-80579023",
@@ -15078,7 +15110,7 @@
         "art exhibit"
       ],
       "placeKind": "winery",
-      "venueKey": "Aquila’s Nest Vineyards"
+      "venueKey": "Aquila's Nest Vineyards"
     },
     {
       "id": "eventbrite-20128734",
@@ -16473,7 +16505,7 @@
         "comedy show"
       ],
       "placeKind": "theatre",
-      "venueKey": "Brooklyn Improv (The Lab)"
+      "venueKey": "Brooklyn Improv (The Main Room)"
     },
     {
       "id": "ticketmaster-64420570",
@@ -17989,7 +18021,7 @@
         "comedy show"
       ],
       "placeKind": "theatre",
-      "venueKey": "Brooklyn Improv (The Lab)"
+      "venueKey": "Brooklyn Improv (The Main Room)"
     },
     {
       "id": "ticketmaster-52415547",
@@ -18179,7 +18211,7 @@
       "description": "Work together with our gardeners to maintain select areas of South Park. We will be primarily doing weeding and general horticultural maintenance. Please meet at the park entrance at 68th Street & Riverside Blvd. PlacePartner Opportunities are weekly/monthly occasions for volunteers to work alongside our field staff and ParkTenders. We will provide all the tools you need!",
       "source": "Riverside Valley Community Garden",
       "cadence": "occasional",
-      "venueKey": "W 68th Street & Riverside Blvd"
+      "venueKey": null
     },
     {
       "id": "osm-carriagebarn-93249557",
@@ -19734,7 +19766,7 @@
         "class"
       ],
       "cadence": "daily",
-      "venueKey": "See listing"
+      "venueKey": null
     },
     {
       "id": "stamfordmuseum-53788272",
@@ -20672,7 +20704,7 @@
         "comedy show"
       ],
       "placeKind": "theatre",
-      "venueKey": "Brooklyn Improv (The Lab)"
+      "venueKey": "Brooklyn Improv (The Main Room)"
     },
     {
       "id": "ticketmaster-61687279",
@@ -22687,7 +22719,7 @@
       "description": "Monthly walks through birding hotspots in Riverside Park, led by Riverside Park Conservancy Field Staff. Learn and build a birding community! Open to birders of all ages and experience. Meet at 116th Street and Riverside Drive. Summer on the Hudson events are free and open to the public. Seating is limited, unreserved, and available on a first-come, first-served basis.",
       "source": "Riverside Valley Community Garden",
       "cadence": "occasional",
-      "venueKey": "W 116th Street & Riverside Drive"
+      "venueKey": null
     },
     {
       "id": "eventbrite-75503776",
@@ -22809,7 +22841,7 @@
       "url": "https://www.eventbrite.com/e/august-29th-morning-ecotour-tickets-1994362635329",
       "description": "Take a boat ride up the Hutchinson River with the Hutchinson River Restoration Project!",
       "source": "Eventbrite",
-      "venueKey": "See listing"
+      "venueKey": null
     },
     {
       "id": "osm-lasdonpublicgardens-39139717",
@@ -22953,7 +22985,7 @@
       "url": "https://www.veronalibrary.org/events/summer-hours/2026-08-29/",
       "description": "Summer Hours (June 21 – Sept. 6, 2026, Father’s Day – Labor Day) Mon – Thu: 9am – 8pm Fri: 9am – 5pm Sat: 9am – 1pm Closed Sundays",
       "source": "Verona Public Library",
-      "venueKey": "NJ"
+      "venueKey": null
     },
     {
       "id": "meetup-16505327",
@@ -22981,7 +23013,7 @@
       "url": "https://www.meetup.com/amcnynj/events/316258473/",
       "description": "Let's have some fun this Sat. by doing a hike near Cold Spring. The hike will be about 8-10 miles depending on the weather. The hike is rated Vigorous on the new AMC rating scale and 3D8-10 under previous codes. Not suitable for beginners, slow hikers, or runners. We will start the hike by taking a car shuttle from the Cold Spring Metro-North commuter rail stop to the trailhead.",
       "source": "Meetup",
-      "venueKey": "See listing"
+      "venueKey": null
     },
     {
       "id": "opus40-60587847",
@@ -23165,7 +23197,7 @@
       "types": [
         "class"
       ],
-      "venueKey": "See listing"
+      "venueKey": null
     },
     {
       "id": "eventbrite-31692933",
@@ -23498,7 +23530,7 @@
       "url": "https://maverickconcerts.org/event/azkana-trio-2026/",
       "description": "These short interactive events, long a Maverick tradition, are designed for enjoyment by children in grades K-6. Admission is free for children and adults. Amadi Azikiwe, violin Amy Kang, cello Jasmine Nagano, piano The Azkana Trio was formed in 2026, and has quickly become in demand as a touring chamber ensemble.",
       "source": "Maverick Concerts",
-      "venueKey": "NY"
+      "venueKey": null
     },
     {
       "id": "osm-lasdonpublicgardens-41665880",
@@ -23748,7 +23780,7 @@
       "types": [
         "sporting event"
       ],
-      "venueKey": "See listing"
+      "venueKey": null
     },
     {
       "id": "eventbrite-89924129",
@@ -23848,7 +23880,7 @@
       "types": [
         "other"
       ],
-      "venueKey": "See listing"
+      "venueKey": null
     },
     {
       "id": "eventbrite-46012774",
@@ -24155,7 +24187,7 @@
       "url": "https://riversideparknyc.org/event/en-espanol-tree-club-del-bosque-de-west-harlem/2026-08-29/",
       "description": "Sea parte de Tree Club del Bosque de West Harlem! Fecha: Cuarto sbado Hora: 1:30 pm a 3:00 pm Lugar de reunin: W 143rd St y Riverside Drive Detalles del proyecto: Durante este evento, trabajaremos juntos para limpiar el parque, desmalezar y eliminar especies introducidas y cuidar nuestros rboles. Esto es parte de un nuevo proyecto de restauracin llamado Bosque de West Harlem.",
       "source": "Riverside Valley Community Garden",
-      "venueKey": "W 143rd Street & Riverside Drive"
+      "venueKey": null
     },
     {
       "id": "eventbrite-3324586",
@@ -24220,7 +24252,7 @@
       "types": [
         "party"
       ],
-      "venueKey": "See listing"
+      "venueKey": null
     },
     {
       "id": "eventbrite-23032849",
@@ -25764,7 +25796,7 @@
       "types": [
         "party"
       ],
-      "venueKey": "See listing"
+      "venueKey": null
     },
     {
       "id": "eventbrite-59424390",
@@ -25883,7 +25915,7 @@
       "url": "https://maverickconcerts.org/event/cindy-cashdollar-jack-petruzzelli-high-low-duo/",
       "description": "Reserved Hall Seats: $50/35, $30/27 (partial obstruction) General Admission/Outdoors/Uncovered: $20, Students: $10 BUY TICKETScindycashdollar.com jackpetruzzelli.com camerongreider.com HIGH LOW DUO Cameron Greider and Jack Petruzzelli, performing Ravel’s “Mother Goose” and other classics on electric guitars ———-INTERMISSION———- CINDY CASHDOLLAR, JACK PETRUZZELLI AND FRIENDS PRESENT TWO MANY…",
       "source": "Maverick Concerts",
-      "venueKey": "NY"
+      "venueKey": null
     },
     {
       "id": "ticketmaster-29010619",
@@ -26409,7 +26441,7 @@
       "description": "DO NOT PURCHASE TICKETS FROM ANYONE OR ANY OTHER SITE OTHER THAN IMPROV.COM TICKET RESALE IS STRICTLY PROHIBITED.TICKETS SUSPECTED OF BEING PURCHASED FOR THE SOLE PURPOSE OF RESELLING MAY BE CANCELLED AT THE DISCRETION OF THE BROOKLYN IMPROV.EVENT INFO:There is a two-item minimum purchase requirement in the showroom for all guests.",
       "source": "Ticketmaster",
       "placeKind": "theatre",
-      "venueKey": "Brooklyn Improv (The Lab)"
+      "venueKey": "Brooklyn Improv (The Main Room)"
     },
     {
       "id": "eventbrite-76013813",
@@ -26587,7 +26619,7 @@
       "description": null,
       "source": "Ticketmaster",
       "placeKind": "theatre",
-      "venueKey": "Hackensack Meridian Health Theatre at the Count Basie Center"
+      "venueKey": "Hackensack Meridian Health Theatre at the Count Basie Center "
     },
     {
       "id": "ticketmaster-79125644",
@@ -28045,7 +28077,7 @@
         "yoga",
         "class"
       ],
-      "venueKey": "See listing"
+      "venueKey": null
     },
     {
       "id": "eventbrite-15343675",
@@ -28109,7 +28141,7 @@
       "types": [
         "class"
       ],
-      "venueKey": "See listing"
+      "venueKey": null
     },
     {
       "id": "eventbrite-65153227",
@@ -28410,7 +28442,7 @@
       "types": [
         "tour"
       ],
-      "venueKey": "See listing"
+      "venueKey": null
     },
     {
       "id": "meetup-97576005",
@@ -28746,7 +28778,7 @@
         "festival",
         "market"
       ],
-      "venueKey": "Nyack"
+      "venueKey": null
     },
     {
       "id": "eventbrite-6820678",
@@ -28846,7 +28878,7 @@
       "types": [
         "other"
       ],
-      "venueKey": "See listing"
+      "venueKey": null
     },
     {
       "id": "eventbrite-7393560",
@@ -29360,7 +29392,7 @@
       "url": "https://maverickconcerts.org/event/chamber-music-society-ft-worth/",
       "description": "Reserved Hall Seats: $55/35, $30/27 (partial obstruction) General Admission/Outdoors/Uncovered: $20, Students: $10 BUY TICKETScmsfw.org Gary Levinson, violinBaya Kakouberi, pianoStephen Adam Savage, violaInbal Segev, cello PROGRAMWolfgang Amadeus Mozart: Piano Quartet No. 1 in G minor, K. 478George Tsontakis: Piano Quartet No. 1 (“Bagatelles”) (1997)George Tsontakis: Piano Quartet No.",
       "source": "Maverick Concerts",
-      "venueKey": "NY"
+      "venueKey": null
     },
     {
       "id": "eventbrite-25533313",
@@ -31099,7 +31131,7 @@
         "class"
       ],
       "cadence": "daily",
-      "venueKey": "See listing"
+      "venueKey": null
     },
     {
       "id": "songkick-28789687",
@@ -32097,7 +32129,7 @@
         "workout"
       ],
       "cadence": "bookable",
-      "venueKey": "See listing"
+      "venueKey": null
     },
     {
       "id": "eventbrite-84065633",
@@ -32131,7 +32163,7 @@
         "class"
       ],
       "cadence": "bookable",
-      "venueKey": "See listing"
+      "venueKey": null
     },
     {
       "id": "eventbrite-74438614",
@@ -32165,7 +32197,7 @@
         "class"
       ],
       "cadence": "bookable",
-      "venueKey": "See listing"
+      "venueKey": null
     },
     {
       "id": "eventbrite-32619688",
@@ -32199,7 +32231,7 @@
         "class"
       ],
       "cadence": "bookable",
-      "venueKey": "See listing"
+      "venueKey": null
     },
     {
       "id": "eventbrite-44811103",
@@ -32720,6 +32752,33 @@
       "venueKey": "Derby Neck Library"
     },
     {
+      "id": "osm-olivefreelibrary-91644076",
+      "title": "OFL - Mushroom Walk",
+      "type": "other",
+      "types": [
+        "other"
+      ],
+      "repeats": false,
+      "audience": "all",
+      "setting": "unknown",
+      "timeOfDay": "nighttime",
+      "hasFood": false,
+      "host": "Olive Free Library",
+      "start": "2026-09-01T18:00:00+00:00",
+      "end": "2026-09-01T20:30:00+00:00",
+      "venue": "4033 Route 28A",
+      "city": "West Shokan, NY",
+      "address": "4033 Route 28A, West Shokan, NY",
+      "lat": 41.96382,
+      "lon": -74.27527,
+      "price": null,
+      "signupRequired": false,
+      "url": "https://olivefreelibrary.org/",
+      "description": null,
+      "source": "Olive Free Library",
+      "venueKey": "4033 Route 28A"
+    },
+    {
       "id": "eventbrite-828396",
       "title": "Meet & Greet TikTok Star Chris Olsen Tues. Sept. 1st at 6PM",
       "type": "meet & greet",
@@ -32783,7 +32842,7 @@
       "types": [
         "other"
       ],
-      "venueKey": "See listing"
+      "venueKey": null
     },
     {
       "id": "eventbrite-21600226",
@@ -32905,7 +32964,7 @@
       "url": "https://www.eventbrite.com/e/orange-county-new-york-free-aha-heartsaver-cpraed-training-tickets-1992578423704",
       "description": "Don't miss this opportunity to gain knowledge that could make a real difference. Register now to reserve your spot!",
       "source": "Eventbrite",
-      "venueKey": "See listing"
+      "venueKey": null
     },
     {
       "id": "osm-riversideparknyc-22199263",
@@ -33026,7 +33085,7 @@
       "types": [
         "other"
       ],
-      "venueKey": "See listing"
+      "venueKey": null
     },
     {
       "id": "wcsu-15946384",
@@ -33445,7 +33504,7 @@
         "sporting event"
       ],
       "placeKind": "stadium",
-      "venueKey": "Newburgh"
+      "venueKey": null
     },
     {
       "id": "fairfield-u-52405041",
@@ -33778,7 +33837,7 @@
         "class"
       ],
       "cadence": "bookable",
-      "venueKey": "See listing"
+      "venueKey": null
     },
     {
       "id": "osm-riversideparknyc-95293925",
@@ -33891,7 +33950,7 @@
       "description": "The Westport Library's beginner/intermediate French conversation group meetings are each Wednesday from 10 to 11 am via Zoom. This is a conversation group rather than a language class — there are no textbooks, homework, or formal lessons. Participants engage in unscripted discussions in French on a variety of topics.",
       "source": "The Westport Library",
       "cadence": "occasional",
-      "venueKey": "Virtual Event"
+      "venueKey": null
     },
     {
       "id": "osm-derbynecklibrary-47766891",
@@ -34065,7 +34124,34 @@
       "description": "Date: Every Wednesday and Saturday Time: 1:30pm- 3:00pm Meeting Location: W 143rd St and Riverside Drive Project Details: During this event, well be working together to clean up the park, weed out introduced species, and take care of our trees. This is part of a new restoration project called the West Harlem Forest. Come learn and restore 7.5 acres with us!",
       "source": "Riverside Valley Community Garden",
       "cadence": "occasional",
-      "venueKey": "W 143rd Street & Riverside Drive"
+      "venueKey": null
+    },
+    {
+      "id": "osm-olivefreelibrary-99728145",
+      "title": "OFL - 2026–27 HUNTING LICENSE &  DEER MANAGEMENT PERMIT SALES",
+      "type": "other",
+      "types": [
+        "other"
+      ],
+      "repeats": false,
+      "audience": "all",
+      "setting": "unknown",
+      "timeOfDay": "daytime",
+      "hasFood": false,
+      "host": "Olive Free Library",
+      "start": "2026-09-02T14:00:00+00:00",
+      "end": "2026-09-02T21:00:00+00:00",
+      "venue": "4033 Route 28A",
+      "city": "West Shokan, NY",
+      "address": "4033 Route 28A, West Shokan, NY",
+      "lat": 41.96382,
+      "lon": -74.27527,
+      "price": null,
+      "signupRequired": false,
+      "url": "https://olivefreelibrary.org/",
+      "description": null,
+      "source": "Olive Free Library",
+      "venueKey": "4033 Route 28A"
     },
     {
       "id": "osm-westportlibrary-53698555",
@@ -37364,7 +37450,7 @@
       "types": [
         "talk"
       ],
-      "venueKey": "(Creative Legion)"
+      "venueKey": null
     },
     {
       "id": "opus40-32336936",
@@ -37578,7 +37664,7 @@
         "class"
       ],
       "cadence": "daily",
-      "venueKey": "See listing"
+      "venueKey": null
     },
     {
       "id": "eventbrite-38248051",
@@ -38078,7 +38164,7 @@
       "types": [
         "other"
       ],
-      "venueKey": "See listing"
+      "venueKey": null
     },
     {
       "id": "eventbrite-18202628",
@@ -38262,7 +38348,7 @@
       "url": "https://maverickconcerts.org/event/marco-benevento-2026/",
       "description": "Reserved Hall Seats: $55/35, $30/27 (partial obstruction) General Admission/Outdoors/Uncovered: $20, Students: $10 BUY TICKETSmarcobenevento.com Marco Benevento has always moved like someone who understands the studio as its own instrument, not just a room where the toys are.",
       "source": "Maverick Concerts",
-      "venueKey": "NY"
+      "venueKey": null
     },
     {
       "id": "savagewonder-82909650",
@@ -38670,6 +38756,33 @@
       "venueKey": "Irvington Public Library"
     },
     {
+      "id": "osm-olivefreelibrary-14704361",
+      "title": "Book it for the Olive Free Library 5K",
+      "type": "sporting event",
+      "types": [
+        "sporting event"
+      ],
+      "repeats": false,
+      "audience": "all",
+      "setting": "indoor",
+      "timeOfDay": "daytime",
+      "hasFood": false,
+      "host": "Olive Free Library",
+      "start": "2026-09-05T00:00:00-04:00",
+      "end": "2026-09-06T00:00:00-04:00",
+      "venue": "4033 Route 28A",
+      "city": "West Shokan, NY",
+      "address": "4033 Route 28A, West Shokan, NY",
+      "lat": 41.96382,
+      "lon": -74.27527,
+      "price": null,
+      "signupRequired": false,
+      "url": "https://olivefreelibrary.org/",
+      "description": null,
+      "source": "Olive Free Library",
+      "venueKey": "4033 Route 28A"
+    },
+    {
       "id": "ticketmaster-81862101",
       "title": "Country Road - Performing All Your Favorite Country Hits",
       "type": "concert",
@@ -38879,7 +38992,7 @@
         "class"
       ],
       "cadence": "bookable",
-      "venueKey": "See listing"
+      "venueKey": null
     },
     {
       "id": "eventbrite-15635973",
@@ -38914,7 +39027,7 @@
         "class"
       ],
       "cadence": "bookable",
-      "venueKey": "See listing"
+      "venueKey": null
     },
     {
       "id": "eventbrite-78346608",
@@ -38948,7 +39061,7 @@
         "class"
       ],
       "cadence": "bookable",
-      "venueKey": "See listing"
+      "venueKey": null
     },
     {
       "id": "eventbrite-5612736",
@@ -38983,7 +39096,7 @@
         "workout"
       ],
       "cadence": "bookable",
-      "venueKey": "See listing"
+      "venueKey": null
     },
     {
       "id": "eventbrite-93358101",
@@ -39049,7 +39162,7 @@
         "class",
         "workout"
       ],
-      "venueKey": "See listing"
+      "venueKey": null
     },
     {
       "id": "osm-veronalibrary-15449711",
@@ -39076,7 +39189,7 @@
       "url": "https://www.veronalibrary.org/events/summer-hours/2026-09-05/",
       "description": "Summer Hours (June 21 – Sept. 6, 2026, Father’s Day – Labor Day) Mon – Thu: 9am – 8pm Fri: 9am – 5pm Sat: 9am – 1pm Closed Sundays",
       "source": "Verona Public Library",
-      "venueKey": "NJ"
+      "venueKey": null
     },
     {
       "id": "eventbrite-68179221",
@@ -39111,7 +39224,7 @@
         "workout"
       ],
       "cadence": "bookable",
-      "venueKey": "See listing"
+      "venueKey": null
     },
     {
       "id": "eventbrite-38909087",
@@ -39296,7 +39409,7 @@
         "volunteer"
       ],
       "cadence": "bookable",
-      "venueKey": "See listing"
+      "venueKey": null
     },
     {
       "id": "eventbrite-85305778",
@@ -40011,7 +40124,7 @@
         "sporting event"
       ],
       "placeKind": "stadium",
-      "venueKey": "Newburgh"
+      "venueKey": null
     },
     {
       "id": "eventbrite-23223898",
@@ -40135,7 +40248,7 @@
       "types": [
         "concert"
       ],
-      "venueKey": "See listing"
+      "venueKey": null
     },
     {
       "id": "wcsu-23191298",
@@ -40863,7 +40976,7 @@
       "url": "https://maverickconcerts.org/event/bill-charlap-trio-2026/",
       "description": "Reserved Hall Seats: $65/40, $30/27 (partial obstruction) General Admission/Outdoors/Uncovered: $25, Students: $10 BUY TICKETSbillcharlap.com Bill Charlap, piano David Wong, bass Dennis Mackrel, drums Grammy award-winning pianist Bill Charlap has performed with many of the leading artists of our time, including Phil Woods, Tony Bennett, Gerry Mulligan, Wynton Marsalis, Freddy Cole, and Houston…",
       "source": "Maverick Concerts",
-      "venueKey": "NY"
+      "venueKey": null
     },
     {
       "id": "fairfield-u-33047118",
@@ -41991,7 +42104,7 @@
       "url": "https://maverickconcerts.org/event/verona-quartet-alexander-fiterstein-2026/",
       "description": "Reserved Hall Seats: $55/35, $30/27 (partial obstruction) General Admission/Outdoors/Uncovered: $20, Students: $10 BUY TICKETSveronaquartet.com fiterstein.org Jonathan Ong, violin Dorothy Ro, violin Abigail Rojansky, viola Jonathan Dormand, cello PROGRAM Philip Glass: String Quartet No.",
       "source": "Maverick Concerts",
-      "venueKey": "NY"
+      "venueKey": null
     },
     {
       "id": "eventbrite-65665326",
@@ -42019,7 +42132,7 @@
       "url": "https://www.eventbrite.com/e/work-of-love-a-community-song-circle-with-lyndsey-scott-accord-ny-tickets-1998760143394",
       "description": "nourish your voice and open your heart during this interactive afternoon of Song & connection (( ALL VOICES WELCOME! ))",
       "source": "Eventbrite",
-      "venueKey": "See listing"
+      "venueKey": null
     },
     {
       "id": "ticketmaster-46276640",
@@ -42082,7 +42195,7 @@
         "festival",
         "concert"
       ],
-      "venueKey": "See listing"
+      "venueKey": null
     },
     {
       "id": "eventbrite-61638995",
@@ -42944,6 +43057,67 @@
       "venueKey": "The Westport Library"
     },
     {
+      "id": "osm-olivefreelibrary-81402977",
+      "title": "Library Closed",
+      "type": "other",
+      "types": [
+        "other"
+      ],
+      "repeats": true,
+      "audience": "all",
+      "setting": "indoor",
+      "timeOfDay": "daytime",
+      "hasFood": false,
+      "host": "Olive Free Library",
+      "start": "2026-09-07T00:00:00-04:00",
+      "end": null,
+      "venue": "4033 Route 28A",
+      "city": "West Shokan, NY",
+      "address": "4033 Route 28A, West Shokan, NY",
+      "lat": 41.96382,
+      "lon": -74.27527,
+      "price": null,
+      "signupRequired": false,
+      "url": "https://olivefreelibrary.org/",
+      "description": null,
+      "source": "Olive Free Library",
+      "recurrence": "9 dates, through Jan 1",
+      "until": "2027-01-01T00:00:00-05:00",
+      "cadence": "occasional",
+      "venueKey": "4033 Route 28A"
+    },
+    {
+      "id": "osm-watertownlibrary-85749396",
+      "title": "LIBRARY CLOSED",
+      "type": "other",
+      "types": [
+        "other"
+      ],
+      "repeats": true,
+      "audience": "all",
+      "setting": "indoor",
+      "timeOfDay": "daytime",
+      "hasFood": false,
+      "host": "Watertown Library Association",
+      "start": "2026-09-07T00:00:00-04:00",
+      "end": null,
+      "venue": "Watertown Library Association",
+      "city": "Watertown, CT",
+      "address": "470 Main Street, Watertown, CT",
+      "lat": 41.60373,
+      "lon": -73.1176,
+      "price": null,
+      "signupRequired": false,
+      "url": "https://watertownlibrary.org/",
+      "description": null,
+      "source": "Watertown Library Association",
+      "recurrence": "4 dates, through Dec 24",
+      "until": "2026-12-24T00:00:00-05:00",
+      "cadence": "occasional",
+      "placeKind": "library",
+      "venueKey": "Watertown Library Association"
+    },
+    {
       "id": "eventbrite-87779613",
       "title": "CISSP Training Program – Become a Cybersecurity Leader in Poughkeepsie, NY",
       "type": "class",
@@ -42975,7 +43149,7 @@
         "class"
       ],
       "cadence": "bookable",
-      "venueKey": "See listing"
+      "venueKey": null
     },
     {
       "id": "osm-veronalibrary-58774827",
@@ -43090,7 +43264,7 @@
       "types": [
         "party"
       ],
-      "venueKey": "See listing"
+      "venueKey": null
     },
     {
       "id": "eventbrite-20406175",
@@ -43122,7 +43296,7 @@
       "types": [
         "festival"
       ],
-      "venueKey": "Brooklyn"
+      "venueKey": null
     },
     {
       "id": "songkick-66902351",
@@ -43960,7 +44134,7 @@
         "class"
       ],
       "cadence": "bookable",
-      "venueKey": "See listing"
+      "venueKey": null
     },
     {
       "id": "eventbrite-29692852",
@@ -43995,7 +44169,7 @@
         "class"
       ],
       "cadence": "bookable",
-      "venueKey": "See listing"
+      "venueKey": null
     },
     {
       "id": "eventbrite-52575492",
@@ -44030,7 +44204,7 @@
       "description": "Pass your CAPM exam on the first try! Join our expert-led CAPM Certification Bootcamp and launch your project management career.",
       "source": "Eventbrite",
       "cadence": "bookable",
-      "venueKey": "See listing"
+      "venueKey": null
     },
     {
       "id": "eventbrite-29078142",
@@ -44064,7 +44238,7 @@
         "class"
       ],
       "cadence": "bookable",
-      "venueKey": "See listing"
+      "venueKey": null
     },
     {
       "id": "eventbrite-58064342",
@@ -44098,7 +44272,7 @@
       "description": "Master Data Science with Python in 4 days! Hands-on training, ML basics, real projects & career guidance. Enroll now!",
       "source": "Eventbrite",
       "cadence": "bookable",
-      "venueKey": "See listing"
+      "venueKey": null
     },
     {
       "id": "osm-westportlibrary-53961950",
@@ -45014,7 +45188,7 @@
         "sporting event"
       ],
       "placeKind": "stadium",
-      "venueKey": "Newburgh"
+      "venueKey": null
     },
     {
       "id": "ticketmaster-68275063",
@@ -45447,7 +45621,7 @@
         "workout"
       ],
       "cadence": "bookable",
-      "venueKey": "See listing"
+      "venueKey": null
     },
     {
       "id": "teatown-5577825",
@@ -45506,7 +45680,7 @@
       "description": "The Westport Library's beginner/intermediate French conversation group meetings are each Wednesday from 10 to 11 am via Zoom. This is a conversation group rather than a language class — there are no textbooks, homework, or formal lessons. Participants engage in unscripted discussions in French on a variety of topics.",
       "source": "The Westport Library",
       "cadence": "occasional",
-      "venueKey": "Virtual Event"
+      "venueKey": null
     },
     {
       "id": "osm-lasdonpublicgardens-82377810",
@@ -46747,7 +46921,7 @@
       "types": [
         "talk"
       ],
-      "venueKey": "Off-Site"
+      "venueKey": null
     },
     {
       "id": "libcal:newburghlibrary-64962010",
@@ -47124,6 +47298,34 @@
       "source": "Rye Free Reading Room",
       "placeKind": "library",
       "venueKey": "Rye Free Reading Room"
+    },
+    {
+      "id": "osm-thomaspainecottage-29261438",
+      "title": "Cottage closed for private event",
+      "type": "museum exhibit",
+      "types": [
+        "museum exhibit"
+      ],
+      "repeats": false,
+      "audience": "all",
+      "setting": "indoor",
+      "timeOfDay": "daytime",
+      "hasFood": false,
+      "host": "Thomas Paine Cottage and Museum",
+      "start": "2026-09-10T00:00:00-04:00",
+      "end": "2026-09-11T00:00:00-04:00",
+      "venue": "Thomas Paine Cottage and Museum",
+      "city": "Beechmont",
+      "address": "20 Sicard Avenue",
+      "lat": 40.93444,
+      "lon": -73.79111,
+      "price": null,
+      "signupRequired": false,
+      "url": "https://thomaspainecottage.org/",
+      "description": null,
+      "source": "Thomas Paine Cottage and Museum",
+      "placeKind": "museum",
+      "venueKey": "Thomas Paine Cottage and Museum"
     },
     {
       "id": "eventbrite-61726796",
@@ -49065,6 +49267,36 @@
       "venueKey": "Piet Oudolf Garden"
     },
     {
+      "id": "osm-olivefreelibrary-42178640",
+      "title": "CANCELLED - Shokan Branch - Mahjong with Sandy Breitenberger",
+      "type": "game",
+      "types": [
+        "game"
+      ],
+      "repeats": true,
+      "audience": "all",
+      "setting": "unknown",
+      "timeOfDay": "daytime",
+      "hasFood": false,
+      "host": "Olive Free Library",
+      "start": "2026-09-11T11:00:00-04:00",
+      "end": null,
+      "venue": "4033 Route 28A",
+      "city": "West Shokan, NY",
+      "address": "4033 Route 28A, West Shokan, NY",
+      "lat": 41.96382,
+      "lon": -74.27527,
+      "price": null,
+      "signupRequired": false,
+      "url": "https://olivefreelibrary.org/",
+      "description": null,
+      "source": "Olive Free Library",
+      "recurrence": "4 dates, through Dec 4",
+      "until": "2026-12-04T11:00:00-05:00",
+      "cadence": "occasional",
+      "venueKey": "4033 Route 28A"
+    },
+    {
       "id": "osm-burnhamlibrary-47461076",
       "title": "Homeschool Hangout- Create & Design",
       "type": "other",
@@ -49295,7 +49527,7 @@
       "types": [
         "other"
       ],
-      "venueKey": "See listing"
+      "venueKey": null
     },
     {
       "id": "fairfield-u-44693659",
@@ -49667,7 +49899,7 @@
       "types": [
         "talk"
       ],
-      "venueKey": "See listing"
+      "venueKey": null
     },
     {
       "id": "eventbrite-86376988",
@@ -50063,7 +50295,7 @@
         "dj",
         "dance"
       ],
-      "venueKey": "See listing"
+      "venueKey": null
     },
     {
       "id": "songkick-24794169",
@@ -50516,6 +50748,64 @@
       "venueKey": "Storyhour Room"
     },
     {
+      "id": "osm-olivefreelibrary-39017433",
+      "title": "Library Closed for Olive Day",
+      "type": "other",
+      "types": [
+        "other"
+      ],
+      "repeats": false,
+      "audience": "all",
+      "setting": "indoor",
+      "timeOfDay": "daytime",
+      "hasFood": false,
+      "host": "Olive Free Library",
+      "start": "2026-09-12T00:00:00-04:00",
+      "end": "2026-09-13T00:00:00-04:00",
+      "venue": "4033 Route 28A",
+      "city": "West Shokan, NY",
+      "address": "4033 Route 28A, West Shokan, NY",
+      "lat": 41.96382,
+      "lon": -74.27527,
+      "price": null,
+      "signupRequired": false,
+      "url": "https://olivefreelibrary.org/",
+      "description": null,
+      "source": "Olive Free Library",
+      "venueKey": "4033 Route 28A"
+    },
+    {
+      "id": "osm-thomaspainecottage-57098365",
+      "title": "Cottage closed for private tour",
+      "type": "tour",
+      "types": [
+        "tour"
+      ],
+      "repeats": true,
+      "audience": "all",
+      "setting": "indoor",
+      "timeOfDay": "daytime",
+      "hasFood": false,
+      "host": "Thomas Paine Cottage and Museum",
+      "start": "2026-09-12T00:00:00-04:00",
+      "end": null,
+      "venue": "Thomas Paine Cottage and Museum",
+      "city": "Beechmont",
+      "address": "20 Sicard Avenue",
+      "lat": 40.93444,
+      "lon": -73.79111,
+      "price": null,
+      "signupRequired": false,
+      "url": "https://thomaspainecottage.org/",
+      "description": null,
+      "source": "Thomas Paine Cottage and Museum",
+      "recurrence": "3 dates, through Sep 24",
+      "until": "2026-09-24T00:00:00-04:00",
+      "cadence": "occasional",
+      "placeKind": "museum",
+      "venueKey": "Thomas Paine Cottage and Museum"
+    },
+    {
       "id": "ticketmaster-48932106",
       "title": "The Discoteks - Tribute to 70's Disco",
       "type": "concert",
@@ -50676,7 +50966,7 @@
         "class"
       ],
       "cadence": "bookable",
-      "venueKey": "See listing"
+      "venueKey": null
     },
     {
       "id": "eventbrite-2535031",
@@ -51171,7 +51461,7 @@
         "class"
       ],
       "cadence": "bookable",
-      "venueKey": "See listing"
+      "venueKey": null
     },
     {
       "id": "eventbrite-37907692",
@@ -51889,7 +52179,7 @@
         "sporting event"
       ],
       "placeKind": "stadium",
-      "venueKey": "Newburgh"
+      "venueKey": null
     },
     {
       "id": "fairfield-u-38517904",
@@ -51918,6 +52208,33 @@
       ],
       "placeKind": "stadium",
       "venueKey": "Fairfield"
+    },
+    {
+      "id": "osm-olivefreelibrary-32224211",
+      "title": "Davis Park/Olive Day - Watershed Wonders with Story Laurie",
+      "type": "other",
+      "types": [
+        "other"
+      ],
+      "repeats": false,
+      "audience": "all",
+      "setting": "outdoor",
+      "timeOfDay": "daytime",
+      "hasFood": false,
+      "host": "Olive Free Library",
+      "start": "2026-09-12T16:00:00+00:00",
+      "end": "2026-09-12T17:00:00+00:00",
+      "venue": "4033 Route 28A",
+      "city": "West Shokan, NY",
+      "address": "4033 Route 28A, West Shokan, NY",
+      "lat": 41.96382,
+      "lon": -74.27527,
+      "price": null,
+      "signupRequired": false,
+      "url": "https://olivefreelibrary.org/",
+      "description": null,
+      "source": "Olive Free Library",
+      "venueKey": "4033 Route 28A"
     },
     {
       "id": "eventbrite-33364675",
@@ -52262,7 +52579,7 @@
       "types": [
         "other"
       ],
-      "venueKey": "See listing"
+      "venueKey": null
     },
     {
       "id": "eventbrite-94622581",
@@ -52294,7 +52611,7 @@
       "types": [
         "volunteer"
       ],
-      "venueKey": "See listing"
+      "venueKey": null
     },
     {
       "id": "eventbrite-37701616",
@@ -52565,7 +52882,7 @@
         "sporting event"
       ],
       "placeKind": "stadium",
-      "venueKey": "Newburgh"
+      "venueKey": null
     },
     {
       "id": "eventbrite-3544337",
@@ -52597,7 +52914,7 @@
       "types": [
         "dance"
       ],
-      "venueKey": "See listing"
+      "venueKey": null
     },
     {
       "id": "eventbrite-97099255",
@@ -53501,7 +53818,7 @@
         "festival",
         "market"
       ],
-      "venueKey": "Nyack"
+      "venueKey": null
     },
     {
       "id": "eventbrite-75271371",
@@ -53533,7 +53850,7 @@
       "types": [
         "yoga"
       ],
-      "venueKey": "See listing"
+      "venueKey": null
     },
     {
       "id": "eventbrite-73408625",
@@ -53725,7 +54042,7 @@
       "types": [
         "concert"
       ],
-      "venueKey": "See listing"
+      "venueKey": null
     },
     {
       "id": "eventbrite-26973983",
@@ -54503,7 +54820,7 @@
       "url": "https://maverickconcerts.org/event/borromeo-string-quartet-henry-kramer-2026/",
       "description": "Reserved Hall Seats: $55/35, $30/27 (partial obstruction) General Admission/Outdoors/Uncovered: $20, Students: $10 BUY TICKETSborromeoquartet.org henrykramerpiano.com Nicholas Kitchen, violin Kristopher Tong, violin Melissa reardon, viola Yeesun Kim, cello PROGRAM Florence Price: Five Folksongs in Counterpoint Ludwig van Beethoven: String Quartet No. 9 in C major, Op. 59, No.",
       "source": "Maverick Concerts",
-      "venueKey": "NY"
+      "venueKey": null
     },
     {
       "id": "manual-tsl-liaisons",
@@ -56869,7 +57186,7 @@
         "class"
       ],
       "cadence": "bookable",
-      "venueKey": "See listing"
+      "venueKey": null
     },
     {
       "id": "eventbrite-67669333",
@@ -56904,7 +57221,7 @@
         "workout"
       ],
       "cadence": "bookable",
-      "venueKey": "See listing"
+      "venueKey": null
     },
     {
       "id": "travelhudsonvalley-46652890",
@@ -56990,6 +57307,63 @@
       "source": "Briarcliff Manor Public Library",
       "placeKind": "library",
       "venueKey": "Library"
+    },
+    {
+      "id": "osm-olivefreelibrary-94941152",
+      "title": "Walk and Talk",
+      "type": "talk",
+      "types": [
+        "talk"
+      ],
+      "repeats": true,
+      "audience": "all",
+      "setting": "outdoor",
+      "timeOfDay": "daytime",
+      "hasFood": false,
+      "host": "Olive Free Library",
+      "start": "2026-09-15T13:00:00-04:00",
+      "end": "2026-09-15T14:00:00-04:00",
+      "venue": "4033 Route 28A",
+      "city": "West Shokan, NY",
+      "address": "4033 Route 28A, West Shokan, NY",
+      "lat": 41.96382,
+      "lon": -74.27527,
+      "price": null,
+      "signupRequired": false,
+      "url": "https://olivefreelibrary.org/",
+      "description": "Please check the Walk and Talk page on our website for cancellations, updates and locations. Walks are weather permitting.",
+      "source": "Olive Free Library",
+      "cadence": "occasional",
+      "venueKey": "4033 Route 28A"
+    },
+    {
+      "id": "osm-watertownlibrary-98362486",
+      "title": "Chair Yoga",
+      "type": "yoga",
+      "types": [
+        "yoga",
+        "class"
+      ],
+      "repeats": false,
+      "audience": "all",
+      "setting": "indoor",
+      "timeOfDay": "daytime",
+      "hasFood": false,
+      "host": "Watertown Library Association",
+      "start": "2026-09-15T14:15:00+00:00",
+      "end": "2026-09-15T15:15:00+00:00",
+      "venue": "Watertown Library Association",
+      "city": null,
+      "address": "Watertown Library Association, 470 Main St, Watertown, CT 06795, USA",
+      "lat": 41.60371,
+      "lon": -73.1176,
+      "price": null,
+      "signupRequired": false,
+      "url": "https://watertownlibrary.org/",
+      "description": "Frances Harmeyer will lead a gentle yoga program incorporating the use of chairs. Frances is certified in chair yoga and holds a degree in Occupational Therapy. Participants will be lead through a class geared towards those new to yoga as well as those who may have difficulty with getting up and down from the floor in traditional yoga. Participants must bring their own yoga mats.",
+      "source": "Watertown Library Association",
+      "placeKind": "library",
+      "venueKey": "Watertown Library Association"
     },
     {
       "id": "desmondfish-library-46882767",
@@ -57079,6 +57453,35 @@
       "cadence": "occasional",
       "placeKind": "garden",
       "venueKey": "Verona Community Garden"
+    },
+    {
+      "id": "osm-olivefreelibrary-18844587",
+      "title": "OFL - Craft Circle",
+      "type": "craft",
+      "types": [
+        "craft",
+        "club"
+      ],
+      "repeats": true,
+      "audience": "all",
+      "setting": "unknown",
+      "timeOfDay": "nighttime",
+      "hasFood": false,
+      "host": "Olive Free Library",
+      "start": "2026-09-15T17:30:00-04:00",
+      "end": "2026-09-15T19:00:00-04:00",
+      "venue": "4033 Route 28A",
+      "city": "West Shokan, NY",
+      "address": "4033 Route 28A, West Shokan, NY",
+      "lat": 41.96382,
+      "lon": -74.27527,
+      "price": null,
+      "signupRequired": false,
+      "url": "https://olivefreelibrary.org/",
+      "description": null,
+      "source": "Olive Free Library",
+      "cadence": "occasional",
+      "venueKey": "4033 Route 28A"
     },
     {
       "id": "eventbrite-28437621",
@@ -58889,6 +59292,38 @@
       "source": "West Milford Township Library",
       "placeKind": "library",
       "venueKey": "West Milford Township Library"
+    },
+    {
+      "id": "osm-watertownlibrary-55468059",
+      "title": "Mystery Book Club",
+      "type": "talk",
+      "types": [
+        "talk",
+        "club"
+      ],
+      "repeats": true,
+      "audience": "all",
+      "setting": "indoor",
+      "timeOfDay": "nighttime",
+      "hasFood": false,
+      "host": "Watertown Library Association",
+      "start": "2026-09-16T19:00:00-04:00",
+      "end": null,
+      "venue": "Watertown Library Association",
+      "city": null,
+      "address": "Watertown Library Association, 470 Main St, Watertown, CT 06795, USA",
+      "lat": 41.60371,
+      "lon": -73.1176,
+      "price": null,
+      "signupRequired": false,
+      "url": "https://watertownlibrary.org/",
+      "description": "Hybrid book club discussing The Dentist by Tim Sullivan. If you are interested in participating, please send an email to reference@watertownlibrary.org or call the Watertown Library at 860-945-5360. You will then be put on the list to receive a Zoom invite or visit us at the library to participate live.",
+      "source": "Watertown Library Association",
+      "recurrence": "4 dates, through Dec 16",
+      "until": "2026-12-16T19:00:00-05:00",
+      "cadence": "occasional",
+      "placeKind": "library",
+      "venueKey": "Watertown Library Association"
     },
     {
       "id": "osm-wmtl-9651397",
@@ -61573,6 +62008,34 @@
       "venueKey": "Desmond-Fish Public Library"
     },
     {
+      "id": "osm-olivefreelibrary-72345405",
+      "title": "Shokan Branch - Story Time for Toddlers",
+      "type": "talk",
+      "types": [
+        "talk"
+      ],
+      "repeats": true,
+      "audience": "family",
+      "setting": "unknown",
+      "timeOfDay": "daytime",
+      "hasFood": false,
+      "host": "Olive Free Library",
+      "start": "2026-09-18T10:30:00-04:00",
+      "end": "2026-09-18T11:30:00-04:00",
+      "venue": "4033 Route 28A",
+      "city": "West Shokan, NY",
+      "address": "4033 Route 28A, West Shokan, NY",
+      "lat": 41.96382,
+      "lon": -74.27527,
+      "price": null,
+      "signupRequired": false,
+      "url": "https://olivefreelibrary.org/",
+      "description": null,
+      "source": "Olive Free Library",
+      "cadence": "occasional",
+      "venueKey": "4033 Route 28A"
+    },
+    {
       "id": "osm-lasdonpublicgardens-65923436",
       "title": "The Silk Road — An NGC Small Standard Flower Show",
       "type": "museum exhibit",
@@ -61625,7 +62088,7 @@
       "url": "https://www.lasdonpublicgardens.org/event/pound-ridge-garden-club-show/2026-09-18/",
       "description": "Join the Pound Ridge Garden Club in the Lasdon Main House for a stunning small standard floral show showcasing the Silk Road.",
       "source": "Lasdon Public Gardens and & Veterans Memorial",
-      "venueKey": "NY"
+      "venueKey": null
     },
     {
       "id": "albany-u-36050894",
@@ -62633,6 +63096,33 @@
       "venueKey": "The Ellis"
     },
     {
+      "id": "osm-olivefreelibrary-1216412",
+      "title": "Davis Park - Square Dance",
+      "type": "dance",
+      "types": [
+        "dance"
+      ],
+      "repeats": false,
+      "audience": "all",
+      "setting": "outdoor",
+      "timeOfDay": "nighttime",
+      "hasFood": false,
+      "host": "Olive Free Library",
+      "start": "2026-09-18T22:00:00+00:00",
+      "end": "2026-09-19T00:00:00+00:00",
+      "venue": "4033 Route 28A",
+      "city": "West Shokan, NY",
+      "address": "4033 Route 28A, West Shokan, NY",
+      "lat": 41.96382,
+      "lon": -74.27527,
+      "price": null,
+      "signupRequired": false,
+      "url": "https://olivefreelibrary.org/",
+      "description": null,
+      "source": "Olive Free Library",
+      "venueKey": "4033 Route 28A"
+    },
+    {
       "id": "ticketmaster-63477529",
       "title": "Godfrey",
       "type": "comedy show",
@@ -63025,6 +63515,34 @@
       "venueKey": "Grinnell Library, Wappingers Falls"
     },
     {
+      "id": "osm-thomaspainecottage-69914416",
+      "title": "New Rochelle annual Street Fair - cottage closed",
+      "type": "festival",
+      "types": [
+        "festival"
+      ],
+      "repeats": false,
+      "audience": "all",
+      "setting": "indoor",
+      "timeOfDay": "daytime",
+      "hasFood": false,
+      "host": "Thomas Paine Cottage and Museum",
+      "start": "2026-09-19T00:00:00-04:00",
+      "end": "2026-09-20T00:00:00-04:00",
+      "venue": "Thomas Paine Cottage and Museum",
+      "city": "Beechmont",
+      "address": "20 Sicard Avenue",
+      "lat": 40.93444,
+      "lon": -73.79111,
+      "price": null,
+      "signupRequired": false,
+      "url": "https://thomaspainecottage.org/",
+      "description": "Come join us at the annual New Rochelle Street Fair. https://www.newrochelleny.gov/995/New-Rochelle-Street-Fair",
+      "source": "Thomas Paine Cottage and Museum",
+      "placeKind": "museum",
+      "venueKey": "Thomas Paine Cottage and Museum"
+    },
+    {
       "id": "ticketmaster-36500087",
       "title": "Destination Soultown featuring the Sensational Soul Cruisers",
       "type": "concert",
@@ -63307,7 +63825,7 @@
         "class"
       ],
       "cadence": "bookable",
-      "venueKey": "See listing"
+      "venueKey": null
     },
     {
       "id": "eventbrite-56140456",
@@ -63342,7 +63860,7 @@
         "class"
       ],
       "cadence": "bookable",
-      "venueKey": "See listing"
+      "venueKey": null
     },
     {
       "id": "eventbrite-40077249",
@@ -63429,7 +63947,7 @@
       "url": "https://www.lasdonpublicgardens.org/event/pound-ridge-garden-club-show/2026-09-19/",
       "description": "Join the Pound Ridge Garden Club in the Lasdon Main House for a stunning small standard floral show showcasing the Silk Road.",
       "source": "Lasdon Public Gardens and & Veterans Memorial",
-      "venueKey": "NY"
+      "venueKey": null
     },
     {
       "id": "eventbrite-1462840",
@@ -63461,7 +63979,7 @@
       "types": [
         "other"
       ],
-      "venueKey": "See listing"
+      "venueKey": null
     },
     {
       "id": "whitememorial-62311497",
@@ -63948,6 +64466,34 @@
       "venueKey": "Briarcliff Manor Public Library"
     },
     {
+      "id": "osm-hurleyheritagesociety-72044962",
+      "title": "Museum Open",
+      "type": "museum exhibit",
+      "types": [
+        "museum exhibit"
+      ],
+      "repeats": false,
+      "audience": "all",
+      "setting": "indoor",
+      "timeOfDay": "daytime",
+      "hasFood": false,
+      "host": "Hurley Heritage Museum",
+      "start": "2026-09-19T11:00:00-04:00",
+      "end": "2026-09-19T16:00:00-04:00",
+      "venue": "Hurley Heritage Museum",
+      "city": "Hurley, NY",
+      "address": "52 Main Street, Hurley, NY",
+      "lat": 41.92503,
+      "lon": -74.06323,
+      "price": null,
+      "signupRequired": false,
+      "url": "https://hurleyheritagesociety.org/",
+      "description": null,
+      "source": "Hurley Heritage Museum",
+      "placeKind": "museum",
+      "venueKey": "Hurley Heritage Museum"
+    },
+    {
       "id": "eventbrite-1507988",
       "title": "Ceramic Painting Workshops in Warwick, NY",
       "type": "art exhibit",
@@ -63981,7 +64527,7 @@
         "class"
       ],
       "cadence": "bookable",
-      "venueKey": "See listing"
+      "venueKey": null
     },
     {
       "id": "travelhudsonvalley-82791998",
@@ -64530,6 +65076,61 @@
       "venueKey": "Untermyer Gardens"
     },
     {
+      "id": "osm-hurleyheritagesociety-3333570",
+      "title": "Hurley Heritage Day",
+      "type": "museum exhibit",
+      "types": [
+        "museum exhibit"
+      ],
+      "repeats": false,
+      "audience": "all",
+      "setting": "indoor",
+      "timeOfDay": "daytime",
+      "hasFood": false,
+      "host": "Hurley Heritage Museum",
+      "start": "2026-09-19T15:00:00+00:00",
+      "end": "2026-09-19T20:00:00+00:00",
+      "venue": "Hurley Heritage Museum",
+      "city": "Hurley, NY",
+      "address": "52 Main Street, Hurley, NY",
+      "lat": 41.92503,
+      "lon": -74.06323,
+      "price": null,
+      "signupRequired": false,
+      "url": "https://hurleyheritagesociety.org/",
+      "description": null,
+      "source": "Hurley Heritage Museum",
+      "placeKind": "museum",
+      "venueKey": "Hurley Heritage Museum"
+    },
+    {
+      "id": "osm-olivefreelibrary-64981289",
+      "title": "OFL - Eco Print Workshop",
+      "type": "class",
+      "types": [
+        "class"
+      ],
+      "repeats": false,
+      "audience": "all",
+      "setting": "unknown",
+      "timeOfDay": "daytime",
+      "hasFood": false,
+      "host": "Olive Free Library",
+      "start": "2026-09-19T15:00:00+00:00",
+      "end": "2026-09-19T18:00:00+00:00",
+      "venue": "4033 Route 28A",
+      "city": "West Shokan, NY",
+      "address": "4033 Route 28A, West Shokan, NY",
+      "lat": 41.96382,
+      "lon": -74.27527,
+      "price": null,
+      "signupRequired": false,
+      "url": "https://olivefreelibrary.org/",
+      "description": null,
+      "source": "Olive Free Library",
+      "venueKey": "4033 Route 28A"
+    },
+    {
       "id": "osm-wmtl-11591106",
       "title": "Sound Bath Meditation",
       "type": "yoga",
@@ -64819,7 +65420,7 @@
         "sporting event"
       ],
       "placeKind": "stadium",
-      "venueKey": "Newburgh"
+      "venueKey": null
     },
     {
       "id": "whitememorial-20761315",
@@ -64879,7 +65480,7 @@
       "types": [
         "celebration"
       ],
-      "venueKey": "See listing"
+      "venueKey": null
     },
     {
       "id": "eventbrite-39116508",
@@ -65078,6 +65679,34 @@
       "venueKey": "Putnam County Golf Course"
     },
     {
+      "id": "osm-olivefreelibrary-97587064",
+      "title": "OFL - Art Exhibit Opening",
+      "type": "art exhibit",
+      "types": [
+        "art exhibit",
+        "museum exhibit"
+      ],
+      "repeats": false,
+      "audience": "all",
+      "setting": "unknown",
+      "timeOfDay": "nighttime",
+      "hasFood": false,
+      "host": "Olive Free Library",
+      "start": "2026-09-19T19:00:00+00:00",
+      "end": "2026-09-19T21:00:00+00:00",
+      "venue": "4033 Route 28A",
+      "city": "West Shokan, NY",
+      "address": "4033 Route 28A, West Shokan, NY",
+      "lat": 41.96382,
+      "lon": -74.27527,
+      "price": null,
+      "signupRequired": false,
+      "url": "https://olivefreelibrary.org/",
+      "description": null,
+      "source": "Olive Free Library",
+      "venueKey": "4033 Route 28A"
+    },
+    {
       "id": "eventbrite-67781201",
       "title": "Alela Diane with Alexa Rose at The Unicorn Bar",
       "type": "other",
@@ -65166,7 +65795,7 @@
         "concert"
       ],
       "placeKind": "music venue",
-      "venueKey": "Bric Celebrate Brooklyn! at the Lena Horne Bandshell"
+      "venueKey": "BRIC Celebrate Brooklyn! at the Lena Horne Bandshell"
     },
     {
       "id": "eventbrite-73803083",
@@ -65753,6 +66382,34 @@
       "source": "Rye Free Reading Room",
       "placeKind": "library",
       "venueKey": "Rye Free Reading Room"
+    },
+    {
+      "id": "osm-thomaspainecottage-13766878",
+      "title": "raindate for New Rochelle Street Fair",
+      "type": "festival",
+      "types": [
+        "festival"
+      ],
+      "repeats": false,
+      "audience": "all",
+      "setting": "indoor",
+      "timeOfDay": "daytime",
+      "hasFood": false,
+      "host": "Thomas Paine Cottage and Museum",
+      "start": "2026-09-20T00:00:00-04:00",
+      "end": "2026-09-21T00:00:00-04:00",
+      "venue": "Thomas Paine Cottage and Museum",
+      "city": "Beechmont",
+      "address": "20 Sicard Avenue",
+      "lat": 40.93444,
+      "lon": -73.79111,
+      "price": null,
+      "signupRequired": false,
+      "url": "https://thomaspainecottage.org/",
+      "description": "Cottage will be closed if street fair is rescheduled. https://www.newrochelleny.gov/995/New-Rochelle-Street-Fair",
+      "source": "Thomas Paine Cottage and Museum",
+      "placeKind": "museum",
+      "venueKey": "Thomas Paine Cottage and Museum"
     },
     {
       "id": "ticketmaster-39375207",
@@ -66401,7 +67058,7 @@
       "url": "https://www.eventbrite.com/e/come-to-the-cove-celebrating-the-hidden-wetland-along-the-harlem-river-tickets-1998104750095",
       "description": "Celebrate the transformation of this once abandoned & polluted marina to an active wetland & magical hidden green space.",
       "source": "Eventbrite",
-      "venueKey": "See listing"
+      "venueKey": null
     },
     {
       "id": "manual-moviehouse-whistler-0920",
@@ -66669,6 +67326,34 @@
       "venueKey": "The Parlor"
     },
     {
+      "id": "osm-hurleyheritagesociety-75504987",
+      "title": "Hurley Heritage Day (Raindate)",
+      "type": "museum exhibit",
+      "types": [
+        "museum exhibit"
+      ],
+      "repeats": false,
+      "audience": "all",
+      "setting": "indoor",
+      "timeOfDay": "daytime",
+      "hasFood": false,
+      "host": "Hurley Heritage Museum",
+      "start": "2026-09-20T16:00:00+00:00",
+      "end": "2026-09-20T20:00:00+00:00",
+      "venue": "Hurley Heritage Museum",
+      "city": "Hurley, NY",
+      "address": "52 Main Street, Hurley, NY",
+      "lat": 41.92503,
+      "lon": -74.06323,
+      "price": null,
+      "signupRequired": false,
+      "url": "https://hurleyheritagesociety.org/",
+      "description": null,
+      "source": "Hurley Heritage Museum",
+      "placeKind": "museum",
+      "venueKey": "Hurley Heritage Museum"
+    },
+    {
       "id": "eventbrite-386303",
       "title": "Autumn Song - Paint and Sip in Fishkill | Classpop!™",
       "type": "class",
@@ -66918,7 +67603,7 @@
       "types": [
         "yoga"
       ],
-      "venueKey": "See listing"
+      "venueKey": null
     },
     {
       "id": "songkick-13477049",
@@ -67425,6 +68110,34 @@
       "venueKey": "Rye Free Reading Room"
     },
     {
+      "id": "osm-thomaspainecottage-17229232",
+      "title": "Cottage closed for observance of Yom Kippur",
+      "type": "religious ceremony",
+      "types": [
+        "religious ceremony"
+      ],
+      "repeats": false,
+      "audience": "all",
+      "setting": "indoor",
+      "timeOfDay": "daytime",
+      "hasFood": false,
+      "host": "Thomas Paine Cottage and Museum",
+      "start": "2026-09-21T00:00:00-04:00",
+      "end": "2026-09-22T00:00:00-04:00",
+      "venue": "Thomas Paine Cottage and Museum",
+      "city": "Beechmont",
+      "address": "20 Sicard Avenue",
+      "lat": 40.93444,
+      "lon": -73.79111,
+      "price": null,
+      "signupRequired": false,
+      "url": "https://thomaspainecottage.org/",
+      "description": null,
+      "source": "Thomas Paine Cottage and Museum",
+      "placeKind": "museum",
+      "venueKey": "Thomas Paine Cottage and Museum"
+    },
+    {
       "id": "eventbrite-90508816",
       "title": "CISSP Certification Training Course in Poughkeepsie, NY",
       "type": "class",
@@ -67456,7 +68169,7 @@
         "class"
       ],
       "cadence": "bookable",
-      "venueKey": "See listing"
+      "venueKey": null
     },
     {
       "id": "ridgefieldplayhouse-31320126",
@@ -67551,7 +68264,7 @@
       "types": [
         "game"
       ],
-      "venueKey": "(Creative Legion)"
+      "venueKey": null
     },
     {
       "id": "songkick-50652194",
@@ -68345,7 +69058,7 @@
       "description": "Master Data Analytics with Excel, SQL, Python & Power BI. Live instructor-led training with certification and real-world projects.",
       "source": "Eventbrite",
       "cadence": "bookable",
-      "venueKey": "See listing"
+      "venueKey": null
     },
     {
       "id": "eventbrite-60175287",
@@ -68380,7 +69093,7 @@
       "description": "Get CCNA 200-301 certified with hands-on Cisco labs, expert-led training, real-world networking skills, and career guidance.",
       "source": "Eventbrite",
       "cadence": "bookable",
-      "venueKey": "See listing"
+      "venueKey": null
     },
     {
       "id": "eventbrite-5095333",
@@ -68961,6 +69674,33 @@
       ],
       "placeKind": "music venue",
       "venueKey": "Blue Note Jazz Club"
+    },
+    {
+      "id": "osm-olivefreelibrary-7246014",
+      "title": "OFL - In Person Defensive Driving Course with Suzanne Rimington, owner  of RIMS Driving School in Saugerties",
+      "type": "class",
+      "types": [
+        "class"
+      ],
+      "repeats": false,
+      "audience": "all",
+      "setting": "unknown",
+      "timeOfDay": "nighttime",
+      "hasFood": false,
+      "host": "Olive Free Library",
+      "start": "2026-09-22T22:00:00+00:00",
+      "end": "2026-09-23T01:00:00+00:00",
+      "venue": "4033 Route 28A",
+      "city": "West Shokan, NY",
+      "address": "4033 Route 28A, West Shokan, NY",
+      "lat": 41.96382,
+      "lon": -74.27527,
+      "price": null,
+      "signupRequired": false,
+      "url": "https://olivefreelibrary.org/",
+      "description": null,
+      "source": "Olive Free Library",
+      "venueKey": "4033 Route 28A"
     },
     {
       "id": "libcal:greenburghlibrary-49745182",
@@ -70697,7 +71437,7 @@
       "types": [
         "tour"
       ],
-      "venueKey": "See listing"
+      "venueKey": null
     },
     {
       "id": "eventbrite-91033151",
@@ -71085,7 +71825,7 @@
       "types": [
         "club"
       ],
-      "venueKey": "See listing"
+      "venueKey": null
     },
     {
       "id": "songkick-47680348",
@@ -71967,7 +72707,7 @@
         "art exhibit",
         "talk"
       ],
-      "venueKey": "See listing"
+      "venueKey": null
     },
     {
       "id": "eventbrite-17466047",
@@ -72594,7 +73334,7 @@
       "url": "https://www.eventbrite.com/e/fetement-1-year-anniversary-tickets-1998893891438",
       "description": "FETEMENT: 1 YEAR ANNIVERSARY One year of FeteMent. One night to celebrate it. Join us Friday, September 25th",
       "source": "Eventbrite",
-      "venueKey": "See listing"
+      "venueKey": null
     },
     {
       "id": "eventbrite-7396699",
@@ -73079,7 +73819,7 @@
       "types": [
         "other"
       ],
-      "venueKey": "See listing"
+      "venueKey": null
     },
     {
       "id": "eventbrite-45215942",
@@ -73773,6 +74513,90 @@
       "venueKey": "Untermyer Gardens"
     },
     {
+      "id": "osm-olivefreelibrary-1958205",
+      "title": "OFL - Drop off for Clothing Swap",
+      "type": "other",
+      "types": [
+        "other"
+      ],
+      "repeats": true,
+      "audience": "all",
+      "setting": "unknown",
+      "timeOfDay": "daytime",
+      "hasFood": false,
+      "host": "Olive Free Library",
+      "start": "2026-09-26T14:00:00+00:00",
+      "end": null,
+      "venue": "4033 Route 28A",
+      "city": "West Shokan, NY",
+      "address": "4033 Route 28A, West Shokan, NY",
+      "lat": 41.96382,
+      "lon": -74.27527,
+      "price": null,
+      "signupRequired": false,
+      "url": "https://olivefreelibrary.org/",
+      "description": null,
+      "source": "Olive Free Library",
+      "recurrence": "Every day, through Oct 2",
+      "until": "2026-10-02T14:00:00+00:00",
+      "cadence": "daily",
+      "venueKey": "4033 Route 28A"
+    },
+    {
+      "id": "osm-olivefreelibrary-48704620",
+      "title": "Exploring Olive's Historic Cemeteries with Dr. April Beisaw",
+      "type": "other",
+      "types": [
+        "other"
+      ],
+      "repeats": false,
+      "audience": "all",
+      "setting": "unknown",
+      "timeOfDay": "daytime",
+      "hasFood": false,
+      "host": "Olive Free Library",
+      "start": "2026-09-26T14:00:00+00:00",
+      "end": "2026-09-26T17:45:00+00:00",
+      "venue": "4033 Route 28A",
+      "city": "West Shokan, NY",
+      "address": "4033 Route 28A, West Shokan, NY",
+      "lat": 41.96382,
+      "lon": -74.27527,
+      "price": null,
+      "signupRequired": false,
+      "url": "https://olivefreelibrary.org/",
+      "description": null,
+      "source": "Olive Free Library",
+      "venueKey": "4033 Route 28A"
+    },
+    {
+      "id": "osm-olivefreelibrary-23463607",
+      "title": "Shokan Branch - 2026–27 HUNTING LICENSE &  DEER MANAGEMENT PERMIT SALES",
+      "type": "other",
+      "types": [
+        "other"
+      ],
+      "repeats": false,
+      "audience": "all",
+      "setting": "unknown",
+      "timeOfDay": "daytime",
+      "hasFood": false,
+      "host": "Olive Free Library",
+      "start": "2026-09-26T14:00:00+00:00",
+      "end": "2026-09-26T20:00:00+00:00",
+      "venue": "4033 Route 28A",
+      "city": "West Shokan, NY",
+      "address": "4033 Route 28A, West Shokan, NY",
+      "lat": 41.96382,
+      "lon": -74.27527,
+      "price": null,
+      "signupRequired": false,
+      "url": "https://olivefreelibrary.org/",
+      "description": null,
+      "source": "Olive Free Library",
+      "venueKey": "4033 Route 28A"
+    },
+    {
       "id": "teatown-76764000",
       "title": "Teatown Tales (for everyone)",
       "type": "musical",
@@ -74219,6 +75043,33 @@
         "sporting event"
       ],
       "venueKey": "West Hartford"
+    },
+    {
+      "id": "osm-olivefreelibrary-93866149",
+      "title": "OFL - Life Lessons from Near Death Experiences with Robert Cornett",
+      "type": "class",
+      "types": [
+        "class"
+      ],
+      "repeats": false,
+      "audience": "all",
+      "setting": "unknown",
+      "timeOfDay": "nighttime",
+      "hasFood": false,
+      "host": "Olive Free Library",
+      "start": "2026-09-26T17:00:00+00:00",
+      "end": "2026-09-26T18:00:00+00:00",
+      "venue": "4033 Route 28A",
+      "city": "West Shokan, NY",
+      "address": "4033 Route 28A, West Shokan, NY",
+      "lat": 41.96382,
+      "lon": -74.27527,
+      "price": null,
+      "signupRequired": false,
+      "url": "https://olivefreelibrary.org/",
+      "description": null,
+      "source": "Olive Free Library",
+      "venueKey": "4033 Route 28A"
     },
     {
       "id": "songkick-36185494",
@@ -75526,7 +76377,7 @@
       "types": [
         "workout"
       ],
-      "venueKey": "See listing"
+      "venueKey": null
     },
     {
       "id": "eventbrite-93181383",
@@ -76061,7 +76912,7 @@
       "types": [
         "tasting"
       ],
-      "venueKey": "See listing"
+      "venueKey": null
     },
     {
       "id": "songkick-2268036",
@@ -76582,6 +77433,34 @@
       ],
       "placeKind": "theatre",
       "venueKey": "Garcia's at The Capitol Theatre"
+    },
+    {
+      "id": "osm-olivefreelibrary-31760407",
+      "title": "OFL - International Mystery Book Club",
+      "type": "talk",
+      "types": [
+        "talk",
+        "club"
+      ],
+      "repeats": false,
+      "audience": "all",
+      "setting": "unknown",
+      "timeOfDay": "daytime",
+      "hasFood": false,
+      "host": "Olive Free Library",
+      "start": "2026-09-28T14:00:00-04:00",
+      "end": "2026-09-28T15:00:00-04:00",
+      "venue": "4033 Route 28A",
+      "city": "West Shokan, NY",
+      "address": "4033 Route 28A, West Shokan, NY",
+      "lat": 41.96382,
+      "lon": -74.27527,
+      "price": null,
+      "signupRequired": false,
+      "url": "https://olivefreelibrary.org/",
+      "description": null,
+      "source": "Olive Free Library",
+      "venueKey": "4033 Route 28A"
     },
     {
       "id": "songkick-59015593",
@@ -77433,6 +78312,35 @@
       "venueKey": "Piet Oudolf Garden"
     },
     {
+      "id": "osm-watertownlibrary-27881080",
+      "title": "Chair Yoga",
+      "type": "yoga",
+      "types": [
+        "yoga",
+        "class"
+      ],
+      "repeats": false,
+      "audience": "all",
+      "setting": "indoor",
+      "timeOfDay": "daytime",
+      "hasFood": false,
+      "host": "Watertown Library Association",
+      "start": "2026-09-29T14:15:00+00:00",
+      "end": "2026-09-29T15:15:00+00:00",
+      "venue": "Watertown Library Association",
+      "city": null,
+      "address": "Watertown Library Association, 470 Main St, Watertown, CT 06795, USA",
+      "lat": 41.60371,
+      "lon": -73.1176,
+      "price": null,
+      "signupRequired": false,
+      "url": "https://watertownlibrary.org/",
+      "description": "Frances Harmeyer will lead a gentle yoga program incorporating the use of chairs. Frances is certified in chair yoga and holds a degree in Occupational Therapy. Participants will be lead through a class geared towards those new to yoga as well as those who may have difficulty with getting up and down from the floor in traditional yoga. Participants must bring their own yoga mats.",
+      "source": "Watertown Library Association",
+      "placeKind": "library",
+      "venueKey": "Watertown Library Association"
+    },
+    {
       "id": "songkick-95526983",
       "title": "Dylan Gossett @ The Rooftop at Pier 17",
       "type": "concert",
@@ -77988,6 +78896,33 @@
       "venueKey": "Radio City Music Hall"
     },
     {
+      "id": "osm-olivefreelibrary-52004767",
+      "title": "OFL - In Person Defensive Driving Course with Suzanne Rimington, owner  of RIMS Driving School in Saugerties",
+      "type": "class",
+      "types": [
+        "class"
+      ],
+      "repeats": false,
+      "audience": "all",
+      "setting": "unknown",
+      "timeOfDay": "nighttime",
+      "hasFood": false,
+      "host": "Olive Free Library",
+      "start": "2026-09-29T22:00:00+00:00",
+      "end": "2026-09-30T01:00:00+00:00",
+      "venue": "4033 Route 28A",
+      "city": "West Shokan, NY",
+      "address": "4033 Route 28A, West Shokan, NY",
+      "lat": 41.96382,
+      "lon": -74.27527,
+      "price": null,
+      "signupRequired": false,
+      "url": "https://olivefreelibrary.org/",
+      "description": null,
+      "source": "Olive Free Library",
+      "venueKey": "4033 Route 28A"
+    },
+    {
       "id": "ticketmaster-48746126",
       "title": "UB40",
       "type": "concert",
@@ -78308,6 +79243,33 @@
       "source": "Burnham Library",
       "placeKind": "library",
       "venueKey": "The Burnham Library"
+    },
+    {
+      "id": "osm-olivefreelibrary-76482207",
+      "title": "OFL - Medicare  Made Simple Workshop",
+      "type": "class",
+      "types": [
+        "class"
+      ],
+      "repeats": false,
+      "audience": "all",
+      "setting": "unknown",
+      "timeOfDay": "nighttime",
+      "hasFood": false,
+      "host": "Olive Free Library",
+      "start": "2026-09-30T17:00:00+00:00",
+      "end": "2026-09-30T18:00:00+00:00",
+      "venue": "4033 Route 28A",
+      "city": "West Shokan, NY",
+      "address": "4033 Route 28A, West Shokan, NY",
+      "lat": 41.96382,
+      "lon": -74.27527,
+      "price": null,
+      "signupRequired": false,
+      "url": "https://olivefreelibrary.org/",
+      "description": null,
+      "source": "Olive Free Library",
+      "venueKey": "4033 Route 28A"
     },
     {
       "id": "songkick-55304538",
@@ -79251,6 +80213,34 @@
       ],
       "placeKind": "music venue",
       "venueKey": "Tarrytown Music Hall"
+    },
+    {
+      "id": "osm-olivefreelibrary-45166760",
+      "title": "OFL - Knitting & Crochet Group",
+      "type": "craft",
+      "types": [
+        "craft"
+      ],
+      "repeats": true,
+      "audience": "all",
+      "setting": "unknown",
+      "timeOfDay": "daytime",
+      "hasFood": false,
+      "host": "Olive Free Library",
+      "start": "2026-10-01T14:00:00-04:00",
+      "end": "2026-10-01T15:00:00-04:00",
+      "venue": "4033 Route 28A",
+      "city": "West Shokan, NY",
+      "address": "4033 Route 28A, West Shokan, NY",
+      "lat": 41.96382,
+      "lon": -74.27527,
+      "price": null,
+      "signupRequired": false,
+      "url": "https://olivefreelibrary.org/",
+      "description": null,
+      "source": "Olive Free Library",
+      "cadence": "occasional",
+      "venueKey": "4033 Route 28A"
     },
     {
       "id": "mahaiwe-9267332",
@@ -81254,7 +82244,7 @@
       "types": [
         "other"
       ],
-      "venueKey": "See listing"
+      "venueKey": null
     },
     {
       "id": "whitememorial-10477305",
@@ -81710,6 +82700,33 @@
       "venueKey": "Zachys Wine & Liquor"
     },
     {
+      "id": "osm-olivefreelibrary-97158023",
+      "title": "OFL - Clothing Swap",
+      "type": "other",
+      "types": [
+        "other"
+      ],
+      "repeats": false,
+      "audience": "all",
+      "setting": "unknown",
+      "timeOfDay": "daytime",
+      "hasFood": false,
+      "host": "Olive Free Library",
+      "start": "2026-10-03T14:00:00+00:00",
+      "end": "2026-10-03T19:00:00+00:00",
+      "venue": "4033 Route 28A",
+      "city": "West Shokan, NY",
+      "address": "4033 Route 28A, West Shokan, NY",
+      "lat": 41.96382,
+      "lon": -74.27527,
+      "price": null,
+      "signupRequired": false,
+      "url": "https://olivefreelibrary.org/",
+      "description": null,
+      "source": "Olive Free Library",
+      "venueKey": "4033 Route 28A"
+    },
+    {
       "id": "stormking-47735882",
       "title": "where the rivers meet: A Knowledge Sharing with Saif Azzuz, Jamie Holt, and Joe Baker",
       "start": "2026-10-03T14:00:00-04:00",
@@ -81921,7 +82938,7 @@
         "film",
         "q&a"
       ],
-      "venueKey": "See listing"
+      "venueKey": null
     },
     {
       "id": "eventbrite-91640528",
@@ -82192,7 +83209,7 @@
       "types": [
         "play"
       ],
-      "venueKey": "See listing"
+      "venueKey": null
     },
     {
       "id": "eventbrite-40722760",
@@ -83031,7 +84048,7 @@
       "types": [
         "tour"
       ],
-      "venueKey": "See listing"
+      "venueKey": null
     },
     {
       "id": "eventbrite-70413053",
@@ -84070,6 +85087,33 @@
       "venueKey": "The Ridgefield Playhouse"
     },
     {
+      "id": "osm-olivefreelibrary-94556723",
+      "title": "OFL - Lunch and Learn with the Office for the Aging - Senior Fraud and Scams",
+      "type": "lunch",
+      "types": [
+        "lunch"
+      ],
+      "repeats": false,
+      "audience": "all",
+      "setting": "unknown",
+      "timeOfDay": "daytime",
+      "hasFood": true,
+      "host": "Olive Free Library",
+      "start": "2026-10-05T14:30:00+00:00",
+      "end": "2026-10-05T18:30:00+00:00",
+      "venue": "4033 Route 28A",
+      "city": "West Shokan, NY",
+      "address": "4033 Route 28A, West Shokan, NY",
+      "lat": 41.96382,
+      "lon": -74.27527,
+      "price": null,
+      "signupRequired": false,
+      "url": "https://olivefreelibrary.org/",
+      "description": null,
+      "source": "Olive Free Library",
+      "venueKey": "4033 Route 28A"
+    },
+    {
       "id": "fairfield-u-20290666",
       "title": "Banned Books Week Kick-off: Documentary Screening \"To Be Destroyed\"",
       "type": "film",
@@ -85036,7 +86080,7 @@
       "types": [
         "class"
       ],
-      "venueKey": "See listing"
+      "venueKey": null
     },
     {
       "id": "eventbrite-52358107",
@@ -85633,6 +86677,34 @@
       "venueKey": "HMTX House Up On The Hill"
     },
     {
+      "id": "osm-olivefreelibrary-85248240",
+      "title": "OFL - Climate Wayfinding Reading Group",
+      "type": "talk",
+      "types": [
+        "talk"
+      ],
+      "repeats": true,
+      "audience": "all",
+      "setting": "unknown",
+      "timeOfDay": "nighttime",
+      "hasFood": false,
+      "host": "Olive Free Library",
+      "start": "2026-10-07T17:30:00-04:00",
+      "end": "2026-10-07T18:30:00-04:00",
+      "venue": "4033 Route 28A",
+      "city": "West Shokan, NY",
+      "address": "4033 Route 28A, West Shokan, NY",
+      "lat": 41.96382,
+      "lon": -74.27527,
+      "price": null,
+      "signupRequired": false,
+      "url": "https://olivefreelibrary.org/",
+      "description": null,
+      "source": "Olive Free Library",
+      "cadence": "occasional",
+      "venueKey": "4033 Route 28A"
+    },
+    {
       "id": "eventbrite-65240032",
       "title": "Acting, Production & Business Networking - Hudson Valley",
       "type": "club",
@@ -86150,7 +87222,7 @@
         "sporting event"
       ],
       "placeKind": "stadium",
-      "venueKey": "Newburgh"
+      "venueKey": null
     },
     {
       "id": "ticketmaster-60501250",
@@ -86244,7 +87316,7 @@
       "types": [
         "talk"
       ],
-      "venueKey": "Off-Site"
+      "venueKey": null
     },
     {
       "id": "libcal:irvingtonlibrary-62327956",
@@ -86409,7 +87481,7 @@
         "club",
         "museum exhibit"
       ],
-      "venueKey": "Off-Site"
+      "venueKey": null
     },
     {
       "id": "libcal:mountkiscolibrary-40333198",
@@ -87919,7 +88991,7 @@
         "sporting event"
       ],
       "placeKind": "stadium",
-      "venueKey": "Newburgh"
+      "venueKey": null
     },
     {
       "id": "songkick-55421607",
@@ -88386,7 +89458,34 @@
       "types": [
         "class"
       ],
-      "venueKey": "See listing"
+      "venueKey": null
+    },
+    {
+      "id": "osm-olivefreelibrary-14911091",
+      "title": "OFL - Make Your Mark with Melanie Hall",
+      "type": "other",
+      "types": [
+        "other"
+      ],
+      "repeats": false,
+      "audience": "all",
+      "setting": "indoor",
+      "timeOfDay": "daytime",
+      "hasFood": false,
+      "host": "Olive Free Library",
+      "start": "2026-10-10T15:00:00+00:00",
+      "end": "2026-10-10T16:00:00+00:00",
+      "venue": "4033 Route 28A",
+      "city": "West Shokan, NY",
+      "address": "4033 Route 28A, West Shokan, NY",
+      "lat": 41.96382,
+      "lon": -74.27527,
+      "price": null,
+      "signupRequired": false,
+      "url": "https://olivefreelibrary.org/",
+      "description": null,
+      "source": "Olive Free Library",
+      "venueKey": "4033 Route 28A"
     },
     {
       "id": "ticketmaster-66290983",
@@ -89203,6 +90302,35 @@
       ],
       "placeKind": "theatre",
       "venueKey": "The Capitol Theatre"
+    },
+    {
+      "id": "osm-thomaspainecottage-29711202",
+      "title": "Paine to Pain Trail Half Marathon",
+      "type": "sporting event",
+      "types": [
+        "sporting event",
+        "tour"
+      ],
+      "repeats": false,
+      "audience": "all",
+      "setting": "unknown",
+      "timeOfDay": "daytime",
+      "hasFood": false,
+      "host": "Thomas Paine Cottage and Museum",
+      "start": "2026-10-11T00:00:00-04:00",
+      "end": "2026-10-12T00:00:00-04:00",
+      "venue": "Thomas Paine Cottage and Museum",
+      "city": "Beechmont",
+      "address": "20 Sicard Avenue",
+      "lat": 40.93444,
+      "lon": -73.79111,
+      "price": null,
+      "signupRequired": false,
+      "url": "https://thomaspainecottage.org/",
+      "description": "Tours suspended for race day. Come cheer our runners on!",
+      "source": "Thomas Paine Cottage and Museum",
+      "placeKind": "museum",
+      "venueKey": "Thomas Paine Cottage and Museum"
     },
     {
       "id": "ticketmaster-70374862",
@@ -90204,6 +91332,34 @@
       "venueKey": "Daryl's House"
     },
     {
+      "id": "osm-thomaspainecottage-8609738",
+      "title": "Cottage closed in observance of Columbus Day",
+      "type": "museum exhibit",
+      "types": [
+        "museum exhibit"
+      ],
+      "repeats": false,
+      "audience": "all",
+      "setting": "indoor",
+      "timeOfDay": "daytime",
+      "hasFood": false,
+      "host": "Thomas Paine Cottage and Museum",
+      "start": "2026-10-12T00:00:00-04:00",
+      "end": "2026-10-13T00:00:00-04:00",
+      "venue": "Thomas Paine Cottage and Museum",
+      "city": "Beechmont",
+      "address": "20 Sicard Avenue",
+      "lat": 40.93444,
+      "lon": -73.79111,
+      "price": null,
+      "signupRequired": false,
+      "url": "https://thomaspainecottage.org/",
+      "description": null,
+      "source": "Thomas Paine Cottage and Museum",
+      "placeKind": "museum",
+      "venueKey": "Thomas Paine Cottage and Museum"
+    },
+    {
       "id": "whitememorial-39417887",
       "title": "Columbus Day / Indigenous Peoples Day",
       "type": "tour",
@@ -90974,6 +92130,33 @@
       "venueKey": "Sony Hall"
     },
     {
+      "id": "osm-olivefreelibrary-47702236",
+      "title": "OFL - Swing Dance at the Olive Free Library - Miss Lindy's Dance Hall",
+      "type": "dance",
+      "types": [
+        "dance"
+      ],
+      "repeats": false,
+      "audience": "all",
+      "setting": "indoor",
+      "timeOfDay": "nighttime",
+      "hasFood": false,
+      "host": "Olive Free Library",
+      "start": "2026-10-13T21:30:00+00:00",
+      "end": "2026-10-13T22:45:00+00:00",
+      "venue": "4033 Route 28A",
+      "city": "West Shokan, NY",
+      "address": "4033 Route 28A, West Shokan, NY",
+      "lat": 41.96382,
+      "lon": -74.27527,
+      "price": null,
+      "signupRequired": false,
+      "url": "https://olivefreelibrary.org/",
+      "description": null,
+      "source": "Olive Free Library",
+      "venueKey": "4033 Route 28A"
+    },
+    {
       "id": "ticketmaster-62927986",
       "title": "Gotham Wrestling",
       "type": "sporting event",
@@ -91126,7 +92309,7 @@
         "celebration",
         "tour"
       ],
-      "venueKey": "See listing"
+      "venueKey": null
     },
     {
       "id": "songkick-95773587",
@@ -91479,6 +92662,34 @@
       ],
       "placeKind": "music venue",
       "venueKey": "Daryl's House"
+    },
+    {
+      "id": "osm-thomaspainecottage-80899569",
+      "title": "New Rochelle ArtsFest returns",
+      "type": "museum exhibit",
+      "types": [
+        "museum exhibit"
+      ],
+      "repeats": false,
+      "audience": "all",
+      "setting": "indoor",
+      "timeOfDay": "daytime",
+      "hasFood": false,
+      "host": "Thomas Paine Cottage and Museum",
+      "start": "2026-10-15T00:00:00-04:00",
+      "end": "2026-10-16T00:00:00-04:00",
+      "venue": "Thomas Paine Cottage and Museum",
+      "city": "Beechmont",
+      "address": "20 Sicard Avenue",
+      "lat": 40.93444,
+      "lon": -73.79111,
+      "price": null,
+      "signupRequired": false,
+      "url": "https://thomaspainecottage.org/",
+      "description": "New Rochelle Artsfest returns Oct 15- 18th. Visit New Rochelle Council on the Arts for full details.",
+      "source": "Thomas Paine Cottage and Museum",
+      "placeKind": "museum",
+      "venueKey": "Thomas Paine Cottage and Museum"
     },
     {
       "id": "eventbrite-5790359",
@@ -92122,7 +93333,7 @@
         "sporting event"
       ],
       "placeKind": "stadium",
-      "venueKey": "Newburgh"
+      "venueKey": null
     },
     {
       "id": "ticketmaster-88184787",
@@ -92159,6 +93370,34 @@
       "placeKind": "theatre",
       "until": "2026-10-18T01:00:00Z",
       "venueKey": "West Nyack Levity Live"
+    },
+    {
+      "id": "osm-thomaspainecottage-93663212",
+      "title": "Battle of Pelham event at St. Paul's",
+      "type": "museum exhibit",
+      "types": [
+        "museum exhibit"
+      ],
+      "repeats": false,
+      "audience": "all",
+      "setting": "indoor",
+      "timeOfDay": "daytime",
+      "hasFood": false,
+      "host": "Thomas Paine Cottage and Museum",
+      "start": "2026-10-16T00:00:00-04:00",
+      "end": "2026-10-17T00:00:00-04:00",
+      "venue": "Thomas Paine Cottage and Museum",
+      "city": "Beechmont",
+      "address": "20 Sicard Avenue",
+      "lat": 40.93444,
+      "lon": -73.79111,
+      "price": null,
+      "signupRequired": false,
+      "url": "https://thomaspainecottage.org/",
+      "description": "Friday, October 16: St. Paul’s National Historic Site Candlelight Cemetery Tour with reenactors telling the stories of Revolutionary War soldiers, Philip, David, and Samuel Pell and others, who interred in the St. Paul’s Cemetery.",
+      "source": "Thomas Paine Cottage and Museum",
+      "placeKind": "museum",
+      "venueKey": "Thomas Paine Cottage and Museum"
     },
     {
       "id": "ticketmaster-18672400",
@@ -92801,6 +94040,62 @@
       "venueKey": "District Music Hall"
     },
     {
+      "id": "osm-thomaspainecottage-84282194",
+      "title": "Tall Ship public viewing New Rochelle harbor",
+      "type": "museum exhibit",
+      "types": [
+        "museum exhibit"
+      ],
+      "repeats": false,
+      "audience": "all",
+      "setting": "indoor",
+      "timeOfDay": "daytime",
+      "hasFood": false,
+      "host": "Thomas Paine Cottage and Museum",
+      "start": "2026-10-17T00:00:00-04:00",
+      "end": "2026-10-18T00:00:00-04:00",
+      "venue": "Thomas Paine Cottage and Museum",
+      "city": "Beechmont",
+      "address": "20 Sicard Avenue",
+      "lat": 40.93444,
+      "lon": -73.79111,
+      "price": null,
+      "signupRequired": false,
+      "url": "https://thomaspainecottage.org/",
+      "description": "Come explore Tall Ship Lynx in New Rochelle Harbor",
+      "source": "Thomas Paine Cottage and Museum",
+      "placeKind": "museum",
+      "venueKey": "Thomas Paine Cottage and Museum"
+    },
+    {
+      "id": "osm-thomaspainecottage-47465590",
+      "title": "Colonial Tavern @ 18th Ward Brewery",
+      "type": "tasting",
+      "types": [
+        "tasting"
+      ],
+      "repeats": false,
+      "audience": "all",
+      "setting": "unknown",
+      "timeOfDay": "daytime",
+      "hasFood": false,
+      "host": "Thomas Paine Cottage and Museum",
+      "start": "2026-10-17T00:00:00-04:00",
+      "end": "2026-10-18T00:00:00-04:00",
+      "venue": "18th Ward Brewing",
+      "city": null,
+      "address": "18th Ward Brewing, 40 Division St, New Rochelle, NY 10801, USA",
+      "lat": 40.9093,
+      "lon": -73.78404,
+      "price": null,
+      "signupRequired": false,
+      "url": "https://thomaspainecottage.org/",
+      "description": "The New Rochelle Downtown BID presents a Colonial Tavern experience. Hosted by 18th Ward Brewery. In partnership with the Huguenot New Rochelle Historical. Period entertainment, Colonial games, and more! Additional details coming soon!",
+      "source": "Thomas Paine Cottage and Museum",
+      "placeKind": "brewery",
+      "venueKey": "18th Ward Brewing"
+    },
+    {
       "id": "ticketmaster-12568322",
       "title": "Last Exit: Pearl Jam Tribute (Night One)",
       "type": "concert",
@@ -93086,7 +94381,7 @@
       "types": [
         "breakfast"
       ],
-      "venueKey": "See listing"
+      "venueKey": null
     },
     {
       "id": "untermyer-63517356",
@@ -93354,6 +94649,33 @@
       ],
       "placeKind": "stadium",
       "venueKey": "Sikorsky Credit Union Field"
+    },
+    {
+      "id": "osm-olivefreelibrary-29191027",
+      "title": "OFL - The Art of the Mask Workshop",
+      "type": "class",
+      "types": [
+        "class"
+      ],
+      "repeats": false,
+      "audience": "all",
+      "setting": "unknown",
+      "timeOfDay": "nighttime",
+      "hasFood": false,
+      "host": "Olive Free Library",
+      "start": "2026-10-17T17:00:00+00:00",
+      "end": "2026-10-17T19:00:00+00:00",
+      "venue": "4033 Route 28A",
+      "city": "West Shokan, NY",
+      "address": "4033 Route 28A, West Shokan, NY",
+      "lat": 41.96382,
+      "lon": -74.27527,
+      "price": null,
+      "signupRequired": false,
+      "url": "https://olivefreelibrary.org/",
+      "description": null,
+      "source": "Olive Free Library",
+      "venueKey": "4033 Route 28A"
     },
     {
       "id": "eventbrite-44596557",
@@ -94077,6 +95399,34 @@
       "venueKey": "Bergen Performing Arts Center"
     },
     {
+      "id": "osm-thomaspainecottage-98718109",
+      "title": "Battle of Pell's Point Reenactment",
+      "type": "museum exhibit",
+      "types": [
+        "museum exhibit"
+      ],
+      "repeats": false,
+      "audience": "all",
+      "setting": "unknown",
+      "timeOfDay": "daytime",
+      "hasFood": false,
+      "host": "Thomas Paine Cottage and Museum",
+      "start": "2026-10-18T00:00:00-04:00",
+      "end": "2026-10-19T00:00:00-04:00",
+      "venue": "Thomas Paine Cottage and Museum",
+      "city": "Beechmont",
+      "address": "20 Sicard Avenue",
+      "lat": 40.93444,
+      "lon": -73.79111,
+      "price": null,
+      "signupRequired": false,
+      "url": "https://thomaspainecottage.org/",
+      "description": "Pelham Bay Park - Orchard Beach will transform into a revolutionary war encampment. Come explore with us. Cottage closed during this event.",
+      "source": "Thomas Paine Cottage and Museum",
+      "placeKind": "museum",
+      "venueKey": "Thomas Paine Cottage and Museum"
+    },
+    {
       "id": "ticketmaster-65423722",
       "title": "Last Exit: Pearl Jam Tribute (Night Two)",
       "type": "concert",
@@ -94764,7 +96114,7 @@
       "types": [
         "film"
       ],
-      "venueKey": "See listing"
+      "venueKey": null
     },
     {
       "id": "eventbrite-96614007",
@@ -96047,6 +97397,33 @@
       "venueKey": "Webster Hall"
     },
     {
+      "id": "osm-olivefreelibrary-55362569",
+      "title": "OFL - Swing Dance at the Olive Free Library - Miss Lindy's Dance Hall",
+      "type": "dance",
+      "types": [
+        "dance"
+      ],
+      "repeats": false,
+      "audience": "all",
+      "setting": "indoor",
+      "timeOfDay": "nighttime",
+      "hasFood": false,
+      "host": "Olive Free Library",
+      "start": "2026-10-20T21:30:00+00:00",
+      "end": "2026-10-20T22:45:00+00:00",
+      "venue": "4033 Route 28A",
+      "city": "West Shokan, NY",
+      "address": "4033 Route 28A, West Shokan, NY",
+      "lat": 41.96382,
+      "lon": -74.27527,
+      "price": null,
+      "signupRequired": false,
+      "url": "https://olivefreelibrary.org/",
+      "description": null,
+      "source": "Olive Free Library",
+      "venueKey": "4033 Route 28A"
+    },
+    {
       "id": "ticketmaster-82930794",
       "title": "Ghostbusters in Concert",
       "type": "concert",
@@ -96262,7 +97639,7 @@
       "recurrence": "3 dates, through Oct 25",
       "until": "2026-10-25T13:00:00-04:00",
       "cadence": "occasional",
-      "venueKey": "Zoom"
+      "venueKey": null
     },
     {
       "id": "eventbrite-67453899",
@@ -98042,7 +99419,7 @@
         "sporting event"
       ],
       "placeKind": "stadium",
-      "venueKey": "Newburgh"
+      "venueKey": null
     },
     {
       "id": "ticketmaster-13615299",
@@ -98080,6 +99457,34 @@
       "placeKind": "theatre",
       "until": "2026-10-25T22:00:00Z",
       "venueKey": "West Nyack Levity Live"
+    },
+    {
+      "id": "osm-thomaspainecottage-55849727",
+      "title": "Battle of White Plains Reenactment - Cottage Closed",
+      "type": "museum exhibit",
+      "types": [
+        "museum exhibit"
+      ],
+      "repeats": false,
+      "audience": "all",
+      "setting": "indoor",
+      "timeOfDay": "daytime",
+      "hasFood": false,
+      "host": "Thomas Paine Cottage and Museum",
+      "start": "2026-10-24T00:00:00-04:00",
+      "end": "2026-10-26T00:00:00-04:00",
+      "venue": "Thomas Paine Cottage and Museum",
+      "city": "Beechmont",
+      "address": "20 Sicard Avenue",
+      "lat": 40.93444,
+      "lon": -73.79111,
+      "price": null,
+      "signupRequired": false,
+      "url": "https://thomaspainecottage.org/",
+      "description": "Please join us at this HISTORIC event as the pivotal Battle of White Plains is reenacted at this 2 day extravaganza! https://www.visitwestchesterny.com/250/revfest-2026/",
+      "source": "Thomas Paine Cottage and Museum",
+      "placeKind": "museum",
+      "venueKey": "Thomas Paine Cottage and Museum"
     },
     {
       "id": "ticketmaster-99930337",
@@ -98686,6 +100091,33 @@
       "source": "Mahaiwe Performing Arts Center",
       "placeKind": "music venue",
       "venueKey": "Indigo Room"
+    },
+    {
+      "id": "osm-olivefreelibrary-5874934",
+      "title": "OFL - From Napoli to Ashokan: Southern Italian Labor and Construction of the Reservoir with Steven Caselli",
+      "type": "other",
+      "types": [
+        "other"
+      ],
+      "repeats": false,
+      "audience": "all",
+      "setting": "unknown",
+      "timeOfDay": "nighttime",
+      "hasFood": false,
+      "host": "Olive Free Library",
+      "start": "2026-10-24T18:00:00+00:00",
+      "end": "2026-10-24T19:30:00+00:00",
+      "venue": "4033 Route 28A",
+      "city": "West Shokan, NY",
+      "address": "4033 Route 28A, West Shokan, NY",
+      "lat": 41.96382,
+      "lon": -74.27527,
+      "price": null,
+      "signupRequired": false,
+      "url": "https://olivefreelibrary.org/",
+      "description": null,
+      "source": "Olive Free Library",
+      "venueKey": "4033 Route 28A"
     },
     {
       "id": "whitememorial-51245449",
@@ -100041,7 +101473,7 @@
         "sporting event"
       ],
       "placeKind": "stadium",
-      "venueKey": "Newburgh"
+      "venueKey": null
     },
     {
       "id": "ticketmaster-66804549",
@@ -100350,7 +101782,7 @@
       "url": "https://www.eventbrite.com/e/the-tell-tale-heart-a-savage-soiree-tickets-1998650074174",
       "description": "A Poe masquerade the night before Halloween. Cocktails, costumes, live performers working the room. 21+.",
       "source": "Eventbrite",
-      "venueKey": "See listing"
+      "venueKey": null
     },
     {
       "id": "ticketmaster-13838632",
@@ -101443,7 +102875,7 @@
         "sporting event"
       ],
       "placeKind": "stadium",
-      "venueKey": "Newburgh"
+      "venueKey": null
     },
     {
       "id": "fairfield-u-5769848",
@@ -101623,7 +103055,7 @@
       "types": [
         "other"
       ],
-      "venueKey": "See listing"
+      "venueKey": null
     },
     {
       "id": "eventbrite-86834484",
@@ -103095,7 +104527,7 @@
         "sporting event"
       ],
       "placeKind": "stadium",
-      "venueKey": "Newburgh"
+      "venueKey": null
     },
     {
       "id": "ticketmaster-93463438",
@@ -103506,7 +104938,7 @@
         "sporting event"
       ],
       "placeKind": "stadium",
-      "venueKey": "Newburgh"
+      "venueKey": null
     },
     {
       "id": "ticketmaster-42200432",
@@ -104431,6 +105863,33 @@
       "venueKey": "Sikorsky Credit Union Field"
     },
     {
+      "id": "osm-olivefreelibrary-77996119",
+      "title": "OFL - \"Tempestry\" Opening Exhibit",
+      "type": "museum exhibit",
+      "types": [
+        "museum exhibit"
+      ],
+      "repeats": false,
+      "audience": "all",
+      "setting": "unknown",
+      "timeOfDay": "nighttime",
+      "hasFood": false,
+      "host": "Olive Free Library",
+      "start": "2026-11-14T19:00:00+00:00",
+      "end": "2026-11-14T21:00:00+00:00",
+      "venue": "4033 Route 28A",
+      "city": "West Shokan, NY",
+      "address": "4033 Route 28A, West Shokan, NY",
+      "lat": 41.96382,
+      "lon": -74.27527,
+      "price": null,
+      "signupRequired": false,
+      "url": "https://olivefreelibrary.org/",
+      "description": null,
+      "source": "Olive Free Library",
+      "venueKey": "4033 Route 28A"
+    },
+    {
       "id": "eventbrite-94787757",
       "title": "The Bones of J.R. Jones w/ Chris Kasper",
       "type": "concert",
@@ -104856,7 +106315,7 @@
       "types": [
         "other"
       ],
-      "venueKey": "See listing"
+      "venueKey": null
     },
     {
       "id": "eventbrite-90214691",
@@ -105912,7 +107371,7 @@
       "types": [
         "club"
       ],
-      "venueKey": "See listing"
+      "venueKey": null
     },
     {
       "id": "eventbrite-72395684",
@@ -106152,6 +107611,34 @@
       ],
       "placeKind": "music venue",
       "venueKey": "Bergen Performing Arts Center"
+    },
+    {
+      "id": "osm-olivefreelibrary-27818197",
+      "title": "OFL - Art Exhibit Opening",
+      "type": "art exhibit",
+      "types": [
+        "art exhibit",
+        "museum exhibit"
+      ],
+      "repeats": false,
+      "audience": "all",
+      "setting": "unknown",
+      "timeOfDay": "nighttime",
+      "hasFood": false,
+      "host": "Olive Free Library",
+      "start": "2026-11-21T20:00:00+00:00",
+      "end": "2026-11-21T22:00:00+00:00",
+      "venue": "4033 Route 28A",
+      "city": "West Shokan, NY",
+      "address": "4033 Route 28A, West Shokan, NY",
+      "lat": 41.96382,
+      "lon": -74.27527,
+      "price": null,
+      "signupRequired": false,
+      "url": "https://olivefreelibrary.org/",
+      "description": null,
+      "source": "Olive Free Library",
+      "venueKey": "4033 Route 28A"
     },
     {
       "id": "emelin-76170235",
@@ -106730,6 +108217,34 @@
       "venueKey": "Broadview Center"
     },
     {
+      "id": "osm-watertownlibrary-76391594",
+      "title": "Library Closing",
+      "type": "other",
+      "types": [
+        "other"
+      ],
+      "repeats": false,
+      "audience": "all",
+      "setting": "indoor",
+      "timeOfDay": "daytime",
+      "hasFood": false,
+      "host": "Watertown Library Association",
+      "start": "2026-11-25T15:00:00+00:00",
+      "end": "2026-11-25T22:00:00+00:00",
+      "venue": "Watertown Library Association",
+      "city": "Watertown, CT",
+      "address": "470 Main Street, Watertown, CT",
+      "lat": 41.60373,
+      "lon": -73.1176,
+      "price": null,
+      "signupRequired": false,
+      "url": "https://watertownlibrary.org/",
+      "description": null,
+      "source": "Watertown Library Association",
+      "placeKind": "library",
+      "venueKey": "Watertown Library Association"
+    },
+    {
       "id": "eventbrite-12653689",
       "title": "Dried Orange Garland and Simmer Pot Kit",
       "type": "tasting",
@@ -106794,6 +108309,34 @@
       ],
       "placeKind": "music venue",
       "venueKey": "La Zingara"
+    },
+    {
+      "id": "osm-thomaspainecottage-81677109",
+      "title": "Thanksgiving Weekend",
+      "type": "museum exhibit",
+      "types": [
+        "museum exhibit"
+      ],
+      "repeats": false,
+      "audience": "all",
+      "setting": "indoor",
+      "timeOfDay": "daytime",
+      "hasFood": false,
+      "host": "Thomas Paine Cottage and Museum",
+      "start": "2026-11-26T00:00:00-05:00",
+      "end": "2026-12-01T00:00:00-05:00",
+      "venue": "Thomas Paine Cottage and Museum",
+      "city": "Beechmont",
+      "address": "20 Sicard Avenue",
+      "lat": 40.93444,
+      "lon": -73.79111,
+      "price": null,
+      "signupRequired": false,
+      "url": "https://thomaspainecottage.org/",
+      "description": "So our hard working volunteers can enjoy the holiday weekend, the Cottage will be closed.",
+      "source": "Thomas Paine Cottage and Museum",
+      "placeKind": "museum",
+      "venueKey": "Thomas Paine Cottage and Museum"
     },
     {
       "id": "eventbrite-39168924",
@@ -107321,6 +108864,33 @@
       ],
       "placeKind": "brewery",
       "venueKey": "Zachys Wine & Liquor"
+    },
+    {
+      "id": "osm-olivefreelibrary-8119973",
+      "title": "Set Up for Holiday Gift Fair",
+      "type": "festival",
+      "types": [
+        "festival"
+      ],
+      "repeats": false,
+      "audience": "all",
+      "setting": "unknown",
+      "timeOfDay": "daytime",
+      "hasFood": false,
+      "host": "Olive Free Library",
+      "start": "2026-12-04T00:00:00-05:00",
+      "end": "2026-12-05T00:00:00-05:00",
+      "venue": "4033 Route 28A",
+      "city": "West Shokan, NY",
+      "address": "4033 Route 28A, West Shokan, NY",
+      "lat": 41.96382,
+      "lon": -74.27527,
+      "price": null,
+      "signupRequired": false,
+      "url": "https://olivefreelibrary.org/",
+      "description": null,
+      "source": "Olive Free Library",
+      "venueKey": "4033 Route 28A"
     },
     {
       "id": "eventbrite-41231578",
@@ -108337,6 +109907,34 @@
       "venueKey": "The Ridgefield Playhouse"
     },
     {
+      "id": "osm-olivefreelibrary-67086134",
+      "title": "OFL - Conversations with Death",
+      "type": "other",
+      "types": [
+        "other"
+      ],
+      "repeats": true,
+      "audience": "all",
+      "setting": "unknown",
+      "timeOfDay": "daytime",
+      "hasFood": false,
+      "host": "Olive Free Library",
+      "start": "2027-01-02T10:00:00-05:00",
+      "end": "2027-01-02T11:00:00-05:00",
+      "venue": "4033 Route 28A",
+      "city": "West Shokan, NY",
+      "address": "4033 Route 28A, West Shokan, NY",
+      "lat": 41.96382,
+      "lon": -74.27527,
+      "price": null,
+      "signupRequired": false,
+      "url": "https://olivefreelibrary.org/",
+      "description": null,
+      "source": "Olive Free Library",
+      "cadence": "occasional",
+      "venueKey": "4033 Route 28A"
+    },
+    {
       "id": "ridgefieldplayhouse-46359049",
       "title": "The Met Live in HD: Samson et Dalila (Saint-Saëns) – Encore",
       "type": "class",
@@ -109082,6 +110680,33 @@
       "venueKey": "MJN Convention Center - Mid Hudson Civic Center"
     },
     {
+      "id": "osm-olivefreelibrary-27687007",
+      "title": "OFL - The Secret History of Esoteric Traditions in America with Glenn Kreisberg",
+      "type": "other",
+      "types": [
+        "other"
+      ],
+      "repeats": false,
+      "audience": "all",
+      "setting": "unknown",
+      "timeOfDay": "nighttime",
+      "hasFood": false,
+      "host": "Olive Free Library",
+      "start": "2027-02-06T19:00:00+00:00",
+      "end": "2027-02-06T20:30:00+00:00",
+      "venue": "4033 Route 28A",
+      "city": "West Shokan, NY",
+      "address": "4033 Route 28A, West Shokan, NY",
+      "lat": 41.96382,
+      "lon": -74.27527,
+      "price": null,
+      "signupRequired": false,
+      "url": "https://olivefreelibrary.org/",
+      "description": null,
+      "source": "Olive Free Library",
+      "venueKey": "4033 Route 28A"
+    },
+    {
       "id": "albany-u-81832456",
       "title": "Women's Basketball vs Bryant",
       "type": "sporting event",
@@ -109136,6 +110761,33 @@
       ],
       "placeKind": "stadium",
       "venueKey": "Broadview Center"
+    },
+    {
+      "id": "osm-olivefreelibrary-88653792",
+      "title": "Snow Date for OFL - The Secret History of Esoteric Traditions in America",
+      "type": "other",
+      "types": [
+        "other"
+      ],
+      "repeats": false,
+      "audience": "all",
+      "setting": "unknown",
+      "timeOfDay": "nighttime",
+      "hasFood": false,
+      "host": "Olive Free Library",
+      "start": "2027-02-13T19:00:00+00:00",
+      "end": "2027-02-13T20:30:00+00:00",
+      "venue": "4033 Route 28A",
+      "city": "West Shokan, NY",
+      "address": "4033 Route 28A, West Shokan, NY",
+      "lat": 41.96382,
+      "lon": -74.27527,
+      "price": null,
+      "signupRequired": false,
+      "url": "https://olivefreelibrary.org/",
+      "description": null,
+      "source": "Olive Free Library",
+      "venueKey": "4033 Route 28A"
     },
     {
       "id": "eventbrite-87013510",
@@ -109563,6 +111215,33 @@
       ],
       "placeKind": "theatre",
       "venueKey": "Emelin Theatre"
+    },
+    {
+      "id": "osm-olivefreelibrary-45828104",
+      "title": "OFL - Climate Wayfinding Reading Group",
+      "type": "talk",
+      "types": [
+        "talk"
+      ],
+      "repeats": false,
+      "audience": "all",
+      "setting": "unknown",
+      "timeOfDay": "nighttime",
+      "hasFood": false,
+      "host": "Olive Free Library",
+      "start": "2027-05-13T21:30:00+00:00",
+      "end": "2027-05-13T22:30:00+00:00",
+      "venue": "4033 Route 28A",
+      "city": "West Shokan, NY",
+      "address": "4033 Route 28A, West Shokan, NY",
+      "lat": 41.96382,
+      "lon": -74.27527,
+      "price": null,
+      "signupRequired": false,
+      "url": "https://olivefreelibrary.org/",
+      "description": null,
+      "source": "Olive Free Library",
+      "venueKey": "4033 Route 28A"
     },
     {
       "id": "ridgefieldplayhouse-39517596",

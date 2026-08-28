@@ -17,7 +17,7 @@ Three jobs, in order:
 """
 
 import argparse, json, os, re, sys
-from collections import defaultdict
+from collections import defaultdict, Counter
 from datetime import datetime, timezone
 from math import radians, sin, cos, asin, sqrt
 
@@ -93,6 +93,87 @@ def building_of(item):
     if host and host != venue and not ROOM_NAME.search(host):
         return host
     return venue
+
+
+# "See listing" is what a card prints when nothing named a venue. It is not a
+# place, and it must never become one — it arrived in the directory as a row
+# claiming ninety-two events.
+NOT_A_VENUE = {'see listing', 'tba', 'tbd', 'various', 'various locations',
+               'online', 'virtual', 'virtual event', 'zoom', 'n/a', 'unknown',
+               'home', 'off site', 'offsite', 'to be announced'}
+
+# A venue field is free text and feeds put anything in it. These are the shapes
+# that are demonstrably not a place you can go: a bare state code, a town on its
+# own, a street corner. Kept narrow — the cost of a false positive here is a
+# real venue losing its filter, so anything ambiguous stays a venue.
+STATE_CODE = re.compile(r'^[A-Z]{2}$')
+CROSSROADS = re.compile(r'\b(st|street|ave|avenue|rd|road|blvd|drive|dr|way|'
+                        r'place|pl)\b[^&]*&|&[^&]*\b(st|street|ave|avenue|rd|'
+                        r'road|blvd|drive|dr)\b', re.I)
+BARE_TOWN = {'nyack', 'beacon', 'kingston', 'poughkeepsie', 'newburgh', 'hudson',
+             'danbury', 'stamford', 'peekskill', 'catskill', 'woodstock',
+             'new paltz', 'cold spring', 'rhinebeck', 'millerton', 'brooklyn',
+             'manhattan', 'queens', 'bronx', 'new york', 'nyc', 'westchester',
+             'hudson valley', 'upstate', 'connecticut', 'new jersey'}
+
+
+def is_a_venue(name):
+    """Is this the name of somewhere, or is it the feed shrugging?"""
+    if not name:
+        return False
+    slug = norm(name)
+    if slug in NOT_A_VENUE or slug in BARE_TOWN:
+        return False
+    if STATE_CODE.match(name.strip()):
+        return False
+    if CROSSROADS.search(name):
+        return False
+    return len(slug) > 2
+
+
+def canonicalise_venues(items):
+    """One spelling per venue, chosen once and written into venueKey.
+
+    Feeds spell the same place several ways — "Dia:Beacon" and "Dia Beacon",
+    "Aquila's Nest" with a straight apostrophe and with a curly one, a library
+    in lower case. That splits one venue into several, and worse, it made the
+    Places count disagree with the Places filter: places.py compared names
+    *normalised* while the client compared them exactly, so a directory row
+    could claim three events and deliver none.
+
+    Collapsing here means both sides get the same literal string and neither
+    has to normalise anything.
+    """
+    variants = defaultdict(Counter)
+    for item in items:
+        key = item.get('venueKey')
+        if key:
+            variants[norm(key)][key] += 1
+
+    canonical = {}
+    for slug, spellings in variants.items():
+        # Most-used spelling wins; ties go to the one carrying the most
+        # punctuation, which is nearly always the properly typeset original
+        # ("The Lit. Bar" over "The Lit Bar").
+        canonical[slug] = max(spellings.items(),
+                              key=lambda kv: (kv[1], sum(not c.isalnum() and not c.isspace()
+                                                         for c in kv[0]),
+                                              sum(c.isupper() for c in kv[0])))[0]
+
+    collapsed = 0
+    for item in items:
+        key = item.get('venueKey')
+        if not key:
+            continue
+        if not is_a_venue(key):
+            item['venueKey'] = None      # a placeholder is not somewhere to go
+            continue
+        best = canonical.get(norm(key), key)
+        if best != key:
+            item['venueKey'] = best
+            collapsed += 1
+    if collapsed:
+        print(f'  {collapsed} listings moved onto a venue\'s canonical spelling')
 
 
 # Internal governance that is not "something to do".
@@ -626,6 +707,7 @@ def main():
     # and tapping through to them found nothing.
     for item in merged:
         item['venueKey'] = building_of(item)
+    canonicalise_venues(merged)
 
     # A listing with nothing to link to cannot render and validate.py rejects
     # the whole file for it. They arrived from a Google Calendar ICS, which
@@ -637,6 +719,25 @@ def main():
     if unlinkable:
         merged = [i for i in merged if i.get('url')]
         print(f'  −{len(unlinkable)} with no link to follow')
+
+    # Two listings cannot share an id: the reader's verdicts are stored against
+    # it, and validate.py refuses the file. A recurring iCal series repeats one
+    # UID across every date, which is how a Craft Circle and its cancellation
+    # three weeks later ended up as the same listing. Keep the fuller record.
+    seen, unique, clashes = {}, [], 0
+    for item in merged:
+        rival = seen.get(item['id'])
+        if rival is None:
+            seen[item['id']] = item
+            unique.append(item)
+        else:
+            clashes += 1
+            if richness(item) > richness(rival):
+                unique[unique.index(rival)] = item
+                seen[item['id']] = item
+    if clashes:
+        merged = unique
+        print(f'  −{clashes} sharing an id with another listing')
 
     merged.sort(key=lambda x: x['start'])
 

@@ -9,7 +9,7 @@ in is the weekly job's judgement step, not this script's.
   python3 scripts/enrich.py [--in build/candidates.json] [--out build/enriched.json]
 """
 
-import argparse, html, json, os, re, sys, time, urllib.parse, urllib.request
+import argparse, hashlib, html, json, os, re, sys, time, urllib.parse, urllib.request
 from datetime import datetime
 from math import radians, sin, cos, asin, sqrt
 
@@ -644,7 +644,13 @@ def main():
 
         started = datetime.fromisoformat(c['start'])
         out.append({
-            'id': f"{c['sourceId']}-{abs(hash(c.get('uid') or c['title'] + c['start'])) % 10**8}",
+            # The start has to be in the key. A recurring iCal series repeats
+            # one UID across every occurrence, so hashing the UID alone gave
+            # two dates the same id and validate.py — correctly — refused the
+            # file. Python's hash() is also salted per process, so ids churned
+            # between runs and merge saw the same listing as new every week.
+            'id': f"{c['sourceId']}-"
+                  f"{hashlib.sha1(((c.get('uid') or c['title']) + c['start']).encode()).hexdigest()[:8]}",
             'title': c['title'],
             'type': type_of(c['title'], c.get('description'), venue),
             'types': types_of(c['title'], c.get('description'), venue),
@@ -717,7 +723,7 @@ def main():
         blob = blob_of(e)
         out.append({
             'id': e.get('id') or f"{e.get('sourceId', 'x')}-"
-                                 f"{abs(hash(e.get('url') or e['title'])) % 10**8}",
+                                 f"{hashlib.sha1((e.get('url') or e['title']).encode()).hexdigest()[:8]}",
             'title': e['title'],
             'type': e.get('type') or type_of(e['title'], e.get('description'), e.get('venue')),
             'types': e.get('types') or (

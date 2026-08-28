@@ -591,18 +591,24 @@ def merge_events(places, events_path, center, radius):
         return places
     items = json.load(open(events_path)).get('items', [])
 
+    # Exact, not normalised. merge.py already collapsed the spellings, and the
+    # client filters on the literal string — matching loosely here is what let
+    # a place claim events the filter could never find.
     by_name = {}
     for place in places:
-        by_name.setdefault(norm(place['name']), place)
+        by_name.setdefault(place['name'], place)
 
     extra = {}
     for item in items:
         # merge.py resolved rooms to their building and wrote the answer down;
         # recomputing it here is how the count and the filter came to disagree.
-        venue = item.get('venueKey') or item.get('venue')
+        # No `or item['venue']` fallback: merge deliberately nulls venueKey for
+        # placeholders like "See listing", and falling back resurrected it as a
+        # directory row claiming ninety-two events.
+        venue = item.get('venueKey')
         if not venue or not item.get('lat'):
             continue
-        key = norm(venue)
+        key = venue
         hit = by_name.get(key)
         if hit:
             hit['events'] += 1
@@ -616,7 +622,11 @@ def merge_events(places, events_path, center, radius):
             continue
         kind = item.get('placeKind')
         extra[key] = {
-            'id': f'venue-{re.sub(r"[^a-z0-9]+", "-", key).strip("-")}',
+            # norm() lowercases; the raw key does not, and this character
+            # class only spans lowercase — so "Veronica Wagman Concert Hall"
+            # slugged to "eronica-agman-oncert-all" and two venues collided on
+            # an id. The match stays exact; only the slug is normalised.
+            'id': f'venue-{re.sub(r"[^a-z0-9]+", "-", norm(key)).strip("-") or "unnamed"}',
             'name': venue, 'kind': kind, 'kinds': [kind] if kind else [],
             'lat': item['lat'], 'lon': item['lon'], 'miles': round(away, 1),
             'city': item.get('city'), 'address': item.get('address'),
@@ -624,9 +634,13 @@ def merge_events(places, events_path, center, radius):
             'brand': None, 'secondHand': None, 'free': None, 'wheelchair': None,
             'description': None, 'events': 1, 'source': 'Event listings',
         }
-    # A venue with no recognisable kind earns a row only by carrying a
-    # programme big enough that it is plainly a place rather than a room.
-    REAL_PLACE_EVENTS = 3
+    # A venue with no recognisable kind used to need three events to earn a
+    # row, as a crude guard against rooms — "Community Room", "311 Learning
+    # Annex". merge.py resolves rooms to their building now and rejects the
+    # shapes that are the feed shrugging (a bare state code, a town on its own,
+    # a street corner), so the count can come down. At three, The Falcon and
+    # Happy Valley Arcade Bar were both missing from the directory.
+    REAL_PLACE_EVENTS = 2
     return places + [row for row in extra.values()
                      if row['kind'] or row['events'] >= REAL_PLACE_EVENTS]
 
