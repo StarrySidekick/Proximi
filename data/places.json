@@ -1,11 +1,11 @@
 {
   "meta": {
     "schemaVersion": 1,
-    "scrapedAt": "2026-08-28T01:02:38+00:00",
+    "scrapedAt": "2026-08-28T18:38:10+00:00",
     "centerName": "Beacon, NY",
     "centerLat": 41.5048,
     "centerLon": -73.9696,
-    "radiusMiles": 50.0,
+    "radiusMiles": 50,
     "kinds": [
       "museum",
       "gallery",
@@ -163,14 +163,16 @@
       "free": null,
       "wheelchair": null,
       "description": null,
-      "events": 8,
+      "events": 7,
       "source": "Event listings"
     },
     {
       "id": "venue-the-parlor",
       "name": "The Parlor",
-      "kind": null,
-      "kinds": [],
+      "kind": "theatre",
+      "kinds": [
+        "theatre"
+      ],
       "lat": 41.50484,
       "lon": -73.96954,
       "miles": 0.0,
@@ -184,7 +186,7 @@
       "free": null,
       "wheelchair": null,
       "description": null,
-      "events": 15,
+      "events": 11,
       "source": "Event listings"
     },
     {
@@ -209,6 +211,52 @@
       "description": null,
       "events": 0,
       "source": "OpenStreetMap"
+    },
+    {
+      "id": "venue-beahive-beacon",
+      "name": "BEAHIVE Beacon",
+      "kind": "theatre",
+      "kinds": [
+        "theatre"
+      ],
+      "lat": 41.50475,
+      "lon": -73.96852,
+      "miles": 0.1,
+      "city": "Beacon, NY",
+      "address": "6 Eliza Street",
+      "url": "https://www.eventbrite.com/e/hive-mind-improv-comedy-jam-tickets-1975363251661",
+      "phone": null,
+      "openingHours": null,
+      "brand": null,
+      "secondHand": null,
+      "free": null,
+      "wheelchair": null,
+      "description": null,
+      "events": 1,
+      "source": "Event listings"
+    },
+    {
+      "id": "venue-big-mouth-coffee-roasters",
+      "name": "Big Mouth Coffee Roasters",
+      "kind": "cafe",
+      "kinds": [
+        "cafe"
+      ],
+      "lat": 41.50371,
+      "lon": -73.96779,
+      "miles": 0.1,
+      "city": "Beacon, NY",
+      "address": "387 Main Street",
+      "url": "https://www.eventbrite.com/e/beacon-bash-ny-scavenger-hunt-tickets-1991229352596",
+      "phone": null,
+      "openingHours": null,
+      "brand": null,
+      "secondHand": null,
+      "free": null,
+      "wheelchair": null,
+      "description": null,
+      "events": 1,
+      "source": "Event listings"
     },
     {
       "id": "osm-way-319361174",
@@ -364,7 +412,7 @@
       "free": null,
       "wheelchair": null,
       "description": null,
-      "events": 2,
+      "events": 3,
       "source": "Event listings"
     },
     {
@@ -389,6 +437,27 @@
       "description": null,
       "events": 0,
       "source": "OpenStreetMap"
+    },
+    {
+      "id": "venue-saint-rita-s-music-room",
+      "name": "Saint Rita’s Music Room",
+      "kind": null,
+      "kinds": [],
+      "lat": 41.50658,
+      "lon": -73.96596,
+      "miles": 0.2,
+      "city": "Beacon, NY",
+      "address": "85 Eliza Street",
+      "url": "https://www.eventbrite.com/e/spies-in-aggregateand-other-witnesses-tickets-1997451047854",
+      "phone": null,
+      "openingHours": null,
+      "brand": null,
+      "secondHand": null,
+      "free": null,
+      "wheelchair": null,
+      "description": null,
+      "events": 2,
+      "source": "Event listings"
     },
     {
       "id": "osm-node-11192181837",
@@ -471,7 +540,7 @@
       "miles": 0.3,
       "city": "Beacon, NY",
       "address": "473 Main Street",
-      "url": "https://www.eventbrite.com/e/hysteria-special-show-date-tickets-1996039266177",
+      "url": "https://www.eventbrite.com/e/your-bizarre-day-a-comedy-show-tickets-1944091212149",
       "phone": null,
       "openingHours": null,
       "brand": null,
@@ -479,7 +548,7 @@
       "free": null,
       "wheelchair": null,
       "description": null,
-      "events": 1,
+      "events": 4,
       "source": "Event listings"
     },
     {
@@ -735,6 +804,29 @@
       "source": "Event listings"
     },
     {
+      "id": "venue-st-andrew-and-st-luke-episcopal-church",
+      "name": "St Andrew and St. Luke Episcopal Church",
+      "kind": "place of worship",
+      "kinds": [
+        "place of worship"
+      ],
+      "lat": 41.50705,
+      "lon": -73.97779,
+      "miles": 0.5,
+      "city": "Beacon, NY",
+      "address": "15 South Avenue",
+      "url": "https://www.eventbrite.com/e/broadway-in-beacon-musical-theatre-open-mic-tickets-1996920416722",
+      "phone": null,
+      "openingHours": null,
+      "brand": null,
+      "secondHand": null,
+      "free": null,
+      "wheelchair": null,
+      "description": null,
+      "events": 1,
+      "source": "Event listings"
+    },
+    {
       "id": "osm-way-455159209",
       "name": "Starn Studio",
       "kind": "gallery",
@@ -963,6 +1055,29 @@
       "source": "Event listings"
     },
     {
+      "id": "venue-madam-brett-park",
+      "name": "Madam Brett Park",
+      "kind": "park",
+      "kinds": [
+        "park"
+      ],
+      "lat": 41.48879,
+      "lon": -73.97417,
+      "miles": 1.1,
+      "city": "Beacon, NY",
+      "address": "South Avenue",
+      "url": "https://www.eventbrite.com/e/first-public-ghost-hunt-at-madam-brett-homestead-tickets-1998754886671",
+      "phone": null,
+      "openingHours": null,
+      "brand": null,
+      "secondHand": null,
+      "free": null,
+      "wheelchair": null,
+      "description": null,
+      "events": 1,
+      "source": "Event listings"
+    },
+    {
       "id": "osm-node-6876013017",
       "name": "Industrial Arts Brewing Company",
       "kind": "brewery",
@@ -1143,7 +1258,7 @@
       "free": null,
       "wheelchair": null,
       "description": null,
-      "events": 53,
+      "events": 64,
       "source": "OpenStreetMap"
     },
     {
@@ -1436,7 +1551,30 @@
       "free": null,
       "wheelchair": null,
       "description": null,
-      "events": 13,
+      "events": 14,
+      "source": "Event listings"
+    },
+    {
+      "id": "venue-sacred-heart-church",
+      "name": "Sacred Heart Church",
+      "kind": "place of worship",
+      "kinds": [
+        "place of worship"
+      ],
+      "lat": 41.49955,
+      "lon": -74.02093,
+      "miles": 2.7,
+      "city": "Newburgh, NY",
+      "address": "301 Ann Street",
+      "url": "https://www.eventbrite.com/e/living-in-reality-a-one-day-retreat-tickets-1993935494740",
+      "phone": null,
+      "openingHours": null,
+      "brand": null,
+      "secondHand": null,
+      "free": null,
+      "wheelchair": null,
+      "description": null,
+      "events": 1,
       "source": "Event listings"
     },
     {
@@ -1452,6 +1590,29 @@
       "city": "Newburgh, NY",
       "address": "29 Old Balmville Road",
       "url": "https://www.eventbrite.com/e/national-disability-employment-awareness-month-recognition-summit-2026-tickets-1994720375339",
+      "phone": null,
+      "openingHours": null,
+      "brand": null,
+      "secondHand": null,
+      "free": null,
+      "wheelchair": null,
+      "description": null,
+      "events": 1,
+      "source": "Event listings"
+    },
+    {
+      "id": "venue-stonegate-farm",
+      "name": "Stonegate Farm",
+      "kind": "farm",
+      "kinds": [
+        "farm"
+      ],
+      "lat": 41.53513,
+      "lon": -74.00784,
+      "miles": 2.9,
+      "city": "Newburgh, NY",
+      "address": "4 Stonegate Drive",
+      "url": "https://www.eventbrite.com/e/wood-fired-pizza-suppers-at-stonegate-farm-2026-tickets-1995203289749",
       "phone": null,
       "openingHours": null,
       "brand": null,
@@ -1650,8 +1811,10 @@
     {
       "id": "venue-pinot-s-palette-fishkill",
       "name": "Pinot's Palette Fishkill",
-      "kind": null,
-      "kinds": [],
+      "kind": "music venue",
+      "kinds": [
+        "music venue"
+      ],
       "lat": 41.53155,
       "lon": -73.9059,
       "miles": 3.8,
@@ -1665,7 +1828,7 @@
       "free": null,
       "wheelchair": null,
       "description": null,
-      "events": 26,
+      "events": 77,
       "source": "Event listings"
     },
     {
@@ -1874,6 +2037,29 @@
       "description": null,
       "events": 0,
       "source": "OpenStreetMap"
+    },
+    {
+      "id": "venue-town-of-newburgh-emergency-medical-services",
+      "name": "Town Of Newburgh Emergency Medical Services",
+      "kind": "community centre",
+      "kinds": [
+        "community centre"
+      ],
+      "lat": 41.51985,
+      "lon": -74.05467,
+      "miles": 4.5,
+      "city": "Newburgh, NY",
+      "address": "97 South Plank Road",
+      "url": "https://www.eventbrite.com/e/town-of-newburg-ambulance-free-aha-heartsaver-first-aid-and-cpr-training-tickets-1996474989437",
+      "phone": null,
+      "openingHours": null,
+      "brand": null,
+      "secondHand": null,
+      "free": null,
+      "wheelchair": null,
+      "description": null,
+      "events": 1,
+      "source": "Event listings"
     },
     {
       "id": "osm-node-357595921",
@@ -2383,6 +2569,29 @@
       "description": null,
       "events": 0,
       "source": "OpenStreetMap"
+    },
+    {
+      "id": "venue-chapel-of-sacred-mirrors",
+      "name": "Chapel of Sacred Mirrors",
+      "kind": "place of worship",
+      "kinds": [
+        "place of worship"
+      ],
+      "lat": 41.58022,
+      "lon": -73.93615,
+      "miles": 5.5,
+      "city": "Wappingers Falls, NY",
+      "address": "46 Deer Hill Road",
+      "url": "https://www.eventbrite.com/e/resonance-with-belladonna-at-cosm-tickets-1998817843978",
+      "phone": null,
+      "openingHours": null,
+      "brand": null,
+      "secondHand": null,
+      "free": null,
+      "wheelchair": null,
+      "description": null,
+      "events": 1,
+      "source": "Event listings"
     },
     {
       "id": "osm-node-11528534652",
@@ -3026,7 +3235,7 @@
       "free": null,
       "wheelchair": null,
       "description": null,
-      "events": 3,
+      "events": 4,
       "source": "Event listings"
     },
     {
@@ -3256,7 +3465,7 @@
       "free": null,
       "wheelchair": null,
       "description": null,
-      "events": 16,
+      "events": 43,
       "source": "Event listings"
     },
     {
@@ -3739,6 +3948,29 @@
       "wheelchair": null,
       "description": null,
       "events": 1,
+      "source": "Event listings"
+    },
+    {
+      "id": "venue-eisenhower-hall-theatre",
+      "name": "Eisenhower Hall Theatre",
+      "kind": "theatre",
+      "kinds": [
+        "theatre"
+      ],
+      "lat": 41.3912693,
+      "lon": -73.9658803,
+      "miles": 7.8,
+      "city": "West Point, NY",
+      "address": "655 Pitcher Rd, West Point, NY",
+      "url": "https://ikehall.com/2026-2027-season/",
+      "phone": null,
+      "openingHours": null,
+      "brand": null,
+      "secondHand": null,
+      "free": null,
+      "wheelchair": null,
+      "description": null,
+      "events": 6,
       "source": "Event listings"
     },
     {
@@ -4395,7 +4627,7 @@
       "miles": 9.4,
       "city": "Beacon, NY",
       "address": "Rte 9D",
-      "url": "https://www.meetup.com/hudson-valley-relaxed-pace-hikers/events/315905465/",
+      "url": "https://www.meetup.com/hvhikers/events/316261957/",
       "phone": null,
       "openingHours": null,
       "brand": null,
@@ -4403,7 +4635,7 @@
       "free": null,
       "wheelchair": null,
       "description": null,
-      "events": 1,
+      "events": 2,
       "source": "Event listings"
     },
     {
@@ -4535,6 +4767,29 @@
       "address": null,
       "url": null,
       "phone": null,
+      "openingHours": null,
+      "brand": null,
+      "secondHand": null,
+      "free": null,
+      "wheelchair": null,
+      "description": null,
+      "events": 0,
+      "source": "OpenStreetMap"
+    },
+    {
+      "id": "osm-node-14127255096",
+      "name": "East Coast Card Collector",
+      "kind": "shop",
+      "kinds": [
+        "shop"
+      ],
+      "lat": 41.578973,
+      "lon": -73.807798,
+      "miles": 9.8,
+      "city": "Hopewell Junction",
+      "address": null,
+      "url": "https://eastcoastcardcollector.com/",
+      "phone": "+1 845-447-4994",
       "openingHours": null,
       "brand": null,
       "secondHand": null,
@@ -4867,6 +5122,29 @@
       "source": "Event listings"
     },
     {
+      "id": "venue-osiris-country-club",
+      "name": "Osiris Country Club",
+      "kind": "club",
+      "kinds": [
+        "club"
+      ],
+      "lat": 41.58001,
+      "lon": -74.16388,
+      "miles": 11.3,
+      "city": "Walden, NY",
+      "address": "110 Country Club Road",
+      "url": "https://www.eventbrite.com/e/wedding-well-being-mini-expo-tickets-1982636724815",
+      "phone": null,
+      "openingHours": null,
+      "brand": null,
+      "secondHand": null,
+      "free": null,
+      "wheelchair": null,
+      "description": null,
+      "events": 1,
+      "source": "Event listings"
+    },
+    {
       "id": "venue-tompkins-corners-cultural-center",
       "name": "Tompkins Corners Cultural Center",
       "kind": "theatre",
@@ -5026,6 +5304,29 @@
       "description": "The cut garden is for flowers.",
       "events": 0,
       "source": "OpenStreetMap"
+    },
+    {
+      "id": "venue-locust-grove-historic-site",
+      "name": "Locust Grove Historic Site",
+      "kind": "historic house",
+      "kinds": [
+        "historic house"
+      ],
+      "lat": 41.67237,
+      "lon": -73.93,
+      "miles": 11.8,
+      "city": "Poughkeepsie, NY",
+      "address": "2683 South Road",
+      "url": "https://www.eventbrite.com/e/lace-making-workshop-part-2-tickets-1998914384734",
+      "phone": null,
+      "openingHours": null,
+      "brand": null,
+      "secondHand": null,
+      "free": null,
+      "wheelchair": null,
+      "description": null,
+      "events": 1,
+      "source": "Event listings"
     },
     {
       "id": "osm-node-8788806383",
@@ -5303,6 +5604,29 @@
       "description": null,
       "events": 0,
       "source": "OpenStreetMap"
+    },
+    {
+      "id": "venue-maybrook-senior-center",
+      "name": "Maybrook Senior Center",
+      "kind": "community centre",
+      "kinds": [
+        "community centre"
+      ],
+      "lat": 41.49016,
+      "lon": -74.21043,
+      "miles": 12.5,
+      "city": "Maybrook, NY",
+      "address": "2 Senior Way",
+      "url": "https://www.eventbrite.com/e/in-the-family-block-party-tickets-1995979345954",
+      "phone": null,
+      "openingHours": null,
+      "brand": null,
+      "secondHand": null,
+      "free": null,
+      "wheelchair": null,
+      "description": null,
+      "events": 1,
+      "source": "Event listings"
     },
     {
       "id": "osm-way-261322864",
@@ -5946,7 +6270,7 @@
       "free": null,
       "wheelchair": null,
       "description": null,
-      "events": 0,
+      "events": 1,
       "source": "OpenStreetMap"
     },
     {
@@ -5992,7 +6316,7 @@
       "free": null,
       "wheelchair": null,
       "description": null,
-      "events": 2,
+      "events": 3,
       "source": "Event listings"
     },
     {
@@ -6198,7 +6522,7 @@
       "free": null,
       "wheelchair": null,
       "description": null,
-      "events": 2,
+      "events": 3,
       "source": "Event listings"
     },
     {
@@ -6428,6 +6752,27 @@
       "description": null,
       "events": 0,
       "source": "OpenStreetMap"
+    },
+    {
+      "id": "venue-regus",
+      "name": "Regus",
+      "kind": null,
+      "kinds": [],
+      "lat": 41.70559,
+      "lon": -73.92839,
+      "miles": 14.0,
+      "city": "Poughkeepsie, NY",
+      "address": "Poughkeepsie",
+      "url": "https://www.eventbrite.com/e/boost-your-project-management-techniques-training-in-poughkeepsie-ny-tickets-1733299458339",
+      "phone": null,
+      "openingHours": null,
+      "brand": null,
+      "secondHand": null,
+      "free": null,
+      "wheelchair": null,
+      "description": null,
+      "events": 3,
+      "source": "Event listings"
     },
     {
       "id": "osm-node-12298119087",
@@ -6725,7 +7070,7 @@
       "free": null,
       "wheelchair": null,
       "description": null,
-      "events": 1,
+      "events": 5,
       "source": "Event listings"
     },
     {
@@ -6798,6 +7143,27 @@
       "source": "OpenStreetMap"
     },
     {
+      "id": "venue-walkway-over-the-hudson",
+      "name": "Walkway Over the Hudson",
+      "kind": null,
+      "kinds": [],
+      "lat": 41.71,
+      "lon": -73.92,
+      "miles": 14.4,
+      "city": "Poughkeepsie, NY",
+      "address": "61 Parker Ave, Poughkeepsie, NY",
+      "url": "https://destinationdutchess.com/event-view/44984_2026_08_21",
+      "phone": null,
+      "openingHours": null,
+      "brand": null,
+      "secondHand": null,
+      "free": null,
+      "wheelchair": null,
+      "description": null,
+      "events": 2,
+      "source": "Event listings"
+    },
+    {
       "id": "venue-scenic-hudson",
       "name": "Scenic Hudson",
       "kind": null,
@@ -6837,6 +7203,27 @@
       "wheelchair": null,
       "description": null,
       "events": 5,
+      "source": "Event listings"
+    },
+    {
+      "id": "venue-book-nook",
+      "name": "Book Nook",
+      "kind": null,
+      "kinds": [],
+      "lat": 41.65045,
+      "lon": -73.76425,
+      "miles": 14.6,
+      "city": null,
+      "address": "Book Nook, LaGrange Association Library, 1110 Route 55, LaGrangeville, NY, 12540",
+      "url": "https://laglib.assabetinteractive.com/calendar/book-nook-fill-a-bag-sale-29/",
+      "phone": null,
+      "openingHours": null,
+      "brand": null,
+      "secondHand": null,
+      "free": null,
+      "wheelchair": null,
+      "description": null,
+      "events": 2,
       "source": "Event listings"
     },
     {
@@ -6928,7 +7315,7 @@
       "free": null,
       "wheelchair": null,
       "description": null,
-      "events": 1,
+      "events": 2,
       "source": "Event listings"
     },
     {
@@ -7108,7 +7495,7 @@
       "free": null,
       "wheelchair": null,
       "description": null,
-      "events": 2,
+      "events": 3,
       "source": "Event listings"
     },
     {
@@ -7746,7 +8133,7 @@
       "free": null,
       "wheelchair": null,
       "description": null,
-      "events": 2,
+      "events": 3,
       "source": "Event listings"
     },
     {
@@ -8043,7 +8430,7 @@
       "free": null,
       "wheelchair": null,
       "description": null,
-      "events": 1,
+      "events": 2,
       "source": "Event listings"
     },
     {
@@ -8553,6 +8940,29 @@
       "source": "OpenStreetMap"
     },
     {
+      "id": "venue-hasbrouck-park",
+      "name": "Hasbrouck Park",
+      "kind": "park",
+      "kinds": [
+        "park"
+      ],
+      "lat": 41.7447,
+      "lon": -74.08237,
+      "miles": 17.6,
+      "city": "New Paltz, NY",
+      "address": "Plattekill Avenue",
+      "url": "https://www.eventbrite.com/e/praise-in-the-park-tickets-1997911023654",
+      "phone": null,
+      "openingHours": null,
+      "brand": null,
+      "secondHand": null,
+      "free": null,
+      "wheelchair": null,
+      "description": null,
+      "events": 1,
+      "source": "Event listings"
+    },
+    {
       "id": "osm-way-439080222",
       "name": "Rhinebeck Artist's Shop",
       "kind": "gallery",
@@ -8734,7 +9144,7 @@
       "free": null,
       "wheelchair": null,
       "description": null,
-      "events": 5,
+      "events": 10,
       "source": "Event listings"
     },
     {
@@ -8876,6 +9286,29 @@
       "source": "OpenStreetMap"
     },
     {
+      "id": "venue-somers-national-golf-club",
+      "name": "Somers National Golf Club",
+      "kind": "club",
+      "kinds": [
+        "club"
+      ],
+      "lat": 41.33889,
+      "lon": -73.70368,
+      "miles": 17.9,
+      "city": "Heritage Hills, NY",
+      "address": "1000 West Hill Drive",
+      "url": "https://www.eventbrite.com/e/paint-sip-with-judika-tickets-1999041467843",
+      "phone": null,
+      "openingHours": null,
+      "brand": null,
+      "secondHand": null,
+      "free": null,
+      "wheelchair": null,
+      "description": null,
+      "events": 1,
+      "source": "Event listings"
+    },
+    {
       "id": "osm-way-306117206",
       "name": "Team Love Records HQ + Shop",
       "kind": "shop",
@@ -8918,7 +9351,7 @@
       "free": null,
       "wheelchair": null,
       "description": null,
-      "events": 2,
+      "events": 3,
       "source": "OpenStreetMap"
     },
     {
@@ -9031,7 +9464,7 @@
       "free": null,
       "wheelchair": null,
       "description": null,
-      "events": 7,
+      "events": 8,
       "source": "Event listings"
     },
     {
@@ -9170,7 +9603,7 @@
       "free": null,
       "wheelchair": null,
       "description": null,
-      "events": 10,
+      "events": 11,
       "source": "Event listings"
     },
     {
@@ -10206,7 +10639,7 @@
       "free": null,
       "wheelchair": null,
       "description": null,
-      "events": 10,
+      "events": 17,
       "source": "Event listings"
     },
     {
@@ -10758,7 +11191,7 @@
       "free": null,
       "wheelchair": null,
       "description": null,
-      "events": 13,
+      "events": 16,
       "source": "Event listings"
     },
     {
@@ -11628,7 +12061,7 @@
       "free": null,
       "wheelchair": null,
       "description": null,
-      "events": 10,
+      "events": 15,
       "source": "Event listings"
     },
     {
@@ -12507,6 +12940,27 @@
       "source": "OpenStreetMap"
     },
     {
+      "id": "venue-the-stephen-betsy-corman-amc-harriman-outdoor-center",
+      "name": "The Stephen & Betsy Corman AMC Harriman Outdoor Center",
+      "kind": null,
+      "kinds": [],
+      "lat": 41.20913,
+      "lon": -74.09321,
+      "miles": 21.4,
+      "city": "Haverstraw, NY",
+      "address": "200 Breakneck Road",
+      "url": "https://www.eventbrite.com/e/mediterranean-kitchen-weekend-at-the-amc-harriman-outdoor-center-tickets-1988577181882",
+      "phone": null,
+      "openingHours": null,
+      "brand": null,
+      "secondHand": null,
+      "free": null,
+      "wheelchair": null,
+      "description": null,
+      "events": 2,
+      "source": "Event listings"
+    },
+    {
       "id": "osm-node-5320338516",
       "name": "A.C. Moore",
       "kind": "shop",
@@ -12550,6 +13004,29 @@
       "wheelchair": null,
       "description": null,
       "events": 2,
+      "source": "Event listings"
+    },
+    {
+      "id": "venue-inner-circle-farm",
+      "name": "Inner Circle Farm",
+      "kind": "farm",
+      "kinds": [
+        "farm"
+      ],
+      "lat": 41.4704,
+      "lon": -73.55749,
+      "miles": 21.5,
+      "city": "Patterson, NY",
+      "address": "40 White Hawk tr",
+      "url": "https://www.eventbrite.com/e/pour-my-love-an-evening-of-ceremony-ecstatic-dance-tickets-1996237097897",
+      "phone": null,
+      "openingHours": null,
+      "brand": null,
+      "secondHand": null,
+      "free": null,
+      "wheelchair": null,
+      "description": null,
+      "events": 1,
       "source": "Event listings"
     },
     {
@@ -13260,7 +13737,7 @@
       "free": null,
       "wheelchair": null,
       "description": null,
-      "events": 1,
+      "events": 2,
       "source": "Event listings"
     },
     {
@@ -13352,7 +13829,7 @@
       "free": null,
       "wheelchair": null,
       "description": null,
-      "events": 4,
+      "events": 5,
       "source": "Event listings"
     },
     {
@@ -13628,6 +14105,29 @@
       "description": null,
       "events": 0,
       "source": "OpenStreetMap"
+    },
+    {
+      "id": "venue-cary-institute-of-ecosystem-studies-cary-east",
+      "name": "Cary Institute of Ecosystem Studies (Cary East)",
+      "kind": "school",
+      "kinds": [
+        "school"
+      ],
+      "lat": 41.7895,
+      "lon": -73.72459,
+      "miles": 23.4,
+      "city": "Millbrook, NY",
+      "address": "2801 Sharon Tpk.",
+      "url": "https://www.eventbrite.com/e/the-pyrocene-living-in-a-new-age-of-fire-in-person-tickets-1994244766781",
+      "phone": null,
+      "openingHours": null,
+      "brand": null,
+      "secondHand": null,
+      "free": null,
+      "wheelchair": null,
+      "description": null,
+      "events": 2,
+      "source": "Event listings"
     },
     {
       "id": "osm-way-545598540",
@@ -14479,7 +14979,7 @@
       "free": null,
       "wheelchair": null,
       "description": null,
-      "events": 43,
+      "events": 45,
       "source": "OpenStreetMap"
     },
     {
@@ -14709,7 +15209,7 @@
       "free": null,
       "wheelchair": null,
       "description": null,
-      "events": 19,
+      "events": 21,
       "source": "OpenStreetMap"
     },
     {
@@ -15496,6 +15996,29 @@
       "source": "OpenStreetMap"
     },
     {
+      "id": "venue-trinity-presbyterian-church",
+      "name": "Trinity Presbyterian Church",
+      "kind": "place of worship",
+      "kinds": [
+        "place of worship"
+      ],
+      "lat": 41.20178,
+      "lon": -73.7083,
+      "miles": 24.9,
+      "city": "Mount Kisco, NY",
+      "address": "325 West Patent Road",
+      "url": "https://www.eventbrite.com/e/america-250-concert-at-trinity-tickets-1998317984886",
+      "phone": null,
+      "openingHours": null,
+      "brand": null,
+      "secondHand": null,
+      "free": null,
+      "wheelchair": null,
+      "description": null,
+      "events": 2,
+      "source": "Event listings"
+    },
+    {
       "id": "osm-way-429187268",
       "name": "Witch's Hole State Forest",
       "kind": "park",
@@ -15678,6 +16201,29 @@
       "description": null,
       "events": 0,
       "source": "OpenStreetMap"
+    },
+    {
+      "id": "venue-women-s-studio-workshop",
+      "name": "Women's Studio Workshop",
+      "kind": "gallery",
+      "kinds": [
+        "gallery"
+      ],
+      "lat": 41.85773,
+      "lon": -74.0853,
+      "miles": 25.1,
+      "city": "Kingston, NY",
+      "address": "722 Binnewater Lane",
+      "url": "https://www.eventbrite.com/e/chili-bowl-decorating-at-wsw-september-23-multiple-sessions-tickets-1998897626610",
+      "phone": null,
+      "openingHours": null,
+      "brand": null,
+      "secondHand": null,
+      "free": null,
+      "wheelchair": null,
+      "description": null,
+      "events": 1,
+      "source": "Event listings"
     },
     {
       "id": "osm-node-6504568705",
@@ -16113,7 +16659,7 @@
       "free": null,
       "wheelchair": null,
       "description": null,
-      "events": 2,
+      "events": 3,
       "source": "Event listings"
     },
     {
@@ -16182,7 +16728,7 @@
       "free": null,
       "wheelchair": null,
       "description": null,
-      "events": 2,
+      "events": 4,
       "source": "Event listings"
     },
     {
@@ -16205,7 +16751,7 @@
       "free": null,
       "wheelchair": null,
       "description": null,
-      "events": 5,
+      "events": 6,
       "source": "Event listings"
     },
     {
@@ -16320,7 +16866,7 @@
       "free": null,
       "wheelchair": null,
       "description": null,
-      "events": 7,
+      "events": 6,
       "source": "OpenStreetMap"
     },
     {
@@ -16368,6 +16914,29 @@
       "description": null,
       "events": 0,
       "source": "OpenStreetMap"
+    },
+    {
+      "id": "venue-new-castle-historical-society",
+      "name": "New Castle Historical Society",
+      "kind": "museum",
+      "kinds": [
+        "museum"
+      ],
+      "lat": 41.15913,
+      "lon": -73.77136,
+      "miles": 26.0,
+      "city": "Chappaqua, NY",
+      "address": "100 King Street",
+      "url": "https://www.eventbrite.com/e/the-great-new-castle-hunt-tickets-1996252772781",
+      "phone": null,
+      "openingHours": null,
+      "brand": null,
+      "secondHand": null,
+      "free": null,
+      "wheelchair": null,
+      "description": null,
+      "events": 1,
+      "source": "Event listings"
     },
     {
       "id": "osm-way-460843215",
@@ -16655,7 +17224,7 @@
       "miles": 26.3,
       "city": "Danbury, CT",
       "address": "43 Lake Avenue Extension",
-      "url": "https://www.eventbrite.com/e/bright-star-tickets-1993937299137",
+      "url": "https://www.eventbrite.com/e/bright-star-tickets-1993936608070",
       "phone": null,
       "openingHours": null,
       "brand": null,
@@ -16663,7 +17232,7 @@
       "free": null,
       "wheelchair": null,
       "description": null,
-      "events": 4,
+      "events": 7,
       "source": "Event listings"
     },
     {
@@ -16778,7 +17347,7 @@
       "free": null,
       "wheelchair": null,
       "description": null,
-      "events": 3,
+      "events": 4,
       "source": "Event listings"
     },
     {
@@ -16801,7 +17370,7 @@
       "free": null,
       "wheelchair": null,
       "description": null,
-      "events": 1,
+      "events": 2,
       "source": "Event listings"
     },
     {
@@ -16891,7 +17460,7 @@
       "free": null,
       "wheelchair": null,
       "description": null,
-      "events": 2,
+      "events": 3,
       "source": "Event listings"
     },
     {
@@ -16914,7 +17483,7 @@
       "free": null,
       "wheelchair": null,
       "description": null,
-      "events": 2,
+      "events": 3,
       "source": "Event listings"
     },
     {
@@ -17328,7 +17897,7 @@
       "free": null,
       "wheelchair": null,
       "description": null,
-      "events": 6,
+      "events": 8,
       "source": "Event listings"
     },
     {
@@ -17351,7 +17920,7 @@
       "free": null,
       "wheelchair": null,
       "description": null,
-      "events": 4,
+      "events": 8,
       "source": "OpenStreetMap"
     },
     {
@@ -17763,7 +18332,7 @@
       "free": null,
       "wheelchair": null,
       "description": null,
-      "events": 14,
+      "events": 28,
       "source": "OpenStreetMap"
     },
     {
@@ -17834,6 +18403,29 @@
       "description": null,
       "events": 0,
       "source": "OpenStreetMap"
+    },
+    {
+      "id": "venue-high-falls-cafe-u-s-209-kingston-ny-usa",
+      "name": "High Falls Cafe, U.S. 209, Kingston, NY, USA",
+      "kind": "cafe",
+      "kinds": [
+        "cafe"
+      ],
+      "lat": 41.88479,
+      "lon": -74.11186,
+      "miles": 27.3,
+      "city": "Kingston, NY",
+      "address": "2842 U.S. 209",
+      "url": "https://www.eventbrite.com/e/stand-up-comedy-at-high-falls-cafe-tickets-1999036929268",
+      "phone": null,
+      "openingHours": null,
+      "brand": null,
+      "secondHand": null,
+      "free": null,
+      "wheelchair": null,
+      "description": null,
+      "events": 1,
+      "source": "Event listings"
     },
     {
       "id": "osm-node-12466292705",
@@ -18078,6 +18670,27 @@
       "city": "Pleasantville, NY",
       "address": "404 Irvington Street",
       "url": "https://www.eventbrite.com/e/ultimate-day-party-2026-tickets-1991868267608",
+      "phone": null,
+      "openingHours": null,
+      "brand": null,
+      "secondHand": null,
+      "free": null,
+      "wheelchair": null,
+      "description": null,
+      "events": 3,
+      "source": "Event listings"
+    },
+    {
+      "id": "venue-crowne-plaza-suffern-mahwah-by-ihg",
+      "name": "Crowne Plaza Suffern-Mahwah by IHG",
+      "kind": null,
+      "kinds": [],
+      "lat": 41.11853,
+      "lon": -74.11472,
+      "miles": 27.7,
+      "city": "Suffern, NY",
+      "address": "Executive Boulevard",
+      "url": "https://www.eventbrite.com/e/class-of-1996-30-year-high-school-reunion-tickets-1980603471299",
       "phone": null,
       "openingHours": null,
       "brand": null,
@@ -19350,7 +19963,7 @@
       "free": null,
       "wheelchair": null,
       "description": null,
-      "events": 3,
+      "events": 4,
       "source": "Event listings"
     },
     {
@@ -19373,8 +19986,31 @@
       "free": null,
       "wheelchair": null,
       "description": null,
-      "events": 0,
+      "events": 1,
       "source": "OpenStreetMap"
+    },
+    {
+      "id": "venue-private-healing-sanctuary",
+      "name": "Private Healing Sanctuary",
+      "kind": "park",
+      "kinds": [
+        "park"
+      ],
+      "lat": 41.1606,
+      "lon": -73.66861,
+      "miles": 28.5,
+      "city": "Armonk, NY",
+      "address": "14 middle patent road",
+      "url": "https://www.eventbrite.com/e/unbound-a-one-day-mini-immersion-retreat-tickets-1998507485688",
+      "phone": null,
+      "openingHours": null,
+      "brand": null,
+      "secondHand": null,
+      "free": null,
+      "wheelchair": null,
+      "description": null,
+      "events": 1,
+      "source": "Event listings"
     },
     {
       "id": "osm-relation-4079996",
@@ -19927,6 +20563,27 @@
       "wheelchair": null,
       "description": null,
       "events": 1,
+      "source": "Event listings"
+    },
+    {
+      "id": "venue-the-reher-center-for-immigrant-culture-and-history",
+      "name": "The Reher Center For Immigrant Culture and History",
+      "kind": null,
+      "kinds": [],
+      "lat": 41.92019,
+      "lon": -73.98596,
+      "miles": 28.7,
+      "city": "Kingston, NY",
+      "address": "101 Broadway",
+      "url": "https://www.eventbrite.com/e/historic-rehers-bakery-tours-tickets-1990011871076",
+      "phone": null,
+      "openingHours": null,
+      "brand": null,
+      "secondHand": null,
+      "free": null,
+      "wheelchair": null,
+      "description": null,
+      "events": 2,
       "source": "Event listings"
     },
     {
@@ -20545,7 +21202,7 @@
       "free": null,
       "wheelchair": null,
       "description": null,
-      "events": 56,
+      "events": 58,
       "source": "Event listings"
     },
     {
@@ -21190,7 +21847,7 @@
       "free": null,
       "wheelchair": null,
       "description": null,
-      "events": 0,
+      "events": 1,
       "source": "OpenStreetMap"
     },
     {
@@ -21282,7 +21939,7 @@
       "free": null,
       "wheelchair": null,
       "description": null,
-      "events": 2,
+      "events": 3,
       "source": "Event listings"
     },
     {
@@ -21493,6 +22150,29 @@
       "source": "OpenStreetMap"
     },
     {
+      "id": "venue-oblong-books-rhinebeck",
+      "name": "Oblong Books [Rhinebeck]",
+      "kind": "bookshop",
+      "kinds": [
+        "bookshop"
+      ],
+      "lat": 41.9278,
+      "lon": -73.91202,
+      "miles": 29.4,
+      "city": "Rhinebeck, NY",
+      "address": "6422 Montgomery Street",
+      "url": "https://www.eventbrite.com/e/nina-pick-sober-secure-tickets-1996316807310",
+      "phone": null,
+      "openingHours": null,
+      "brand": null,
+      "secondHand": null,
+      "free": null,
+      "wheelchair": null,
+      "description": null,
+      "events": 4,
+      "source": "Event listings"
+    },
+    {
       "id": "osm-way-429545387",
       "name": "Painter Hill Multiple Use Area",
       "kind": "park",
@@ -21604,7 +22284,7 @@
       "free": null,
       "wheelchair": null,
       "description": null,
-      "events": 37,
+      "events": 36,
       "source": "Event listings"
     },
     {
@@ -22155,7 +22835,7 @@
       "free": null,
       "wheelchair": null,
       "description": null,
-      "events": 2,
+      "events": 3,
       "source": "Event listings"
     },
     {
@@ -23217,6 +23897,29 @@
       "source": "OpenStreetMap"
     },
     {
+      "id": "venue-mason-jar-family-restaurant-and-bar",
+      "name": "Mason Jar Family Restaurant and Bar",
+      "kind": "restaurant",
+      "kinds": [
+        "restaurant"
+      ],
+      "lat": 41.09751,
+      "lon": -74.16278,
+      "miles": 29.9,
+      "city": "Mahwah, NJ",
+      "address": "219 Ramapo Valley Road",
+      "url": "https://www.eventbrite.com/e/teacup-terrarium-workshop-tickets-1998164707429",
+      "phone": null,
+      "openingHours": null,
+      "brand": null,
+      "secondHand": null,
+      "free": null,
+      "wheelchair": null,
+      "description": null,
+      "events": 1,
+      "source": "Event listings"
+    },
+    {
       "id": "venue-north-castle-community-park",
       "name": "North Castle Community Park",
       "kind": "castle",
@@ -23489,7 +24192,7 @@
       "free": null,
       "wheelchair": null,
       "description": null,
-      "events": 2,
+      "events": 11,
       "source": "Event listings"
     },
     {
@@ -23700,6 +24403,29 @@
       "source": "Event listings"
     },
     {
+      "id": "venue-lotuswood-organic-wellness-farm",
+      "name": "Lotuswood Organic Wellness Farm",
+      "kind": "farm",
+      "kinds": [
+        "farm"
+      ],
+      "lat": 41.43913,
+      "lon": -74.54937,
+      "miles": 30.4,
+      "city": "Middletown, NY",
+      "address": "21 Finchville Turnpike",
+      "url": "https://www.eventbrite.com/e/courts-culture-flow-flavor-tickets-1998933980345",
+      "phone": null,
+      "openingHours": null,
+      "brand": null,
+      "secondHand": null,
+      "free": null,
+      "wheelchair": null,
+      "description": null,
+      "events": 1,
+      "source": "Event listings"
+    },
+    {
       "id": "venue-abigail-kirsch-at-tappan-hill-mansion",
       "name": "Abigail Kirsch at Tappan Hill Mansion",
       "kind": "historic house",
@@ -23742,7 +24468,7 @@
       "free": null,
       "wheelchair": null,
       "description": null,
-      "events": 1,
+      "events": 2,
       "source": "Event listings"
     },
     {
@@ -23907,6 +24633,29 @@
       "source": "OpenStreetMap"
     },
     {
+      "id": "venue-pearl-river-high-school",
+      "name": "Pearl River High School",
+      "kind": "school",
+      "kinds": [
+        "school"
+      ],
+      "lat": 41.06117,
+      "lon": -74.00965,
+      "miles": 30.7,
+      "city": "Pearl River, NY",
+      "address": "275 East Central Avenue",
+      "url": "https://www.eventbrite.com/e/resin-charcuterie-workshop-tickets-1997717359399",
+      "phone": null,
+      "openingHours": null,
+      "brand": null,
+      "secondHand": null,
+      "free": null,
+      "wheelchair": null,
+      "description": null,
+      "events": 1,
+      "source": "Event listings"
+    },
+    {
       "id": "osm-node-13713327401",
       "name": "A Place Like Hlme",
       "kind": "zoo",
@@ -23953,6 +24702,29 @@
       "source": "OpenStreetMap"
     },
     {
+      "id": "venue-hackley-school",
+      "name": "Hackley School",
+      "kind": "school",
+      "kinds": [
+        "school"
+      ],
+      "lat": 41.06959,
+      "lon": -73.84126,
+      "miles": 30.8,
+      "city": "Tarrytown, NY",
+      "address": "293 Benedict Avenue",
+      "url": "https://www.eventbrite.com/e/excelsior-symphony-orchestra-fall-concert-tickets-1997169961116",
+      "phone": null,
+      "openingHours": null,
+      "brand": null,
+      "secondHand": null,
+      "free": null,
+      "wheelchair": null,
+      "description": null,
+      "events": 1,
+      "source": "Event listings"
+    },
+    {
       "id": "osm-node-13387424688",
       "name": "Ingram Farmstand",
       "kind": "farm",
@@ -23997,6 +24769,29 @@
       "description": null,
       "events": 0,
       "source": "OpenStreetMap"
+    },
+    {
+      "id": "venue-parkside-tavern",
+      "name": "Parkside Tavern",
+      "kind": "restaurant",
+      "kinds": [
+        "restaurant"
+      ],
+      "lat": 41.05916,
+      "lon": -74.02207,
+      "miles": 30.9,
+      "city": "Pearl River, NY",
+      "address": "9 West Central Ave",
+      "url": "https://www.eventbrite.com/e/curly-at-club-andromeda-for-myles-and-tim-birthday-show-with-special-guests-tickets-1997518183659",
+      "phone": null,
+      "openingHours": null,
+      "brand": null,
+      "secondHand": null,
+      "free": null,
+      "wheelchair": null,
+      "description": null,
+      "events": 1,
+      "source": "Event listings"
     },
     {
       "id": "osm-way-1027685349",
@@ -24064,7 +24859,7 @@
       "free": null,
       "wheelchair": null,
       "description": null,
-      "events": 0,
+      "events": 1,
       "source": "OpenStreetMap"
     },
     {
@@ -24091,6 +24886,71 @@
       "source": "OpenStreetMap"
     },
     {
+      "id": "venue-26-studio-hill-cir",
+      "name": "26 Studio Hill Cir",
+      "kind": "gallery",
+      "kinds": [
+        "gallery"
+      ],
+      "lat": 41.73562,
+      "lon": -73.45173,
+      "miles": 31.1,
+      "city": "Kent, CT",
+      "address": "26 Studio Hill Circle",
+      "url": "https://www.eventbrite.com/e/a-forest-experience-plants-and-their-connections-tickets-1998387237021",
+      "phone": null,
+      "openingHours": null,
+      "brand": null,
+      "secondHand": null,
+      "free": null,
+      "wheelchair": null,
+      "description": null,
+      "events": 1,
+      "source": "Event listings"
+    },
+    {
+      "id": "venue-artemis-arms-llc",
+      "name": "Artemis Arms LLC",
+      "kind": null,
+      "kinds": [],
+      "lat": 41.0703,
+      "lon": -73.81549,
+      "miles": 31.1,
+      "city": "Elmsford, NY",
+      "address": "444 Saw Mill River Rd",
+      "url": "https://www.eventbrite.com/e/low-light-pistol-skill-builder-elmsford-ny-tickets-1986436575270",
+      "phone": null,
+      "openingHours": null,
+      "brand": null,
+      "secondHand": null,
+      "free": null,
+      "wheelchair": null,
+      "description": null,
+      "events": 2,
+      "source": "Event listings"
+    },
+    {
+      "id": "venue-artemis-sporting-arms-elmsford-ny",
+      "name": "Artemis Sporting Arms - Elmsford, NY",
+      "kind": null,
+      "kinds": [],
+      "lat": 41.07014,
+      "lon": -73.81529,
+      "miles": 31.1,
+      "city": "Elmsford, NY",
+      "address": "444 Saw Mill River Road",
+      "url": "https://www.eventbrite.com/e/trauma-med-class-elmsford-ny-tickets-1992969301831",
+      "phone": null,
+      "openingHours": null,
+      "brand": null,
+      "secondHand": null,
+      "free": null,
+      "wheelchair": null,
+      "description": null,
+      "events": 2,
+      "source": "Event listings"
+    },
+    {
       "id": "osm-node-4213044051",
       "name": "Captain Lawrence Brewing Company",
       "kind": "brewery",
@@ -24110,7 +24970,7 @@
       "free": null,
       "wheelchair": null,
       "description": null,
-      "events": 1,
+      "events": 2,
       "source": "OpenStreetMap"
     },
     {
@@ -24133,7 +24993,7 @@
       "free": null,
       "wheelchair": null,
       "description": null,
-      "events": 9,
+      "events": 11,
       "source": "Event listings"
     },
     {
@@ -24921,6 +25781,29 @@
       "source": "OpenStreetMap"
     },
     {
+      "id": "venue-the-silo-at-hunt-hill-farm",
+      "name": "The Silo (at Hunt Hill Farm)",
+      "kind": "farm",
+      "kinds": [
+        "farm"
+      ],
+      "lat": 41.63814,
+      "lon": -73.38268,
+      "miles": 31.7,
+      "city": "New Milford, CT",
+      "address": "44 Upland Road",
+      "url": "https://www.eventbrite.com/e/a-revolutionary-murder-mystery-dinner-tickets-1995494082518",
+      "phone": null,
+      "openingHours": null,
+      "brand": null,
+      "secondHand": null,
+      "free": null,
+      "wheelchair": null,
+      "description": null,
+      "events": 1,
+      "source": "Event listings"
+    },
+    {
       "id": "osm-way-549420644",
       "name": "Weir Farm National Historic Site",
       "kind": "park",
@@ -25032,7 +25915,7 @@
       "free": null,
       "wheelchair": null,
       "description": null,
-      "events": 3,
+      "events": 4,
       "source": "Event listings"
     },
     {
@@ -25241,6 +26124,29 @@
       "description": null,
       "events": 0,
       "source": "OpenStreetMap"
+    },
+    {
+      "id": "venue-tarrytown-house-estate",
+      "name": "Tarrytown House Estate",
+      "kind": "historic house",
+      "kinds": [
+        "historic house"
+      ],
+      "lat": 41.05051,
+      "lon": -73.85829,
+      "miles": 31.9,
+      "city": "Tarrytown, NY",
+      "address": "49 East Sunnyside Lane",
+      "url": "https://www.eventbrite.com/e/death-valley-beauty-pageant-a-murder-mystery-dinner-tickets-1997898800093",
+      "phone": null,
+      "openingHours": null,
+      "brand": null,
+      "secondHand": null,
+      "free": null,
+      "wheelchair": null,
+      "description": null,
+      "events": 1,
+      "source": "Event listings"
     },
     {
       "id": "osm-node-12505441278",
@@ -25611,6 +26517,29 @@
       "source": "OpenStreetMap"
     },
     {
+      "id": "venue-7-old-road-elmsford-ny-usa",
+      "name": "7 Old Road, Elmsford, NY, USA",
+      "kind": "music venue",
+      "kinds": [
+        "music venue"
+      ],
+      "lat": 41.05157,
+      "lon": -73.81182,
+      "miles": 32.4,
+      "city": "Elmsford, NY",
+      "address": "7 Old Road",
+      "url": "https://www.eventbrite.com/e/hey-baby-band-tickets-1988496347103",
+      "phone": null,
+      "openingHours": null,
+      "brand": null,
+      "secondHand": null,
+      "free": null,
+      "wheelchair": null,
+      "description": null,
+      "events": 7,
+      "source": "Event listings"
+    },
+    {
       "id": "osm-way-176923174",
       "name": "Lockheed Constellation",
       "kind": "landmark",
@@ -25680,29 +26609,6 @@
       "source": "OpenStreetMap"
     },
     {
-      "id": "venue-irvington-library",
-      "name": "Irvington Library",
-      "kind": "library",
-      "kinds": [
-        "library"
-      ],
-      "lat": 41.03963,
-      "lon": -73.87269,
-      "miles": 32.5,
-      "city": "Irvington, NY",
-      "address": "Irvington Public Library, Irvington, NY",
-      "url": "https://irvingtonlibrary.libcal.com/event/15396290",
-      "phone": null,
-      "openingHours": null,
-      "brand": null,
-      "secondHand": null,
-      "free": null,
-      "wheelchair": null,
-      "description": null,
-      "events": 1,
-      "source": "Event listings"
-    },
-    {
       "id": "osm-node-2553792539",
       "name": "Irvington Public Library",
       "kind": "library",
@@ -25722,7 +26628,7 @@
       "free": null,
       "wheelchair": null,
       "description": null,
-      "events": 22,
+      "events": 24,
       "source": "OpenStreetMap"
     },
     {
@@ -26112,7 +27018,7 @@
       "free": null,
       "wheelchair": null,
       "description": null,
-      "events": 79,
+      "events": 81,
       "source": "OpenStreetMap"
     },
     {
@@ -26429,6 +27335,29 @@
       "source": "OpenStreetMap"
     },
     {
+      "id": "venue-the-sparkle-bookstore",
+      "name": "The Sparkle Bookstore",
+      "kind": "bookshop",
+      "kinds": [
+        "bookshop"
+      ],
+      "lat": 41.03022,
+      "lon": -73.92834,
+      "miles": 32.9,
+      "city": "Sparkill, NY",
+      "address": "642 Main Street",
+      "url": "https://www.eventbrite.com/e/creating-characters-that-connect-with-jeff-bens-tickets-1996344762926",
+      "phone": null,
+      "openingHours": null,
+      "brand": null,
+      "secondHand": null,
+      "free": null,
+      "wheelchair": null,
+      "description": null,
+      "events": 4,
+      "source": "Event listings"
+    },
+    {
       "id": "venue-german-masonic-park",
       "name": "German Masonic Park",
       "kind": "park",
@@ -26679,7 +27608,7 @@
       "free": null,
       "wheelchair": null,
       "description": null,
-      "events": 10,
+      "events": 18,
       "source": "OpenStreetMap"
     },
     {
@@ -26748,7 +27677,7 @@
       "free": null,
       "wheelchair": null,
       "description": null,
-      "events": 16,
+      "events": 19,
       "source": "OpenStreetMap"
     },
     {
@@ -26842,6 +27771,27 @@
       "description": null,
       "events": 0,
       "source": "OpenStreetMap"
+    },
+    {
+      "id": "venue-the-old-76-house",
+      "name": "The Old '76 House",
+      "kind": null,
+      "kinds": [],
+      "lat": 41.02175,
+      "lon": -73.94807,
+      "miles": 33.4,
+      "city": "Tappan, NY",
+      "address": "110 Main Street",
+      "url": "https://www.eventbrite.com/e/paint-night-at-the-old-76-house-thursday-september-17th-tickets-1997151919152",
+      "phone": null,
+      "openingHours": null,
+      "brand": null,
+      "secondHand": null,
+      "free": null,
+      "wheelchair": null,
+      "description": null,
+      "events": 2,
+      "source": "Event listings"
     },
     {
       "id": "osm-way-638604285",
@@ -27003,6 +27953,29 @@
       "source": "OpenStreetMap"
     },
     {
+      "id": "venue-mercy-university",
+      "name": "Mercy University",
+      "kind": "school",
+      "kinds": [
+        "school"
+      ],
+      "lat": 41.02225,
+      "lon": -73.8735,
+      "miles": 33.7,
+      "city": "Dobbs Ferry, NY",
+      "address": "555 Broadway",
+      "url": "https://www.eventbrite.com/e/2026-latin-biz-today-spectrum-of-success-event-tickets-991100647717",
+      "phone": null,
+      "openingHours": null,
+      "brand": null,
+      "secondHand": null,
+      "free": null,
+      "wheelchair": null,
+      "description": null,
+      "events": 1,
+      "source": "Event listings"
+    },
+    {
       "id": "osm-way-318017655",
       "name": "Migliorelli Farm Stand",
       "kind": "farm",
@@ -27047,6 +28020,29 @@
       "description": null,
       "events": 0,
       "source": "OpenStreetMap"
+    },
+    {
+      "id": "venue-elisabeth-haub-school-of-law-at-pace-university",
+      "name": "Elisabeth Haub School of Law at Pace University",
+      "kind": "school",
+      "kinds": [
+        "school"
+      ],
+      "lat": 41.03957,
+      "lon": -73.76581,
+      "miles": 33.8,
+      "city": "White Plains, NY",
+      "address": "78 North Broadway",
+      "url": "https://www.eventbrite.com/e/profit-purpose-sustainable-business-conference-tickets-1997850792501",
+      "phone": null,
+      "openingHours": null,
+      "brand": null,
+      "secondHand": null,
+      "free": null,
+      "wheelchair": null,
+      "description": null,
+      "events": 1,
+      "source": "Event listings"
     },
     {
       "id": "osm-node-4094499892",
@@ -27114,7 +28110,7 @@
       "free": null,
       "wheelchair": "yes",
       "description": null,
-      "events": 2,
+      "events": 3,
       "source": "OpenStreetMap"
     },
     {
@@ -27160,7 +28156,7 @@
       "free": null,
       "wheelchair": null,
       "description": null,
-      "events": 6,
+      "events": 10,
       "source": "Event listings"
     },
     {
@@ -27319,7 +28315,7 @@
       "free": null,
       "wheelchair": null,
       "description": null,
-      "events": 2,
+      "events": 3,
       "source": "Event listings"
     },
     {
@@ -27390,6 +28386,27 @@
       "source": "OpenStreetMap"
     },
     {
+      "id": "venue-hudco",
+      "name": "HudCo",
+      "kind": null,
+      "kinds": [],
+      "lat": 41.01679,
+      "lon": -73.87802,
+      "miles": 34.1,
+      "city": "Dobbs Ferry, NY",
+      "address": "145 Palisade Street",
+      "url": "https://www.eventbrite.com/e/custom-stamp-makinglinocut-print-workshop-tickets-1996797209205",
+      "phone": null,
+      "openingHours": null,
+      "brand": null,
+      "secondHand": null,
+      "free": null,
+      "wheelchair": null,
+      "description": null,
+      "events": 3,
+      "source": "Event listings"
+    },
+    {
       "id": "osm-way-967976124",
       "name": "Institute for American Indian Studies",
       "kind": "museum",
@@ -27436,6 +28453,29 @@
       "source": "OpenStreetMap"
     },
     {
+      "id": "venue-saw-mill-tavern",
+      "name": "Saw Mill Tavern",
+      "kind": "restaurant",
+      "kinds": [
+        "restaurant"
+      ],
+      "lat": 41.02072,
+      "lon": -73.84323,
+      "miles": 34.1,
+      "city": "Ardsley, NY",
+      "address": "925 Saw Mill River Road",
+      "url": "https://www.eventbrite.com/e/scarsdale-high-school-class-of-1981-reunion-tickets-1998926428758",
+      "phone": null,
+      "openingHours": null,
+      "brand": null,
+      "secondHand": null,
+      "free": null,
+      "wheelchair": null,
+      "description": null,
+      "events": 1,
+      "source": "Event listings"
+    },
+    {
       "id": "osm-way-43398271",
       "name": "Stamford Museum & Nature Center",
       "kind": "park",
@@ -27455,7 +28495,7 @@
       "free": false,
       "wheelchair": null,
       "description": null,
-      "events": 3,
+      "events": 4,
       "source": "OpenStreetMap"
     },
     {
@@ -27478,7 +28518,7 @@
       "free": null,
       "wheelchair": null,
       "description": null,
-      "events": 14,
+      "events": 21,
       "source": "Event listings"
     },
     {
@@ -28127,6 +29167,29 @@
       "source": "OpenStreetMap"
     },
     {
+      "id": "venue-ridge-road-park",
+      "name": "Ridge Road Park",
+      "kind": "park",
+      "kinds": [
+        "park"
+      ],
+      "lat": 41.02168,
+      "lon": -73.8131,
+      "miles": 34.4,
+      "city": "Hartsdale, NY",
+      "address": "287 Ridge Road",
+      "url": "https://www.eventbrite.com/e/puppy-yoga-at-ridge-road-park-tickets-1998490616231",
+      "phone": null,
+      "openingHours": null,
+      "brand": null,
+      "secondHand": null,
+      "free": null,
+      "wheelchair": null,
+      "description": null,
+      "events": 1,
+      "source": "Event listings"
+    },
+    {
       "id": "osm-node-8892773054",
       "name": "River Vale Library",
       "kind": "library",
@@ -28610,6 +29673,27 @@
       "description": null,
       "events": 0,
       "source": "OpenStreetMap"
+    },
+    {
+      "id": "venue-ron-blacks",
+      "name": "Ron Blacks",
+      "kind": null,
+      "kinds": [],
+      "lat": 41.02835,
+      "lon": -73.76448,
+      "miles": 34.6,
+      "city": "White Plains, NY",
+      "address": "181 Mamaroneck Avenue",
+      "url": "https://www.meetup.com/young-adults-events-group/events/316184217/",
+      "phone": null,
+      "openingHours": null,
+      "brand": null,
+      "secondHand": null,
+      "free": null,
+      "wheelchair": null,
+      "description": null,
+      "events": 2,
+      "source": "Event listings"
     },
     {
       "id": "venue-ron-blacks-beer-hall",
@@ -29623,7 +30707,7 @@
       "free": null,
       "wheelchair": null,
       "description": null,
-      "events": 6,
+      "events": 10,
       "source": "Event listings"
     },
     {
@@ -29806,7 +30890,7 @@
       "free": null,
       "wheelchair": null,
       "description": null,
-      "events": 37,
+      "events": 36,
       "source": "Event listings"
     },
     {
@@ -30455,6 +31539,29 @@
       "source": "OpenStreetMap"
     },
     {
+      "id": "venue-the-tavern-the-iron-horse-washington-avenue-westwood-nj-usa",
+      "name": "The Tavern @ The Iron Horse, Washington Avenue, Westwood, NJ, USA",
+      "kind": "restaurant",
+      "kinds": [
+        "restaurant"
+      ],
+      "lat": 40.99173,
+      "lon": -74.03364,
+      "miles": 35.6,
+      "city": "Westwood, NJ",
+      "address": "20 Washington Avenue",
+      "url": "https://www.eventbrite.com/e/channeling-dinner-with-craig-mcmanus-tickets-1998443943632",
+      "phone": null,
+      "openingHours": null,
+      "brand": null,
+      "secondHand": null,
+      "free": null,
+      "wheelchair": null,
+      "description": null,
+      "events": 1,
+      "source": "Event listings"
+    },
+    {
       "id": "osm-node-1225903977",
       "name": "Westwood Cinemas",
       "kind": "cinema",
@@ -30846,6 +31953,29 @@
       "source": "OpenStreetMap"
     },
     {
+      "id": "venue-state-line-lookout-palisades-interstate-park-commission",
+      "name": "State Line Lookout, Palisades Interstate Park Commission",
+      "kind": "lookout",
+      "kinds": [
+        "lookout"
+      ],
+      "lat": 40.98848,
+      "lon": -73.90689,
+      "miles": 35.8,
+      "city": "Closter, NJ",
+      "address": "State Line Lookout",
+      "url": "https://www.eventbrite.com/e/cadillac-club-of-north-jersey-35th-fabulous-fall-car-show-registration-1997094873527",
+      "phone": null,
+      "openingHours": null,
+      "brand": null,
+      "secondHand": null,
+      "free": null,
+      "wheelchair": null,
+      "description": null,
+      "events": 1,
+      "source": "Event listings"
+    },
+    {
       "id": "osm-node-3251326803",
       "name": "Weis Cinema",
       "kind": "cinema",
@@ -30982,6 +32112,29 @@
       "description": null,
       "events": 0,
       "source": "OpenStreetMap"
+    },
+    {
+      "id": "venue-u-paint-studio",
+      "name": "U Paint Studio",
+      "kind": "gallery",
+      "kinds": [
+        "gallery"
+      ],
+      "lat": 41.02436,
+      "lon": -74.2399,
+      "miles": 36.0,
+      "city": "Oakland, NJ",
+      "address": "350 Ramapo Valley Road",
+      "url": "https://www.eventbrite.com/e/gay-mens-paint-night-at-u-paint-studio-oakland-nj-tickets-1994513137485",
+      "phone": null,
+      "openingHours": null,
+      "brand": null,
+      "secondHand": null,
+      "free": null,
+      "wheelchair": null,
+      "description": null,
+      "events": 1,
+      "source": "Event listings"
     },
     {
       "id": "osm-node-3066077248",
@@ -31394,7 +32547,7 @@
       "free": null,
       "wheelchair": null,
       "description": null,
-      "events": 17,
+      "events": 18,
       "source": "OpenStreetMap"
     },
     {
@@ -31490,6 +32643,52 @@
       "source": "OpenStreetMap"
     },
     {
+      "id": "venue-westchester-manor",
+      "name": "Westchester Manor",
+      "kind": "historic house",
+      "kinds": [
+        "historic house"
+      ],
+      "lat": 40.98547,
+      "lon": -73.864,
+      "miles": 36.3,
+      "city": "Hastings-on-Hudson, NY",
+      "address": "140 Saw Mill River Road",
+      "url": "https://www.eventbrite.com/e/waef-hzl-chapter-presents-the-2026-scholarship-dinner-dance-tickets-1995843258914",
+      "phone": null,
+      "openingHours": null,
+      "brand": null,
+      "secondHand": null,
+      "free": null,
+      "wheelchair": null,
+      "description": null,
+      "events": 1,
+      "source": "Event listings"
+    },
+    {
+      "id": "venue-woman-s-club-of-white-plains",
+      "name": "Woman's Club of White Plains",
+      "kind": "club",
+      "kinds": [
+        "club"
+      ],
+      "lat": 41.00614,
+      "lon": -73.74811,
+      "miles": 36.3,
+      "city": "White Plains, NY",
+      "address": "305 Ridgeway",
+      "url": "https://www.eventbrite.com/e/launch-party-nowhere-to-go-but-everywhere-by-jessica-rao-tickets-1998258493947",
+      "phone": null,
+      "openingHours": null,
+      "brand": null,
+      "secondHand": null,
+      "free": null,
+      "wheelchair": null,
+      "description": null,
+      "events": 2,
+      "source": "Event listings"
+    },
+    {
       "id": "osm-node-2140785461",
       "name": "Women's Federation Monument",
       "kind": "historic site",
@@ -31511,6 +32710,29 @@
       "description": null,
       "events": 0,
       "source": "OpenStreetMap"
+    },
+    {
+      "id": "venue-bacari-grill",
+      "name": "BACARI GRILL",
+      "kind": "restaurant",
+      "kinds": [
+        "restaurant"
+      ],
+      "lat": 40.98258,
+      "lon": -74.0664,
+      "miles": 36.4,
+      "city": "Washington Twp, NJ",
+      "address": "800 Ridgewood Road",
+      "url": "https://www.eventbrite.com/e/a-capital-markets-and-economic-outlook-for-2026-and-beyond-tickets-1997978716124",
+      "phone": null,
+      "openingHours": null,
+      "brand": null,
+      "secondHand": null,
+      "free": null,
+      "wheelchair": null,
+      "description": null,
+      "events": 1,
+      "source": "Event listings"
     },
     {
       "id": "osm-way-1182607596",
@@ -32843,7 +34065,7 @@
       "free": null,
       "wheelchair": null,
       "description": null,
-      "events": 1,
+      "events": 2,
       "source": "Event listings"
     },
     {
@@ -33261,6 +34483,73 @@
       "source": "OpenStreetMap"
     },
     {
+      "id": "venue-christ-church-greenwich",
+      "name": "Christ Church Greenwich",
+      "kind": "place of worship",
+      "kinds": [
+        "place of worship"
+      ],
+      "lat": 41.03624,
+      "lon": -73.61829,
+      "miles": 37.2,
+      "city": "Greenwich, CT",
+      "address": "254 East Putnam Avenue",
+      "url": "https://www.eventbrite.com/e/book-talk-rick-atkinson-the-fate-of-the-day-tickets-1997396594984",
+      "phone": null,
+      "openingHours": null,
+      "brand": null,
+      "secondHand": null,
+      "free": null,
+      "wheelchair": null,
+      "description": null,
+      "events": 1,
+      "source": "Event listings"
+    },
+    {
+      "id": "venue-dogwood-books-gifts",
+      "name": "Dogwood Books & Gifts",
+      "kind": "bookshop",
+      "kinds": [
+        "bookshop"
+      ],
+      "lat": 41.03592,
+      "lon": -73.61832,
+      "miles": 37.2,
+      "city": "Greenwich, CT",
+      "address": "254 East Putnam Avenue",
+      "url": "https://www.eventbrite.com/e/book-talk-alexander-mccall-smith-the-big-cats-dance-party-tickets-1997330583542",
+      "phone": null,
+      "openingHours": null,
+      "brand": null,
+      "secondHand": null,
+      "free": null,
+      "wheelchair": null,
+      "description": null,
+      "events": 1,
+      "source": "Event listings"
+    },
+    {
+      "id": "venue-hmtx-house-up-on-the-hill",
+      "name": "HMTX House Up On The Hill",
+      "kind": null,
+      "kinds": [],
+      "lat": 41.14893,
+      "lon": -73.43035,
+      "miles": 37.2,
+      "city": "Norwalk, CT",
+      "address": "27 Seir Hill Road",
+      "url": "https://www.eventbrite.com/e/annual-inclusive-leadership-impact-awards-tickets-1992660981637",
+      "phone": null,
+      "openingHours": null,
+      "brand": null,
+      "secondHand": null,
+      "free": null,
+      "wheelchair": null,
+      "description": null,
+      "events": 2,
+      "source": "Event listings"
+    },
+    {
       "id": "osm-way-307378475",
       "name": "Michaels",
       "kind": "shop",
@@ -33420,6 +34709,29 @@
       "description": null,
       "events": 0,
       "source": "OpenStreetMap"
+    },
+    {
+      "id": "venue-lorrimer-sanctuary",
+      "name": "Lorrimer Sanctuary",
+      "kind": "park",
+      "kinds": [
+        "park"
+      ],
+      "lat": 40.99275,
+      "lon": -74.19922,
+      "miles": 37.3,
+      "city": "Franklin Lakes, NJ",
+      "address": "790 Ewing Avenue",
+      "url": "https://www.eventbrite.com/e/foraged-woodland-tea-party-tickets-1996829541913",
+      "phone": null,
+      "openingHours": null,
+      "brand": null,
+      "secondHand": null,
+      "free": null,
+      "wheelchair": null,
+      "description": null,
+      "events": 2,
+      "source": "Event listings"
     },
     {
       "id": "osm-way-1452081383",
@@ -33741,7 +35053,7 @@
       "free": null,
       "wheelchair": null,
       "description": null,
-      "events": 60,
+      "events": 86,
       "source": "Event listings"
     },
     {
@@ -33856,7 +35168,7 @@
       "free": null,
       "wheelchair": null,
       "description": null,
-      "events": 18,
+      "events": 16,
       "source": "Event listings"
     },
     {
@@ -33879,7 +35191,7 @@
       "free": null,
       "wheelchair": null,
       "description": null,
-      "events": 6,
+      "events": 10,
       "source": "Event listings"
     },
     {
@@ -34621,6 +35933,29 @@
       "source": "OpenStreetMap"
     },
     {
+      "id": "venue-historical-society-of-woodstock",
+      "name": "Historical Society of Woodstock",
+      "kind": "museum",
+      "kinds": [
+        "museum"
+      ],
+      "lat": 42.03914,
+      "lon": -74.12404,
+      "miles": 37.8,
+      "city": "Woodstock, NY",
+      "address": "20 Comeau Drive",
+      "url": "https://www.eventbrite.com/e/histories-of-the-sawkill-through-human-impacts-tickets-1988000786869",
+      "phone": null,
+      "openingHours": null,
+      "brand": null,
+      "secondHand": null,
+      "free": null,
+      "wheelchair": null,
+      "description": null,
+      "events": 1,
+      "source": "Event listings"
+    },
+    {
       "id": "venue-kleinert-james-gallery",
       "name": "Kleinert James Gallery",
       "kind": "gallery",
@@ -34944,6 +36279,27 @@
       "source": "OpenStreetMap"
     },
     {
+      "id": "venue-the-j-house-greenwich",
+      "name": "The J House Greenwich",
+      "kind": null,
+      "kinds": [],
+      "lat": 41.04025,
+      "lon": -73.58449,
+      "miles": 37.8,
+      "city": "Riverside, CT",
+      "address": "1114 East Putnam Avenue",
+      "url": "https://www.eventbrite.com/e/sound-bath-and-sunset-healing-tickets-1993703636245",
+      "phone": null,
+      "openingHours": null,
+      "brand": null,
+      "secondHand": null,
+      "free": null,
+      "wheelchair": null,
+      "description": null,
+      "events": 2,
+      "source": "Event listings"
+    },
+    {
       "id": "osm-node-10544147252",
       "name": "The Rare Bear",
       "kind": "shop",
@@ -35076,7 +36432,7 @@
       "free": null,
       "wheelchair": null,
       "description": null,
-      "events": 4,
+      "events": 6,
       "source": "Event listings"
     },
     {
@@ -35239,7 +36595,7 @@
       "free": null,
       "wheelchair": null,
       "description": null,
-      "events": 48,
+      "events": 53,
       "source": "OpenStreetMap"
     },
     {
@@ -35303,6 +36659,29 @@
       "url": "https://ejchocolates.com",
       "phone": null,
       "openingHours": "Mo-Fr 11:00-19:00; Sa-Su 10:00-20:00",
+      "brand": null,
+      "secondHand": null,
+      "free": null,
+      "wheelchair": null,
+      "description": null,
+      "events": 0,
+      "source": "OpenStreetMap"
+    },
+    {
+      "id": "osm-node-14128713157",
+      "name": "Estate Treasures",
+      "kind": "shop",
+      "kinds": [
+        "shop"
+      ],
+      "lat": 41.044699,
+      "lon": -73.572646,
+      "miles": 37.9,
+      "city": "Greenwich, CT",
+      "address": "1381 East Putnam Avenue, Greenwich, CT",
+      "url": null,
+      "phone": null,
+      "openingHours": null,
       "brand": null,
       "secondHand": null,
       "free": null,
@@ -35621,6 +37000,29 @@
       "city": "Port Chester, NY",
       "address": "Port Chester-Rye Brook Public Library, 1 Haseco Ave, Port Chester, New York, 10573, United States",
       "url": "https://www.teatown.org/events/entomology-port-chester-rye-brook-library/",
+      "phone": null,
+      "openingHours": null,
+      "brand": null,
+      "secondHand": null,
+      "free": null,
+      "wheelchair": null,
+      "description": null,
+      "events": 1,
+      "source": "Event listings"
+    },
+    {
+      "id": "venue-saxon-woods-grill",
+      "name": "Saxon Woods Grill",
+      "kind": "park",
+      "kinds": [
+        "park"
+      ],
+      "lat": 40.97792,
+      "lon": -73.75923,
+      "miles": 38.0,
+      "city": "Scarsdale, NY",
+      "address": "315 Mamaroneck Road",
+      "url": "https://www.eventbrite.com/e/4th-annual-pink-bingo-brunch-tickets-1992358756674",
       "phone": null,
       "openingHours": null,
       "brand": null,
@@ -36087,6 +37489,29 @@
       "wheelchair": null,
       "description": null,
       "events": 2,
+      "source": "Event listings"
+    },
+    {
+      "id": "venue-hop-vine-taproom",
+      "name": "HOP & VINE TAPROOM",
+      "kind": "brewery",
+      "kinds": [
+        "brewery"
+      ],
+      "lat": 41.05694,
+      "lon": -73.53902,
+      "miles": 38.2,
+      "city": "Stamford, CT",
+      "address": "30 Spring Street",
+      "url": "https://www.eventbrite.com/e/general-business-networking-elevating-your-potential-stamford-tickets-1990800195977",
+      "phone": null,
+      "openingHours": null,
+      "brand": null,
+      "secondHand": null,
+      "free": null,
+      "wheelchair": null,
+      "description": null,
+      "events": 1,
       "source": "Event listings"
     },
     {
@@ -36573,8 +37998,8 @@
       "source": "OpenStreetMap"
     },
     {
-      "id": "venue-sky-high-farm",
-      "name": "Sky High Farm",
+      "id": "venue-sky-high-farm-initial-meeting-location",
+      "name": "Sky High Farm (Initial Meeting Location)",
       "kind": "farm",
       "kinds": [
         "farm"
@@ -36592,7 +38017,7 @@
       "free": null,
       "wheelchair": null,
       "description": null,
-      "events": 1,
+      "events": 2,
       "source": "Event listings"
     },
     {
@@ -36965,6 +38390,52 @@
       "source": "OpenStreetMap"
     },
     {
+      "id": "venue-harrison-meadows-country-club",
+      "name": "Harrison Meadows Country Club",
+      "kind": "club",
+      "kinds": [
+        "club"
+      ],
+      "lat": 40.9851,
+      "lon": -73.70644,
+      "miles": 38.4,
+      "city": "Harrison, NY",
+      "address": "123 North Street",
+      "url": "https://www.eventbrite.com/e/summer-sunset-glamour-on-the-green-tickets-1992148136704",
+      "phone": null,
+      "openingHours": null,
+      "brand": null,
+      "secondHand": null,
+      "free": null,
+      "wheelchair": null,
+      "description": null,
+      "events": 1,
+      "source": "Event listings"
+    },
+    {
+      "id": "venue-oak-hills-park-golf-course",
+      "name": "Oak Hills Park Golf Course",
+      "kind": "park",
+      "kinds": [
+        "park"
+      ],
+      "lat": 41.11428,
+      "lon": -73.44305,
+      "miles": 38.4,
+      "city": "Norwalk, CT",
+      "address": "165 Fillow Street",
+      "url": "https://www.eventbrite.com/e/speed-dating-ages-25-39-in-norwalk-ct-at-odeens-bbq-restaurants-tickets-1995637953841",
+      "phone": null,
+      "openingHours": null,
+      "brand": null,
+      "secondHand": null,
+      "free": null,
+      "wheelchair": null,
+      "description": null,
+      "events": 1,
+      "source": "Event listings"
+    },
+    {
       "id": "osm-way-775092423",
       "name": "Port Jervis Free Library",
       "kind": "library",
@@ -36986,6 +38457,27 @@
       "description": null,
       "events": 0,
       "source": "OpenStreetMap"
+    },
+    {
+      "id": "venue-sala-tree-yoga-house",
+      "name": "Sala Tree Yoga House",
+      "kind": null,
+      "kinds": [],
+      "lat": 41.05343,
+      "lon": -73.53963,
+      "miles": 38.4,
+      "city": "Stamford, CT",
+      "address": "135 Atlantic Street",
+      "url": "https://www.eventbrite.com/e/jetset-x-stamford-farmers-market-tickets-1996760485363",
+      "phone": null,
+      "openingHours": null,
+      "brand": null,
+      "secondHand": null,
+      "free": null,
+      "wheelchair": null,
+      "description": null,
+      "events": 3,
+      "source": "Event listings"
     },
     {
       "id": "osm-way-368218516",
@@ -37627,7 +39119,7 @@
       "free": null,
       "wheelchair": null,
       "description": null,
-      "events": 7,
+      "events": 12,
       "source": "Event listings"
     },
     {
@@ -37698,6 +39190,29 @@
       "description": null,
       "events": 0,
       "source": "OpenStreetMap"
+    },
+    {
+      "id": "venue-high-point-state-park-and-new-jersey-veterans-memorial",
+      "name": "High Point State Park and New Jersey Veterans' Memorial",
+      "kind": "historic site",
+      "kinds": [
+        "historic site"
+      ],
+      "lat": 41.31406,
+      "lon": -74.66894,
+      "miles": 38.6,
+      "city": "Sussex, NJ",
+      "address": "1480 State Route 23",
+      "url": "https://www.eventbrite.com/e/sawmill-lake-nature-walk-tickets-1998161344370",
+      "phone": null,
+      "openingHours": null,
+      "brand": null,
+      "secondHand": null,
+      "free": null,
+      "wheelchair": null,
+      "description": null,
+      "events": 1,
+      "source": "Event listings"
     },
     {
       "id": "osm-way-743751015",
@@ -38321,6 +39836,29 @@
       "source": "OpenStreetMap"
     },
     {
+      "id": "venue-rye-grill-bar",
+      "name": "Rye Grill & Bar",
+      "kind": "restaurant",
+      "kinds": [
+        "restaurant"
+      ],
+      "lat": 40.98507,
+      "lon": -73.68379,
+      "miles": 38.9,
+      "city": "Rye, NY",
+      "address": "1 Station Plaza",
+      "url": "https://www.eventbrite.com/e/westchester-comedy-club-rye-thursday-night-laughs-september-2026-tickets-1988420709870",
+      "phone": null,
+      "openingHours": null,
+      "brand": null,
+      "secondHand": null,
+      "free": null,
+      "wheelchair": null,
+      "description": null,
+      "events": 1,
+      "source": "Event listings"
+    },
+    {
       "id": "osm-node-367138518",
       "name": "South End Community Center Branch Stamford Public Library",
       "kind": "library",
@@ -38365,6 +39903,29 @@
       "description": null,
       "events": 0,
       "source": "OpenStreetMap"
+    },
+    {
+      "id": "venue-tuck-d-away-bar-and-grill",
+      "name": "Tuck'd Away Bar and Grill",
+      "kind": "restaurant",
+      "kinds": [
+        "restaurant"
+      ],
+      "lat": 40.95133,
+      "lon": -73.82892,
+      "miles": 38.9,
+      "city": "Tuckahoe, NY",
+      "address": "90 Yonkers Avenue",
+      "url": "https://www.eventbrite.com/e/acting-production-and-business-networking-westchester-tickets-1995169392361",
+      "phone": null,
+      "openingHours": null,
+      "brand": null,
+      "secondHand": null,
+      "free": null,
+      "wheelchair": null,
+      "description": null,
+      "events": 2,
+      "source": "Event listings"
     },
     {
       "id": "osm-node-6672389605",
@@ -38641,7 +40202,7 @@
       "free": null,
       "wheelchair": null,
       "description": null,
-      "events": 77,
+      "events": 80,
       "source": "Event listings"
     },
     {
@@ -38688,6 +40249,29 @@
       "wheelchair": null,
       "description": null,
       "events": 2,
+      "source": "Event listings"
+    },
+    {
+      "id": "venue-chelsea-piers-athletic-club-stamford-ct",
+      "name": "Chelsea Piers Athletic Club: Stamford, CT",
+      "kind": "club",
+      "kinds": [
+        "club"
+      ],
+      "lat": 41.05294,
+      "lon": -73.51515,
+      "miles": 39.1,
+      "city": "Stamford, CT",
+      "address": "1 Blachley Road",
+      "url": "https://www.eventbrite.com/e/northeast-sports-card-expo-connecticut-tickets-1988756686786",
+      "phone": null,
+      "openingHours": null,
+      "brand": null,
+      "secondHand": null,
+      "free": null,
+      "wheelchair": null,
+      "description": null,
+      "events": 1,
       "source": "Event listings"
     },
     {
@@ -38852,6 +40436,29 @@
       "source": "OpenStreetMap"
     },
     {
+      "id": "venue-spiral-house-park",
+      "name": "Spiral House Park",
+      "kind": "park",
+      "kinds": [
+        "park"
+      ],
+      "lat": 42.07056,
+      "lon": -74.01133,
+      "miles": 39.1,
+      "city": "Saugerties, NY",
+      "address": "185 Fish Creek Road",
+      "url": "https://www.eventbrite.com/e/join-us-for-a-garden-tour-at-spiral-house-park-saugerties-tickets-1996449828179",
+      "phone": null,
+      "openingHours": null,
+      "brand": null,
+      "secondHand": null,
+      "free": null,
+      "wheelchair": null,
+      "description": null,
+      "events": 1,
+      "source": "Event listings"
+    },
+    {
       "id": "osm-way-438346508",
       "name": "Warrens Occult Museum",
       "kind": "museum",
@@ -38897,6 +40504,27 @@
       "description": null,
       "events": 0,
       "source": "OpenStreetMap"
+    },
+    {
+      "id": "venue-617-main-st-n",
+      "name": "617 Main St N",
+      "kind": null,
+      "kinds": [],
+      "lat": 41.49389,
+      "lon": -73.2132,
+      "miles": 39.2,
+      "city": "Southbury, CT",
+      "address": "617 Main Street North",
+      "url": "https://www.eventbrite.com/e/gluten-free-baking-tickets-1997563256473",
+      "phone": null,
+      "openingHours": null,
+      "brand": null,
+      "secondHand": null,
+      "free": null,
+      "wheelchair": null,
+      "description": null,
+      "events": 5,
+      "source": "Event listings"
     },
     {
       "id": "osm-node-14014919484",
@@ -38966,6 +40594,27 @@
       "description": null,
       "events": 0,
       "source": "OpenStreetMap"
+    },
+    {
+      "id": "venue-hayvn",
+      "name": "HAYVN",
+      "kind": null,
+      "kinds": [],
+      "lat": 41.08666,
+      "lon": -73.45999,
+      "miles": 39.2,
+      "city": "Darien, CT",
+      "address": "320 Boston Post Road",
+      "url": "https://www.eventbrite.com/e/monthly-wellness-collective-meetups-connect-learn-coworking-day-tickets-1993930456671",
+      "phone": null,
+      "openingHours": null,
+      "brand": null,
+      "secondHand": null,
+      "free": null,
+      "wheelchair": null,
+      "description": null,
+      "events": 3,
+      "source": "Event listings"
     },
     {
       "id": "osm-node-368049354",
@@ -39106,6 +40755,27 @@
       "source": "OpenStreetMap"
     },
     {
+      "id": "venue-tequila-escape-stamford",
+      "name": "Tequila Escape -Stamford",
+      "kind": null,
+      "kinds": [],
+      "lat": 41.04305,
+      "lon": -73.53247,
+      "miles": 39.2,
+      "city": "Stamford, CT",
+      "address": "845 Canal Street",
+      "url": "https://www.eventbrite.com/e/first-time-in-stamford-ct-daytime-bachata-party-at-tequila-escape-tickets-1994374593095",
+      "phone": null,
+      "openingHours": null,
+      "brand": null,
+      "secondHand": null,
+      "free": null,
+      "wheelchair": null,
+      "description": null,
+      "events": 2,
+      "source": "Event listings"
+    },
+    {
       "id": "osm-way-840721756",
       "name": "The Southbury Music Studio",
       "kind": "shop",
@@ -39127,6 +40797,27 @@
       "description": null,
       "events": 0,
       "source": "OpenStreetMap"
+    },
+    {
+      "id": "venue-beczak-environmental-education",
+      "name": "Beczak Environmental Education",
+      "kind": null,
+      "kinds": [],
+      "lat": 40.93824,
+      "lon": -73.90187,
+      "miles": 39.3,
+      "city": "Yonkers, NY",
+      "address": "35 Alexander Street",
+      "url": "https://www.eventbrite.com/e/come-to-our-keresimesi-yoruba-christmas-celebration-on-12526-tickets-1983603180510",
+      "phone": null,
+      "openingHours": null,
+      "brand": null,
+      "secondHand": null,
+      "free": null,
+      "wheelchair": null,
+      "description": null,
+      "events": 2,
+      "source": "Event listings"
     },
     {
       "id": "osm-node-2809988043",
@@ -39424,7 +41115,28 @@
       "free": null,
       "wheelchair": null,
       "description": null,
-      "events": 23,
+      "events": 29,
+      "source": "Event listings"
+    },
+    {
+      "id": "venue-factory-underground",
+      "name": "Factory Underground",
+      "kind": null,
+      "kinds": [],
+      "lat": 41.11594,
+      "lon": -73.41339,
+      "miles": 39.4,
+      "city": "Norwalk, CT",
+      "address": "16 Isaacs Street",
+      "url": "https://www.eventbrite.com/e/brb-x-sins-of-saints-know-your-lyrics-tickets-1990434184226",
+      "phone": null,
+      "openingHours": null,
+      "brand": null,
+      "secondHand": null,
+      "free": null,
+      "wheelchair": null,
+      "description": null,
+      "events": 2,
       "source": "Event listings"
     },
     {
@@ -39700,7 +41412,7 @@
       "free": null,
       "wheelchair": null,
       "description": null,
-      "events": 2,
+      "events": 3,
       "source": "Event listings"
     },
     {
@@ -40184,7 +41896,7 @@
       "free": null,
       "wheelchair": null,
       "description": null,
-      "events": 0,
+      "events": 1,
       "source": "OpenStreetMap"
     },
     {
@@ -40230,7 +41942,7 @@
       "free": null,
       "wheelchair": null,
       "description": null,
-      "events": 0,
+      "events": 2,
       "source": "OpenStreetMap"
     },
     {
@@ -41269,6 +42981,29 @@
       "source": "OpenStreetMap"
     },
     {
+      "id": "venue-samuel-staples-elementary-school-field",
+      "name": "Samuel Staples Elementary School Field",
+      "kind": "school",
+      "kinds": [
+        "school"
+      ],
+      "lat": 41.23893,
+      "lon": -73.28815,
+      "miles": 39.8,
+      "city": "Easton, CT",
+      "address": "Morehouse Road",
+      "url": "https://www.eventbrite.com/e/easton-ems-annual-fireworks-tickets-1998642643950",
+      "phone": null,
+      "openingHours": null,
+      "brand": null,
+      "secondHand": null,
+      "free": null,
+      "wheelchair": null,
+      "description": null,
+      "events": 1,
+      "source": "Event listings"
+    },
+    {
       "id": "osm-node-13539335799",
       "name": "Shaggy Coo's Farm & Creamery",
       "kind": "farm",
@@ -41751,6 +43486,29 @@
       "description": null,
       "events": 0,
       "source": "OpenStreetMap"
+    },
+    {
+      "id": "venue-bambu-night-club",
+      "name": "Bambu Night Club",
+      "kind": "club",
+      "kinds": [
+        "club"
+      ],
+      "lat": 41.09933,
+      "lon": -73.42058,
+      "miles": 40.0,
+      "city": "Norwalk, CT",
+      "address": "11 Washington Street",
+      "url": "https://www.eventbrite.com/e/rock-en-espanol-y-rumba-banda-en-vivo-tocando-todos-los-exito-en-ct-tickets-1995692363582",
+      "phone": null,
+      "openingHours": null,
+      "brand": null,
+      "secondHand": null,
+      "free": null,
+      "wheelchair": null,
+      "description": null,
+      "events": 1,
+      "source": "Event listings"
     },
     {
       "id": "osm-way-737944932",
@@ -43321,6 +45079,29 @@
       "source": "OpenStreetMap"
     },
     {
+      "id": "venue-march-farm",
+      "name": "March Farm",
+      "kind": "farm",
+      "kinds": [
+        "farm"
+      ],
+      "lat": 41.64839,
+      "lon": -73.21352,
+      "miles": 40.3,
+      "city": "Bethlehem, CT",
+      "address": "160 Munger Lane",
+      "url": "https://www.eventbrite.com/e/bethlehem-ambulance-fundraiser-tickets-1990139427601",
+      "phone": null,
+      "openingHours": null,
+      "brand": null,
+      "secondHand": null,
+      "free": null,
+      "wheelchair": null,
+      "description": null,
+      "events": 1,
+      "source": "Event listings"
+    },
+    {
       "id": "osm-node-1978772703",
       "name": "March Farms",
       "kind": "farm",
@@ -43342,6 +45123,29 @@
       "description": null,
       "events": 0,
       "source": "OpenStreetMap"
+    },
+    {
+      "id": "venue-pier-restaurant-tiki-bar",
+      "name": "Pier Restaurant & Tiki Bar",
+      "kind": "restaurant",
+      "kinds": [
+        "restaurant"
+      ],
+      "lat": 40.96595,
+      "lon": -73.67313,
+      "miles": 40.3,
+      "city": "Rye, NY",
+      "address": "1 Playland Parkway",
+      "url": "https://www.meetup.com/norwalk-stamfordfriends/events/315900136/",
+      "phone": null,
+      "openingHours": null,
+      "brand": null,
+      "secondHand": null,
+      "free": null,
+      "wheelchair": null,
+      "description": null,
+      "events": 1,
+      "source": "Event listings"
     },
     {
       "id": "osm-way-840618717",
@@ -43571,7 +45375,7 @@
       "free": null,
       "wheelchair": null,
       "description": null,
-      "events": 1,
+      "events": 2,
       "source": "Event listings"
     },
     {
@@ -43757,6 +45561,27 @@
       "description": null,
       "events": 0,
       "source": "OpenStreetMap"
+    },
+    {
+      "id": "venue-higgins-room",
+      "name": "Higgins Room",
+      "kind": null,
+      "kinds": [],
+      "lat": 41.13972,
+      "lon": -73.36129,
+      "miles": 40.4,
+      "city": "Westport, CT",
+      "address": "Higgins Room, The Westport Library, 20 Jesup Road, Westport, CT, 06880, United States",
+      "url": "https://westportlibrary.org/event/sensory-friendly-family-playtime-2/2026-08-31/",
+      "phone": null,
+      "openingHours": null,
+      "brand": null,
+      "secondHand": null,
+      "free": null,
+      "wheelchair": null,
+      "description": null,
+      "events": 2,
+      "source": "Event listings"
     },
     {
       "id": "venue-komansky-room",
@@ -43985,6 +45810,52 @@
       "wheelchair": null,
       "description": null,
       "events": 2,
+      "source": "Event listings"
+    },
+    {
+      "id": "venue-trefz-forum-the-westport-library-downtown-westport",
+      "name": "Trefz Forum @ the Westport Library - Downtown Westport",
+      "kind": "library",
+      "kinds": [
+        "library"
+      ],
+      "lat": 41.13969,
+      "lon": -73.36128,
+      "miles": 40.4,
+      "city": "Westport, CT",
+      "address": "20 Jesup Road",
+      "url": "https://www.eventbrite.com/e/spadtastics-encore-tickets-1996994262597",
+      "phone": null,
+      "openingHours": null,
+      "brand": null,
+      "secondHand": null,
+      "free": null,
+      "wheelchair": null,
+      "description": null,
+      "events": 1,
+      "source": "Event listings"
+    },
+    {
+      "id": "venue-veteran-s-memorial-park-and-marina",
+      "name": "Veteran's Memorial Park and Marina",
+      "kind": "historic site",
+      "kinds": [
+        "historic site"
+      ],
+      "lat": 41.09818,
+      "lon": -73.41019,
+      "miles": 40.4,
+      "city": "Norwalk, CT",
+      "address": "42 Seaview Avenue",
+      "url": "https://www.eventbrite.com/e/2026-norwalk-seaport-association-oyster-festival-september-11-12-13th-tickets-1975137382079",
+      "phone": null,
+      "openingHours": null,
+      "brand": null,
+      "secondHand": null,
+      "free": null,
+      "wheelchair": null,
+      "description": null,
+      "events": 1,
       "source": "Event listings"
     },
     {
@@ -44287,6 +46158,29 @@
       "source": "OpenStreetMap"
     },
     {
+      "id": "venue-the-barley-beach-house",
+      "name": "The Barley Beach House",
+      "kind": "park",
+      "kinds": [
+        "park"
+      ],
+      "lat": 40.96049,
+      "lon": -73.68025,
+      "miles": 40.5,
+      "city": "Rye, NY",
+      "address": "95 Dearborn Avenue",
+      "url": "https://www.eventbrite.com/e/beach-bash-tickets-1993363159871",
+      "phone": null,
+      "openingHours": null,
+      "brand": null,
+      "secondHand": null,
+      "free": null,
+      "wheelchair": null,
+      "description": null,
+      "events": 2,
+      "source": "Event listings"
+    },
+    {
       "id": "osm-node-13959515747",
       "name": "The Garden",
       "kind": "theatre",
@@ -44421,7 +46315,7 @@
       "free": null,
       "wheelchair": null,
       "description": null,
-      "events": 14,
+      "events": 8,
       "source": "OpenStreetMap"
     },
     {
@@ -44598,7 +46492,7 @@
       "miles": 40.6,
       "city": "Westport, CT",
       "address": "134 Cross Highway",
-      "url": "https://www.eventbrite.com/e/fall-in-tuscany-adult-cooking-class-with-laura-weinman-tickets-1996798680606",
+      "url": "https://www.eventbrite.com/e/teen-cuisine-cooking-for-teens-tickets-1996175898849",
       "phone": null,
       "openingHours": null,
       "brand": null,
@@ -44606,7 +46500,7 @@
       "free": null,
       "wheelchair": null,
       "description": null,
-      "events": 4,
+      "events": 6,
       "source": "Event listings"
     },
     {
@@ -44815,6 +46709,52 @@
       "description": null,
       "events": 0,
       "source": "OpenStreetMap"
+    },
+    {
+      "id": "venue-314-beer-garden",
+      "name": "314 Beer Garden",
+      "kind": "garden",
+      "kinds": [
+        "garden"
+      ],
+      "lat": 41.08182,
+      "lon": -73.42115,
+      "miles": 40.8,
+      "city": "Norwalk, CT",
+      "address": "314 Wilson Avenue",
+      "url": "https://www.eventbrite.com/e/paint-sip-customize-your-own-wooden-serving-tray-314-beer-garden-tickets-1998220077041",
+      "phone": null,
+      "openingHours": null,
+      "brand": null,
+      "secondHand": null,
+      "free": null,
+      "wheelchair": null,
+      "description": null,
+      "events": 1,
+      "source": "Event listings"
+    },
+    {
+      "id": "venue-314-beer-garden-and-wood-fired-pizza",
+      "name": "314 Beer Garden and Wood-Fired Pizza",
+      "kind": "garden",
+      "kinds": [
+        "garden"
+      ],
+      "lat": 41.08182,
+      "lon": -73.42115,
+      "miles": 40.8,
+      "city": "Norwalk, CT",
+      "address": "314 Wilson Avenue",
+      "url": "https://www.eventbrite.com/e/pilates-after-dark-314-beer-garden-in-norwalk-tickets-1992465787807",
+      "phone": null,
+      "openingHours": null,
+      "brand": null,
+      "secondHand": null,
+      "free": null,
+      "wheelchair": null,
+      "description": null,
+      "events": 1,
+      "source": "Event listings"
     },
     {
       "id": "osm-way-38333627",
@@ -45068,6 +47008,29 @@
       "description": null,
       "events": 0,
       "source": "OpenStreetMap"
+    },
+    {
+      "id": "venue-fogo-de-ch-o-brazilian-steakhouse",
+      "name": "Fogo de Chão Brazilian Steakhouse",
+      "kind": "restaurant",
+      "kinds": [
+        "restaurant"
+      ],
+      "lat": 40.91829,
+      "lon": -74.07731,
+      "miles": 40.9,
+      "city": "Paramus, NJ",
+      "address": "1 Garden State Plaza Boulevard",
+      "url": "https://www.eventbrite.com/e/networking-event-fogo-de-chao-in-paramus-nj-september-16-tickets-1980879644340",
+      "phone": null,
+      "openingHours": null,
+      "brand": null,
+      "secondHand": null,
+      "free": null,
+      "wheelchair": null,
+      "description": null,
+      "events": 1,
+      "source": "Event listings"
     },
     {
       "id": "osm-way-539297042",
@@ -46244,6 +48207,27 @@
       "source": "OpenStreetMap"
     },
     {
+      "id": "venue-graf-center-for-integrative-medicine",
+      "name": "Graf Center for Integrative Medicine",
+      "kind": null,
+      "kinds": [],
+      "lat": 40.90419,
+      "lon": -73.96866,
+      "miles": 41.5,
+      "city": "Englewood, NJ",
+      "address": "Englewood Hospital",
+      "url": "https://www.eventbrite.com/e/prenatal-meditation-and-yoga-6-week-series-beginning-september-2026-tickets-1979819946756",
+      "phone": null,
+      "openingHours": null,
+      "brand": null,
+      "secondHand": null,
+      "free": null,
+      "wheelchair": null,
+      "description": null,
+      "events": 2,
+      "source": "Event listings"
+    },
+    {
       "id": "osm-node-13401948896",
       "name": "Joe's Antiques",
       "kind": "antique shop",
@@ -46288,6 +48272,29 @@
       "description": null,
       "events": 0,
       "source": "OpenStreetMap"
+    },
+    {
+      "id": "venue-locals-10538",
+      "name": "Locals 10538",
+      "kind": "music venue",
+      "kinds": [
+        "music venue"
+      ],
+      "lat": 40.92744,
+      "lon": -73.7522,
+      "miles": 41.5,
+      "city": "Larchmont, NY",
+      "address": "2128 U.S. 1",
+      "url": "https://www.eventbrite.com/e/beyond-the-veil-ft-oz-noy-kens-jazz-attic-oct-10-tickets-1996530174497",
+      "phone": null,
+      "openingHours": null,
+      "brand": null,
+      "secondHand": null,
+      "free": null,
+      "wheelchair": null,
+      "description": null,
+      "events": 3,
+      "source": "Event listings"
     },
     {
       "id": "osm-way-800176393",
@@ -46359,6 +48366,29 @@
       "source": "OpenStreetMap"
     },
     {
+      "id": "venue-true-food-kitchen",
+      "name": "True Food Kitchen",
+      "kind": "restaurant",
+      "kinds": [
+        "restaurant"
+      ],
+      "lat": 40.90608,
+      "lon": -74.03068,
+      "miles": 41.5,
+      "city": "Hackensack, NJ",
+      "address": "390 Hackensack Avenue",
+      "url": "https://www.eventbrite.com/e/oktoberfest-networking-event-at-true-food-kitchen-october-1st-2026-tickets-1986924082417",
+      "phone": null,
+      "openingHours": null,
+      "brand": null,
+      "secondHand": null,
+      "free": null,
+      "wheelchair": null,
+      "description": null,
+      "events": 1,
+      "source": "Event listings"
+    },
+    {
       "id": "osm-way-756935282",
       "name": "AMC Dine-In Shops at Riverside 9",
       "kind": "cinema",
@@ -46426,6 +48456,29 @@
       "description": null,
       "events": 0,
       "source": "OpenStreetMap"
+    },
+    {
+      "id": "venue-morton-s-the-steakhouse",
+      "name": "Morton's The Steakhouse",
+      "kind": "restaurant",
+      "kinds": [
+        "restaurant"
+      ],
+      "lat": 40.9049,
+      "lon": -74.03017,
+      "miles": 41.6,
+      "city": "Hackensack, NJ",
+      "address": "One Riverside Square Mall",
+      "url": "https://www.eventbrite.com/e/networking-at-mortons-steakhouse-october-22nd-2026-tickets-1992839919846",
+      "phone": null,
+      "openingHours": null,
+      "brand": null,
+      "secondHand": null,
+      "free": null,
+      "wheelchair": null,
+      "description": null,
+      "events": 1,
+      "source": "Event listings"
     },
     {
       "id": "osm-way-304813579",
@@ -46980,6 +49033,29 @@
       "source": "OpenStreetMap"
     },
     {
+      "id": "venue-lime-rock-park",
+      "name": "Lime Rock Park",
+      "kind": "park",
+      "kinds": [
+        "park"
+      ],
+      "lat": 41.93019,
+      "lon": -73.39064,
+      "miles": 41.9,
+      "city": "Salisbury, CT",
+      "address": "60 White Hollow Road",
+      "url": "https://www.eventbrite.com/e/wagonfest-northeast-2026-tickets-1994724652131",
+      "phone": null,
+      "openingHours": null,
+      "brand": null,
+      "secondHand": null,
+      "free": null,
+      "wheelchair": null,
+      "description": null,
+      "events": 1,
+      "source": "Event listings"
+    },
+    {
       "id": "osm-way-379442246",
       "name": "Main Street Square",
       "kind": "mall",
@@ -47047,6 +49123,27 @@
       "description": null,
       "events": 0,
       "source": "OpenStreetMap"
+    },
+    {
+      "id": "venue-pelham-rails",
+      "name": "Pelham Rails",
+      "kind": null,
+      "kinds": [],
+      "lat": 40.91097,
+      "lon": -73.81043,
+      "miles": 41.9,
+      "city": "Village of Pelham, NY",
+      "address": "65 1st Street",
+      "url": "https://www.eventbrite.com/e/studio-54-disco-party-tickets-1992526007927",
+      "phone": null,
+      "openingHours": null,
+      "brand": null,
+      "secondHand": null,
+      "free": null,
+      "wheelchair": null,
+      "description": null,
+      "events": 3,
+      "source": "Event listings"
     },
     {
       "id": "osm-way-268771106",
@@ -47506,6 +49603,29 @@
       "description": null,
       "events": 29,
       "source": "OpenStreetMap"
+    },
+    {
+      "id": "venue-czen-restaurant-englewood",
+      "name": "CZEN Restaurant Englewood",
+      "kind": "restaurant",
+      "kinds": [
+        "restaurant"
+      ],
+      "lat": 40.89531,
+      "lon": -73.97471,
+      "miles": 42.1,
+      "city": "Englewood, NJ",
+      "address": "36 North Van Brunt Street",
+      "url": "https://www.eventbrite.com/e/first-fridays-new-jersey-flag-fest-wdj-pinnacle-dj-izlit-tickets-1998256309413",
+      "phone": null,
+      "openingHours": null,
+      "brand": null,
+      "secondHand": null,
+      "free": null,
+      "wheelchair": null,
+      "description": null,
+      "events": 1,
+      "source": "Event listings"
     },
     {
       "id": "osm-way-379442230",
@@ -48108,6 +50228,29 @@
       "source": "OpenStreetMap"
     },
     {
+      "id": "venue-the-stadium-at-memorial-field",
+      "name": "The Stadium at Memorial Field",
+      "kind": "historic site",
+      "kinds": [
+        "historic site"
+      ],
+      "lat": 40.9031,
+      "lon": -73.81805,
+      "miles": 42.3,
+      "city": "Mount Vernon, NY",
+      "address": "431 Garden Avenue",
+      "url": "https://www.eventbrite.com/e/westchester-soccer-club-vs-richmond-kickers-tickets-1988031270045",
+      "phone": null,
+      "openingHours": null,
+      "brand": null,
+      "secondHand": null,
+      "free": null,
+      "wheelchair": null,
+      "description": null,
+      "events": 1,
+      "source": "Event listings"
+    },
+    {
       "id": "osm-node-5874402977",
       "name": "Woodstock Brewing",
       "kind": "brewery",
@@ -48679,7 +50822,7 @@
       "free": null,
       "wheelchair": null,
       "description": null,
-      "events": 1,
+      "events": 2,
       "source": "Event listings"
     },
     {
@@ -48842,6 +50985,50 @@
       "description": null,
       "events": 0,
       "source": "OpenStreetMap"
+    },
+    {
+      "id": "venue-the-clubhouse-westport",
+      "name": "The Clubhouse Westport",
+      "kind": null,
+      "kinds": [],
+      "lat": 41.13814,
+      "lon": -73.3079,
+      "miles": 42.7,
+      "city": "Westport, CT",
+      "address": "1620 Post Road East",
+      "url": "https://www.eventbrite.com/e/speed-dating-ages-25-39-in-westport-ct-at-the-clubhouse-westport-tickets-1996422963827",
+      "phone": null,
+      "openingHours": null,
+      "brand": null,
+      "secondHand": null,
+      "free": null,
+      "wheelchair": null,
+      "description": null,
+      "events": 2,
+      "source": "Event listings"
+    },
+    {
+      "id": "venue-van-cortlandt-park-242-st",
+      "name": "Van Cortlandt Park - 242 St",
+      "kind": "park",
+      "kinds": [
+        "park"
+      ],
+      "lat": 40.88946,
+      "lon": -73.89836,
+      "miles": 42.7,
+      "city": "The Bronx, NY",
+      "address": "242nd and Broadway",
+      "url": "https://www.eventbrite.com/e/sowing-stories-tickets-1990701455642",
+      "phone": null,
+      "openingHours": null,
+      "brand": null,
+      "secondHand": null,
+      "free": null,
+      "wheelchair": null,
+      "description": null,
+      "events": 1,
+      "source": "Event listings"
     },
     {
       "id": "osm-node-1751856078",
@@ -49029,6 +51216,29 @@
       "source": "OpenStreetMap"
     },
     {
+      "id": "venue-tranquillity-vineyard-winery",
+      "name": "Tranquillity Vineyard & Winery",
+      "kind": "winery",
+      "kinds": [
+        "winery"
+      ],
+      "lat": 41.52857,
+      "lon": -73.1427,
+      "miles": 42.8,
+      "city": "Middlebury, CT",
+      "address": "1892 Middlebury Road",
+      "url": "https://www.eventbrite.com/e/the-white-party-vip-experience-tickets-1998451217388",
+      "phone": null,
+      "openingHours": null,
+      "brand": null,
+      "secondHand": null,
+      "free": null,
+      "wheelchair": null,
+      "description": null,
+      "events": 1,
+      "source": "Event listings"
+    },
+    {
       "id": "osm-way-75118604",
       "name": "Van Cortlandt Stadium",
       "kind": "stadium",
@@ -49142,6 +51352,29 @@
       "description": null,
       "events": 0,
       "source": "OpenStreetMap"
+    },
+    {
+      "id": "venue-island-brook-park",
+      "name": "Island Brook Park",
+      "kind": "park",
+      "kinds": [
+        "park"
+      ],
+      "lat": 41.24118,
+      "lon": -73.21977,
+      "miles": 42.9,
+      "city": "Trumbull, CT",
+      "address": "0 Garden Street",
+      "url": "https://www.eventbrite.com/e/soca-dance-fitness-tickets-1994451099929",
+      "phone": null,
+      "openingHours": null,
+      "brand": null,
+      "secondHand": null,
+      "free": null,
+      "wheelchair": null,
+      "description": null,
+      "events": 1,
+      "source": "Event listings"
     },
     {
       "id": "osm-way-863849704",
@@ -49880,6 +52113,29 @@
       "source": "OpenStreetMap"
     },
     {
+      "id": "venue-surf-club-on-the-sound",
+      "name": "Surf Club On The Sound",
+      "kind": "club",
+      "kinds": [
+        "club"
+      ],
+      "lat": 40.89809,
+      "lon": -73.77097,
+      "miles": 43.2,
+      "city": "New Rochelle, NY",
+      "address": "280 Davenport Avenue",
+      "url": "https://www.eventbrite.com/e/wbwpc-50th-anniversary-golden-celebration-cocktail-reception-dinner-tickets-1992072181520",
+      "phone": null,
+      "openingHours": null,
+      "brand": null,
+      "secondHand": null,
+      "free": null,
+      "wheelchair": null,
+      "description": null,
+      "events": 1,
+      "source": "Event listings"
+    },
+    {
       "id": "osm-relation-6437700",
       "name": "Taconic State Park – Rudd Pond Area",
       "kind": "park",
@@ -49922,7 +52178,7 @@
       "free": null,
       "wheelchair": null,
       "description": null,
-      "events": 1,
+      "events": 2,
       "source": "Event listings"
     },
     {
@@ -49993,6 +52249,29 @@
       "description": null,
       "events": 0,
       "source": "OpenStreetMap"
+    },
+    {
+      "id": "venue-glen-island-harbour-club",
+      "name": "Glen Island Harbour Club",
+      "kind": "club",
+      "kinds": [
+        "club"
+      ],
+      "lat": 40.89373,
+      "lon": -73.78672,
+      "miles": 43.3,
+      "city": "New Rochelle, NY",
+      "address": "Weyman Ave",
+      "url": "https://www.eventbrite.com/e/100-hispanic-women-29th-annual-awards-gala-an-inspirational-evening-tickets-1994939403458",
+      "phone": null,
+      "openingHours": null,
+      "brand": null,
+      "secondHand": null,
+      "free": null,
+      "wheelchair": null,
+      "description": null,
+      "events": 1,
+      "source": "Event listings"
     },
     {
       "id": "osm-way-781179645",
@@ -50431,6 +52710,27 @@
       "description": null,
       "events": 0,
       "source": "OpenStreetMap"
+    },
+    {
+      "id": "venue-the-white-hart",
+      "name": "The White Hart",
+      "kind": null,
+      "kinds": [],
+      "lat": 41.98464,
+      "lon": -73.42217,
+      "miles": 43.5,
+      "city": "Salisbury, CT",
+      "address": "15 Under Mountain Road",
+      "url": "https://www.eventbrite.com/e/the-white-hart-speaker-series-chris-crowley-younger-forever-tickets-1997159242055",
+      "phone": null,
+      "openingHours": null,
+      "brand": null,
+      "secondHand": null,
+      "free": null,
+      "wheelchair": null,
+      "description": null,
+      "events": 3,
+      "source": "Event listings"
     },
     {
       "id": "osm-node-6157416422",
@@ -51400,6 +53700,29 @@
       "source": "OpenStreetMap"
     },
     {
+      "id": "venue-the-lovinger-theatre-lehman-college",
+      "name": "The Lovinger Theatre (Lehman College)",
+      "kind": "theatre",
+      "kinds": [
+        "theatre"
+      ],
+      "lat": 40.87361,
+      "lon": -73.89333,
+      "miles": 43.8,
+      "city": "The Bronx, NY",
+      "address": "250 Bedford Park Boulevard West",
+      "url": "https://www.eventbrite.com/e/la-nueva-yo-es-grandiosa-2026-tickets-1993026645347",
+      "phone": null,
+      "openingHours": null,
+      "brand": null,
+      "secondHand": null,
+      "free": null,
+      "wheelchair": null,
+      "description": null,
+      "events": 1,
+      "source": "Event listings"
+    },
+    {
       "id": "osm-node-9308561248",
       "name": "Tillotson Steps",
       "kind": "landmark",
@@ -51421,6 +53744,73 @@
       "description": null,
       "events": 0,
       "source": "OpenStreetMap"
+    },
+    {
+      "id": "venue-beulah-church-of-god",
+      "name": "Beulah Church of God",
+      "kind": "place of worship",
+      "kinds": [
+        "place of worship"
+      ],
+      "lat": 40.87456,
+      "lon": -73.85839,
+      "miles": 43.9,
+      "city": "The Bronx, NY",
+      "address": "986 East Gun Hill Road",
+      "url": "https://www.eventbrite.com/e/honoring-bro-sam-a-legacy-of-service-love-tickets-1993169737339",
+      "phone": null,
+      "openingHours": null,
+      "brand": null,
+      "secondHand": null,
+      "free": null,
+      "wheelchair": null,
+      "description": null,
+      "events": 1,
+      "source": "Event listings"
+    },
+    {
+      "id": "venue-bronxnet-public-media-corportation",
+      "name": "BronxNet Public Media Corportation",
+      "kind": null,
+      "kinds": [],
+      "lat": 40.87174,
+      "lon": -73.89655,
+      "miles": 43.9,
+      "city": "The Bronx, NY",
+      "address": "250 Bedford Park Boulevard West",
+      "url": "https://www.eventbrite.com/e/intro-to-photography-class-bilingual-tickets-1994994180297",
+      "phone": null,
+      "openingHours": null,
+      "brand": null,
+      "secondHand": null,
+      "free": null,
+      "wheelchair": null,
+      "description": null,
+      "events": 2,
+      "source": "Event listings"
+    },
+    {
+      "id": "venue-eastwood-manor",
+      "name": "Eastwood Manor",
+      "kind": "historic house",
+      "kinds": [
+        "historic house"
+      ],
+      "lat": 40.87631,
+      "lon": -73.84636,
+      "miles": 43.9,
+      "city": "The Bronx, NY",
+      "address": "3371 Eastchester Road",
+      "url": "https://www.eventbrite.com/e/chosen-woman-conference-2026-tickets-1987471652213",
+      "phone": null,
+      "openingHours": null,
+      "brand": null,
+      "secondHand": null,
+      "free": null,
+      "wheelchair": null,
+      "description": null,
+      "events": 1,
+      "source": "Event listings"
     },
     {
       "id": "venue-fairfield",
@@ -52637,7 +55027,7 @@
       "free": false,
       "wheelchair": "limited",
       "description": null,
-      "events": 0,
+      "events": 1,
       "source": "OpenStreetMap"
     },
     {
@@ -53235,7 +55625,7 @@
       "free": null,
       "wheelchair": null,
       "description": null,
-      "events": 7,
+      "events": 9,
       "source": "OpenStreetMap"
     },
     {
@@ -53539,6 +55929,27 @@
       "source": "OpenStreetMap"
     },
     {
+      "id": "venue-taghkanic",
+      "name": "Taghkanic",
+      "kind": null,
+      "kinds": [],
+      "lat": 42.10497,
+      "lon": -73.65044,
+      "miles": 44.6,
+      "city": "Taghkanic, NY",
+      "address": "708 New Forge Rd II",
+      "url": "https://www.eventbrite.com/e/september-forge-project-site-visit-tickets-1983555720556",
+      "phone": null,
+      "openingHours": null,
+      "brand": null,
+      "secondHand": null,
+      "free": null,
+      "wheelchair": null,
+      "description": null,
+      "events": 2,
+      "source": "Event listings"
+    },
+    {
       "id": "osm-way-532009837",
       "name": "The Goshen Players",
       "kind": "theatre",
@@ -53627,7 +56038,7 @@
       "free": null,
       "wheelchair": null,
       "description": null,
-      "events": 5,
+      "events": 3,
       "source": "OpenStreetMap"
     },
     {
@@ -54023,6 +56434,29 @@
       "source": "OpenStreetMap"
     },
     {
+      "id": "venue-gaelic-american-club-inc",
+      "name": "Gaelic-American Club Inc",
+      "kind": "club",
+      "kinds": [
+        "club"
+      ],
+      "lat": 41.14335,
+      "lon": -73.2523,
+      "miles": 44.8,
+      "city": "Fairfield, CT",
+      "address": "74 Beach Road",
+      "url": "https://www.eventbrite.com/e/annual-day-of-irish-language-culture-2026-sponsord-by-feile-inc-registration-1995338879301",
+      "phone": null,
+      "openingHours": null,
+      "brand": null,
+      "secondHand": null,
+      "free": null,
+      "wheelchair": null,
+      "description": null,
+      "events": 1,
+      "source": "Event listings"
+    },
+    {
       "id": "osm-node-368051474",
       "name": "Hall of Fame Playhouse",
       "kind": "theatre",
@@ -54205,6 +56639,29 @@
       "description": null,
       "events": 0,
       "source": "OpenStreetMap"
+    },
+    {
+      "id": "venue-the-golf-club-at-oxford-greens",
+      "name": "The Golf Club at Oxford Greens",
+      "kind": "club",
+      "kinds": [
+        "club"
+      ],
+      "lat": 41.46144,
+      "lon": -73.10679,
+      "miles": 44.8,
+      "city": "Oxford, CT",
+      "address": "99 Country Club Road",
+      "url": "https://www.eventbrite.com/e/22nd-annual-charity-golf-outing-with-adam-ottavino-tickets-1997975074231",
+      "phone": null,
+      "openingHours": null,
+      "brand": null,
+      "secondHand": null,
+      "free": null,
+      "wheelchair": null,
+      "description": null,
+      "events": 1,
+      "source": "Event listings"
     },
     {
       "id": "osm-node-3687393536",
@@ -54678,7 +57135,7 @@
       "miles": 45.0,
       "city": "Fairfield, CT",
       "address": "111 Black Rock Turnpike",
-      "url": "https://www.eventbrite.com/e/fall-cookie-decorating-class-at-elicit-brewing-fairfield-ct-tickets-1992517598775",
+      "url": "https://www.eventbrite.com/e/singles-salon-dance-party-elicit-brewing-co-fairfield-30s-40s-tickets-1998789916446",
       "phone": null,
       "openingHours": null,
       "brand": null,
@@ -54686,7 +57143,7 @@
       "free": null,
       "wheelchair": null,
       "description": null,
-      "events": 1,
+      "events": 5,
       "source": "Event listings"
     },
     {
@@ -55070,7 +57527,7 @@
       "miles": 45.1,
       "city": "Fort Lee, NJ",
       "address": "189 Main St",
-      "url": "https://www.eventbrite.com/e/hands-on-coffee-brewing-class-brew-multiple-rounds-yourself-fort-lee-nj-tickets-1993707140727",
+      "url": "https://www.eventbrite.com/e/coffee-101-class-tasting-and-brewing-to-dial-in-any-bag-fort-lee-nj-tickets-1993706998301",
       "phone": null,
       "openingHours": null,
       "brand": null,
@@ -55078,7 +57535,7 @@
       "free": null,
       "wheelchair": null,
       "description": null,
-      "events": 1,
+      "events": 2,
       "source": "Event listings"
     },
     {
@@ -56460,7 +58917,7 @@
       "free": null,
       "wheelchair": null,
       "description": null,
-      "events": 8,
+      "events": 10,
       "source": "Event listings"
     },
     {
@@ -57729,6 +60186,29 @@
       "source": "OpenStreetMap"
     },
     {
+      "id": "venue-jennings-beach",
+      "name": "Jennings Beach",
+      "kind": "park",
+      "kinds": [
+        "park"
+      ],
+      "lat": 41.14107,
+      "lon": -73.23673,
+      "miles": 45.6,
+      "city": "Fairfield, CT",
+      "address": "880 South Benson Road",
+      "url": "https://www.eventbrite.com/e/mindtravel-september-live-to-headphones-piano-concert-on-jennings-beach-tickets-1998600575121",
+      "phone": null,
+      "openingHours": null,
+      "brand": null,
+      "secondHand": null,
+      "free": null,
+      "wheelchair": null,
+      "description": null,
+      "events": 1,
+      "source": "Event listings"
+    },
+    {
       "id": "osm-way-233324747",
       "name": "MSU Softball Stadium",
       "kind": "stadium",
@@ -58511,6 +60991,29 @@
       "source": "OpenStreetMap"
     },
     {
+      "id": "venue-columbia-university-irving-medical-center",
+      "name": "Columbia University Irving Medical Center",
+      "kind": "school",
+      "kinds": [
+        "school"
+      ],
+      "lat": 40.8411,
+      "lon": -73.9412,
+      "miles": 45.9,
+      "city": "New York, NY",
+      "address": "622 West 168th Street",
+      "url": "https://www.eventbrite.com/e/embodiment-and-attention-narrative-medicine-fundamentals-tickets-1994093212478",
+      "phone": null,
+      "openingHours": null,
+      "brand": null,
+      "secondHand": null,
+      "free": null,
+      "wheelchair": null,
+      "description": null,
+      "events": 1,
+      "source": "Event listings"
+    },
+    {
       "id": "osm-way-284842655",
       "name": "Jungle World",
       "kind": "landmark",
@@ -58576,7 +61079,7 @@
       "free": null,
       "wheelchair": null,
       "description": "Boulders and World War 1 Memorial",
-      "events": 0,
+      "events": 1,
       "source": "OpenStreetMap"
     },
     {
@@ -59304,7 +61807,7 @@
       "miles": 46.1,
       "city": "Glen Cove, NY",
       "address": "Webb Institute, 298 Crescent Beach Road, Glen Cove, NY, 11542, United States",
-      "url": "https://www.webb.edu/event/sustainability-and-innovation-in-ship-design-and-operations-conference-2026/",
+      "url": "https://www.webb.edu/event/family-weekend-2026/",
       "phone": null,
       "openingHours": null,
       "brand": null,
@@ -59312,7 +61815,7 @@
       "free": null,
       "wheelchair": null,
       "description": null,
-      "events": 1,
+      "events": 2,
       "source": "Event listings"
     },
     {
@@ -59339,6 +61842,29 @@
       "source": "OpenStreetMap"
     },
     {
+      "id": "venue-artisan-stack-cafe",
+      "name": "Artisan Stack Cafe",
+      "kind": "cafe",
+      "kinds": [
+        "cafe"
+      ],
+      "lat": 41.17842,
+      "lon": -73.19225,
+      "miles": 46.2,
+      "city": "Bridgeport, CT",
+      "address": "281 Fairfield Avenue",
+      "url": "https://www.eventbrite.com/e/myles-bullen-everybodys-worried-about-owen-bridgeport-ct-tickets-1997259718583",
+      "phone": null,
+      "openingHours": null,
+      "brand": null,
+      "secondHand": null,
+      "free": null,
+      "wheelchair": null,
+      "description": null,
+      "events": 1,
+      "source": "Event listings"
+    },
+    {
       "id": "venue-bijou-theatre",
       "name": "Bijou Theatre",
       "kind": "theatre",
@@ -59350,7 +61876,7 @@
       "miles": 46.2,
       "city": "Bridgeport, CT",
       "address": "275 Fairfield Ave",
-      "url": "https://www.eventbrite.com/e/garrett-stack-presents-baby-boomer-classics-tickets-1996524215674",
+      "url": "https://www.eventbrite.com/e/candlelight-concert-tickets-1990139813756",
       "phone": null,
       "openingHours": null,
       "brand": null,
@@ -59358,7 +61884,28 @@
       "free": null,
       "wheelchair": null,
       "description": null,
-      "events": 1,
+      "events": 8,
+      "source": "Event listings"
+    },
+    {
+      "id": "venue-bridgeport-pride-center",
+      "name": "Bridgeport Pride Center",
+      "kind": null,
+      "kinds": [],
+      "lat": 41.17921,
+      "lon": -73.19248,
+      "miles": 46.2,
+      "city": "Bridgeport, CT",
+      "address": "166 Elm Street",
+      "url": "https://www.eventbrite.com/e/millennial-monday-rewind-n-rewatch-tickets-1995974969865",
+      "phone": null,
+      "openingHours": null,
+      "brand": null,
+      "secondHand": null,
+      "free": null,
+      "wheelchair": null,
+      "description": null,
+      "events": 2,
       "source": "Event listings"
     },
     {
@@ -59707,6 +62254,29 @@
       "description": null,
       "events": 0,
       "source": "OpenStreetMap"
+    },
+    {
+      "id": "venue-kindred-thoughts-bookstore",
+      "name": "Kindred Thoughts Bookstore",
+      "kind": "bookshop",
+      "kinds": [
+        "bookshop"
+      ],
+      "lat": 41.17822,
+      "lon": -73.18935,
+      "miles": 46.3,
+      "city": "Bridgeport, CT",
+      "address": "1001 Main Street",
+      "url": "https://www.eventbrite.com/e/community-puzzle-night-the-blossoming-tickets-1992181323968",
+      "phone": null,
+      "openingHours": null,
+      "brand": null,
+      "secondHand": null,
+      "free": null,
+      "wheelchair": null,
+      "description": null,
+      "events": 3,
+      "source": "Event listings"
     },
     {
       "id": "osm-node-6662845697",
@@ -60331,6 +62901,29 @@
       "source": "OpenStreetMap"
     },
     {
+      "id": "venue-brewport-brewing-co",
+      "name": "Brewport Brewing Co",
+      "kind": "brewery",
+      "kinds": [
+        "brewery"
+      ],
+      "lat": 41.17077,
+      "lon": -73.1917,
+      "miles": 46.5,
+      "city": "Bridgeport, CT",
+      "address": "225 South Frontage Road",
+      "url": "https://www.eventbrite.com/e/speed-dating-ages-25-39-in-bridgeport-ct-at-brewport-brewing-tickets-1997800840092",
+      "phone": null,
+      "openingHours": null,
+      "brand": null,
+      "secondHand": null,
+      "free": null,
+      "wheelchair": null,
+      "description": null,
+      "events": 1,
+      "source": "Event listings"
+    },
+    {
       "id": "osm-node-608435749",
       "name": "Carlstadt Historic Firehouse Museum",
       "kind": "museum",
@@ -60925,7 +63518,7 @@
       "free": null,
       "wheelchair": null,
       "description": null,
-      "events": 20,
+      "events": 19,
       "source": "OpenStreetMap"
     },
     {
@@ -60973,6 +63566,27 @@
       "description": null,
       "events": 0,
       "source": "OpenStreetMap"
+    },
+    {
+      "id": "venue-hyatt-house-shelton",
+      "name": "Hyatt House Shelton",
+      "kind": null,
+      "kinds": [],
+      "lat": 41.26885,
+      "lon": -73.12705,
+      "miles": 46.6,
+      "city": "Shelton, CT",
+      "address": "830 Bridgeport Avenue",
+      "url": "https://www.eventbrite.com/e/signed-sealed-and-notarized-workshop-tickets-1996473991452",
+      "phone": null,
+      "openingHours": null,
+      "brand": null,
+      "secondHand": null,
+      "free": null,
+      "wheelchair": null,
+      "description": null,
+      "events": 2,
+      "source": "Event listings"
     },
     {
       "id": "osm-way-265868044",
@@ -61546,7 +64160,7 @@
       "free": null,
       "wheelchair": "yes",
       "description": null,
-      "events": 14,
+      "events": 15,
       "source": "OpenStreetMap"
     },
     {
@@ -61594,6 +64208,27 @@
       "description": null,
       "events": 0,
       "source": "OpenStreetMap"
+    },
+    {
+      "id": "venue-badsons-beer-co",
+      "name": "BADSONS Beer Co.",
+      "kind": null,
+      "kinds": [],
+      "lat": 41.32634,
+      "lon": -73.09889,
+      "miles": 46.8,
+      "city": "Derby, CT",
+      "address": "251 Roosevelt Drive",
+      "url": "https://www.eventbrite.com/e/gavins-fight-cdh-fall-fest-2026-tickets-1991481314220",
+      "phone": null,
+      "openingHours": null,
+      "brand": null,
+      "secondHand": null,
+      "free": null,
+      "wheelchair": null,
+      "description": null,
+      "events": 2,
+      "source": "Event listings"
     },
     {
       "id": "osm-node-5548939369",
@@ -62811,6 +65446,29 @@
       "source": "OpenStreetMap"
     },
     {
+      "id": "venue-jesse-camille-s-restaurant",
+      "name": "Jesse Camille's Restaurant",
+      "kind": "restaurant",
+      "kinds": [
+        "restaurant"
+      ],
+      "lat": 41.50458,
+      "lon": -73.05853,
+      "miles": 47.1,
+      "city": "Naugatuck, CT",
+      "address": "615 Church Street",
+      "url": "https://www.eventbrite.com/e/smoked-stoked-2026-tickets-1987960661854",
+      "phone": null,
+      "openingHours": null,
+      "brand": null,
+      "secondHand": null,
+      "free": null,
+      "wheelchair": null,
+      "description": null,
+      "events": 1,
+      "source": "Event listings"
+    },
+    {
       "id": "osm-node-2768171711",
       "name": "La casa de los Tenenbaums",
       "kind": "landmark",
@@ -62945,7 +65603,7 @@
       "free": null,
       "wheelchair": null,
       "description": null,
-      "events": 5,
+      "events": 6,
       "source": "Event listings"
     },
     {
@@ -63106,7 +65764,7 @@
       "free": null,
       "wheelchair": null,
       "description": null,
-      "events": 2,
+      "events": 4,
       "source": "Event listings"
     },
     {
@@ -63129,7 +65787,7 @@
       "free": null,
       "wheelchair": null,
       "description": null,
-      "events": 4,
+      "events": 5,
       "source": "Event listings"
     },
     {
@@ -63453,7 +66111,7 @@
       "free": null,
       "wheelchair": null,
       "description": null,
-      "events": 9,
+      "events": 10,
       "source": "OpenStreetMap"
     },
     {
@@ -63501,6 +66159,29 @@
       "description": null,
       "events": 0,
       "source": "OpenStreetMap"
+    },
+    {
+      "id": "venue-foolproof-brewing-company-bridgeport",
+      "name": "Foolproof Brewing Company - Bridgeport",
+      "kind": "brewery",
+      "kinds": [
+        "brewery"
+      ],
+      "lat": 41.18257,
+      "lon": -73.16499,
+      "miles": 47.3,
+      "city": "Bridgeport, CT",
+      "address": "800 Union Avenue",
+      "url": "https://www.eventbrite.com/e/oddities-flea-market-connecticut-halloween-2026-tickets-1992585876997",
+      "phone": null,
+      "openingHours": null,
+      "brand": null,
+      "secondHand": null,
+      "free": null,
+      "wheelchair": null,
+      "description": null,
+      "events": 1,
+      "source": "Event listings"
     },
     {
       "id": "osm-node-4388528958",
@@ -64336,11 +67017,11 @@
         "restaurant"
       ],
       "lat": 41.31967,
-      "lon": -73.08949,
+      "lon": -73.08948,
       "miles": 47.4,
       "city": "Derby, CT",
       "address": "285 Main Street",
-      "url": "https://www.eventbrite.com/e/derby-ct-y2k-drag-brunch-twisted-vine-tickets-1994453106932",
+      "url": "https://www.eventbrite.com/e/paranormal-dinner-and-ghost-tour-thursday-september-3-2026-tickets-1997160657288",
       "phone": null,
       "openingHours": null,
       "brand": null,
@@ -64348,7 +67029,7 @@
       "free": null,
       "wheelchair": null,
       "description": null,
-      "events": 3,
+      "events": 5,
       "source": "Event listings"
     },
     {
@@ -65136,6 +67817,29 @@
       "source": "OpenStreetMap"
     },
     {
+      "id": "venue-greene-s-beans-cafe-sparta",
+      "name": "Greene's Beans Cafe - Sparta",
+      "kind": "cafe",
+      "kinds": [
+        "cafe"
+      ],
+      "lat": 41.0312,
+      "lon": -74.63513,
+      "miles": 47.6,
+      "city": "Sparta, NJ",
+      "address": "31 Center Street",
+      "url": "https://www.eventbrite.com/e/summer-cake-decorating-class-tickets-1996469488985",
+      "phone": null,
+      "openingHours": null,
+      "brand": null,
+      "secondHand": null,
+      "free": null,
+      "wheelchair": null,
+      "description": null,
+      "events": 1,
+      "source": "Event listings"
+    },
+    {
       "id": "osm-way-275979611",
       "name": "Hunt's Point Library",
       "kind": "library",
@@ -65387,6 +68091,50 @@
       "description": null,
       "events": 0,
       "source": "OpenStreetMap"
+    },
+    {
+      "id": "venue-the-abyssinian-baptist-church",
+      "name": "The Abyssinian Baptist Church",
+      "kind": "place of worship",
+      "kinds": [
+        "place of worship"
+      ],
+      "lat": 40.81668,
+      "lon": -73.94156,
+      "miles": 47.6,
+      "city": "New York, NY",
+      "address": "132 West 138th Street",
+      "url": "https://www.eventbrite.com/e/book-launch-the-perilous-fight-by-colin-kaepernick-tickets-1998019706728",
+      "phone": null,
+      "openingHours": null,
+      "brand": null,
+      "secondHand": null,
+      "free": null,
+      "wheelchair": null,
+      "description": null,
+      "events": 1,
+      "source": "Event listings"
+    },
+    {
+      "id": "venue-the-spot",
+      "name": "The Spot",
+      "kind": null,
+      "kinds": [],
+      "lat": 41.34178,
+      "lon": -73.07691,
+      "miles": 47.6,
+      "city": "Ansonia, CT",
+      "address": "370 East Main Street",
+      "url": "https://www.eventbrite.com/e/the-remix-presents-the-afters-20-tickets-1997641268810",
+      "phone": null,
+      "openingHours": null,
+      "brand": null,
+      "secondHand": null,
+      "free": null,
+      "wheelchair": null,
+      "description": null,
+      "events": 3,
+      "source": "Event listings"
     },
     {
       "id": "osm-way-1500338118",
@@ -65823,8 +68571,31 @@
       "free": null,
       "wheelchair": "limited",
       "description": null,
-      "events": 0,
+      "events": 2,
       "source": "OpenStreetMap"
+    },
+    {
+      "id": "venue-schomburg-center-for-research-in-black-culture-new-york-public-library",
+      "name": "Schomburg Center for Research in Black Culture - New York Public Library",
+      "kind": "library",
+      "kinds": [
+        "library"
+      ],
+      "lat": 40.81455,
+      "lon": -73.94089,
+      "miles": 47.7,
+      "city": "New York, NY",
+      "address": "515 Malcolm X Boulevard",
+      "url": "https://www.eventbrite.com/e/max-bond-the-peoples-architect-tickets-1998017546266",
+      "phone": null,
+      "openingHours": null,
+      "brand": null,
+      "secondHand": null,
+      "free": null,
+      "wheelchair": null,
+      "description": null,
+      "events": 1,
+      "source": "Event listings"
     },
     {
       "id": "osm-way-271823346",
@@ -66402,6 +69173,29 @@
       "description": null,
       "events": 0,
       "source": "OpenStreetMap"
+    },
+    {
+      "id": "venue-rosa-s-at-park",
+      "name": "Rosa's At Park",
+      "kind": "park",
+      "kinds": [
+        "park"
+      ],
+      "lat": 40.81285,
+      "lon": -73.92831,
+      "miles": 47.9,
+      "city": "The Bronx, NY",
+      "address": "2568 Park Avenue",
+      "url": "https://www.eventbrite.com/e/slow-down-sundaysrb-day-partyin-denim-tickets-1998653774241",
+      "phone": null,
+      "openingHours": null,
+      "brand": null,
+      "secondHand": null,
+      "free": null,
+      "wheelchair": null,
+      "description": null,
+      "events": 1,
+      "source": "Event listings"
     },
     {
       "id": "osm-way-362683587",
@@ -67692,6 +70486,29 @@
       "description": null,
       "events": 0,
       "source": "OpenStreetMap"
+    },
+    {
+      "id": "venue-pulitzer-hall",
+      "name": "Pulitzer Hall",
+      "kind": "club",
+      "kinds": [
+        "club"
+      ],
+      "lat": 40.80763,
+      "lon": -73.96363,
+      "miles": 48.2,
+      "city": "New York, NY",
+      "address": "2950 Broadway",
+      "url": "https://www.eventbrite.com/e/onenano-mid-atlantic-meredith-meeting-fall-2026-tickets-1997498962167",
+      "phone": null,
+      "openingHours": null,
+      "brand": null,
+      "secondHand": null,
+      "free": null,
+      "wheelchair": null,
+      "description": null,
+      "events": 1,
+      "source": "Event listings"
     },
     {
       "id": "osm-way-178575123",
@@ -69122,6 +71939,29 @@
       "source": "OpenStreetMap"
     },
     {
+      "id": "venue-richard-rodgers-amphitheater",
+      "name": "Richard Rodgers Amphitheater",
+      "kind": "music venue",
+      "kinds": [
+        "music venue"
+      ],
+      "lat": 40.80487,
+      "lon": -73.94459,
+      "miles": 48.4,
+      "city": "New York, NY",
+      "address": "18 Mount Morris Park West",
+      "url": "https://www.eventbrite.com/e/mothership-eight-dance-music-festival-free-tickets-1996732803566",
+      "phone": null,
+      "openingHours": null,
+      "brand": null,
+      "secondHand": null,
+      "free": null,
+      "wheelchair": null,
+      "description": null,
+      "events": 1,
+      "source": "Event listings"
+    },
+    {
       "id": "osm-way-271628045",
       "name": "Richard Rodgers Amphitheatre at Marcus Garvey Park",
       "kind": "theatre",
@@ -70274,6 +73114,29 @@
       "source": "OpenStreetMap"
     },
     {
+      "id": "venue-copake-country-club-golf-course-road-craryville-ny-usa",
+      "name": "Copake Country Club, Golf Course Road, Craryville, NY, USA",
+      "kind": "club",
+      "kinds": [
+        "club"
+      ],
+      "lat": 42.15254,
+      "lon": -73.60288,
+      "miles": 48.6,
+      "city": "Craryville, NY",
+      "address": "44 Golf Course Road",
+      "url": "https://www.eventbrite.com/e/copake-country-club-8th-annual-food-truck-craft-beer-festival-tickets-1981358180655",
+      "phone": null,
+      "openingHours": null,
+      "brand": null,
+      "secondHand": null,
+      "free": null,
+      "wheelchair": null,
+      "description": null,
+      "events": 1,
+      "source": "Event listings"
+    },
+    {
       "id": "osm-way-362826846",
       "name": "Electric Ladybug Garden",
       "kind": "garden",
@@ -70364,6 +73227,29 @@
       "description": null,
       "events": 0,
       "source": "OpenStreetMap"
+    },
+    {
+      "id": "venue-jumboland-diner",
+      "name": "Jumboland Diner",
+      "kind": "restaurant",
+      "kinds": [
+        "restaurant"
+      ],
+      "lat": 41.16272,
+      "lon": -74.78763,
+      "miles": 48.6,
+      "city": "Branchville, NJ",
+      "address": "438 U.S. 206",
+      "url": "https://www.eventbrite.com/e/jumboland-paint-night-tickets-1998907625517",
+      "phone": null,
+      "openingHours": null,
+      "brand": null,
+      "secondHand": null,
+      "free": null,
+      "wheelchair": null,
+      "description": null,
+      "events": 1,
+      "source": "Event listings"
     },
     {
       "id": "osm-node-9757667600",
@@ -70592,7 +73478,7 @@
       "free": null,
       "wheelchair": null,
       "description": null,
-      "events": 20,
+      "events": 17,
       "source": "OpenStreetMap"
     },
     {
@@ -70663,6 +73549,29 @@
       "description": null,
       "events": 0,
       "source": "OpenStreetMap"
+    },
+    {
+      "id": "venue-bronx-brewery-back-yard-entrance",
+      "name": "Bronx Brewery Back Yard Entrance",
+      "kind": "brewery",
+      "kinds": [
+        "brewery"
+      ],
+      "lat": 40.80153,
+      "lon": -73.91088,
+      "miles": 48.7,
+      "city": "The Bronx, NY",
+      "address": "841 East 135th Street",
+      "url": "https://www.eventbrite.com/e/bronx-carnival-summer-dancehall-soca-labor-day-party-tickets-1997796048761",
+      "phone": null,
+      "openingHours": null,
+      "brand": null,
+      "secondHand": null,
+      "free": null,
+      "wheelchair": null,
+      "description": null,
+      "events": 1,
+      "source": "Event listings"
     },
     {
       "id": "osm-node-14113807362",
@@ -70755,6 +73664,29 @@
       "description": null,
       "events": 0,
       "source": "OpenStreetMap"
+    },
+    {
+      "id": "venue-fulton-fish-market-cooperative-see-confirmation-email-for-exact-meeting-location-instructions",
+      "name": "Fulton Fish Market Cooperative (See Confirmation Email for Exact Meeting Location & Instructions)",
+      "kind": "mall",
+      "kinds": [
+        "mall"
+      ],
+      "lat": 40.8035,
+      "lon": -73.87643,
+      "miles": 48.7,
+      "city": "The Bronx, NY",
+      "address": "800 Food Center Drive",
+      "url": "https://www.eventbrite.com/e/behind-the-scenes-fulton-fish-market-worlds-2nd-largest-fish-market-registration-1997721776611",
+      "phone": null,
+      "openingHours": null,
+      "brand": null,
+      "secondHand": null,
+      "free": null,
+      "wheelchair": null,
+      "description": null,
+      "events": 1,
+      "source": "Event listings"
     },
     {
       "id": "osm-node-8518982484",
@@ -70984,7 +73916,7 @@
       "free": null,
       "wheelchair": null,
       "description": null,
-      "events": 18,
+      "events": 19,
       "source": "OpenStreetMap"
     },
     {
@@ -73572,6 +76504,27 @@
       "source": "OpenStreetMap"
     },
     {
+      "id": "venue-el-museo-del-barrio",
+      "name": "El Museo del Barrio",
+      "kind": null,
+      "kinds": [],
+      "lat": 40.79312,
+      "lon": -73.95141,
+      "miles": 49.2,
+      "city": "New York, NY",
+      "address": "1230 5th Avenue",
+      "url": "https://www.eventbrite.com/e/noches-de-cine-new-latino-short-films-tickets-1992001374735",
+      "phone": null,
+      "openingHours": null,
+      "brand": null,
+      "secondHand": null,
+      "free": null,
+      "wheelchair": null,
+      "description": null,
+      "events": 2,
+      "source": "Event listings"
+    },
+    {
       "id": "osm-relation-3745992",
       "name": "Fort Schuyler",
       "kind": "museum",
@@ -73868,7 +76821,7 @@
       "free": null,
       "wheelchair": null,
       "description": null,
-      "events": 19,
+      "events": 20,
       "source": "OpenStreetMap"
     },
     {
@@ -74593,6 +77546,29 @@
       "source": "OpenStreetMap"
     },
     {
+      "id": "osm-node-14127244838",
+      "name": "Van Hook Cheese & Grocery",
+      "kind": "shop",
+      "kinds": [
+        "shop"
+      ],
+      "lat": 40.814704,
+      "lon": -74.207898,
+      "miles": 49.3,
+      "city": "Montclair, NJ",
+      "address": "111 Grove Street, Montclair, NJ",
+      "url": "https://www.vanhookcheese.com/",
+      "phone": "+1 973-830-2676",
+      "openingHours": "Tu-Fr 10:00-18:00; Sa-Su 09:00-17:00",
+      "brand": null,
+      "secondHand": null,
+      "free": null,
+      "wheelchair": null,
+      "description": null,
+      "events": 0,
+      "source": "OpenStreetMap"
+    },
+    {
       "id": "osm-node-13260773915",
       "name": "Vintage Classic Instruments",
       "kind": "shop",
@@ -74775,7 +77751,7 @@
       "free": null,
       "wheelchair": null,
       "description": null,
-      "events": 1,
+      "events": 2,
       "source": "Event listings"
     },
     {
@@ -77356,7 +80332,7 @@
       "free": null,
       "wheelchair": null,
       "description": null,
-      "events": 0,
+      "events": 1,
       "source": "OpenStreetMap"
     },
     {
