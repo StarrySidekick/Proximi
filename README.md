@@ -145,28 +145,27 @@ The site then publishes at `https://starrysidekick.github.io/Proximi/` within a
 minute or two, and republishes automatically on every push — including the
 weekly listing refresh, so no further action is ever needed.
 
-**`main` is the deploy branch in intent; as of 2026-08-30 the Pages setting
-still says otherwise.** The live site was found serving
-`claude/local-events-discovery-vfjgwr` — five commits and two days stale, with
-a feature that had been fixed on `main` still broken for every visitor. The
-setting was never switched when `main` took over, and nothing reports the
-drift: pushes to `main` succeed, CI passes, and the site simply does not move.
+**`main` is the deploy branch, confirmed working 2026-08-30.** For a while it
+was not: Pages was still pointing at `claude/local-events-discovery-vfjgwr`
+from when the app was being built, so `main` ran five commits ahead and the
+live site spent two days serving a Places page whose every tap threw — a bug
+already fixed and merged. The setting has since been switched to `main` and a
+push to `main` alone was watched onto the live site to prove it.
 
-**Until someone changes that setting by hand** (Settings → Pages → Branch →
-`main`), publishing means updating the branch Pages actually serves:
+Nothing about that failure was loud: the push succeeded, CI went green, and
+the site simply did not move. So the habit it taught stays, and it is the only
+rule here that matters —
 
-```bash
-git push origin origin/main:refs/heads/claude/local-events-discovery-vfjgwr
-```
-
-It is a fast-forward — the old branch is an ancestor of `main` — so it rewrites
-nothing. **Verify the deploy rather than trusting the push**, because this
-failure is silent from the git side:
+**Verify the deploy; never infer it from a successful push.**
 
 ```bash
 curl -s https://starrysidekick.github.io/Proximi/data/version.json
 # must match data/version.json in the commit you just pushed
 ```
+
+`claude/local-events-discovery-vfjgwr` still exists at the same commit and is
+no longer served by anything. It is safe to delete, and deleting it removes the
+decoy that caused this.
 
 A `Validate listings` workflow checks `data/events.json` on every push (schema,
 unique ids, sign-up links, and that every venue really is inside the radius), so
