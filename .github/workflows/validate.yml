@@ -1,6 +1,9 @@
-# Guards the listings file. The weekly scrape commits data/events.json
-# unattended, so this catches malformed or out-of-area data before it reaches
-# the published site.
+# Guards the listings file AND the page. The weekly scrape commits
+# data/events.json unattended, so the validate job catches malformed or
+# out-of-area data before it reaches the published site; the browser job
+# drives the real app in headless Chromium (tests/drive.js) because a
+# refactor once deleted the Places page's tap handlers and no data check
+# could ever have noticed.
 name: Validate listings
 
 on:
@@ -39,3 +42,20 @@ jobs:
               assert s['url'].startswith('http'), s['id']
           print(f'{len(ids)} sources OK across kinds {sorted(KINDS)}')
           "
+
+  browser:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install Playwright Chromium
+        run: |
+          npm install --no-save playwright
+          npx playwright install --with-deps chromium
+
+      - name: Drive the app in headless Chromium
+        run: node tests/drive.js

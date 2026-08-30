@@ -39,9 +39,22 @@ python3 scripts/songkick.py    # ticketed concerts
 python3 scripts/cinema.py      # the five film houses that serve HTML
 python3 scripts/enrich.py      # geocode (cached), radius-filter, classify
 python3 scripts/merge.py       # collapse repeats, dedupe → data/events.json
+python3 scripts/prices.py      # read unpriced listings' own pages (cached)
 python3 scripts/places.py      # the directory → data/places.json
 python3 scripts/validate.py    # gates both files; must pass before committing
+node tests/drive.js            # drives the page itself; must pass too
 ```
+
+`prices.py` runs AFTER merge (it edits data/events.json in place; merge's
+richness scoring then keeps those prices on future runs). Its cache
+(sources/pricecache.json) remembers "asked, page publishes none" for 30 days,
+so a weekly run only fetches what is new. It reads JSON-LD offers only —
+never a visible "$" from page text — and trusts an explicit 0, same as
+jsonld.py.
+
+`places.py --only <kinds>` writes ONLY those kinds to data/places.json.
+It exists for retrying a failed selector — always follow it with a full
+(cached, fast) `places.py` run, or the directory ships missing 28 kinds.
 
 Rough expected yields — **investigate anything near zero before continuing**:
 harvest ~1900, jsonld ~60, platforms ~1450, social ~950, libcal ~590,
@@ -195,8 +208,12 @@ If two things need the same derived fact, compute it once and write it down.
 
 - `python3 scripts/validate.py` must pass. It gates both files and runs the
   Overpass selector self-test.
-- Serve locally (`python3 -m http.server 8901`) and drive it with Playwright
-  (`/opt/node22/lib/node_modules/playwright`, chromium at `/opt/pw-browsers/`).
+- `node tests/drive.js` must pass. It starts its own server, drives the page
+  in headless Chromium (touch swipes via CDP, detail sheets, permalinks,
+  elementFromPoint render asserts) and is the check that would have caught
+  the release where every Places tap threw a ReferenceError. CI runs it on
+  every push. For ad-hoc poking beyond it, Playwright is at
+  `/opt/node22/lib/node_modules/playwright`, chromium at `/opt/pw-browsers/`.
 - **Assert on the render.** `innerText` reads perfectly well from an element
   painted over by a sibling — a Places page where every row was hidden under its
   own swipe rail passed "300 rows, no console errors, no overflow". Use
@@ -259,3 +276,11 @@ registry was perfectly fine.
 
 A college calendar also needs `"campus": true`. Those are internal by default
 and `merge.py` keeps only what is genuinely public.
+
+**A campus source also needs a `venue` block with the campus coordinates.**
+Campus feeds put building and room names in LOCATION ("Maxcy Quad", "Aquinas
+Hall") that no gazetteer resolves, and without the fallback enrich drops the
+listing as ungeocodable — 1,628 candidates per run, silently, until 2026-08-28.
+With the block, the room falls back to the campus point and the campus filter
+still decides what is public. The failure is invisible in the counts: harvest
+reports the feed healthy, and the drop happens two stages later.

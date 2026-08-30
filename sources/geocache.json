@@ -3160,5 +3160,411 @@
 "display": "United States Military Academy, 845, Brewerton Road, Town of Highlands, Orange County, New York, 10996, United States",
 "matched": "West Point, NY",
 "precision": 1
+},
+"various locations, orangeburg, ny": {
+"lat": 41.0514735,
+"lon": -73.9343136,
+"display": "Orangeburg, Town of Orangetown, Rockland County, New York, 10962, United States",
+"matched": "Orangeburg, NY",
+"precision": 1
+},
+"maxcy quad, west haven, ct": {
+"lat": 41.2706527,
+"lon": -72.9470471,
+"display": "West Haven, South Central Connecticut Planning Region, Connecticut, 06516, United States",
+"matched": "West Haven, CT",
+"precision": 1
+},
+"bob ford field at tom & mary casey stadium, albany, ny": {
+"lat": 42.6511674,
+"lon": -73.754968,
+"display": "City of Albany, Albany County, New York, United States",
+"matched": "Albany, NY",
+"precision": 1
+},
+"dutch quad circle, albany, ny": {
+"lat": 42.6511674,
+"lon": -73.754968,
+"display": "City of Albany, Albany County, New York, United States",
+"matched": "Albany, NY",
+"precision": 1
+},
+"online, valhalla, ny": {
+"lat": 41.075213,
+"lon": -73.7750061,
+"display": "Valhalla, Town of Mount Pleasant, Westchester County, New York, United States",
+"matched": "Valhalla, NY",
+"precision": 1
+},
+"egan chapel of st. ignatius loyola, fairfield, ct": {
+"lat": 41.1579842,
+"lon": -73.257784,
+"display": "Egan Chapel of Saint Ignatius Loyola, Bellarmine Road, Fairfield, Greater Bridgeport Planning Region, Connecticut, 06824, United States",
+"matched": "Egan Chapel of St. Ignatius Loyola, Fairfield, CT",
+"precision": 0
+},
+"chapel of the most holy rosary, newburgh, ny": {
+"lat": 41.5000767,
+"lon": -74.0098299,
+"display": "City of Newburgh, Orange County, New York, United States",
+"matched": "Newburgh, NY",
+"precision": 1
+},
+"nj, orangeburg, ny": {
+"lat": 41.0514735,
+"lon": -73.9343136,
+"display": "Orangeburg, Town of Orangetown, Rockland County, New York, 10962, United States",
+"matched": "Orangeburg, NY",
+"precision": 1
+},
+"bucknall theater, west haven, ct": {
+"lat": 41.2706527,
+"lon": -72.9470471,
+"display": "West Haven, South Central Connecticut Planning Region, Connecticut, 06516, United States",
+"matched": "West Haven, CT",
+"precision": 1
+},
+"university hall atrium, albany, ny": {
+"lat": 42.6511674,
+"lon": -73.754968,
+"display": "City of Albany, Albany County, New York, United States",
+"matched": "Albany, NY",
+"precision": 1
+},
+"bellarmine hall, fairfield, ct": {
+"lat": 41.1566732,
+"lon": -73.2589222,
+"display": "Bellarmine Hall, Fitzgerald Way, Mill Plain, Fairfield, Greater Bridgeport Planning Region, Connecticut, 06824, United States",
+"matched": "Bellarmine Hall, Fairfield, CT",
+"precision": 0
+},
+"aquila's nest vineyards, fairfield, ct": {
+"lat": 41.1412078,
+"lon": -73.2637258,
+"display": "Fairfield, Greater Bridgeport Planning Region, Connecticut, United States",
+"matched": "Fairfield, CT",
+"precision": 1
+},
+"performing arts center pac main theatre, albany, ny": {
+"lat": 42.6511674,
+"lon": -73.754968,
+"display": "City of Albany, Albany County, New York, United States",
+"matched": "Albany, NY",
+"precision": 1
+},
+"massry school of business, albany, ny": {
+"lat": 42.6511674,
+"lon": -73.754968,
+"display": "City of Albany, Albany County, New York, United States",
+"matched": "Albany, NY",
+"precision": 1
+},
+"campus center cc multipurpose room, albany, ny": {
+"lat": 42.6511674,
+"lon": -73.754968,
+"display": "City of Albany, Albany County, New York, United States",
+"matched": "Albany, NY",
+"precision": 1
+},
+"moulton lounge, west haven, ct": {
+"lat": 41.2706527,
+"lon": -72.9470471,
+"display": "West Haven, South Central Connecticut Planning Region, Connecticut, 06516, United States",
+"matched": "West Haven, CT",
+"precision": 1
+},
+"kaplan hall, west haven, ct": {
+"lat": 41.2911773,
+"lon": -72.9595279,
+"display": "Kaplan Hall, Campbell Avenue, Allingtown, West Haven, South Central Connecticut Planning Region, Connecticut, 06519, United States",
+"matched": "Kaplan Hall, West Haven, CT",
+"precision": 0
+},
+"ct, danbury, ct": {
+"lat": 41.3904722,
+"lon": -73.4475049,
+"display": "Superior Court Juvenile Matters at Danbury, 71, Main Street, Main Street Historic District, Germantown, Danbury, Western Connecticut Planning Region, Connecticut, 06810, United States",
+"matched": "CT, Danbury, CT",
+"precision": 0
+},
+"mount saint mary college, newburgh, ny": {
+"lat": 41.5118052,
+"lon": -74.0129321,
+"display": "Mount Saint Mary College, Liberty Street, Varick Homes, City of Newburgh, Orange County, New York, 12550, United States",
+"matched": "Mount Saint Mary College, Newburgh, NY",
+"precision": 0
+},
+"virtual event, danbury, ct": {
+"lat": 41.394817,
+"lon": -73.4540111,
+"display": "Danbury, Western Connecticut Planning Region, Connecticut, United States",
+"matched": "Danbury, CT",
+"precision": 1
+},
+"virtual, danbury, ct": {
+"lat": 41.394817,
+"lon": -73.4540111,
+"display": "Danbury, Western Connecticut Planning Region, Connecticut, United States",
+"matched": "Danbury, CT",
+"precision": 1
+},
+"dimenna-nyselius library, fairfield, ct": {
+"lat": 41.1576938,
+"lon": -73.2558973,
+"display": "DiMenna-Nyselius Library, McInnes Road, Fairfield, Greater Bridgeport Planning Region, Connecticut, 06824, United States",
+"matched": "DiMenna-Nyselius Library, Fairfield, CT",
+"precision": 0
+},
+"aquinas/mst atrium, newburgh, ny": {
+"lat": 41.5000767,
+"lon": -74.0098299,
+"display": "City of Newburgh, Orange County, New York, United States",
+"matched": "Newburgh, NY",
+"precision": 1
+},
+"humanities hu 290, albany, ny": {
+"lat": 42.6511674,
+"lon": -73.754968,
+"display": "City of Albany, Albany County, New York, United States",
+"matched": "Albany, NY",
+"precision": 1
+},
+"catskill 204, albany, ny": {
+"lat": 42.6713776,
+"lon": -73.8189495,
+"display": "Catskill Street, Eagle Hill, City of Albany, Albany County, New York, 12203, United States",
+"matched": "Catskill 204, Albany, NY",
+"precision": 0
+},
+"regina a. quick center for the arts kelley theatre, fairfield, ct": {
+"lat": 41.1412078,
+"lon": -73.2637258,
+"display": "Fairfield, Greater Bridgeport Planning Region, Connecticut, United States",
+"matched": "Fairfield, CT",
+"precision": 1
+},
+"tbd, newburgh, ny": {
+"lat": 41.5000767,
+"lon": -74.0098299,
+"display": "City of Newburgh, Orange County, New York, United States",
+"matched": "Newburgh, NY",
+"precision": 1
+},
+"fairfield university, fairfield, ct": {
+"lat": 41.1596756,
+"lon": -73.2574031,
+"display": "Fairfield University, 1073, North Benson Road, Fairfield, Greater Bridgeport Planning Region, Connecticut, 06824, United States",
+"matched": "Fairfield University, Fairfield, CT",
+"precision": 0
+},
+"yankee stadium, fairfield, ct": {
+"lat": 41.1412078,
+"lon": -73.2637258,
+"display": "Fairfield, Greater Bridgeport Planning Region, Connecticut, United States",
+"matched": "Fairfield, CT",
+"precision": 1
+},
+"brooklawn country club, fairfield, ct": {
+"lat": 41.1883072,
+"lon": -73.2250322,
+"display": "Brooklawn Country Club, 500, Algonquin Road, Melville Village, Fairfield, Greater Bridgeport Planning Region, Connecticut, 06825, United States",
+"matched": "Brooklawn Country Club, Fairfield, CT",
+"precision": 0
+},
+"regina a. quick center for the arts, fairfield, ct": {
+"lat": 41.1561561,
+"lon": -73.2554702,
+"display": "Regina A Quick Center for the Arts, McInnes Road, Fairfield, Greater Bridgeport Planning Region, Connecticut, 06824, United States",
+"matched": "Regina A. Quick Center for the Arts, Fairfield, CT",
+"precision": 0
+},
+"online, fairfield, ct": {
+"lat": 41.1412078,
+"lon": -73.2637258,
+"display": "Fairfield, Greater Bridgeport Planning Region, Connecticut, United States",
+"matched": "Fairfield, CT",
+"precision": 1
+},
+"thrive hub - campus center west, albany, ny": {
+"lat": 42.6511674,
+"lon": -73.754968,
+"display": "City of Albany, Albany County, New York, United States",
+"matched": "Albany, NY",
+"precision": 1
+},
+"the admiral, fairfield, ct": {
+"lat": 41.1412078,
+"lon": -73.2637258,
+"display": "Fairfield, Greater Bridgeport Planning Region, Connecticut, United States",
+"matched": "Fairfield, CT",
+"precision": 1
+},
+"performing arts center pac recital hall, albany, ny": {
+"lat": 42.6511674,
+"lon": -73.754968,
+"display": "City of Albany, Albany County, New York, United States",
+"matched": "Albany, NY",
+"precision": 1
+},
+"regina a. quick center for the arts wien experimental theatre, fairfield, ct": {
+"lat": 41.1412078,
+"lon": -73.2637258,
+"display": "Fairfield, Greater Bridgeport Planning Region, Connecticut, United States",
+"matched": "Fairfield, CT",
+"precision": 1
+},
+"olin hall, annandale-on-hudson, ny": {
+"lat": 42.0128695,
+"lon": -73.9081901,
+"display": "Annandale-on-Hudson, Town of Red Hook, Dutchess County, New York, 12504, United States",
+"matched": "Annandale-on-Hudson, NY",
+"precision": 1
+},
+"etec, albany, ny": {
+"lat": 42.6807974,
+"lon": -73.8160055,
+"display": "ETEC Way, W. A. Harriman State Office Campus, City of Albany, Albany County, New York, 12226, United States",
+"matched": "ETEC, Albany, NY",
+"precision": 0
+},
+"gym - physical education, albany, ny": {
+"lat": 42.6511674,
+"lon": -73.754968,
+"display": "City of Albany, Albany County, New York, United States",
+"matched": "Albany, NY",
+"precision": 1
+},
+"main campus, fairfield, ct": {
+"lat": 41.1412078,
+"lon": -73.2637258,
+"display": "Fairfield, Greater Bridgeport Planning Region, Connecticut, United States",
+"matched": "Fairfield, CT",
+"precision": 1
+},
+"the clubhouse westport, fairfield, ct": {
+"lat": 41.1412078,
+"lon": -73.2637258,
+"display": "Fairfield, Greater Bridgeport Planning Region, Connecticut, United States",
+"matched": "Fairfield, CT",
+"precision": 1
+},
+"boston park plaza, fairfield, ct": {
+"lat": 41.1412078,
+"lon": -73.2637258,
+"display": "Fairfield, Greater Bridgeport Planning Region, Connecticut, United States",
+"matched": "Fairfield, CT",
+"precision": 1
+},
+"garden city country club, bronx, ny": {
+"lat": 40.8466508,
+"lon": -73.8785937,
+"display": "The Bronx, Bronx County, New York, United States",
+"matched": "Bronx, NY",
+"precision": 1
+},
+"great river golf club, fairfield, ct": {
+"lat": 41.1412078,
+"lon": -73.2637258,
+"display": "Fairfield, Greater Bridgeport Planning Region, Connecticut, United States",
+"matched": "Fairfield, CT",
+"precision": 1
+},
+"university club of chicago, fairfield, ct": {
+"lat": 41.1412078,
+"lon": -73.2637258,
+"display": "Fairfield, Greater Bridgeport Planning Region, Connecticut, United States",
+"matched": "Fairfield, CT",
+"precision": 1
+},
+"pelham country club, fairfield, ct": {
+"lat": 41.1412078,
+"lon": -73.2637258,
+"display": "Fairfield, Greater Bridgeport Planning Region, Connecticut, United States",
+"matched": "Fairfield, CT",
+"precision": 1
+},
+"patterson mansion, fairfield, ct": {
+"lat": 41.1412078,
+"lon": -73.2637258,
+"display": "Fairfield, Greater Bridgeport Planning Region, Connecticut, United States",
+"matched": "Fairfield, CT",
+"precision": 1
+},
+"dolan school of business event hall, fairfield, ct": {
+"lat": 41.1412078,
+"lon": -73.2637258,
+"display": "Fairfield, Greater Bridgeport Planning Region, Connecticut, United States",
+"matched": "Fairfield, CT",
+"precision": 1
+},
+"metlife stadium, fairfield, ct": {
+"lat": 41.1412078,
+"lon": -73.2637258,
+"display": "Fairfield, Greater Bridgeport Planning Region, Connecticut, United States",
+"matched": "Fairfield, CT",
+"precision": 1
+},
+"etec 149/151, albany, ny": {
+"lat": 42.6807974,
+"lon": -73.8160055,
+"display": "ETEC Way, W. A. Harriman State Office Campus, City of Albany, Albany County, New York, 12226, United States",
+"matched": "ETEC 149/151, Albany, NY",
+"precision": 0
+},
+"blackhawk country club, fairfield, ct": {
+"lat": 41.1412078,
+"lon": -73.2637258,
+"display": "Fairfield, Greater Bridgeport Planning Region, Connecticut, United States",
+"matched": "Fairfield, CT",
+"precision": 1
+},
+"elicit brewing co., fairfield, ct": {
+"lat": 41.1619472,
+"lon": -73.2317575,
+"display": "Elicit Brewing Co, Black Rock Turnpike, Fairfield, Greater Bridgeport Planning Region, Connecticut, 06430, United States",
+"matched": "Elicit Brewing Co., Fairfield, CT",
+"precision": 0
+},
+"aquinas hall theatre, newburgh, ny": {
+"lat": 41.5000767,
+"lon": -74.0098299,
+"display": "City of Newburgh, Orange County, New York, United States",
+"matched": "Newburgh, NY",
+"precision": 1
+},
+"broadview center, albany, ny": {
+"lat": 42.6821683,
+"lon": -73.8282597,
+"display": "Broadview Center, Athletic Complex, McKownville, Town of Guilderland, Albany County, New York, 12203, United States",
+"matched": "Broadview Center, Albany, NY",
+"precision": 0
+},
+"tbd (higher seed hosts), fairfield, ct": {
+"lat": 41.1412078,
+"lon": -73.2637258,
+"display": "Fairfield, Greater Bridgeport Planning Region, Connecticut, United States",
+"matched": "Fairfield, CT",
+"precision": 1
+},
+"tbd, fairfield, ct": {
+"lat": 41.1412078,
+"lon": -73.2637258,
+"display": "Fairfield, Greater Bridgeport Planning Region, Connecticut, United States",
+"matched": "Fairfield, CT",
+"precision": 1
+},
+"bellarmine campus, fairfield, ct": {
+"lat": 41.1412078,
+"lon": -73.2637258,
+"display": "Fairfield, Greater Bridgeport Planning Region, Connecticut, United States",
+"matched": "Fairfield, CT",
+"precision": 1
+},
+"gonzaga hall auditorium, fairfield, ct": {
+"lat": 41.1412078,
+"lon": -73.2637258,
+"display": "Fairfield, Greater Bridgeport Planning Region, Connecticut, United States",
+"matched": "Fairfield, CT",
+"precision": 1
 }
 }
