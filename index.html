@@ -248,6 +248,26 @@
   </footer>
 </aside>
 
+<!-- ── Detail sheet ─────────────────────────────────────
+     One sheet, two tenants: tap a listing card and it fills with the whole
+     event; tap a place row and it fills with the place. Its own scrim, so
+     wiring never tangles with the filter sheet's. -->
+<div class="scrim" id="detail-scrim" hidden></div>
+
+<aside class="sheet detail-sheet" id="detail-sheet" role="dialog" aria-modal="true"
+       aria-labelledby="detail-title" hidden>
+  <header class="sheet-head">
+    <h2 id="detail-title" class="detail-title"></h2>
+    <button id="close-detail" class="icon-btn" type="button" aria-label="Close">
+      <svg viewBox="0 0 16 16" aria-hidden="true" class="ico">
+        <path d="M4 4l8 8M12 4l-8 8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+      </svg>
+    </button>
+  </header>
+  <div class="sheet-body" id="detail-body"></div>
+  <footer class="sheet-foot detail-foot" id="detail-foot"></footer>
+</aside>
+
 <script src="assets/app.js"></script>
 </body>
 </html>

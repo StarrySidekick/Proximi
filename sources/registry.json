@@ -324,7 +324,15 @@
       "url": "https://sunywcc.edu/events/?ical=1",
       "publisher": "Westchester Community College",
       "scope": "regional",
-      "campus": true
+      "campus": true,
+      "venue": {
+        "name": "Westchester Community College",
+        "city": "Valhalla, NY",
+        "address": "75 Grasslands Rd, Valhalla, NY",
+        "lat": 41.06696,
+        "lon": -73.78913
+      },
+      "note": "Venue block added 2026-08-28 so room-only locations fall back to campus coordinates instead of being dropped ungeocodable."
     },
     {
       "id": "wcsu",
@@ -332,7 +340,15 @@
       "url": "https://wcsu.edu/events/?ical=1",
       "publisher": "Western Connecticut State University",
       "scope": "regional",
-      "campus": true
+      "campus": true,
+      "venue": {
+        "name": "Western Connecticut State University",
+        "city": "Danbury, CT",
+        "address": "181 White St, Danbury, CT",
+        "lat": 41.4005,
+        "lon": -73.44502
+      },
+      "note": "Venue block added 2026-08-28 so room-only locations fall back to campus coordinates instead of being dropped ungeocodable."
     },
     {
       "id": "sunyrockland",
@@ -340,7 +356,15 @@
       "url": "https://sunyrockland.edu/events/?ical=1",
       "publisher": "SUNY Rockland",
       "scope": "regional",
-      "campus": true
+      "campus": true,
+      "venue": {
+        "name": "Rockland Community College",
+        "city": "Suffern, NY",
+        "address": "145 College Rd, Suffern, NY",
+        "lat": 41.13309,
+        "lon": -74.08864
+      },
+      "note": "Venue block added 2026-08-28 so room-only locations fall back to campus coordinates instead of being dropped ungeocodable."
     },
     {
       "id": "dominican-ny",
@@ -348,7 +372,15 @@
       "url": "https://duny.edu/events/?ical=1&eventDisplay=list",
       "publisher": "Dominican University New York",
       "scope": "regional",
-      "campus": true
+      "campus": true,
+      "venue": {
+        "name": "Dominican University New York",
+        "city": "Orangeburg, NY",
+        "address": "470 Western Hwy, Orangeburg, NY",
+        "lat": 41.05323,
+        "lon": -73.95433
+      },
+      "note": "Venue block added 2026-08-28 so room-only locations fall back to campus coordinates instead of being dropped ungeocodable."
     },
     {
       "id": "msmc",
@@ -356,7 +388,15 @@
       "url": "https://events.msmc.edu/calendar.ics",
       "publisher": "Mount Saint Mary College, Newburgh",
       "scope": "regional",
-      "campus": true
+      "campus": true,
+      "venue": {
+        "name": "Mount Saint Mary College",
+        "city": "Newburgh, NY",
+        "address": "330 Powell Ave, Newburgh, NY",
+        "lat": 41.51181,
+        "lon": -74.01293
+      },
+      "note": "Venue block added 2026-08-28 so room-only locations fall back to campus coordinates instead of being dropped ungeocodable."
     },
     {
       "id": "fairfield-u",
@@ -364,7 +404,15 @@
       "url": "https://events.fairfield.edu/calendar.ics",
       "publisher": "Fairfield University",
       "scope": "regional",
-      "campus": true
+      "campus": true,
+      "venue": {
+        "name": "Fairfield University",
+        "city": "Fairfield, CT",
+        "address": "1073 N Benson Rd, Fairfield, CT",
+        "lat": 41.15968,
+        "lon": -73.2574
+      },
+      "note": "Venue block added 2026-08-28 so room-only locations fall back to campus coordinates instead of being dropped ungeocodable."
     },
     {
       "id": "fordham",
@@ -372,7 +420,15 @@
       "url": "https://calendar.fordham.edu/calendar.ics",
       "publisher": "Fordham University",
       "scope": "regional",
-      "campus": true
+      "campus": true,
+      "venue": {
+        "name": "Fordham University",
+        "city": "Bronx, NY",
+        "address": "441 E Fordham Rd, Bronx, NY",
+        "lat": 40.86173,
+        "lon": -73.88603
+      },
+      "note": "Venue block added 2026-08-28 so room-only locations fall back to campus coordinates instead of being dropped ungeocodable."
     },
     {
       "id": "albany-u",
@@ -380,7 +436,15 @@
       "url": "https://events.albany.edu/calendar.ics",
       "publisher": "University at Albany",
       "scope": "regional",
-      "campus": true
+      "campus": true,
+      "venue": {
+        "name": "University at Albany",
+        "city": "Albany, NY",
+        "address": "1400 Washington Ave, Albany, NY",
+        "lat": 42.68403,
+        "lon": -73.82588
+      },
+      "note": "Venue block added 2026-08-28 so room-only locations fall back to campus coordinates instead of being dropped ungeocodable."
     },
     {
       "id": "wpunj",
@@ -398,7 +462,15 @@
       "url": "https://events.newhaven.edu/calendar.ics",
       "publisher": "University of New Haven",
       "scope": "regional",
-      "campus": true
+      "campus": true,
+      "venue": {
+        "name": "University of New Haven",
+        "city": "West Haven, CT",
+        "address": "300 Boston Post Rd, West Haven, CT",
+        "lat": 41.29091,
+        "lon": -72.96264
+      },
+      "note": "Venue block added 2026-08-28 so room-only locations fall back to campus coordinates instead of being dropped ungeocodable."
     },
     {
       "id": "mahaiwe",
@@ -421,7 +493,14 @@
       "url": "https://tockify.com/api/feeds/ics/untermyer.gardens.conservancy",
       "publisher": "Untermyer Gardens Conservancy",
       "scope": "regional",
-      "note": "Tockify. The feed name is the data-tockify-calendar attribute on the embed (untermyer.gardens.conservancy), not the domain — guessing from the domain 404s."
+      "note": "Tockify. The feed name is the data-tockify-calendar attribute on the embed (untermyer.gardens.conservancy), not the domain — guessing from the domain 404s. Venue block added 2026-08-28 so room-only locations fall back to campus coordinates instead of being dropped ungeocodable.",
+      "venue": {
+        "name": "Untermyer Park and Gardens",
+        "city": "Yonkers, NY",
+        "address": "945 N Broadway, Yonkers, NY",
+        "lat": 40.9666,
+        "lon": -73.88747
+      }
     },
     {
       "id": "paramount-hv",
@@ -588,7 +667,15 @@
       "kind": "ics",
       "url": "https://fishercenter.bard.edu/events/?ical=1",
       "publisher": "Fisher Center at Bard",
-      "scope": "regional"
+      "scope": "regional",
+      "venue": {
+        "name": "Fisher Center at Bard",
+        "city": "Annandale-on-Hudson, NY",
+        "address": "60 Manor Ave, Annandale-on-Hudson, NY",
+        "lat": 42.02255,
+        "lon": -73.91072
+      },
+      "note": "Venue block added 2026-08-28 so room-only locations fall back to campus coordinates instead of being dropped ungeocodable."
     },
     {
       "id": "cin-storyscreen",

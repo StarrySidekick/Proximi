@@ -227,7 +227,10 @@
     openFilters: $('open-filters'), closeFilters: $('close-filters'),
     openLocation: $('open-location'), applyFilters: $('apply-filters'),
     resetFilters: $('reset-filters'),
-    sheet: $('filter-sheet'), scrim: $('scrim'), filtersCount: $('filters-count')
+    sheet: $('filter-sheet'), scrim: $('scrim'), filtersCount: $('filters-count'),
+    detailSheet: $('detail-sheet'), detailScrim: $('detail-scrim'),
+    detailTitle: $('detail-title'), detailBody: $('detail-body'),
+    detailFoot: $('detail-foot'), closeDetail: $('close-detail')
   };
 
   const state = {
@@ -812,7 +815,8 @@
     if (!box) return;
     box.querySelector('.toast-msg').textContent = message;
     const btn = box.querySelector('.toast-undo');
-    btn.onclick = () => { clearTimeout(toastTimer); box.hidden = true; undo(); };
+    btn.hidden = !undo;   // "Link copied" has nothing to undo
+    btn.onclick = () => { clearTimeout(toastTimer); box.hidden = true; undo?.(); };
     box.hidden = false;
     clearTimeout(toastTimer);
     toastTimer = setTimeout(() => { box.hidden = true; }, 6000);
@@ -825,6 +829,12 @@
      anyone on a keyboard, a mouse, or who never discovers the gesture. */
 
   const SWIPE_COMMIT = 90;   // px past which the verdict sticks
+
+  /* A drag that committed (or nearly did) still delivers a click on the same
+     element at pointerup, and that click must not open the detail sheet the
+     reader never asked for. One timestamp, checked by the tap handlers. */
+  let lastSwipeAt = 0;
+  const justSwiped = () => Date.now() - lastSwipeAt < 400;
 
   /* One gesture, two lists. The feed swipes a listing to hidden/going; the
      directory swipes a place to muted/interested. Same physics, same commit
@@ -868,6 +878,7 @@
     const finish = () => {
       if (frame !== null) { cancelAnimationFrame(frame); frame = null; }
       if (!active) { startX = startY = 0; return; }
+      lastSwipeAt = Date.now();
       const verdict = dx > SWIPE_COMMIT ? 'going' : dx < -SWIPE_COMMIT ? 'hidden' : null;
       li.classList.remove('is-swiping');
       surface.classList.remove('is-swiping');
@@ -974,6 +985,21 @@
         decide(item, state.decisions[item.id] === want ? null : want);
       });
     }
+    // The card itself opens the full story. Buttons and links keep their own
+    // jobs, and a tap that was really the tail of a swipe stays a swipe.
+    surface.setAttribute('tabindex', '0');
+    surface.setAttribute('role', 'button');
+    surface.setAttribute('aria-label', `More about ${item.title}`);
+    surface.addEventListener('click', (e) => {
+      if (e.target.closest('a, button') || justSwiped()) return;
+      openEventDetail(item);
+    });
+    surface.addEventListener('keydown', (e) => {
+      if ((e.key === 'Enter' || e.key === ' ') && e.target === surface) {
+        e.preventDefault();
+        openEventDetail(item);
+      }
+    });
     attachSwipe(li, surface, (verdict) => decide(item, verdict));
     return li;
   }
@@ -1337,6 +1363,22 @@
     });
     row.querySelector('.place-save').addEventListener('click', () => togglePlaceSaved(p));
     row.querySelector('.place-mute')?.addEventListener('click', () => togglePlaceMuted(p));
+    // The row's main column opens the place in full — hours, phone, website,
+    // everything the row has no room for.
+    const main = row.querySelector('.place-main');
+    main.setAttribute('tabindex', '0');
+    main.setAttribute('role', 'button');
+    main.setAttribute('aria-label', `More about ${p.name}`);
+    main.addEventListener('click', (e) => {
+      if (e.target.closest('a, button') || justSwiped()) return;
+      openPlaceDetail(p);
+    });
+    main.addEventListener('keydown', (e) => {
+      if ((e.key === 'Enter' || e.key === ' ') && e.target === main) {
+        e.preventDefault();
+        openPlaceDetail(p);
+      }
+    });
     attachSwipe(li, row, (verdict) =>
       (verdict === 'going' ? togglePlaceSaved(p) : togglePlaceMuted(p)));
     return li;
@@ -1402,6 +1444,257 @@
       el.tabPlacesN.textContent = n ? (n > 999 ? `${Math.floor(n / 100) / 10}k` : n) : '';
     }
   }
+
+  /* ── Detail sheet ──────────────────────────────────────
+     Tap a card, get the whole story: the full description the card clamps,
+     every link, and buttons big enough to mean it. One sheet serves both
+     lists. Each open writes a hash — #e=<id> for a listing, #p=<id> for a
+     place — so any event or place is a link someone can be sent. */
+
+  let detailOpen = null;   // {kind:'event'|'place', id} while the sheet is up
+
+  const detailHash = (kind, id) =>
+    (kind === 'event' ? '#e=' : '#p=') + encodeURIComponent(id);
+
+  const shareUrlFor = (kind, id) =>
+    location.origin + location.pathname + location.search + detailHash(kind, id);
+
+  async function shareLink(title, url) {
+    // The native share sheet where there is one; the clipboard everywhere
+    // else. A dismissed share sheet is a decision, not a failure.
+    if (navigator.share) {
+      try { await navigator.share({ title, url }); return; }
+      catch (e) { if (e.name === 'AbortError') return; }
+    }
+    try {
+      await navigator.clipboard.writeText(url);
+      toast('Link copied');
+    } catch {
+      toast(url);   // last resort: at least show it
+    }
+  }
+
+  function showDetailSheet() {
+    el.detailSheet.hidden = false;
+    el.detailScrim.hidden = false;
+    document.body.classList.add('sheet-open');
+    requestAnimationFrame(() => {
+      el.detailSheet.classList.add('is-open');
+      el.detailScrim.classList.add('is-open');
+      el.closeDetail.focus();
+    });
+  }
+
+  function hideDetailSheet() {
+    detailOpen = null;
+    el.detailSheet.classList.remove('is-open');
+    el.detailScrim.classList.remove('is-open');
+    document.body.classList.remove('sheet-open');
+    setTimeout(() => { el.detailSheet.hidden = true; el.detailScrim.hidden = true; }, 200);
+  }
+
+  /* Close via UI: if this open wrote a history entry, going back both closes
+     the sheet and eats the entry, so the back button never needs pressing
+     twice. Opened straight from a shared link, there is no entry to eat —
+     drop the hash in place instead. */
+  function closeDetail() {
+    if (history.state && history.state.proximiDetail) history.back();
+    else {
+      hideDetailSheet();
+      if (location.hash) history.replaceState(null, '', location.pathname + location.search);
+    }
+  }
+
+  function detailFootButton(label, cls, onClick) {
+    const b = document.createElement('button');
+    b.type = 'button';
+    b.className = 'btn ' + (cls || '');
+    b.innerHTML = label;
+    b.addEventListener('click', onClick);
+    return b;
+  }
+
+  const mapLink = (lat, lon) =>
+    `https://www.openstreetmap.org/?mlat=${lat}&mlon=${lon}#map=17/${lat}/${lon}`;
+
+  function renderEventDetail(item) {
+    el.detailTitle.textContent = item.title;
+    const verdict = state.decisions[item.id];
+
+    // venue, address and city overlap constantly — the address usually opens
+    // with the venue's own name and closes with the city — so the venue keeps
+    // the front (as the tappable name) and the rest is trimmed around it.
+    const venueName = venueOf(item);
+    let addr = item.address;
+    if (addr && venueName) {
+      if (addr === venueName) addr = null;
+      else if (addr.startsWith(venueName)) {
+        addr = addr.slice(venueName.length).replace(/^[\s,·–—-]+/, '') || null;
+      }
+    }
+    let cityBit = item.city;
+    if (cityBit && ((addr || '').includes(cityBit) || (venueName || '').includes(cityBit))) {
+      cityBit = null;
+    }
+    const whereBits = [addr, cityBit].filter(Boolean).map(esc);
+    if (item._distance != null) whereBits.push(esc(formatDistance(item._distance)));
+
+    const links = [];
+    const signupHref = item.signupRequired ? safeUrl(item.signupUrl) : null;
+    const detailsHref = safeUrl(item.url);
+    if (signupHref) links.push(`<a class="link-btn is-signup" href="${esc(signupHref)}"
+      target="_blank" rel="noopener noreferrer">Sign up ↗</a>`);
+    if (detailsHref) links.push(`<a class="link-btn" href="${esc(detailsHref)}"
+      target="_blank" rel="noopener noreferrer">Full listing ↗</a>`);
+    if (item.lat != null) links.push(`<a class="link-btn" href="${esc(mapLink(item.lat, item.lon))}"
+      target="_blank" rel="noopener noreferrer">Map ↗</a>`);
+
+    el.detailBody.innerHTML = `
+      <p class="detail-when">
+        ${esc(formatWhen(item, false))}
+        ${item.recurrence ? `<span class="repeat"> · ${esc(item.recurrence)}</span>` : ''}
+        ${item.durationMin ? `<span class="repeat"> · ${esc(formatDuration(item.durationMin))}</span>` : ''}
+      </p>
+      <p class="detail-price ${isFree(item) ? 'is-free' : ''} ${priceKnown(item) ? '' : 'is-unknown'}">
+        ${esc(formatPrice(item))}
+        ${item.price?.note ? `<span class="price-note">${esc(item.price.note)}</span>` : ''}
+      </p>
+      <div class="detail-tags">
+        <span class="badge badge-type">${esc(typeLabel(item.type))}</span>
+        ${typesOf(item).slice(1).map((t) =>
+          `<span class="badge badge-type is-secondary">${esc(typeLabel(t))}</span>`).join('')}
+        ${verdict === 'going' ? '<span class="badge badge-going">Going</span>' : ''}
+        ${repeatsOf(item) ? `<span class="badge badge-repeat">${esc(cadenceLabel(item))}</span>` : ''}
+        ${audienceOf(item) === 'family' ? '<span class="badge badge-kids">Family &amp; kids</span>' : ''}
+        ${audienceOf(item) === 'seniors' ? '<span class="badge badge-kids">Seniors</span>' : ''}
+        ${audienceOf(item) === 'adults' ? '<span class="badge badge-adults">21+</span>' : ''}
+        ${item.signupRequired ? '<span class="badge">Needs sign-up</span>' : ''}
+      </div>
+      ${(venueName || whereBits.length) ? `<div class="detail-place"><p class="place-line">
+        ${venueName ? `<button type="button" class="detail-venue-btn" id="detail-venue-events">${esc(venueName)}</button>` : ''}
+        ${whereBits.map((b, i) => (venueName || i ? ` · ${b}` : b)).join('')}
+      </p></div>` : ''}
+      ${item.description ? `<p class="detail-desc">${esc(item.description)}</p>` : ''}
+      <div class="detail-links">${links.join('')}</div>
+      <p class="detail-fine">From ${esc(item.source || item.host || 'the listing feed')} —
+        times and prices change; check the listing before you go.</p>`;
+
+    el.detailBody.querySelector('#detail-venue-events')?.addEventListener('click', () => {
+      state.venueFilter = venueOf(item);
+      closeDetail();
+      showView('events');
+      render();
+    });
+
+    el.detailFoot.replaceChildren(
+      detailFootButton(verdict === 'hidden' ? 'Restore' : '✕ Not for me', 'btn-ghost', () => {
+        decide(item, verdict === 'hidden' ? null : 'hidden');
+        closeDetail();
+      }),
+      detailFootButton('Share', '', () =>
+        shareLink(item.title, shareUrlFor('event', item.id))),
+      detailFootButton(verdict === 'going' ? '✓ Going' : '✓ Add to calendar',
+        'btn-primary', () => {
+          decide(item, verdict === 'going' ? null : 'going');
+          renderEventDetail(item);   // reflect the new verdict in place
+        }));
+  }
+
+  function renderPlaceDetail(p) {
+    el.detailTitle.textContent = p.name;
+    const saved = state.savedPlaces.has(p.name);
+    const muted = state.hiddenVenues.has(p.name);
+    const miles = p._miles ?? placeMiles(p);
+
+    const links = [];
+    if (safeUrl(p.url)) links.push(`<a class="link-btn" href="${esc(safeUrl(p.url))}"
+      target="_blank" rel="noopener noreferrer">Website ↗</a>`);
+    if (p.phone) links.push(`<a class="link-btn" href="tel:${esc(String(p.phone).replace(/[^+\d]/g, ''))}">Call</a>`);
+    if (p.lat != null) links.push(`<a class="link-btn" href="${esc(mapLink(p.lat, p.lon))}"
+      target="_blank" rel="noopener noreferrer">Map ↗</a>`);
+
+    el.detailBody.innerHTML = `
+      <div class="detail-tags">
+        ${p.kind ? `<span class="badge badge-type">${esc(kindLabel(p.kind))}</span>` : ''}
+        ${(p.kinds || []).filter((k) => k !== p.kind).map((k) =>
+          `<span class="badge badge-type is-secondary">${esc(kindLabel(k))}</span>`).join('')}
+        ${p.secondHand ? '<span class="badge">used &amp; rare</span>' : ''}
+        ${p.brand ? '<span class="badge">chain</span>' : ''}
+        ${p.free ? '<span class="badge badge-going">Free entry</span>' : ''}
+        ${p.wheelchair === 'yes' ? '<span class="badge">♿ accessible</span>' : ''}
+        ${saved ? '<span class="badge badge-going">♥ Liked</span>' : ''}
+        ${muted ? '<span class="badge">Muted</span>' : ''}
+      </div>
+      <div class="detail-place"><p class="place-line">
+        ${[p.address, p.city, miles != null ? formatDistance(miles) : null]
+          .filter(Boolean).map(esc).join(' · ') || 'Location on the map below.'}
+      </p></div>
+      ${p.openingHours ? `<p class="detail-desc">Hours: ${esc(p.openingHours)}</p>` : ''}
+      ${p.description ? `<p class="detail-desc">${esc(p.description)}</p>` : ''}
+      ${p.events ? `<p class="detail-desc"><button type="button" class="detail-venue-btn"
+         id="detail-place-events">${p.events} ${p.events === 1 ? 'listing' : 'listings'}
+         coming up here →</button></p>` : ''}
+      <div class="detail-links">${links.join('')}</div>
+      <p class="detail-fine">${p.source === 'Event listings'
+        ? 'Known from the event feed.'
+        : 'Place data from OpenStreetMap contributors (ODbL).'}</p>`;
+
+    el.detailBody.querySelector('#detail-place-events')?.addEventListener('click', () => {
+      state.venueFilter = p.name;
+      closeDetail();
+      showView('events');
+      render();
+    });
+
+    el.detailFoot.replaceChildren(
+      detailFootButton(muted ? 'Unmute' : 'Mute this place', 'btn-ghost', () => {
+        togglePlaceMuted(p);
+        renderPlaceDetail(p);
+      }),
+      detailFootButton('Share', '', () =>
+        shareLink(p.name, shareUrlFor('place', p.id || p.name))),
+      detailFootButton(saved ? '♥ Liked' : '♡ Like', 'btn-primary', () => {
+        togglePlaceSaved(p);
+        renderPlaceDetail(p);
+      }));
+  }
+
+  function openEventDetail(item, { push = true } = {}) {
+    renderEventDetail(item);
+    detailOpen = { kind: 'event', id: item.id };
+    showDetailSheet();
+    if (push) history.pushState({ proximiDetail: detailOpen }, '', detailHash('event', item.id));
+  }
+
+  function openPlaceDetail(p, { push = true } = {}) {
+    renderPlaceDetail(p);
+    detailOpen = { kind: 'place', id: p.id || p.name };
+    showDetailSheet();
+    if (push) history.pushState({ proximiDetail: detailOpen }, '', detailHash('place', p.id || p.name));
+  }
+
+  /* A shared link, or the back/forward button, decides what is open. */
+  function openFromHash({ push = false } = {}) {
+    const m = location.hash.match(/^#(e|p)=(.+)$/);
+    if (!m) { if (detailOpen) hideDetailSheet(); return; }
+    const id = decodeURIComponent(m[2]);
+    if (m[1] === 'e') {
+      const item = state.allItems.find((i) => i.id === id);
+      if (item) { openEventDetail(item, { push }); return; }
+    } else {
+      const p = placeIndex().find((x) => (x.id || x.name) === id || x.name === id);
+      if (p) {
+        if (state.view !== 'places') showView('places');
+        openPlaceDetail(p, { push });
+        return;
+      }
+    }
+    // The listing has passed, or the id belongs to a week that is gone.
+    history.replaceState(null, '', location.pathname + location.search);
+    toast('That listing is no longer here — it may have passed.');
+  }
+
+  window.addEventListener('popstate', () => openFromHash());
 
   /* ── The two views ─────────────────────────────────────── */
 
@@ -1514,10 +1807,13 @@
     if (lastFocus) lastFocus.focus();
   }
 
-  // Keep tabbing inside the sheet while it is modal.
+  // Keep tabbing inside whichever sheet is modal right now.
   function trapFocus(e) {
-    if (e.key !== 'Tab' || el.sheet.hidden) return;
-    const f = el.sheet.querySelectorAll(
+    if (e.key !== 'Tab') return;
+    const sheet = !el.detailSheet.hidden ? el.detailSheet
+                : !el.sheet.hidden ? el.sheet : null;
+    if (!sheet) return;
+    const f = sheet.querySelectorAll(
       'button, input, select, a[href], [tabindex]:not([tabindex="-1"])');
     if (!f.length) return;
     const first = f[0], last = f[f.length - 1];
@@ -1530,8 +1826,13 @@
   el.closeFilters.addEventListener('click', closeSheet);
   el.applyFilters.addEventListener('click', closeSheet);
   el.scrim.addEventListener('click', closeSheet);
+  el.closeDetail.addEventListener('click', closeDetail);
+  el.detailScrim.addEventListener('click', closeDetail);
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && !el.sheet.hidden) closeSheet();
+    if (e.key === 'Escape') {
+      if (!el.detailSheet.hidden) closeDetail();
+      else if (!el.sheet.hidden) closeSheet();
+    }
     trapFocus(e);
   });
 
@@ -1857,6 +2158,8 @@
           invalidatePlaces();
           updateTabCounts();
           if (state.view === 'places') renderPlaces();
+          // A shared place link can only resolve once the directory is here.
+          if (location.hash.startsWith('#p=')) openFromHash();
         })
         .catch(() => { /* the feed still works without the directory */ });
 
@@ -1883,8 +2186,9 @@
         render();
       }
       // Last, once there is something to show: reopen on whichever tab was
-      // last in use.
+      // last in use, and honour a shared event link.
       if (prefs?.view === 'places') showView('places');
+      if (location.hash.startsWith('#e=')) openFromHash();
     } catch {
       el.empty.hidden = false;
       el.empty.textContent = 'The listings file failed to load. If you opened this file '
