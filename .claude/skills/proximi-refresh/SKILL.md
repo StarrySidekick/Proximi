@@ -239,9 +239,25 @@ git push -u origin main
 
 Do not open a pull request. Pushing is the deploy.
 
-`main` is the deploy branch. If the live site is not moving after a push, the
-Pages source is still pointing at the old `claude/local-events-discovery-vfjgwr`
-branch — a repo setting no script here can change.
+**Pushing to `main` is not yet the deploy, and the failure is silent.** Checked
+on 2026-08-30: Pages was still serving `claude/local-events-discovery-vfjgwr`,
+so `main` was five commits ahead and the live site had spent two days serving a
+Places page whose every tap threw. The push succeeds, CI goes green, the site
+does not move, and nothing anywhere says so.
+
+So publish to the branch Pages actually serves, then **verify the deploy**:
+
+```bash
+git push -u origin main
+git push origin origin/main:refs/heads/claude/local-events-discovery-vfjgwr
+curl -s https://starrysidekick.github.io/Proximi/data/version.json   # must be the version you just stamped
+```
+
+The second push is a fast-forward (the old branch is an ancestor of `main`), so
+it rewrites nothing. Drop it once Settings → Pages → Branch reads `main` — and
+until then, never report a refresh as live without that `curl` coming back with
+the new version. A green CI run says the data is valid, not that anyone can see
+it.
 
 The centre and both radii live in `sources/registry.json` (`center`, 100 miles
 for events, `placesRadiusMiles` 50 for places). `merge.py` copies them into the

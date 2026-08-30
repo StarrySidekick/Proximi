@@ -145,11 +145,28 @@ The site then publishes at `https://starrysidekick.github.io/Proximi/` within a
 minute or two, and republishes automatically on every push — including the
 weekly listing refresh, so no further action is ever needed.
 
-**`main` is the deploy branch.** It was `claude/local-events-discovery-vfjgwr`
-while the app was being built, and everything landed on `main` in one
-fast-forward once it was worth publishing. If the live site is not moving after
-a push to `main`, that Pages setting is still pointing at the old branch — it is
-the one part of this that no script can change.
+**`main` is the deploy branch in intent; as of 2026-08-30 the Pages setting
+still says otherwise.** The live site was found serving
+`claude/local-events-discovery-vfjgwr` — five commits and two days stale, with
+a feature that had been fixed on `main` still broken for every visitor. The
+setting was never switched when `main` took over, and nothing reports the
+drift: pushes to `main` succeed, CI passes, and the site simply does not move.
+
+**Until someone changes that setting by hand** (Settings → Pages → Branch →
+`main`), publishing means updating the branch Pages actually serves:
+
+```bash
+git push origin origin/main:refs/heads/claude/local-events-discovery-vfjgwr
+```
+
+It is a fast-forward — the old branch is an ancestor of `main` — so it rewrites
+nothing. **Verify the deploy rather than trusting the push**, because this
+failure is silent from the git side:
+
+```bash
+curl -s https://starrysidekick.github.io/Proximi/data/version.json
+# must match data/version.json in the commit you just pushed
+```
 
 A `Validate listings` workflow checks `data/events.json` on every push (schema,
 unique ids, sign-up links, and that every venue really is inside the radius), so
