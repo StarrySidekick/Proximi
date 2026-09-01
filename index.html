@@ -41,6 +41,10 @@
           aria-selected="false" aria-controls="places-view">
     Places<span class="viewtab-n" id="tab-places-n"></span>
   </button>
+  <button type="button" id="tab-saved" class="viewtab" role="tab"
+          aria-selected="false" aria-controls="saved-view">
+    Saved<span class="viewtab-n" id="tab-saved-n"></span>
+  </button>
 </nav>
 
 <div class="wrap contextbar">
@@ -67,6 +71,18 @@
     <p class="freshness" id="data-banner" hidden></p>
     <ul id="list" class="list"></ul>
     <p id="empty" class="empty" hidden></p>
+  </div>
+
+  <div id="saved-view" role="tabpanel" aria-labelledby="tab-saved" hidden>
+    <p class="places-intro">Everything you swiped right on. Swipe one right again
+      to put it on your calendar, left to drop it.</p>
+    <ul id="saved-list" class="list"></ul>
+    <p id="saved-empty" class="empty" hidden></p>
+
+    <section class="saved-places" id="saved-places-block" hidden>
+      <h2 class="saved-h">Places you liked</h2>
+      <ul id="saved-places" class="places-list"></ul>
+    </section>
   </div>
 
   <div id="places-view" role="tabpanel" aria-labelledby="tab-places" hidden>
@@ -178,8 +194,10 @@
           <button type="button" id="show-hidden" class="chip" aria-pressed="false" hidden>Show hidden</button>
           <button type="button" id="clear-hidden" class="chip" hidden>Restore all hidden</button>
         </div>
-        <p class="hint">Swipe a card left to hide it, right to add it to your
-          calendar — or use the buttons on the card. Kept in this browser only.</p>
+        <p class="hint">Swipe a card left to hide it, right to save it to the
+          Saved tab — or use the buttons on the card. Swiping a repeating listing
+          left asks whether you mean this one time or every time. Kept in this
+          browser only.</p>
       </div>
 
       <p class="hint">Family &amp; kids covers anything aimed at children or at
@@ -247,6 +265,22 @@
     <button id="apply-filters" class="btn btn-primary" type="button">Show results</button>
   </footer>
 </aside>
+
+<!-- ── "Just this one, or every time?" ───────────────────
+     A repeating listing has two honest answers to a left swipe, and guessing
+     wrong is the difference between hiding tonight's trivia and hiding trivia
+     for ever. So ask, once, on the swipe itself. -->
+<div class="scrim" id="choice-scrim" hidden></div>
+<div class="choice" id="choice-dialog" role="dialog" aria-modal="true"
+     aria-labelledby="choice-title" hidden>
+  <h2 class="choice-title" id="choice-title">This one repeats</h2>
+  <p class="choice-sub" id="choice-sub"></p>
+  <div class="choice-actions">
+    <button type="button" class="btn btn-primary" id="choice-once"></button>
+    <button type="button" class="btn" id="choice-series">Hide every time</button>
+    <button type="button" class="btn btn-ghost" id="choice-cancel">Cancel</button>
+  </div>
+</div>
 
 <!-- ── Detail sheet ─────────────────────────────────────
      One sheet, two tenants: tap a listing card and it fills with the whole

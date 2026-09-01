@@ -76,22 +76,87 @@
   };
 
   /* ── Decisions ─────────────────────────────────────────
-     Swipe left "not for me", swipe right "going". Kept per browser in
-     localStorage: there is no backend, and a verdict is personal to the
-     reader anyway. Every access is guarded — a private window can throw on
-     read as well as write, and a thrown storage call must not take the
-     feed down with it. */
+     Swipe left "not for me", swipe right "save it for later". Kept per
+     browser in localStorage: there is no backend, and a verdict is personal
+     to the reader anyway. Every access is guarded — a private window can
+     throw on read as well as write, and a thrown storage call must not take
+     the feed down with it.
+
+     A right swipe used to download an .ics there and then, which made the
+     gesture a commitment: you could not say "that looks good" without
+     handing your calendar a file. Saving is the cheap verdict and the
+     calendar is the deliberate one, so they are now two steps in two places
+     — swipe right in the feed to save, swipe right again in Saved to book
+     it. */
 
   const DECISIONS_KEY = 'proximi.decisions.v1';
+  const VERDICTS = new Set(['saved', 'hidden']);
 
   function loadDecisions() {
     try {
-      return JSON.parse(localStorage.getItem(DECISIONS_KEY) || '{}') || {};
+      const raw = JSON.parse(localStorage.getItem(DECISIONS_KEY) || '{}') || {};
+      // Migration: 'going' was one verdict meaning both "I want this" and
+      // "it is on my calendar". The want becomes 'saved'; the booking moves
+      // to its own set below, so nobody loses a decision to a rename.
+      const out = {};
+      for (const [id, v] of Object.entries(raw)) {
+        if (v === 'going') out[id] = 'saved';
+        else if (VERDICTS.has(v)) out[id] = v;
+      }
+      return out;
     } catch { return {}; }
   }
 
   function saveDecisions(map) {
     try { localStorage.setItem(DECISIONS_KEY, JSON.stringify(map)); } catch { /* not fatal */ }
+  }
+
+  /* What has actually been handed to a calendar app. Separate from the
+     verdict so a saved listing can be booked, unbooked and still saved. */
+  const CALENDAR_KEY = 'proximi.calendar.v1';
+
+  function loadCalendar() {
+    try {
+      const own = JSON.parse(localStorage.getItem(CALENDAR_KEY) || 'null');
+      if (Array.isArray(own)) return new Set(own);
+      // First run after the rename: anything that was 'going' had already
+      // been downloaded, so it is on a calendar somewhere.
+      const raw = JSON.parse(localStorage.getItem(DECISIONS_KEY) || '{}') || {};
+      return new Set(Object.entries(raw).filter(([, v]) => v === 'going').map(([id]) => id));
+    } catch { return new Set(); }
+  }
+
+  function saveCalendar(set) {
+    try { localStorage.setItem(CALENDAR_KEY, JSON.stringify([...set])); } catch { /* not fatal */ }
+  }
+
+  /* Single occurrences of a repeating listing that the reader has waved off.
+     Hiding a series and hiding tonight's instance of it are different
+     answers, and the old single 'hidden' verdict could only give the first
+     one — so "not this week" meant never again.
+
+     Stored as { id: [dayIndex, …] }, the same day index the feed groups by,
+     because that is what identifies an occurrence: a weekly market has one
+     per day it lands on and no id of its own. */
+  const SKIPS_KEY = 'proximi.skips.v1';
+
+  function loadSkips() {
+    try {
+      const raw = JSON.parse(localStorage.getItem(SKIPS_KEY) || '{}') || {};
+      const map = new Map();
+      for (const [id, days] of Object.entries(raw)) {
+        if (Array.isArray(days) && days.length) map.set(id, new Set(days.filter(Number.isFinite)));
+      }
+      return map;
+    } catch { return new Map(); }
+  }
+
+  function saveSkips(map) {
+    try {
+      const raw = {};
+      for (const [id, days] of map) if (days.size) raw[id] = [...days];
+      localStorage.setItem(SKIPS_KEY, JSON.stringify(raw));
+    } catch { /* not fatal */ }
   }
 
   /* Venues the reader never wants to see again — a brewery whose trivia night
@@ -210,9 +275,15 @@
     freeOnly: $('free-only'), signupOnly: $('signup-only'), unitsKm: $('units-km'),
     interestedOnly: $('interested-only'), interestedN: $('interested-n'),
     toast: $('toast'), hiddenNote: $('hidden-note'), showHiddenBtn: $('show-hidden'),
-    tabEvents: $('tab-events'), tabPlaces: $('tab-places'),
+    tabEvents: $('tab-events'), tabPlaces: $('tab-places'), tabSaved: $('tab-saved'),
     tabEventsN: $('tab-events-n'), tabPlacesN: $('tab-places-n'),
+    tabSavedN: $('tab-saved-n'),
     eventsView: $('events-view'), placesView: $('places-view'),
+    savedView: $('saved-view'), savedList: $('saved-list'), savedEmpty: $('saved-empty'),
+    savedPlacesBlock: $('saved-places-block'), savedPlacesList: $('saved-places'),
+    choice: $('choice-dialog'), choiceScrim: $('choice-scrim'),
+    choiceSub: $('choice-sub'), choiceOnce: $('choice-once'),
+    choiceSeries: $('choice-series'), choiceCancel: $('choice-cancel'),
     placesList: $('places-list'), placesKinds: $('places-kinds'),
     placesSearch: $('places-search'), placesSort: $('places-sort'),
     placesSaved: $('places-saved'),
@@ -240,6 +311,9 @@
     activeTypes: new Set(),
     excludedTypes: new Set(),
     decisions: loadDecisions(),
+    calendar: loadCalendar(),
+    skips: loadSkips(),
+    byId: new Map(),
     showHidden: false,
     hiddenVenues: loadHiddenVenues(),
     venueFilter: null,          // showing one venue's listings only
@@ -248,7 +322,7 @@
     placeSort: 'near',
     savedPlaces: loadSavedPlaces(),
     placesSavedOnly: false,
-    view: 'events',             // 'events' | 'places'
+    view: 'events',             // 'events' | 'places' | 'saved'
     horizon: DEFAULTS.horizon,
     repeatMode: DEFAULTS.repeatMode,
     timeOfDay: DEFAULTS.timeOfDay,
@@ -397,10 +471,46 @@
     return next;
   }
 
+  /* One cadence step past a given occurrence. This is what makes "hide just
+     this one" possible: skipping an instance means asking what comes after
+     it, which is not the same question as "what comes after now". */
+  function stepOccurrence(item, from) {
+    const next = new Date(from);
+    if (item.cadence === 'monthly') { next.setMonth(next.getMonth() + 1); return next; }
+    const step = CADENCE_STEP[item.cadence];
+    if (!step) return null;   // 'occasional' and 'bookable' step nowhere
+    next.setDate(next.getDate() + step);
+    if (item.cadence === 'weekday') {
+      while (next.getDay() === 0 || next.getDay() === 6) next.setDate(next.getDate() + 1);
+    }
+    return next;
+  }
+
+  // Can this listing's next instance be named? Only a listing that can says
+  // "hide just this one" — for the rest, once is the whole series.
+  const hasCadence = (item) =>
+    !!item.repeats && (item.cadence === 'monthly' || !!CADENCE_STEP[item.cadence]);
+
+  const skipsFor = (item) => state.skips.get(item.id);
+
   /* Point _start at whatever is actually next, and say whether the listing is
      still live. Returns false once a series has run out. */
   function advance(item, now) {
-    const next = nextOccurrence(item, now);
+    let next = nextOccurrence(item, now);
+
+    // Walk past any occurrence the reader waved off. Bounded: a daily series
+    // skipped a hundred times still resolves in a hundred steps, and a
+    // cadence that cannot step has nowhere to go, so it is simply gone.
+    const skipped = skipsFor(item);
+    if (skipped && skipped.size) {
+      for (let guard = 0; guard < 400 && skipped.has(dayNumber(next)); guard++) {
+        const after = stepOccurrence(item, next);
+        if (!after) return false;
+        next = after;
+      }
+      if (skipped.has(dayNumber(next))) return false;
+    }
+
     if (next !== item._start) {
       item._start = next;
       item._day = undefined;          // the grouping day moved with it
@@ -412,8 +522,20 @@
     return next >= now;
   }
 
+  /* Whether the last pass actually moved anything. The clock ticks every
+     thirty seconds and most ticks change nothing at all; repainting several
+     hundred cards to find that out is the kind of work that shows up as a
+     stutter under the reader's thumb. */
+  let liveChanged = false;
+
   function liveItems(now = new Date()) {
-    return state.allItems.filter((item) => advance(item, now));
+    liveChanged = false;
+    return state.allItems.filter((item) => {
+      const before = item._start;
+      const live = advance(item, now);
+      if (item._start !== before) liveChanged = true;
+      return live;
+    });
   }
 
   function dayHeading(dayNum) {
@@ -505,27 +627,30 @@
     return [today + (5 - dow), today + (7 - dow)];
   }
 
-  function matchesHorizon(item) {
-    const horizon = HORIZONS.find((h) => h.id === state.horizon) || HORIZONS[3];
+  function matchesHorizon(item, c) {
+    const horizon = c.horizon;
     const day = effectiveDay(item);
     if (horizon.weekend) {
-      const [from, to] = weekendWindow();
+      const [from, to] = c.weekend;
       // A run already under way counts if it covers any of the weekend.
       const end = item._end ? dayNumber(item._end) : day;
       return day <= to && end >= from;
     }
     if (horizon.days === Infinity) return true;
-    const days = day - todayNumber();
+    const days = day - c.today;
     return days >= 0 && days <= horizon.days;
   }
 
-  function matchesQuery(item) {
-    const q = el.q.value.trim().toLowerCase();
-    if (!q) return true;
-    return [item.title, item.venue, item.city, item.address,
-            item.description, ...(item.categories || [])]
-      .filter(Boolean).join(' ').toLowerCase().includes(q);
+  /* The haystack is built once per listing and kept. Rebuilding it — six
+     fields joined and lower-cased — on every keystroke over every listing was
+     most of what made search-as-you-type feel like typing through treacle. */
+  function haystack(item) {
+    return item._hay ??= [item.title, item.venue, item.city, item.address,
+                          item.description, ...(item.categories || [])]
+      .filter(Boolean).join(' ').toLowerCase();
   }
+
+  const matchesQuery = (item, q) => haystack(item).includes(q);
 
   // A listing is several kinds of thing at once — a paint-and-sip is a class,
   // and creative, and food & drink. `type` stays the primary one for the badge
@@ -542,61 +667,102 @@
   const cadenceLabel = (item) => CADENCE_LABELS[item.cadence] || 'Repeats';
   const audienceOf = (item) => item.audience || 'all';
 
-  function filtered() {
-    const rMax = radiusMiles();
-    const pMax = maxPrice();
+  /* Two things want the filtered feed: the list, and the type chips' counts —
+     and the counts are deliberately blind to the type chips themselves, so
+     the numbers stay useful while you are picking. That used to mean running
+     the whole filter twice over four and a half thousand listings on every
+     keystroke, slider nudge and swipe.
 
-    return state.items.filter((item) => {
-      const audience = audienceOf(item);
-      // 'kids' is children-only, 'family' is aimed at families with young
-      // children. One control hides both — an adult browsing for themselves
-      // wants neither, and splitting them across two checkboxes only asks the
-      // reader to understand a distinction the data draws for its own reasons.
-      if (audience === 'family' && !el.showKids.checked) return false;
-      if (audience === 'seniors' && !el.showSeniors.checked) return false;
-      if (audience === 'adults' && !el.showAdults.checked) return false;
-      if (state.repeatMode !== 'any') {
-        const mode = REPEAT_MODES.find((m) => m.id === state.repeatMode);
-        if (state.repeatMode === 'once') {
-          if (repeatsOf(item)) return false;
-        } else if (!mode?.match?.(item.cadence)) {
-          return false;
-        }
-      }
-      // A hidden listing is gone until the reader asks to see hidden ones —
-      // this is the whole point of a left swipe, so it runs before anything
-      // else and is not softened by the other filters.
-      if (!state.showHidden && state.decisions[item.id] === 'hidden') return false;
-      const venue = venueOf(item);
-      if (state.venueFilter) {
-        if (venue !== state.venueFilter) return false;
-      } else if (venue && state.hiddenVenues.has(venue)) {
+     One pass now. Everything except the type chips runs once; the counts are
+     read off that; then the type chips narrow it. Same answers, half the
+     work. */
+  function filterPass() {
+    // Read every control once, not once per listing. Four and a half thousand
+    // listings times fifteen DOM property reads is the difference between a
+    // filter that feels instant and one that hitches.
+    const c = {
+      rMax: radiusMiles(), pMax: maxPrice(),
+      kids: el.showKids.checked, seniors: el.showSeniors.checked,
+      adults: el.showAdults.checked,
+      food: el.foodOnly.checked, outdoor: el.outdoorOnly.checked,
+      free: el.freeOnly.checked, signup: el.signupOnly.checked,
+      interested: !!el.interestedOnly?.checked,
+      repeatMode: state.repeatMode,
+      repeatMatch: REPEAT_MODES.find((m) => m.id === state.repeatMode)?.match,
+      tod: TIME_OF_DAY.find((t) => t.id === state.timeOfDay),
+      horizon: HORIZONS.find((h) => h.id === state.horizon) || HORIZONS[3],
+      weekend: weekendWindow(),
+      today: todayNumber(),
+      q: el.q.value.trim().toLowerCase(),
+      showHidden: state.showHidden, venueFilter: state.venueFilter
+    };
+
+    const base = state.items.filter((item) => matchesBase(item, c));
+
+    const counts = new Map();
+    for (const item of base) {
+      for (const t of typesOf(item)) counts.set(t, (counts.get(t) || 0) + 1);
+    }
+
+    const include = state.activeTypes, exclude = state.excludedTypes;
+    const results = (include.size || exclude.size)
+      ? base.filter((item) => {
+          const kinds = typesOf(item);
+          // Excluding wins over including: hiding Games should hide a listing
+          // that is also a Class, or the exclusion does not do what it says.
+          if (kinds.some((t) => exclude.has(t))) return false;
+          if (include.size && !kinds.some((t) => include.has(t))) return false;
+          return true;
+        })
+      : base;
+
+    return { results, counts };
+  }
+
+  const filtered = () => filterPass().results;
+
+  function matchesBase(item, c) {
+    const audience = audienceOf(item);
+    // 'kids' is children-only, 'family' is aimed at families with young
+    // children. One control hides both — an adult browsing for themselves
+    // wants neither, and splitting them across two checkboxes only asks the
+    // reader to understand a distinction the data draws for its own reasons.
+    if (audience === 'family' && !c.kids) return false;
+    if (audience === 'seniors' && !c.seniors) return false;
+    if (audience === 'adults' && !c.adults) return false;
+    if (c.repeatMode !== 'any') {
+      if (c.repeatMode === 'once') {
+        if (repeatsOf(item)) return false;
+      } else if (!c.repeatMatch?.(item.cadence)) {
         return false;
       }
-      const kinds = typesOf(item);
-      // Excluding wins over including: hiding Games should hide a listing that
-      // is also a Class, or the exclusion does not do what it says.
-      if (kinds.some((t) => state.excludedTypes.has(t))) return false;
-      if (state.activeTypes.size && !kinds.some((t) => state.activeTypes.has(t))) return false;
-      if (el.foodOnly.checked && !item.hasFood) return false;
-      if (el.outdoorOnly.checked && item.setting !== 'outdoor') return false;
-      // The directory's Interested list, used as a lens on the feed: show me
-      // only what is on at the places I already said I want to go to.
-      if (el.interestedOnly?.checked
-          && !state.savedPlaces.has(venueOf(item))) return false;
-      const tod = TIME_OF_DAY.find((t) => t.id === state.timeOfDay);
-      if (tod && tod.match && !tod.match(item.timeOfDay)) return false;
-      if (el.freeOnly.checked && !isFree(item)) return false;
-      if (el.signupOnly.checked && !item.signupRequired) return false;
-      // Only exclude what we know costs too much. A listing with no published
-      // price stays in and shows "See listing" — the cap filters expensive
-      // things, it does not filter unknowns.
-      if (pMax !== Infinity && priceKnown(item) && priceMin(item) > pMax) return false;
-      if (item._distance != null && item._distance > rMax) return false;
-      if (!matchesHorizon(item)) return false;
-      if (!matchesQuery(item)) return false;
-      return true;
-    });
+    }
+    // A hidden listing is gone until the reader asks to see hidden ones —
+    // this is the whole point of a left swipe, so it runs before anything
+    // else and is not softened by the other filters.
+    if (!c.showHidden && state.decisions[item.id] === 'hidden') return false;
+    const venue = venueOf(item);
+    if (c.venueFilter) {
+      if (venue !== c.venueFilter) return false;
+    } else if (venue && state.hiddenVenues.has(venue)) {
+      return false;
+    }
+    if (c.food && !item.hasFood) return false;
+    if (c.outdoor && item.setting !== 'outdoor') return false;
+    // The directory's Interested list, used as a lens on the feed: show me
+    // only what is on at the places I already said I want to go to.
+    if (c.interested && !state.savedPlaces.has(venue)) return false;
+    if (c.tod?.match && !c.tod.match(item.timeOfDay)) return false;
+    if (c.free && !isFree(item)) return false;
+    if (c.signup && !item.signupRequired) return false;
+    // Only exclude what we know costs too much. A listing with no published
+    // price stays in and shows "See listing" — the cap filters expensive
+    // things, it does not filter unknowns.
+    if (c.pMax !== Infinity && priceKnown(item) && priceMin(item) > c.pMax) return false;
+    if (item._distance != null && item._distance > c.rMax) return false;
+    if (!matchesHorizon(item, c)) return false;
+    if (c.q && !matchesQuery(item, c.q)) return false;
+    return true;
   }
 
   const grouped = () => el.sort.value === 'soonest';
@@ -733,7 +899,7 @@
     return lines.map(icsFold).join('\r\n') + '\r\n';
   }
 
-  function addToCalendar(item) {
+  function downloadIcs(item) {
     const blob = new Blob([icsFor(item)], { type: 'text/calendar;charset=utf-8' });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
@@ -745,22 +911,143 @@
     setTimeout(() => URL.revokeObjectURL(url), 10_000);
   }
 
+  const onCalendar = (item) => state.calendar.has(item.id);
+
+  /* Booking is the deliberate half of the gesture, so it says so and it is
+     undoable — the file is already downloaded by then, but the mark on the
+     card is what the reader is actually reading. */
+  function addToCalendar(item) {
+    downloadIcs(item);
+    const had = onCalendar(item);
+    state.calendar.add(item.id);
+    saveCalendar(state.calendar);
+    afterVerdict(item);
+    toast(had ? `Downloaded “${item.title}” again`
+              : `Added “${item.title}” to your calendar`,
+          had ? null : () => removeFromCalendar(item));
+  }
+
+  function removeFromCalendar(item) {
+    state.calendar.delete(item.id);
+    saveCalendar(state.calendar);
+    afterVerdict(item);
+    toast(`Unmarked “${item.title}” — the downloaded file is still in your calendar app`,
+          () => { state.calendar.add(item.id); saveCalendar(state.calendar); afterVerdict(item); });
+  }
+
   /* ── Verdicts ──────────────────────────────────────────── */
 
+  const verdictOf = (item) => state.decisions[item.id] || null;
+
+  /* Everything that has to catch up after a verdict, a booking or a skip.
+     Touch only the card that changed where we can: a verdict cannot alter
+     which other listings match, so rebuilding the list to show one badge is
+     work nobody asked for — and it is what the swipe was waiting on. */
+  function afterVerdict(item) {
+    if (state.view === 'saved') renderSaved();
+    else if (!patchCard(item)) render();
+    updateHiddenNote();
+    updateFilterCount();
+    updateTabCounts();
+  }
+
   function decide(item, verdict) {
-    const previous = state.decisions[item.id];
+    const previous = verdictOf(item);
     if (verdict) state.decisions[item.id] = verdict;
     else delete state.decisions[item.id];
     saveDecisions(state.decisions);
-    if (verdict === 'going') addToCalendar(item);
-    // Touch only the card that changed. A verdict cannot alter which other
-    // listings match, so rebuilding the list to show one badge is work nobody
-    // asked for — and it is what the swipe was waiting on.
-    if (!patchCard(item)) render(); else { updateHiddenNote(); updateFilterCount(); }
-    toast(verdict === 'going' ? `Added “${item.title}” to your calendar`
+    afterVerdict(item);
+    toast(verdict === 'saved' ? `Saved “${item.title}”`
           : verdict === 'hidden' ? `Hid “${item.title}”`
           : `Restored “${item.title}”`,
-          () => decide(item, previous || null));
+          () => decide(item, previous));
+  }
+
+  /* ── Hiding something that comes round again ────────────
+     "Not for me" has two meanings for a repeating listing and the old single
+     verdict could only carry one of them. Swiping left on this Tuesday's
+     trivia night hid trivia night for ever, which is not what anybody meant
+     — so a listing with a cadence we can name asks which one, once, on the
+     swipe itself. Everything else hides outright, as before. */
+
+  let pendingHide = null;
+
+  function requestHide(item) {
+    if (verdictOf(item) === 'hidden' || !hasCadence(item)) { decide(item, 'hidden'); return; }
+    pendingHide = item;
+    el.choiceSub.textContent = `“${item.title}” — ${cadenceLabel(item).toLowerCase()}.`;
+    el.choiceOnce.textContent = `Just ${occurrenceLabel(item)}`;
+    openChoice();
+  }
+
+  /* The occurrence a skip records. advance() tests the day of _start, so that
+     is the day to store — not effectiveDay(), which folds an already-running
+     multi-day run onto today. The two agree for everything that can reach the
+     dialog, and writing one where the other is read is exactly how they would
+     stop agreeing. */
+  const occurrenceDay = (item) => dayNumber(item._start);
+
+  // How the reader would name the instance in front of them: "today",
+  // "tomorrow", or its date.
+  function occurrenceLabel(item) {
+    const day = occurrenceDay(item);
+    const diff = day - todayNumber();
+    if (diff === 0) return 'today';
+    if (diff === 1) return 'tomorrow';
+    return dayToDate(day).toLocaleDateString([], {
+      timeZone: 'UTC', weekday: 'short', month: 'short', day: 'numeric' });
+  }
+
+  function openChoice() {
+    el.choice.hidden = false;
+    el.choiceScrim.hidden = false;
+    document.body.classList.add('sheet-open');
+    requestAnimationFrame(() => {
+      el.choice.classList.add('is-open');
+      el.choiceScrim.classList.add('is-open');
+      el.choiceOnce.focus();
+    });
+  }
+
+  function closeChoice() {
+    pendingHide = null;
+    el.choice.classList.remove('is-open');
+    el.choiceScrim.classList.remove('is-open');
+    document.body.classList.remove('sheet-open');
+    setTimeout(() => { el.choice.hidden = true; el.choiceScrim.hidden = true; }, 180);
+  }
+
+  function skipOccurrence(item) {
+    const day = occurrenceDay(item);
+    const when = occurrenceLabel(item);
+    let days = state.skips.get(item.id);
+    if (!days) state.skips.set(item.id, days = new Set());
+    days.add(day);
+    saveSkips(state.skips);
+    reflow(item);
+    toast(`Hid “${item.title}” for ${when} — it is back next time`,
+          () => unskipOccurrence(item, day));
+  }
+
+  function unskipOccurrence(item, day) {
+    const days = state.skips.get(item.id);
+    if (!days) return;
+    days.delete(day);
+    if (!days.size) state.skips.delete(item.id);
+    saveSkips(state.skips);
+    reflow(item);
+  }
+
+  /* A skip moves a listing's next occurrence, which can move it to another
+     day, out of the horizon, or off the list entirely — so unlike a verdict
+     this genuinely does need the list rebuilt. */
+  function reflow(item) {
+    advance(item, new Date());
+    state.items = liveItems();
+    invalidatePlaces();
+    render();
+    if (state.view === 'saved') renderSaved();
+    updateTabCounts();
   }
 
   /* Update one card in place. Returns false only when the list genuinely has
@@ -768,18 +1055,19 @@
   function patchCard(item) {
     const slot = el.list.querySelector(`.card-slot[data-id="${CSS.escape(item.id)}"]`);
     if (!slot) return false;
-    const verdict = state.decisions[item.id];
+    const verdict = verdictOf(item);
     if (verdict === 'hidden' && !state.showHidden) return removeCard(item, slot);
-    slot.classList.toggle('is-going', verdict === 'going');
+    slot.classList.toggle('is-saved', verdict === 'saved');
     slot.classList.toggle('is-hidden', verdict === 'hidden');
     const tags = slot.querySelector('.tags');
-    const badge = tags?.querySelector('.badge-going');
-    if (verdict === 'going' && !badge) {
+    if (!tags) return true;
+    const badge = tags.querySelector('.badge-saved');
+    if (verdict === 'saved' && !badge) {
       const b = document.createElement('span');
-      b.className = 'badge badge-going';
-      b.textContent = 'Going';
+      b.className = 'badge badge-saved';
+      b.textContent = 'Saved';
       tags.prepend(b);
-    } else if (verdict !== 'going') {
+    } else if (verdict !== 'saved') {
       badge?.remove();
     }
     return true;
@@ -801,12 +1089,35 @@
       else divider.remove();          // that was the day's last listing
     }
     state.lastResults = (state.lastResults || []).filter((i) => i.id !== item.id);
+    // The plan is what the next batch is built from, so a card removed from
+    // the DOM has to leave it too — otherwise scrolling on brings the hidden
+    // listing straight back.
+    dropFromPlan(item.id);
     for (const t of typesOf(item)) {
       const chip = el.types.querySelector(`.chip[data-type="${CSS.escape(t)}"] .chip-n`);
       if (chip) chip.textContent = String(Math.max(0, Number(chip.textContent) - 1));
     }
-    updateContextBar(el.list.querySelectorAll('.card-slot').length);
+    const left = el.list.querySelectorAll('.card-slot').length;
+    // Hiding a run of cards can empty the window without the observer ever
+    // seeing the sentinel move, which leaves a short list and a button where
+    // there should be listings. Top it back up.
+    if (left < BATCH / 2) renderMore();
+    updateContextBar(left);
     return true;
+  }
+
+  /* Drop one card from the render plan, and from its day's heading count, so
+     that the batch after it stays honest about what is left. */
+  function dropFromPlan(id) {
+    const plan = state.plan;
+    if (!plan) return;
+    const i = plan.findIndex((e) => e.card && e.card.id === id);
+    if (i < 0) return;
+    for (let j = i; j >= 0; j--) {
+      if (plan[j].day !== undefined) { plan[j].n--; break; }
+    }
+    plan.splice(i, 1);
+    if (i < state.shown) state.shown--;
   }
 
   let toastTimer = null;
@@ -836,29 +1147,48 @@
   let lastSwipeAt = 0;
   const justSwiped = () => Date.now() - lastSwipeAt < 400;
 
-  /* One gesture, two lists. The feed swipes a listing to hidden/going; the
-     directory swipes a place to muted/interested. Same physics, same commit
-     distance, same implicit-capture trap avoided below — so it takes a verdict
-     callback rather than knowing what it is swiping. */
-  function attachSwipe(li, surface, onVerdict) {
+  /* One gesture, three lists. The feed swipes a listing to hidden/saved, Saved
+     swipes it to the calendar or off the list, and the directory swipes a
+     place to muted/liked. Same physics, same commit distance, same
+     implicit-capture trap avoided below — so it takes a verdict callback
+     rather than knowing what it is swiping.
+
+     Delegated to the list rather than attached per row. Four listeners on
+     every one of several hundred cards is several thousand listeners that
+     the browser has to keep alive and hit-test through, and rebuilding them
+     on every render is most of what a render costs. One set per list does
+     the same job and never grows. */
+  function delegateSwipe(root, slotSel, surfaceSel, onVerdict) {
+    let slot = null, surface = null, pid = null;
     let startX = 0, startY = 0, dx = 0, active = false, decided = false, frame = null;
 
-    li.addEventListener('pointerdown', (e) => {
+    const reset = () => {
+      slot = surface = null; pid = null;
+      startX = startY = dx = 0; active = false;
+    };
+
+    root.addEventListener('pointerdown', (e) => {
       if (e.pointerType === 'mouse' && e.button !== 0) return;
       if (e.target.closest('a, button')) return;   // links keep their taps
+      const s = e.target.closest(slotSel);
+      if (!s) return;
+      slot = s;
+      surface = s.querySelector(surfaceSel);
+      if (!surface) { slot = null; return; }
+      pid = e.pointerId;
       startX = e.clientX; startY = e.clientY; dx = 0;
       active = false; decided = false;
     });
 
-    li.addEventListener('pointermove', (e) => {
-      if (!startX && !startY) return;
+    root.addEventListener('pointermove', (e) => {
+      if (!slot || e.pointerId !== pid) return;
       if (e.buttons === 0) return;
       const mx = e.clientX - startX, my = e.clientY - startY;
       if (!active) {
         if (Math.abs(mx) < 12 || Math.abs(mx) <= Math.abs(my)) return;
         active = true;
-        li.setPointerCapture?.(e.pointerId);
-        li.classList.add('is-swiping');
+        root.setPointerCapture?.(e.pointerId);
+        slot.classList.add('is-swiping');
         surface.classList.add('is-swiping');
       }
       dx = mx;
@@ -867,25 +1197,31 @@
       if (frame === null) {
         frame = requestAnimationFrame(() => {
           frame = null;
+          if (!surface) return;
           surface.style.setProperty('--dx', `${dx}px`);
-          const want = dx > SWIPE_COMMIT ? 'going' : dx < -SWIPE_COMMIT ? 'hidden' : 'none';
-          if (li.dataset.swipe !== want) li.dataset.swipe = want;
+          const want = dx > SWIPE_COMMIT ? 'yes' : dx < -SWIPE_COMMIT ? 'no' : 'none';
+          if (slot.dataset.swipe !== want) slot.dataset.swipe = want;
         });
       }
       e.preventDefault();
     });
 
-    const finish = () => {
+    const finish = (e) => {
       if (frame !== null) { cancelAnimationFrame(frame); frame = null; }
-      if (!active) { startX = startY = 0; return; }
+      if (!slot) return;
+      if (e && pid != null && e.pointerId !== pid) return;
+      if (!active) { reset(); return; }
       lastSwipeAt = Date.now();
-      const verdict = dx > SWIPE_COMMIT ? 'going' : dx < -SWIPE_COMMIT ? 'hidden' : null;
-      li.classList.remove('is-swiping');
+      const verdict = dx > SWIPE_COMMIT ? 'yes' : dx < -SWIPE_COMMIT ? 'no' : null;
+      const target = slot;
+      slot.classList.remove('is-swiping');
       surface.classList.remove('is-swiping');
       surface.style.removeProperty('--dx');
-      delete li.dataset.swipe;
-      active = false; startX = startY = 0;
-      if (verdict && !decided) { decided = true; onVerdict(verdict); }
+      delete slot.dataset.swipe;
+      const fire = verdict && !decided;
+      decided = true;
+      reset();
+      if (fire) onVerdict(target, verdict);
     };
     // pointerup and pointercancel are enough: capturing the pointer guarantees
     // both are delivered here. lostpointercapture must NOT end the gesture —
@@ -895,19 +1231,31 @@
     // Treating that as the end reset the drag a few pixels in, which is why
     // swiping worked with a mouse (no implicit capture) and never with a
     // finger.
-    li.addEventListener('pointerup', finish);
-    li.addEventListener('pointercancel', finish);
+    root.addEventListener('pointerup', finish);
+    root.addEventListener('pointercancel', finish);
   }
 
-  function card(item, isGrouped) {
+  /* Two rails, because a card means different things in different lists.
+     In the feed a right swipe saves; in Saved it books. The labels have to
+     say which, or the same gesture quietly does two things. */
+  const RAILS = {
+    feed:  { yes: '\u2665 Save',            no: 'Not for me \u2715' },
+    saved: { yes: '\ud83d\udcc5 Add to calendar', no: 'Remove \u2715' }
+  };
+
+  function card(item, isGrouped, context = 'feed') {
     const li = document.createElement('li');
-    const verdict = state.decisions[item.id];
-    li.className = 'card-slot' + (verdict ? ` is-${verdict}` : '');
+    const verdict = verdictOf(item);
+    const booked = onCalendar(item);
+    li.className = 'card-slot'
+      + (verdict === 'saved' ? ' is-saved' : verdict === 'hidden' ? ' is-hidden' : '')
+      + (booked ? ' is-booked' : '');
     li.dataset.id = item.id;
+    li.dataset.context = context;
     const surface = document.createElement('article');
     surface.className = 'card';
 
-    const meta = [`<span>${esc(item.venue)}${item.city ? ' · ' + esc(item.city) : ''}</span>`];
+    const meta = [];
     if (item._distance != null) {
       meta.push(`<span class="dist">${esc(formatDistance(item._distance))}</span>`);
     }
@@ -921,12 +1269,19 @@
     const detailsHref = safeUrl(item.url);
     if (signupHref) {
       links.push(`<a class="link-btn is-signup" href="${esc(signupHref)}"
-                     target="_blank" rel="noopener noreferrer">Sign up ↗</a>`);
+                     target="_blank" rel="noopener noreferrer">Sign up \u2197</a>`);
     }
     if (detailsHref) {
       links.push(`<a class="link-btn" href="${esc(detailsHref)}"
-                     target="_blank" rel="noopener noreferrer">Details ↗</a>`);
+                     target="_blank" rel="noopener noreferrer">Details \u2197</a>`);
     }
+
+    // The place is the answer to "could I get there, and what else is it?", so
+    // it is a link on the card as well as in the sheet.
+    const venueName = venueOf(item);
+    const where = venueName
+      ? `<button type="button" class="card-venue" data-venue="${esc(venueName)}">${esc(venueName)}</button>`
+      : `<span>${esc(item.venue || 'See listing')}</span>`;
 
     surface.innerHTML = `
       <div class="card-top">
@@ -934,7 +1289,7 @@
           <h3 class="card-title">${esc(item.title)}</h3>
           <div class="card-when">
             ${esc(formatWhen(item, isGrouped))}
-            ${item.recurrence ? `<span class="repeat">· ${esc(item.recurrence)}</span>` : ''}
+            ${item.recurrence ? `<span class="repeat">\u00b7 ${esc(item.recurrence)}</span>` : ''}
           </div>
         </div>
         <div class="price-tag ${isFree(item) ? 'is-free' : ''} ${priceKnown(item) ? '' : 'is-unknown'}">
@@ -942,29 +1297,32 @@
           ${item.price?.note ? `<span class="price-note">${esc(item.price.note)}</span>` : ''}
         </div>
       </div>
-      <div class="card-meta">${meta.join('')}</div>
+      <div class="card-meta">${where}${item.city ? `<span>${esc(item.city)}</span>` : ''}${meta.join('')}</div>
       ${item.description ? `<p class="card-desc">${esc(item.description)}</p>` : ''}
       <div class="card-bottom">
         <div class="tags">
+          ${verdict === 'saved' ? '<span class="badge badge-saved">Saved</span>' : ''}
+          ${booked ? '<span class="badge badge-going">On your calendar</span>' : ''}
           <span class="badge badge-type">${esc(typeLabel(item.type))}</span>
           ${typesOf(item).slice(1).map((t) =>
             `<span class="badge badge-type is-secondary">${esc(typeLabel(t))}</span>`).join('')}
-          ${state.decisions[item.id] === 'going' ? '<span class="badge badge-going">Going</span>' : ''}
           ${repeatsOf(item)
             ? `<span class="badge badge-repeat">${esc(cadenceLabel(item))}</span>` : ''}
           ${audienceOf(item) === 'family' ? '<span class="badge badge-kids">Family &amp; kids</span>' : ''}
           ${audienceOf(item) === 'seniors' ? '<span class="badge badge-kids">Seniors</span>' : ''}
           ${audienceOf(item) === 'adults' ? '<span class="badge badge-adults">21+</span>' : ''}
-
         </div>
         ${links.join('')}
       </div>
       <div class="card-verdict">
-        <button type="button" class="verdict-btn is-no" data-verdict="hidden"
-                title="Not for me" aria-label="Not for me — hide ${esc(item.title)}">✕</button>
-        <button type="button" class="verdict-btn is-yes" data-verdict="going"
-                title="Add to calendar"
-                aria-label="I'm going — add ${esc(item.title)} to calendar">✓</button>
+        <button type="button" class="verdict-btn is-no" data-verdict="no"
+                title="${context === 'saved' ? 'Remove from Saved' : 'Not for me'}"
+                aria-label="${context === 'saved' ? 'Remove' : 'Not for me \u2014 hide'} ${esc(item.title)}">\u2715</button>
+        <button type="button" class="verdict-btn is-yes" data-verdict="yes"
+                title="${context === 'saved' ? 'Add to calendar' : 'Save for later'}"
+                aria-label="${context === 'saved'
+                  ? `Add ${esc(item.title)} to your calendar`
+                  : `Save ${esc(item.title)} for later`}">${context === 'saved' ? '\ud83d\udcc5' : '\u2665'}</button>
       </div>`;
 
     // The rail is a fixed backdrop the card slides over, so it stays put while
@@ -972,36 +1330,61 @@
     // left uncovers the right edge, so "Not for me" lives on the right.
     const rail = document.createElement('div');
     rail.className = 'swipe-rail';
-    rail.innerHTML = '<span class="rail-yes">✓ Going</span><span class="rail-no">Not for me ✕</span>';
+    const labels = RAILS[context] || RAILS.feed;
+    rail.innerHTML = `<span class="rail-yes">${labels.yes}</span>`
+      + `<span class="rail-no">${labels.no}</span>`;
     li.append(rail, surface);
 
-    for (const btn of surface.querySelectorAll('.verdict-btn')) {
-      btn.addEventListener('click', () => {
-        const want = btn.dataset.verdict;
-        // Read the verdict at click time: patchCard updates a card in place,
-        // so the one captured when the card was built goes stale after the
-        // first tap — and a second ✓ re-fired "going" (and re-downloaded the
-        // calendar file) instead of toggling it off.
-        decide(item, state.decisions[item.id] === want ? null : want);
-      });
-    }
-    // The card itself opens the full story. Buttons and links keep their own
-    // jobs, and a tap that was really the tail of a swipe stays a swipe.
+    // No listeners here. The list delegates clicks, keys and pointers, so a
+    // card is pure markup and rendering four hundred of them costs four
+    // hundred innerHTML parses rather than two and a half thousand
+    // addEventListener calls.
     surface.setAttribute('tabindex', '0');
     surface.setAttribute('role', 'button');
     surface.setAttribute('aria-label', `More about ${item.title}`);
-    surface.addEventListener('click', (e) => {
+    return li;
+  }
+
+  /* ── One set of handlers per list ─────────────────────── */
+
+  const itemOf = (slot) => state.byId.get(slot?.dataset.id);
+
+  // What a swipe or a verdict button means depends on which list it is in.
+  function actOnCard(slot, verdict) {
+    const item = itemOf(slot);
+    if (!item) return;
+    if (slot.dataset.context === 'saved') {
+      if (verdict === 'yes') addToCalendar(item);
+      else decide(item, null);           // out of Saved, back to undecided
+      return;
+    }
+    if (verdict === 'yes') decide(item, verdictOf(item) === 'saved' ? null : 'saved');
+    else requestHide(item);
+  }
+
+  function wireList(root) {
+    delegateSwipe(root, '.card-slot', '.card', actOnCard);
+
+    root.addEventListener('click', (e) => {
+      const slot = e.target.closest('.card-slot');
+      if (!slot) return;
+      const venueBtn = e.target.closest('.card-venue');
+      if (venueBtn) { openPlaceByName(venueBtn.dataset.venue, itemOf(slot)); return; }
+      const btn = e.target.closest('.verdict-btn');
+      if (btn) { actOnCard(slot, btn.dataset.verdict); return; }
       if (e.target.closest('a, button') || justSwiped()) return;
+      const item = itemOf(slot);
+      if (item) openEventDetail(item);
+    });
+
+    root.addEventListener('keydown', (e) => {
+      if (e.key !== 'Enter' && e.key !== ' ') return;
+      if (!e.target.classList?.contains('card')) return;
+      const item = itemOf(e.target.closest('.card-slot'));
+      if (!item) return;
+      e.preventDefault();
       openEventDetail(item);
     });
-    surface.addEventListener('keydown', (e) => {
-      if ((e.key === 'Enter' || e.key === ' ') && e.target === surface) {
-        e.preventDefault();
-        openEventDetail(item);
-      }
-    });
-    attachSwipe(li, surface, (verdict) => decide(item, verdict));
-    return li;
   }
 
   function dayDivider(dayNum, n) {
@@ -1029,17 +1412,85 @@
     const before = state.items.length;
     state.items = liveItems();
     state.staleCount = state.allItems.length - state.items.length;
-    // Repeats move even when nothing drops, so a changed count is not the only
-    // reason to repaint — but it is the only one worth logging.
-    if (state.items.length !== before) invalidatePlaces();
+    // Most minutes change nothing. Repainting several hundred cards to
+    // discover that is a stutter the reader feels and never asked for, so the
+    // pass only repaints when a listing actually dropped or a repeat moved.
+    if (state.items.length === before && !liveChanged) return;
+    invalidatePlaces();
     render();
+    updateTabCounts();
     if (state.view === 'places') renderPlaces();
+    if (state.view === 'saved') renderSaved();
   }
 
   setInterval(tick, 30000);
   document.addEventListener('visibilitychange', () => {
     if (!document.hidden) tick();
   });
+
+  /* ── Rendering the feed, a screenful at a time ──────────
+     The default view is a week inside seventy-five miles, which is several
+     hundred listings, and every one of them used to become a DOM node before
+     the first was on screen. That is what made the list heavy: heavy to
+     build, heavy to swipe on, heavy to remove a card from.
+
+     So the sorted results become a *plan* — a flat list of "day heading" and
+     "card" entries — and only the first screenful is built. A sentinel at the
+     bottom asks for the next batch as it comes into view, so scrolling to the
+     end still gets everything and arriving at the top costs one batch. */
+
+  const BATCH = 40;
+
+  function buildPlan(results, isGrouped) {
+    if (!isGrouped) return results.map((item) => ({ card: item }));
+    const plan = [];
+    let i = 0;
+    while (i < results.length) {
+      const d = effectiveDay(results[i]);
+      let j = i;
+      while (j < results.length && effectiveDay(results[j]) === d) j++;
+      plan.push({ day: d, n: j - i });
+      for (; i < j; i++) plan.push({ card: results[i] });
+    }
+    return plan;
+  }
+
+  let sentinel = null;
+  let observer = null;
+
+  function ensureObserver() {
+    if (observer || typeof IntersectionObserver !== 'function') return;
+    observer = new IntersectionObserver((entries) => {
+      if (entries.some((e) => e.isIntersecting)) renderMore();
+    }, { rootMargin: '800px 0px' });
+  }
+
+  function renderMore() {
+    const plan = state.plan || [];
+    if (state.shown >= plan.length) return;
+    const to = Math.min(plan.length, state.shown + BATCH);
+    const nodes = [];
+    for (let i = state.shown; i < to; i++) {
+      const e = plan[i];
+      nodes.push(e.card ? card(e.card, state.planGrouped, 'feed') : dayDivider(e.day, e.n));
+    }
+    state.shown = to;
+    if (sentinel) sentinel.remove();
+    el.list.append(...nodes);
+    placeSentinel();
+  }
+
+  function placeSentinel() {
+    const more = (state.plan || []).length - state.shown;
+    if (more <= 0) { sentinel = null; return; }
+    ensureObserver();
+    sentinel = document.createElement('li');
+    sentinel.className = 'list-more';
+    sentinel.innerHTML = `<button type="button">Show more (${more} left)</button>`;
+    sentinel.querySelector('button').addEventListener('click', renderMore);
+    el.list.append(sentinel);
+    observer?.observe(sentinel);
+  }
 
   function render() {
     // today rolls over and the ongoing-run test moves with it.
@@ -1052,33 +1503,16 @@
       lastRenderDay = today;
     }
 
-    const results = sorted(filtered());
+    const { results: matched, counts } = filterPass();
+    const results = sorted(matched);
     const isGrouped = grouped();
-    const nodes = [];
 
-    if (isGrouped) {
-      // Walk the sorted list and drop a heading in whenever the day changes.
-      let current = null;
-      let runStart = 0;
-      const flush = (endIndex) => {
-        if (current === null) return;
-        nodes.splice(runStart, 0, dayDivider(current, endIndex - runStart));
-      };
-      for (const item of results) {
-        const d = effectiveDay(item);
-        if (d !== current) {
-          flush(nodes.length);
-          current = d;
-          runStart = nodes.length;
-        }
-        nodes.push(card(item, true));
-      }
-      flush(nodes.length);
-    } else {
-      for (const item of results) nodes.push(card(item, false));
-    }
-
-    el.list.replaceChildren(...nodes);
+    state.plan = buildPlan(results, isGrouped);
+    state.planGrouped = isGrouped;
+    state.shown = 0;
+    sentinel = null;
+    el.list.replaceChildren();
+    renderMore();
 
     el.empty.hidden = results.length > 0;
     if (!results.length) {
@@ -1092,9 +1526,41 @@
     updateContextBar(results.length);
     updateHiddenNote();
     updateFilterCount();
-    renderTypeCounts();
+    renderTypeCounts(counts);
     el.applyFilters.textContent =
       `Show ${results.length} ${results.length === 1 ? 'result' : 'results'}`;
+  }
+
+  /* ── Saved ─────────────────────────────────────────────
+     A right swipe used to hand the reader a calendar file on the spot, which
+     made "that looks good" and "I am going" the same gesture. Saved is the
+     room in between: swipe right in the feed to put something here, swipe
+     right again here to book it. */
+
+  function savedItems() {
+    return sorted(state.items.filter((i) => verdictOf(i) === 'saved'));
+  }
+
+  function renderSaved() {
+    if (!el.savedList) return;
+    const items = savedItems();
+    el.savedList.replaceChildren(...items.map((i) => card(i, false, 'saved')));
+
+    el.savedEmpty.hidden = items.length > 0;
+    if (!items.length) {
+      el.savedEmpty.textContent = Object.values(state.decisions).includes('saved')
+        ? 'Everything you saved has now passed.'
+        : 'Nothing saved yet — swipe a listing right, or tap the \u2665 on its card.';
+    }
+
+    // Liked places belong here too: the directory's right swipe is the same
+    // gesture making the same promise, and splitting them across two tabs
+    // means "the things I picked" lives in two places.
+    const liked = placeIndex().filter((p) => state.savedPlaces.has(p.name));
+    el.savedPlacesBlock.hidden = liked.length === 0;
+    if (liked.length) {
+      el.savedPlacesList.replaceChildren(...sortPlaces(liked.slice()).map(placeRow));
+    }
   }
 
   // A swipe left removes a listing from view for good, so the count and the
@@ -1103,14 +1569,18 @@
     if (!el.hiddenNote) return;
     const verdicts = Object.values(state.decisions);
     const hidden = verdicts.filter((v) => v === 'hidden').length;
-    const going = verdicts.filter((v) => v === 'going').length;
+    const saved = verdicts.filter((v) => v === 'saved').length;
+    let skipped = 0;
+    for (const days of state.skips.values()) skipped += days.size;
     const bits = [];
     if (hidden) bits.push(`${hidden} hidden`);
-    if (going) bits.push(`${going} going`);
+    if (skipped) bits.push(`${skipped} single ${skipped === 1 ? 'date' : 'dates'} skipped`);
+    if (saved) bits.push(`${saved} saved`);
+    if (state.calendar.size) bits.push(`${state.calendar.size} on your calendar`);
     if (state.hiddenVenues.size) bits.push(`${state.hiddenVenues.size} venues muted`);
     el.hiddenNote.textContent = bits.join(' · ') || 'Nothing hidden yet.';
     el.showHiddenBtn.hidden = !hidden;
-    el.clearHiddenBtn.hidden = !hidden;
+    el.clearHiddenBtn.hidden = !hidden && !skipped;
     el.showHiddenBtn.textContent = state.showHidden ? 'Hide them again' : 'Show hidden';
     el.showHiddenBtn.setAttribute('aria-pressed', String(state.showHidden));
   }
@@ -1173,8 +1643,9 @@
      swiping laggy: correct, cheap-looking, and quadratic in practice.) */
   let placeCache = null;
   let placeCacheKey = '';
+  let placeByNameCache = null;
 
-  function invalidatePlaces() { placeCache = null; }
+  function invalidatePlaces() { placeCache = null; placeByNameCache = null; }
 
   function placeIndex() {
     const key = `${state.items.length}|${state.places.length}|`
@@ -1182,7 +1653,44 @@
     if (placeCache && placeCacheKey === key) return placeCache;
     placeCacheKey = key;
     placeCache = buildPlaceIndex();
+    placeByNameCache = null;
     return placeCache;
+  }
+
+  /* Name is the key a listing has for its venue, so it is the key the
+     directory has to answer to. Built once from the index rather than
+     scanning three and a half thousand rows on every tap. */
+  function placeByName(name) {
+    if (!name) return null;
+    const rows = placeIndex();
+    if (!placeByNameCache) {
+      placeByNameCache = new Map();
+      for (const p of rows) if (!placeByNameCache.has(p.name)) placeByNameCache.set(p.name, p);
+    }
+    return placeByNameCache.get(name) || null;
+  }
+
+  /* Every listing's host has a page, whether or not OpenStreetMap has heard
+     of it. A venue the directory missed still has a name, a town and a pin —
+     which is a place page with less on it, not no place page at all. */
+  function placeFromItem(item) {
+    const name = venueOf(item);
+    if (!name) return null;
+    return {
+      id: `feed-${name}`, name,
+      kind: item.placeKind || null, kinds: item.placeKind ? [item.placeKind] : [],
+      lat: item.lat, lon: item.lon, city: item.city, address: item.address,
+      url: null, phone: null, openingHours: null, brand: null, secondHand: null,
+      description: null, source: 'Event listings',
+      events: state.items.reduce((a, i) => a + (venueOf(i) === name ? 1 : 0), 0),
+      _miles: placeMiles(item)
+    };
+  }
+
+  function openPlaceByName(name, item) {
+    const p = placeByName(name) || (item ? placeFromItem(item) : null);
+    if (!p) { toast('No page for that place yet.'); return; }
+    openPlaceDetail(p);
   }
 
   function buildPlaceIndex() {
@@ -1280,6 +1788,8 @@
     syncInterested();
     renderPlaces();
     render();               // the feed can be filtered on this list
+    updateTabCounts();
+    if (state.view === 'saved') renderSaved();
     toast(had ? `Removed “${p.name}” from your liked places`
               : `Liked “${p.name}”`,
           () => togglePlaceSaved(p));
@@ -1292,6 +1802,7 @@
     saveHiddenVenues(state.hiddenVenues);
     renderPlaces();
     render();
+    if (state.view === 'saved') renderSaved();
     toast(had ? `Unmuted “${p.name}”` : `Muted “${p.name}”`,
           () => togglePlaceMuted(p));
   }
@@ -1305,13 +1816,14 @@
     const saved = state.savedPlaces.has(p.name);
     li.className = 'place-slot'
       + (hidden ? ' is-muted' : '') + (saved ? ' is-saved' : '');
+    li.dataset.name = p.name;
 
     const rail = document.createElement('div');
     rail.className = 'swipe-rail';
     // A right swipe slides the row right and reveals the *left* half of the
     // rail, so the yes label lives on the left — the same order the feed uses.
     // Reversed, they read as each other's opposite.
-    rail.innerHTML = `<span class="rail-yes">${saved ? '★ Liked' : '♥ Like'}</span>`
+    rail.innerHTML = `<span class="rail-yes">${saved ? '\u2605 Liked' : '\u2665 Like'}</span>`
       + `<span class="rail-no">${hidden ? 'Unmute' : 'Mute'}</span>`;
     li.append(rail);
 
@@ -1319,14 +1831,14 @@
     row.className = 'place-row';
 
     const meta = [p.city, p._miles == null ? '' : formatDistance(p._miles)]
-      .filter(Boolean).join(' · ');
+      .filter(Boolean).join(' \u00b7 ');
     const hours = p.openingHours && p.openingHours.length <= 60 ? p.openingHours : '';
 
     row.innerHTML = `
       <button type="button" class="place-save" aria-pressed="${saved}"
               title="${saved ? 'Unlike' : 'Like'}"
               aria-label="${saved ? 'Unlike' : 'Like'} ${esc(p.name)}">
-        ${saved ? '♥' : '♡'}
+        ${saved ? '\u2665' : '\u2661'}
       </button>
       <div class="place-main">
         <p class="place-name">${esc(p.name)}</p>
@@ -1340,48 +1852,64 @@
         ${hours ? `<p class="place-hours">${esc(hours)}</p>` : ''}
         <p class="place-actions">
           ${p.events ? `<button type="button" class="place-events">${p.events}
-             ${p.events === 1 ? 'listing' : 'listings'} →</button>` : ''}
+             ${p.events === 1 ? 'listing' : 'listings'} \u2192</button>` : ''}
           ${safeUrl(p.url) ? `<a class="place-link" href="${esc(safeUrl(p.url))}" target="_blank"
              rel="noopener noreferrer">Website</a>` : ''}
-          <a class="place-link" target="_blank" rel="noopener noreferrer"
-             href="https://www.openstreetmap.org/?mlat=${p.lat}&mlon=${p.lon}#map=17/${p.lat}/${p.lon}">Map</a>
+          ${p.lat != null ? `<a class="place-link" target="_blank" rel="noopener noreferrer"
+             href="${esc(mapLink(p.lat, p.lon))}">Map</a>` : ''}
         </p>
       </div>
       ${p.events || hidden ? `
       <button type="button" class="place-mute" aria-pressed="${hidden}"
               title="${hidden ? 'Show this place again' : 'Never show this place'}"
               aria-label="${hidden ? 'Show' : 'Hide'} listings from ${esc(p.name)}">
-        ${hidden ? '🚫' : '👁'}
+        ${hidden ? '\ud83d\udeab' : '\ud83d\udc41'}
       </button>` : ''}`;
 
     li.append(row);
-
-    row.querySelector('.place-events')?.addEventListener('click', () => {
-      state.venueFilter = p.name;
-      showView('events');
-      render();
-    });
-    row.querySelector('.place-save').addEventListener('click', () => togglePlaceSaved(p));
-    row.querySelector('.place-mute')?.addEventListener('click', () => togglePlaceMuted(p));
     // The row's main column opens the place in full — hours, phone, website,
-    // everything the row has no room for.
+    // what is on there, everything the row has no room for. Handled by the
+    // list, not by this row: see wirePlaceList.
     const main = row.querySelector('.place-main');
     main.setAttribute('tabindex', '0');
     main.setAttribute('role', 'button');
     main.setAttribute('aria-label', `More about ${p.name}`);
-    main.addEventListener('click', (e) => {
+    return li;
+  }
+
+  const placeOf = (slot) => slot && placeByName(slot.dataset.name);
+
+  function wirePlaceList(root) {
+    delegateSwipe(root, '.place-slot', '.place-row', (slot, verdict) => {
+      const p = placeOf(slot);
+      if (p) (verdict === 'yes' ? togglePlaceSaved(p) : togglePlaceMuted(p));
+    });
+
+    root.addEventListener('click', (e) => {
+      const slot = e.target.closest('.place-slot');
+      if (!slot) return;
+      const p = placeOf(slot);
+      if (!p) return;
+      if (e.target.closest('.place-save')) { togglePlaceSaved(p); return; }
+      if (e.target.closest('.place-mute')) { togglePlaceMuted(p); return; }
+      if (e.target.closest('.place-events')) {
+        state.venueFilter = p.name;
+        showView('events');
+        render();
+        return;
+      }
       if (e.target.closest('a, button') || justSwiped()) return;
       openPlaceDetail(p);
     });
-    main.addEventListener('keydown', (e) => {
-      if ((e.key === 'Enter' || e.key === ' ') && e.target === main) {
-        e.preventDefault();
-        openPlaceDetail(p);
-      }
+
+    root.addEventListener('keydown', (e) => {
+      if (e.key !== 'Enter' && e.key !== ' ') return;
+      if (!e.target.classList?.contains('place-main')) return;
+      const p = placeOf(e.target.closest('.place-slot'));
+      if (!p) return;
+      e.preventDefault();
+      openPlaceDetail(p);
     });
-    attachSwipe(li, row, (verdict) =>
-      (verdict === 'going' ? togglePlaceSaved(p) : togglePlaceMuted(p)));
-    return li;
   }
 
   function renderPlaces() {
@@ -1442,6 +1970,11 @@
     if (el.tabPlacesN) {
       const n = state.places.length;
       el.tabPlacesN.textContent = n ? (n > 999 ? `${Math.floor(n / 100) / 10}k` : n) : '';
+    }
+    if (el.tabSavedN) {
+      const n = state.items.reduce((a, i) => a + (verdictOf(i) === 'saved' ? 1 : 0), 0)
+        + state.savedPlaces.size;
+      el.tabSavedN.textContent = n || '';
     }
   }
 
@@ -1542,6 +2075,8 @@
     const links = [];
     const signupHref = item.signupRequired ? safeUrl(item.signupUrl) : null;
     const detailsHref = safeUrl(item.url);
+    links.push(`<button type="button" class="link-btn is-cal" id="detail-cal">${
+      onCalendar(item) ? '📅 On your calendar' : '📅 Add to calendar'}</button>`);
     if (signupHref) links.push(`<a class="link-btn is-signup" href="${esc(signupHref)}"
       target="_blank" rel="noopener noreferrer">Sign up ↗</a>`);
     if (detailsHref) links.push(`<a class="link-btn" href="${esc(detailsHref)}"
@@ -1563,43 +2098,57 @@
         <span class="badge badge-type">${esc(typeLabel(item.type))}</span>
         ${typesOf(item).slice(1).map((t) =>
           `<span class="badge badge-type is-secondary">${esc(typeLabel(t))}</span>`).join('')}
-        ${verdict === 'going' ? '<span class="badge badge-going">Going</span>' : ''}
+        ${verdict === 'saved' ? '<span class="badge badge-saved">Saved</span>' : ''}
+        ${onCalendar(item) ? '<span class="badge badge-going">On your calendar</span>' : ''}
         ${repeatsOf(item) ? `<span class="badge badge-repeat">${esc(cadenceLabel(item))}</span>` : ''}
         ${audienceOf(item) === 'family' ? '<span class="badge badge-kids">Family &amp; kids</span>' : ''}
         ${audienceOf(item) === 'seniors' ? '<span class="badge badge-kids">Seniors</span>' : ''}
         ${audienceOf(item) === 'adults' ? '<span class="badge badge-adults">21+</span>' : ''}
         ${item.signupRequired ? '<span class="badge">Needs sign-up</span>' : ''}
       </div>
-      ${(venueName || whereBits.length) ? `<div class="detail-place"><p class="place-line">
-        ${venueName ? `<button type="button" class="detail-venue-btn" id="detail-venue-events">${esc(venueName)}</button>` : ''}
-        ${whereBits.map((b, i) => (venueName || i ? ` · ${b}` : b)).join('')}
-      </p></div>` : ''}
+      ${(venueName || whereBits.length) ? `<div class="detail-place">
+        ${venueName ? `<p class="detail-hosted">Hosted by</p>
+        <p class="place-line"><button type="button" class="detail-venue-btn"
+           id="detail-venue-page">${esc(venueName)} →</button></p>` : ''}
+        ${whereBits.length ? `<p class="place-sub">${whereBits.join(' · ')}</p>` : ''}
+      </div>` : ''}
       ${item.description ? `<p class="detail-desc">${esc(item.description)}</p>` : ''}
       <div class="detail-links">${links.join('')}</div>
       <p class="detail-fine">From ${esc(item.source || item.host || 'the listing feed')} —
         times and prices change; check the listing before you go.</p>`;
 
-    el.detailBody.querySelector('#detail-venue-events')?.addEventListener('click', () => {
-      state.venueFilter = venueOf(item);
-      closeDetail();
-      showView('events');
-      render();
+    // The place that is putting it on is a place, not a filter term — so
+    // tapping it opens that place's own page, where its hours, its website
+    // and everything else it has on live. The listings filter is one tap
+    // further in, on the page itself.
+    el.detailBody.querySelector('#detail-venue-page')?.addEventListener('click', () => {
+      openPlaceByName(venueName, item);
+    });
+
+    el.detailBody.querySelector('#detail-cal')?.addEventListener('click', () => {
+      if (onCalendar(item)) removeFromCalendar(item); else addToCalendar(item);
+      renderEventDetail(item);
     });
 
     el.detailFoot.replaceChildren(
       detailFootButton(verdict === 'hidden' ? 'Restore' : '✕ Not for me', 'btn-ghost', () => {
-        decide(item, verdict === 'hidden' ? null : 'hidden');
         closeDetail();
+        // The "just this one or every time?" question is its own dialog, and
+        // the sheet closing underneath it would take the scrim with it.
+        if (verdict === 'hidden') decide(item, null);
+        else setTimeout(() => requestHide(item), 220);
       }),
       detailFootButton('Share', '', () =>
         shareLink(item.title, shareUrlFor('event', item.id))),
-      detailFootButton(verdict === 'going' ? '✓ Going' : '✓ Add to calendar',
-        'btn-primary', () => {
-          decide(item, verdict === 'going' ? null : 'going');
-          renderEventDetail(item);   // reflect the new verdict in place
-        }));
+      detailFootButton(verdict === 'saved' ? '♥ Saved' : '♥ Save', 'btn-primary', () => {
+        decide(item, verdict === 'saved' ? null : 'saved');
+        renderEventDetail(item);   // reflect the new verdict in place
+      }));
   }
 
+  /* A place's own page. It carries what the row cannot: hours, phone, the
+     website, and — the part that makes it a destination rather than a
+     database row — what is actually on there in the days ahead. */
   function renderPlaceDetail(p) {
     el.detailTitle.textContent = p.name;
     const saved = state.savedPlaces.has(p.name);
@@ -1613,6 +2162,15 @@
     if (p.lat != null) links.push(`<a class="link-btn" href="${esc(mapLink(p.lat, p.lon))}"
       target="_blank" rel="noopener noreferrer">Map ↗</a>`);
 
+    // What is on here, soonest first. Five is enough to show the shape of the
+    // programme; the rest are one tap away behind the whole-venue filter.
+    // Always chronological here, whatever the feed is sorted by: a programme
+    // reads as a programme or it reads as nothing.
+    const here = state.items
+      .filter((i) => venueOf(i) === p.name && verdictOf(i) !== 'hidden')
+      .sort((a, b) => effectiveDay(a) - effectiveDay(b) || whenKey(a) - whenKey(b));
+    const SHOWN = 5;
+
     el.detailBody.innerHTML = `
       <div class="detail-tags">
         ${p.kind ? `<span class="badge badge-type">${esc(kindLabel(p.kind))}</span>` : ''}
@@ -1622,7 +2180,7 @@
         ${p.brand ? '<span class="badge">chain</span>' : ''}
         ${p.free ? '<span class="badge badge-going">Free entry</span>' : ''}
         ${p.wheelchair === 'yes' ? '<span class="badge">♿ accessible</span>' : ''}
-        ${saved ? '<span class="badge badge-going">♥ Liked</span>' : ''}
+        ${saved ? '<span class="badge badge-saved">♥ Liked</span>' : ''}
         ${muted ? '<span class="badge">Muted</span>' : ''}
       </div>
       <div class="detail-place"><p class="place-line">
@@ -1631,10 +2189,20 @@
       </p></div>
       ${p.openingHours ? `<p class="detail-desc">Hours: ${esc(p.openingHours)}</p>` : ''}
       ${p.description ? `<p class="detail-desc">${esc(p.description)}</p>` : ''}
-      ${p.events ? `<p class="detail-desc"><button type="button" class="detail-venue-btn"
-         id="detail-place-events">${p.events} ${p.events === 1 ? 'listing' : 'listings'}
-         coming up here →</button></p>` : ''}
       <div class="detail-links">${links.join('')}</div>
+      <section class="detail-whatson">
+        <h3 class="detail-h">What's on here</h3>
+        ${here.length ? `<ul class="detail-events">${here.slice(0, SHOWN).map((i) => `
+          <li><button type="button" class="detail-event" data-id="${esc(i.id)}">
+            <span class="detail-event-when">${esc(formatWhen(i, false))}</span>
+            <span class="detail-event-title">${esc(i.title)}</span>
+            ${priceKnown(i) ? `<span class="detail-event-price">${esc(formatPrice(i))}</span>` : ''}
+          </button></li>`).join('')}</ul>
+          ${here.length > SHOWN ? `<button type="button" class="detail-venue-btn"
+             id="detail-place-events">See all ${here.length} listings here →</button>` : ''}`
+        : '<p class="detail-fine">Nothing scheduled here in the feed right now — '
+          + 'plenty of places worth going never publish a calendar.</p>'}
+      </section>
       <p class="detail-fine">${p.source === 'Event listings'
         ? 'Known from the event feed.'
         : 'Place data from OpenStreetMap contributors (ODbL).'}</p>`;
@@ -1645,6 +2213,15 @@
       showView('events');
       render();
     });
+
+    // A listing on a place's page opens that listing, the same as anywhere
+    // else — the two pages link both ways or neither is a page.
+    for (const b of el.detailBody.querySelectorAll('.detail-event')) {
+      b.addEventListener('click', () => {
+        const item = state.byId.get(b.dataset.id);
+        if (item) openEventDetail(item);
+      });
+    }
 
     el.detailFoot.replaceChildren(
       detailFootButton(muted ? 'Unmute' : 'Mute this place', 'btn-ghost', () => {
@@ -1682,9 +2259,9 @@
       const item = state.allItems.find((i) => i.id === id);
       if (item) { openEventDetail(item, { push }); return; }
     } else {
-      const p = placeIndex().find((x) => (x.id || x.name) === id || x.name === id);
+      const p = placeIndex().find((x) => (x.id || x.name) === id || x.name === id)
+        || placeByName(id.replace(/^feed-/, ''));
       if (p) {
-        if (state.view !== 'places') showView('places');
         openPlaceDetail(p, { push });
         return;
       }
@@ -1696,26 +2273,36 @@
 
   window.addEventListener('popstate', () => openFromHash());
 
-  /* ── The two views ─────────────────────────────────────── */
+  /* ── The three views ───────────────────────────────────── */
+
+  const TABS = [
+    { view: 'events', tab: 'tabEvents', panel: 'eventsView' },
+    { view: 'places', tab: 'tabPlaces', panel: 'placesView' },
+    { view: 'saved',  tab: 'tabSaved',  panel: 'savedView'  }
+  ];
 
   function showView(view) {
+    if (!TABS.some((t) => t.view === view)) view = 'events';
     state.view = view;
     savePrefs();
-    const onPlaces = view === 'places';
-    el.eventsView.hidden = onPlaces;
-    el.placesView.hidden = !onPlaces;
-    el.tabEvents.classList.toggle('is-on', !onPlaces);
-    el.tabPlaces.classList.toggle('is-on', onPlaces);
-    el.tabEvents.setAttribute('aria-selected', String(!onPlaces));
-    el.tabPlaces.setAttribute('aria-selected', String(onPlaces));
+    for (const t of TABS) {
+      const on = t.view === view;
+      if (el[t.panel]) el[t.panel].hidden = !on;
+      if (el[t.tab]) {
+        el[t.tab].classList.toggle('is-on', on);
+        el[t.tab].setAttribute('aria-selected', String(on));
+      }
+    }
     // Filters, the result count and the one-venue banner all describe the
-    // feed. On Places they would be describing something the reader is not
-    // looking at. The location chip stays — it is what place distances are
+    // feed. On the other tabs they would be describing something the reader is
+    // not looking at. The location chip stays — it is what place distances are
     // measured from.
-    if (el.openFilters) el.openFilters.hidden = onPlaces;
-    if (el.contextScope) el.contextScope.hidden = onPlaces;
-    if (el.venueBanner) el.venueBanner.hidden = onPlaces || !state.venueFilter;
-    if (onPlaces) renderPlaces();
+    const onEvents = view === 'events';
+    if (el.openFilters) el.openFilters.hidden = !onEvents;
+    if (el.contextScope) el.contextScope.hidden = !onEvents;
+    if (el.venueBanner) el.venueBanner.hidden = !onEvents || !state.venueFilter;
+    if (view === 'places') renderPlaces();
+    if (view === 'saved') renderSaved();
     window.scrollTo({ top: 0 });
   }
 
@@ -1810,7 +2397,8 @@
   // Keep tabbing inside whichever sheet is modal right now.
   function trapFocus(e) {
     if (e.key !== 'Tab') return;
-    const sheet = !el.detailSheet.hidden ? el.detailSheet
+    const sheet = !el.choice.hidden ? el.choice
+                : !el.detailSheet.hidden ? el.detailSheet
                 : !el.sheet.hidden ? el.sheet : null;
     if (!sheet) return;
     const f = sheet.querySelectorAll(
@@ -1830,11 +2418,27 @@
   el.detailScrim.addEventListener('click', closeDetail);
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
-      if (!el.detailSheet.hidden) closeDetail();
+      if (!el.choice.hidden) closeChoice();
+      else if (!el.detailSheet.hidden) closeDetail();
       else if (!el.sheet.hidden) closeSheet();
     }
     trapFocus(e);
   });
+
+  /* ── The repeating-listing question ───────────────────── */
+
+  el.choiceOnce.addEventListener('click', () => {
+    const item = pendingHide;
+    closeChoice();
+    if (item) skipOccurrence(item);
+  });
+  el.choiceSeries.addEventListener('click', () => {
+    const item = pendingHide;
+    closeChoice();
+    if (item) decide(item, 'hidden');
+  });
+  el.choiceCancel.addEventListener('click', closeChoice);
+  el.choiceScrim.addEventListener('click', closeChoice);
 
   /* ── Controls ─────────────────────────────────────────── */
 
@@ -1934,20 +2538,11 @@
   }
 
   // Counts reflect the other active filters but ignore the type filter itself,
-  // so the numbers stay useful while picking.
-  function renderTypeCounts() {
-    const saved = state.activeTypes;
-    const savedEx = state.excludedTypes;
-    state.activeTypes = new Set();
-    state.excludedTypes = new Set();
-    const pool = filtered();
-    state.activeTypes = saved;
-    state.excludedTypes = savedEx;
-
-    const counts = new Map();
-    for (const item of pool) {
-      for (const t of typesOf(item)) counts.set(t, (counts.get(t) || 0) + 1);
-    }
+  // so the numbers stay useful while picking. filterPass() already worked them
+  // out on the way past — running the whole filter a second time to recover
+  // them was pure duplicated effort.
+  function renderTypeCounts(counts) {
+    if (!counts) counts = filterPass().counts;
     for (const chip of el.types.children) {
       chip.querySelector('.chip-n').textContent = counts.get(chip.dataset.type) || 0;
     }
@@ -1985,8 +2580,10 @@
     el.locStatus.textContent = `Showing distances from ${name}.`;
     render();
     // Place distances are measured from here too, so the directory is stale
-    // the moment this changes — and the reader may be looking at it.
+    // the moment this changes — and the reader may be looking at it, or at
+    // the liked places on Saved.
     if (state.view === 'places') renderPlaces();
+    if (state.view === 'saved') renderSaved();
   }
 
   function locationError(msg) {
@@ -2038,16 +2635,35 @@
 
   const rerender = () => { syncRangeLabels(); savePrefs(); render(); };
 
-  for (const node of [el.q, el.sort, el.radius, el.price,
-                      el.freeOnly, el.signupOnly, el.unitsKm,
+  /* A slider dragged across its track fires `input` on every pixel, and a
+     search box fires on every letter. Filtering and rebuilding the list on
+     each of those is work that is thrown away a frame later — so the labels
+     move at once (they are what the thumb is watching) and the list catches
+     up when the hand stops. */
+  function debounce(fn, ms) {
+    let t = null;
+    return (...args) => {
+      clearTimeout(t);
+      t = setTimeout(() => { t = null; fn(...args); }, ms);
+    };
+  }
+
+  const rerenderSoon = debounce(rerender, 140);
+
+  // Checkboxes and selects are one decision each: no reason to make them wait.
+  for (const node of [el.sort, el.freeOnly, el.signupOnly, el.unitsKm,
                       el.showKids, el.showSeniors, el.showAdults, el.foodOnly,
                       el.outdoorOnly, el.interestedOnly]) {
     node.addEventListener('input', rerender);
   }
+  for (const node of [el.q, el.radius, el.price]) {
+    node.addEventListener('input', () => { syncRangeLabels(); rerenderSoon(); });
+  }
 
   el.tabEvents?.addEventListener('click', () => showView('events'));
   el.tabPlaces?.addEventListener('click', () => showView('places'));
-  el.placesSearch?.addEventListener('input', renderPlaces);
+  el.tabSaved?.addEventListener('click', () => showView('saved'));
+  el.placesSearch?.addEventListener('input', debounce(renderPlaces, 140));
   el.placesSort?.addEventListener('change', () => {
     state.placeSort = el.placesSort.value;
     savePrefs();
@@ -2071,13 +2687,31 @@
   el.clearHiddenBtn?.addEventListener('click', () => {
     const restored = Object.entries(state.decisions)
       .filter(([, v]) => v === 'hidden').map(([id]) => id);
-    if (!restored.length) return;
+    const skipped = state.skips.size;
+    if (!restored.length && !skipped) return;
     const previous = { ...state.decisions };
+    const previousSkips = state.skips;
     for (const id of restored) delete state.decisions[id];
     saveDecisions(state.decisions);
+    // Single occurrences waved off count as hidden too — "Restore all" that
+    // leaves half of them hidden is not restoring all of them.
+    state.skips = new Map();
+    saveSkips(state.skips);
+    state.items = liveItems();
+    invalidatePlaces();
     render();
-    toast(`Restored ${restored.length} hidden ${restored.length === 1 ? 'listing' : 'listings'}`,
-          () => { state.decisions = previous; saveDecisions(state.decisions); render(); });
+    updateTabCounts();
+    const n = restored.length + skipped;
+    toast(`Restored ${n} hidden ${n === 1 ? 'listing' : 'listings'}`, () => {
+      state.decisions = previous;
+      state.skips = previousSkips;
+      saveDecisions(state.decisions);
+      saveSkips(state.skips);
+      state.items = liveItems();
+      invalidatePlaces();
+      render();
+      updateTabCounts();
+    });
   });
 
   el.resetFilters.addEventListener('click', () => {
@@ -2113,6 +2747,20 @@
     rerender();
   });
 
+  /* A narrow window for tests/drive.js, which drives the real page and has to
+     be able to see what the app believes: how long the render plan is, where
+     a listing's next occurrence sits, what has been saved or booked. Nothing
+     in the app reads it back — it exists so a test can assert on behaviour
+     rather than on the shape of the DOM. */
+  window.__proximi = {
+    get plan() { return state.plan; },
+    get byId() { return state.byId; },
+    get decisions() { return state.decisions; },
+    get calendar() { return state.calendar; },
+    get skips() { return state.skips; },
+    hasCadence
+  };
+
   /* ── Boot ─────────────────────────────────────────────── */
 
   (async function init() {
@@ -2125,6 +2773,12 @@
     buildRepeatChips();
     buildTimeOfDayChips();
     syncRangeLabels();
+
+    // One set of handlers per list, attached once and never rebuilt.
+    wireList(el.list);
+    wireList(el.savedList);
+    wirePlaceList(el.placesList);
+    wirePlaceList(el.savedPlacesList);
 
     try {
       const res = await fetch('data/events.json', { cache: 'no-cache' });
@@ -2158,6 +2812,7 @@
           invalidatePlaces();
           updateTabCounts();
           if (state.view === 'places') renderPlaces();
+          if (state.view === 'saved') renderSaved();
           // A shared place link can only resolve once the directory is here.
           if (location.hash.startsWith('#p=')) openFromHash();
         })
@@ -2171,6 +2826,10 @@
           _until: item.until ? new Date(item.until) : null
         };
       });
+      // Every list works from ids now — a card carries one and nothing else,
+      // so a click has to be able to get back to the listing without holding
+      // a closure per card.
+      state.byId = new Map(state.allItems.map((i) => [i.id, i]));
       state.items = liveItems();
       state.staleCount = state.allItems.length - state.items.length;
 
@@ -2187,7 +2846,7 @@
       }
       // Last, once there is something to show: reopen on whichever tab was
       // last in use, and honour a shared event link.
-      if (prefs?.view === 'places') showView('places');
+      if (prefs?.view === 'places' || prefs?.view === 'saved') showView(prefs.view);
       if (location.hash.startsWith('#e=')) openFromHash();
     } catch {
       el.empty.hidden = false;
