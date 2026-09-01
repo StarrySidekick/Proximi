@@ -246,16 +246,17 @@ a { color: var(--accent); }
   transition: none;
   user-select: none;
 }
-.card-slot[data-swipe="hidden"] .swipe-rail { background: var(--act-bg); }
-.card-slot[data-swipe="going"]  .swipe-rail { background: var(--rep-bg); }
+.card-slot[data-swipe="no"]  .swipe-rail { background: var(--act-bg); }
+.card-slot[data-swipe="yes"] .swipe-rail { background: var(--rep-bg); }
 /* Both labels are present from the first pixel of movement; the one being
    committed to is the one that stays lit. */
-.card-slot[data-swipe="going"]  .rail-no,
-.card-slot[data-swipe="hidden"] .rail-yes { opacity: .25; }
+.card-slot[data-swipe="yes"] .rail-no,
+.card-slot[data-swipe="no"]  .rail-yes { opacity: .25; }
 
 /* A card already answered keeps a quiet edge so the verdict is visible in
    the list without re-reading the badge. */
-.card-slot.is-going  > .card { border-color: var(--rep-ink); }
+.card-slot.is-saved  > .card { border-color: var(--rep-ink); }
+.card-slot.is-booked > .card { border-color: var(--accent); }
 .card-slot.is-hidden > .card { opacity: .55; }
 
 /* Two small marks in the corner. The swipe is the real gesture; these are the
@@ -280,7 +281,8 @@ a { color: var(--accent); }
 /* Touch has no hover, so they stay legible on a phone. */
 @media (hover: none) { .verdict-btn { opacity: .8; } }
 .card-slot.is-hidden .verdict-btn.is-no,
-.card-slot.is-going  .verdict-btn.is-yes {
+.card-slot.is-saved  .verdict-btn.is-yes,
+.card-slot.is-booked .verdict-btn.is-yes {
   background: var(--surface-2); border-color: var(--ink-3);
   color: var(--ink); opacity: 1;
 }
@@ -294,6 +296,7 @@ a { color: var(--accent); }
 }
 
 .badge-going { background: var(--rep-bg); color: var(--rep-ink); }
+.badge-saved { background: var(--accent); color: var(--accent-ink); }
 
 .decided-actions { display: flex; gap: 6px; flex-wrap: wrap; margin: 6px 0 4px; }
 
@@ -557,6 +560,9 @@ input:focus-visible, select:focus-visible, button:focus-visible, a:focus-visible
   display: flex; gap: 4px; margin: 10px auto 0;
   border-bottom: 1px solid var(--line);
 }
+@media (max-width: 380px) {
+  .viewtab { padding: 9px 9px; font-size: 14px; }
+}
 .viewtab {
   font: inherit; font-weight: 600; font-size: 15px; cursor: pointer;
   background: none; border: 0; color: var(--ink-3);
@@ -649,10 +655,10 @@ input:focus-visible, select:focus-visible, button:focus-visible, a:focus-visible
   transition: none;
   user-select: none;
 }
-.place-slot[data-swipe="hidden"] .swipe-rail { background: var(--act-bg); }
-.place-slot[data-swipe="going"]  .swipe-rail { background: var(--rep-bg); }
-.place-slot[data-swipe="going"]  .rail-no,
-.place-slot[data-swipe="hidden"] .rail-yes { opacity: .25; }
+.place-slot[data-swipe="no"]  .swipe-rail { background: var(--act-bg); }
+.place-slot[data-swipe="yes"] .swipe-rail { background: var(--rep-bg); }
+.place-slot[data-swipe="yes"] .rail-no,
+.place-slot[data-swipe="no"]  .rail-yes { opacity: .25; }
 .place-slot.is-saved .place-name { font-weight: 600; }
 .place-slot.is-saved .place-row { border-color: var(--rep-ink); }
 .place-slot.is-muted .place-row { opacity: .5; }
@@ -761,6 +767,7 @@ input:focus-visible, select:focus-visible, button:focus-visible, a:focus-visible
   text-underline-offset: 3px;
 }
 .detail-place .detail-venue-btn:hover { text-decoration-color: var(--accent); }
+.detail-place .place-sub { margin: 3px 0 0; color: var(--ink-3); font-size: 13px; }
 
 .detail-desc {
   margin: 14px 0 0; font-size: 14px; line-height: 1.62; color: var(--ink-2);
@@ -779,3 +786,99 @@ input:focus-visible, select:focus-visible, button:focus-visible, a:focus-visible
   outline: 2px solid var(--accent); outline-offset: 2px;
 }
 .place-main { cursor: pointer; }
+
+
+/* ── The place a listing is at ──────────────────────────
+   The venue was a line of text, which made "who is putting this on" a fact
+   rather than somewhere to go. It is a link on the card and the headline of
+   the sheet's place block, and both land on that place's own page.      */
+.card-venue {
+  font: inherit; font-weight: 600; color: var(--ink);
+  background: none; border: 0; padding: 0; cursor: pointer;
+  text-decoration: underline; text-decoration-color: var(--line);
+  text-underline-offset: 3px;
+  max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.card-venue:hover { text-decoration-color: var(--accent); color: var(--accent); }
+
+.detail-hosted {
+  margin: 0 0 4px; font-size: 11px; font-weight: 700;
+  letter-spacing: .12em; text-transform: uppercase; color: var(--ink-3);
+}
+
+/* ── What's on at a place ───────────────────────────────
+   A place page that lists only hours and a phone number is a database row.
+   The programme is the reason to go.                                    */
+.detail-whatson { margin: 20px 0 0; }
+.detail-h {
+  font-family: var(--serif); font-size: 13px; font-weight: 600;
+  letter-spacing: .12em; text-transform: uppercase; color: var(--ink-2);
+  margin: 0 0 8px;
+}
+.detail-events { list-style: none; margin: 0; padding: 0; }
+.detail-events li + li { margin-top: 6px; }
+.detail-event {
+  display: grid; grid-template-columns: 1fr auto; gap: 2px 10px; align-items: baseline;
+  width: 100%; text-align: left; cursor: pointer;
+  font: inherit; padding: 9px 11px;
+  background: var(--surface-2); border: 1px solid var(--line-soft);
+  border-radius: var(--radius);
+}
+.detail-event:hover { border-color: var(--accent); }
+.detail-event-when {
+  grid-column: 1 / -1;
+  font-size: 12px; font-weight: 700; color: var(--accent);
+}
+.detail-event-title { font-size: 13.5px; color: var(--ink); line-height: 1.35; }
+.detail-event-price { font-size: 12.5px; font-weight: 600; color: var(--ink-3); }
+.detail-whatson .detail-venue-btn {
+  margin: 10px 0 0; border: 0; padding: 0; background: none; cursor: pointer;
+  font: inherit; font-size: 13px; font-weight: 700; color: var(--accent);
+}
+
+.link-btn.is-cal { font: inherit; cursor: pointer; }
+
+/* ── Saved ──────────────────────────────────────────────
+   The room between "that looks good" and "put it in my calendar".       */
+.saved-places { margin: 26px 0 0; }
+.saved-h {
+  font-family: var(--serif); font-size: 14px; font-weight: 600;
+  letter-spacing: .1em; text-transform: uppercase; color: var(--ink-2);
+  margin: 0 0 8px; padding-top: 16px; border-top: 1px solid var(--line);
+}
+
+/* ── The rest of the list ───────────────────────────────
+   Only a screenful is built at a time; this is both the button for anyone
+   who would rather tap than scroll, and the marker the observer watches. */
+.list-more { list-style: none; padding: 10px 0 24px; text-align: center; }
+.list-more button {
+  font: inherit; font-size: 13px; font-weight: 600; cursor: pointer;
+  color: var(--ink-2); background: var(--surface-2);
+  border: 1px solid var(--line); border-radius: 999px;
+  padding: 9px 18px;
+}
+.list-more button:hover { border-color: var(--accent); color: var(--ink); }
+
+/* ── "Just this one, or every time?" ────────────────────
+   Small, centred and unmissable: a left swipe on a repeating listing has two
+   answers and this is the only place either of them is given.           */
+.choice {
+  position: fixed; z-index: 60;
+  left: 50%; top: 50%; transform: translate(-50%, -46%);
+  width: min(400px, calc(100vw - 32px));
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--panel), 0 18px 48px rgba(42, 36, 28, .28);
+  padding: 20px 20px 16px;
+  opacity: 0; transition: opacity .18s, transform .18s;
+}
+.choice.is-open { opacity: 1; transform: translate(-50%, -50%); }
+.choice-title {
+  font-family: var(--serif); font-size: 17px; margin: 0;
+}
+.choice-sub { margin: 8px 0 0; font-size: 13.5px; line-height: 1.5; color: var(--ink-2); }
+.choice-actions { display: flex; flex-direction: column; gap: 8px; margin: 18px 0 0; }
+.choice-actions .btn { width: 100%; }
+@media (prefers-reduced-motion: reduce) {
+  .choice { transition: none; }
+}

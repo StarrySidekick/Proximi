@@ -23,7 +23,8 @@ round again*. Both are filterable.
 
 ## What the prototype does
 
-The page is just the list. Everything else lives behind a **Filters** sheet, so
+The page is three tabs — **Events**, **Places** and **Saved** — and the first
+of them is just the list. Everything else lives behind a **Filters** sheet, so
 the default view is scannable rather than a wall of controls.
 
 **Out of the box** it shows what's on in the **next week**, **within 75 miles**,
@@ -83,29 +84,79 @@ something already under way reads "on now, through Sep 6".
 
 Cards badge what kind of thing they are — **Concert**, **Market**, **Tour** —
 plus **Repeats**, **Children only**, **Family**, **Seniors** or **21+** where
-those apply, and name the host who runs it.
+those apply, **Saved** and **On your calendar** once you have said so, and name
+the host who runs it — as a link to that host's own page.
 
 ### Saying yes or no
 
-Swipe a card **left** to hide it ("not for me") or **right** to add it to your
-calendar. Both actions are also buttons on every card, because a swipe is
-undiscoverable and unusable from a keyboard.
+Swipe a card **left** to hide it ("not for me") or **right** to **save** it.
+Both actions are also buttons on every card, because a swipe is undiscoverable
+and unusable from a keyboard.
 
 The gesture only takes over once it is clearly horizontal, so a vertical drag
 still scrolls the page. Every verdict raises an undo toast, and the hidden
 count with a **Restore all** sits in the Filters sheet — a mis-swipe is never a
 one-way door.
 
-Saying yes builds an iCalendar file in the page and hands it over; there is no
-backend to invite you from, and every calendar app reads `.ics`. A listing's
-`start` and `end` describe when it is *available*, which for a daily
-self-guided trail can be years wide, so anything spanning more than a day
-becomes a two-hour visit with the real run in the notes, and a run already
-under way is booked for today at its usual hour.
-
 Verdicts live in `localStorage`, so they are per-browser and private to you.
 Every read and write is guarded — a browser with site data blocked loses the
 memory, not the feed.
+
+### Saved is the room between "that looks good" and "I'm going"
+
+A right swipe used to download an `.ics` on the spot, which made the cheap
+gesture a commitment: you could not say *that looks interesting* without
+handing your calendar a file. So there are three tabs now — **Events**,
+**Places**, **Saved** — and the gesture means the same thing on each:
+
+| Where | Swipe right | Swipe left |
+| --- | --- | --- |
+| Events | Save it | Hide it |
+| Saved | **Add to your calendar** | Drop it from Saved |
+| Places | Like it | Mute it |
+
+Saved holds both: the listings you saved and the places you liked, because
+"the things I picked" living in two tabs is not a place at all.
+
+Booking still builds an iCalendar file in the page and hands it over; there is
+no backend to invite you from, and every calendar app reads `.ics`. A
+listing's `start` and `end` describe when it is *available*, which for a daily
+self-guided trail can be years wide, so anything spanning more than a day
+becomes a two-hour visit with the real run in the notes, and a run already
+under way is booked for today at its usual hour. What has been booked is
+remembered separately from what has been saved, so a listing can be on your
+calendar and still sit in the list.
+
+### A repeating listing has two answers to "not for me"
+
+Swiping left on Tuesday's trivia night used to hide trivia night for ever.
+That is one of the two things a reader could mean and the wrong one most of
+the time, so anything with a cadence we can actually name — daily, weekdays,
+weekly, fortnightly, monthly — asks:
+
+> **This one repeats** — "Bannerman Island Cruise & Walking Tour" — weekdays.
+> · **Just today** · **Hide every time** · Cancel
+
+*Just today* records the skipped **occurrence**, not the listing: the series
+keeps running and the card comes back on its next date. That is why skips are
+stored as `{ id: [dayIndex, …] }` — a weekly market has one occurrence per day
+it lands on and no id of its own, so the day is the only thing that identifies
+which one you waved off. `advance()` walks past skipped occurrences when it
+works out what is next, and **Restore all hidden** brings them back along with
+whole-series hides, because a "restore all" that leaves half of them hidden is
+not restoring all of them.
+
+Anything that repeats on no nameable pattern (`occasional`, `bookable`) has
+only one occurrence to hide, so it hides outright with no question asked.
+
+### Every listing's host is a place you can open
+
+The venue on a card is a **link**, not a line of text, and so is the **Hosted
+by** line in a listing's full card. Both open that place's own page: what kind
+of place it is, where, how far, hours, phone, website, and **what's on there**
+in the days ahead — each of which opens back into the listing. A venue the
+place directory has never heard of still gets a page built from what the feed
+knows about it, so the link is never a dead end.
 
 ## Look
 
@@ -562,6 +613,37 @@ null or an object.
 Listings are only as good as the calendars they come from, and those go stale.
 The page states when it last refreshed and tells people to check before turning
 up. Categories are inferred by keyword matching and are sometimes thin or wrong.
+
+### The list is built a screenful at a time
+
+The default view — a week inside seventy-five miles — is around 670 listings,
+and every one of them used to become a DOM node before the first was on
+screen: **15,730 elements**, and a full re-render cost **346ms**. That is what
+the lag was. It was not the swipe: a verdict already patched its own card. It
+was that every filter change, every slider nudge, and the clock's own
+thirty-second tick rebuilt all of it, and that a fifteen-thousand-node list is
+expensive to scroll, animate a card over, and remove a card from.
+
+Four changes, measured on the same page and the same data:
+
+- The sorted results become a **plan** — a flat list of "day heading" and
+  "card" entries — and only the first forty are built, with the rest appended
+  as a sentinel scrolls into view. **1,298 elements, 17.5ms per render.**
+- Handlers are **delegated to the list**, not attached per card. Six listeners
+  on each of several hundred cards is thousands of listeners rebuilt on every
+  render; one set per list does the same job and never grows.
+- The filter ran **twice** per render — once for the list and once for the
+  type chips' counts, which are deliberately blind to the type chips. It runs
+  once now and hands back both. Every control is read once per pass rather
+  than once per listing, and each listing's search haystack is built once and
+  kept.
+- The **tick only repaints when something moved**. Most minutes change
+  nothing, and repainting several hundred cards to discover that is a stutter
+  the reader feels every thirty seconds.
+
+Sliders and the search box debounce at 140ms: the label moves at once, because
+that is what the thumb is watching, and the list catches up when the hand
+stops.
 
 ## Status
 

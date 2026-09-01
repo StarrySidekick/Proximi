@@ -39,6 +39,7 @@ const exe = process.env.CHROMIUM_PATH
   const browser = await chromium.launch(exe ? { executablePath: exe } : {});
   const ctx = await browser.newContext({
     viewport: { width: 390, height: 844 }, hasTouch: true, isMobile: true,
+    acceptDownloads: true,   // a booking hands over an .ics; do not let it throw
   });
   const page = await ctx.newPage();
   const errors = [];
@@ -72,13 +73,25 @@ const exe = process.env.CHROMIUM_PATH
   await yes.click();
   await page.waitForTimeout(150);
   const afterOne = await page.locator('#list .card-slot').first().evaluate(
-    (n) => n.classList.contains('is-going'));
+    (n) => n.classList.contains('is-saved'));
   await yes.click();
   await page.waitForTimeout(150);
   const afterTwo = await page.locator('#list .card-slot').first().evaluate(
-    (n) => n.classList.contains('is-going'));
-  ok('verdict ✓ sets going', afterOne === true);
-  ok('verdict ✓ again untoggles', afterTwo === false, afterTwo ? 'stale closure' : '');
+    (n) => n.classList.contains('is-saved'));
+  ok('verdict ♥ saves', afterOne === true);
+  ok('verdict ♥ again unsaves', afterTwo === false, afterTwo ? 'stale closure' : '');
+
+  // ── The feed builds a screenful, not the whole week ────
+  const window0 = await page.locator('#list .card-slot').count();
+  const total = await page.evaluate(() => (window.__proximi?.plan || []).length);
+  ok('feed renders a window, not everything', window0 > 5 && window0 <= 45,
+    `${window0} cards of a ${total}-entry plan`);
+  if (total > window0) {
+    await page.locator('#list .list-more button').click();
+    await page.waitForTimeout(200);
+    const window1 = await page.locator('#list .card-slot').count();
+    ok('showing more appends the next batch', window1 > window0, `${window0} → ${window1}`);
+  }
 
   // ── Event detail sheet: tap, hash, content, back ───────
   const firstTitle = await page.locator('#list .card-slot .card-title').first().textContent();
@@ -123,6 +136,100 @@ const exe = process.env.CHROMIUM_PATH
   const undoBtn = page.locator('.toast-undo');
   if (await undoBtn.isVisible()) { await undoBtn.click(); await page.waitForTimeout(200); }
   ok('swipe did not open detail', await page.locator('#detail-sheet.is-open').count() === 0);
+
+  // ── The host place is a link to that place's page ──────
+  const withVenue = page.locator('#list .card-slot').filter(
+    { has: page.locator('.card-venue') }).first();
+  await withVenue.locator('.card-title').click();
+  await page.waitForTimeout(400);
+  const eventTitle = (await page.locator('#detail-title').textContent()).trim();
+  ok('detail names the host place',
+    await page.locator('#detail-sheet #detail-venue-page').count() === 1);
+  await page.locator('#detail-venue-page').click();
+  await page.waitForTimeout(400);
+  const placeTitle = (await page.locator('#detail-title').textContent()).trim();
+  ok('host place opens its own page', placeTitle !== eventTitle && placeTitle.length > 0,
+    `${eventTitle} → ${placeTitle}`);
+  ok('place page is a place permalink',
+    await page.evaluate(() => location.hash.startsWith('#p=')));
+  ok('place page lists what is on there',
+    await page.locator('#detail-sheet .detail-whatson').count() === 1);
+  // Escape goes back one entry, which is the event the place was opened from —
+  // correct navigation, and two presses to get out of both.
+  for (let i = 0; i < 4 && await page.locator('#detail-sheet.is-open').count(); i++) {
+    await page.keyboard.press('Escape');
+    await page.waitForTimeout(400);
+  }
+  ok('backing out of a place returns to the event, then the list',
+    await page.locator('#detail-sheet.is-open').count() === 0);
+
+  // ── A repeating listing asks which "hide" you meant ────
+  const repeatIdx = await page.evaluate(() => {
+    const slots = [...document.querySelectorAll('#list .card-slot')];
+    return slots.findIndex((s) => s.querySelector('.badge-repeat')
+      && window.__proximi.hasCadence(window.__proximi.byId.get(s.dataset.id)));
+  });
+  if (repeatIdx < 0) {
+    ok('a repeating listing is on screen to test', false, 'none found');
+  } else {
+    const repeatSlot = page.locator('#list .card-slot').nth(repeatIdx);
+    await repeatSlot.scrollIntoViewIfNeeded();
+    await page.waitForTimeout(200);
+    const rId = await repeatSlot.getAttribute('data-id');
+    const rBox = await repeatSlot.boundingBox();
+    await swipe(rBox, -160);
+    await page.waitForTimeout(300);
+    ok('repeating swipe left asks once or every time',
+      await page.locator('#choice-dialog.is-open').count() === 1);
+    ok('the card is still there while the question stands',
+      await page.locator(`#list .card-slot[data-id="${rId}"]`).count() === 1);
+    const before = await page.evaluate((id) =>
+      window.__proximi.byId.get(id)._start.toISOString(), rId);
+    await page.locator('#choice-once').click();
+    await page.waitForTimeout(400);
+    const after = await page.evaluate((id) =>
+      window.__proximi.byId.get(id)._start.toISOString(), rId);
+    ok('hiding just this one moves it to the next occurrence',
+      after !== before, `${before} → ${after}`);
+    ok('hiding just this one does not hide the series',
+      await page.evaluate((id) => !window.__proximi.decisions[id], rId));
+    // and the whole series, from the same dialog
+    await page.locator('#list .card-slot').nth(0).scrollIntoViewIfNeeded();
+  }
+
+  // ── Saved: a right swipe puts it there, a second books it
+  await page.evaluate(() => {
+    const s = document.querySelector('#list .card-slot');
+    window.__savedId = s.dataset.id;
+    s.querySelector('.verdict-btn.is-yes').click();
+  });
+  await page.waitForTimeout(300);
+  await page.locator('#tab-saved').click();
+  await page.waitForTimeout(400);
+  ok('saved tab is the third tab', await page.evaluate(() => {
+    const tabs = [...document.querySelectorAll('.viewtab')].map((t) => t.id);
+    return tabs.join(',') === 'tab-events,tab-places,tab-saved';
+  }));
+  ok('a saved listing shows in Saved', await page.evaluate(() =>
+    !!document.querySelector(`#saved-list .card-slot[data-id="${CSS.escape(window.__savedId)}"]`)
+    || !!document.querySelector('#saved-list .card-slot')));
+  const savedSlot = page.locator('#saved-list .card-slot').first();
+  await savedSlot.scrollIntoViewIfNeeded();
+  await page.waitForTimeout(200);
+  const savedBox = await savedSlot.boundingBox();
+  const savedId = await savedSlot.getAttribute('data-id');
+  await swipe(savedBox, 170);
+  await page.waitForTimeout(400);
+  ok('swiping right in Saved books the calendar', await page.evaluate((id) =>
+    window.__proximi.calendar.has(id), savedId));
+  ok('it stays in Saved once booked', await page.evaluate((id) =>
+    !!document.querySelector(`#saved-list .card-slot[data-id="${CSS.escape(id)}"]`), savedId));
+  await page.locator(`#saved-list .card-slot[data-id="${savedId}"] .verdict-btn.is-no`).click();
+  await page.waitForTimeout(300);
+  ok('the ✕ in Saved drops it again', await page.evaluate((id) =>
+    !document.querySelector(`#saved-list .card-slot[data-id="${CSS.escape(id)}"]`), savedId));
+  await page.locator('#tab-events').click();
+  await page.waitForTimeout(300);
 
   // ── Places: render, touchability, like/mute, detail ────
   await page.locator('#tab-places').click();
