@@ -68,18 +68,40 @@ const exe = process.env.CHROMIUM_PATH
   });
   ok('first card touchable (elementFromPoint)', touchable === 'yes', touchable);
 
-  // ── Verdict buttons toggle, and stay toggled off ───────
-  const yes = page.locator('#list .card-slot .verdict-btn.is-yes').first();
-  await yes.click();
-  await page.waitForTimeout(150);
-  const afterOne = await page.locator('#list .card-slot').first().evaluate(
-    (n) => n.classList.contains('is-saved'));
-  await yes.click();
-  await page.waitForTimeout(150);
-  const afterTwo = await page.locator('#list .card-slot').first().evaluate(
-    (n) => n.classList.contains('is-saved'));
-  ok('verdict ♥ saves', afterOne === true);
-  ok('verdict ♥ again unsaves', afterTwo === false, afterTwo ? 'stale closure' : '');
+  // ── ♥ takes a listing out of the feed, into Saved ──────
+  //    A saved listing has a tab of its own, so leaving it in the feed as well
+  //    made a right swipe look like it had done nothing.
+  const toSave = await page.locator('#list .card-slot').first().getAttribute('data-id');
+  await page.locator('#list .card-slot .verdict-btn.is-yes').first().click();
+  await page.waitForTimeout(200);
+  ok('verdict ♥ saves', await page.evaluate(
+    (id) => window.__proximi.decisions[id] === 'saved', toSave));
+  ok('a saved listing leaves the feed',
+    await page.locator(`#list .card-slot[data-id="${toSave}"]`).count() === 0);
+  // And stays out of a list built from scratch, not just out of the one the
+  // click patched — the card is removed in two places and only one of them is
+  // the filter that actually decides what the feed is.
+  await page.locator('#open-filters').click();
+  await page.waitForTimeout(250);
+  await page.click('#reset-filters');
+  await page.locator('#apply-filters').click();
+  await page.waitForTimeout(400);
+  ok('and stays out of a rebuilt feed',
+    await page.locator(`#list .card-slot[data-id="${toSave}"]`).count() === 0);
+  // Dropping it again from Saved puts it back in the feed. The feed is behind
+  // another tab at that moment and switching tabs does not re-render, so this
+  // is the case where a stale list would survive unnoticed.
+  await page.locator('#tab-saved').click();
+  await page.waitForTimeout(300);
+  ok('the saved listing is in Saved',
+    await page.locator(`#saved-list .card-slot[data-id="${toSave}"]`).count() === 1);
+  await page.locator(`#saved-list .card-slot[data-id="${toSave}"] .verdict-btn.is-no`).click();
+  await page.waitForTimeout(300);
+  await page.locator('#tab-events').click();
+  await page.waitForTimeout(300);
+  ok('dropping it from Saved puts it back in the feed',
+    await page.locator(`#list .card-slot[data-id="${toSave}"]`).count() === 1,
+    await page.evaluate((id) => String(window.__proximi.decisions[id]), toSave));
 
   // ── The feed builds a screenful, not the whole week ────
   const window0 = await page.locator('#list .card-slot').count();
@@ -279,6 +301,98 @@ const exe = process.env.CHROMIUM_PATH
       .find((r) => r.querySelector('.place-name').textContent === name);
     return row ? row.classList.contains('is-saved') : false;
   }, rowName));
+
+  // ── "Has something on" leaves only places with a programme
+  await page.locator('#places-events').check();
+  await page.waitForTimeout(400);
+  //    The list itself is capped at 300 rows, so the total to compare is the
+  //    one in the summary line, not the number of rows on screen.
+  const placesTotal = () => page.evaluate(() =>
+    Number((document.getElementById('places-summary').textContent.match(/^(\d+)/) || [])[1]));
+  const onlyOn = await page.evaluate(() => {
+    const rows = [...document.querySelectorAll('#places-list .place-slot')];
+    return { rows: rows.length, without: rows.filter((r) => !r.querySelector('.place-events')).length };
+  });
+  const nOn = await placesTotal();
+  ok('"has something on" leaves only places with listings',
+    onlyOn.rows > 0 && onlyOn.without === 0, `${onlyOn.rows} rows, ${onlyOn.without} without`);
+  await page.locator('#places-events').uncheck();
+  await page.waitForTimeout(400);
+  const nAll = await placesTotal();
+  ok('unticking it brings the rest back', nAll > nOn, `${nOn} with events, ${nAll} in all`);
+
+  // ── A place the audit read and found nothing on ────────
+  //    Conditional: the audit runs in batches, so a directory rebuilt ahead of
+  //    it carries no verdicts yet. The count is printed either way.
+  const quietName = await page.evaluate(() => {
+    const p = (window.__proximi.places || []).find((x) => x.eventInfo === 'none' && !x.events);
+    return p ? p.name : null;
+  });
+  if (quietName) {
+    await page.fill('#places-search', quietName);
+    await page.waitForTimeout(400);
+    ok('an audited place says "no event calendar"',
+      await page.locator('#places-list .place-slot .place-tag.is-quiet').count() > 0, quietName);
+    await page.fill('#places-search', '');
+    await page.waitForTimeout(400);
+  } else {
+    console.log('SKIP  no audited places in data/places.json yet');
+  }
+
+  // ── One place's listings: filters step aside, then come back
+  //    "12 listings →" has to hand over twelve listings. It used to hand over
+  //    whatever survived the feed's own filters, which for a place 40 miles
+  //    out was routinely nothing at all.
+  await page.locator('#tab-events').click();
+  await page.waitForTimeout(300);
+  await page.locator('#open-filters').click();
+  await page.waitForTimeout(300);
+  await page.click('#tonight-free');
+  await page.locator('#apply-filters').click();
+  await page.waitForTimeout(400);
+  const filtersBefore = await page.evaluate(() => ({
+    n: document.getElementById('filters-count').textContent,
+    radius: document.getElementById('radius').value,
+    free: document.getElementById('free-only').checked
+  }));
+  ok('filters are in play before the peek', Number(filtersBefore.n) > 0, filtersBefore.n);
+
+  await page.locator('#tab-places').click();
+  await page.waitForTimeout(500);
+  const withListings = page.locator('#places-list .place-slot').filter(
+    { has: page.locator('.place-events') }).first();
+  const promised = Number((await withListings.locator('.place-events').textContent())
+    .trim().split(/\s+/)[0]);
+  await withListings.locator('.place-events').click();
+  await page.waitForTimeout(500);
+  const peek = await page.evaluate(() => ({
+    view: document.getElementById('events-view').hidden ? 'hidden' : 'events',
+    banner: !document.getElementById('venue-banner').hidden,
+    note: !document.getElementById('venue-banner-note').hidden,
+    count: document.getElementById('filters-count').hidden
+      ? 0 : Number(document.getElementById('filters-count').textContent),
+    scope: document.getElementById('context-scope').textContent
+  }));
+  ok('the listings link opens the events tab', peek.view === 'events');
+  ok('it names the place, and says filters are paused', peek.banner && peek.note);
+  ok('no filters are left in play while looking at one place', peek.count === 0, `${peek.count}`);
+  const got = Number((peek.scope.match(/^(\d+)/) || [])[1]);
+  ok('the feed shows every listing the row promised', got === promised,
+    `row said ${promised}, feed showed ${got}`);
+
+  await page.locator('#venue-banner-clear').click();
+  await page.waitForTimeout(500);
+  const restored = await page.evaluate(() => ({
+    banner: !document.getElementById('venue-banner').hidden,
+    n: document.getElementById('filters-count').textContent,
+    radius: document.getElementById('radius').value,
+    free: document.getElementById('free-only').checked
+  }));
+  ok('"show everywhere" drops the place filter', restored.banner === false);
+  ok('and hands back the filters it paused',
+    restored.n === filtersBefore.n && restored.radius === filtersBefore.radius
+    && restored.free === filtersBefore.free,
+    JSON.stringify(restored));
 
   // ── Filter sheet, layout, console ──────────────────────
   await page.locator('#tab-events').click();

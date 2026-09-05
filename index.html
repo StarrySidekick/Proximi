@@ -62,6 +62,8 @@
 <div class="wrap">
   <p class="venue-banner" id="venue-banner" hidden>
     Showing only <strong id="venue-banner-name"></strong>
+    <span class="venue-banner-note" id="venue-banner-note" hidden>— filters paused,
+      so this is everything they have on</span>
     <button type="button" id="venue-banner-clear">Show everywhere</button>
   </p>
 </div>
@@ -105,8 +107,13 @@
         <span class="sr-only">Kind of place</span>
         <select id="places-kinds"></select>
       </label>
+    </div>
+    <div class="places-toggles">
       <label class="places-toggle">
         <input type="checkbox" id="places-saved"> Liked only
+      </label>
+      <label class="places-toggle">
+        <input type="checkbox" id="places-events"> Has something on
       </label>
     </div>
     <p class="places-summary" id="places-summary"></p>
@@ -205,9 +212,10 @@
           <button type="button" id="clear-hidden" class="chip" hidden>Restore all hidden</button>
         </div>
         <p class="hint">Swipe a card left to hide it, right to save it to the
-          Saved tab — or use the buttons on the card. Swiping a repeating listing
-          left asks whether you mean this one time or every time. Kept in this
-          browser only.</p>
+          Saved tab — or use the buttons on the card. Either way it leaves the
+          feed, so the list is only ever what you have not decided about yet.
+          Swiping a repeating listing left asks whether you mean this one time
+          or every time. Kept in this browser only.</p>
       </div>
 
       <p class="hint">Family &amp; kids covers anything aimed at children or at

@@ -209,15 +209,21 @@
   ];
 
   function savePrefs() {
+    // While the reader is looking at one place the controls hold a wide-open
+    // set they did not choose (see openVenueListings). What gets remembered is
+    // what they chose, or a reload mid-peek would hand back the peek and lose
+    // their filters for good.
+    const f = pausedFilters || captureFilters();
     const prefs = {
-      types: [...state.activeTypes], excludedTypes: [...state.excludedTypes],
-      horizon: state.horizon, repeatMode: state.repeatMode,
-      timeOfDay: state.timeOfDay, view: state.view,
+      types: [...f.activeTypes], excludedTypes: [...f.excludedTypes],
+      horizon: f.horizon, repeatMode: f.repeatMode,
+      timeOfDay: f.timeOfDay, view: state.view,
       placeKind: state.placeKind, placeSort: state.placeSort,
-      placesSavedOnly: state.placesSavedOnly
+      placesSavedOnly: state.placesSavedOnly,
+      placesEventsOnly: state.placesEventsOnly
     };
     for (const [name, prop] of PREF_FIELDS) {
-      if (el[name]) prefs[name] = el[name][prop];
+      if (el[name]) prefs[name] = name in f ? f[name] : el[name][prop];
     }
     try { localStorage.setItem(PREFS_KEY, JSON.stringify(prefs)); } catch { /* not fatal */ }
   }
@@ -245,6 +251,8 @@
     if (prefs.placeSort) state.placeSort = prefs.placeSort;
     state.placesSavedOnly = !!prefs.placesSavedOnly;
     if (el.placesSaved) el.placesSaved.checked = state.placesSavedOnly;
+    state.placesEventsOnly = !!prefs.placesEventsOnly;
+    if (el.placesEvents) el.placesEvents.checked = state.placesEventsOnly;
     if (el.placesSort) el.placesSort.value = state.placeSort;
     syncInterested();
     syncRangeLabels();
@@ -286,11 +294,12 @@
     choiceSeries: $('choice-series'), choiceCancel: $('choice-cancel'),
     placesList: $('places-list'), placesKinds: $('places-kinds'),
     placesSearch: $('places-search'), placesSort: $('places-sort'),
-    placesSaved: $('places-saved'),
+    placesSaved: $('places-saved'), placesEvents: $('places-events'),
     placesSummary: $('places-summary'),
     venueBanner: $('venue-banner'),
     buildStamp: $('build-stamp'),
     venueBannerName: $('venue-banner-name'), venueBannerClear: $('venue-banner-clear'),
+    venueBannerNote: $('venue-banner-note'),
     clearHiddenBtn: $('clear-hidden'),
     locStatus: $('loc-status'), useMyLocation: $('use-my-location'),
     placeForm: $('place-form'), placeInput: $('place-input'),
@@ -323,6 +332,7 @@
     placeSort: 'near',
     savedPlaces: loadSavedPlaces(),
     placesSavedOnly: false,
+    placesEventsOnly: false,     // the directory narrowed to places with a programme
     view: 'events',             // 'events' | 'places' | 'saved'
     horizon: DEFAULTS.horizon,
     repeatMode: DEFAULTS.repeatMode,
@@ -603,6 +613,75 @@
 
   /* ── Filtering ────────────────────────────────────────── */
 
+  /* Every filter as one object, so a set of them can be put aside and handed
+     back. Two things want that: Reset, which writes the defaults, and the
+     one-place view, which pauses whatever is running and restores it after.
+     Deliberately not units — how far away a thing is reads in miles or
+     kilometres because the reader said so, and no view should second-guess it. */
+  function captureFilters() {
+    return {
+      horizon: state.horizon, repeatMode: state.repeatMode,
+      timeOfDay: state.timeOfDay,
+      activeTypes: new Set(state.activeTypes),
+      excludedTypes: new Set(state.excludedTypes),
+      q: el.q.value, sort: el.sort.value,
+      radius: el.radius.value, price: el.price.value,
+      freeOnly: el.freeOnly.checked, signupOnly: el.signupOnly.checked,
+      foodOnly: el.foodOnly.checked, outdoorOnly: el.outdoorOnly.checked,
+      showKids: el.showKids.checked, showSeniors: el.showSeniors.checked,
+      showAdults: el.showAdults.checked,
+      interestedOnly: !!el.interestedOnly?.checked
+    };
+  }
+
+  function applyFilters(f) {
+    state.horizon = f.horizon;
+    state.repeatMode = f.repeatMode;
+    state.timeOfDay = f.timeOfDay;
+    state.activeTypes = new Set(f.activeTypes);
+    state.excludedTypes = new Set(f.excludedTypes);
+    el.q.value = f.q;
+    el.sort.value = f.sort;
+    el.radius.value = f.radius;
+    el.price.value = f.price;
+    el.freeOnly.checked = f.freeOnly;
+    el.signupOnly.checked = f.signupOnly;
+    el.foodOnly.checked = f.foodOnly;
+    el.outdoorOnly.checked = f.outdoorOnly;
+    el.showKids.checked = f.showKids;
+    el.showSeniors.checked = f.showSeniors;
+    el.showAdults.checked = f.showAdults;
+    if (el.interestedOnly) el.interestedOnly.checked = f.interestedOnly;
+    syncChips();
+    syncTypeChips();
+    syncRangeLabels();
+  }
+
+  const DEFAULT_FILTERS = () => ({
+    horizon: DEFAULTS.horizon, repeatMode: DEFAULTS.repeatMode,
+    timeOfDay: DEFAULTS.timeOfDay,
+    activeTypes: new Set(), excludedTypes: new Set(),
+    q: DEFAULTS.q, sort: DEFAULTS.sort,
+    radius: DEFAULTS.radius, price: DEFAULTS.price,
+    freeOnly: DEFAULTS.freeOnly, signupOnly: DEFAULTS.signupOnly,
+    foodOnly: DEFAULTS.foodOnly, outdoorOnly: DEFAULTS.outdoorOnly,
+    showKids: DEFAULTS.showKids, showSeniors: DEFAULTS.showSeniors,
+    showAdults: DEFAULTS.showAdults, interestedOnly: false
+  });
+
+  /* Not the defaults — everything wide open. The defaults are still a week and
+     75 miles, which would hide most of a place's programme behind a heading
+     that promises all of it. */
+  const NO_FILTERS = () => ({
+    ...DEFAULT_FILTERS(),
+    horizon: 'any', radius: String(ANY_DISTANCE), price: el.price.max,
+    showKids: true, showSeniors: true, showAdults: true
+  });
+
+  /* The filters a one-place view is holding for the reader, or null when they
+     are looking at the feed proper. */
+  let pausedFilters = null;
+
   const radiusMiles = () => {
     const v = Number(el.radius.value);
     if (v >= ANY_DISTANCE) return Infinity;
@@ -738,10 +817,14 @@
         return false;
       }
     }
-    // A hidden listing is gone until the reader asks to see hidden ones —
-    // this is the whole point of a left swipe, so it runs before anything
-    // else and is not softened by the other filters.
-    if (!c.showHidden && state.decisions[item.id] === 'hidden') return false;
+    // A decided listing leaves the feed. Hidden is gone until the reader asks
+    // to see hidden ones — the whole point of a left swipe — and saved has a
+    // tab of its own now, so leaving it in the feed as well made a right swipe
+    // look like it had done nothing. Both run before anything else and are not
+    // softened by the other filters.
+    const verdict = state.decisions[item.id];
+    if (verdict === 'hidden' && !c.showHidden) return false;
+    if (verdict === 'saved') return false;
     const venue = venueOf(item);
     if (c.venueFilter) {
       if (venue !== c.venueFilter) return false;
@@ -945,8 +1028,14 @@
      which other listings match, so rebuilding the list to show one badge is
      work nobody asked for — and it is what the swipe was waiting on. */
   function afterVerdict(item) {
-    if (state.view === 'saved') renderSaved();
-    else if (!patchCard(item)) render();
+    if (state.view === 'saved') {
+      renderSaved();
+      // Un-saving here puts the listing back in the feed, which the reader is
+      // not looking at. Rebuild it now rather than leaving a stale list behind
+      // the tab: switching tabs does not re-render, so it would still be
+      // missing when they got back to it.
+      render();
+    } else if (!patchCard(item)) render();
     updateHiddenNote();
     updateFilterCount();
     updateTabCounts();
@@ -958,7 +1047,9 @@
     else delete state.decisions[item.id];
     saveDecisions(state.decisions);
     afterVerdict(item);
-    toast(verdict === 'saved' ? `Saved “${item.title}”`
+    // The card leaves the feed on a save now, so the toast has to say where it
+    // went — a listing that simply vanishes reads as a bug, not as a save.
+    toast(verdict === 'saved' ? `Saved “${item.title}” — it is in the Saved tab`
           : verdict === 'hidden' ? `Hid “${item.title}”`
           : `Restored “${item.title}”`,
           () => decide(item, previous));
@@ -1057,6 +1148,9 @@
     const slot = el.list.querySelector(`.card-slot[data-id="${CSS.escape(item.id)}"]`);
     if (!slot) return false;
     const verdict = verdictOf(item);
+    // Both verdicts take the card out of the feed — hidden for good, saved to
+    // the Saved tab. Same removal, same bookkeeping.
+    if (verdict === 'saved') return removeCard(item, slot);
     if (verdict === 'hidden' && !state.showHidden) return removeCard(item, slot);
     slot.classList.toggle('is-saved', verdict === 'saved');
     slot.classList.toggle('is-hidden', verdict === 'hidden');
@@ -1614,6 +1708,13 @@
 
   const kindLabel = (k) => PLACE_KIND_LABELS[k] || k || 'Everywhere else';
 
+  /* Somewhere the audit has read and found nothing to read: no feed, no
+     calendar page, no dated sales or specials. Worth saying on the card,
+     because "no listings" otherwise reads as "we have not got round to it"
+     — and for most of the directory that is exactly what it used to mean.
+     A place with listings is never labelled, whatever the audit last saw. */
+  const noEventInfo = (p) => p.eventInfo === 'none' && !p.events;
+
   // The order the server used, so chips read the same way twice.
   let placeKindOrder = Object.keys(PLACE_KIND_LABELS);
 
@@ -1735,6 +1836,10 @@
     const q = (el.placesSearch?.value || '').trim().toLowerCase();
     return all.filter((p) => {
       if (state.placesSavedOnly && !state.savedPlaces.has(p.name)) return false;
+      // "Has something on" reads the same count the row prints, which is every
+      // live listing at that place — not the filtered feed. A place does not
+      // stop having a programme because the reader is looking at next Tuesday.
+      if (state.placesEventsOnly && !p.events) return false;
       if (!q) return true;
       return p.name.toLowerCase().includes(q)
           || (p.city || '').toLowerCase().includes(q)
@@ -1847,6 +1952,7 @@
           ${p.kind ? `<span class="place-kind">${esc(kindLabel(p.kind))}</span>` : ''}
           ${p.secondHand ? '<span class="place-tag">used &amp; rare</span>' : ''}
           ${p.brand ? '<span class="place-tag is-chain">chain</span>' : ''}
+          ${noEventInfo(p) ? '<span class="place-tag is-quiet">no event calendar</span>' : ''}
           ${meta ? `<span class="place-where">${esc(meta)}</span>` : ''}
         </p>
         ${p.description ? `<p class="place-note">${esc(p.description)}</p>` : ''}
@@ -1894,9 +2000,7 @@
       if (e.target.closest('.place-save')) { togglePlaceSaved(p); return; }
       if (e.target.closest('.place-mute')) { togglePlaceMuted(p); return; }
       if (e.target.closest('.place-events')) {
-        state.venueFilter = p.name;
-        showView('events');
-        render();
+        openVenueListings(p.name);
         return;
       }
       if (e.target.closest('a, button') || justSwiped()) return;
@@ -1944,7 +2048,10 @@
         ? 'The places directory has not been built yet.'
         : state.placesSavedOnly
           ? 'Nothing liked yet — swipe a place right, or tap the heart.'
-          : 'No place matches that.';
+          : state.placesEventsOnly
+            ? 'Nothing here has anything on. Most places worth going to never '
+              + 'publish a calendar — untick "Has something on" to see them.'
+            : 'No place matches that.';
       el.placesList.append(li);
     } else if (rows.length > CAP) {
       const li = document.createElement('li');
@@ -2201,18 +2308,21 @@
           </button></li>`).join('')}</ul>
           ${here.length > SHOWN ? `<button type="button" class="detail-venue-btn"
              id="detail-place-events">See all ${here.length} listings here →</button>` : ''}`
-        : '<p class="detail-fine">Nothing scheduled here in the feed right now — '
-          + 'plenty of places worth going never publish a calendar.</p>'}
+        : noEventInfo(p)
+          ? `<p class="detail-fine">No event calendar. We read their site${
+              p.eventChecked ? ` on ${esc(p.eventChecked)}` : ''} and found no
+             listings, sales or specials published anywhere on it — plenty of
+             places worth going never publish one.</p>`
+          : '<p class="detail-fine">Nothing scheduled here in the feed right now — '
+            + 'plenty of places worth going never publish a calendar.</p>'}
       </section>
       <p class="detail-fine">${p.source === 'Event listings'
         ? 'Known from the event feed.'
         : 'Place data from OpenStreetMap contributors (ODbL).'}</p>`;
 
     el.detailBody.querySelector('#detail-place-events')?.addEventListener('click', () => {
-      state.venueFilter = p.name;
       closeDetail();
-      showView('events');
-      render();
+      openVenueListings(p.name);
     });
 
     // A listing on a place's page opens that listing, the same as anywhere
@@ -2311,6 +2421,36 @@
     if (!el.venueBanner) return;
     el.venueBanner.hidden = !state.venueFilter || state.view === 'places';
     if (state.venueFilter) el.venueBannerName.textContent = state.venueFilter;
+    if (el.venueBannerNote) el.venueBannerNote.hidden = !pausedFilters;
+  }
+
+  /* ── One place's listings ──────────────────────────────
+     "12 listings →" promises twelve listings, and the feed's own filters were
+     quietly taking most of them away: a place 40 miles off with a show next
+     month showed nothing at all under the default week and 75 miles, which
+     reads as a broken link rather than as a filter.
+
+     So the filters step aside for as long as the reader is looking at the one
+     place, and come back the moment they leave. Everything they had set is
+     held in pausedFilters — it is not thrown away, and savePrefs keeps writing
+     it rather than the peek, so a reload mid-look cannot cost them their
+     feed. */
+  function openVenueListings(name) {
+    if (!name) return;
+    if (!pausedFilters) pausedFilters = captureFilters();
+    applyFilters(NO_FILTERS());
+    state.venueFilter = name;
+    showView('events');
+    rerender();
+  }
+
+  function clearVenueListings() {
+    state.venueFilter = null;
+    if (pausedFilters) {
+      applyFilters(pausedFilters);
+      pausedFilters = null;
+    }
+    rerender();
   }
 
   /* ── Chrome ───────────────────────────────────────────── */
@@ -2327,26 +2467,25 @@
       `${n} ${n === 1 ? 'result' : 'results'} · ${bits.join(' · ')}`;
   }
 
-  // Count how many controls sit away from their default, so the button can say
-  // how much filtering is in play without opening the sheet.
+  /* Count how many controls sit away from their baseline, so the button can
+     say how much filtering is in play without opening the sheet.
+
+     The baseline is normally the defaults. While one place's listings are up
+     it is the wide-open set that view installs — nothing there is the reader
+     narrowing anything, and a badge reading "5 filters" over a banner saying
+     "filters paused" would be the page contradicting itself. Narrow something
+     from inside the sheet during a peek and it counts again, which is the
+     whole reason this compares against a baseline rather than special-casing
+     the peek to zero. */
   function updateFilterCount() {
-    let n = 0;
-    if (state.horizon !== DEFAULTS.horizon) n++;
-    if (el.radius.value !== DEFAULTS.radius) n++;
-    if (el.sort.value !== DEFAULTS.sort) n++;
-    if (el.q.value.trim() !== DEFAULTS.q) n++;
-    if (el.price.value !== DEFAULTS.price) n++;
-    if (el.freeOnly.checked) n++;
-    if (el.signupOnly.checked) n++;
-    if (state.activeTypes.size || state.excludedTypes.size) n++;
-    if (state.timeOfDay !== DEFAULTS.timeOfDay) n++;
-    if (el.foodOnly.checked) n++;
-    if (el.outdoorOnly.checked) n++;
-    if (el.interestedOnly?.checked) n++;
-    if (state.repeatMode !== DEFAULTS.repeatMode) n++;
-    if (el.showKids.checked !== DEFAULTS.showKids) n++;
-    if (el.showSeniors.checked !== DEFAULTS.showSeniors) n++;
-    if (el.showAdults.checked !== DEFAULTS.showAdults) n++;
+    const base = pausedFilters ? NO_FILTERS() : DEFAULT_FILTERS();
+    const now = captureFilters();
+    const FIELDS = ['horizon', 'repeatMode', 'timeOfDay', 'sort', 'radius', 'price',
+                    'freeOnly', 'signupOnly', 'foodOnly', 'outdoorOnly',
+                    'showKids', 'showSeniors', 'showAdults', 'interestedOnly'];
+    let n = FIELDS.reduce((a, f) => a + (now[f] !== base[f] ? 1 : 0), 0);
+    if (now.q.trim() !== base.q) n++;
+    if (now.activeTypes.size || now.excludedTypes.size) n++;
 
     el.filtersCount.textContent = n;
     el.filtersCount.hidden = n === 0;
@@ -2675,10 +2814,12 @@
     savePrefs();
     renderPlaces();
   });
-  el.venueBannerClear?.addEventListener('click', () => {
-    state.venueFilter = null;
-    render();
+  el.placesEvents?.addEventListener('change', () => {
+    state.placesEventsOnly = el.placesEvents.checked;
+    savePrefs();
+    renderPlaces();
   });
+  el.venueBannerClear?.addEventListener('click', clearVenueListings);
 
   el.showHiddenBtn?.addEventListener('click', () => {
     state.showHidden = !state.showHidden;
@@ -2729,6 +2870,14 @@
       c.setAttribute('aria-pressed', String(c.dataset.horizon === state.horizon));
   }
 
+  // The type chips carry two states between them, so they get their own pass.
+  function syncTypeChips() {
+    for (const c of el.types.children) {
+      c.setAttribute('aria-pressed', String(state.activeTypes.has(c.dataset.type)));
+      c.classList.toggle('chip-exclude', state.excludedTypes.has(c.dataset.type));
+    }
+  }
+
   /* "Free tonight nearby" — the question this app exists to answer, in one
      tap, on a phone, on the way out of the door.
 
@@ -2760,28 +2909,11 @@
   });
 
   el.resetFilters.addEventListener('click', () => {
-    state.horizon = DEFAULTS.horizon;
-    el.radius.value = DEFAULTS.radius;
-    el.sort.value = DEFAULTS.sort;
-    el.q.value = DEFAULTS.q;
-    el.price.value = DEFAULTS.price;
-    el.freeOnly.checked = DEFAULTS.freeOnly;
-    el.signupOnly.checked = DEFAULTS.signupOnly;
+    applyFilters(DEFAULT_FILTERS());
     el.unitsKm.checked = DEFAULTS.unitsKm;
-    state.repeatMode = DEFAULTS.repeatMode;
-    state.timeOfDay = DEFAULTS.timeOfDay;
-    el.showKids.checked = DEFAULTS.showKids;
-    el.showSeniors.checked = DEFAULTS.showSeniors;
-    el.showAdults.checked = DEFAULTS.showAdults;
-    el.foodOnly.checked = DEFAULTS.foodOnly;
-    el.outdoorOnly.checked = DEFAULTS.outdoorOnly;
-    if (el.interestedOnly) el.interestedOnly.checked = false;
-    state.activeTypes.clear();
-    state.excludedTypes.clear();
-    for (const chip of el.types.children) chip.classList.remove('chip-exclude');
-    for (const c of el.types.children) c.setAttribute('aria-pressed', 'false');
-    syncChips();
-    syncRangeLabels();
+    // Reset is the reader saying what they want the feed to be, so there is
+    // nothing left to hand back when they leave a one-place view.
+    pausedFilters = null;
     rerender();
   });
 
@@ -2796,6 +2928,7 @@
     get decisions() { return state.decisions; },
     get calendar() { return state.calendar; },
     get skips() { return state.skips; },
+    get places() { return state.places; },
     hasCadence
   };
 

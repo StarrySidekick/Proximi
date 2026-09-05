@@ -683,6 +683,11 @@ input:focus-visible, select:focus-visible, button:focus-visible, a:focus-visible
   border: 1px solid var(--line); color: var(--ink-2); background: var(--surface-2);
 }
 .place-tag.is-chain { opacity: .7; }
+/* "We looked and there was nothing" is a smaller fact than the ones beside it,
+   and it should read that way — informative, not a warning. */
+.place-tag.is-quiet {
+  opacity: .75; border-style: dashed; background: none;
+}
 .place-note, .place-hours {
   /* OSM descriptions carry bare URLs, which are one unbreakable word and will
      push the whole page sideways on a phone if allowed to. */
@@ -712,6 +717,8 @@ input:focus-visible, select:focus-visible, button:focus-visible, a:focus-visible
 }
 .venue-banner[hidden] { display: none; }
 .venue-banner strong { color: var(--ink); }
+.venue-banner-note { color: var(--ink-3); }
+.venue-banner-note[hidden] { display: none; }
 .venue-banner button {
   font: inherit; font-weight: 600; cursor: pointer; margin-left: 10px;
   background: none; border: 0; padding: 0; color: var(--accent);
