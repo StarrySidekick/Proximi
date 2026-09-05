@@ -666,5 +666,16 @@ responsive layout) and the weekly refresh described above.
   given, otherwise to their town.
 - **Weekly is coarse** for anything that sells out or gets cancelled.
 
-Also worth adding: a map view, saved locations, calendar export, and
-"free tonight nearby" as a one-tap default.
+Saved locations and calendar export both landed; **"Free tonight, nearby"
+is now one tap** at the top of the filter sheet. It sets four filters that
+were always there rather than inventing a fifth, so every chip it moves
+lights up and Reset undoes it — a shortcut, not a mode.
+
+It is deliberately **not** the default view. Opening onto an aggressively
+filtered feed reads as an empty town rather than as a narrow question, and
+free listings are the scarce kind: 696 of 4,588. That scarcity is also why
+"nearby" is 25 miles and not 10 — measured from Beacon, 10, 15 and 20 all
+return nothing on a given evening, and 25 is the first radius that returns
+anything. Re-measure it if the registry grows.
+
+**A map view is the one still worth adding.**

@@ -285,6 +285,33 @@ const exe = process.env.CHROMIUM_PATH
   await page.waitForTimeout(300);
   await page.locator('#open-filters').click();
   await page.waitForTimeout(400);
+  // "Free tonight, nearby" is a shortcut, not a mode: it has to move the
+  // real filters, light up the real chips, and be undone by Reset. A
+  // shortcut that filtered privately would be a filter you cannot see.
+  await page.click('#tonight-free');
+  const after = await page.evaluate(() => ({
+    horizon: document.querySelector('#horizon [data-horizon="today"]')
+               ?.getAttribute('aria-pressed'),
+    tod: document.querySelector('#tod [data-tod="nighttime"]')
+           ?.getAttribute('aria-pressed'),
+    free: document.getElementById('free-only').checked,
+    radius: document.getElementById('radius').value
+  }));
+  ok('free tonight sets Today', after.horizon === 'true', after.horizon);
+  ok('free tonight sets Nighttime', after.tod === 'true', after.tod);
+  ok('free tonight ticks Free only', after.free === true);
+  ok('free tonight pulls the radius in', Number(after.radius) < 75, after.radius);
+
+  await page.click('#reset-filters');
+  const back = await page.evaluate(() => ({
+    horizon: document.querySelector('#horizon [data-horizon="today"]')
+               ?.getAttribute('aria-pressed'),
+    free: document.getElementById('free-only').checked,
+    radius: document.getElementById('radius').value
+  }));
+  ok('Reset undoes the shortcut', back.horizon === 'false' && back.free === false
+     && Number(back.radius) === 75, JSON.stringify(back));
+
   ok('filter sheet opens', await page.locator('#filter-sheet.is-open').count() === 1);
   await page.locator('#apply-filters').click();
   await page.waitForTimeout(400);

@@ -298,6 +298,7 @@
     openFilters: $('open-filters'), closeFilters: $('close-filters'),
     openLocation: $('open-location'), applyFilters: $('apply-filters'),
     resetFilters: $('reset-filters'),
+    tonightFree: $('tonight-free'),
     sheet: $('filter-sheet'), scrim: $('scrim'), filtersCount: $('filters-count'),
     detailSheet: $('detail-sheet'), detailScrim: $('detail-scrim'),
     detailTitle: $('detail-title'), detailBody: $('detail-body'),
@@ -2714,6 +2715,50 @@
     });
   });
 
+  /* Repaint every chip group from `state`. The chips carry their own pressed
+     state, so anything that sets a filter in code rather than by tapping has
+     to say so afterwards or the sheet shows one thing and the feed does
+     another. Reset had this inline; the shortcut below needs the same six
+     lines, and two copies would drift. */
+  function syncChips() {
+    for (const c of el.tod.children)
+      c.setAttribute('aria-pressed', String(c.dataset.tod === state.timeOfDay));
+    for (const c of el.repeats.children)
+      c.setAttribute('aria-pressed', String(c.dataset.mode === state.repeatMode));
+    for (const c of el.horizon.children)
+      c.setAttribute('aria-pressed', String(c.dataset.horizon === state.horizon));
+  }
+
+  /* "Free tonight nearby" — the question this app exists to answer, in one
+     tap, on a phone, on the way out of the door.
+
+     It sets four filters that were always there rather than inventing a
+     fifth: it is a shortcut, not a mode, and there is nothing to turn off.
+     Every chip it moves lights up in the sheet, the "N filters active" badge
+     counts them, and Reset undoes it — a filter you cannot see is a filter
+     you cannot understand, and this one has to survive being pressed by
+     someone who has forgotten they pressed it.
+
+     Deliberately NOT the default view. Opening onto an aggressively filtered
+     feed reads as an empty town rather than as a narrow question. */
+  /* 25, not 10, and the number was measured rather than chosen. Free
+     listings are the scarce kind — 696 of 4,588 — so from Beacon on a
+     given evening, 10, 15 and 20 miles all return nothing at all, and 25
+     is the first radius that returns anything. A one-tap that reliably
+     opens an empty feed teaches the reader not to press it. Still well
+     inside the 75-mile default, so it means something. */
+  const NEARBY_RADIUS = '25';   // in whatever unit the reader has chosen
+
+  if (el.tonightFree) el.tonightFree.addEventListener('click', () => {
+    state.horizon = 'today';
+    state.timeOfDay = 'nighttime';
+    el.freeOnly.checked = true;
+    el.radius.value = NEARBY_RADIUS;
+    syncChips();
+    syncRangeLabels();
+    rerender();
+  });
+
   el.resetFilters.addEventListener('click', () => {
     state.horizon = DEFAULTS.horizon;
     el.radius.value = DEFAULTS.radius;
@@ -2735,15 +2780,8 @@
     state.excludedTypes.clear();
     for (const chip of el.types.children) chip.classList.remove('chip-exclude');
     for (const c of el.types.children) c.setAttribute('aria-pressed', 'false');
-    for (const c of el.tod.children) {
-      c.setAttribute('aria-pressed', String(c.dataset.tod === DEFAULTS.timeOfDay));
-    }
-    for (const c of el.repeats.children) {
-      c.setAttribute('aria-pressed', String(c.dataset.mode === DEFAULTS.repeatMode));
-    }
-    for (const c of el.horizon.children) {
-      c.setAttribute('aria-pressed', String(c.dataset.horizon === DEFAULTS.horizon));
-    }
+    syncChips();
+    syncRangeLabels();
     rerender();
   });
 
