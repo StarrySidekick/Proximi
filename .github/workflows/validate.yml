@@ -24,6 +24,9 @@ jobs:
       - name: Check the place tag rules still match something
         run: python3 scripts/places.py --selftest
 
+      - name: Check the site-audit rules still classify what they were written for
+        run: python3 scripts/audit.py --selftest
+
       - name: Check the source registry parses
         run: |
           python3 -c "

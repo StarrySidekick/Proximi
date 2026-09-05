@@ -65,6 +65,8 @@ Inside the sheet:
   split at 5pm).
 - **Places** — every venue with a count and a search, grouped by what sort of
   place it is: libraries, museums, music venues, breweries, parks and so on.
+  Two toggles narrow it: **liked only**, and **has something on** — which reads
+  the same count the row prints, so the toggle and the number agree.
   Tap one to see only its listings; mute one to drop it from the feed for good.
   A venue's sort comes from its name where the name says something, and from
   its own programme where it does not — "Daryl's House" is a music room only
@@ -92,6 +94,12 @@ the host who runs it — as a link to that host's own page.
 Swipe a card **left** to hide it ("not for me") or **right** to **save** it.
 Both actions are also buttons on every card, because a swipe is undiscoverable
 and unusable from a keyboard.
+
+**Either verdict takes the card out of the feed**, so the list is only ever
+what you have not decided about yet. A saved listing has the Saved tab; leaving
+it in the feed as well meant a right swipe looked like it had done nothing —
+the card just sat there wearing a badge. Drop it from Saved and it comes
+straight back.
 
 The gesture only takes over once it is clearly horizontal, so a vertical drag
 still scrolls the page. Every verdict raises an undo toast, and the hidden
@@ -157,6 +165,19 @@ of place it is, where, how far, hours, phone, website, and **what's on there**
 in the days ahead — each of which opens back into the listing. A venue the
 place directory has never heard of still gets a page built from what the feed
 knows about it, so the link is never a dead end.
+
+### One place's listings means all of them
+
+Tapping **"12 listings →"** on a place hands over twelve listings. It used to
+hand over whatever survived the feed's current filters, so a place forty miles
+out with a show next month opened onto an empty list under the default week and
+75 miles — which reads as a broken link rather than as a filter.
+
+So the filters step aside for as long as you are looking at one place. The
+banner says they are paused, the Filters button drops to zero because nothing
+is being narrowed, and **Show everywhere** hands back exactly what you had.
+Nothing is lost in between: what you chose is what gets written to
+`localStorage` throughout, so a reload mid-look cannot cost you your filters.
 
 ## Look
 
@@ -344,6 +365,7 @@ sources/manual.json       listings read by hand, versioned so they survive rerun
         ├─ songkick.py    ticketed concerts         → build/songkick.json
         ├─ cinema.py      independent film houses  → build/cinema.json
         ├─ places.py      the place directory (OSM)  → data/places.json
+        ├─ audit.py       read venue sites once      → sources/placeaudit.json
         ├─ enrich.py      geocode, radius-filter, classify
         ├─ merge.py       collapse repeats, dedupe → data/events.json
         └─ validate.py    gate before anything ships
@@ -359,6 +381,7 @@ attention:
 | `social` | `social.py` reads the JSON Eventbrite and Meetup hand their own front end — no key, and it carries a **price** | none |
 | `html`, prose only | Claude reads the page and writes into `sources/manual.json` | manual, weekly |
 | `places` | `places.py` reads OpenStreetMap; no feed involved | none |
+| `audit` | `audit.py` reads a venue's own site once and records what it publishes | none |
 
 `social` is where most of the volume now comes from. Eventbrite alone supplies
 roughly four listings in five, which is worth knowing when reading the feed:
@@ -567,6 +590,107 @@ calendar platform and derives a feed where the address is predictable:
 Storm King (111 listings), Savage Wonder, Scenic Hudson and Millbrook Vineyards
 were found. The winery is the case that motivated all this: tasting dinners
 never reach a county calendar, but its feed publishes them.
+
+### "Nothing scheduled here" was two different facts
+
+An empty place page could mean either of two things and never said which: that
+the venue publishes a calendar we have not collected, or that it publishes
+nothing anywhere and never will. The second is most of the directory — a
+garden, an antique shop, a lookout — and saying so plainly is more useful than
+a blank space, because it tells the reader there is nothing to come back for.
+
+`scripts/audit.py` reads a venue's own site once and writes the verdict to
+`sources/placeaudit.json`, keyed by **domain**, because a domain is what was
+actually read. `places.py` copies it onto every place on that domain; a place
+with listings is never marked quiet whatever the audit last saw, since the
+listings are the answer.
+
+| Verdict | What it means | On the card |
+| --- | --- | --- |
+| `feed` | an iCal feed with future events | nothing — register it instead |
+| `listings` | a calendar, a programme, schema.org events, a platform embed | nothing |
+| `specials` | no calendar, but dated sales, deals or a weekly quiz night | nothing |
+| `none` | read it and found none of the above | **"no event calendar"** |
+| `unreadable` | the server sends a shell and the browser draws the site | nothing |
+| `blocked` | the site is there and will not serve a declared bot | nothing |
+| `unreachable` | no response at all — DNS, refused, timed out | nothing |
+| `parked` | a default server or registrar page, not the venue's site | nothing |
+| `suspect` | the domain is serving something the venue did not put there | nothing |
+
+What counts as event information is deliberately wide. A brewery's "Trivia
+every Tuesday, 7pm" and a farm's "Fall Sale, Oct 3-5" are both things happening
+at a time, which is the premise of the whole app, so a site is only called
+quiet when none of it is there.
+
+Five of those verdicts exist to keep the label honest — every one of them was
+a real place the first pass called quiet:
+
+- **`unreadable`.** LOOK Dine-In Cinemas publishes showtimes for six screens
+  and serves 33 characters of text to anything that is not a browser. Rough
+  Draft Bar & Books has an events page with 304 characters on it and the
+  listings drawn in afterwards. Calling either "no event calendar" would be the
+  check reporting its own blind spot as a fact about the venue.
+- **`parked`.** `senatehousekingston.org` answers 200 with "Caddy works!
+  Congratulations!" — 2,400 characters of a healthy web server that say nothing
+  about the Senate House. A default page is a stale `website` tag in
+  OpenStreetMap, not a historic site with nothing on.
+- **`blocked`.** A 403 to `ProximiBot` is a venue that has a site and will not
+  show it to a bot, which is a different fact from silence — read as
+  "unreachable" both ways, the audit would have quietly stopped retrying a
+  couple of dozen live sites. The bot identifies itself either way; nothing
+  here pretends to be a browser to get past a refusal.
+- **`unreachable`.** A site we could not read is not a site with nothing on it.
+- **`suspect`.** The audit reads every venue site anyway, which makes it the
+  cheapest place to notice the next hijacked domain — the three cinemas above
+  all answered HTTP 200 while serving betting copy, and the first batch caught
+  two of them again plus two nobody knew about, `elitecinema6.com` and
+  `goodtidingsgiftshop.com`. **A `suspect` domain loses its link**: OpenStreetMap
+  will carry that `website` tag for years, and a reader tapping *Website* on a
+  cinema should not land on an Indonesian betting site.
+
+Two more corrections came out of reading the first batch's answers rather than
+its counts, which is the only way any of this is checkable:
+
+- **A venue's calendar is often not on the venue's host.** Pawling Library's
+  entire programme lives on `engagedpatrons.org`, so reading only its own pages
+  called a public library quiet. An off-host link that plainly says *calendar*
+  or *events* now counts as a calendar, and is deliberately not followed: the
+  venue answered the question by linking to it, and whether that host will talk
+  to us is a fact about that host.
+- **A page that is *for* listings is held to a lower bar.** Three dates on a
+  page that merely mentions events; two on a page whose own URL is `/events`.
+  Forsyth Nature Center's whole autumn is a family fun day and a Halloween
+  movie night, and three would have called it quiet.
+
+**Not re-read unless something changes.** Re-reading 800 venue sites weekly for
+an answer that is almost always the same is somebody else's bandwidth spent on
+nothing. So each verdict carries a signature — a hash of which of its own pages
+the site links to that could carry listings, *not* of the page, which changes
+whenever the hero image rotates. `audit.py --verify` re-reads homepages only,
+one request each, and re-audits just the sites whose shape has moved. A venue
+that adds an events page trips it; one that swaps a photograph does not.
+
+```bash
+python3 scripts/audit.py --limit 150      # next batch of unaudited domains
+python3 scripts/audit.py --verify         # re-audit only what has changed
+python3 scripts/audit.py --report         # counts, no network
+```
+
+`validate.py` gates the file: an unknown verdict would quietly read as "not
+audited", which means the same sites get read again every run with nothing
+saying so, and a `none` with no signature could never be re-checked at all.
+`audit.py --selftest` runs in CI and holds the classifier to the pages it has
+already got wrong — including the one that mattered most, below.
+
+**The bug worth naming.** Finkelstein Memorial Library and the Center for
+Photography at Woodstock both came back as 25,000 characters of binary noise:
+gzip, sent to a client that never asked for it and never decoded it. Nothing
+threw. The bytes decoded to replacement characters, which contain no dates and
+no links, so two busy institutions were recorded as venues that publish
+nothing — a clean run, a plausible count, and a worse site, which is the
+failure mode this whole repo is organised around. `get()` decompresses now, by
+the header and by the magic number, and the self-test breaks if either half
+goes.
 
 ### A feed existing is not a feed working
 

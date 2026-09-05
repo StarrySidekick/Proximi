@@ -645,6 +645,51 @@ def merge_events(places, events_path, center, radius):
                      if row['kind'] or row['events'] >= REAL_PLACE_EVENTS]
 
 
+def merge_audit(places, audit_path):
+    """Carry scripts/audit.py's verdicts onto the rows the client loads.
+
+    One fact, one owner: sources/placeaudit.json owns "does this venue publish
+    anything", keyed by domain because that is what was actually read. This
+    copies it, and copies nothing else — a place with listings is never marked
+    quiet, whatever the audit last saw, since the listings are the answer.
+    """
+    if not os.path.exists(audit_path):
+        return 0
+    domains = json.load(open(audit_path)).get('domains', {})
+    if not domains:
+        return 0
+
+    def host(url):
+        try:
+            h = urllib.parse.urlparse(url if '://' in url else 'https://' + url).netloc
+        except Exception:
+            return None
+        h = h.lower().split(':')[0]
+        return h[4:] if h.startswith('www.') else h
+
+    n = 0
+    for place in places:
+        rec = domains.get(host(place.get('url') or ''))
+        if not rec:
+            continue
+        # A hijacked domain's "Website" button sends a reader looking for a
+        # cinema to an Indonesian betting site. OpenStreetMap still carries the
+        # tag and will for years; the audit has read the page and knows better,
+        # so the link comes off. elitecinema6.com and goodtidingsgiftshop.com
+        # were found this way, on top of the three cinemas already known.
+        if rec.get('verdict') in ('suspect', 'parked'):
+            place['url'] = None
+        # A place with listings is never marked quiet. It happens: a venue that
+        # publishes nothing on its own site still turns up on Eventbrite, and
+        # the row would then carry "no event calendar" over its own six
+        # listings. validate.py fails the build on exactly that pair.
+        if rec.get('verdict') == 'none' and not place.get('events'):
+            place['eventInfo'] = 'none'
+            place['eventChecked'] = rec.get('checked')
+            n += 1
+    return n
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--radius', type=float, default=None,
@@ -657,6 +702,7 @@ def main():
                     help='check every selector parses and matches, then exit')
     ap.add_argument('--registry', default='sources/registry.json')
     ap.add_argument('--events', default='data/events.json')
+    ap.add_argument('--audit', default='sources/placeaudit.json')
     ap.add_argument('--out', default='data/places.json')
     args = ap.parse_args()
 
@@ -698,6 +744,7 @@ def main():
         print(f'  collapsed {before_collapse - len(places)} repeated rows')
     before = len(places)
     places = merge_events(places, args.events, center, radius)
+    audited = merge_audit(places, args.audit)
     places.sort(key=lambda p: (p['miles'], p['name']))
 
     counts = {}
@@ -725,6 +772,8 @@ def main():
 
     print(f'\n{before} from OpenStreetMap + {len(places) - before} event venues '
           f'= {len(places)} places → {args.out}')
+    if audited:
+        print(f'{audited} marked "no event calendar" from {args.audit}')
     if failed:
         print(f'partial: {", ".join(failed)} could not be fetched', file=sys.stderr)
     if skipped:

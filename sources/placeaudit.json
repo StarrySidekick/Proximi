@@ -1,0 +1,5141 @@
+{
+  "schemaVersion": 1,
+  "note": "What each venue domain publishes, so a site that publishes nothing is read once rather than every week. Written by scripts/audit.py; read by scripts/places.py, which copies the verdict onto every place on that domain.",
+  "domains": {
+    "2waybrewingcompany.com": {
+      "verdict": "listings",
+      "found": [
+        "linked calendar",
+        "dated listings"
+      ],
+      "sig": "da39a3ee5e6b4b0d",
+      "url": "https://twowaybrewing.com/events",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "2 Way Brewery"
+      ]
+    },
+    "3rduniverse.com": {
+      "verdict": "listings",
+      "found": [
+        "dated listings",
+        "dated specials"
+      ],
+      "sig": "e087f1c99c9227bd",
+      "url": "https://www.the3rduniverse.com/",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "3rd Universe"
+      ]
+    },
+    "adastranewyork.com": {
+      "verdict": "none",
+      "found": [],
+      "sig": "da39a3ee5e6b4b0d",
+      "url": null,
+      "note": "read 1 page(s), no dates and no calendar",
+      "checked": "2026-09-05",
+      "places": [
+        "Ad Astra"
+      ]
+    },
+    "adkstore.com": {
+      "verdict": "none",
+      "found": [],
+      "sig": "da39a3ee5e6b4b0d",
+      "url": null,
+      "note": "read 1 page(s), no dates and no calendar",
+      "checked": "2026-09-05",
+      "places": [
+        "Adirondack Store & Gallery"
+      ]
+    },
+    "aldrichart.org": {
+      "verdict": "listings",
+      "found": [
+        "linked calendar",
+        "dated listings",
+        "dated specials"
+      ],
+      "sig": "ac49fe36c089f6bd",
+      "url": "https://fareharbor.com/embeds/book/thealdrich/?full-items=yes",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Aldrich Contemporary Art Museum"
+      ]
+    },
+    "aldwicknj.org": {
+      "verdict": "unreachable",
+      "found": [],
+      "sig": null,
+      "url": null,
+      "note": "no response on https, www or http (URLError)",
+      "checked": "2026-09-05",
+      "places": [
+        "The Oval"
+      ]
+    },
+    "alkway.org": {
+      "verdict": "unreachable",
+      "found": [],
+      "sig": null,
+      "url": null,
+      "note": "no response on https, www or http (URLError)",
+      "checked": "2026-09-05",
+      "places": [
+        "East Gate Plaza"
+      ]
+    },
+    "amctheatres.com": {
+      "verdict": "blocked",
+      "found": [],
+      "sig": null,
+      "url": null,
+      "note": "HTTP 403 to a declared bot",
+      "checked": "2026-09-05",
+      "places": [
+        "AMC Palisades 21",
+        "AMC Loews Danbury 16",
+        "AMC Loews Port Chester 14",
+        "AMC Landmark 8"
+      ]
+    },
+    "amenialibrary.org": {
+      "verdict": "listings",
+      "found": [
+        "linked calendar",
+        "dated listings"
+      ],
+      "sig": "d6f2d95c3b388279",
+      "url": "http://engagedpatrons.org/EventsCalendar.cfm?SiteID=2732",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Amenia Free Library"
+      ]
+    },
+    "americanirrigationsystemsinc.com": {
+      "verdict": "none",
+      "found": [],
+      "sig": "eda4eb3e3530a799",
+      "url": null,
+      "note": "read 2 page(s), no dates and no calendar",
+      "checked": "2026-09-05",
+      "places": [
+        "American Irrigation Systems"
+      ]
+    },
+    "antipodean.com": {
+      "verdict": "listings",
+      "found": [
+        "dated listings",
+        "dated specials"
+      ],
+      "sig": "f91a872e1d6fddf7",
+      "url": "https://www.antipodean.com/",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Antipodean Books"
+      ]
+    },
+    "appalachiantrail.org": {
+      "verdict": "listings",
+      "found": [
+        "schema.org events",
+        "dated listings"
+      ],
+      "sig": "0f6c2bacaba9eae3",
+      "url": "https://appalachiantrail.org/events/",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Appalachian National Scenic Trail"
+      ]
+    },
+    "appingershistoricalsociety.org": {
+      "verdict": "unreachable",
+      "found": [],
+      "sig": null,
+      "url": null,
+      "note": "no response on https, www or http (URLError)",
+      "checked": "2026-09-05",
+      "places": [
+        "Mesier Homestead and Museum"
+      ]
+    },
+    "appleridgeorchards.com": {
+      "verdict": "unreadable",
+      "found": [],
+      "sig": null,
+      "url": "https://appleridgeorchards.com/",
+      "note": "renders in the browser — nothing to read on the server",
+      "checked": "2026-09-05",
+      "places": [
+        "Apple Ridge Orchards"
+      ]
+    },
+    "aqueduct.org": {
+      "verdict": "listings",
+      "found": [
+        "dated listings"
+      ],
+      "sig": "e9e3323415e0938a",
+      "url": "https://aqueduct.org/",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Old Croton Aqueduct Sing Sing Kill Weir Chamber"
+      ]
+    },
+    "ardsleycurling.com": {
+      "verdict": "unreadable",
+      "found": [],
+      "sig": null,
+      "url": "https://ardsleycurling.com/",
+      "note": "renders in the browser — nothing to read on the server",
+      "checked": "2026-09-05",
+      "places": [
+        "Ardsley Curling Club"
+      ]
+    },
+    "arnerlibrary.org": {
+      "verdict": "unreachable",
+      "found": [],
+      "sig": null,
+      "url": null,
+      "note": "no response on https, www or http (URLError)",
+      "checked": "2026-09-05",
+      "places": [
+        "Warner Library"
+      ]
+    },
+    "arrenctlibrary.org": {
+      "verdict": "unreachable",
+      "found": [],
+      "sig": null,
+      "url": null,
+      "note": "no response on https, www or http (URLError)",
+      "checked": "2026-09-05",
+      "places": [
+        "Warren Public Library"
+      ]
+    },
+    "arrowoodfarms.com": {
+      "verdict": "listings",
+      "found": [
+        "linked calendar",
+        "dated listings",
+        "dated specials"
+      ],
+      "sig": "e74a5c07afa8128e",
+      "url": "https://www.tickettailor.com/events/arrowoodfarms/2335867",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Arrowood Farms"
+      ]
+    },
+    "askforarts.org": {
+      "verdict": "blocked",
+      "found": [],
+      "sig": null,
+      "url": null,
+      "note": "HTTP 403 to a declared bot",
+      "checked": "2026-09-05",
+      "places": [
+        "Arts Society of Kingston"
+      ]
+    },
+    "atelierom.com": {
+      "verdict": "blocked",
+      "found": [],
+      "sig": null,
+      "url": null,
+      "note": "HTTP 429 to a declared bot",
+      "checked": "2026-09-05",
+      "places": [
+        "Atelier Om"
+      ]
+    },
+    "balsamridgechristmas.com": {
+      "verdict": "unreadable",
+      "found": [],
+      "sig": null,
+      "url": "https://balsamridgechristmas.com/",
+      "note": "renders in the browser — nothing to read on the server",
+      "checked": "2026-09-05",
+      "places": [
+        "Balsam Ridge Christmas Tree Farm"
+      ]
+    },
+    "bard.edu": {
+      "verdict": "listings",
+      "found": [
+        "linked calendar",
+        "dated listings",
+        "dated specials"
+      ],
+      "sig": "20a9a65ce08a08d3",
+      "url": "https://bardathletics.com",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Center For Curatorial Studies and Hessel Museum of Art",
+        "Stevenson Library"
+      ]
+    },
+    "bardavon.org": {
+      "verdict": "listings",
+      "found": [
+        "dated listings",
+        "dated specials"
+      ],
+      "sig": "c27364de19f2f156",
+      "url": "https://www.bardavon.org/",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Ulster Performing Arts Center"
+      ]
+    },
+    "barnerbooks.com": {
+      "verdict": "unreadable",
+      "found": [],
+      "sig": null,
+      "url": "https://www.barnerbooks.com/blocked",
+      "note": "renders in the browser — nothing to read on the server",
+      "checked": "2026-09-05",
+      "places": [
+        "Barner Books"
+      ]
+    },
+    "bashakillvineyards.com": {
+      "verdict": "unreadable",
+      "found": [],
+      "sig": "5d892ad7ac380d62",
+      "url": "https://www.bashakillvineyards.com/",
+      "note": "renders in the browser — nothing to read on the server",
+      "checked": "2026-09-05",
+      "places": [
+        "Bashakill Vineyards"
+      ]
+    },
+    "beaconlibrary.org": {
+      "verdict": "listings",
+      "found": [
+        "dated listings"
+      ],
+      "sig": "9fb87a24c2d1d52a",
+      "url": "https://beaconlibrary.org/",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Howland Public Library"
+      ]
+    },
+    "bearmountainicerink.org": {
+      "verdict": "unreadable",
+      "found": [],
+      "sig": "da39a3ee5e6b4b0d",
+      "url": "https://www.bearmountainicerink.org/events",
+      "note": "its events page renders in the browser",
+      "checked": "2026-09-05",
+      "places": [
+        "Bear Mountain Ice Rink"
+      ]
+    },
+    "beekmanlibrary.org": {
+      "verdict": "listings",
+      "found": [
+        "linked calendar",
+        "dated listings"
+      ],
+      "sig": "a3c841b7272d76ba",
+      "url": "https://beekmanlibrary.assabetinteractive.com/calendar/graphic-novel-club-20/",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Beekman Library"
+      ]
+    },
+    "belltowervenue.com": {
+      "verdict": "blocked",
+      "found": [],
+      "sig": null,
+      "url": null,
+      "note": "HTTP 429 to a declared bot",
+      "checked": "2026-09-05",
+      "places": [
+        "The Belltower Studio & Gallery"
+      ]
+    },
+    "berkshirehiking.com": {
+      "verdict": "listings",
+      "found": [
+        "linked calendar"
+      ],
+      "sig": "da39a3ee5e6b4b0d",
+      "url": "http://www.sunrisesunset.com",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Cats Rock"
+      ]
+    },
+    "bethelcinema.com": {
+      "verdict": "suspect",
+      "found": [
+        "off-topic content"
+      ],
+      "sig": null,
+      "url": "https://sengovo.com/",
+      "note": "the domain is serving something the venue did not put there",
+      "checked": "2026-09-05",
+      "places": [
+        "Bethel Cinema"
+      ]
+    },
+    "bethellibrary.org": {
+      "verdict": "unreadable",
+      "found": [],
+      "sig": null,
+      "url": "https://bethellibrary.org/",
+      "note": "renders in the browser — nothing to read on the server",
+      "checked": "2026-09-05",
+      "places": [
+        "Bethel Public Library"
+      ]
+    },
+    "bijougalleries.com": {
+      "verdict": "unreadable",
+      "found": [],
+      "sig": null,
+      "url": "https://pixelfed.social/bijougalleries",
+      "note": "renders in the browser — nothing to read on the server",
+      "checked": "2026-09-05",
+      "places": [
+        "Bijou Galleries"
+      ]
+    },
+    "blackrockforest.org": {
+      "verdict": "listings",
+      "found": [
+        "schema.org events",
+        "dated listings"
+      ],
+      "sig": "0efb4cf9ed99f046",
+      "url": "https://www.blackrockforest.org/events",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Black Rock Forest"
+      ]
+    },
+    "blodgettmemoriallibrary.org": {
+      "verdict": "listings",
+      "found": [
+        "linked calendar",
+        "dated listings"
+      ],
+      "sig": "da39a3ee5e6b4b0d",
+      "url": "https://engagedpatrons.org/EventsCalendar.cfm?SiteID=3831",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Blodgett Memorial Library"
+      ]
+    },
+    "bluelotuscornwall.com": {
+      "verdict": "unreachable",
+      "found": [],
+      "sig": null,
+      "url": null,
+      "note": "no response on https, www or http (URLError)",
+      "checked": "2026-09-05",
+      "places": [
+        "Blue Lotus Boutique"
+      ]
+    },
+    "borschtbeltmuseum.org": {
+      "verdict": "listings",
+      "found": [
+        "dated listings",
+        "dated specials"
+      ],
+      "sig": "73ce7e4e259fd6aa",
+      "url": "https://www.borschtbeltmuseum.org/",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Borscht Belt Museum"
+      ]
+    },
+    "bowtiecinemas.com": {
+      "verdict": "unreadable",
+      "found": [],
+      "sig": "b793edd5812b375b",
+      "url": "https://www.btmcinemas.com/",
+      "note": "renders in the browser — nothing to read on the server",
+      "checked": "2026-09-05",
+      "places": [
+        "Criterion Cinemas at Greenwich Plaza"
+      ]
+    },
+    "brewsterlibrary.libcal.com": {
+      "verdict": "listings",
+      "found": [
+        "libcal embed",
+        "linked calendar",
+        "schema.org events",
+        "dated listings",
+        "dated specials"
+      ],
+      "sig": "806d569819b0c82a",
+      "url": "https://brewsterlibrary.libcal.com/",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Brewster Public Library",
+        "Community Room"
+      ]
+    },
+    "bridgewaterchocolate.com": {
+      "verdict": "none",
+      "found": [],
+      "sig": "b95825f572d373d7",
+      "url": null,
+      "note": "read 2 page(s), no dates and no calendar",
+      "checked": "2026-09-05",
+      "places": [
+        "Bridgewater Chocolate"
+      ]
+    },
+    "brookfieldlibrary.org": {
+      "verdict": "listings",
+      "found": [
+        "dated listings",
+        "dated specials"
+      ],
+      "sig": "9120ec36d474c863",
+      "url": "https://www.brookfieldlibrary.org/",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "The Brookfield Library"
+      ]
+    },
+    "brookfieldmarket.com": {
+      "verdict": "unreadable",
+      "found": [],
+      "sig": null,
+      "url": "https://brookfieldmarket.com/",
+      "note": "renders in the browser — nothing to read on the server",
+      "checked": "2026-09-05",
+      "places": [
+        "Brookfield Market and Deli"
+      ]
+    },
+    "brookfieldtheatre.org": {
+      "verdict": "listings",
+      "found": [
+        "linked calendar",
+        "dated listings",
+        "dated specials"
+      ],
+      "sig": "7966f2075dd24f58",
+      "url": "https://brookfieldtheatre.ludus.com/200495488",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Brookfield Theatre for the Arts"
+      ]
+    },
+    "brownstonemill.com": {
+      "verdict": "blocked",
+      "found": [],
+      "sig": null,
+      "url": null,
+      "note": "HTTP 429 to a declared bot",
+      "checked": "2026-09-05",
+      "places": [
+        "Fairway Estate Nursery & Garden Center",
+        "Iggies Curiosity Shoppe",
+        "Mayfair Antiques",
+        "Mr Pete"
+      ]
+    },
+    "brucemuseum.org": {
+      "verdict": "listings",
+      "found": [
+        "dated listings",
+        "dated specials"
+      ],
+      "sig": "3e075e208bccb32a",
+      "url": "https://brucemuseum.org/events/",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Bruce Museum"
+      ]
+    },
+    "buygoneattictreasures.ecrater.com": {
+      "verdict": "blocked",
+      "found": [],
+      "sig": null,
+      "url": null,
+      "note": "HTTP 403 to a declared bot",
+      "checked": "2026-09-05",
+      "places": [
+        "Buy-Gone Attic Treasures"
+      ]
+    },
+    "byrdsbooks.com": {
+      "verdict": "listings",
+      "found": [
+        "linked calendar",
+        "schema.org events",
+        "dated listings",
+        "dated specials"
+      ],
+      "sig": "b2e2e96d2a2a882e",
+      "url": "https://www.brokensymmetrybrew.com/events/broken-beer-amp-book-club",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Byrd's Books"
+      ]
+    },
+    "campus-events.wcsu.edu": {
+      "verdict": "listings",
+      "found": [
+        "linked calendar",
+        "schema.org events",
+        "dated listings",
+        "dated specials"
+      ],
+      "sig": "ab278bd966447ae4",
+      "url": "https://www.wcsu.edu/calendars/",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Observatory and Planetarium"
+      ]
+    },
+    "captainlawrencebrewing.com": {
+      "verdict": "listings",
+      "found": [
+        "dated listings",
+        "dated specials"
+      ],
+      "sig": "84de471e6403e23b",
+      "url": "https://www.captainlawrencebrewing.com/",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Captain Lawrence Brewing Company"
+      ]
+    },
+    "carmelcinema8.com": {
+      "verdict": "unreachable",
+      "found": [],
+      "sig": null,
+      "url": null,
+      "note": "no response on https, www or http (URLError)",
+      "checked": "2026-09-05",
+      "places": [
+        "Carmel Cinemas 8"
+      ]
+    },
+    "casaziki.com": {
+      "verdict": "none",
+      "found": [],
+      "sig": "07d5ec4fe754e750",
+      "url": null,
+      "note": "read 2 page(s), no dates and no calendar",
+      "checked": "2026-09-05",
+      "places": [
+        "Casa Ziki"
+      ]
+    },
+    "caspian.market": {
+      "verdict": "none",
+      "found": [],
+      "sig": "da39a3ee5e6b4b0d",
+      "url": null,
+      "note": "read 1 page(s), no dates and no calendar",
+      "checked": "2026-09-05",
+      "places": [
+        "Caspian Market"
+      ]
+    },
+    "catskillart.com": {
+      "verdict": "specials",
+      "found": [
+        "dated specials"
+      ],
+      "sig": "648be28d5ef40217",
+      "url": "https://www.catskillart.com/",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Catskill Art Supply"
+      ]
+    },
+    "cbury.org": {
+      "verdict": "listings",
+      "found": [
+        "dated listings",
+        "dated specials"
+      ],
+      "sig": "8beb42b4720442be",
+      "url": "https://www.cbury.org/admission/events",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "David Casey Copley Library"
+      ]
+    },
+    "chappaqualibrary.org": {
+      "verdict": "listings",
+      "found": [
+        "dated listings",
+        "dated specials"
+      ],
+      "sig": "f5498c943382e475",
+      "url": "https://www.chappaqualibrary.org/",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Chappaqua Library"
+      ]
+    },
+    "chappaquapac.org": {
+      "verdict": "listings",
+      "found": [
+        "linked calendar",
+        "schema.org events",
+        "dated listings",
+        "dated specials"
+      ],
+      "sig": "cf84bc62db4bf48e",
+      "url": "https://outlook.office.com/owa?path=/calendar/action/compose&",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Chappaqua Performing Arts Center"
+      ]
+    },
+    "chbodrums.com": {
+      "verdict": "none",
+      "found": [],
+      "sig": "da39a3ee5e6b4b0d",
+      "url": null,
+      "note": "read 1 page(s), no dates and no calendar",
+      "checked": "2026-09-05",
+      "places": [
+        "CHBO Drums"
+      ]
+    },
+    "cherriesnewyork.com": {
+      "verdict": "listings",
+      "found": [
+        "dated listings",
+        "dated specials"
+      ],
+      "sig": "0efb4cf9ed99f046",
+      "url": "https://www.cherriesnewyork.com/",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Cherries"
+      ]
+    },
+    "cherrydoor.shop": {
+      "verdict": "unreachable",
+      "found": [],
+      "sig": null,
+      "url": null,
+      "note": "no response on https, www or http (URLError)",
+      "checked": "2026-09-05",
+      "places": [
+        "The Cherry Door"
+      ]
+    },
+    "chicorynaturalist.com": {
+      "verdict": "listings",
+      "found": [
+        "dated listings",
+        "dated specials"
+      ],
+      "sig": "805fc34ef8ef8be3",
+      "url": "https://chicorynaturalist.com/",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Chicory Naturalist"
+      ]
+    },
+    "chronogram.com": {
+      "verdict": "listings",
+      "found": [
+        "linked calendar",
+        "dated listings"
+      ],
+      "sig": "3ff2eac874870c1c",
+      "url": "https://calendar.chronogram.com/hudsonvalley/Events/AddEvent",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Boscobel House and Gardens"
+      ]
+    },
+    "chrystiehouse.com": {
+      "verdict": "unreadable",
+      "found": [],
+      "sig": "da39a3ee5e6b4b0d",
+      "url": "https://chrystiehouse.com/calendar/",
+      "note": "its events page renders in the browser",
+      "checked": "2026-09-05",
+      "places": [
+        "Chrystie House Bed and Breakfast"
+      ]
+    },
+    "ci.danbury.ct.us": {
+      "verdict": "unreachable",
+      "found": [],
+      "sig": null,
+      "url": null,
+      "note": "no response on https, www or http (URLError)",
+      "checked": "2026-09-05",
+      "places": [
+        "9-11 Memorial"
+      ]
+    },
+    "citywinery.com": {
+      "verdict": "listings",
+      "found": [
+        "dated listings",
+        "dated specials"
+      ],
+      "sig": "3378045b6c4a8e62",
+      "url": "https://citywinery.com/pages/atlanta-private-events",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "City Winery"
+      ]
+    },
+    "clerk.ulstercountyny.gov": {
+      "verdict": "listings",
+      "found": [
+        "dated listings"
+      ],
+      "sig": "266536aa262d18ed",
+      "url": "https://clerk.ulstercountyny.gov/",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Mattewis Persen House"
+      ]
+    },
+    "clintoncommunitylibrary.org": {
+      "verdict": "listings",
+      "found": [
+        "linked calendar",
+        "dated listings",
+        "dated specials"
+      ],
+      "sig": "2dbe84f6dda319be",
+      "url": "http://engagedpatrons.org/EventsCalendar.cfm?SiteID=5061",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Clinton Community Library"
+      ]
+    },
+    "closeknityarns.com": {
+      "verdict": "blocked",
+      "found": [],
+      "sig": null,
+      "url": null,
+      "note": "HTTP 403 to a declared bot",
+      "checked": "2026-09-05",
+      "places": [
+        "Close Knit Yarns"
+      ]
+    },
+    "cmxcinemas.com": {
+      "verdict": "listings",
+      "found": [
+        "dated listings",
+        "dated specials"
+      ],
+      "sig": "4f6191dd39aeb47e",
+      "url": "https://www.cmxcinemas.com/cmx-cinemas-hollywood-16-imax",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "CMX Cinemas - Closter Plaza"
+      ]
+    },
+    "co.bergen.nj.us": {
+      "verdict": "unreadable",
+      "found": [],
+      "sig": null,
+      "url": "https://co.bergen.nj.us/",
+      "note": "renders in the browser — nothing to read on the server",
+      "checked": "2026-09-05",
+      "places": [
+        "Campgaw Mountain Reservation"
+      ]
+    },
+    "coldspringceramics.com": {
+      "verdict": "unreadable",
+      "found": [],
+      "sig": "e3c388d51c221e11",
+      "url": "https://coldspringceramics.com/collections/walk-in",
+      "note": "renders in the browser — nothing to read on the server",
+      "checked": "2026-09-05",
+      "places": [
+        "Cold Spring Ceramics"
+      ]
+    },
+    "colonywoodstock.com": {
+      "verdict": "blocked",
+      "found": [],
+      "sig": null,
+      "url": null,
+      "note": "HTTP 429 to a declared bot",
+      "checked": "2026-09-05",
+      "places": [
+        "Colony"
+      ]
+    },
+    "cpw.org": {
+      "verdict": "listings",
+      "found": [
+        "linked calendar",
+        "dated listings",
+        "dated specials"
+      ],
+      "sig": "944982e745f66f7e",
+      "url": "https://www.tickettailor.com/events/cpwkingston/2212661",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Center for Photography at Woodstock"
+      ]
+    },
+    "crotonfreelibrary.org": {
+      "verdict": "listings",
+      "found": [
+        "dated listings",
+        "dated specials"
+      ],
+      "sig": "26ddca2f9b11043f",
+      "url": "https://www.crotonfreelibrary.org/",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Croton Free Library"
+      ]
+    },
+    "ct.gov": {
+      "verdict": "listings",
+      "found": [
+        "linked calendar",
+        "dated listings"
+      ],
+      "sig": "da39a3ee5e6b4b0d",
+      "url": "https://egov.ct.gov/PMC/",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Bennett's Pond State Park",
+        "Kent Falls State Park",
+        "Paugussett State Forest",
+        "Black Rock State Park"
+      ]
+    },
+    "danbury.org": {
+      "verdict": "listings",
+      "found": [
+        "dated listings",
+        "dated specials"
+      ],
+      "sig": "dceb6c4158a725a2",
+      "url": "https://www.hotell-london.net/no/property/the-exhibitionist.html",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Danbury Railroad Museum"
+      ]
+    },
+    "danburyfairmall.com": {
+      "verdict": "listings",
+      "found": [
+        "schema.org events",
+        "dated listings",
+        "dated specials"
+      ],
+      "sig": "a611eb23f20ddc06",
+      "url": "https://www.danburyfairmall.com/Events/Details/580675",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Danbury Fair"
+      ]
+    },
+    "danburyice.com": {
+      "verdict": "listings",
+      "found": [
+        "dated listings",
+        "dated specials"
+      ],
+      "sig": "464430108ed84e2b",
+      "url": "https://danburyice.com/",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Danbury Ice Arena"
+      ]
+    },
+    "danburylibrary.org": {
+      "verdict": "listings",
+      "found": [
+        "linked calendar",
+        "dated listings",
+        "dated specials"
+      ],
+      "sig": "6e1081e4ed461892",
+      "url": "https://danburylibrary.events.mylibrary.digital/",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Danbury Public Library"
+      ]
+    },
+    "danburymuseum.org": {
+      "verdict": "unreachable",
+      "found": [],
+      "sig": null,
+      "url": null,
+      "note": "no response on https, www or http (URLError)",
+      "checked": "2026-09-05",
+      "places": [
+        "Danbury Museum and Historical Society"
+      ]
+    },
+    "darylshouseclub.com": {
+      "verdict": "unreadable",
+      "found": [],
+      "sig": null,
+      "url": "https://darylshouseclub.com/",
+      "note": "renders in the browser — nothing to read on the server",
+      "checked": "2026-09-05",
+      "places": [
+        "Daryl's House Club"
+      ]
+    },
+    "davenportfarms.com": {
+      "verdict": "unreadable",
+      "found": [],
+      "sig": null,
+      "url": "https://davenportfarms.com/",
+      "note": "renders in the browser — nothing to read on the server",
+      "checked": "2026-09-05",
+      "places": [
+        "Davenport Farms"
+      ]
+    },
+    "dcrcoc.org": {
+      "verdict": "listings",
+      "found": [
+        "linked calendar",
+        "dated listings"
+      ],
+      "sig": "a71f3637efe7b05e",
+      "url": "https://business.dcrcoc.org/events/catgid/6?q=&amp;Lookahead=365",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Tymor Park"
+      ]
+    },
+    "dec.ny.gov": {
+      "verdict": "listings",
+      "found": [
+        "dated listings",
+        "dated specials"
+      ],
+      "sig": "380ba54f25eed656",
+      "url": "https://dec.ny.gov/",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Baxtertown Woods Wildlife Management Area",
+        "Hemlock Ridge Multiple Use Area",
+        "Castle Rock Unique Area",
+        "Stewart State Forest"
+      ]
+    },
+    "denizentheatre.org": {
+      "verdict": "listings",
+      "found": [
+        "linked calendar",
+        "dated listings",
+        "dated specials"
+      ],
+      "sig": "da39a3ee5e6b4b0d",
+      "url": "https://www.tix.com/ticket-sales/NOWPLAYING/7080",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Denizen Theater"
+      ]
+    },
+    "destinta.com": {
+      "verdict": "suspect",
+      "found": [
+        "off-topic content"
+      ],
+      "sig": null,
+      "url": "https://destinta.com/",
+      "note": "the domain is serving something the venue did not put there",
+      "checked": "2026-09-05",
+      "places": [
+        "Destinta Theaters"
+      ]
+    },
+    "diabeacon.org": {
+      "verdict": "listings",
+      "found": [
+        "dated listings",
+        "dated specials"
+      ],
+      "sig": "b5667bd9c63d1e2a",
+      "url": "https://www.diaart.org/visit/visit-our-locations-sites/dia-beacon-beacon-united-states",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Dia:Beacon"
+      ]
+    },
+    "donnaminkowitz.com": {
+      "verdict": "listings",
+      "found": [
+        "dated listings",
+        "dated specials"
+      ],
+      "sig": "b2eba3b51f507546",
+      "url": "https://donnaminkowitz.com/writing-classes/",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Dennings Point Distillery"
+      ]
+    },
+    "downtoearthmarkets.com": {
+      "verdict": "none",
+      "found": [],
+      "sig": "da39a3ee5e6b4b0d",
+      "url": null,
+      "note": "read 1 page(s), no dates and no calendar",
+      "checked": "2026-09-05",
+      "places": [
+        "Ossining Farmers Market"
+      ]
+    },
+    "drafthouse.com": {
+      "verdict": "unreadable",
+      "found": [],
+      "sig": null,
+      "url": "https://drafthouse.com/",
+      "note": "renders in the browser — nothing to read on the server",
+      "checked": "2026-09-05",
+      "places": [
+        "Alamo Drafthouse Cinema"
+      ]
+    },
+    "drownedlands.beer": {
+      "verdict": "listings",
+      "found": [
+        "linked calendar",
+        "schema.org events",
+        "dated listings",
+        "dated specials"
+      ],
+      "sig": "fcf7076b9868249f",
+      "url": "https://square.link/u/Raqrwi1w",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Drowned Lands Brewery"
+      ]
+    },
+    "dutchessfair.com": {
+      "verdict": "listings",
+      "found": [
+        "linked calendar",
+        "dated listings",
+        "dated specials"
+      ],
+      "sig": "7bd9d7b64cecd980",
+      "url": "https://countrylivingfairs.com/tickets",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Dutchess County Fairgrounds"
+      ]
+    },
+    "e2-elderberry-artandantiques.com": {
+      "verdict": "none",
+      "found": [],
+      "sig": "da39a3ee5e6b4b0d",
+      "url": null,
+      "note": "read 1 page(s), no dates and no calendar",
+      "checked": "2026-09-05",
+      "places": [
+        "Elderberry Art & Antiques"
+      ]
+    },
+    "eastcoastcardcollector.com": {
+      "verdict": "none",
+      "found": [],
+      "sig": "da39a3ee5e6b4b0d",
+      "url": null,
+      "note": "read 1 page(s), no dates and no calendar",
+      "checked": "2026-09-05",
+      "places": [
+        "East Coast Card Collector"
+      ]
+    },
+    "eastmarketstreetantiques.com": {
+      "verdict": "unreachable",
+      "found": [],
+      "sig": null,
+      "url": null,
+      "note": "no response on https, www or http (URLError)",
+      "checked": "2026-09-05",
+      "places": [
+        "East Market Street Antiques"
+      ]
+    },
+    "eastoforegonrecords.com": {
+      "verdict": "unreadable",
+      "found": [],
+      "sig": null,
+      "url": "https://www.eastoforegonrecords.com/",
+      "note": "renders in the browser — nothing to read on the server",
+      "checked": "2026-09-05",
+      "places": [
+        "East of Oregon Vinyl Records"
+      ]
+    },
+    "eatapples.com": {
+      "verdict": "listings",
+      "found": [
+        "dated listings",
+        "dated specials"
+      ],
+      "sig": "da39a3ee5e6b4b0d",
+      "url": "https://eatapples.com/",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Wright's Farm & Market"
+      ]
+    },
+    "eflibrary.org": {
+      "verdict": "listings",
+      "found": [
+        "linked calendar",
+        "dated specials"
+      ],
+      "sig": "d3b7ad265d65dcfb",
+      "url": "https://eflibrary.assabetinteractive.com/calendar",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "East Fishkill Public Library"
+      ]
+    },
+    "ejchocolates.com": {
+      "verdict": "none",
+      "found": [],
+      "sig": "da39a3ee5e6b4b0d",
+      "url": null,
+      "note": "read 1 page(s), no dates and no calendar",
+      "checked": "2026-09-05",
+      "places": [
+        "EJ Bonbons and Confections"
+      ]
+    },
+    "elitecinema6.com": {
+      "verdict": "suspect",
+      "found": [
+        "off-topic content"
+      ],
+      "sig": null,
+      "url": "https://elitecinema6.com/",
+      "note": "the domain is serving something the venue did not put there",
+      "checked": "2026-09-05",
+      "places": [
+        "Elite Cinema 6"
+      ]
+    },
+    "eltinglibrary.org": {
+      "verdict": "listings",
+      "found": [
+        "libcal embed",
+        "linked calendar",
+        "dated listings"
+      ],
+      "sig": "c7bc7be4b0105b33",
+      "url": "https://www.eltinglibrary.org/",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Elting Memorial Library"
+      ]
+    },
+    "esopuslibrary.org": {
+      "verdict": "listings",
+      "found": [
+        "dated listings"
+      ],
+      "sig": "cc7a547c928b4a0d",
+      "url": "https://www.esopuslibrary.org/",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Town of Esopus Library"
+      ]
+    },
+    "esopusmeadowslighthouse.org": {
+      "verdict": "unreadable",
+      "found": [],
+      "sig": null,
+      "url": "https://esopusmeadowslighthouse.org/",
+      "note": "renders in the browser — nothing to read on the server",
+      "checked": "2026-09-05",
+      "places": [
+        "Esopus Meadows Light"
+      ]
+    },
+    "estchesterhistory.com": {
+      "verdict": "unreachable",
+      "found": [],
+      "sig": null,
+      "url": null,
+      "note": "no response on https, www or http (URLError)",
+      "checked": "2026-09-05",
+      "places": [
+        "Seven Springs"
+      ]
+    },
+    "estchestersridgehill.com": {
+      "verdict": "unreachable",
+      "found": [],
+      "sig": null,
+      "url": null,
+      "note": "no response on https, www or http (URLError)",
+      "checked": "2026-09-05",
+      "places": [
+        "Ridge Hill"
+      ]
+    },
+    "estnyacklibrary.org": {
+      "verdict": "unreachable",
+      "found": [],
+      "sig": null,
+      "url": null,
+      "note": "no response on https, www or http (URLError)",
+      "checked": "2026-09-05",
+      "places": [
+        "West Nyack Free Library"
+      ]
+    },
+    "etflea.com": {
+      "verdict": "listings",
+      "found": [
+        "dated listings",
+        "dated specials"
+      ],
+      "sig": "070fb45c8acabee0",
+      "url": "https://www.etflea.com/",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Elephant's Trunk Flea Market"
+      ]
+    },
+    "everywhere-shop.com": {
+      "verdict": "unreadable",
+      "found": [],
+      "sig": "da39a3ee5e6b4b0d",
+      "url": "https://everywhere-shop.com/",
+      "note": "renders in the browser — nothing to read on the server",
+      "checked": "2026-09-05",
+      "places": [
+        "Everywhere Shop"
+      ]
+    },
+    "fallkillcreativeworks.org": {
+      "verdict": "listings",
+      "found": [
+        "dated listings",
+        "dated specials"
+      ],
+      "sig": "4f6abbec01af9e9f",
+      "url": "https://fallkillcreativeworks.org/",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Fall Kill Clay Works"
+      ]
+    },
+    "fayuanbooks.com": {
+      "verdict": "listings",
+      "found": [
+        "dated listings"
+      ],
+      "sig": "3c6a61c2c15702d2",
+      "url": "https://fayuanbooks.com/",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Fa Yuan Bookstore"
+      ]
+    },
+    "fdrlibrary.org": {
+      "verdict": "listings",
+      "found": [
+        "dated listings",
+        "dated specials"
+      ],
+      "sig": "a919b6ad0c6b6ec5",
+      "url": "https://www.fdrlibrary.org/events-calendar",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Franklin D Roosevelt Presedential Library and Museum"
+      ]
+    },
+    "findagrave.com": {
+      "verdict": "blocked",
+      "found": [],
+      "sig": null,
+      "url": null,
+      "note": "HTTP 403 to a declared bot",
+      "checked": "2026-09-05",
+      "places": [
+        "Edward Higgins “Ed” White II"
+      ]
+    },
+    "finkelsteinlibrary.org": {
+      "verdict": "listings",
+      "found": [
+        "linked calendar",
+        "dated listings"
+      ],
+      "sig": "d05adaea0c8d1616",
+      "url": "https://attend.finkelsteinlibrary.org/events?a=Adult&",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Finkelstein Memorial Library"
+      ]
+    },
+    "fishkillhistoricalsociety.org": {
+      "verdict": "listings",
+      "found": [
+        "linked calendar",
+        "dated listings"
+      ],
+      "sig": "da39a3ee5e6b4b0d",
+      "url": "https://www.idealist.org/en/volunteer-opportunity/f46d6819f25748cc9dc2276ce9c7174a-van-wyck-homestead-museum-tour-guide-docent-fishkill-historical-society-fishkill?email_id=6710869250714a3ba25fd33b7655a0ee&",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Van Wyck Homestead Museum"
+      ]
+    },
+    "fivedimesbrewery.com": {
+      "verdict": "listings",
+      "found": [
+        "dated listings",
+        "dated specials"
+      ],
+      "sig": "bb29b5ac8c4666bd",
+      "url": "https://www.fivedimesbrewery.com/",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Five Dimes Brewery"
+      ]
+    },
+    "fllac.vassar.edu": {
+      "verdict": "listings",
+      "found": [
+        "linked calendar",
+        "dated listings",
+        "dated specials"
+      ],
+      "sig": "f899ed2913871d1b",
+      "url": "https://vas.emscloudservice.com/calendar/MasterCalendar.aspx",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Frances Lehman Loeb Art Center"
+      ]
+    },
+    "fohk.org": {
+      "verdict": "listings",
+      "found": [
+        "dated listings",
+        "dated specials"
+      ],
+      "sig": "1c01a1f0db4c0790",
+      "url": "https://www.fohk.org/",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Friends of Historic Kingston"
+      ]
+    },
+    "forsythnaturecenter.org": {
+      "verdict": "listings",
+      "found": [
+        "dated listings",
+        "dated specials"
+      ],
+      "sig": "a5ca23d1ef780182",
+      "url": "https://forsythnaturecenter.org/visit/",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Forsyth Nature Center"
+      ]
+    },
+    "freetothrift.com": {
+      "verdict": "none",
+      "found": [],
+      "sig": "da39a3ee5e6b4b0d",
+      "url": null,
+      "note": "read 1 page(s), no dates and no calendar",
+      "checked": "2026-09-05",
+      "places": [
+        "Free To Thrift"
+      ]
+    },
+    "fruitionchocolateworks.com": {
+      "verdict": "listings",
+      "found": [
+        "dated listings",
+        "dated specials"
+      ],
+      "sig": "4fd5f69cfff0f118",
+      "url": "https://www.fruitionchocolateworks.com/",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Fruition Chocolate"
+      ]
+    },
+    "fws.gov": {
+      "verdict": "none",
+      "found": [],
+      "sig": "0549dd2bfb69dc96",
+      "url": null,
+      "note": "read 3 page(s), no dates and no calendar",
+      "checked": "2026-09-05",
+      "places": [
+        "Great Thicket National Wildlife Refuge",
+        "Oyster Bay National Wildlife Refuge",
+        "Target Rock National Wildlife Refuge"
+      ]
+    },
+    "gardenofideas.com": {
+      "verdict": "parked",
+      "found": [],
+      "sig": null,
+      "url": "https://www.hugedomains.com/domain_profile.cfm?d=gardenofideas.com",
+      "note": "a default server or registrar page, not the venue",
+      "checked": "2026-09-05",
+      "places": [
+        "Garden Of Ideas"
+      ]
+    },
+    "garrisonartcenter.org": {
+      "verdict": "blocked",
+      "found": [],
+      "sig": null,
+      "url": null,
+      "note": "HTTP 429 to a declared bot",
+      "checked": "2026-09-05",
+      "places": [
+        "Garrison Art Center"
+      ]
+    },
+    "georgetownowl.com": {
+      "verdict": "listings",
+      "found": [
+        "dated listings"
+      ],
+      "sig": "0efb4cf9ed99f046",
+      "url": "https://www.georgetownowl.com/",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "The Georgtown Owl Market"
+      ]
+    },
+    "ghvbsa.org": {
+      "verdict": "listings",
+      "found": [
+        "linked calendar",
+        "dated listings",
+        "dated specials"
+      ],
+      "sig": "d61ccca7c2e201d6",
+      "url": "https://www.emailmeform.com/builder/form/7f8gxI20VpOzl8not",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Agatha A. Durland Scout Reservation"
+      ]
+    },
+    "goldennotebook.indielite.org": {
+      "verdict": "unreachable",
+      "found": [],
+      "sig": null,
+      "url": null,
+      "note": "no response on https, www or http (URLError)",
+      "checked": "2026-09-05",
+      "places": [
+        "The Golden Notebook"
+      ]
+    },
+    "goodbooksny.com": {
+      "verdict": "listings",
+      "found": [
+        "dated listings",
+        "dated specials"
+      ],
+      "sig": "0efb4cf9ed99f046",
+      "url": "https://www.goodbooksny.com/events",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Good Books"
+      ]
+    },
+    "goodtidingsgiftshop.com": {
+      "verdict": "suspect",
+      "found": [
+        "off-topic content"
+      ],
+      "sig": null,
+      "url": "http://goodtidingsgiftshop.com/",
+      "note": "the domain is serving something the venue did not put there",
+      "checked": "2026-09-05",
+      "places": [
+        "Good Tidings Gift Shop"
+      ]
+    },
+    "goshenhistorictrack.com": {
+      "verdict": "listings",
+      "found": [
+        "dated listings",
+        "dated specials"
+      ],
+      "sig": "5cb1a83a9108ddd8",
+      "url": "https://goshenhistorictrack.com/events-2/",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Historic Track"
+      ]
+    },
+    "goshenpubliclibrary.org": {
+      "verdict": "listings",
+      "found": [
+        "libcal embed",
+        "linked calendar",
+        "dated listings"
+      ],
+      "sig": "da39a3ee5e6b4b0d",
+      "url": "https://goshenpubliclibrary.org/",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Goshen Public Library and Historical Society"
+      ]
+    },
+    "gravesidevariety.com": {
+      "verdict": "suspect",
+      "found": [
+        "off-topic content"
+      ],
+      "sig": null,
+      "url": "https://www.gravesidevariety.com/",
+      "note": "the domain is serving something the venue did not put there",
+      "checked": "2026-09-05",
+      "places": [
+        "Graveside Variety"
+      ]
+    },
+    "greenburghlibrary.libcal.com": {
+      "verdict": "listings",
+      "found": [
+        "libcal embed",
+        "linked calendar",
+        "schema.org events",
+        "dated listings",
+        "dated specials"
+      ],
+      "sig": "5e721918ad7438fc",
+      "url": "https://greenburghlibrary.libcal.com/",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Children's Program Room",
+        "Local History Room",
+        "Multipurpose Room",
+        "Small Conference Room"
+      ]
+    },
+    "greenburghlibrary.org": {
+      "verdict": "listings",
+      "found": [
+        "libcal embed",
+        "linked calendar",
+        "dated listings",
+        "dated specials"
+      ],
+      "sig": "b5a672faf71116ca",
+      "url": "https://greenburghlibrary.org/home",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Greenburgh Public Library"
+      ]
+    },
+    "greenwich.audubon.org": {
+      "verdict": "listings",
+      "found": [
+        "dated listings"
+      ],
+      "sig": "8e95bad644313aea",
+      "url": "https://www.audubon.org/events?view_type=row&amp;location=Greenwich+Audubon+Center",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Oppenheimer Gallery"
+      ]
+    },
+    "greenwichct.gov": {
+      "verdict": "listings",
+      "found": [
+        "dated listings",
+        "dated specials"
+      ],
+      "sig": "80fb3570bff704ce",
+      "url": "https://www.greenwichct.gov/",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Mianus River State Park"
+      ]
+    },
+    "greenwichhistory.org": {
+      "verdict": "listings",
+      "found": [
+        "linked calendar",
+        "dated listings",
+        "dated specials"
+      ],
+      "sig": "a59951338211c5d9",
+      "url": "https://ct250.org/events/calendar/",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Greenwich Historical Society"
+      ]
+    },
+    "greenwichpoloclub.com": {
+      "verdict": "listings",
+      "found": [
+        "linked calendar",
+        "dated listings",
+        "dated specials"
+      ],
+      "sig": "a8b6b05bf31babd9",
+      "url": "https://www.showpass.com/greenwich-polo-club/",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Greenwich Polo Club"
+      ]
+    },
+    "grinnell-library.libcal.com": {
+      "verdict": "listings",
+      "found": [
+        "libcal embed"
+      ],
+      "sig": "da39a3ee5e6b4b0d",
+      "url": "https://grinnell-library.libcal.com/",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Grinnell Library, Wappingers Falls"
+      ]
+    },
+    "grinnell-library.org": {
+      "verdict": "listings",
+      "found": [
+        "libcal embed",
+        "linked calendar",
+        "dated listings"
+      ],
+      "sig": "da39a3ee5e6b4b0d",
+      "url": "https://grinnell-library.org/",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Grinnell Public Library"
+      ]
+    },
+    "gucomicshop.com": {
+      "verdict": "unreachable",
+      "found": [],
+      "sig": null,
+      "url": null,
+      "note": "no response on https, www or http (URLError)",
+      "checked": "2026-09-05",
+      "places": [
+        "Gotham Underground"
+      ]
+    },
+    "guitarhangar.com": {
+      "verdict": "specials",
+      "found": [
+        "dated specials"
+      ],
+      "sig": "018e6a2553c6b481",
+      "url": "https://www.guitarhangar.com/",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Guitar Hangar"
+      ]
+    },
+    "gunnlibrary.org": {
+      "verdict": "unreadable",
+      "found": [],
+      "sig": null,
+      "url": "https://gunnlibrary.org/",
+      "note": "renders in the browser — nothing to read on the server",
+      "checked": "2026-09-05",
+      "places": [
+        "Gunn Memorial Library & Museum",
+        "Gunn Memorial Museum"
+      ]
+    },
+    "hakol-bsefer-judaica.business.site": {
+      "verdict": "unreachable",
+      "found": [],
+      "sig": null,
+      "url": null,
+      "note": "no response on https, www or http (404)",
+      "checked": "2026-09-05",
+      "places": [
+        "Hakol B'Sefer Judaica"
+      ]
+    },
+    "hammondmuseum.org": {
+      "verdict": "blocked",
+      "found": [],
+      "sig": null,
+      "url": null,
+      "note": "HTTP 429 to a declared bot",
+      "checked": "2026-09-05",
+      "places": [
+        "Hammond Museum"
+      ]
+    },
+    "happylifeproductions.com": {
+      "verdict": "none",
+      "found": [],
+      "sig": "008e2b239169bb1d",
+      "url": null,
+      "note": "read 2 page(s), no dates and no calendar",
+      "checked": "2026-09-05",
+      "places": [
+        "Happylife Productions"
+      ]
+    },
+    "harvestmoonfarmandorchard.com": {
+      "verdict": "unreachable",
+      "found": [],
+      "sig": null,
+      "url": null,
+      "note": "no response on https, www or http (URLError)",
+      "checked": "2026-09-05",
+      "places": [
+        "Harvest Moon Farm & Orchard"
+      ]
+    },
+    "hastingshistoricalsociety.org": {
+      "verdict": "listings",
+      "found": [
+        "dated listings",
+        "dated specials"
+      ],
+      "sig": "300c78a98e549d54",
+      "url": "https://hastingshistoricalsociety.org/",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Hastings Historical Society"
+      ]
+    },
+    "hastingslibrary.org": {
+      "verdict": "listings",
+      "found": [
+        "dated listings",
+        "dated specials"
+      ],
+      "sig": "a3c841b7272d76ba",
+      "url": "https://hastingslibrary.org/",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Hastings Public Library"
+      ]
+    },
+    "haworthlibrary.org": {
+      "verdict": "blocked",
+      "found": [],
+      "sig": null,
+      "url": null,
+      "note": "HTTP 429 to a declared bot",
+      "checked": "2026-09-05",
+      "places": [
+        "Haworth Municipal Library"
+      ]
+    },
+    "headlesshorseman.com": {
+      "verdict": "listings",
+      "found": [
+        "linked calendar"
+      ],
+      "sig": "a8b6b05bf31babd9",
+      "url": "https://hvmag.com/events/best/",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Headless Horseman Hayrides and Haunted Houses"
+      ]
+    },
+    "heavenhillfarm.com": {
+      "verdict": "listings",
+      "found": [
+        "linked calendar",
+        "dated listings",
+        "dated specials"
+      ],
+      "sig": "8640d1dc264dd25c",
+      "url": "https://app.tickettailor.com/self-service/heavenhillfarmllc?widget=true&amp;modal_widget=true",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Heaven Hill Farm & Garden Center"
+      ]
+    },
+    "heroncraftgallery.com": {
+      "verdict": "unreachable",
+      "found": [],
+      "sig": null,
+      "url": null,
+      "note": "no response on https, www or http (URLError)",
+      "checked": "2026-09-05",
+      "places": [
+        "Heron American Craft Gallery"
+      ]
+    },
+    "hhnaturecenter.org": {
+      "verdict": "listings",
+      "found": [
+        "dated listings",
+        "dated specials"
+      ],
+      "sig": "ce8082f1df25232d",
+      "url": "https://hhnaturecenter.org/",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Hudson Highlands Nature Center - Wildlife Education Campus",
+        "Hudson Highlands Nature Center - Outdoor Discovery Campus"
+      ]
+    },
+    "highlandflowers.com": {
+      "verdict": "unreachable",
+      "found": [],
+      "sig": null,
+      "url": null,
+      "note": "no response on https, www or http (URLError)",
+      "checked": "2026-09-05",
+      "places": [
+        "Highland Flowers & Gifts"
+      ]
+    },
+    "highlandlibrary.org": {
+      "verdict": "unreadable",
+      "found": [],
+      "sig": null,
+      "url": "https://highlandlibrary.org/",
+      "note": "renders in the browser — nothing to read on the server",
+      "checked": "2026-09-05",
+      "places": [
+        "Highland Public Library"
+      ]
+    },
+    "hikethehudsonvalley.com": {
+      "verdict": "none",
+      "found": [],
+      "sig": "da39a3ee5e6b4b0d",
+      "url": null,
+      "note": "read 1 page(s), no dates and no calendar",
+      "checked": "2026-09-05",
+      "places": [
+        "Ninham Mountain Fire Tower"
+      ]
+    },
+    "hilltophanoverfarm.org": {
+      "verdict": "listings",
+      "found": [
+        "linked calendar",
+        "dated listings",
+        "dated specials"
+      ],
+      "sig": "8b53e8b7005b54be",
+      "url": "https://parksevents.westchestergov.com/events/list/?tribe_venues%5B0%5D=95&amp;hide_subsequent_recurrences=1",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Hilltop Hanover Farm and Environmental Center"
+      ]
+    },
+    "historicredhook.org": {
+      "verdict": "listings",
+      "found": [
+        "schema.org events",
+        "dated listings",
+        "dated specials"
+      ],
+      "sig": "4556bb49f6fa2dc6",
+      "url": "https://www.historicredhook.org/upcoming-events/tavern-trail-lastingjoy-apr26-668jm",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "The Story Studio"
+      ]
+    },
+    "history.army.mil": {
+      "verdict": "blocked",
+      "found": [],
+      "sig": null,
+      "url": null,
+      "note": "HTTP 403 to a declared bot",
+      "checked": "2026-09-05",
+      "places": [
+        "West Point Museum"
+      ]
+    },
+    "hiteplainslibrary.org": {
+      "verdict": "unreachable",
+      "found": [],
+      "sig": null,
+      "url": null,
+      "note": "no response on https, www or http (URLError)",
+      "checked": "2026-09-05",
+      "places": [
+        "White Plains Public Library"
+      ]
+    },
+    "hmdb.org": {
+      "verdict": "none",
+      "found": [],
+      "sig": "da39a3ee5e6b4b0d",
+      "url": null,
+      "note": "read 1 page(s), no dates and no calendar",
+      "checked": "2026-09-05",
+      "places": [
+        "Westwood Fire Department Memorial",
+        "Freedomland USA Plaque"
+      ]
+    },
+    "hobbylobby.com": {
+      "verdict": "none",
+      "found": [],
+      "sig": "88e16a2919085db5",
+      "url": null,
+      "note": "read 2 page(s), no dates and no calendar",
+      "checked": "2026-09-05",
+      "places": [
+        "Hobby Lobby",
+        "Hobby Lobby"
+      ]
+    },
+    "hoffmansbarn.com": {
+      "verdict": "blocked",
+      "found": [],
+      "sig": null,
+      "url": null,
+      "note": "HTTP 429 to a declared bot",
+      "checked": "2026-09-05",
+      "places": [
+        "Hoffman's Barn"
+      ]
+    },
+    "hohokusinn.com": {
+      "verdict": "listings",
+      "found": [
+        "dated listings",
+        "dated specials"
+      ],
+      "sig": "7419f95bc47c2aaf",
+      "url": "https://hohokusinn.com/",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Ho-Ho-Kus Inn & Tavern"
+      ]
+    },
+    "hohokuslibrary.org": {
+      "verdict": "listings",
+      "found": [
+        "libcal embed",
+        "dated listings",
+        "dated specials"
+      ],
+      "sig": "481604f80acdd41a",
+      "url": "https://www.hohokuslibrary.org/",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Worth-Pinkham Memorial Library"
+      ]
+    },
+    "hotchkisslibraryofsharon.org": {
+      "verdict": "listings",
+      "found": [
+        "libcal embed",
+        "linked calendar",
+        "dated listings",
+        "dated specials"
+      ],
+      "sig": "05c57f8bc01d09ed",
+      "url": "https://hotchkisslibraryofsharon.org/",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Hotchkiss Library of Sharon"
+      ]
+    },
+    "houseofsportsny.com": {
+      "verdict": "none",
+      "found": [],
+      "sig": "da39a3ee5e6b4b0d",
+      "url": null,
+      "note": "read 1 page(s), no dates and no calendar",
+      "checked": "2026-09-05",
+      "places": [
+        "House Of Sports"
+      ]
+    },
+    "hrmm.org": {
+      "verdict": "listings",
+      "found": [
+        "linked calendar",
+        "dated listings",
+        "dated specials"
+      ],
+      "sig": "0e63c57ddad33e78",
+      "url": "https://hrmm.app.neoncrm.com/nx/portal/neonevents/events?path=%2Fportal%2Fevents%2F51285",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Riverport Wooden Boat School"
+      ]
+    },
+    "hudsonaleworks.com": {
+      "verdict": "listings",
+      "found": [
+        "schema.org events",
+        "dated listings"
+      ],
+      "sig": "33ce3de2ca79de77",
+      "url": "https://www.hudsonaleworks.com/event-space",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Hudson Ale Works"
+      ]
+    },
+    "hudsonrivercruises.com": {
+      "verdict": "unreadable",
+      "found": [],
+      "sig": null,
+      "url": "https://hudsonrivercruises.com/",
+      "note": "renders in the browser — nothing to read on the server",
+      "checked": "2026-09-05",
+      "places": [
+        "Hudson River Cruises"
+      ]
+    },
+    "hudsonvalley.org": {
+      "verdict": "listings",
+      "found": [
+        "linked calendar",
+        "dated listings",
+        "dated specials"
+      ],
+      "sig": "104955705e46c3cb",
+      "url": "https://tickets.hudsonvalley.org/events?view=list&",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Kykuit"
+      ]
+    },
+    "hudsonvalleybounty.com": {
+      "verdict": "none",
+      "found": [],
+      "sig": "fb0c12134bd99e03",
+      "url": null,
+      "note": "read 3 page(s), no dates and no calendar",
+      "checked": "2026-09-05",
+      "places": [
+        "Boice's Farm and Garden Stand"
+      ]
+    },
+    "hudsonvalleygallery.net": {
+      "verdict": "unreachable",
+      "found": [],
+      "sig": null,
+      "url": null,
+      "note": "no response on https, www or http (404)",
+      "checked": "2026-09-05",
+      "places": [
+        "Hudson Valley Gallery"
+      ]
+    },
+    "hudsonvalleyhifi.com": {
+      "verdict": "none",
+      "found": [],
+      "sig": "da39a3ee5e6b4b0d",
+      "url": null,
+      "note": "read 1 page(s), no dates and no calendar",
+      "checked": "2026-09-05",
+      "places": [
+        "Hudson Valley HiFi"
+      ]
+    },
+    "hurleyheritagesociety.org": {
+      "verdict": "listings",
+      "found": [
+        "dated listings",
+        "dated specials"
+      ],
+      "sig": "f6fbd880da08e9f3",
+      "url": "https://www.hurleyheritagesociety.org/",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Hurley Heritage Museum"
+      ]
+    },
+    "hurleylibrary.org": {
+      "verdict": "listings",
+      "found": [
+        "libcal embed",
+        "linked calendar",
+        "dated listings",
+        "dated specials"
+      ],
+      "sig": "959221fa4a540559",
+      "url": "https://hurleylibrary.org/",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Hurley Library - Main Building"
+      ]
+    },
+    "hvshakespeare.org": {
+      "verdict": "listings",
+      "found": [
+        "dated listings",
+        "dated specials"
+      ],
+      "sig": "17f5479c99870649",
+      "url": "https://hvshakespeare.org/events",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Samuel H. Scripps Theater Center"
+      ]
+    },
+    "hvsportscards.com": {
+      "verdict": "unreadable",
+      "found": [],
+      "sig": null,
+      "url": "http://hvsportscards.com/",
+      "note": "renders in the browser — nothing to read on the server",
+      "checked": "2026-09-05",
+      "places": [
+        "Hudson Valley Sports Cards"
+      ]
+    },
+    "ilkensfarm.com": {
+      "verdict": "unreachable",
+      "found": [],
+      "sig": null,
+      "url": null,
+      "note": "no response on https, www or http (URLError)",
+      "checked": "2026-09-05",
+      "places": [
+        "White Hill Vineyard"
+      ]
+    },
+    "iltonlibrary.org": {
+      "verdict": "unreachable",
+      "found": [],
+      "sig": null,
+      "url": null,
+      "note": "no response on https, www or http (URLError)",
+      "checked": "2026-09-05",
+      "places": [
+        "Wilton Library Association"
+      ]
+    },
+    "industrialartsbrewing.com": {
+      "verdict": "listings",
+      "found": [
+        "dated listings",
+        "dated specials"
+      ],
+      "sig": "f8cc7b89ceb22034",
+      "url": "https://www.industrialartsbrewing.com/",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Industrial Arts Brewing Company"
+      ]
+    },
+    "innisfreegarden.org": {
+      "verdict": "listings",
+      "found": [
+        "dated listings",
+        "dated specials"
+      ],
+      "sig": "d3bebf9639f15f61",
+      "url": "https://www.innisfreegarden.org/",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Innisfree Garden"
+      ]
+    },
+    "inquiringbooks.com": {
+      "verdict": "unreadable",
+      "found": [],
+      "sig": null,
+      "url": "https://www.inquiringbooks.com/blocked",
+      "note": "renders in the browser — nothing to read on the server",
+      "checked": "2026-09-05",
+      "places": [
+        "Inquiring Minds Bookstore",
+        "Inquiring Minds Bookstore"
+      ]
+    },
+    "intergardenarena.com": {
+      "verdict": "unreachable",
+      "found": [],
+      "sig": null,
+      "url": null,
+      "note": "no response on https, www or http (URLError)",
+      "checked": "2026-09-05",
+      "places": [
+        "Winter Garden Ice Arena"
+      ]
+    },
+    "irvingtonlibrary.libcal.com": {
+      "verdict": "listings",
+      "found": [
+        "libcal embed",
+        "linked calendar",
+        "schema.org events",
+        "dated listings",
+        "dated specials"
+      ],
+      "sig": "bd4e692aa711b800",
+      "url": "https://irvingtonlibrary.libcal.com/",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Program Room"
+      ]
+    },
+    "irvingtonlibrary.org": {
+      "verdict": "listings",
+      "found": [
+        "libcal embed",
+        "linked calendar",
+        "dated specials"
+      ],
+      "sig": "33e28116e7c04447",
+      "url": "https://irvingtonlibrary.org/",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Irvington Public Library"
+      ]
+    },
+    "irvingtontheater.com": {
+      "verdict": "unreadable",
+      "found": [],
+      "sig": "b9769495ce836d71",
+      "url": "https://www.irvingtontheater.com/events",
+      "note": "its events page renders in the browser",
+      "checked": "2026-09-05",
+      "places": [
+        "Irvington Town Hall Theater"
+      ]
+    },
+    "jadesapphire.com": {
+      "verdict": "unreachable",
+      "found": [],
+      "sig": null,
+      "url": null,
+      "note": "no response on https, www or http (465)",
+      "checked": "2026-09-05",
+      "places": [
+        "Jade Sapphire Exotic Fibres"
+      ]
+    },
+    "justoffbroadwayacademy.com": {
+      "verdict": "listings",
+      "found": [
+        "dated listings"
+      ],
+      "sig": "4fac56c174fdd003",
+      "url": "https://justoffbroadwayacademy.com/",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Just Off Broadway Performing Arts Academy"
+      ]
+    },
+    "katonahmuseum.org": {
+      "verdict": "listings",
+      "found": [
+        "linked calendar",
+        "dated listings",
+        "dated specials"
+      ],
+      "sig": "d0ff69d51dadb322",
+      "url": "https://katonahmuseum.simpletix.com/",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Katonah Museum of Art"
+      ]
+    },
+    "keelertavernmuseum.org": {
+      "verdict": "listings",
+      "found": [
+        "dated listings",
+        "dated specials"
+      ],
+      "sig": "335826d2b19c949c",
+      "url": "https://keelertavernmuseum.org/",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Keeler Tavern Museum"
+      ]
+    },
+    "kentart.org": {
+      "verdict": "listings",
+      "found": [
+        "dated listings",
+        "dated specials"
+      ],
+      "sig": "48373c1cdd842f56",
+      "url": "https://kentart.org/",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Kent Art Association"
+      ]
+    },
+    "kentfallsbrewing.com": {
+      "verdict": "listings",
+      "found": [
+        "dated listings",
+        "dated specials"
+      ],
+      "sig": "5a1766a95872cdf0",
+      "url": "https://kentfallsbrewing.com/",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Kent Falls Brewing Company"
+      ]
+    },
+    "kentmemoriallibrary.org": {
+      "verdict": "unreadable",
+      "found": [],
+      "sig": null,
+      "url": "https://kentmemoriallibrary.org/",
+      "note": "renders in the browser — nothing to read on the server",
+      "checked": "2026-09-05",
+      "places": [
+        "Kent Memorial Library"
+      ]
+    },
+    "kinglyheirs.com": {
+      "verdict": "unreadable",
+      "found": [],
+      "sig": null,
+      "url": "https://kinglyheirs.com/",
+      "note": "renders in the browser — nothing to read on the server",
+      "checked": "2026-09-05",
+      "places": [
+        "Maybrook Yard Offices"
+      ]
+    },
+    "kingstonfarmersmarket.org": {
+      "verdict": "listings",
+      "found": [
+        "schema.org events",
+        "dated listings",
+        "dated specials"
+      ],
+      "sig": "da39a3ee5e6b4b0d",
+      "url": "https://kingstonfarmersmarket.org/events/",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Kingston Farmers Market"
+      ]
+    },
+    "kingstonlibrary.org": {
+      "verdict": "unreadable",
+      "found": [],
+      "sig": null,
+      "url": "https://kingstonlibrary.org/",
+      "note": "renders in the browser — nothing to read on the server",
+      "checked": "2026-09-05",
+      "places": [
+        "Kingston Public Library (Temporary Location)"
+      ]
+    },
+    "kingstonstandard.com": {
+      "verdict": "listings",
+      "found": [
+        "dated listings"
+      ],
+      "sig": "da39a3ee5e6b4b0d",
+      "url": "https://www.kingstonstandard.com/",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Kingston Standard Brewery"
+      ]
+    },
+    "kinosaito.org": {
+      "verdict": "listings",
+      "found": [
+        "dated listings",
+        "dated specials"
+      ],
+      "sig": "dbe6927365e51f41",
+      "url": "https://www.kinosaito.org/",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "KinoSaito Arts Center"
+      ]
+    },
+    "knitapestry.com": {
+      "verdict": "listings",
+      "found": [
+        "dated listings",
+        "dated specials"
+      ],
+      "sig": "f60efc8960d1d9f9",
+      "url": "https://knitapestry.com/",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Knitapestry"
+      ]
+    },
+    "krauseschocolates.com": {
+      "verdict": "none",
+      "found": [],
+      "sig": "08589b0131aab89f",
+      "url": null,
+      "note": "read 3 page(s), no dates and no calendar",
+      "checked": "2026-09-05",
+      "places": [
+        "Krause's Chocolates"
+      ]
+    },
+    "laglib.org": {
+      "verdict": "listings",
+      "found": [
+        "linked calendar",
+        "dated listings",
+        "dated specials"
+      ],
+      "sig": "9a621d15f41c435b",
+      "url": "https://laglib.assabetinteractive.com/calendar/on-the-same-page-book-club-21/",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "LaGrange Association Library"
+      ]
+    },
+    "leememoriallibrary.org": {
+      "verdict": "listings",
+      "found": [
+        "libcal embed",
+        "linked calendar",
+        "dated listings",
+        "dated specials"
+      ],
+      "sig": "664958b7e268a868",
+      "url": "https://www.leememoriallibrary.org/",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Lee Memorial Library"
+      ]
+    },
+    "legoland.com": {
+      "verdict": "listings",
+      "found": [
+        "dated listings",
+        "dated specials"
+      ],
+      "sig": "da39a3ee5e6b4b0d",
+      "url": "https://www.legoland.com/florida/things-to-do/seasonal-events/",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Legoland New York"
+      ]
+    },
+    "libguides.sunyrockland.edu": {
+      "verdict": "listings",
+      "found": [
+        "libcal embed",
+        "linked calendar"
+      ],
+      "sig": "da39a3ee5e6b4b0d",
+      "url": "https://libguides.sunyrockland.edu/c.php?g=224663&p=1488984",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Library Media Center"
+      ]
+    },
+    "liftcaferosendale.com": {
+      "verdict": "unreachable",
+      "found": [],
+      "sig": null,
+      "url": null,
+      "note": "no response on https, www or http (404)",
+      "checked": "2026-09-05",
+      "places": [
+        "Lift Cafe"
+      ]
+    },
+    "littledeepwoodstock.com": {
+      "verdict": "unreachable",
+      "found": [],
+      "sig": null,
+      "url": null,
+      "note": "no response on https, www or http (URLError)",
+      "checked": "2026-09-05",
+      "places": [
+        "Little Deep"
+      ]
+    },
+    "lnphs.com": {
+      "verdict": "listings",
+      "found": [
+        "dated listings",
+        "dated specials"
+      ],
+      "sig": "bb51e1743196d273",
+      "url": "https://lnphs.com/events",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Graham-Brush Log House"
+      ]
+    },
+    "locations.michaels.com": {
+      "verdict": "none",
+      "found": [],
+      "sig": "da39a3ee5e6b4b0d",
+      "url": null,
+      "note": "read 1 page(s), no dates and no calendar",
+      "checked": "2026-09-05",
+      "places": [
+        "Michaels",
+        "Michaels",
+        "Michaels",
+        "Michaels"
+      ]
+    },
+    "lookcinemas.com": {
+      "verdict": "unreadable",
+      "found": [],
+      "sig": null,
+      "url": "https://www.lookcinemas.com/",
+      "note": "renders in the browser — nothing to read on the server",
+      "checked": "2026-09-05",
+      "places": [
+        "LOOK Dine-In Cinemas"
+      ]
+    },
+    "ltproject.com": {
+      "verdict": "unreadable",
+      "found": [],
+      "sig": null,
+      "url": "https://www.lifttrucksart.com/",
+      "note": "renders in the browser — nothing to read on the server",
+      "checked": "2026-09-05",
+      "places": [
+        "Lift Trucks Project"
+      ]
+    },
+    "luthierlyn.com": {
+      "verdict": "unreachable",
+      "found": [],
+      "sig": null,
+      "url": null,
+      "note": "no response on https, www or http (404)",
+      "checked": "2026-09-05",
+      "places": [
+        "Luthier Lyn Guitar Repair"
+      ]
+    },
+    "lyndhurst.org": {
+      "verdict": "listings",
+      "found": [
+        "schema.org events",
+        "dated listings",
+        "dated specials"
+      ],
+      "sig": "f7dcb3e9cdbbd195",
+      "url": "https://lyndhurst.org/events/lyndhurst-is-closed/",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Lyndhurst Mansion"
+      ]
+    },
+    "magazzino.art": {
+      "verdict": "listings",
+      "found": [
+        "dated listings"
+      ],
+      "sig": "0941254edbcca079",
+      "url": "https://www.magazzino.art/visit",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Magazzino"
+      ]
+    },
+    "mahwahmuseum.org": {
+      "verdict": "unreachable",
+      "found": [],
+      "sig": null,
+      "url": null,
+      "note": "no response on https, www or http (URLError)",
+      "checked": "2026-09-05",
+      "places": [
+        "Mahwah Museum"
+      ]
+    },
+    "mamakatinglibrary.org;https": {
+      "verdict": "unreachable",
+      "found": [],
+      "sig": null,
+      "url": null,
+      "note": "no response on https, www or http (URLError)",
+      "checked": "2026-09-05",
+      "places": [
+        "Mamakating Library"
+      ]
+    },
+    "markgrubergallery.com": {
+      "verdict": "unreadable",
+      "found": [],
+      "sig": null,
+      "url": "http://markgrubergallery.com/",
+      "note": "renders in the browser — nothing to read on the server",
+      "checked": "2026-09-05",
+      "places": [
+        "Mark Gruber Gallery"
+      ]
+    },
+    "marlborolibrary.org": {
+      "verdict": "listings",
+      "found": [
+        "libcal embed",
+        "linked calendar",
+        "dated listings",
+        "dated specials"
+      ],
+      "sig": "362e64eb35f47aa4",
+      "url": "https://marlborolibrary.org/",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Marlboro Free Library"
+      ]
+    },
+    "matherhomestead.org": {
+      "verdict": "blocked",
+      "found": [],
+      "sig": null,
+      "url": null,
+      "note": "HTTP 429 to a declared bot",
+      "checked": "2026-09-05",
+      "places": [
+        "The Mather Homestead"
+      ]
+    },
+    "melzingah.awardspace.com": {
+      "verdict": "unreachable",
+      "found": [],
+      "sig": null,
+      "url": null,
+      "note": "no response on https, www or http (URLError)",
+      "checked": "2026-09-05",
+      "places": [
+        "Madam Brett Homestead"
+      ]
+    },
+    "mercierfarms.com": {
+      "verdict": "blocked",
+      "found": [],
+      "sig": null,
+      "url": null,
+      "note": "HTTP 429 to a declared bot",
+      "checked": "2026-09-05",
+      "places": [
+        "Mercier Farms"
+      ]
+    },
+    "metropolitanfarm.com": {
+      "verdict": "blocked",
+      "found": [],
+      "sig": null,
+      "url": null,
+      "note": "HTTP 429 to a declared bot",
+      "checked": "2026-09-05",
+      "places": [
+        "Metropolitan Farm"
+      ]
+    },
+    "mhcm.org": {
+      "verdict": "unreachable",
+      "found": [],
+      "sig": null,
+      "url": null,
+      "note": "no response on https, www or http (URLError)",
+      "checked": "2026-09-05",
+      "places": [
+        "Mid-Hudson Children's Museum"
+      ]
+    },
+    "middletownparamount.com": {
+      "verdict": "listings",
+      "found": [
+        "dated listings",
+        "dated specials"
+      ],
+      "sig": "aefac67532828d25",
+      "url": "https://middletownparamount.com/",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Paramount Theatre"
+      ]
+    },
+    "millhousebrewing.com": {
+      "verdict": "blocked",
+      "found": [],
+      "sig": null,
+      "url": null,
+      "note": "HTTP 403 to a declared bot",
+      "checked": "2026-09-05",
+      "places": [
+        "Mill House Brewing Company"
+      ]
+    },
+    "minormemoriallibrary.org": {
+      "verdict": "unreadable",
+      "found": [],
+      "sig": null,
+      "url": "https://minormemoriallibrary.org/",
+      "note": "renders in the browser — nothing to read on the server",
+      "checked": "2026-09-05",
+      "places": [
+        "Minor Memorial Library"
+      ]
+    },
+    "mitchellfarmct.com": {
+      "verdict": "none",
+      "found": [],
+      "sig": "d8ed46912bb1c57c",
+      "url": null,
+      "note": "read 2 page(s), no dates and no calendar",
+      "checked": "2026-09-05",
+      "places": [
+        "Mitchell Farm"
+      ]
+    },
+    "mohonkpreserve.org": {
+      "verdict": "listings",
+      "found": [
+        "dated listings",
+        "dated specials"
+      ],
+      "sig": "d9231d0214835d56",
+      "url": "https://www.mohonkpreserve.org/",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Mohonk Preserve"
+      ]
+    },
+    "monalisasound.com": {
+      "verdict": "none",
+      "found": [],
+      "sig": "da39a3ee5e6b4b0d",
+      "url": null,
+      "note": "read 1 page(s), no dates and no calendar",
+      "checked": "2026-09-05",
+      "places": [
+        "Mona Lisa Sound Software"
+      ]
+    },
+    "monseytownsquare.com": {
+      "verdict": "blocked",
+      "found": [],
+      "sig": null,
+      "url": null,
+      "note": "HTTP 429 to a declared bot",
+      "checked": "2026-09-05",
+      "places": [
+        "Town Square"
+      ]
+    },
+    "montgomeryplaceorchards.com": {
+      "verdict": "listings",
+      "found": [
+        "linked calendar"
+      ],
+      "sig": "da39a3ee5e6b4b0d",
+      "url": "https://www.trappiitour.com/golden-ticket",
+      "note": null,
+      "spammed": true,
+      "checked": "2026-09-05",
+      "places": [
+        "Montgomery Place Farm Stand"
+      ]
+    },
+    "montvalelibrarynj.org": {
+      "verdict": "listings",
+      "found": [
+        "dated listings",
+        "dated specials"
+      ],
+      "sig": "e16472aefa75f933",
+      "url": "https://www.montvalelibrarynj.org/",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Montvale Public Library"
+      ]
+    },
+    "mountaincreek.com": {
+      "verdict": "listings",
+      "found": [
+        "dated listings",
+        "dated specials"
+      ],
+      "sig": "be4492e8955a54f9",
+      "url": "https://mountaincreek.com/activities-events/snowtubing/",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Mountain Creek Waterpark"
+      ]
+    },
+    "mountkiscolibrary.libcal.com": {
+      "verdict": "listings",
+      "found": [
+        "libcal embed",
+        "schema.org events",
+        "dated listings",
+        "dated specials"
+      ],
+      "sig": "04af623e4bcf300b",
+      "url": "https://mountkiscolibrary.libcal.com/",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Reading Room"
+      ]
+    },
+    "mountpleasantlibrary.org": {
+      "verdict": "listings",
+      "found": [
+        "linked calendar",
+        "dated listings",
+        "dated specials"
+      ],
+      "sig": "0237328806dbfaa9",
+      "url": "https://mountpleasant.librarycalendar.com/events/month",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Mount Pleasant Branch Library"
+      ]
+    },
+    "mowerssaturdayfleamarket.com": {
+      "verdict": "none",
+      "found": [],
+      "sig": "da39a3ee5e6b4b0d",
+      "url": null,
+      "note": "read 1 page(s), no dates and no calendar",
+      "checked": "2026-09-05",
+      "places": [
+        "Mowers Flea Market"
+      ]
+    },
+    "ncgmovies.com": {
+      "verdict": "listings",
+      "found": [
+        "dated listings",
+        "dated specials"
+      ],
+      "sig": "0db95443124cdce8",
+      "url": "https://www.ncgmovies.com/",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "NCG Kingston 12"
+      ]
+    },
+    "nchistory.org": {
+      "verdict": "listings",
+      "found": [
+        "dated listings",
+        "dated specials"
+      ],
+      "sig": "3a74009e4b1d7380",
+      "url": "https://nchistory.org/",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "New Canaan Historical Society",
+        "John Rogers Studio and Museum"
+      ]
+    },
+    "neuberger.org": {
+      "verdict": "listings",
+      "found": [
+        "linked calendar",
+        "dated listings",
+        "dated specials"
+      ],
+      "sig": "da39a3ee5e6b4b0d",
+      "url": "https://www.purchase.edu/neuberger-museum-of-art/events/",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Neuberger Museum of Art",
+        "Neuberger Musuem of Art"
+      ]
+    },
+    "neversinkmuseum.org": {
+      "verdict": "unreadable",
+      "found": [],
+      "sig": null,
+      "url": "https://neversinkmuseum.org/cgi-sys/suspendedpage.cgi",
+      "note": "renders in the browser — nothing to read on the server",
+      "checked": "2026-09-05",
+      "places": [
+        "Neversink Valley Museum of History & Innovation"
+      ]
+    },
+    "newburghbrewing.com": {
+      "verdict": "listings",
+      "found": [
+        "dated listings",
+        "dated specials"
+      ],
+      "sig": "8b2ac5be43347ce1",
+      "url": "https://newburghbrewing.com/events",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Newburgh Brewing Company"
+      ]
+    },
+    "newburghlibrary.libcal.com": {
+      "verdict": "listings",
+      "found": [
+        "libcal embed",
+        "schema.org events",
+        "dated listings",
+        "dated specials"
+      ],
+      "sig": "917036604f386008",
+      "url": "https://newburghlibrary.libcal.com/",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "BOE/Library Lobby",
+        "BOE/Library Lobby, Newburgh Free Library Plaza",
+        "Lobby-Café",
+        "Montgomery Street Library Entrance"
+      ]
+    },
+    "newburghlibrary.org": {
+      "verdict": "listings",
+      "found": [
+        "libcal embed",
+        "linked calendar",
+        "dated listings",
+        "dated specials"
+      ],
+      "sig": "9173b45cfe6dab06",
+      "url": "https://newburghlibrary.org/",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Newburgh Free Library"
+      ]
+    },
+    "newburghmall.com": {
+      "verdict": "listings",
+      "found": [
+        "dated listings",
+        "dated specials"
+      ],
+      "sig": "9978a3b593071bfa",
+      "url": "https://www.newburghmall.com/",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Newburgh Mall"
+      ]
+    },
+    "newcanaangallery.com": {
+      "verdict": "unreadable",
+      "found": [],
+      "sig": "3010ff755608c465",
+      "url": "https://newcanaangallery.com/private-events/",
+      "note": "renders in the browser — nothing to read on the server",
+      "checked": "2026-09-05",
+      "places": [
+        "New Canaan Frame & Art Gallery"
+      ]
+    },
+    "newcanaanlibrary.org": {
+      "verdict": "listings",
+      "found": [
+        "dated listings",
+        "dated specials"
+      ],
+      "sig": "dcd331d32712b454",
+      "url": "https://www.newcanaanlibrary.org/",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "New Canaan Library"
+      ]
+    },
+    "newcitybowlandbattingcages.com": {
+      "verdict": "listings",
+      "found": [
+        "dated listings",
+        "dated specials"
+      ],
+      "sig": "436f7db65d5da17d",
+      "url": "https://newcitybowlandbattingcages.com/",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "New City Bowl"
+      ]
+    },
+    "newcitylibrary.org": {
+      "verdict": "listings",
+      "found": [
+        "dated listings",
+        "dated specials"
+      ],
+      "sig": "ab22c6b0793291b1",
+      "url": "https://newcitylibrary.org/",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "New City Library"
+      ]
+    },
+    "newmiddletowncinemas.com": {
+      "verdict": "listings",
+      "found": [
+        "dated listings"
+      ],
+      "sig": "d3ba73eae3cbe338",
+      "url": "https://www.newmiddletowncinemas.com/",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Middletown Cinemas"
+      ]
+    },
+    "newmilfordlibrary.org": {
+      "verdict": "unreadable",
+      "found": [],
+      "sig": null,
+      "url": "https://newmilfordlibrary.org/",
+      "note": "renders in the browser — nothing to read on the server",
+      "checked": "2026-09-05",
+      "places": [
+        "New Milford Public Library"
+      ]
+    },
+    "newpaltz.edu": {
+      "verdict": "listings",
+      "found": [
+        "linked calendar",
+        "dated listings",
+        "dated specials"
+      ],
+      "sig": "a93b9465db1905e6",
+      "url": "https://webapps.newpaltz.edu/calendars",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "John R. Kirk Planetarium"
+      ]
+    },
+    "newtboutique.com": {
+      "verdict": "unreadable",
+      "found": [],
+      "sig": null,
+      "url": "https://www.newtboutique.com/",
+      "note": "renders in the browser — nothing to read on the server",
+      "checked": "2026-09-05",
+      "places": [
+        "Newt"
+      ]
+    },
+    "njpalisades.org": {
+      "verdict": "unreadable",
+      "found": [],
+      "sig": null,
+      "url": "https://njpalisades.org/",
+      "note": "renders in the browser — nothing to read on the server",
+      "checked": "2026-09-05",
+      "places": [
+        "State Line Cafe",
+        "Women's Federation Monument"
+      ]
+    },
+    "nmhistorical.org": {
+      "verdict": "listings",
+      "found": [
+        "schema.org events",
+        "dated listings",
+        "dated specials"
+      ],
+      "sig": "3ca32b5cfb883b96",
+      "url": "https://www.nmhistorical.org/",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "New Milford Historical Society Museum"
+      ]
+    },
+    "nodhillbrewery.com": {
+      "verdict": "blocked",
+      "found": [],
+      "sig": null,
+      "url": null,
+      "note": "HTTP 429 to a declared bot",
+      "checked": "2026-09-05",
+      "places": [
+        "Biergarten at Nod Hill Brewery"
+      ]
+    },
+    "northcastlelibrary.org": {
+      "verdict": "listings",
+      "found": [
+        "linked calendar"
+      ],
+      "sig": "38cbdf053e18a0d1",
+      "url": "https://lp.constantcontactpages.com/su/6tmyGMx",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Armonk Public Library"
+      ]
+    },
+    "nplnj.org": {
+      "verdict": "blocked",
+      "found": [],
+      "sig": null,
+      "url": null,
+      "note": "HTTP 429 to a declared bot",
+      "checked": "2026-09-05",
+      "places": [
+        "Norwood Public Library"
+      ]
+    },
+    "nps.gov": {
+      "verdict": "specials",
+      "found": [
+        "dated specials"
+      ],
+      "sig": "4334d7eb5982e44f",
+      "url": "https://www.nps.gov/index.htm",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Burial Site of Franklin and Eleanor Roosevelt",
+        "Roosevelt Home Garden",
+        "Saint Paul's Church National Historic Site",
+        "Hamilton Grange National Memorial"
+      ]
+    },
+    "nutmeggames.com": {
+      "verdict": "listings",
+      "found": [
+        "dated listings",
+        "dated specials"
+      ],
+      "sig": "a194182dd2a191cc",
+      "url": "https://nutmeggames.com/",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Nutmeg Games"
+      ]
+    },
+    "nynjtc.org": {
+      "verdict": "listings",
+      "found": [
+        "linked calendar",
+        "dated listings"
+      ],
+      "sig": "da39a3ee5e6b4b0d",
+      "url": "https://events.nynjtc.org/",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Bull Hill",
+        "G. Thomas Donch Nature Preserve",
+        "High Mountain Park Preserve"
+      ]
+    },
+    "obercreekbrewing.com": {
+      "verdict": "listings",
+      "found": [
+        "schema.org events",
+        "dated listings",
+        "dated specials"
+      ],
+      "sig": "a1702f41bb97920b",
+      "url": "https://obercreekbrewing.com/events",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Obercreek Brewing Company"
+      ]
+    },
+    "olanagallery.com": {
+      "verdict": "unreachable",
+      "found": [],
+      "sig": null,
+      "url": null,
+      "note": "no response on https, www or http (URLError)",
+      "checked": "2026-09-05",
+      "places": [
+        "Olana Gallery"
+      ]
+    },
+    "oldrhinebeck.org": {
+      "verdict": "listings",
+      "found": [
+        "linked calendar",
+        "dated listings",
+        "dated specials"
+      ],
+      "sig": "d82a566957be6692",
+      "url": "https://oldrhinebeckaerodrome.ticketspice.com/2025-air-show-season",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Old Rhinebeck Aerodrome Museum"
+      ]
+    },
+    "olesavannah.com": {
+      "verdict": "unreadable",
+      "found": [],
+      "sig": null,
+      "url": "https://olesavannah.com/",
+      "note": "renders in the browser — nothing to read on the server",
+      "checked": "2026-09-05",
+      "places": [
+        "Rondout Ice Rink at Ole Savannah"
+      ]
+    },
+    "olfandwarrior.com": {
+      "verdict": "unreachable",
+      "found": [],
+      "sig": null,
+      "url": null,
+      "note": "no response on https, www or http (URLError)",
+      "checked": "2026-09-05",
+      "places": [
+        "Wolf & Warrior Brewing Company"
+      ]
+    },
+    "olivefreelibrary.org": {
+      "verdict": "listings",
+      "found": [
+        "google embed",
+        "dated listings",
+        "dated specials"
+      ],
+      "sig": "ccd07b9602e6f67a",
+      "url": "https://www.olivefreelibrary.org/",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "4033 Route 28A",
+        "Olive Free Library"
+      ]
+    },
+    "olivertwistoliveoil.com": {
+      "verdict": "listings",
+      "found": [
+        "dated listings"
+      ],
+      "sig": "c2334fe09e25092b",
+      "url": "https://www.olivertwistoliveoil.com/",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Olive R Twist Olive Oil Company"
+      ]
+    },
+    "oodstockart.org": {
+      "verdict": "unreachable",
+      "found": [],
+      "sig": null,
+      "url": null,
+      "note": "no response on https, www or http (URLError)",
+      "checked": "2026-09-05",
+      "places": [
+        "Woodstock Artists Association & Museum"
+      ]
+    },
+    "oodstockemporium.com": {
+      "verdict": "unreachable",
+      "found": [],
+      "sig": null,
+      "url": null,
+      "note": "no response on https, www or http (URLError)",
+      "checked": "2026-09-05",
+      "places": [
+        "Woodstock Emporium"
+      ]
+    },
+    "oodstockhighnovelties.com": {
+      "verdict": "unreachable",
+      "found": [],
+      "sig": null,
+      "url": null,
+      "note": "no response on https, www or http (URLError)",
+      "checked": "2026-09-05",
+      "places": [
+        "Woodstock High"
+      ]
+    },
+    "oodstockplayhouse.org": {
+      "verdict": "unreachable",
+      "found": [],
+      "sig": null,
+      "url": null,
+      "note": "no response on https, www or http (URLError)",
+      "checked": "2026-09-05",
+      "places": [
+        "Woodstock Playhouse"
+      ]
+    },
+    "orangecountygov.com": {
+      "verdict": "listings",
+      "found": [
+        "linked calendar",
+        "dated listings",
+        "dated specials"
+      ],
+      "sig": "ec9c822bc81823e6",
+      "url": "https://events.gcc.teams.microsoft.com/event/f2dcc8a7-d286-4506-af43-435ff9d7fdf9@f46cb8ea-7900-4d10-8ceb-80e8c1c81ee7?source=copyLinkLegacyShareEventDialog",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Kowawese Unique Area at Plum Point"
+      ]
+    },
+    "orangetourism.org": {
+      "verdict": "listings",
+      "found": [
+        "linked calendar",
+        "schema.org events",
+        "dated listings",
+        "dated specials"
+      ],
+      "sig": "7abd4eb56cdc9d10",
+      "url": "https://me-llnewyork-exchange.secure-cdn.meg-na.accessoticketing.com/embed/store.php?l=en&merchant_id=3450&reseller_id=3632&reseller_location_id=6115&raut=1d778353c57ac5d645556970d8bdb324aef31bd4a01bd6075b4f0aae182e60e7058f22432c7a93b8b953658f49fa0954",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "The Pines Museum"
+      ]
+    },
+    "outhouseorchardsny.com": {
+      "verdict": "blocked",
+      "found": [],
+      "sig": null,
+      "url": null,
+      "note": "HTTP 429 to a declared bot",
+      "checked": "2026-09-05",
+      "places": [
+        "Outhouse Orchards"
+      ]
+    },
+    "overlookdrivein.com": {
+      "verdict": "specials",
+      "found": [
+        "dated specials"
+      ],
+      "sig": "0c0964105e98b26a",
+      "url": "http://overlookdrivein.com/",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Overlook Drive In Theater"
+      ]
+    },
+    "pagespast.com": {
+      "verdict": "none",
+      "found": [],
+      "sig": "da39a3ee5e6b4b0d",
+      "url": null,
+      "note": "read 1 page(s), no dates and no calendar",
+      "checked": "2026-09-05",
+      "places": [
+        "Pages Past"
+      ]
+    },
+    "palisadescenter.com": {
+      "verdict": "listings",
+      "found": [
+        "linked calendar"
+      ],
+      "sig": "c49d97857f68e988",
+      "url": "https://www.amctheatres.com/movie-theatres/west-nyack/amc-palisades-21/showtimes",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Palisades Center"
+      ]
+    },
+    "palisadesny.com": {
+      "verdict": "blocked",
+      "found": [],
+      "sig": null,
+      "url": null,
+      "note": "HTTP 429 to a declared bot",
+      "checked": "2026-09-05",
+      "places": [
+        "Flag Pole"
+      ]
+    },
+    "palisadesparks.org": {
+      "verdict": "none",
+      "found": [],
+      "sig": "0efb4cf9ed99f046",
+      "url": null,
+      "note": "read 2 page(s), no dates and no calendar",
+      "checked": "2026-09-05",
+      "places": [
+        "Haverstraw Beach State Park",
+        "Hook Mountain State Park",
+        "Bristol Beach State Park"
+      ]
+    },
+    "parkridgelibrarynj.org": {
+      "verdict": "unreadable",
+      "found": [],
+      "sig": null,
+      "url": "https://parkridgelibrarynj.org/",
+      "note": "renders in the browser — nothing to read on the server",
+      "checked": "2026-09-05",
+      "places": [
+        "Park Ridge Library"
+      ]
+    },
+    "parks.ny.gov": {
+      "verdict": "listings",
+      "found": [
+        "dated listings",
+        "dated specials"
+      ],
+      "sig": "b3021718dcb8f6ac",
+      "url": "https://parks.ny.gov/",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Washington's Headquarters State Historic Site",
+        "New Windsor Cantonment State Historic Site",
+        "Knox's Headquarters State Historic Site",
+        "Storm King State Park"
+      ]
+    },
+    "parks.westchestergov.com": {
+      "verdict": "listings",
+      "found": [
+        "linked calendar",
+        "dated listings",
+        "dated specials"
+      ],
+      "sig": "dd8c271a3b885a90",
+      "url": "https://parksevents.westchestercountyny.gov/event/vendor-village/",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "George's Island Park",
+        "Croton Point Park",
+        "Sprain Ridge Pool",
+        "Willson's Waves"
+      ]
+    },
+    "pawlingbookcove.com": {
+      "verdict": "none",
+      "found": [],
+      "sig": "da39a3ee5e6b4b0d",
+      "url": null,
+      "note": "read 1 page(s), no dates and no calendar",
+      "checked": "2026-09-05",
+      "places": [
+        "The Book Cove"
+      ]
+    },
+    "pawlingfreelibrary.org": {
+      "verdict": "listings",
+      "found": [
+        "linked calendar"
+      ],
+      "sig": "e44209820efb4a89",
+      "url": "https://engagedpatrons.org/EventsCalendar.cfm?SiteID=8184",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Pawling Free Library"
+      ]
+    },
+    "pazzazed.com": {
+      "verdict": "none",
+      "found": [],
+      "sig": "da39a3ee5e6b4b0d",
+      "url": null,
+      "note": "read 1 page(s), no dates and no calendar",
+      "checked": "2026-09-05",
+      "places": [
+        "Pazzazzed",
+        "Pazzazed Gift & Home"
+      ]
+    },
+    "peekamoose.com": {
+      "verdict": "none",
+      "found": [],
+      "sig": "da39a3ee5e6b4b0d",
+      "url": null,
+      "note": "read 1 page(s), no dates and no calendar",
+      "checked": "2026-09-05",
+      "places": [
+        "Peekamoose Custom Guitars and Repairs"
+      ]
+    },
+    "peekskill.org": {
+      "verdict": "unreadable",
+      "found": [],
+      "sig": null,
+      "url": "https://peekskill.org/",
+      "note": "renders in the browser — nothing to read on the server",
+      "checked": "2026-09-05",
+      "places": [
+        "The Field Library"
+      ]
+    },
+    "peekskillmuseum.org": {
+      "verdict": "listings",
+      "found": [
+        "dated listings"
+      ],
+      "sig": "ed392dc9e5987e1a",
+      "url": "https://peekskillmuseum.org/programs/",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "The Peekskill Museum"
+      ]
+    },
+    "peoplesplaceuc.org": {
+      "verdict": "listings",
+      "found": [
+        "dated listings"
+      ],
+      "sig": "610851d1173eae3e",
+      "url": "https://www.peoplesplace.org/",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "People's Place"
+      ]
+    },
+    "philipstowndepottheatre.org": {
+      "verdict": "listings",
+      "found": [
+        "schema.org events",
+        "dated listings",
+        "dated specials"
+      ],
+      "sig": "2d00e06a9d6546f8",
+      "url": "https://www.depottheater.org/shows-tickets/2020-one-act-festival-1",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Philipstown Depot Theatre"
+      ]
+    },
+    "piermontlibrary.org": {
+      "verdict": "listings",
+      "found": [
+        "linked calendar",
+        "dated listings",
+        "dated specials"
+      ],
+      "sig": "58efebddb0f6952d",
+      "url": "https://southorangetownlibraries.librarycalendar.com/events/month?branches%5B95%5D=95",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Piermont Public Library"
+      ]
+    },
+    "pinebusharealibrary.org": {
+      "verdict": "listings",
+      "found": [
+        "dated listings",
+        "dated specials"
+      ],
+      "sig": "380d312df5087bcb",
+      "url": "https://pinebusharealibrary.org/",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Pine Bush Area Public Library"
+      ]
+    },
+    "pinebushmuseum.com": {
+      "verdict": "listings",
+      "found": [
+        "dated listings"
+      ],
+      "sig": "197191f68868273d",
+      "url": "https://pinebushmuseum.com/tours/",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Pine Bush UFO Museum"
+      ]
+    },
+    "pineplainslibrary.org": {
+      "verdict": "unreadable",
+      "found": [],
+      "sig": null,
+      "url": "https://pineplainslibrary.org/",
+      "note": "renders in the browser — nothing to read on the server",
+      "checked": "2026-09-05",
+      "places": [
+        "Pine Plains Library"
+      ]
+    },
+    "pinkolive.com": {
+      "verdict": "listings",
+      "found": [
+        "dated listings",
+        "dated specials"
+      ],
+      "sig": "0cf268a90f8771e7",
+      "url": "https://pinkolive.com/pages/store-events",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Pink Olive Cold Spring"
+      ]
+    },
+    "pinotspalette.com": {
+      "verdict": "none",
+      "found": [],
+      "sig": "da39a3ee5e6b4b0d",
+      "url": null,
+      "note": "read 1 page(s), no dates and no calendar",
+      "checked": "2026-09-05",
+      "places": [
+        "Pinot’s Pallette",
+        "Pinot's Palette"
+      ]
+    },
+    "playeatdrink.com": {
+      "verdict": "unreadable",
+      "found": [],
+      "sig": null,
+      "url": "https://playeatdrink.com/",
+      "note": "renders in the browser — nothing to read on the server",
+      "checked": "2026-09-05",
+      "places": [
+        "Four Brothers Drive-In"
+      ]
+    },
+    "playhouse.cinemalab.com": {
+      "verdict": "unreachable",
+      "found": [],
+      "sig": null,
+      "url": null,
+      "note": "no response on https, www or http (URLError)",
+      "checked": "2026-09-05",
+      "places": [
+        "The Playhouse"
+      ]
+    },
+    "poklib.org": {
+      "verdict": "listings",
+      "found": [
+        "linked calendar",
+        "dated listings",
+        "dated specials"
+      ],
+      "sig": "445624b7b7a3b3eb",
+      "url": "https://poughkeepsie.librarycalendar.com/events/list",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Boardman Road Branch Library",
+        "Adriance Memorial Library"
+      ]
+    },
+    "portal.ct.gov": {
+      "verdict": "listings",
+      "found": [
+        "linked calendar",
+        "dated listings"
+      ],
+      "sig": "da39a3ee5e6b4b0d",
+      "url": "https://egov.ct.gov/PMC/",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Seth Low Pierrepont State Park Reserve",
+        "Osborne Homestead Museum"
+      ]
+    },
+    "postmarkbooks.net": {
+      "verdict": "blocked",
+      "found": [],
+      "sig": null,
+      "url": null,
+      "note": "HTTP 429 to a declared bot",
+      "checked": "2026-09-05",
+      "places": [
+        "Postmark Books"
+      ]
+    },
+    "putnamhistorymuseum.org": {
+      "verdict": "listings",
+      "found": [
+        "schema.org events",
+        "dated listings",
+        "dated specials"
+      ],
+      "sig": "a372e4e86bf9baf0",
+      "url": "https://www.putnamhistorymuseum.org/events/",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Putnam History Museum"
+      ]
+    },
+    "putnampark.org": {
+      "verdict": "unreadable",
+      "found": [],
+      "sig": "a3c841b7272d76ba",
+      "url": "https://www.putnampark.org/calendar/",
+      "note": "its events page renders in the browser",
+      "checked": "2026-09-05",
+      "places": [
+        "Putnam Memorial State Park"
+      ]
+    },
+    "putnamvalleyhistory.org": {
+      "verdict": "listings",
+      "found": [
+        "dated listings",
+        "dated specials"
+      ],
+      "sig": "ab2bb282392722ba",
+      "url": "https://putnamvalleyhistory.org/",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Schoolhouse Museum"
+      ]
+    },
+    "quartzrockvineyard.com": {
+      "verdict": "listings",
+      "found": [
+        "dated listings",
+        "dated specials"
+      ],
+      "sig": "e5a984ff213b37d7",
+      "url": "https://quartzrockvineyard.com/",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Quartz Rock Vineyard"
+      ]
+    },
+    "quinnzpinz.com": {
+      "verdict": "listings",
+      "found": [
+        "dated listings",
+        "dated specials"
+      ],
+      "sig": "090750c8a6066a93",
+      "url": "https://www.quinnzpinz.com/",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Quinnz Pinz"
+      ]
+    },
+    "rainydaypaperback.com": {
+      "verdict": "unreadable",
+      "found": [],
+      "sig": null,
+      "url": "https://www.rainydaypaperback.com/blocked",
+      "note": "renders in the browser — nothing to read on the server",
+      "checked": "2026-09-05",
+      "places": [
+        "Rainy Day Paperback Exchange"
+      ]
+    },
+    "reddingcthistoricalsociety.org": {
+      "verdict": "listings",
+      "found": [
+        "dated listings",
+        "dated specials"
+      ],
+      "sig": "84a8c990393e0046",
+      "url": "https://www.reddinghistory.org/events-list",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Redding Historical Society"
+      ]
+    },
+    "redhookemporium.com": {
+      "verdict": "unreachable",
+      "found": [],
+      "sig": null,
+      "url": null,
+      "note": "no response on https, www or http (URLError)",
+      "checked": "2026-09-05",
+      "places": [
+        "The Red Hook Emporium"
+      ]
+    },
+    "redmaplevineyard.com": {
+      "verdict": "none",
+      "found": [],
+      "sig": "da39a3ee5e6b4b0d",
+      "url": null,
+      "note": "read 1 page(s), no dates and no calendar",
+      "checked": "2026-09-05",
+      "places": [
+        "Red Maple Vineyard",
+        "Red Maple Vineyards Cellars"
+      ]
+    },
+    "regmovies.com": {
+      "verdict": "blocked",
+      "found": [],
+      "sig": null,
+      "url": null,
+      "note": "HTTP 403 to a declared bot",
+      "checked": "2026-09-05",
+      "places": [
+        "Regal Fishkill",
+        "Regal UA Cortlandt Town Center",
+        "Regal Nanuet & RPX",
+        "Regal New Roc Stadium"
+      ]
+    },
+    "rehercenter.org": {
+      "verdict": "listings",
+      "found": [
+        "dated listings",
+        "dated specials"
+      ],
+      "sig": "5de359ed8466b2ee",
+      "url": "https://www.rehercenter.org/visit/",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Reher Center for Immigrant Culture and History"
+      ]
+    },
+    "renfair.com": {
+      "verdict": "unreadable",
+      "found": [],
+      "sig": "da39a3ee5e6b4b0d",
+      "url": "https://renfair.com/calendar/",
+      "note": "its events page renders in the browser",
+      "checked": "2026-09-05",
+      "places": [
+        "New York Renaissance Faire"
+      ]
+    },
+    "rewindkingston.com": {
+      "verdict": "unreadable",
+      "found": [],
+      "sig": null,
+      "url": "https://www.rewindkingston.com/",
+      "note": "renders in the browser — nothing to read on the server",
+      "checked": "2026-09-05",
+      "places": [
+        "Rewind Kingston"
+      ]
+    },
+    "rgoa.org": {
+      "verdict": "unreadable",
+      "found": [],
+      "sig": null,
+      "url": "https://rgoa.org/",
+      "note": "renders in the browser — nothing to read on the server",
+      "checked": "2026-09-05",
+      "places": [
+        "Ridgefield Guild of Artists"
+      ]
+    },
+    "rhinebeckartistsshop.com": {
+      "verdict": "none",
+      "found": [],
+      "sig": "da39a3ee5e6b4b0d",
+      "url": null,
+      "note": "read 1 page(s), no dates and no calendar",
+      "checked": "2026-09-05",
+      "places": [
+        "Rhinebeck Artist's Shop"
+      ]
+    },
+    "rhinebeckfarmersmarket.com": {
+      "verdict": "listings",
+      "found": [
+        "dated listings",
+        "dated specials"
+      ],
+      "sig": "8c67f1eea1889804",
+      "url": "https://www.rhinebeckfarmersmarket.com/",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Rhinebeck Farmer's Market"
+      ]
+    },
+    "ridgefieldlibrary.org": {
+      "verdict": "listings",
+      "found": [
+        "linked calendar",
+        "dated listings",
+        "dated specials"
+      ],
+      "sig": "ae1b2c4b4fbc71da",
+      "url": "https://ridgefieldlibrary.librarymarket.com/events/upcoming?age_groups%5B3%5D=3&",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Ridgefield Library"
+      ]
+    },
+    "ridgefieldtheaterbarn.org": {
+      "verdict": "listings",
+      "found": [
+        "linked calendar",
+        "dated listings",
+        "dated specials"
+      ],
+      "sig": "2e4afffcc06afb6f",
+      "url": "https://ci.ovationtix.com/35722/production/1136373",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Workshop Theatre Barn"
+      ]
+    },
+    "ridgewoodhistoricalsociety.org": {
+      "verdict": "listings",
+      "found": [
+        "schema.org events",
+        "dated listings",
+        "dated specials"
+      ],
+      "sig": "f35c89b9ca874fa2",
+      "url": "https://www.ridgewoodhistoricalsociety.org/events/pocahontas-sep-24-2026",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "School House Museum"
+      ]
+    },
+    "ringwoodmanor.org": {
+      "verdict": "listings",
+      "found": [
+        "dated listings"
+      ],
+      "sig": "6541d75d6a1fc921",
+      "url": "https://www.ringwoodmanor.org/events.html",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Ringwood Manor Historic District"
+      ]
+    },
+    "robertselkowitz.com": {
+      "verdict": "unreadable",
+      "found": [],
+      "sig": "0efb4cf9ed99f046",
+      "url": "https://www.robertselkowitz.com/",
+      "note": "renders in the browser — nothing to read on the server",
+      "checked": "2026-09-05",
+      "places": [
+        "Robert Selkowitz"
+      ]
+    },
+    "rocklandcountyny.gov": {
+      "verdict": "blocked",
+      "found": [],
+      "sig": null,
+      "url": null,
+      "note": "HTTP 403 to a declared bot",
+      "checked": "2026-09-05",
+      "places": [
+        "South Mountain Park"
+      ]
+    },
+    "rosendalelibrary.org": {
+      "verdict": "listings",
+      "found": [
+        "libcal embed",
+        "linked calendar",
+        "dated listings"
+      ],
+      "sig": "da39a3ee5e6b4b0d",
+      "url": "https://rosendalelibrary.org/",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Rosendale Library"
+      ]
+    },
+    "roughdraftny.com": {
+      "verdict": "listings",
+      "found": [
+        "dated listings"
+      ],
+      "sig": "0efb4cf9ed99f046",
+      "url": "https://www.roughdraftny.com/events",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Rough Draft"
+      ]
+    },
+    "salvationarmy.org": {
+      "verdict": "listings",
+      "found": [
+        "dated listings"
+      ],
+      "sig": "916377d21762374d",
+      "url": "https://www.salvationarmy.org:443/events",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Salvation Army"
+      ]
+    },
+    "scarsdalelibrary.org": {
+      "verdict": "listings",
+      "found": [
+        "dated listings"
+      ],
+      "sig": "a6a5ac4f90e76540",
+      "url": "https://www.scarsdalelibrary.org/",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Scarsdale Public Library"
+      ]
+    },
+    "scatteredbooks.com": {
+      "verdict": "unreadable",
+      "found": [],
+      "sig": null,
+      "url": "https://scatteredbooks.com/",
+      "note": "renders in the browser — nothing to read on the server",
+      "checked": "2026-09-05",
+      "places": [
+        "Scattered Books"
+      ]
+    },
+    "senatehousekingston.org": {
+      "verdict": "parked",
+      "found": [],
+      "sig": null,
+      "url": "http://senatehousekingston.org/",
+      "note": "a default server or registrar page, not the venue",
+      "checked": "2026-09-05",
+      "places": [
+        "Loughran House",
+        "Senate House",
+        "Senate House Museum"
+      ]
+    },
+    "seriouscomedytheatre.com": {
+      "verdict": "unreachable",
+      "found": [],
+      "sig": null,
+      "url": null,
+      "note": "no response on https, www or http (404)",
+      "checked": "2026-09-05",
+      "places": [
+        "Serious Comedy Theatre"
+      ]
+    },
+    "sharonct.gov": {
+      "verdict": "listings",
+      "found": [
+        "dated listings"
+      ],
+      "sig": "db1173e172aecd3f",
+      "url": "https://sharonct.gov/",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Lime Kiln"
+      ]
+    },
+    "sharonhist.org": {
+      "verdict": "unreadable",
+      "found": [],
+      "sig": null,
+      "url": "https://sharonhist.org/",
+      "note": "renders in the browser — nothing to read on the server",
+      "checked": "2026-09-05",
+      "places": [
+        "Gay-Holt House Museum"
+      ]
+    },
+    "shermanhistoricalsociety.org": {
+      "verdict": "unreachable",
+      "found": [],
+      "sig": null,
+      "url": null,
+      "note": "no response on https, www or http (465)",
+      "checked": "2026-09-05",
+      "places": [
+        "Northrop House",
+        "The Old Store"
+      ]
+    },
+    "shermanlibrary.org": {
+      "verdict": "listings",
+      "found": [
+        "schema.org events",
+        "dated listings",
+        "dated specials"
+      ],
+      "sig": "5b3e72ce293deeeb",
+      "url": "https://www.shermanlibrary.org/calendar-program-list/657fk6dprk7algk-4wpeh-r9abs-xtyt6-sw5ld-ypx3m-3lntn-8c29e-7js6r-23hda-ddsk2-h8wbn-fexex-dpenz",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Sherman Library"
+      ]
+    },
+    "shermanplayers.org": {
+      "verdict": "unreachable",
+      "found": [],
+      "sig": null,
+      "url": null,
+      "note": "no response on https, www or http (URLError)",
+      "checked": "2026-09-05",
+      "places": [
+        "Sherman Play House"
+      ]
+    },
+    "shop.darksiderecords.com": {
+      "verdict": "listings",
+      "found": [
+        "dated listings",
+        "dated specials"
+      ],
+      "sig": "f3695a73b0a4b419",
+      "url": "https://shop.darksiderecords.com/",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Darkside Records"
+      ]
+    },
+    "shopcapitalvintage.com": {
+      "verdict": "unreadable",
+      "found": [],
+      "sig": null,
+      "url": "http://shopcapitalvintage.com/",
+      "note": "renders in the browser — nothing to read on the server",
+      "checked": "2026-09-05",
+      "places": [
+        "Capital Vintage"
+      ]
+    },
+    "shopgh.com": {
+      "verdict": "none",
+      "found": [],
+      "sig": "5d878a8baf704273",
+      "url": null,
+      "note": "read 3 page(s), no dates and no calendar",
+      "checked": "2026-09-05",
+      "places": [
+        "Golden Horseshoe Shopping Center"
+      ]
+    },
+    "shophudsonvalleymall.com": {
+      "verdict": "blocked",
+      "found": [],
+      "sig": null,
+      "url": null,
+      "note": "HTTP 429 to a declared bot",
+      "checked": "2026-09-05",
+      "places": [
+        "Hudson Valley Mall"
+      ]
+    },
+    "showcasecinemas.com": {
+      "verdict": "listings",
+      "found": [
+        "dated listings"
+      ],
+      "sig": "5bf91948939a698e",
+      "url": "https://www.showcasecinemas.com/",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Showcase Cinema de Lux Ridge Hill",
+        "Showcase Cinema de Lux"
+      ]
+    },
+    "showtimecinemas.net": {
+      "verdict": "unreachable",
+      "found": [],
+      "sig": null,
+      "url": null,
+      "note": "no response on https, www or http (URLError)",
+      "checked": "2026-09-05",
+      "places": [
+        "Showtime Cinemas"
+      ]
+    },
+    "simon.com": {
+      "verdict": "listings",
+      "found": [
+        "linked calendar",
+        "dated specials"
+      ],
+      "sig": "da39a3ee5e6b4b0d",
+      "url": "https://shop.simon.com/pages/flash-events?utm_source=SIMON&amp;utm_medium=Flyout&amp;utm_campaign=Simon_DiscoverMore_DailyDrops",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "The Shops at Nanuet"
+      ]
+    },
+    "simplicitygoods.com": {
+      "verdict": "parked",
+      "found": [],
+      "sig": null,
+      "url": "https://www.hugedomains.com/domain_profile.cfm?d=simplicitygoods.com",
+      "note": "a default server or registrar page, not the venue",
+      "checked": "2026-09-05",
+      "places": [
+        "Simplicity"
+      ]
+    },
+    "siteone.com": {
+      "verdict": "unreachable",
+      "found": [],
+      "sig": null,
+      "url": null,
+      "note": "no response on https, www or http (TimeoutError)",
+      "checked": "2026-09-05",
+      "places": [
+        "SiteOne Landscape Supply"
+      ]
+    },
+    "soonsorchards.com": {
+      "verdict": "blocked",
+      "found": [],
+      "sig": null,
+      "url": null,
+      "note": "HTTP 429 to a declared bot",
+      "checked": "2026-09-05",
+      "places": [
+        "Soons Orchards"
+      ]
+    },
+    "southburyhistory.org": {
+      "verdict": "listings",
+      "found": [
+        "dated listings"
+      ],
+      "sig": "5bdb5249edccb9f8",
+      "url": "https://www.southburyhistory.org/",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Old Town Hall Museum"
+      ]
+    },
+    "splashdownbeach.com": {
+      "verdict": "listings",
+      "found": [
+        "dated listings",
+        "dated specials"
+      ],
+      "sig": "8da3e192a2cccdac",
+      "url": "https://splashdownbeach.com/admission/",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "SplashDown Beach"
+      ]
+    },
+    "splitrockbks.com": {
+      "verdict": "listings",
+      "found": [
+        "schema.org events",
+        "dated listings",
+        "dated specials"
+      ],
+      "sig": "bc25029a4fa0f13e",
+      "url": "https://splitrockbooks.com/event/2026-06-02/cookbook-book-club-middle-eastern",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Split Rock Books"
+      ]
+    },
+    "spmeadery.com": {
+      "verdict": "blocked",
+      "found": [],
+      "sig": null,
+      "url": null,
+      "note": "HTTP 429 to a declared bot",
+      "checked": "2026-09-05",
+      "places": [
+        "Slate Point Meadery"
+      ]
+    },
+    "stamfordhistory.org": {
+      "verdict": "listings",
+      "found": [
+        "dated listings",
+        "dated specials"
+      ],
+      "sig": "3d10fce866249d23",
+      "url": "https://stamfordhistory.org/",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Stamford Historical Society Museum"
+      ]
+    },
+    "starrlibrary.org": {
+      "verdict": "listings",
+      "found": [
+        "linked calendar",
+        "dated listings",
+        "dated specials"
+      ],
+      "sig": "b2dde6a8e61309f1",
+      "url": "https://engagedpatrons.org/EventsCalendar.cfm?SiteID=3635",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Starr Library"
+      ]
+    },
+    "stockadeguitars.com": {
+      "verdict": "none",
+      "found": [],
+      "sig": "da39a3ee5e6b4b0d",
+      "url": null,
+      "note": "read 1 page(s), no dates and no calendar",
+      "checked": "2026-09-05",
+      "places": [
+        "Stockade Guitars"
+      ]
+    },
+    "stores.barnesandnoble.com": {
+      "verdict": "unreadable",
+      "found": [],
+      "sig": "da39a3ee5e6b4b0d",
+      "url": "https://stores.barnesandnoble.com/",
+      "note": "renders in the browser — nothing to read on the server",
+      "checked": "2026-09-05",
+      "places": [
+        "Barnes & Noble",
+        "Barnes & Noble",
+        "Barnes & Noble"
+      ]
+    },
+    "storyscreenbeacon.com": {
+      "verdict": "suspect",
+      "found": [
+        "off-topic content"
+      ],
+      "sig": null,
+      "url": "https://www.storyscreenbeacon.com/",
+      "note": "the domain is serving something the venue did not put there",
+      "checked": "2026-09-05",
+      "places": [
+        "Story Screen Cinema"
+      ]
+    },
+    "strikersofbrookfield.com": {
+      "verdict": "listings",
+      "found": [
+        "dated listings",
+        "dated specials"
+      ],
+      "sig": "0efb4cf9ed99f046",
+      "url": "https://strikersofbrookfield.com/",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Strikers of Brookfield"
+      ]
+    },
+    "studiotashtego.com": {
+      "verdict": "listings",
+      "found": [
+        "dated listings"
+      ],
+      "sig": "c1744b148bba64fc",
+      "url": "https://studiotashtego.com/",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Studio Tashtego"
+      ]
+    },
+    "stuffstore.co": {
+      "verdict": "unreadable",
+      "found": [],
+      "sig": null,
+      "url": "https://stuffstore.co/",
+      "note": "renders in the browser — nothing to read on the server",
+      "checked": "2026-09-05",
+      "places": [
+        "STuFF Antiques & Collectibles"
+      ]
+    },
+    "sunfrostfarms.com": {
+      "verdict": "unreachable",
+      "found": [],
+      "sig": null,
+      "url": null,
+      "note": "no response on https, www or http (URLError)",
+      "checked": "2026-09-05",
+      "places": [
+        "Sunfrost Farms"
+      ]
+    },
+    "suppliesforcreativeliving.com": {
+      "verdict": "blocked",
+      "found": [],
+      "sig": null,
+      "url": null,
+      "note": "HTTP 429 to a declared bot",
+      "checked": "2026-09-05",
+      "places": [
+        "Suplies for Creative Living"
+      ]
+    },
+    "tcinemas.com": {
+      "verdict": "unreachable",
+      "found": [],
+      "sig": null,
+      "url": null,
+      "note": "no response on https, www or http (URLError)",
+      "checked": "2026-09-05",
+      "places": [
+        "Washington Township Cinemas"
+      ]
+    },
+    "theatreworks.com": {
+      "verdict": "blocked",
+      "found": [],
+      "sig": null,
+      "url": null,
+      "note": "HTTP 403 to a declared bot",
+      "checked": "2026-09-05",
+      "places": [
+        "THETREWORKS new milford"
+      ]
+    },
+    "thechancetheater.com": {
+      "verdict": "blocked",
+      "found": [],
+      "sig": null,
+      "url": null,
+      "note": "HTTP 403 to a declared bot",
+      "checked": "2026-09-05",
+      "places": [
+        "The Chance Theater"
+      ]
+    },
+    "thecheeseshops.com": {
+      "verdict": "unreadable",
+      "found": [],
+      "sig": null,
+      "url": "https://www.thecheeseshops.com/",
+      "note": "renders in the browser — nothing to read on the server",
+      "checked": "2026-09-05",
+      "places": [
+        "Cold Spring Cheese"
+      ]
+    },
+    "thecountrythistle.net": {
+      "verdict": "unreachable",
+      "found": [],
+      "sig": null,
+      "url": null,
+      "note": "no response on https, www or http (URLError)",
+      "checked": "2026-09-05",
+      "places": [
+        "The Country Thistle"
+      ]
+    },
+    "thedenofmarbletown.com": {
+      "verdict": "listings",
+      "found": [
+        "dated listings"
+      ],
+      "sig": "0efb4cf9ed99f046",
+      "url": "https://thedenofmarbletown.com/",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "The Den of Marbletown"
+      ]
+    },
+    "thefairoaksdrivein.com": {
+      "verdict": "unreachable",
+      "found": [],
+      "sig": null,
+      "url": null,
+      "note": "no response on https, www or http (URLError)",
+      "checked": "2026-09-05",
+      "places": [
+        "Fair Oaks Drive-In"
+      ]
+    },
+    "thegifthut.com": {
+      "verdict": "listings",
+      "found": [
+        "dated listings"
+      ],
+      "sig": "1c2a37718fb4ab78",
+      "url": "https://www.thegifthut.com/",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "The Gift Hut"
+      ]
+    },
+    "theglasshouse.org": {
+      "verdict": "listings",
+      "found": [
+        "linked calendar",
+        "dated listings",
+        "dated specials"
+      ],
+      "sig": "d91ee603179d9254",
+      "url": "https://ci.ovationtix.com/419",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "The Glass House"
+      ]
+    },
+    "themuserosendale.org": {
+      "verdict": "unreadable",
+      "found": [],
+      "sig": "bd1f96c82709dae3",
+      "url": "https://themuserosendale.org/",
+      "note": "renders in the browser — nothing to read on the server",
+      "checked": "2026-09-05",
+      "places": [
+        "The Muse"
+      ]
+    },
+    "thepaperstore.com": {
+      "verdict": "none",
+      "found": [],
+      "sig": "1a04c46b4538e82f",
+      "url": null,
+      "note": "read 5 page(s), no dates and no calendar",
+      "checked": "2026-09-05",
+      "places": [
+        "The Paper Store"
+      ]
+    },
+    "thepurpleheart.com": {
+      "verdict": "listings",
+      "found": [
+        "dated listings",
+        "dated specials"
+      ],
+      "sig": "0efb4cf9ed99f046",
+      "url": "https://thepurpleheart.com/",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "National Purple Heart Hall of Honor"
+      ]
+    },
+    "theshoppershaven.com": {
+      "verdict": "none",
+      "found": [],
+      "sig": "da39a3ee5e6b4b0d",
+      "url": null,
+      "note": "read 1 page(s), no dates and no calendar",
+      "checked": "2026-09-05",
+      "places": [
+        "Shoppers Haven"
+      ]
+    },
+    "thespiderswebcomics.com": {
+      "verdict": "blocked",
+      "found": [],
+      "sig": null,
+      "url": null,
+      "note": "HTTP 429 to a declared bot",
+      "checked": "2026-09-05",
+      "places": [
+        "The Spider's Web"
+      ]
+    },
+    "thestissingcenter.org": {
+      "verdict": "listings",
+      "found": [
+        "schema.org events",
+        "dated listings",
+        "dated specials"
+      ],
+      "sig": "a4e42eecda74352e",
+      "url": "https://www.thestissingcenter.org/events-list/pg-13-2026",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "The Stissing Center"
+      ]
+    },
+    "thisishinterlandny.com": {
+      "verdict": "none",
+      "found": [],
+      "sig": "da39a3ee5e6b4b0d",
+      "url": null,
+      "note": "read 1 page(s), no dates and no calendar",
+      "checked": "2026-09-05",
+      "places": [
+        "The Showroom at Hinterland"
+      ]
+    },
+    "thriftycity.com": {
+      "verdict": "unreachable",
+      "found": [],
+      "sig": null,
+      "url": null,
+      "note": "no response on https, www or http (URLError)",
+      "checked": "2026-09-05",
+      "places": [
+        "St Luke's Thrift Shop"
+      ]
+    },
+    "tibetancenter.org": {
+      "verdict": "unreachable",
+      "found": [],
+      "sig": null,
+      "url": null,
+      "note": "no response on https, www or http (301)",
+      "checked": "2026-09-05",
+      "places": [
+        "Aid Tibet Thrift Shop",
+        "Tibetan Center"
+      ]
+    },
+    "timberwoodinc.com": {
+      "verdict": "unreadable",
+      "found": [],
+      "sig": null,
+      "url": "http://timberwoodinc.com/",
+      "note": "renders in the browser — nothing to read on the server",
+      "checked": "2026-09-05",
+      "places": [
+        "Timberwood Industries Inc"
+      ]
+    },
+    "tmny.org": {
+      "verdict": "none",
+      "found": [],
+      "sig": "da39a3ee5e6b4b0d",
+      "url": null,
+      "note": "read 1 page(s), no dates and no calendar",
+      "checked": "2026-09-05",
+      "places": [
+        "Trolley Museum of New York"
+      ]
+    },
+    "tools.usps.com": {
+      "verdict": "blocked",
+      "found": [],
+      "sig": null,
+      "url": null,
+      "note": "HTTP 403 to a declared bot",
+      "checked": "2026-09-05",
+      "places": [
+        "Poughkeepsie Post Office",
+        "Goshen Post Office",
+        "Hyde Park Post Office",
+        "Nyack Post Office"
+      ]
+    },
+    "townofminisink.com": {
+      "verdict": "listings",
+      "found": [
+        "google embed",
+        "dated listings",
+        "dated specials"
+      ],
+      "sig": "da39a3ee5e6b4b0d",
+      "url": "https://www.townofminisink.com/",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Minisink Heritage Museum"
+      ]
+    },
+    "tpnc.org": {
+      "verdict": "listings",
+      "found": [
+        "dated listings",
+        "dated specials"
+      ],
+      "sig": "a5e97b618b0cef8a",
+      "url": "https://tpnc.org/",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Powerhouse Performing Arts Center"
+      ]
+    },
+    "transombookshop.com": {
+      "verdict": "listings",
+      "found": [
+        "linked calendar",
+        "dated listings",
+        "dated specials"
+      ],
+      "sig": "13ca5e04fc081d87",
+      "url": "https://trnsm.com/headless",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Transom Bookshop"
+      ]
+    },
+    "tscwoodstock.com": {
+      "verdict": "unreadable",
+      "found": [],
+      "sig": "b3831773011fc683",
+      "url": "https://www.tscwoodstock.com/",
+      "note": "renders in the browser — nothing to read on the server",
+      "checked": "2026-09-05",
+      "places": [
+        "Tinker Street Cinema"
+      ]
+    },
+    "ulstercountyfair.com": {
+      "verdict": "listings",
+      "found": [
+        "linked calendar",
+        "dated listings",
+        "dated specials"
+      ],
+      "sig": "cc5524275ac624f0",
+      "url": "https://www.etix.com/ticket/v/21064/ulster-county-fair%22",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Ulster County Fair"
+      ]
+    },
+    "ulsterhabitat.org": {
+      "verdict": "unreadable",
+      "found": [],
+      "sig": null,
+      "url": "https://ulsterhabitat.org/",
+      "note": "renders in the browser — nothing to read on the server",
+      "checked": "2026-09-05",
+      "places": [
+        "Habitat for Humanity ReStore"
+      ]
+    },
+    "unclecheef.com": {
+      "verdict": "none",
+      "found": [],
+      "sig": "da39a3ee5e6b4b0d",
+      "url": null,
+      "note": "read 1 page(s), no dates and no calendar",
+      "checked": "2026-09-05",
+      "places": [
+        "Uncle Cheef"
+      ]
+    },
+    "uniquequalityfabrics.net": {
+      "verdict": "unreadable",
+      "found": [],
+      "sig": "da39a3ee5e6b4b0d",
+      "url": "https://www.uniquequalityfabrics.net/events/",
+      "note": "its events page renders in the browser",
+      "checked": "2026-09-05",
+      "places": [
+        "Unique Quality Fabrics"
+      ]
+    },
+    "uppersaddleriverlibrary.org": {
+      "verdict": "listings",
+      "found": [
+        "libcal embed",
+        "linked calendar",
+        "dated listings",
+        "dated specials"
+      ],
+      "sig": "53bf9d64ad9cb259",
+      "url": "https://uppersaddleriverlibrary.org/",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Upper Saddle River Public Library"
+      ]
+    },
+    "valleycottagelibrary.org": {
+      "verdict": "listings",
+      "found": [
+        "linked calendar",
+        "dated listings"
+      ],
+      "sig": "6a1ca61aa5b92262",
+      "url": "https://valleycottage.librarycalendar.com/events/month",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Valley Cottage Library"
+      ]
+    },
+    "victoriagardens.biz": {
+      "verdict": "listings",
+      "found": [
+        "dated listings",
+        "dated specials"
+      ],
+      "sig": "da39a3ee5e6b4b0d",
+      "url": "https://www.victoriagardens.biz/",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Victoria Gardens"
+      ]
+    },
+    "villagecenterarts.org": {
+      "verdict": "blocked",
+      "found": [],
+      "sig": null,
+      "url": null,
+      "note": "HTTP 429 to a declared bot",
+      "checked": "2026-09-05",
+      "places": [
+        "Villiage Centre For The Arts"
+      ]
+    },
+    "villageofossining.org": {
+      "verdict": "unreachable",
+      "found": [],
+      "sig": null,
+      "url": null,
+      "note": "no response on https, www or http (URLError)",
+      "checked": "2026-09-05",
+      "places": [
+        "Cedar Lane Art Center"
+      ]
+    },
+    "visitbearmountain.com": {
+      "verdict": "listings",
+      "found": [
+        "schema.org events",
+        "dated listings",
+        "dated specials"
+      ],
+      "sig": "8c04afd2f9bb31a6",
+      "url": "https://visitbearmountain.com/events/",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Bear Mountain Trading Post"
+      ]
+    },
+    "visitmanitoga.org": {
+      "verdict": "listings",
+      "found": [
+        "linked calendar",
+        "dated listings"
+      ],
+      "sig": "01600f4aeb89a438",
+      "url": "https://fareharbor.com/embeds/book/visitmanitoga/?full-items=yes&flow=546621&header=yes",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "MANITOGA / The Russel Wright Design Center"
+      ]
+    },
+    "visitsleepyhollow.com": {
+      "verdict": "unreadable",
+      "found": [],
+      "sig": null,
+      "url": "https://visitsleepyhollow.com/",
+      "note": "renders in the browser — nothing to read on the server",
+      "checked": "2026-09-05",
+      "places": [
+        "Headless Horseman Bridge Sign",
+        "Headless Horseman Statue"
+      ]
+    },
+    "vwinery.com": {
+      "verdict": "unreachable",
+      "found": [],
+      "sig": null,
+      "url": null,
+      "note": "no response on https, www or http (URLError)",
+      "checked": "2026-09-05",
+      "places": [
+        "Warwick Valley Winery & Distillery"
+      ]
+    },
+    "yckoffptoeconomyshop.org": {
+      "verdict": "unreachable",
+      "found": [],
+      "sig": null,
+      "url": null,
+      "note": "no response on https, www or http (URLError)",
+      "checked": "2026-09-05",
+      "places": [
+        "Wyckoff PTO Economy Shop"
+      ]
+    },
+    "zenafarmstead.com": {
+      "verdict": "unreadable",
+      "found": [],
+      "sig": "da39a3ee5e6b4b0d",
+      "url": "https://zenafarmstead.com/events/",
+      "note": "its events page renders in the browser",
+      "checked": "2026-09-05",
+      "places": [
+        "Zena Farmstead"
+      ]
+    },
+    "zeusbrewingco.com": {
+      "verdict": "listings",
+      "found": [
+        "dated listings",
+        "dated specials"
+      ],
+      "sig": "10543c54fcf4c89b",
+      "url": "https://www.zeusbrewingco.com/catering",
+      "note": null,
+      "checked": "2026-09-05",
+      "places": [
+        "Zeus Brewing Company"
+      ]
+    }
+  },
+  "updated": "2026-09-05T17:46:21+00:00"
+}

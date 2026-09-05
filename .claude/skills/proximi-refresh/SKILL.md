@@ -41,6 +41,7 @@ python3 scripts/enrich.py      # geocode (cached), radius-filter, classify
 python3 scripts/merge.py       # collapse repeats, dedupe → data/events.json
 python3 scripts/prices.py      # read unpriced listings' own pages (cached)
 python3 scripts/places.py      # the directory → data/places.json
+python3 scripts/audit.py       # read the next batch of venue sites (see below)
 python3 scripts/validate.py    # gates both files; must pass before committing
 node tests/drive.js            # drives the page itself; must pass too
 ```
@@ -194,7 +195,59 @@ Two traps worth stating outright:
   selectors on `=` made every regex rule — breweries, monuments, zoos, theme
   parks — match nothing at all, and the counts stayed plausible throughout.
 
-## 7. One fact, one owner
+## 7. The audit: read a venue's site once, then leave it alone
+
+`scripts/audit.py --limit 150` reads the next batch of venue domains from
+`data/places.json` and records what each one publishes in
+`sources/placeaudit.json`. Places whose domain came back `none` render "no
+event calendar" on their card — which is the app telling somebody not to come
+back, so the bar for writing it is high.
+
+Run a batch on any refresh where there is time; it is not on the critical path
+and nothing downstream fails without it.
+
+Three rules that are already load-bearing:
+
+- **Only `none` labels a card.** `unreachable`, `blocked` (403 to a declared
+  bot), `unreadable` (a JavaScript shell — LOOK Dine-In Cinemas serves 33
+  characters of text, Rough Draft's events page 304) and `parked`
+  (senatehousekingston.org answers "Caddy works!") are failures to read, not
+  findings. Reporting a blind spot as a fact about the venue is the one way
+  this feature can lie.
+- **A page that is *for* listings is held to a lower bar** — two dates on
+  `/events`, three on a page that merely mentions them. Forsyth Nature
+  Center's whole autumn is two events, and three would have called it quiet.
+- **The calendar is often not on the venue's host.** Pawling Library's whole
+  programme lives on `engagedpatrons.org`, so reading only its own pages called
+  a public library quiet. An off-host link that plainly says calendar or events
+  counts as a calendar and is not followed — the venue answered the question by
+  linking to it. Whether that host talks to us is a fact about that host.
+- **`--verify` is the re-check, not a re-run.** A verdict carries a hash of
+  which of the site's own pages could carry listings, not of the page. Re-read
+  every homepage weekly and a rotating hero image expires every verdict; hash
+  the shape and only a venue that *adds an events page* trips it.
+
+**The failure that cost the most, and threw nothing:** two libraries and an
+arts centre came back as 25,000 characters of binary noise — gzip, sent to a
+client that never asked for it and never decoded it. The bytes became
+replacement characters, which have no dates and no links, so three busy
+institutions were recorded as publishing nothing. `get()` decompresses now and
+`audit.py --selftest` (in CI) breaks if that or any other rule here goes. Run
+it after touching the classifier.
+
+`--report` prints the counts and, usefully, the feeds it found that are not in
+the registry yet. Those are free listings: `verdict: feed` means an iCal with
+future events at a URL nobody has registered.
+
+The audit also reads every venue site anyway, which makes it the cheapest place
+to catch the next hijacked domain — the first batch re-caught
+`storyscreenbeacon.com` and `bethelcinema.com` and found two nobody knew about,
+`elitecinema6.com` and `goodtidingsgiftshop.com`. A `suspect` domain **loses
+its link** in `data/places.json`: OSM will carry that `website` tag for years,
+and tapping *Website* on a cinema should not open a betting site. Check the
+list `--report` prints at the end of every batch.
+
+## 8. One fact, one owner
 
 `merge.py` resolves a room to its building and writes `venueKey`. `places.py`
 and the client both **read** it. They used to each derive it, and the directory
@@ -204,7 +257,7 @@ through found nothing.
 
 If two things need the same derived fact, compute it once and write it down.
 
-## 8. Verify what renders, not what exists
+## 9. Verify what renders, not what exists
 
 - `python3 scripts/validate.py` must pass. It gates both files and runs the
   Overpass selector self-test.
@@ -227,7 +280,7 @@ If two things need the same derived fact, compute it once and write it down.
 - **A test you have not seen fail is not a test yet.** Re-break the thing and
   confirm the check goes red.
 
-## 9. Ship
+## 10. Ship
 
 Commit with the listing count, how many are priced, and any source that changed
 state. Push to `main`.

@@ -218,6 +218,17 @@ def check_places(path='data/places.json'):
             if kind is not None and kind not in known:
                 errors.append(f'{tag}: unknown place kind {kind!r} — '
                               'no chip on the Places page can reach it')
+        # "No event calendar" is the app telling a reader not to come back, so
+        # it may only ever say what the audit actually found. Two ways it could
+        # start lying quietly: a verdict the client does not render, and a
+        # place carrying both the label and a programme.
+        if place.get('eventInfo') not in (None, 'none'):
+            errors.append(f"{tag}: eventInfo must be 'none' or absent, "
+                          f"got {place['eventInfo']!r} — the client renders "
+                          "nothing else, so the row would say nothing at all")
+        if place.get('eventInfo') == 'none' and place.get('events'):
+            errors.append(f"{tag}: marked 'no event calendar' but carries "
+                          f"{place['events']} listing(s)")
         if radius and meta.get('centerLat') is not None:
             d = miles(meta['centerLat'], meta['centerLon'],
                           place['lat'], place['lon'])
@@ -236,15 +247,55 @@ def check_places(path='data/places.json'):
     for place in items:
         kinds[place.get('kind') or 'other'] = kinds.get(place.get('kind') or 'other', 0) + 1
     withev = sum(1 for p in items if p.get('events'))
+    quiet = sum(1 for p in items if p.get('eventInfo') == 'none')
     top = ', '.join(f'{k} {n}' for k, n in
                     sorted(kinds.items(), key=lambda kv: -kv[1])[:6])
     print(f'{len(items)} places OK — {len(kinds)} kinds, {withev} with listings, '
+          f'{quiet} audited with nothing published, '
           f'within {radius} mi of {meta.get("centerName")} ({top})')
     if meta.get('partial'):
         print(f'warning: places is partial — {", ".join(meta["partial"])} could not be fetched')
     return 0
 
 
+def check_audit(path='sources/placeaudit.json'):
+    """The audit file is what stops us re-reading 800 venue websites weekly.
+
+    A verdict outside the vocabulary silently becomes "not audited" — the file
+    keeps growing, the same sites get read again every run, and nothing says so.
+    """
+    if not os.path.exists(path):
+        print('audit: no verdicts yet — scripts/audit.py has not run')
+        return 0
+    sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+    import audit as auditor
+
+    doc = json.load(open(path))
+    domains = doc.get('domains') or {}
+    errors, counts = [], {}
+    for name, rec in domains.items():
+        if rec.get('verdict') not in auditor.RECHECK_DAYS:
+            errors.append(f'{name}: unknown verdict {rec.get("verdict")!r}')
+        if not re.match(r'^\d{4}-\d{2}-\d{2}$', rec.get('checked') or ''):
+            errors.append(f'{name}: checked must be a date, got {rec.get("checked")!r}')
+        # Without a signature there is nothing for --verify to compare against,
+        # so a quiet site would never be looked at again. That is the one
+        # verdict where "never again" is not acceptable.
+        if rec.get('verdict') == 'none' and not rec.get('sig'):
+            errors.append(f'{name}: marked quiet with no signature to re-check against')
+        counts[rec.get('verdict')] = counts.get(rec.get('verdict'), 0) + 1
+
+    if errors:
+        print(f'\naudit FAILED — {len(errors)} problem(s):')
+        for e in errors[:20]:
+            print('  -', e)
+        return 1
+
+    shape = ', '.join(f'{k} {n}' for k, n in sorted(counts.items(), key=lambda kv: -kv[1]))
+    print(f'{len(domains)} venue domains audited — {shape}')
+    return 0
+
+
 if __name__ == '__main__':
     code = main(*sys.argv[1:])
-    sys.exit(code or check_places() or check_id_stability())
+    sys.exit(code or check_places() or check_audit() or check_id_stability())

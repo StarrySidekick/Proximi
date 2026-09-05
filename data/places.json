@@ -494,7 +494,7 @@
       "miles": 0.2,
       "city": "Beacon, NY",
       "address": "445 Main Street, Beacon, NY",
-      "url": "https://www.storyscreenbeacon.com/",
+      "url": null,
       "phone": null,
       "openingHours": null,
       "brand": null,
@@ -1728,7 +1728,7 @@
       "miles": 3.5,
       "city": "New Windsor, NY",
       "address": "215 Quassaick Avenue, New Windsor, NY",
-      "url": "https://www.destinta.com/",
+      "url": null,
       "phone": null,
       "openingHours": null,
       "brand": null,
@@ -2358,7 +2358,9 @@
       "wheelchair": null,
       "description": null,
       "events": 0,
-      "source": "OpenStreetMap"
+      "source": "OpenStreetMap",
+      "eventInfo": "none",
+      "eventChecked": "2026-09-05"
     },
     {
       "id": "osm-node-4738681762",
@@ -2752,7 +2754,9 @@
       "wheelchair": null,
       "description": null,
       "events": 0,
-      "source": "OpenStreetMap"
+      "source": "OpenStreetMap",
+      "eventInfo": "none",
+      "eventChecked": "2026-09-05"
     },
     {
       "id": "venue-samuel-h-scripps-theater-center",
@@ -4132,7 +4136,9 @@
       "wheelchair": null,
       "description": null,
       "events": 0,
-      "source": "OpenStreetMap"
+      "source": "OpenStreetMap",
+      "eventInfo": "none",
+      "eventChecked": "2026-09-05"
     },
     {
       "id": "osm-way-187069060",
@@ -4797,7 +4803,9 @@
       "wheelchair": null,
       "description": null,
       "events": 0,
-      "source": "OpenStreetMap"
+      "source": "OpenStreetMap",
+      "eventInfo": "none",
+      "eventChecked": "2026-09-05"
     },
     {
       "id": "venue-crew-restaurant-bar",
@@ -4926,7 +4934,7 @@
       "miles": 10.6,
       "city": "Red Oaks Mill",
       "address": null,
-      "url": "https://www.simplicitygoods.com/index.html",
+      "url": null,
       "phone": "+1-845-240-1794",
       "openingHours": "Mo-We 10:00-18:00; Th-Fr 10:00-20:00; Sa 10:00-18:00; Su 12:00-16:00",
       "brand": null,
@@ -5073,7 +5081,9 @@
       "wheelchair": null,
       "description": null,
       "events": 0,
-      "source": "OpenStreetMap"
+      "source": "OpenStreetMap",
+      "eventInfo": "none",
+      "eventChecked": "2026-09-05"
     },
     {
       "id": "osm-node-4046423736",
@@ -5741,7 +5751,9 @@
       "wheelchair": null,
       "description": null,
       "events": 0,
-      "source": "OpenStreetMap"
+      "source": "OpenStreetMap",
+      "eventInfo": "none",
+      "eventChecked": "2026-09-05"
     },
     {
       "id": "osm-way-327192665",
@@ -7952,7 +7964,9 @@
       "wheelchair": null,
       "description": null,
       "events": 0,
-      "source": "OpenStreetMap"
+      "source": "OpenStreetMap",
+      "eventInfo": "none",
+      "eventChecked": "2026-09-05"
     },
     {
       "id": "osm-way-737687444",
@@ -8984,7 +8998,9 @@
       "wheelchair": null,
       "description": null,
       "events": 0,
-      "source": "OpenStreetMap"
+      "source": "OpenStreetMap",
+      "eventInfo": "none",
+      "eventChecked": "2026-09-05"
     },
     {
       "id": "venue-robibero-winery",
@@ -9765,7 +9781,9 @@
       "wheelchair": null,
       "description": null,
       "events": 0,
-      "source": "OpenStreetMap"
+      "source": "OpenStreetMap",
+      "eventInfo": "none",
+      "eventChecked": "2026-09-05"
     },
     {
       "id": "osm-node-8703565078",
@@ -10147,7 +10165,7 @@
       "miles": 19.1,
       "city": "Chester, NY",
       "address": "78 Brookside Avenue, Chester, NY",
-      "url": "https://elitecinema6.com/",
+      "url": null,
       "phone": null,
       "openingHours": null,
       "brand": null,
@@ -10318,7 +10336,9 @@
       "wheelchair": "limited",
       "description": null,
       "events": 0,
-      "source": "OpenStreetMap"
+      "source": "OpenStreetMap",
+      "eventInfo": "none",
+      "eventChecked": "2026-09-05"
     },
     {
       "id": "osm-way-1189773065",
@@ -10493,7 +10513,7 @@
       "miles": 19.4,
       "city": "Pawling",
       "address": "12 Charles Colman Boulevard, Pawling",
-      "url": "http://www.goodtidingsgiftshop.com/",
+      "url": null,
       "phone": null,
       "openingHours": null,
       "brand": null,
@@ -10663,7 +10683,9 @@
       "wheelchair": null,
       "description": null,
       "events": 0,
-      "source": "OpenStreetMap"
+      "source": "OpenStreetMap",
+      "eventInfo": "none",
+      "eventChecked": "2026-09-05"
     },
     {
       "id": "osm-node-357587998",
@@ -10755,7 +10777,9 @@
       "wheelchair": null,
       "description": null,
       "events": 0,
-      "source": "OpenStreetMap"
+      "source": "OpenStreetMap",
+      "eventInfo": "none",
+      "eventChecked": "2026-09-05"
     },
     {
       "id": "osm-way-611012448",
@@ -11809,7 +11833,9 @@
       "wheelchair": null,
       "description": null,
       "events": 0,
-      "source": "OpenStreetMap"
+      "source": "OpenStreetMap",
+      "eventInfo": "none",
+      "eventChecked": "2026-09-05"
     },
     {
       "id": "osm-way-629042599",
@@ -12269,7 +12295,9 @@
       "wheelchair": null,
       "description": null,
       "events": 0,
-      "source": "OpenStreetMap"
+      "source": "OpenStreetMap",
+      "eventInfo": "none",
+      "eventChecked": "2026-09-05"
     },
     {
       "id": "osm-node-5049752024",
@@ -13050,7 +13078,9 @@
       "wheelchair": null,
       "description": null,
       "events": 0,
-      "source": "OpenStreetMap"
+      "source": "OpenStreetMap",
+      "eventInfo": "none",
+      "eventChecked": "2026-09-05"
     },
     {
       "id": "venue-teatown",
@@ -13554,7 +13584,9 @@
       "wheelchair": null,
       "description": null,
       "events": 0,
-      "source": "OpenStreetMap"
+      "source": "OpenStreetMap",
+      "eventInfo": "none",
+      "eventChecked": "2026-09-05"
     },
     {
       "id": "venue-town-of-wallkill-golf-club",
@@ -15509,7 +15541,9 @@
       "wheelchair": null,
       "description": null,
       "events": 0,
-      "source": "OpenStreetMap"
+      "source": "OpenStreetMap",
+      "eventInfo": "none",
+      "eventChecked": "2026-09-05"
     },
     {
       "id": "osm-node-5962390830",
@@ -15717,7 +15751,9 @@
       "wheelchair": null,
       "description": null,
       "events": 0,
-      "source": "OpenStreetMap"
+      "source": "OpenStreetMap",
+      "eventInfo": "none",
+      "eventChecked": "2026-09-05"
     },
     {
       "id": "osm-node-6252282782",
@@ -16430,7 +16466,9 @@
       "wheelchair": null,
       "description": null,
       "events": 0,
-      "source": "OpenStreetMap"
+      "source": "OpenStreetMap",
+      "eventInfo": "none",
+      "eventChecked": "2026-09-05"
     },
     {
       "id": "osm-way-69489556",
@@ -17178,7 +17216,7 @@
       "miles": 26.3,
       "city": "Ridgefield, CT",
       "address": "653 North Salem Road, Ridgefield, CT",
-      "url": "https://gardenofideas.com/",
+      "url": null,
       "phone": null,
       "openingHours": "08:00-dusk",
       "brand": null,
@@ -18814,7 +18852,9 @@
       "wheelchair": null,
       "description": null,
       "events": 0,
-      "source": "OpenStreetMap"
+      "source": "OpenStreetMap",
+      "eventInfo": "none",
+      "eventChecked": "2026-09-05"
     },
     {
       "id": "venue-tesoro-d-italia-restaurant",
@@ -20287,7 +20327,9 @@
       "wheelchair": null,
       "description": null,
       "events": 0,
-      "source": "OpenStreetMap"
+      "source": "OpenStreetMap",
+      "eventInfo": "none",
+      "eventChecked": "2026-09-05"
     },
     {
       "id": "osm-node-12458031992",
@@ -20310,7 +20352,9 @@
       "wheelchair": null,
       "description": null,
       "events": 0,
-      "source": "OpenStreetMap"
+      "source": "OpenStreetMap",
+      "eventInfo": "none",
+      "eventChecked": "2026-09-05"
     },
     {
       "id": "venue-morton-memorial-library",
@@ -20607,7 +20651,9 @@
       "wheelchair": null,
       "description": null,
       "events": 0,
-      "source": "OpenStreetMap"
+      "source": "OpenStreetMap",
+      "eventInfo": "none",
+      "eventChecked": "2026-09-05"
     },
     {
       "id": "osm-relation-6367725",
@@ -21341,7 +21387,9 @@
       "wheelchair": null,
       "description": null,
       "events": 0,
-      "source": "OpenStreetMap"
+      "source": "OpenStreetMap",
+      "eventInfo": "none",
+      "eventChecked": "2026-09-05"
     },
     {
       "id": "osm-way-608773155",
@@ -21456,7 +21504,9 @@
       "wheelchair": null,
       "description": null,
       "events": 0,
-      "source": "OpenStreetMap"
+      "source": "OpenStreetMap",
+      "eventInfo": "none",
+      "eventChecked": "2026-09-05"
     },
     {
       "id": "osm-way-263880929",
@@ -22055,7 +22105,9 @@
       "wheelchair": null,
       "description": null,
       "events": 0,
-      "source": "OpenStreetMap"
+      "source": "OpenStreetMap",
+      "eventInfo": "none",
+      "eventChecked": "2026-09-05"
     },
     {
       "id": "osm-way-901597506",
@@ -22470,7 +22522,9 @@
       "wheelchair": null,
       "description": null,
       "events": 0,
-      "source": "OpenStreetMap"
+      "source": "OpenStreetMap",
+      "eventInfo": "none",
+      "eventChecked": "2026-09-05"
     },
     {
       "id": "osm-node-12524336759",
@@ -22746,7 +22800,9 @@
       "wheelchair": null,
       "description": null,
       "events": 0,
-      "source": "OpenStreetMap"
+      "source": "OpenStreetMap",
+      "eventInfo": "none",
+      "eventChecked": "2026-09-05"
     },
     {
       "id": "osm-way-857522688",
@@ -22859,7 +22915,9 @@
       "wheelchair": null,
       "description": null,
       "events": 0,
-      "source": "OpenStreetMap"
+      "source": "OpenStreetMap",
+      "eventInfo": "none",
+      "eventChecked": "2026-09-05"
     },
     {
       "id": "osm-node-9048893266",
@@ -23310,7 +23368,7 @@
       "miles": 29.8,
       "city": "Bethel, CT",
       "address": "269 Greenwood Avenue, Bethel, CT",
-      "url": "https://www.bethelcinema.com/",
+      "url": null,
       "phone": "+1 203 7782100",
       "openingHours": null,
       "brand": null,
@@ -23654,7 +23712,7 @@
       "miles": 29.8,
       "city": "Stockade District",
       "address": null,
-      "url": "https://www.senatehousekingston.org/the-loughran-house/",
+      "url": null,
       "phone": null,
       "openingHours": null,
       "brand": null,
@@ -23769,7 +23827,7 @@
       "miles": 29.8,
       "city": "Stockade District",
       "address": null,
-      "url": "https://www.senatehousekingston.org/visit-the-senate-house-kingston/",
+      "url": null,
       "phone": null,
       "openingHours": null,
       "brand": null,
@@ -23792,7 +23850,7 @@
       "miles": 29.8,
       "city": "Stockade District",
       "address": null,
-      "url": "https://www.senatehousekingston.org/senate-house-museum/",
+      "url": null,
       "phone": null,
       "openingHours": null,
       "brand": null,
@@ -23963,7 +24021,9 @@
       "wheelchair": null,
       "description": null,
       "events": 0,
-      "source": "OpenStreetMap"
+      "source": "OpenStreetMap",
+      "eventInfo": "none",
+      "eventChecked": "2026-09-05"
     },
     {
       "id": "osm-node-8232503846",
@@ -25385,7 +25445,9 @@
       "wheelchair": null,
       "description": null,
       "events": 0,
-      "source": "OpenStreetMap"
+      "source": "OpenStreetMap",
+      "eventInfo": "none",
+      "eventChecked": "2026-09-05"
     },
     {
       "id": "osm-way-263545654",
@@ -25454,7 +25516,9 @@
       "wheelchair": null,
       "description": null,
       "events": 0,
-      "source": "OpenStreetMap"
+      "source": "OpenStreetMap",
+      "eventInfo": "none",
+      "eventChecked": "2026-09-05"
     },
     {
       "id": "osm-node-12626419793",
@@ -25962,7 +26026,9 @@
       "wheelchair": null,
       "description": null,
       "events": 0,
-      "source": "OpenStreetMap"
+      "source": "OpenStreetMap",
+      "eventInfo": "none",
+      "eventChecked": "2026-09-05"
     },
     {
       "id": "osm-node-3138873108",
@@ -26215,7 +26281,9 @@
       "wheelchair": null,
       "description": null,
       "events": 0,
-      "source": "OpenStreetMap"
+      "source": "OpenStreetMap",
+      "eventInfo": "none",
+      "eventChecked": "2026-09-05"
     },
     {
       "id": "osm-relation-6370385",
@@ -29578,7 +29646,9 @@
       "wheelchair": null,
       "description": null,
       "events": 0,
-      "source": "OpenStreetMap"
+      "source": "OpenStreetMap",
+      "eventInfo": "none",
+      "eventChecked": "2026-09-05"
     },
     {
       "id": "osm-way-848159036",
@@ -29739,7 +29809,9 @@
       "wheelchair": null,
       "description": null,
       "events": 0,
-      "source": "OpenStreetMap"
+      "source": "OpenStreetMap",
+      "eventInfo": "none",
+      "eventChecked": "2026-09-05"
     },
     {
       "id": "venue-whiskey-lounge",
@@ -30222,7 +30294,9 @@
       "wheelchair": null,
       "description": null,
       "events": 0,
-      "source": "OpenStreetMap"
+      "source": "OpenStreetMap",
+      "eventInfo": "none",
+      "eventChecked": "2026-09-05"
     },
     {
       "id": "osm-node-6478324543",
@@ -31259,7 +31333,9 @@
       "wheelchair": null,
       "description": null,
       "events": 0,
-      "source": "OpenStreetMap"
+      "source": "OpenStreetMap",
+      "eventInfo": "none",
+      "eventChecked": "2026-09-05"
     },
     {
       "id": "osm-node-367138552",
@@ -31697,7 +31773,9 @@
       "wheelchair": null,
       "description": null,
       "events": 0,
-      "source": "OpenStreetMap"
+      "source": "OpenStreetMap",
+      "eventInfo": "none",
+      "eventChecked": "2026-09-05"
     },
     {
       "id": "osm-node-8863584217",
@@ -32410,7 +32488,9 @@
       "wheelchair": null,
       "description": null,
       "events": 0,
-      "source": "OpenStreetMap"
+      "source": "OpenStreetMap",
+      "eventInfo": "none",
+      "eventChecked": "2026-09-05"
     },
     {
       "id": "osm-way-978194549",
@@ -34181,7 +34261,9 @@
       "wheelchair": null,
       "description": null,
       "events": 0,
-      "source": "OpenStreetMap"
+      "source": "OpenStreetMap",
+      "eventInfo": "none",
+      "eventChecked": "2026-09-05"
     },
     {
       "id": "osm-node-6495415532",
@@ -34411,7 +34493,9 @@
       "wheelchair": null,
       "description": null,
       "events": 0,
-      "source": "OpenStreetMap"
+      "source": "OpenStreetMap",
+      "eventInfo": "none",
+      "eventChecked": "2026-09-05"
     },
     {
       "id": "osm-node-7270863918",
@@ -34434,7 +34518,9 @@
       "wheelchair": null,
       "description": null,
       "events": 0,
-      "source": "OpenStreetMap"
+      "source": "OpenStreetMap",
+      "eventInfo": "none",
+      "eventChecked": "2026-09-05"
     },
     {
       "id": "osm-way-232257149",
@@ -34570,7 +34656,9 @@
       "wheelchair": null,
       "description": null,
       "events": 0,
-      "source": "OpenStreetMap"
+      "source": "OpenStreetMap",
+      "eventInfo": "none",
+      "eventChecked": "2026-09-05"
     },
     {
       "id": "osm-node-7272952827",
@@ -34685,7 +34773,9 @@
       "wheelchair": null,
       "description": null,
       "events": 0,
-      "source": "OpenStreetMap"
+      "source": "OpenStreetMap",
+      "eventInfo": "none",
+      "eventChecked": "2026-09-05"
     },
     {
       "id": "osm-node-8039885798",
@@ -35284,7 +35374,9 @@
       "wheelchair": null,
       "description": null,
       "events": 0,
-      "source": "OpenStreetMap"
+      "source": "OpenStreetMap",
+      "eventInfo": "none",
+      "eventChecked": "2026-09-05"
     },
     {
       "id": "osm-way-1053934354",
@@ -35606,7 +35698,9 @@
       "wheelchair": null,
       "description": null,
       "events": 0,
-      "source": "OpenStreetMap"
+      "source": "OpenStreetMap",
+      "eventInfo": "none",
+      "eventChecked": "2026-09-05"
     },
     {
       "id": "osm-way-740582388",
@@ -35675,7 +35769,9 @@
       "wheelchair": null,
       "description": null,
       "events": 0,
-      "source": "OpenStreetMap"
+      "source": "OpenStreetMap",
+      "eventInfo": "none",
+      "eventChecked": "2026-09-05"
     },
     {
       "id": "osm-node-10181568183",
@@ -35767,7 +35863,9 @@
       "wheelchair": null,
       "description": null,
       "events": 0,
-      "source": "OpenStreetMap"
+      "source": "OpenStreetMap",
+      "eventInfo": "none",
+      "eventChecked": "2026-09-05"
     },
     {
       "id": "osm-node-8044348967",
@@ -35930,7 +36028,9 @@
       "wheelchair": null,
       "description": null,
       "events": 0,
-      "source": "OpenStreetMap"
+      "source": "OpenStreetMap",
+      "eventInfo": "none",
+      "eventChecked": "2026-09-05"
     },
     {
       "id": "venue-historical-society-of-woodstock",
@@ -36665,7 +36765,9 @@
       "wheelchair": null,
       "description": null,
       "events": 0,
-      "source": "OpenStreetMap"
+      "source": "OpenStreetMap",
+      "eventInfo": "none",
+      "eventChecked": "2026-09-05"
     },
     {
       "id": "osm-node-14128713157",
@@ -36909,7 +37011,7 @@
       "miles": 38.0,
       "city": "Woodstock, NY",
       "address": "33 Rock City Road, Woodstock, NY",
-      "url": "https://www.gravesidevariety.com",
+      "url": null,
       "phone": null,
       "openingHours": null,
       "brand": null,
@@ -37535,7 +37637,9 @@
       "wheelchair": null,
       "description": null,
       "events": 0,
-      "source": "OpenStreetMap"
+      "source": "OpenStreetMap",
+      "eventInfo": "none",
+      "eventChecked": "2026-09-05"
     },
     {
       "id": "osm-way-654088901",
@@ -42012,7 +42116,9 @@
       "wheelchair": null,
       "description": null,
       "events": 0,
-      "source": "OpenStreetMap"
+      "source": "OpenStreetMap",
+      "eventInfo": "none",
+      "eventChecked": "2026-09-05"
     },
     {
       "id": "osm-node-12079331275",
@@ -48616,7 +48722,9 @@
       "wheelchair": null,
       "description": null,
       "events": 0,
-      "source": "OpenStreetMap"
+      "source": "OpenStreetMap",
+      "eventInfo": "none",
+      "eventChecked": "2026-09-05"
     },
     {
       "id": "osm-way-634014389",
@@ -49442,7 +49550,9 @@
       "wheelchair": null,
       "description": null,
       "events": 0,
-      "source": "OpenStreetMap"
+      "source": "OpenStreetMap",
+      "eventInfo": "none",
+      "eventChecked": "2026-09-05"
     },
     {
       "id": "venue-nefer-bookcafe",
@@ -51834,7 +51944,9 @@
       "wheelchair": null,
       "description": null,
       "events": 0,
-      "source": "OpenStreetMap"
+      "source": "OpenStreetMap",
+      "eventInfo": "none",
+      "eventChecked": "2026-09-05"
     },
     {
       "id": "osm-way-239512332",
@@ -55488,7 +55600,9 @@
       "wheelchair": null,
       "description": null,
       "events": 0,
-      "source": "OpenStreetMap"
+      "source": "OpenStreetMap",
+      "eventInfo": "none",
+      "eventChecked": "2026-09-05"
     },
     {
       "id": "osm-node-3726955880",
@@ -66823,7 +66937,9 @@
       "wheelchair": null,
       "description": null,
       "events": 0,
-      "source": "OpenStreetMap"
+      "source": "OpenStreetMap",
+      "eventInfo": "none",
+      "eventChecked": "2026-09-05"
     },
     {
       "id": "osm-way-677730985",
@@ -68067,7 +68183,9 @@
       "wheelchair": null,
       "description": null,
       "events": 0,
-      "source": "OpenStreetMap"
+      "source": "OpenStreetMap",
+      "eventInfo": "none",
+      "eventChecked": "2026-09-05"
     },
     {
       "id": "osm-node-368052784",
@@ -69103,7 +69221,9 @@
       "wheelchair": null,
       "description": null,
       "events": 0,
-      "source": "OpenStreetMap"
+      "source": "OpenStreetMap",
+      "eventInfo": "none",
+      "eventChecked": "2026-09-05"
     },
     {
       "id": "osm-node-8783607176",
@@ -73433,7 +73553,9 @@
       "wheelchair": null,
       "description": null,
       "events": 0,
-      "source": "OpenStreetMap"
+      "source": "OpenStreetMap",
+      "eventInfo": "none",
+      "eventChecked": "2026-09-05"
     },
     {
       "id": "venue-verona-community-garden",
@@ -77240,7 +77362,9 @@
       "wheelchair": null,
       "description": null,
       "events": 0,
-      "source": "OpenStreetMap"
+      "source": "OpenStreetMap",
+      "eventInfo": "none",
+      "eventChecked": "2026-09-05"
     },
     {
       "id": "osm-relation-6458739",
@@ -78006,7 +78130,9 @@
       "wheelchair": null,
       "description": null,
       "events": 0,
-      "source": "OpenStreetMap"
+      "source": "OpenStreetMap",
+      "eventInfo": "none",
+      "eventChecked": "2026-09-05"
     },
     {
       "id": "osm-node-8999784916",
@@ -78029,7 +78155,9 @@
       "wheelchair": null,
       "description": null,
       "events": 0,
-      "source": "OpenStreetMap"
+      "source": "OpenStreetMap",
+      "eventInfo": "none",
+      "eventChecked": "2026-09-05"
     },
     {
       "id": "osm-node-4837099602",
@@ -78628,7 +78756,9 @@
       "wheelchair": null,
       "description": null,
       "events": 0,
-      "source": "OpenStreetMap"
+      "source": "OpenStreetMap",
+      "eventInfo": "none",
+      "eventChecked": "2026-09-05"
     },
     {
       "id": "osm-relation-17229873",
