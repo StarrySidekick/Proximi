@@ -39868,7 +39868,9 @@
       "wheelchair": null,
       "description": null,
       "events": 0,
-      "source": "OpenStreetMap"
+      "source": "OpenStreetMap",
+      "eventInfo": "none",
+      "eventChecked": "2026-09-05"
     },
     {
       "id": "osm-way-1359433553",
@@ -39937,7 +39939,9 @@
       "wheelchair": null,
       "description": null,
       "events": 0,
-      "source": "OpenStreetMap"
+      "source": "OpenStreetMap",
+      "eventInfo": "none",
+      "eventChecked": "2026-09-05"
     },
     {
       "id": "venue-rye-grill-bar",
@@ -40574,7 +40578,7 @@
       "miles": 39.1,
       "city": "Monroe, CT",
       "address": "Knollwood Street, Monroe, CT",
-      "url": "https://www.warrens.net/Occult-Museum-Tours.html",
+      "url": null,
       "phone": null,
       "openingHours": "off",
       "brand": null,
@@ -42093,7 +42097,9 @@
       "wheelchair": null,
       "description": null,
       "events": 0,
-      "source": "OpenStreetMap"
+      "source": "OpenStreetMap",
+      "eventInfo": "none",
+      "eventChecked": "2026-09-05"
     },
     {
       "id": "osm-node-3797638329",
@@ -42187,7 +42193,9 @@
       "wheelchair": null,
       "description": null,
       "events": 0,
-      "source": "OpenStreetMap"
+      "source": "OpenStreetMap",
+      "eventInfo": "none",
+      "eventChecked": "2026-09-05"
     },
     {
       "id": "osm-way-321033580",
@@ -42831,7 +42839,9 @@
       "wheelchair": null,
       "description": null,
       "events": 0,
-      "source": "OpenStreetMap"
+      "source": "OpenStreetMap",
+      "eventInfo": "none",
+      "eventChecked": "2026-09-05"
     },
     {
       "id": "osm-node-12044800134",
@@ -45801,7 +45811,9 @@
       "wheelchair": null,
       "description": null,
       "events": 0,
-      "source": "OpenStreetMap"
+      "source": "OpenStreetMap",
+      "eventInfo": "none",
+      "eventChecked": "2026-09-05"
     },
     {
       "id": "venue-sheffer-room",
@@ -47412,7 +47424,9 @@
       "wheelchair": "yes",
       "description": null,
       "events": 0,
-      "source": "OpenStreetMap"
+      "source": "OpenStreetMap",
+      "eventInfo": "none",
+      "eventChecked": "2026-09-05"
     },
     {
       "id": "osm-way-233881956",
@@ -47757,7 +47771,9 @@
       "wheelchair": null,
       "description": null,
       "events": 0,
-      "source": "OpenStreetMap"
+      "source": "OpenStreetMap",
+      "eventInfo": "none",
+      "eventChecked": "2026-09-05"
     },
     {
       "id": "venue-black-bear-golf-club",
@@ -49069,7 +49085,9 @@
       "wheelchair": null,
       "description": null,
       "events": 0,
-      "source": "OpenStreetMap"
+      "source": "OpenStreetMap",
+      "eventInfo": "none",
+      "eventChecked": "2026-09-05"
     },
     {
       "id": "osm-node-4681177442",
@@ -50703,7 +50721,9 @@
       "wheelchair": null,
       "description": null,
       "events": 0,
-      "source": "OpenStreetMap"
+      "source": "OpenStreetMap",
+      "eventInfo": "none",
+      "eventChecked": "2026-09-05"
     },
     {
       "id": "osm-node-4655039349",
@@ -51094,7 +51114,9 @@
       "wheelchair": null,
       "description": null,
       "events": 0,
-      "source": "OpenStreetMap"
+      "source": "OpenStreetMap",
+      "eventInfo": "none",
+      "eventChecked": "2026-09-05"
     },
     {
       "id": "venue-the-clubhouse-westport",
@@ -52729,7 +52751,9 @@
       "wheelchair": null,
       "description": null,
       "events": 0,
-      "source": "OpenStreetMap"
+      "source": "OpenStreetMap",
+      "eventInfo": "none",
+      "eventChecked": "2026-09-05"
     },
     {
       "id": "osm-way-1218333058",
@@ -53073,7 +53097,9 @@
       "wheelchair": null,
       "description": null,
       "events": 0,
-      "source": "OpenStreetMap"
+      "source": "OpenStreetMap",
+      "eventInfo": "none",
+      "eventChecked": "2026-09-05"
     },
     {
       "id": "osm-way-239911851",
@@ -53625,7 +53651,9 @@
       "wheelchair": null,
       "description": null,
       "events": 0,
-      "source": "OpenStreetMap"
+      "source": "OpenStreetMap",
+      "eventInfo": "none",
+      "eventChecked": "2026-09-05"
     },
     {
       "id": "osm-node-6732270392",
@@ -54636,7 +54664,9 @@
       "wheelchair": null,
       "description": "Trampoline Park in South Hackensack.",
       "events": 0,
-      "source": "OpenStreetMap"
+      "source": "OpenStreetMap",
+      "eventInfo": "none",
+      "eventChecked": "2026-09-05"
     },
     {
       "id": "osm-node-367139170",
@@ -55994,7 +56024,9 @@
       "wheelchair": "yes",
       "description": null,
       "events": 0,
-      "source": "OpenStreetMap"
+      "source": "OpenStreetMap",
+      "eventInfo": "none",
+      "eventChecked": "2026-09-05"
     },
     {
       "id": "osm-node-2797811242",
@@ -79565,7 +79597,9 @@
       "wheelchair": null,
       "description": null,
       "events": 0,
-      "source": "OpenStreetMap"
+      "source": "OpenStreetMap",
+      "eventInfo": "none",
+      "eventChecked": "2026-09-05"
     },
     {
       "id": "osm-relation-13544169",

@@ -186,6 +186,16 @@ const exe = process.env.CHROMIUM_PATH
     await page.locator('#detail-sheet.is-open').count() === 0);
 
   // ── A repeating listing asks which "hide" you meant ────
+  //    Narrow to weekly listings first. Scanning whatever happened to be in
+  //    the window found four repeat badges and no nameable cadence between
+  //    them by late afternoon, once the day's listings had passed — a check
+  //    that depends on the hour is not a check. The filter is also how a
+  //    reader would go looking for one.
+  await page.locator('#open-filters').click();
+  await page.waitForTimeout(300);
+  await page.click('#repeats [data-mode="weekly"]');
+  await page.locator('#apply-filters').click();
+  await page.waitForTimeout(600);
   const repeatIdx = await page.evaluate(() => {
     const slots = [...document.querySelectorAll('#list .card-slot')];
     return slots.findIndex((s) => s.querySelector('.badge-repeat')
@@ -218,6 +228,13 @@ const exe = process.env.CHROMIUM_PATH
     // and the whole series, from the same dialog
     await page.locator('#list .card-slot').nth(0).scrollIntoViewIfNeeded();
   }
+
+  // Back to the whole feed for everything after this.
+  await page.locator('#open-filters').click();
+  await page.waitForTimeout(300);
+  await page.click('#repeats [data-mode="any"]');
+  await page.locator('#apply-filters').click();
+  await page.waitForTimeout(600);
 
   // ── Saved: a right swipe puts it there, a second books it
   await page.evaluate(() => {
