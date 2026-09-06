@@ -50,7 +50,10 @@
     { id: 'monthly', label: 'Monthly', match: (c) => c === 'monthly' }
   ];
 
-  const PRESETS = [
+  /* Only a fallback now — see derivePresets(). Kept because a data file that
+     somehow carries no usable cities should still leave the app usable, and
+     because these eight are where the project started. */
+  const FALLBACK_PRESETS = [
     { name: 'Beacon, NY',       lat: 41.5048, lon: -73.9696 },
     { name: 'Poughkeepsie, NY', lat: 41.7004, lon: -73.9210 },
     { name: 'Newburgh, NY',     lat: 41.5034, lon: -74.0104 },
@@ -2688,12 +2691,70 @@
     }
   }
 
+  /* The presets used to be eight hand-picked Hudson Valley towns, and the data
+     outgrew them: the three biggest clusters in the file are New York, Brooklyn
+     and New York (NYC) — over eight hundred listings — and not one of them was
+     offered. A stranger opening this in Fairfield or Brooklyn was shown a row of
+     towns an hour away and nothing near them.
+
+     So they are derived from the listings instead. That way they cannot go
+     stale, and they widen by themselves as coverage moves into the rest of New
+     England rather than needing this list edited every time.
+
+     Two rules make the row readable. City labels are normalised, because
+     "New York, NY" and "New York (NYC), NY" are one place and would otherwise
+     take two of the eight slots. And a chip has to be MIN_APART from every chip
+     already taken, or the busiest county eats the whole row and a reader in the
+     next state over still has nowhere to tap. */
+  const PRESET_SLOTS = 8;
+  const MIN_APART = 12;          // miles between two chips
+
+  function normaliseCity(name) {
+    return String(name || '')
+      .replace(/\s*\([^)]*\)/g, '')      // "New York (NYC), NY" -> "New York, NY"
+      .replace(/\s+/g, ' ')
+      .trim();
+  }
+
+  function derivePresets() {
+    const items = state.allItems && state.allItems.length ? state.allItems : state.items;
+    if (!items || !items.length) return FALLBACK_PRESETS;
+
+    const towns = new Map();
+    for (const it of items) {
+      const name = normaliseCity(it.city);
+      if (!name || name === '?' || !Number.isFinite(it.lat) || !Number.isFinite(it.lon)) continue;
+      let t = towns.get(name);
+      if (!t) towns.set(name, (t = { name, n: 0, lat: 0, lon: 0 }));
+      t.n++; t.lat += it.lat; t.lon += it.lon;
+    }
+    if (!towns.size) return FALLBACK_PRESETS;
+
+    const ranked = [...towns.values()]
+      .map((t) => ({ name: t.name, n: t.n, lat: t.lat / t.n, lon: t.lon / t.n }))
+      .sort((a, b) => b.n - a.n);
+
+    const chosen = [];
+    for (const t of ranked) {
+      if (chosen.length >= PRESET_SLOTS) break;
+      if (chosen.every((c) => haversineMiles(c, t) >= MIN_APART)) chosen.push(t);
+    }
+    /* Once we know where the reader is, the nearest is the one they want first.
+       Before that, busiest first is the honest ordering. */
+    if (state.origin) {
+      for (const c of chosen) c._d = haversineMiles(state.origin, c);
+      chosen.sort((a, b) => a._d - b._d);
+    }
+    return chosen.length ? chosen : FALLBACK_PRESETS;
+  }
+
   function buildPresets() {
-    el.presets.replaceChildren(...PRESETS.map((p) => {
+    el.presets.replaceChildren(...derivePresets().map((p) => {
       const b = document.createElement('button');
       b.type = 'button';
       b.className = 'chip';
       b.textContent = p.name;
+      if (p.n) b.title = `${p.n} listing${p.n === 1 ? '' : 's'} in ${p.name}`;
       b.addEventListener('click', () => setOrigin(p.lat, p.lon, p.name));
       return b;
     }));
@@ -2718,6 +2779,7 @@
     }
     el.locStatus.className = 'loc-status is-set';
     el.locStatus.textContent = `Showing distances from ${name}.`;
+    buildPresets();   // nearest first, now that there is a "nearest"
     render();
     // Place distances are measured from here too, so the directory is stale
     // the moment this changes — and the reader may be looking at it, or at
