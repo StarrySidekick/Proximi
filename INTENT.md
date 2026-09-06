@@ -29,6 +29,18 @@ through-line for the project.
 **2. Better and more broadly accessible filters.** Named alongside coverage as
 what the app needs before anyone else could use it.
 
+**First piece done 2026-09-06: the location presets are derived from the
+listings** rather than being eight hand-picked Hudson Valley towns. The data had
+already outgrown them — the three largest clusters in the file are New York,
+Brooklyn and New York (NYC), 808 listings between them, and not one was offered,
+nor was anywhere in Connecticut. They now come from where the listings actually
+are, so the row widens by itself as coverage moves into the rest of New England
+instead of needing editing each time.
+
+**Still to do here:** an honest answer for a reader outside the covered area.
+Today someone in Boston gets an empty list rather than being told the app does
+not reach them yet, which is the same class of problem the presets had.
+
 ## Deliberately not next
 
 - **Guessed prices.** Automating them is worth building *only if it can be
