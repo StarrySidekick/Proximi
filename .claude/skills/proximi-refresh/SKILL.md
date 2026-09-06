@@ -231,9 +231,12 @@ Three rules that are already load-bearing:
 arts centre came back as 25,000 characters of binary noise — gzip, sent to a
 client that never asked for it and never decoded it. The bytes became
 replacement characters, which have no dates and no links, so three busy
-institutions were recorded as publishing nothing. `get()` decompresses now and
-`audit.py --selftest` (in CI) breaks if that or any other rule here goes. Run
-it after touching the classifier.
+institutions were recorded as publishing nothing. And it had a second half:
+decoding by header and magic number still left Pequot Library as noise,
+because its page exceeds the read cap and a truncated gzip stream makes
+`gzip.decompress` raise and hand the compressed bytes back. It streams now.
+`audit.py --selftest` (in CI) covers both and breaks if any rule here goes —
+run it after touching the classifier.
 
 `--report` prints the counts and, usefully, the feeds it found that are not in
 the registry yet. Those are free listings: `verdict: feed` means an iCal with

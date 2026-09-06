@@ -134,6 +134,15 @@ FOREIGN_SCRIPT = re.compile(
     r'\u3400-\u4dbf\u4e00-\u9fff\uac00-\ud7af]')
 FOREIGN_SHARE = 0.15
 
+# …except where the script is exactly what that domain should be serving. The
+# Russian Consulate-General in New York is at newyork.mid.ru and is written in
+# Russian, which is not a hijack, and having its link stripped would be this
+# check being confidently wrong in public. A country-code domain answers in its
+# own language; a .com or .org sold to a Hudson Valley cinema does not.
+def script_expected(domain):
+    tld = domain.rsplit('.', 1)[-1].lower()
+    return len(tld) == 2 and tld != 'us'
+
 SUSPECT = re.compile(
     r'\b(situs|slot ?gacor|judi bola|togel|bandar|casino online|taruhan|'
     r'bahis|deneme bonusu|canl[ıi] casino|rtp slot|maxwin|pragmatic play)\b',
@@ -242,6 +251,18 @@ def decode(raw, encoding):
     header's braces, because that is exactly how this went unnoticed.
     """
     if encoding in ('gzip', 'x-gzip') or raw[:2] == b'\x1f\x8b':
+        # Streaming, not gzip.decompress(). A page bigger than the read cap
+        # arrives as a truncated stream, and the one-shot call raises on the
+        # missing tail and hands back the compressed bytes — which is how
+        # Pequot Library came back as 327,000 characters of noise even after
+        # the first version of this function was supposed to have fixed it.
+        # A decompressobj returns everything up to the cut.
+        try:
+            out = zlib.decompressobj(16 + zlib.MAX_WBITS).decompress(raw)
+            if out:
+                return out
+        except Exception:
+            pass
         try:
             return gzip.decompress(raw)
         except Exception:
@@ -249,7 +270,7 @@ def decode(raw, encoding):
     if encoding == 'deflate':
         for wbits in (-zlib.MAX_WBITS, zlib.MAX_WBITS):
             try:
-                return zlib.decompress(raw, wbits)
+                return zlib.decompressobj(wbits).decompress(raw)
             except Exception:
                 continue
     return raw
@@ -452,7 +473,8 @@ def audit_domain(domain, names=()):
 
     pages = [read_signals(base, body)]
     spam = len(SUSPECT.findall(text))
-    foreign = (len(FOREIGN_SCRIPT.findall(text)) / max(len(text), 1)) > FOREIGN_SHARE
+    foreign = (not script_expected(domain)
+               and (len(FOREIGN_SCRIPT.findall(text)) / max(len(text), 1)) > FOREIGN_SHARE)
     spammed = spam >= SPAM_HITS
     if (spammed or foreign) and not venue_named(text, names):
         return {'verdict': 'suspect', 'found': ['off-topic content'], 'sig': None,
@@ -575,7 +597,12 @@ def selftest():
     assert decode(gzip.compress(body), '') == body, 'magic number, not the header'
     assert decode(zlib.compress(body), 'deflate') == body
     assert decode(body, '') == body, 'uncompressed bytes must pass through'
-    cases += 4
+    # The one that got through the first fix: a page larger than the read cap
+    # is a gzip stream with no end on it.
+    big = gzip.compress(b'<p>October 3</p>' * 4000)
+    assert decode(big[:len(big) // 2], 'gzip').startswith(b'<p>October 3'), \
+        'a truncated stream must still yield what it has'
+    cases += 5
 
     # Whose page is this? A hijacked domain never says; a spammed one still does.
     assert venue_named('Montgomery Place Orchards ~ closed ~ thank you',
@@ -583,7 +610,10 @@ def selftest():
     assert not venue_named('Kopi77 daftar akun gaming gratis', ['Elite Cinema 6'])
     assert not venue_named('gardenofideas.com is for sale', ['Garden Of Ideas']), \
         'a domain printed on a parking page is not the venue being named'
-    cases += 3
+    assert script_expected('newyork.mid.ru'), 'a .ru site may be in Russian'
+    assert not script_expected('destinta.com'), 'a .com cinema may not be in Chinese'
+    assert not script_expected('visit.us')
+    cases += 6
 
     # Dates, and the clock times that only count beside event words.
     shop = read_signals('https://x.test/', '<p>Open Mon-Fri 9:00 am to 5:00 pm</p>')
@@ -710,9 +740,13 @@ def report(audit, domains):
     counts = {}
     for rec in audit['domains'].values():
         counts[rec['verdict']] = counts.get(rec['verdict'], 0) + 1
-    done = len(audit['domains'])
-    print(f'{done} of {len(domains)} venue domains audited '
-          f'({len(domains) - done} to go)')
+    # Count against the domains still in the directory, not against every
+    # record: a hijacked domain loses its link, which takes it out of the
+    # candidate list, which had the report claiming "-12 to go".
+    done = sum(1 for d in domains if d in audit['domains'])
+    print(f'{done} of {len(domains)} venue domains audited, '
+          f'{len(domains) - done} to go '
+          f'({len(audit["domains"])} verdicts on file)')
     for verdict in ('feed', 'listings', 'specials', 'none', 'unreadable',
                     'blocked', 'unreachable', 'parked', 'suspect'):
         if counts.get(verdict):
@@ -771,7 +805,11 @@ def main():
         return 0
 
     if args.recheck is not None:
-        todo = [d for d in (args.recheck or domains) if d in domains]
+        # Named domains are forced whether or not they are still candidates.
+        # Stripping a hijacked domain's link takes it out of the directory,
+        # which took it out of the candidate list, which meant the one verdict
+        # you might most want to revisit was the one you could not reach.
+        todo = args.recheck or list(domains)
     elif args.verify:
         # Only quiet sites are worth re-reading: a verdict of "none" is the one
         # that stops us ever looking again, so it is the one that has to be able
@@ -799,14 +837,19 @@ def main():
         report(audit, domains)
         return 0
 
+    # A forced domain may no longer be in the directory — it lost its link when
+    # it was found hijacked — so its names come from the record it already has.
+    def names_for(d):
+        return domains.get(d) or audit['domains'].get(d, {}).get('places') or []
+
     print(f'reading {len(todo)} venue site(s), {args.workers} at a time…')
     started = time.time()
     done = 0
     with ThreadPoolExecutor(max_workers=args.workers) as pool:
         for d, rec in zip(todo, pool.map(
-                lambda d: audit_domain(d, domains[d]), todo)):
+                lambda d: audit_domain(d, names_for(d)), todo)):
             rec['checked'] = today.isoformat()
-            rec['places'] = domains[d][:4]
+            rec['places'] = names_for(d)[:4]
             audit['domains'][d] = rec
             mark = {'feed': '+', 'listings': '·', 'specials': '·',
                     'none': '-', 'unreachable': '?', 'unreadable': '?',

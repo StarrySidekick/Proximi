@@ -682,15 +682,20 @@ saying so, and a `none` with no signature could never be re-checked at all.
 `audit.py --selftest` runs in CI and holds the classifier to the pages it has
 already got wrong — including the one that mattered most, below.
 
-**The bug worth naming.** Finkelstein Memorial Library and the Center for
-Photography at Woodstock both came back as 25,000 characters of binary noise:
-gzip, sent to a client that never asked for it and never decoded it. Nothing
-threw. The bytes decoded to replacement characters, which contain no dates and
-no links, so two busy institutions were recorded as venues that publish
-nothing — a clean run, a plausible count, and a worse site, which is the
-failure mode this whole repo is organised around. `get()` decompresses now, by
-the header and by the magic number, and the self-test breaks if either half
-goes.
+**The bug worth naming, twice.** Finkelstein Memorial Library and the Center
+for Photography at Woodstock both came back as 25,000 characters of binary
+noise: gzip, sent to a client that never asked for it and never decoded it.
+Nothing threw. The bytes decoded to replacement characters, which contain no
+dates and no links, so two busy institutions were recorded as venues that
+publish nothing — a clean run, a plausible count, and a worse site, which is
+the failure mode this whole repo is organised around.
+
+Decompressing by the header and by the magic number fixed those two and left
+Pequot Library still reading as 327,000 characters of noise, because its page
+is bigger than the read cap: a truncated gzip stream, on which the one-shot
+`gzip.decompress` raises and hands the compressed bytes straight back. It
+streams now, so a cut-off page still yields everything up to the cut. Both
+halves have a self-test, and both were watched failing first.
 
 ### A feed existing is not a feed working
 
