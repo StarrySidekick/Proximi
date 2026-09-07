@@ -1,5 +1,11 @@
 # Proximi
 
+> **Read [`INTENT.md`](INTENT.md) first.** It records what this project is for
+> and what Timothy wants next, in his own words, dated. Where it disagrees with
+> this file about *direction* it is newer and wins; where it disagrees about
+> *mechanics* — how the code works, what was decided deliberately, the
+> invariants — this file wins.
+
 Find events and activities happening near wherever you are.
 
 **Proximi** answers "what is there to do around here?" — a single scannable list
