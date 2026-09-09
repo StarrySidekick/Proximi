@@ -175,21 +175,35 @@ def check_id_stability():
     return 0
 
 
-def check_places(path='data/places.json'):
+def check_places(path='data/places.json', label='places'):
     """The directory is advisory — a missing file is not a failure.
 
     It carries no times and no prices, so the ways it can be wrong are narrow:
     a kind outside the shared vocabulary (invisible to every chip), a place
-    outside the radius it claims, or a row with nowhere to put on a map.
+    outside every area it claims to cover, or a row with nowhere to put on a
+    map. Runs over the food file too: same shape, same failure modes, and a
+    cuisine outside the vocabulary is the same silent failure as a kind — the
+    row renders and no filter can reach it.
     """
     if not os.path.exists(path):
-        print('places: not built yet — the site degrades to venues from the feed')
+        print(f'{label}: not built yet — the site degrades to venues from the feed')
         return 0
 
     doc = json.load(open(path))
     meta, items = doc.get('meta', {}), doc.get('items', [])
     known = set(placekinds.ORDER)
+    known_cuisines = set(placekinds.CUISINE_ORDER)
     errors = []
+
+    # Coverage is a list of circles now. A place has to be inside one of them;
+    # measuring everything from the centre would fail every row in Maine, and
+    # skipping the check entirely would let a bbox corner ship a museum in
+    # Quebec. Falls back to the single centre for a file built before regions.
+    regions = meta.get('regions') or ([{
+        'name': meta.get('centerName'), 'lat': meta.get('centerLat'),
+        'lon': meta.get('centerLon'), 'radiusMiles': meta.get('radiusMiles'),
+    }] if meta.get('centerLat') is not None else [])
+    regions = [r for r in regions if r.get('lat') is not None and r.get('radiusMiles')]
 
     # A tag rule that matches nothing looks exactly like a region with none of
     # that kind of place, so the rules are checked here rather than trusted.
@@ -229,11 +243,15 @@ def check_places(path='data/places.json'):
         if place.get('eventInfo') == 'none' and place.get('events'):
             errors.append(f"{tag}: marked 'no event calendar' but carries "
                           f"{place['events']} listing(s)")
-        if radius and meta.get('centerLat') is not None:
-            d = miles(meta['centerLat'], meta['centerLon'],
-                          place['lat'], place['lon'])
-            if d > radius + 1:
-                errors.append(f'{tag}: {d:.1f} mi — outside the {radius} mi places radius')
+        for cuisine in place.get('cuisine') or []:
+            if cuisine not in known_cuisines:
+                errors.append(f'{tag}: unknown cuisine {cuisine!r} — '
+                              'no option on the food filter can reach it')
+        if regions:
+            away = min(miles(r['lat'], r['lon'], place['lat'], place['lon'])
+                       - r['radiusMiles'] for r in regions)
+            if away > 1:
+                errors.append(f'{tag}: {away:.1f} mi outside every coverage area')
 
     if errors:
         print(f'\nplaces FAILED — {len(errors)} problem(s):')
@@ -250,9 +268,10 @@ def check_places(path='data/places.json'):
     quiet = sum(1 for p in items if p.get('eventInfo') == 'none')
     top = ', '.join(f'{k} {n}' for k, n in
                     sorted(kinds.items(), key=lambda kv: -kv[1])[:6])
-    print(f'{len(items)} places OK — {len(kinds)} kinds, {withev} with listings, '
-          f'{quiet} audited with nothing published, '
-          f'within {radius} mi of {meta.get("centerName")} ({top})')
+    where = (f'across {len(regions)} coverage areas' if len(regions) > 1
+             else f'within {radius} mi of {meta.get("centerName")}')
+    print(f'{len(items)} {label} OK — {len(kinds)} kinds, {withev} with listings, '
+          f'{quiet} audited with nothing published, {where} ({top})')
     if meta.get('partial'):
         print(f'warning: places is partial — {", ".join(meta["partial"])} could not be fetched')
     return 0
@@ -298,4 +317,5 @@ def check_audit(path='sources/placeaudit.json'):
 
 if __name__ == '__main__':
     code = main(*sys.argv[1:])
-    sys.exit(code or check_places() or check_audit() or check_id_stability())
+    sys.exit(code or check_places() or check_places('data/eats.json', 'places to eat')
+             or check_audit() or check_id_stability())

@@ -102,10 +102,22 @@
         </select>
       </label>
     </div>
+    <!-- Somewhere to eat is five times the size of somewhere to go and is a
+         different question, so it is a scope rather than two more chips in a
+         list of thirty. "To visit" is the default: this page has always been
+         the directory, and it stays that until somebody asks for dinner. -->
+    <div class="places-scope chips" id="places-scope" role="group"
+         aria-label="What you are looking for"></div>
     <div class="places-controls">
       <label class="places-kind-field">
         <span class="sr-only">Kind of place</span>
         <select id="places-kinds"></select>
+      </label>
+    </div>
+    <div class="places-controls" id="places-food" hidden>
+      <label class="places-kind-field">
+        <span class="sr-only">Kind of food</span>
+        <select id="places-cuisines"></select>
       </label>
     </div>
     <div class="places-toggles">
@@ -115,7 +127,16 @@
       <label class="places-toggle">
         <input type="checkbox" id="places-events"> Has something on
       </label>
+      <label class="places-toggle" id="places-open-wrap" hidden>
+        <input type="checkbox" id="places-open"> Open now
+      </label>
+      <label class="places-toggle" id="places-indie-wrap" hidden>
+        <input type="checkbox" id="places-indie"> Independents only
+      </label>
     </div>
+    <p class="places-hint" id="places-food-hint" hidden>Hours and cuisines are
+      whatever OpenStreetMap records, and a kitchen closes earlier than a bar —
+      ring ahead before driving.</p>
     <p class="places-summary" id="places-summary"></p>
     <ul id="places-list" class="places-list"></ul>
     <p class="fine places-credit">Place data from

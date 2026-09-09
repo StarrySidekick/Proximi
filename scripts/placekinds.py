@@ -65,7 +65,16 @@ DESTINATIONS = {
     'park', 'lookout', 'landmark', 'zoo', 'theme park', 'winery', 'brewery',
     'farm', 'theatre', 'cinema', 'music venue', 'stadium', 'bowling alley',
     'library', 'bookshop', 'antique shop', 'mall', 'shop',
+    'cafe', 'restaurant',
 }
+
+# Somewhere to eat is a destination, but it is not the same *kind* of question
+# as somewhere to go, and there are five times as many of them: one 35-mile
+# sample held 4,211 restaurants against 3,500 places in the whole directory.
+# So these two are collected on the same terms and written to their own file,
+# which the client loads in the background rather than ahead of the first
+# screen. The taxonomy stays one taxonomy; only the delivery is split.
+FOOD = {'cafe', 'restaurant'}
 
 # --- reading OSM tags -------------------------------------------------------
 #
@@ -146,13 +155,139 @@ OSM_RULES = [
               '"shop"="chocolate"', '"shop"="cheese"', '"shop"="tea"',
               '"shop"="games"', '"shop"="collector"', '"shop"="comics"',
               '"shop"="record"', '"shop"="fabric"']),
-    ('cafe', []),
-    ('restaurant', []),
+    # Food was the one part of the directory that only ever arrived by accident:
+    # both kinds had no selectors, so a restaurant existed here only if it
+    # happened to host an event. That is fine for a town you live in and no use
+    # at all on a drive, where "somewhere to eat, now, that is still open" is
+    # most of what you want from a directory.
+    #
+    # NOT branded fast food. `brand` is set on 1,491 of the 2,079 fast-food
+    # outlets in one 35-mile sample — the McDonald's, the Dunkin', the Subway —
+    # and nobody sets out for one; they are what a phone map is for. Dropping
+    # them keeps what fast_food is genuinely good for around here, which is the
+    # clam shacks, the lobster pounds and the pizza counters. See food_worth().
+    ('cafe', ['"amenity"="cafe"', '"amenity"="ice_cream"', '"shop"="bakery"',
+              '"shop"="coffee"', '"shop"="pastry"']),
+    ('restaurant', ['"amenity"="restaurant"', '"amenity"="fast_food"',
+                    '"amenity"="pub"', '"amenity"="bar"',
+                    '"amenity"="food_court"']),
     ('community centre', []),
     ('place of worship', []),
     ('school', []),
     ('club', []),
 ]
+
+# --- what kind of food ------------------------------------------------------
+#
+# OSM's `cuisine` is free-ish text and the tail is very long: 224 distinct
+# tokens in one 35-mile sample, of which the top twenty cover four fifths of
+# the places that set it at all. So the tokens are grouped into things a person
+# would actually ask for, and a token nobody has grouped yet is *dropped* rather
+# than guessed at — a Portuguese bakery filed under "Other" is worse than one
+# with no cuisine on it, because "Other" is a promise that the filter works.
+# places.py prints the unmapped tokens it saw at the end of a run, so the list
+# below grows from what the data actually contains.
+#
+# (group id, label shown in the UI). Order is roughly how often it turns up in
+# New England, so the select reads as a tour of what is around.
+CUISINES = [
+    ('seafood',       'Seafood'),
+    ('american',      'American'),
+    ('pizza',         'Pizza'),
+    ('italian',       'Italian'),
+    ('burger',        'Burgers'),
+    ('sandwich',      'Sandwiches & delis'),
+    ('breakfast',     'Breakfast & brunch'),
+    ('diner',         'Diners'),
+    ('bakery',        'Bakeries & donuts'),
+    ('coffee',        'Coffee, tea & juice'),
+    ('dessert',       'Ice cream & desserts'),
+    ('mexican',       'Mexican & Latin American'),
+    ('chinese',       'Chinese'),
+    ('japanese',      'Japanese & sushi'),
+    ('thai',          'Thai'),
+    ('korean',        'Korean'),
+    ('vietnamese',    'Vietnamese'),
+    ('indian',        'Indian'),
+    ('asian',         'Other Asian'),
+    ('mediterranean', 'Mediterranean & Middle Eastern'),
+    ('french',        'French'),
+    ('barbecue',      'Barbecue'),
+    ('steak',         'Steakhouses'),
+    ('chicken',       'Chicken & wings'),
+    ('salad',         'Salads & bowls'),
+    ('vegetarian',    'Vegetarian & vegan'),
+    ('pub',           'Pub food'),
+]
+
+CUISINE_LABELS = dict(CUISINES)
+CUISINE_ORDER = [name for name, _ in CUISINES]
+
+# group -> the OSM cuisine tokens that mean it.
+CUISINE_TOKENS = {
+    'seafood': ['seafood', 'fish', 'fish_and_chips', 'lobster', 'oyster',
+                'oysters', 'clam', 'clams', 'crab', 'shellfish', 'chowder',
+                'sushi_and_seafood'],
+    'american': ['american', 'new_american', 'american;burger', 'comfort_food',
+                 'southern', 'soul_food', 'cajun', 'creole', 'bbq_and_american'],
+    'pizza': ['pizza', 'italian_pizza', 'pizza_and_pasta', 'neapolitan_pizza',
+              'pizzeria'],
+    'italian': ['italian', 'pasta', 'sicilian', 'tuscan', 'trattoria'],
+    'burger': ['burger', 'burgers', 'hamburger', 'hot_dog', 'hotdog',
+               'hot_dogs', 'cheeseburger'],
+    'sandwich': ['sandwich', 'sandwiches', 'deli', 'delicatessen', 'sub',
+                 'subs', 'submarine', 'cheesesteak', 'wrap', 'panini', 'hoagie',
+                 'roast_beef'],
+    'breakfast': ['breakfast', 'brunch', 'pancake', 'pancakes', 'waffle',
+                  'eggs', 'breakfast_and_lunch'],
+    'diner': ['diner', 'american_diner'],
+    'bakery': ['bakery', 'pastry', 'pastries', 'donut', 'donuts', 'doughnut',
+               'bagel', 'bagels', 'croissant', 'cake', 'cupcake', 'pie',
+               'bread', 'pretzel'],
+    'coffee': ['coffee_shop', 'coffee', 'cafe', 'tea', 'bubble_tea',
+               'boba', 'juice', 'smoothie', 'smoothies', 'açaí', 'acai'],
+    'dessert': ['ice_cream', 'gelato', 'frozen_yogurt', 'dessert', 'desserts',
+                'candy', 'chocolate', 'custard', 'shaved_ice', 'crepe_dessert'],
+    'mexican': ['mexican', 'tex-mex', 'tex_mex', 'tacos', 'taco', 'burrito',
+                'latin_american', 'latin', 'colombian', 'salvadoran',
+                'dominican', 'brazilian', 'peruvian', 'cuban', 'caribbean',
+                'jamaican', 'puerto_rican', 'venezuelan', 'argentinian',
+                'honduran', 'guatemalan', 'ecuadorian', 'chilean'],
+    'chinese': ['chinese', 'cantonese', 'szechuan', 'sichuan', 'dim_sum',
+                'hot_pot', 'hotpot', 'dumpling', 'dumplings'],
+    'japanese': ['japanese', 'sushi', 'ramen', 'izakaya', 'teppanyaki',
+                 'yakitori', 'hibachi'],
+    'thai': ['thai'],
+    'korean': ['korean'],
+    'vietnamese': ['vietnamese', 'pho'],
+    'indian': ['indian', 'pakistani', 'punjabi', 'south_indian', 'curry',
+               'bangladeshi'],
+    'asian': ['asian', 'noodle', 'noodles', 'filipino', 'malaysian',
+              'indonesian', 'mongolian', 'taiwanese', 'nepalese', 'tibetan',
+              'burmese', 'cambodian', 'laotian'],
+    'mediterranean': ['mediterranean', 'greek', 'turkish', 'middle_eastern',
+                      'lebanese', 'falafel', 'kebab', 'shawarma', 'israeli',
+                      'persian', 'iranian', 'moroccan', 'syrian', 'armenian',
+                      'afghan', 'spanish', 'tapas', 'portuguese', 'gyros', 'gyro'],
+    'french': ['french', 'crepe', 'crepes', 'creperie', 'patisserie'],
+    'barbecue': ['barbecue', 'bbq', 'smokehouse'],
+    'steak': ['steak_house', 'steakhouse', 'steak'],
+    'chicken': ['chicken', 'fried_chicken', 'wings', 'chicken_wings',
+                'rotisserie'],
+    'salad': ['salad', 'salads', 'poke', 'hawaiian', 'healthy', 'soup',
+              'bowls'],
+    'vegetarian': ['vegetarian', 'vegan', 'plant_based'],
+    'pub': ['pub', 'gastropub', 'bar_and_grill', 'irish', 'german', 'beer',
+            'brewpub', 'tavern'],
+}
+
+CUISINE_OF = {token: group
+              for group, tokens in CUISINE_TOKENS.items()
+              for token in tokens}
+
+_UNGROUPED = sorted(set(CUISINE_TOKENS) - set(CUISINE_ORDER))
+assert not _UNGROUPED, f'cuisine tokens name groups CUISINES does not define: {_UNGROUPED}'
+
 
 # --- reading a venue name ---------------------------------------------------
 #

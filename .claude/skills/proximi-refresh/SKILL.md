@@ -40,7 +40,7 @@ python3 scripts/cinema.py      # the five film houses that serve HTML
 python3 scripts/enrich.py      # geocode (cached), radius-filter, classify
 python3 scripts/merge.py       # collapse repeats, dedupe → data/events.json
 python3 scripts/prices.py      # read unpriced listings' own pages (cached)
-python3 scripts/places.py      # the directory → data/places.json
+python3 scripts/places.py      # the directory → data/places.json + data/eats.json
 python3 scripts/audit.py       # read the next batch of venue sites (see below)
 python3 scripts/validate.py    # gates both files; must pass before committing
 node tests/drive.js            # drives the page itself; must pass too
@@ -57,6 +57,23 @@ jsonld.py.
 It exists for retrying a failed selector — always follow it with a full
 (cached, fast) `places.py` run, or the directory ships missing 28 kinds.
 
+`places.py` collects **one circle per region** — the registry `center` plus
+everything in `placesRegions` — and the cache is keyed on a region's *geometry*,
+not its id, so moving a region's coordinates cannot hand back the old area's
+answers. Eight regions is 624 queries and about six hours in one process, so
+split the fetch and assemble afterwards:
+
+```bash
+python3 scripts/places.py --regions acadia --fetch-only --mirror overpass-api.de &
+python3 scripts/places.py --regions portland --fetch-only --mirror maps.mail.ru &
+...
+python3 scripts/places.py       # all cached: assembles both files in a minute
+```
+
+`--fetch-only` writes nothing, so a half-finished split can never ship a file
+holding two regions out of eight. A run that *is* missing regions says so on
+stderr and the file's `meta.regions` lists only what it actually holds.
+
 Rough expected yields — **investigate anything near zero before continuing**:
 harvest ~1900, jsonld ~60, platforms ~1450, social ~950, libcal ~590,
 songkick ~570, cinema ~200.
@@ -68,6 +85,25 @@ summary if it happens.
 
 `places.py` is slow (Overpass) and fully cached; it only refetches selectors it
 does not already have. Run it, but do not block the events refresh on it.
+
+### Somewhere to eat is the other file
+
+`restaurant` and `cafe` are collected too, and written to **data/eats.json**,
+which the client loads in the background. They outnumber the directory about
+five to one, so three rules keep the file a directory rather than a phone book,
+and each was read off the tags rather than guessed:
+
+- a row needs a cuisine, website, hours or phone — 14% of restaurants have a
+  name and nothing else, and there is nothing a reader can do with those;
+- **no branded fast food** (1,491 of 2,079 in one 35-mile sample). Chains that
+  are real restaurants or cafés stay and are labelled;
+- a `cuisine` token no group claims is **dropped, never bucketed into "other"**
+  — a filter is a promise. The run prints the unmapped tokens it saw; grow
+  `placekinds.CUISINE_TOKENS` from that list, not from imagination.
+
+Rough yields: restaurant ~3,600 and cafe ~900 per dense 35-mile region, a
+tenth of that in rural Maine. **Near zero here means the food selectors broke**,
+not that nobody eats there.
 
 ### Read harvest's report and act on it
 
@@ -160,6 +196,8 @@ destinations, and each needs a different signal. These filters are load-bearing
 | `tourism=attraction` | 525 | 117 | `zoo`/`aquarium` self-evident; viewpoints need write-up |
 | `leisure=garden` | 363 | 99 | `garden:type` botanical or arboretum |
 | `shop=farm` | 130 | 66 | not `greengrocer` — town grocers, and one chemist |
+| `amenity=fast_food` | 2,079 | 588 | no `brand` — the rest is Dunkin' and Subway |
+| `amenity=restaurant` | 4,211 | 3,620 | a cuisine, site, hours or phone: something to act on |
 | `tourism=viewpoint` | 457 | 62 | a tower built to be climbed, or a written-up overlook |
 
 Two traps worth stating outright:
@@ -262,8 +300,14 @@ If two things need the same derived fact, compute it once and write it down.
 
 ## 9. Verify what renders, not what exists
 
-- `python3 scripts/validate.py` must pass. It gates both files and runs the
-  Overpass selector self-test.
+- `python3 scripts/validate.py` must pass. It gates all three files —
+  events, places and eats — and runs the Overpass selector self-test. A place
+  must sit inside *some* coverage region, not inside the centre's radius: the
+  old check would fail every row in Maine, and dropping it entirely would let a
+  bbox corner ship a museum in Quebec.
+- A cuisine outside the shipped vocabulary is the same silent failure as a
+  kind outside it: the row renders and no filter can reach it. validate.py
+  fails on both.
 - `node tests/drive.js` must pass. It starts its own server, drives the page
   in headless Chromium (touch swipes via CDP, detail sheets, permalinks,
   elementFromPoint render asserts) and is the check that would have caught

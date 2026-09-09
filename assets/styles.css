@@ -594,6 +594,8 @@ input:focus-visible, select:focus-visible, button:focus-visible, a:focus-visible
   border-radius: var(--radius); border: 1px solid var(--line);
   background: var(--surface);
 }
+.places-scope { margin: 10px 0 0; }
+.places-hint { margin: 8px 0 0; font-size: 12px; color: var(--ink-3); }
 .places-toggles { display: flex; flex-wrap: wrap; gap: 8px 18px; margin: 10px 0 0; }
 .places-toggle {
   display: inline-flex; align-items: center; gap: 7px;
@@ -683,6 +685,11 @@ input:focus-visible, select:focus-visible, button:focus-visible, a:focus-visible
   border: 1px solid var(--line); color: var(--ink-2); background: var(--surface-2);
 }
 .place-tag.is-chain { opacity: .7; }
+/* Open and closed are the only two row tags that are a claim about right now,
+   so they are the only two that carry colour. */
+.place-tag.is-open { color: var(--free); border-color: currentColor; }
+.place-tag.is-shut { opacity: .7; text-decoration: line-through; }
+.place-tag.is-cuisine { text-transform: none; letter-spacing: 0; }
 /* "We looked and there was nothing" is a smaller fact than the ones beside it,
    and it should read that way — informative, not a warning. */
 .place-tag.is-quiet {
