@@ -223,7 +223,10 @@
       timeOfDay: f.timeOfDay, view: state.view,
       placeKind: state.placeKind, placeSort: state.placeSort,
       placesSavedOnly: state.placesSavedOnly,
-      placesEventsOnly: state.placesEventsOnly
+      placesEventsOnly: state.placesEventsOnly,
+      placeScope: state.placeScope, placeCuisine: state.placeCuisine,
+      placesOpenNow: state.placesOpenNow,
+      placesIndieOnly: state.placesIndieOnly
     };
     for (const [name, prop] of PREF_FIELDS) {
       if (el[name]) prefs[name] = name in f ? f[name] : el[name][prop];
@@ -257,6 +260,18 @@
     state.placesEventsOnly = !!prefs.placesEventsOnly;
     if (el.placesEvents) el.placesEvents.checked = state.placesEventsOnly;
     if (el.placesSort) el.placesSort.value = state.placeSort;
+    if (PLACE_SCOPES.some((sc) => sc.id === prefs.placeScope)) {
+      state.placeScope = prefs.placeScope;
+    }
+    if (prefs.placeCuisine !== undefined) state.placeCuisine = prefs.placeCuisine;
+    state.placesOpenNow = !!prefs.placesOpenNow;
+    if (el.placesOpen) el.placesOpen.checked = state.placesOpenNow;
+    state.placesIndieOnly = !!prefs.placesIndieOnly;
+    if (el.placesIndie) el.placesIndie.checked = state.placesIndieOnly;
+    buildPlaceScope();
+    // Reopening on "To eat" has to go and get the food list, or the page comes
+    // back empty on exactly the tab the reader left it on.
+    if (state.placeScope !== 'visit') loadEats();
     syncInterested();
     syncRangeLabels();
   }
@@ -299,6 +314,11 @@
     placesSearch: $('places-search'), placesSort: $('places-sort'),
     placesSaved: $('places-saved'), placesEvents: $('places-events'),
     placesSummary: $('places-summary'),
+    placesScope: $('places-scope'), placesFood: $('places-food'),
+    placesIntro: $('places-intro'),
+    placesCuisines: $('places-cuisines'), placesFoodHint: $('places-food-hint'),
+    placesOpen: $('places-open'), placesOpenWrap: $('places-open-wrap'),
+    placesIndie: $('places-indie'), placesIndieWrap: $('places-indie-wrap'),
     venueBanner: $('venue-banner'),
     buildStamp: $('build-stamp'),
     venueBannerName: $('venue-banner-name'), venueBannerClear: $('venue-banner-clear'),
@@ -336,6 +356,12 @@
     savedPlaces: loadSavedPlaces(),
     placesSavedOnly: false,
     placesEventsOnly: false,     // the directory narrowed to places with a programme
+    placeScope: 'visit',        // 'visit' | 'eat' | 'all'
+    placeCuisine: null,         // the food list narrowed to one kind of food
+    placesOpenNow: false,
+    placesIndieOnly: false,     // no chains, which is most of what fast food is
+    eats: 'idle',               // 'idle' | 'loading' | 'ready' | 'failed'
+    placeRegions: [],           // the coverage circles the build collected
     view: 'events',             // 'events' | 'places' | 'saved'
     horizon: DEFAULTS.horizon,
     repeatMode: DEFAULTS.repeatMode,
@@ -1711,6 +1737,118 @@
 
   const kindLabel = (k) => PLACE_KIND_LABELS[k] || k || 'Everywhere else';
 
+  /* Somewhere to eat is its own file and its own question, so the Places page
+     has a scope: the directory as it always was, the food list, or both at
+     once for a search. 'visit' is the default because it is what this page has
+     always been, and a reader who opens Places looking for a castle should not
+     have to scroll past forty pizzerias to find one. */
+  const PLACE_SCOPES = [
+    { id: 'visit', label: 'To visit' },
+    { id: 'eat',   label: 'To eat' },
+    { id: 'all',   label: 'Everywhere' }
+  ];
+
+  /* Overwritten by data/eats.json's meta, exactly like the kind labels: the
+     build owns the vocabulary, this is the fallback for an older file. */
+  const CUISINE_LABELS = {
+    seafood: 'Seafood', american: 'American', pizza: 'Pizza', italian: 'Italian',
+    burger: 'Burgers', sandwich: 'Sandwiches & delis',
+    breakfast: 'Breakfast & brunch', diner: 'Diners',
+    bakery: 'Bakeries & donuts', coffee: 'Coffee, tea & juice',
+    dessert: 'Ice cream & desserts', mexican: 'Mexican & Latin American',
+    chinese: 'Chinese', japanese: 'Japanese & sushi', thai: 'Thai',
+    korean: 'Korean', vietnamese: 'Vietnamese', indian: 'Indian',
+    asian: 'Other Asian', mediterranean: 'Mediterranean & Middle Eastern',
+    french: 'French', barbecue: 'Barbecue', steak: 'Steakhouses',
+    chicken: 'Chicken & wings', salad: 'Salads & bowls',
+    vegetarian: 'Vegetarian & vegan', pub: 'Pub food'
+  };
+  let cuisineOrder = Object.keys(CUISINE_LABELS);
+  const cuisineLabel = (c) => CUISINE_LABELS[c] || c;
+  const FOOD_KINDS = new Set(['restaurant', 'cafe']);
+  const isFood = (p) => FOOD_KINDS.has(p.kind);
+
+  /* ── Is it open right now ──────────────────────────────
+     OpenStreetMap's opening_hours is a small language and most of this corner
+     of the map speaks the plain half of it: "Mo-Su 11:00-22:00",
+     "Tu-Th 17:00-22:00, Fr 17:00-23:00, Mo off", a bare "05:00-19:00". 45% of
+     the food rows carry one.
+
+     Three rules keep this honest, because "open" is a claim that sends
+     somebody driving. Anything this does not fully understand — a public
+     holiday clause, a season, a comment in quotes, a word like sunset —
+     returns null and the row says nothing at all rather than guessing. A day
+     the string never mentions is closed, which is what the format means. And
+     the answer is only ever as fresh as the map: the label says so. */
+  const DAY_N = { Su: 0, Mo: 1, Tu: 2, We: 3, Th: 4, Fr: 5, Sa: 6 };
+  const DAY = '(?:Mo|Tu|We|Th|Fr|Sa|Su)';
+  const HOURS_RULE = new RegExp(
+    `(?:(${DAY}(?:\\s*[-,]\\s*${DAY})*)\\s+)?` +
+    '(off|closed|\\d{1,2}:\\d{2}\\s*-\\s*\\d{1,2}:\\d{2}' +
+    '(?:\\s*,\\s*\\d{1,2}:\\d{2}\\s*-\\s*\\d{1,2}:\\d{2})*)', 'g');
+  /* Everything this parser cannot evaluate. Each one is a reason to say
+     nothing: a holiday clause, a season, a school term, a comment. */
+  const HOURS_BEYOND_US =
+    /\b(PH|SH|su?n(rise|set)|dawn|dusk|easter|open|week\s*\d|Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\b|"|\[/i;
+
+  function daysOf(spec) {
+    if (!spec) return [0, 1, 2, 3, 4, 5, 6];
+    const out = new Set();
+    for (const part of spec.split(',')) {
+      const ends = part.split('-').map((x) => DAY_N[x.trim()]);
+      if (ends[0] == null) continue;
+      if (ends.length === 1) { out.add(ends[0]); continue; }
+      if (ends[1] == null) continue;
+      for (let d = ends[0]; ; d = (d + 1) % 7) {   // Sa-Su wraps the week end
+        out.add(d);
+        if (d === ends[1]) break;
+      }
+    }
+    return [...out];
+  }
+
+  function rangesOf(spec) {
+    if (/^(off|closed)$/i.test(spec.trim())) return [];
+    const out = [];
+    for (const part of spec.split(',')) {
+      const m = part.match(/(\d{1,2}):(\d{2})\s*-\s*(\d{1,2}):(\d{2})/);
+      if (m) out.push([+m[1] * 60 + +m[2], +m[3] * 60 + +m[4]]);
+    }
+    return out;
+  }
+
+  function openState(hours, now = new Date()) {
+    const text = String(hours || '').trim();
+    if (!text) return null;
+    if (/^24\/7$/.test(text)) return 'open';
+    if (HOURS_BEYOND_US.test(text)) return null;
+
+    const rules = [];
+    const leftover = text.replace(HOURS_RULE, (_m, days, spec) => {
+      rules.push({ days, spec });
+      return '';
+    });
+    // Anything left but separators means the string said something else too,
+    // and a half-read rule is the one that gets somebody's evening wrong.
+    if (!rules.length || !/^[\s;,]*$/.test(leftover)) return null;
+
+    const day = now.getDay();
+    const mins = now.getHours() * 60 + now.getMinutes();
+    let today = false;
+    for (const rule of rules) {           // a later rule wins for the days it names
+      if (daysOf(rule.days).includes(day)) {
+        today = rangesOf(rule.spec).some(
+          ([from, to]) => (to > from ? mins >= from && mins < to : mins >= from));
+      }
+    }
+    // Yesterday's kitchen may still be open: "Fr,Sa 17:00-01:00" on a Saturday
+    // at half past midnight is Friday's rule still running.
+    const tail = rules.some((rule) =>
+      daysOf(rule.days).includes((day + 6) % 7)
+      && rangesOf(rule.spec).some(([from, to]) => to <= from && mins < to));
+    return today || tail ? 'open' : 'closed';
+  }
+
   /* Somewhere the audit has read and found nothing to read: no feed, no
      calendar page, no dated sales or specials. Worth saying on the card,
      because "no listings" otherwise reads as "we have not got round to it"
@@ -1749,8 +1887,13 @@
   let placeCache = null;
   let placeCacheKey = '';
   let placeByNameCache = null;
+  let placeByIdCache = null;
 
-  function invalidatePlaces() { placeCache = null; placeByNameCache = null; }
+  function invalidatePlaces() {
+    placeCache = null;
+    placeByNameCache = null;
+    placeByIdCache = null;
+  }
 
   function placeIndex() {
     const key = `${state.items.length}|${state.places.length}|`
@@ -1759,6 +1902,7 @@
     placeCacheKey = key;
     placeCache = buildPlaceIndex();
     placeByNameCache = null;
+    placeByIdCache = null;
     return placeCache;
   }
 
@@ -1773,6 +1917,22 @@
       for (const p of rows) if (!placeByNameCache.has(p.name)) placeByNameCache.set(p.name, p);
     }
     return placeByNameCache.get(name) || null;
+  }
+
+  /* A name was a good enough key for a directory of museums and castles, where
+     two rows almost never share one. It is not one for somewhere to eat: there
+     are nine Dunkin' and four Not Your Average Joe's inside one region, so a
+     tap on the third would open the first — wrong town, wrong hours, wrong
+     phone. Rows carry their id now and this resolves it; the name lookup stays
+     for the venues that only ever arrive with a name, from the event feed. */
+  function placeById(id) {
+    if (!id) return null;
+    const rows = placeIndex();
+    if (!placeByIdCache) {
+      placeByIdCache = new Map();
+      for (const p of rows) if (p.id && !placeByIdCache.has(p.id)) placeByIdCache.set(p.id, p);
+    }
+    return placeByIdCache.get(id) || null;
   }
 
   /* Every listing's host has a page, whether or not OpenStreetMap has heard
@@ -1835,19 +1995,128 @@
       (p) => p.kind || p.events >= REAL_PLACE_EVENTS));
   }
 
+  /* The food list is its own file, fetched when somebody asks for dinner
+     rather than ahead of the first screen — it is five times the size of the
+     directory, and the feed is what the app opens on. Kicked off in the
+     background once the feed has rendered, so by the time anyone taps "To eat"
+     it is usually already here. */
+  function loadEats() {
+    if (state.eats === 'loading' || state.eats === 'ready') return;
+    state.eats = 'loading';
+    fetch('data/eats.json', { cache: 'no-cache' })
+      .then((r) => (r.ok ? r.json() : Promise.reject(new Error(r.status))))
+      .then((d) => {
+        state.eats = 'ready';
+        if (Array.isArray(d.meta?.cuisines) && d.meta.cuisines.length) {
+          cuisineOrder = d.meta.cuisines;
+        }
+        if (d.meta?.cuisineLabels) Object.assign(CUISINE_LABELS, d.meta.cuisineLabels);
+        if (d.meta?.kindLabels) Object.assign(PLACE_KIND_LABELS, d.meta.kindLabels);
+        state.places = state.places.concat(d.items || []);
+        invalidatePlaces();
+        updateTabCounts();
+        if (state.view === 'places') renderPlaces();
+        if (location.hash.startsWith('#p=')) openFromHash();
+      })
+      .catch(() => {
+        // No food list is a smaller page, not a broken one.
+        state.eats = 'failed';
+        if (state.view === 'places') renderPlaces();
+      });
+  }
+
+  function buildPlaceScope() {
+    if (!el.placesScope) return;
+    el.placesScope.replaceChildren(...PLACE_SCOPES.map((sc) => {
+      const b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'chip';
+      b.textContent = sc.label;
+      b.setAttribute('aria-pressed', String(state.placeScope === sc.id));
+      b.addEventListener('click', () => {
+        state.placeScope = sc.id;
+        // A kind from the scope being left would silently filter the new one
+        // down to nothing — the reader picked "Museums", then asked for food.
+        state.placeKind = null;
+        if (sc.id !== 'visit') loadEats();
+        buildPlaceScope();
+        savePrefs();
+        renderPlaces();
+      });
+      return b;
+    }));
+  }
+
+  /* Cached per minute per row: openState() is cheap but the list is twenty
+     thousand rows and this runs on every keystroke of the search box. */
+  function openNow(p) {
+    if (!p.openingHours) return null;
+    const minute = Math.floor(Date.now() / 60000);
+    if (p._openMin !== minute) {
+      p._openMin = minute;
+      p._open = openState(p.openingHours);
+    }
+    return p._open;
+  }
+
+  const inScope = (p) => (state.placeScope === 'all' ? true
+    : state.placeScope === 'eat' ? isFood(p) : !isFood(p));
+
+  /* The food filters are remembered, and their controls are hidden on "To
+     visit". Left applied there they would empty the directory — nothing in it
+     has a cuisine, and half of it has no opening hours — with no visible
+     control to explain why. A filter the reader cannot see must not be a
+     filter that is running. */
+  const foodFiltersLive = () => state.placeScope !== 'visit';
+
   function placesMatching(all) {
     const q = (el.placesSearch?.value || '').trim().toLowerCase();
     return all.filter((p) => {
+      if (!inScope(p)) return false;
       if (state.placesSavedOnly && !state.savedPlaces.has(p.name)) return false;
       // "Has something on" reads the same count the row prints, which is every
       // live listing at that place — not the filtered feed. A place does not
       // stop having a programme because the reader is looking at next Tuesday.
       if (state.placesEventsOnly && !p.events) return false;
+      // Only rows the hours could actually be read for. A place with no hours
+      // on the map is not open and not closed, and putting it in either pile
+      // is the lie this filter exists to avoid.
+      if (foodFiltersLive()) {
+        if (state.placesOpenNow && openNow(p) !== 'open') return false;
+        if (state.placesIndieOnly && p.brand) return false;
+      }
       if (!q) return true;
       return p.name.toLowerCase().includes(q)
           || (p.city || '').toLowerCase().includes(q)
-          || kindLabel(p.kind).toLowerCase().includes(q);
+          || kindLabel(p.kind).toLowerCase().includes(q)
+          || (p.cuisine || []).some((c) => cuisineLabel(c).toLowerCase().includes(q));
     });
+  }
+
+  /* Same shape as the kinds select, and the same reason: a filter offers what
+     the rows in front of the reader actually contain, with the counts, so an
+     empty option is never one of the choices. */
+  function renderPlaceCuisines(rows) {
+    if (!el.placesCuisines) return;
+    const counts = new Map();
+    for (const p of rows) {
+      for (const c of p.cuisine || []) counts.set(c, (counts.get(c) || 0) + 1);
+    }
+    const order = [...counts.keys()].sort((a, b) => {
+      const ia = cuisineOrder.indexOf(a), ib = cuisineOrder.indexOf(b);
+      return (ia < 0 ? 1e3 : ia) - (ib < 0 ? 1e3 : ib);
+    });
+    const withCuisine = rows.reduce((a, p) => a + ((p.cuisine || []).length ? 1 : 0), 0);
+    const opts = [`<option value="">Any kind of food (${withCuisine} say)</option>`];
+    for (const c of order) {
+      opts.push(`<option value="${esc(c)}"${state.placeCuisine === c ? ' selected' : ''}>`
+        + `${esc(cuisineLabel(c))} (${counts.get(c)})</option>`);
+    }
+    if (state.placeCuisine && !order.includes(state.placeCuisine)) {
+      opts.push(`<option value="${esc(state.placeCuisine)}" selected>`
+        + `${esc(cuisineLabel(state.placeCuisine))} (0)</option>`);
+    }
+    el.placesCuisines.innerHTML = opts.join('');
   }
 
   function sortPlaces(rows) {
@@ -1926,6 +2195,7 @@
     li.className = 'place-slot'
       + (hidden ? ' is-muted' : '') + (saved ? ' is-saved' : '');
     li.dataset.name = p.name;
+    if (p.id) li.dataset.id = p.id;
 
     const rail = document.createElement('div');
     rail.className = 'swipe-rail';
@@ -1942,6 +2212,7 @@
     const meta = [p.city, p._miles == null ? '' : formatDistance(p._miles)]
       .filter(Boolean).join(' \u00b7 ');
     const hours = p.openingHours && p.openingHours.length <= 60 ? p.openingHours : '';
+    const open = openNow(p);
 
     row.innerHTML = `
       <button type="button" class="place-save" aria-pressed="${saved}"
@@ -1953,6 +2224,10 @@
         <p class="place-name">${esc(p.name)}</p>
         <p class="place-meta">
           ${p.kind ? `<span class="place-kind">${esc(kindLabel(p.kind))}</span>` : ''}
+          ${(p.cuisine || []).slice(0, 2).map((c) =>
+            `<span class="place-tag is-cuisine">${esc(cuisineLabel(c))}</span>`).join('')}
+          ${open === 'open' ? '<span class="place-tag is-open">open now</span>'
+            : open === 'closed' ? '<span class="place-tag is-shut">closed now</span>' : ''}
           ${p.secondHand ? '<span class="place-tag">used &amp; rare</span>' : ''}
           ${p.brand ? '<span class="place-tag is-chain">chain</span>' : ''}
           ${noEventInfo(p) ? '<span class="place-tag is-quiet">no event calendar</span>' : ''}
@@ -1987,7 +2262,8 @@
     return li;
   }
 
-  const placeOf = (slot) => slot && placeByName(slot.dataset.name);
+  const placeOf = (slot) =>
+    slot && (placeById(slot.dataset.id) || placeByName(slot.dataset.name));
 
   function wirePlaceList(root) {
     delegateSwipe(root, '.place-slot', '.place-row', (slot, verdict) => {
@@ -2022,11 +2298,36 @@
 
   function renderPlaces() {
     if (!el.placesList) return;
+    const eating = state.placeScope !== 'visit';
+    for (const [node, on] of [[el.placesFood, eating], [el.placesFoodHint, eating],
+                              [el.placesOpenWrap, eating], [el.placesIndieWrap, eating]]) {
+      if (node) node.hidden = !on;
+    }
+
+    // The page says what it is for, and it is for two things now.
+    if (el.placesIntro) {
+      el.placesIntro.textContent = state.placeScope === 'eat'
+        ? 'Somewhere to eat, nearest first. Swipe one right to like it, left to '
+          + 'mute it.'
+        : state.placeScope === 'all'
+          ? 'Everywhere in range — somewhere to go and somewhere to eat. Swipe a '
+            + 'place right to like it, left to mute it.'
+          : 'Somewhere to go, whether or not anything is on. Swipe a place right '
+            + 'to like it, left to mute it.';
+    }
+
     const matched = placesMatching(placeIndex());
+    // Kinds are counted over everything that matched; cuisines within the kind
+    // the reader has already chosen. Each select counts what choosing it would
+    // actually give, which is the only reason to print a number beside it.
     renderPlaceKinds(matched);
-    const rows = sortPlaces(state.placeKind
+    const byKind = state.placeKind
       ? matched.filter((p) => (p.kind || 'other') === state.placeKind)
-      : matched);
+      : matched;
+    if (eating) renderPlaceCuisines(byKind);
+    const rows = sortPlaces(state.placeCuisine && eating
+      ? byKind.filter((p) => (p.cuisine || []).includes(state.placeCuisine))
+      : byKind);
 
     if (el.placesSummary) {
       const withEvents = rows.filter((p) => p.events).length;
@@ -2049,12 +2350,23 @@
       li.className = 'venue-empty';
       li.textContent = !state.places.length
         ? 'The places directory has not been built yet.'
-        : state.placesSavedOnly
-          ? 'Nothing liked yet — swipe a place right, or tap the heart.'
-          : state.placesEventsOnly
-            ? 'Nothing here has anything on. Most places worth going to never '
-              + 'publish a calendar — untick "Has something on" to see them.'
-            : 'No place matches that.';
+        : eating && state.eats === 'loading'
+          ? 'Fetching somewhere to eat…'
+          : eating && state.eats === 'failed'
+            ? 'The food list would not load. Check your connection and reload — '
+              + 'everywhere else is still here.'
+            : state.placesSavedOnly
+              ? 'Nothing liked yet — swipe a place right, or tap the heart.'
+              : state.placesEventsOnly
+                ? 'Nothing here has anything on. Most places worth going to never '
+                  + 'publish a calendar — untick "Has something on" to see them.'
+                : state.placesOpenNow
+                  ? 'Nothing here is known to be open right now. Only about half '
+                    + 'of these carry opening hours on the map, so this hides '
+                    + 'plenty of places that are open — untick "Open now" to see them.'
+                  : state.placeCuisine
+                    ? `Nothing nearby is listed as ${cuisineLabel(state.placeCuisine).toLowerCase()}.`
+                    : 'No place matches that.';
       el.placesList.append(li);
     } else if (rows.length > CAP) {
       const li = document.createElement('li');
@@ -2281,12 +2593,24 @@
       .filter((i) => venueOf(i) === p.name && verdictOf(i) !== 'hidden')
       .sort((a, b) => effectiveDay(a) - effectiveDay(b) || whenKey(a) - whenKey(b));
     const SHOWN = 5;
+    const open = openNow(p);
+    // "Nothing scheduled here" is worth saying about a theatre and is noise on
+    // a chowder house — nobody came to this page wondering what is on at a
+    // chowder house. The section earns its place when there is something in it.
+    const whatsOn = here.length || !isFood(p);
 
     el.detailBody.innerHTML = `
       <div class="detail-tags">
         ${p.kind ? `<span class="badge badge-type">${esc(kindLabel(p.kind))}</span>` : ''}
         ${(p.kinds || []).filter((k) => k !== p.kind).map((k) =>
           `<span class="badge badge-type is-secondary">${esc(kindLabel(k))}</span>`).join('')}
+        ${(p.cuisine || []).map((c) =>
+          `<span class="badge badge-type is-secondary">${esc(cuisineLabel(c))}</span>`).join('')}
+        ${open === 'open' ? '<span class="badge badge-going">Open now</span>'
+          : open === 'closed' ? '<span class="badge">Closed now</span>' : ''}
+        ${(p.diet || []).map((d) => `<span class="badge">${esc(d)}</span>`).join('')}
+        ${p.outdoorSeating ? '<span class="badge">outdoor seating</span>' : ''}
+        ${p.takeaway ? '<span class="badge">takeaway</span>' : ''}
         ${p.secondHand ? '<span class="badge">used &amp; rare</span>' : ''}
         ${p.brand ? '<span class="badge">chain</span>' : ''}
         ${p.free ? '<span class="badge badge-going">Free entry</span>' : ''}
@@ -2298,9 +2622,12 @@
         ${[p.address, p.city, miles != null ? formatDistance(miles) : null]
           .filter(Boolean).map(esc).join(' · ') || 'Location on the map below.'}
       </p></div>
-      ${p.openingHours ? `<p class="detail-desc">Hours: ${esc(p.openingHours)}</p>` : ''}
+      ${p.openingHours ? `<p class="detail-desc">Hours: ${esc(p.openingHours)}
+        <span class="detail-fine">\u2014 as recorded on the map, which is not the
+        same as tonight. Ring ahead.</span></p>` : ''}
       ${p.description ? `<p class="detail-desc">${esc(p.description)}</p>` : ''}
       <div class="detail-links">${links.join('')}</div>
+      ${!whatsOn ? '' : `
       <section class="detail-whatson">
         <h3 class="detail-h">What's on here</h3>
         ${here.length ? `<ul class="detail-events">${here.slice(0, SHOWN).map((i) => `
@@ -2318,7 +2645,7 @@
              places worth going never publish one.</p>`
           : '<p class="detail-fine">Nothing scheduled here in the feed right now — '
             + 'plenty of places worth going never publish a calendar.</p>'}
-      </section>
+      </section>`}
       <p class="detail-fine">${p.source === 'Event listings'
         ? 'Known from the event feed.'
         : 'Place data from OpenStreetMap contributors (ODbL).'}</p>`;
@@ -2373,7 +2700,7 @@
       const item = state.allItems.find((i) => i.id === id);
       if (item) { openEventDetail(item, { push }); return; }
     } else {
-      const p = placeIndex().find((x) => (x.id || x.name) === id || x.name === id)
+      const p = placeById(id) || placeByName(id)
         || placeByName(id.replace(/^feed-/, ''));
       if (p) {
         openPlaceDetail(p, { push });
@@ -2707,7 +3034,24 @@
      already taken, or the busiest county eats the whole row and a reader in the
      next state over still has nowhere to tap. */
   const PRESET_SLOTS = 8;
+  const REGION_SLOTS = 3;        // of those, kept for coverage areas
   const MIN_APART = 12;          // miles between two chips
+
+  /* The coverage areas themselves, nearest first. A town chip means "there are
+     listings here"; a region chip means "the app reaches here at all", which is
+     the more useful thing to be told when you are outside the county the app
+     grew up in. Three of the eight slots, so the towns keep the rest. */
+  function regionPresets() {
+    const regions = state.placeRegions || [];
+    if (!regions.length) return [];
+    const ranked = state.origin
+      ? [...regions].sort((a, b) => haversineMiles(state.origin, a)
+                                  - haversineMiles(state.origin, b))
+      : regions;
+    return ranked.slice(0, REGION_SLOTS).map((r) => ({
+      name: normaliseCity(r.name), lat: r.lat, lon: r.lon, coverage: true
+    }));
+  }
 
   function normaliseCity(name) {
     return String(name || '')
@@ -2718,7 +3062,8 @@
 
   function derivePresets() {
     const items = state.allItems && state.allItems.length ? state.allItems : state.items;
-    if (!items || !items.length) return FALLBACK_PRESETS;
+    if (!items || !items.length) return regionPresets().length
+      ? regionPresets() : FALLBACK_PRESETS;
 
     const towns = new Map();
     for (const it of items) {
@@ -2734,10 +3079,12 @@
       .map((t) => ({ name: t.name, n: t.n, lat: t.lat / t.n, lon: t.lon / t.n }))
       .sort((a, b) => b.n - a.n);
 
-    const chosen = [];
+    const chosen = regionPresets();
     for (const t of ranked) {
       if (chosen.length >= PRESET_SLOTS) break;
-      if (chosen.every((c) => haversineMiles(c, t) >= MIN_APART)) chosen.push(t);
+      if (chosen.every((c) => c.name !== t.name && haversineMiles(c, t) >= MIN_APART)) {
+        chosen.push(t);
+      }
     }
     /* Once we know where the reader is, the nearest is the one they want first.
        Before that, busiest first is the honest ordering. */
@@ -2755,6 +3102,7 @@
       b.className = 'chip';
       b.textContent = p.name;
       if (p.n) b.title = `${p.n} listing${p.n === 1 ? '' : 's'} in ${p.name}`;
+      if (p.coverage) b.title = `Places around ${p.name} are in the directory`;
       b.addEventListener('click', () => setOrigin(p.lat, p.lon, p.name));
       return b;
     }));
@@ -2881,6 +3229,31 @@
     savePrefs();
     renderPlaces();
   });
+  /* Wired 2026-09-09. The select has been rendered since Places became a page
+     of its own (43899dc) and has never been listened to, so picking "Castles"
+     rebuilt the same list and the filter has been decorative the whole time.
+     Nothing threw and the counts beside each kind were right, which is exactly
+     why it survived: the control looked like it was working. */
+  el.placesKinds?.addEventListener('change', () => {
+    state.placeKind = el.placesKinds.value || null;
+    savePrefs();
+    renderPlaces();
+  });
+  el.placesCuisines?.addEventListener('change', () => {
+    state.placeCuisine = el.placesCuisines.value || null;
+    savePrefs();
+    renderPlaces();
+  });
+  el.placesOpen?.addEventListener('change', () => {
+    state.placesOpenNow = el.placesOpen.checked;
+    savePrefs();
+    renderPlaces();
+  });
+  el.placesIndie?.addEventListener('change', () => {
+    state.placesIndieOnly = el.placesIndie.checked;
+    savePrefs();
+    renderPlaces();
+  });
   el.venueBannerClear?.addEventListener('click', clearVenueListings);
 
   el.showHiddenBtn?.addEventListener('click', () => {
@@ -2991,6 +3364,11 @@
     get calendar() { return state.calendar; },
     get skips() { return state.skips; },
     get places() { return state.places; },
+    get origin() { return state.origin; },
+    get regions() { return state.placeRegions; },
+    get eats() { return state.eats; },
+    get scope() { return state.placeScope; },
+    openState,
     hasCadence
   };
 
@@ -3002,6 +3380,7 @@
     const prefs = loadPrefs();
     applyPrefs(prefs);
     buildPresets();
+    buildPlaceScope();       // applyPrefs returns early when there are none
     buildHorizonChips();
     buildRepeatChips();
     buildTimeOfDayChips();
@@ -3039,6 +3418,16 @@
           if (Array.isArray(d.meta?.kinds) && d.meta.kinds.length) {
             placeKindOrder = d.meta.kinds;
           }
+          /* Where coverage actually is. The presets were derived from the
+             listings, which is right for a region with listings in it and
+             useless three states away: the directory now reaches Bar Harbor
+             and the event feed does not, so a reader up there was offered
+             eight Hudson Valley towns. */
+          if (Array.isArray(d.meta?.regions)) {
+            state.placeRegions = d.meta.regions.filter(
+              (r) => Number.isFinite(r.lat) && Number.isFinite(r.lon) && r.name);
+            buildPresets();
+          }
           // The build ships its own labels, so a kind added in Python can
           // never render as a raw slug here again.
           if (d.meta?.kindLabels) Object.assign(PLACE_KIND_LABELS, d.meta.kindLabels);
@@ -3070,6 +3459,15 @@
       showDataAge(data.meta);
       updateTabCounts();
       syncInterested();
+
+      /* Big file, nobody looking at it yet: fetched once the feed has painted
+         rather than beside it, so it is usually already here by the time
+         somebody taps "To eat" — and never in front of the first screen. */
+      if (typeof requestIdleCallback === 'function') {
+        requestIdleCallback(loadEats, { timeout: 5000 });
+      } else {
+        setTimeout(loadEats, 1500);
+      }
 
       const m = data.meta;
       if (m?.centerLat != null && m?.centerLon != null) {

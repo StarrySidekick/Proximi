@@ -43,7 +43,15 @@ const exe = process.env.CHROMIUM_PATH
   });
   const page = await ctx.newPage();
   const errors = [];
-  page.on('console', (m) => { if (m.type() === 'error') errors.push(m.text()); });
+  /* data/eats.json is optional — places.py writes it and a checkout that has
+     not run it yet is not a broken app — but the browser logs its own 404
+     whatever the fetch does with the rejection. */
+  const OPTIONAL_404 = /eats\.json|version\.json|places\.json/;
+  page.on('console', (m) => {
+    if (m.type() !== 'error') return;
+    if (/404/.test(m.text()) && OPTIONAL_404.test(m.location()?.url || '')) return;
+    errors.push(m.text());
+  });
   page.on('pageerror', (e) => errors.push('PAGEERROR: ' + e.message));
 
   await page.goto(base + '/', { waitUntil: 'networkidle' });
@@ -356,6 +364,154 @@ const exe = process.env.CHROMIUM_PATH
     console.log('SKIP  no audited places in data/places.json yet');
   }
 
+  // ── The kind select ────────────────────────────────────
+  //    It rendered the right kinds with the right counts from the day Places
+  //    became a page, and was never listened to, so choosing one did nothing
+  //    at all. Nothing about the control looked broken, which is the only
+  //    reason it lasted. Assert on the rows, not on the select's value.
+  const kindPick = await page.evaluate(() => {
+    const opt = [...document.querySelectorAll('#places-kinds option')]
+      .find((o) => o.value && /\((\d+)\)/.test(o.textContent)
+        && +o.textContent.match(/\((\d+)\)/)[1] > 3);
+    return opt ? { value: opt.value, n: +opt.textContent.match(/\((\d+)\)/)[1] } : null;
+  });
+  if (kindPick) {
+    await page.selectOption('#places-kinds', kindPick.value);
+    await page.waitForTimeout(400);
+    const shown = await page.evaluate((want) => {
+      const by = new Map((window.__proximi.places || []).map((p) => [p.id, p]));
+      const rows = [...document.querySelectorAll('#places-list .place-slot')];
+      const wrong = rows.filter((r) => {
+        const p = by.get(r.dataset.id);
+        return p && (p.kind || 'other') !== want;
+      }).length;
+      return { rows: rows.length, wrong };
+    }, kindPick.value);
+    ok('choosing a kind filters the list',
+      shown.rows > 0 && shown.rows <= kindPick.n && shown.wrong === 0,
+      `${kindPick.value}: ${shown.rows} rows of ${kindPick.n}, ${shown.wrong} of another kind`);
+    await page.selectOption('#places-kinds', '');
+    await page.waitForTimeout(400);
+  } else {
+    console.log('SKIP  no kind with enough rows to filter on');
+  }
+
+  // ── Somewhere to eat ───────────────────────────────────
+  //    Its own file, fetched in the background, so the first assertion here is
+  //    that it arrived at all.
+  await page.locator('#places-scope .chip', { hasText: 'To eat' }).click();
+  await page.waitForTimeout(1500);
+  // Conditional the same way the audit block is: places.py writes data/eats.json
+  // and a checkout that has not run it yet is not a broken app.
+  const eatsState = await page.evaluate(() => window.__proximi.eats);
+  if (eatsState === 'failed') {
+    console.log('SKIP  data/eats.json has not been built — the food filters cannot be driven');
+  } else {
+  const eats = await page.evaluate(() => ({
+    state: window.__proximi.eats,
+    rows: document.querySelectorAll('#places-list .place-slot').length,
+    food: (window.__proximi.places || []).filter(
+      (p) => p.kind === 'restaurant' || p.kind === 'cafe').length,
+    foodControls: !document.getElementById('places-food').hidden,
+    notFood: [...document.querySelectorAll('#places-list .place-slot')]
+      .filter((r) => {
+        const p = (window.__proximi.places || []).find((x) => x.id === r.dataset.id);
+        return p && p.kind !== 'restaurant' && p.kind !== 'cafe';
+      }).length
+  }));
+  ok('the food list loads on demand', eats.state === 'ready' && eats.food > 100,
+    `${eats.state}, ${eats.food} places to eat`);
+  ok('"to eat" shows only somewhere to eat', eats.rows > 0 && eats.notFood === 0,
+    `${eats.rows} rows, ${eats.notFood} not food`);
+  ok('the food filters appear with it', eats.foodControls);
+
+  // Kind of food: the ask this was built for. Every row has to carry the
+  // cuisine it was filtered to, read off the row rather than off the state.
+  const cuisinePick = await page.evaluate(() => {
+    const opt = [...document.querySelectorAll('#places-cuisines option')]
+      .find((o) => o.value && +o.textContent.match(/\((\d+)\)/)[1] > 5);
+    return opt ? { value: opt.value,
+                   label: opt.textContent.replace(/\s*\(\d+\)$/, '').trim() } : null;
+  });
+  if (cuisinePick) {
+    await page.selectOption('#places-cuisines', cuisinePick.value);
+    await page.waitForTimeout(400);
+    const wrong = await page.evaluate((want) => {
+      const by = new Map((window.__proximi.places || []).map((p) => [p.id, p]));
+      const rows = [...document.querySelectorAll('#places-list .place-slot')];
+      return {
+        rows: rows.length,
+        bad: rows.filter((r) => {
+          const p = by.get(r.dataset.id);
+          return !p || !(p.cuisine || []).includes(want);
+        }).length
+      };
+    }, cuisinePick.value);
+    ok('kind of food narrows to that food',
+      wrong.rows > 0 && wrong.bad === 0,
+      `${cuisinePick.label}: ${wrong.rows} rows, ${wrong.bad} without it`);
+    // And it is on the row, not only in the filter — the label is how somebody
+    // scanning the list tells a chowder house from a taqueria.
+    ok('the row says what kind of food it is',
+      await page.locator('#places-list .place-slot .place-tag.is-cuisine').count() > 0);
+    await page.selectOption('#places-cuisines', '');
+    await page.waitForTimeout(400);
+  } else {
+    console.log('SKIP  no cuisine with enough rows to filter on');
+  }
+
+  // Open now: the filter that can most easily lie, so it is held to "the row
+  // itself says open". A place with no hours on the map must not be in here.
+  await page.locator('#places-open').check();
+  await page.waitForTimeout(500);
+  const openRows = await page.evaluate(() => {
+    const by = new Map((window.__proximi.places || []).map((p) => [p.id, p]));
+    const rows = [...document.querySelectorAll('#places-list .place-slot')];
+    return {
+      rows: rows.length,
+      unlabelled: rows.filter((r) => !r.querySelector('.place-tag.is-open')).length,
+      guessed: rows.filter((r) => {
+        const p = by.get(r.dataset.id);
+        return !p || !p.openingHours
+          || window.__proximi.openState(p.openingHours) !== 'open';
+      }).length
+    };
+  });
+  ok('"open now" only keeps places the map says are open now',
+    openRows.rows > 0 && openRows.unlabelled === 0 && openRows.guessed === 0,
+    `${openRows.rows} rows, ${openRows.unlabelled} unlabelled, ${openRows.guessed} guessed`);
+  await page.locator('#places-open').uncheck();
+  await page.waitForTimeout(400);
+
+  // Both halves, or this passes on a list that never had a chain in it.
+  const chainsBefore = await page.locator('#places-list .place-slot .place-tag.is-chain').count();
+  await page.locator('#places-indie').check();
+  await page.waitForTimeout(500);
+  const chains = await page.locator('#places-list .place-slot .place-tag.is-chain').count();
+  ok('"independents only" leaves no chains', chainsBefore > 0 && chains === 0,
+    `${chainsBefore} chains before, ${chains} after`);
+  await page.locator('#places-indie').uncheck();
+  await page.waitForTimeout(400);
+  // Leaving with the food filters still ticked must not empty the directory:
+  // nothing to visit has a cuisine and half of it has no hours, and on this
+  // scope there is no control on screen to explain the empty page.
+  await page.locator('#places-open').check();
+  await page.waitForTimeout(300);
+  }
+  await page.locator('#places-scope .chip', { hasText: 'To visit' }).click();
+  await page.waitForTimeout(500);
+  const backToVisit = await page.locator('#places-list .place-slot').count();
+  ok('the food filters do not follow you back to "to visit"', backToVisit > 50,
+    `${backToVisit} rows`);
+  if (eatsState !== 'failed') {
+    await page.locator('#places-scope .chip', { hasText: 'To eat' }).click();
+    await page.waitForTimeout(400);
+    await page.locator('#places-open').uncheck();
+    await page.waitForTimeout(300);
+    await page.locator('#places-scope .chip', { hasText: 'To visit' }).click();
+    await page.waitForTimeout(400);
+  }
+
   // ── One place's listings: filters step aside, then come back
   //    "12 listings →" has to hand over twelve listings. It used to hand over
   //    whatever survived the feed's own filters, which for a place 40 miles
@@ -446,6 +602,90 @@ const exe = process.env.CHROMIUM_PATH
   ok('filter sheet opens', await page.locator('#filter-sheet.is-open').count() === 1);
   await page.locator('#apply-filters').click();
   await page.waitForTimeout(400);
+
+  // ── Use my location ────────────────────────────────────
+  //    The whole app hangs off where the reader is: distances, the sort, the
+  //    preset row, the Places list. Asserting that the button flips a status
+  //    line would prove nothing, so this pretends to be standing in Bar Harbor
+  //    and checks that the numbers on the page moved to match.
+  const HERE = { latitude: 44.3876, longitude: -68.2039 };   // Bar Harbor, ME
+  await ctx.grantPermissions(['geolocation']);
+  await ctx.setGeolocation(HERE);
+  await page.locator('#open-location').click();
+  await page.waitForTimeout(300);
+  await page.locator('#use-my-location').click();
+  await page.waitForTimeout(800);
+
+  const located = await page.evaluate((here) => {
+    const o = window.__proximi.origin || {};
+    const R = 3958.8, rad = (d) => d * Math.PI / 180;
+    const away = (a, b) => {
+      const h = Math.sin(rad(b.lat - a.lat) / 2) ** 2
+        + Math.cos(rad(a.lat)) * Math.cos(rad(b.lat)) * Math.sin(rad(b.lon - a.lon) / 2) ** 2;
+      return 2 * R * Math.asin(Math.sqrt(h));
+    };
+    return {
+      name: o.name,
+      off: o.lat == null ? null
+        : away({ lat: here.latitude, lon: here.longitude }, { lat: o.lat, lon: o.lon }),
+      status: document.getElementById('loc-status').textContent.trim(),
+      chip: document.getElementById('context-place').textContent.trim(),
+      presets: [...document.querySelectorAll('#presets .chip')].map((c) => c.textContent.trim()),
+      regions: (window.__proximi.regions || []).map((r) => r.name)
+    };
+  }, HERE);
+  ok('use my location sets the origin', located.off !== null && located.off < 0.5,
+    `${located.name} — ${located.off == null ? 'no origin' : located.off.toFixed(2) + ' mi off'}`);
+  ok('and the page says where it is measuring from',
+    /your location/i.test(located.status) && /your location/i.test(located.chip),
+    `${located.status} | ${located.chip}`);
+  if (located.regions.length) {
+    ok('the nearest coverage area is offered as a preset',
+      located.presets.length > 0 && located.presets[0] === located.regions
+        .map((n) => n).find((n) => located.presets.includes(n)),
+      located.presets.join(' / '));
+  } else {
+    console.log('SKIP  data/places.json has no coverage regions (older build)');
+  }
+
+  await page.locator('#apply-filters').click();
+  await page.waitForTimeout(300);
+  await page.locator('#tab-places').click();
+  await page.waitForTimeout(500);
+  const near = await page.evaluate((here) => {
+    const R = 3958.8, rad = (d) => d * Math.PI / 180;
+    const away = (a, b) => {
+      const h = Math.sin(rad(b.lat - a.lat) / 2) ** 2
+        + Math.cos(rad(a.lat)) * Math.cos(rad(b.lat)) * Math.sin(rad(b.lon - a.lon) / 2) ** 2;
+      return 2 * R * Math.asin(Math.sqrt(h));
+    };
+    const by = new Map((window.__proximi.places || []).map((p) => [p.id, p]));
+    const rows = [...document.querySelectorAll('#places-list .place-slot')].slice(0, 20);
+    const miles = rows.map((r) => {
+      const p = by.get(r.dataset.id);
+      return p ? away({ lat: here.latitude, lon: here.longitude }, p) : null;
+    }).filter((m) => m != null);
+    // The nearest row has to be the nearest place there is, whatever the data
+    // holds — a fixed mileage would only be asserting what the directory
+    // happens to cover this week.
+    const FOOD = new Set(['restaurant', 'cafe']);
+    const scope = window.__proximi.scope;
+    const best = Math.min(...(window.__proximi.places || [])
+      .filter((p) => p.lat != null && (scope === 'all' ? true
+        : scope === 'eat' ? FOOD.has(p.kind) : !FOOD.has(p.kind)))
+      .map((p) => away({ lat: here.latitude, lon: here.longitude }, p)));
+    return {
+      first: miles[0],
+      best,
+      sorted: miles.every((m, i) => i === 0 || m >= miles[i - 1] - 0.05),
+      printed: rows[0]?.querySelector('.place-where')?.textContent.trim() || ''
+    };
+  }, HERE);
+  ok('places are measured and sorted from where the reader is',
+    near.first != null && near.sorted && Math.abs(near.first - near.best) < 0.1,
+    `nearest row ${near.first == null ? 'none' : near.first.toFixed(1)} mi vs `
+    + `nearest place ${near.best.toFixed(1)} mi, ascending ${near.sorted}, `
+    + `row says "${near.printed}"`);
 
   const overflow = await page.evaluate(() =>
     document.documentElement.scrollWidth - document.documentElement.clientWidth);

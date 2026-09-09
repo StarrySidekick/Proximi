@@ -7,6 +7,57 @@
     "timezone": "America/New_York",
     "placesRadiusMiles": 50
   },
+  "placesRegions": [
+    {
+      "id": "acadia",
+      "name": "Bar Harbor, ME",
+      "lat": 44.3876,
+      "lon": -68.2039,
+      "radiusMiles": 40
+    },
+    {
+      "id": "midcoast",
+      "name": "Camden, ME",
+      "lat": 44.2098,
+      "lon": -69.0648,
+      "radiusMiles": 40
+    },
+    {
+      "id": "portland",
+      "name": "Portland, ME",
+      "lat": 43.6591,
+      "lon": -70.2568,
+      "radiusMiles": 40
+    },
+    {
+      "id": "seacoast",
+      "name": "Portsmouth, NH",
+      "lat": 43.0718,
+      "lon": -70.7626,
+      "radiusMiles": 35
+    },
+    {
+      "id": "northshore",
+      "name": "Salem, MA",
+      "lat": 42.5195,
+      "lon": -70.8967,
+      "radiusMiles": 35
+    },
+    {
+      "id": "centralma",
+      "name": "Sturbridge, MA",
+      "lat": 42.1131,
+      "lon": -72.0787,
+      "radiusMiles": 45
+    },
+    {
+      "id": "hartford",
+      "name": "Hartford, CT",
+      "lat": 41.7658,
+      "lon": -72.6734,
+      "radiusMiles": 40
+    }
+  ],
   "notes": [
     "kind: ics    — machine-readable feed, harvested by scripts/harvest.py",
     "kind: html   — no feed; the weekly job reads the page and extracts",
@@ -33,7 +84,8 @@
     "Of roughly two dozen independent cinemas inside fifty miles, five serve their schedule as HTML (Jacob Burns, Rosendale, and the three Independent Cinemas houses) and are read by scripts/cinema.py. The rest run a ticketing SPA — Indy Systems, Filmbot's hosted app, or Agile Ticketing behind Imperva — and are hand-read or disabled.",
     "Places are collected at placesRadiusMiles (50), not the 100-mile event radius. An event is worth travelling for on a given night; a garden or an antique shop is a Sunday, and 100 miles of OpenStreetMap is tens of thousands of rows nobody scrolls.",
     "The place taxonomy lives in scripts/placekinds.py and nowhere else. enrich.py reads it as name patterns (an event only tells us what its venue is called) and places.py reads it as OpenStreetMap tag rules; both name the same 26 kinds, and an import-time assert fails if either names one the list does not define.",
-    "data/places.json is itself a source list. Probing the places that carry a website the registry did not know found 30 live feeds in 582 domains — a 5% yield, in line with the 7% the registry was built on, and it reached venues no search would name: Lasdon Public Gardens, Dyckman Farmhouse, the Woodstock Guild, and the Four Brothers Drive-In, whose Tockify feed the cinema pass had failed to find by hand."
+    "data/places.json is itself a source list. Probing the places that carry a website the registry did not know found 30 live feeds in 582 domains — a 5% yield, in line with the 7% the registry was built on, and it reached venues no search would name: Lasdon Public Gardens, Dyckman Farmhouse, the Woodstock Guild, and the Four Brothers Drive-In, whose Tockify feed the cinema pass had failed to find by hand.",
+    "placesRegions: further circles the places directory collects, on the same terms as the centre. Added 2026-09-09 for the Bar Harbor to Hartford drive; they chain end to end, so coverage is continuous from Mount Desert Island down US-1 and the Mass Pike to the Hudson Valley. Events are unaffected — they still come from the sources below, within the centre's radius."
   ],
   "sources": [
     {

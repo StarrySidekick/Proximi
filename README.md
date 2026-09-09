@@ -332,6 +332,8 @@ index.html              markup and the filter sheet
 assets/styles.css       styling, light + dark themes
 assets/app.js           loading, filtering, sorting, geolocation, rendering
 data/events.json        the listings the site serves
+data/places.json        the directory — somewhere to go, listings or not
+data/eats.json          somewhere to eat, loaded in the background
 
 sources/registry.json   curated list of feeds, pages and APIs to check
 sources/geocache.json   remembered geocoding results, hits and misses alike
@@ -371,6 +373,7 @@ sources/manual.json       listings read by hand, versioned so they survive rerun
         ├─ songkick.py    ticketed concerts         → build/songkick.json
         ├─ cinema.py      independent film houses  → build/cinema.json
         ├─ places.py      the place directory (OSM)  → data/places.json
+        │                                             + data/eats.json
         ├─ audit.py       read venue sites once      → sources/placeaudit.json
         ├─ enrich.py      geocode, radius-filter, classify
         ├─ merge.py       collapse repeats, dedupe → data/events.json
@@ -419,9 +422,9 @@ for. The gardens, the historic houses, the wineries, the antique shops and the
 castle do not publish calendars and most of them never will.
 
 So Places is now its own page and its own file. `scripts/places.py` pulls
-destinations from OpenStreetMap inside `center.placesRadiusMiles` and writes
-`data/places.json`; any events a place does have are attached to it, so a
-theatre carries its listings and a garden simply sits there being a garden.
+destinations from OpenStreetMap and writes `data/places.json`; any events a
+place does have are attached to it, so a theatre carries its listings and a
+garden simply sits there being a garden.
 
 Two things make the result usable rather than a data dump:
 
@@ -437,6 +440,62 @@ Two things make the result usable rather than a data dump:
 The places radius is 50 miles against the events' 100. An event is worth
 travelling for on a given night; a garden is a Sunday, and 100 miles of
 OpenStreetMap is tens of thousands of rows nobody scrolls.
+
+### Coverage is a list of circles
+
+One centre and one radius is the right shape for the place you live in and the
+wrong one for a drive. A single circle holding both Bar Harbor and Hartford also
+holds the Gulf of Maine, Montreal and most of New Jersey, and Overpass would be
+asked for every park in it.
+
+So `sources/registry.json` carries `placesRegions`: further circles collected on
+exactly the same terms as the centre. They chain end to end — each overlaps the
+next — so coverage runs continuously from Mount Desert Island down US-1 and the
+Mass Pike to the Hudson Valley. The centre stays the centre: it is what `miles`
+on a row is measured from, what the app opens on, and where the events radius
+still applies. A registry with no `placesRegions` behaves exactly as before.
+
+`meta.regions` ships with the file, so the client can offer the coverage areas
+as places to measure from — a reader in Bar Harbor was previously offered eight
+Hudson Valley towns.
+
+A big fetch splits across processes, one region each, so four mirrors are busy
+instead of one:
+
+```bash
+python3 scripts/places.py --regions acadia --fetch-only --mirror overpass-api.de
+python3 scripts/places.py            # assemble from the cache, write both files
+```
+
+### Somewhere to eat is its own file
+
+`restaurant` and `cafe` had no tag rules at all, so a restaurant reached the
+directory only by hosting an event. That is fine for a town you know and no use
+on a drive, where *somewhere to eat, now, that is still open* is most of what a
+directory is for.
+
+They are collected on the same terms as everything else, into `data/eats.json`,
+which the client fetches in the background once the feed has painted rather than
+ahead of the first screen — there are about five times as many of them as there
+are places to go. Three rules keep it a directory rather than a phone book:
+
+- **A row has to be actionable.** A restaurant with a name and nothing else
+  cannot be chosen between, phoned, or checked for whether it is open. It needs
+  a cuisine, a website, hours or a phone number.
+- **Not branded fast food.** `brand` is set on 1,491 of the 2,079 fast-food
+  outlets in one 35-mile sample. Nobody sets out for one, and keeping them would
+  put the clam shack on page four. Chains that are actual restaurants or cafés
+  stay, tagged as chains, with an Independents-only toggle over them.
+- **A cuisine nobody has grouped is dropped, not bucketed.** OSM's `cuisine` has
+  a very long tail — 224 distinct tokens in one sample. The known ones map to 27
+  groups in `scripts/placekinds.py`; the rest are counted and printed at the end
+  of a run so the vocabulary grows from the data. "Other" would be a promise the
+  filter cannot keep.
+
+Opening hours are read client-side by a deliberately small parser: anything it
+does not fully understand — a public-holiday clause, a season, a comment —
+produces no badge at all rather than a guess, because "open" is a claim that
+sends somebody driving. It evaluates 97% of the hours strings in the sample.
 
 ### "Attraction" was a label, not a category
 

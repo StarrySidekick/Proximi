@@ -26,6 +26,22 @@ has to work for someone in a town it has never heard of.
 Massachusetts, New Hampshire, Rhode Island and Vermont, then Maine. This is the
 through-line for the project.
 
+**Places jumped the queue, 2026-09-09.** A drive from Bar Harbor to Hartford
+turned coverage from one circle into a list of them: `placesRegions` in the
+registry, seven of them chained end to end down the Maine coast, through the
+New Hampshire seacoast and the North Shore, across central Massachusetts to
+Hartford, meeting the Hudson Valley circle. The directory now reaches all six
+New England states in the corridor. The mechanism is general — adding a region
+is four numbers — so the rest of the coverage plan is now a registry edit
+rather than a rewrite.
+
+**Events did not move, and that is the gap.** They still come from the
+Hudson Valley source list inside 100 miles of Beacon, so somebody standing in
+Bar Harbor gets places and nothing on. Closing it means source discovery for
+each new area (`discover.py --overpass --probe`, roughly 7% of venue domains
+expose a feed) plus Ticketmaster and Eventbrite sweeps anchored on the new
+regions. That is the next real piece of work on coverage.
+
 **2. Better and more broadly accessible filters.** Named alongside coverage as
 what the app needs before anyone else could use it.
 
@@ -37,9 +53,25 @@ nor was anywhere in Connecticut. They now come from where the listings actually
 are, so the row widens by itself as coverage moves into the rest of New England
 instead of needing editing each time.
 
+**Second piece, 2026-09-09: somewhere to eat, and what kind of food it is.**
+`restaurant` and `cafe` had no tag rules at all — a restaurant reached the
+directory only by hosting an event — so the Places page could not answer the
+question a person actually has at seven on a Tuesday a long way from home. They
+are collected now, into their own file, behind a Places scope, with a cuisine
+filter over 27 groups read off the tags, an Open-now filter that refuses to
+guess, and an Independents-only toggle. The "Kind of place" select turned out
+never to have been wired to anything, which is fixed.
+
 **Still to do here:** an honest answer for a reader outside the covered area.
-Today someone in Boston gets an empty list rather than being told the app does
-not reach them yet, which is the same class of problem the presets had.
+Today someone in Boston gets an empty *events* list rather than being told the
+app does not reach them yet, which is the same class of problem the presets had.
+The presets themselves now offer the nearest coverage areas, so the location
+sheet at least says where the app does reach.
+
+**And the one this trip exposed: the app does not work offline.** There is no
+service worker, so a PWA installed on a phone is a blank page in a valley with
+no signal — which is exactly where a directory of what is around you is worth
+most. Both data files are static and small enough to cache whole.
 
 ## Deliberately not next
 
