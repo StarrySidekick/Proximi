@@ -315,6 +315,7 @@
     placesSaved: $('places-saved'), placesEvents: $('places-events'),
     placesSummary: $('places-summary'),
     placesScope: $('places-scope'), placesFood: $('places-food'),
+    placesIntro: $('places-intro'),
     placesCuisines: $('places-cuisines'), placesFoodHint: $('places-food-hint'),
     placesOpen: $('places-open'), placesOpenWrap: $('places-open-wrap'),
     placesIndie: $('places-indie'), placesIndieWrap: $('places-indie-wrap'),
@@ -2301,6 +2302,18 @@
     for (const [node, on] of [[el.placesFood, eating], [el.placesFoodHint, eating],
                               [el.placesOpenWrap, eating], [el.placesIndieWrap, eating]]) {
       if (node) node.hidden = !on;
+    }
+
+    // The page says what it is for, and it is for two things now.
+    if (el.placesIntro) {
+      el.placesIntro.textContent = state.placeScope === 'eat'
+        ? 'Somewhere to eat, nearest first. Swipe one right to like it, left to '
+          + 'mute it.'
+        : state.placeScope === 'all'
+          ? 'Everywhere in range — somewhere to go and somewhere to eat. Swipe a '
+            + 'place right to like it, left to mute it.'
+          : 'Somewhere to go, whether or not anything is on. Swipe a place right '
+            + 'to like it, left to mute it.';
     }
 
     const matched = placesMatching(placeIndex());
