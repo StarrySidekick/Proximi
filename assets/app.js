@@ -2061,6 +2061,13 @@
   const inScope = (p) => (state.placeScope === 'all' ? true
     : state.placeScope === 'eat' ? isFood(p) : !isFood(p));
 
+  /* The food filters are remembered, and their controls are hidden on "To
+     visit". Left applied there they would empty the directory — nothing in it
+     has a cuisine, and half of it has no opening hours — with no visible
+     control to explain why. A filter the reader cannot see must not be a
+     filter that is running. */
+  const foodFiltersLive = () => state.placeScope !== 'visit';
+
   function placesMatching(all) {
     const q = (el.placesSearch?.value || '').trim().toLowerCase();
     return all.filter((p) => {
@@ -2073,8 +2080,10 @@
       // Only rows the hours could actually be read for. A place with no hours
       // on the map is not open and not closed, and putting it in either pile
       // is the lie this filter exists to avoid.
-      if (state.placesOpenNow && openNow(p) !== 'open') return false;
-      if (state.placesIndieOnly && p.brand) return false;
+      if (foodFiltersLive()) {
+        if (state.placesOpenNow && openNow(p) !== 'open') return false;
+        if (state.placesIndieOnly && p.brand) return false;
+      }
       if (!q) return true;
       return p.name.toLowerCase().includes(q)
           || (p.city || '').toLowerCase().includes(q)
@@ -2303,7 +2312,7 @@
       ? matched.filter((p) => (p.kind || 'other') === state.placeKind)
       : matched;
     if (eating) renderPlaceCuisines(byKind);
-    const rows = sortPlaces(state.placeCuisine
+    const rows = sortPlaces(state.placeCuisine && eating
       ? byKind.filter((p) => (p.cuisine || []).includes(state.placeCuisine))
       : byKind);
 
@@ -3345,6 +3354,7 @@
     get origin() { return state.origin; },
     get regions() { return state.placeRegions; },
     get eats() { return state.eats; },
+    get scope() { return state.placeScope; },
     openState,
     hasCadence
   };

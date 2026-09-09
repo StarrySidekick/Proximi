@@ -492,9 +492,25 @@ const exe = process.env.CHROMIUM_PATH
     `${chainsBefore} chains before, ${chains} after`);
   await page.locator('#places-indie').uncheck();
   await page.waitForTimeout(400);
+  // Leaving with the food filters still ticked must not empty the directory:
+  // nothing to visit has a cuisine and half of it has no hours, and on this
+  // scope there is no control on screen to explain the empty page.
+  await page.locator('#places-open').check();
+  await page.waitForTimeout(300);
   }
   await page.locator('#places-scope .chip', { hasText: 'To visit' }).click();
-  await page.waitForTimeout(400);
+  await page.waitForTimeout(500);
+  const backToVisit = await page.locator('#places-list .place-slot').count();
+  ok('the food filters do not follow you back to "to visit"', backToVisit > 50,
+    `${backToVisit} rows`);
+  if (eatsState !== 'failed') {
+    await page.locator('#places-scope .chip', { hasText: 'To eat' }).click();
+    await page.waitForTimeout(400);
+    await page.locator('#places-open').uncheck();
+    await page.waitForTimeout(300);
+    await page.locator('#places-scope .chip', { hasText: 'To visit' }).click();
+    await page.waitForTimeout(400);
+  }
 
   // ── One place's listings: filters step aside, then come back
   //    "12 listings →" has to hand over twelve listings. It used to hand over
@@ -652,8 +668,11 @@ const exe = process.env.CHROMIUM_PATH
     // The nearest row has to be the nearest place there is, whatever the data
     // holds — a fixed mileage would only be asserting what the directory
     // happens to cover this week.
+    const FOOD = new Set(['restaurant', 'cafe']);
+    const scope = window.__proximi.scope;
     const best = Math.min(...(window.__proximi.places || [])
-      .filter((p) => p.lat != null)
+      .filter((p) => p.lat != null && (scope === 'all' ? true
+        : scope === 'eat' ? FOOD.has(p.kind) : !FOOD.has(p.kind)))
       .map((p) => away({ lat: here.latitude, lon: here.longitude }, p)));
     return {
       first: miles[0],
