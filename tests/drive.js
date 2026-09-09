@@ -43,7 +43,15 @@ const exe = process.env.CHROMIUM_PATH
   });
   const page = await ctx.newPage();
   const errors = [];
-  page.on('console', (m) => { if (m.type() === 'error') errors.push(m.text()); });
+  /* data/eats.json is optional — places.py writes it and a checkout that has
+     not run it yet is not a broken app — but the browser logs its own 404
+     whatever the fetch does with the rejection. */
+  const OPTIONAL_404 = /eats\.json|version\.json|places\.json/;
+  page.on('console', (m) => {
+    if (m.type() !== 'error') return;
+    if (/404/.test(m.text()) && OPTIONAL_404.test(m.location()?.url || '')) return;
+    errors.push(m.text());
+  });
   page.on('pageerror', (e) => errors.push('PAGEERROR: ' + e.message));
 
   await page.goto(base + '/', { waitUntil: 'networkidle' });
@@ -393,6 +401,12 @@ const exe = process.env.CHROMIUM_PATH
   //    that it arrived at all.
   await page.locator('#places-scope .chip', { hasText: 'To eat' }).click();
   await page.waitForTimeout(1500);
+  // Conditional the same way the audit block is: places.py writes data/eats.json
+  // and a checkout that has not run it yet is not a broken app.
+  const eatsState = await page.evaluate(() => window.__proximi.eats);
+  if (eatsState === 'failed') {
+    console.log('SKIP  data/eats.json has not been built — the food filters cannot be driven');
+  } else {
   const eats = await page.evaluate(() => ({
     state: window.__proximi.eats,
     rows: document.querySelectorAll('#places-list .place-slot').length,
@@ -477,6 +491,9 @@ const exe = process.env.CHROMIUM_PATH
   ok('"independents only" leaves no chains', chainsBefore > 0 && chains === 0,
     `${chainsBefore} chains before, ${chains} after`);
   await page.locator('#places-indie').uncheck();
+  await page.waitForTimeout(400);
+  }
+  await page.locator('#places-scope .chip', { hasText: 'To visit' }).click();
   await page.waitForTimeout(400);
 
   // ── One place's listings: filters step aside, then come back
@@ -632,16 +649,24 @@ const exe = process.env.CHROMIUM_PATH
       const p = by.get(r.dataset.id);
       return p ? away({ lat: here.latitude, lon: here.longitude }, p) : null;
     }).filter((m) => m != null);
+    // The nearest row has to be the nearest place there is, whatever the data
+    // holds — a fixed mileage would only be asserting what the directory
+    // happens to cover this week.
+    const best = Math.min(...(window.__proximi.places || [])
+      .filter((p) => p.lat != null)
+      .map((p) => away({ lat: here.latitude, lon: here.longitude }, p)));
     return {
       first: miles[0],
+      best,
       sorted: miles.every((m, i) => i === 0 || m >= miles[i - 1] - 0.05),
       printed: rows[0]?.querySelector('.place-where')?.textContent.trim() || ''
     };
   }, HERE);
   ok('places are measured and sorted from where the reader is',
-    near.first != null && near.first < 25 && near.sorted,
-    `nearest ${near.first == null ? 'none' : near.first.toFixed(1)} mi, `
-    + `ascending ${near.sorted}, row says "${near.printed}"`);
+    near.first != null && near.sorted && Math.abs(near.first - near.best) < 0.1,
+    `nearest row ${near.first == null ? 'none' : near.first.toFixed(1)} mi vs `
+    + `nearest place ${near.best.toFixed(1)} mi, ascending ${near.sorted}, `
+    + `row says "${near.printed}"`);
 
   const overflow = await page.evaluate(() =>
     document.documentElement.scrollWidth - document.documentElement.clientWidth);

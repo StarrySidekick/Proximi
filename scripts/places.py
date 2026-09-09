@@ -979,6 +979,16 @@ def main():
 
     if args.selftest:
         print(f'{test_selectors()} selector cases OK')
+        # And that the registry's regions are loadable, which is the other way
+        # this run can be silently wrong: a duplicate id means two areas share
+        # a cache and one of them quietly gets the other's answers.
+        regions = load_regions(args.registry)
+        for r in regions:
+            if not (-90 <= r['lat'] <= 90 and -180 <= r['lon'] <= 180
+                    and 0 < r['radiusMiles'] <= 200):
+                raise SystemExit(f'region {r["id"]} has implausible geometry: {r}')
+        print(f'{len(regions)} coverage region(s) OK: '
+              + ', '.join(f'{r["id"]} {r["radiusMiles"]:g}mi' for r in regions))
         return 0
 
     if args.mirror:
