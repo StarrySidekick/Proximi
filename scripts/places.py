@@ -421,6 +421,7 @@ def test_selectors():
         ({'historic': 'monument'}, 'historic site'),
         ({'historic': 'memorial'}, 'historic site'),
         ({'heritage': '2'}, 'historic site'),
+        ({'man_made': 'lighthouse'}, 'historic site'),
         ({'craft': 'brewery'}, 'brewery'),
         ({'craft': 'distillery'}, 'brewery'),
         ({'tourism': 'attraction'}, 'landmark'),
@@ -454,6 +455,10 @@ def test_selectors():
     assert 'brewery' not in classify({'craft': 'bakery'}), 'craft regex is too loose'
     assert 'historic site' not in classify({'historic': 'castle'}), \
         'historic regex swallowed castle'
+    assert not substantial('historic site', {'man_made': 'lighthouse'}), \
+        'a lighthouse still has to show a way in'
+    assert substantial('historic site',
+                       {'man_made': 'lighthouse', 'wikipedia': 'en:Portland Head Light'})
     assert 'stadium' not in classify({'leisure': 'bowling_alley'}), \
         'a bowling alley is not a stadium'
     # A brewpub is a brewery. Both rules match it and OSM_RULES is ordered by
@@ -1102,6 +1107,18 @@ def main():
     write_file(args.eats, food, dict(
         meta, note='Somewhere to eat, from OpenStreetMap (ODbL). Hours and '
                    'cuisines are whatever the map records — check before you go.'))
+
+    # Per region, because a region that silently collected nothing is the
+    # failure this whole shape makes possible: the totals still look healthy
+    # while one circle in the middle of the drive is empty.
+    print()
+    for region in regions:
+        here = [p for p in places
+                if miles(region['lat'], region['lon'], p['lat'], p['lon'])
+                <= region['radiusMiles']]
+        eat = sum(1 for p in here if p['kind'] in placekinds.FOOD)
+        print(f'  {region["name"]:<18} {len(here) - eat:>6} to visit  '
+              f'{eat:>6} to eat')
 
     kinds = {}
     for place in food:

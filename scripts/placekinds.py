@@ -101,7 +101,15 @@ OSM_RULES = [
     ('historic site', ['"historic"~"^(monument|memorial|ruins|archaeological_site|'
                        'battlefield|fort|city_gate|aqueduct|tomb|mine|heritage|'
                        'lighthouse|locomotive|ship|wreck)$"',
-                       '"tourism"="historic"', '"heritage"']),
+                       '"tourism"="historic"', '"heritage"',
+                       # man_made=lighthouse is the tag people actually use;
+                       # historic=lighthouse is rare. Without this, Portland
+                       # Head Light was in the directory only as its gift shop,
+                       # filed under Specialty shops. On a coast where the
+                       # lighthouses are half the reason for the drive, that is
+                       # not a rounding error. substantial() still asks for a
+                       # way in, so an unlit channel marker does not arrive.
+                       '"man_made"="lighthouse"']),
     ('garden', ['"leisure"="garden"', '"garden:type"="botanical"',
                 '"tourism"="botanical_garden"', '"leisure"="arboretum"']),
     ('park', ['"leisure"="nature_reserve"', '"leisure"="park"',
