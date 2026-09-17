@@ -7,6 +7,10 @@
 
   const MI_PER_KM = 0.621371;
   const ANY_DISTANCE = 105;   // the radius slider's top stop means "no limit"
+  // The widest the radius slider goes before "Any distance" — one number,
+  // shared with the empty-state message below, so the two stay honest with
+  // each other about what widening the radius could possibly reach.
+  const MAX_RADIUS = 100;
 
   // The single primary answer to "what kind of thing is this?". Anything not
   // listed still works — it just gets title-cased.
@@ -785,12 +789,14 @@
      One pass now. Everything except the type chips runs once; the counts are
      read off that; then the type chips narrow it. Same answers, half the
      work. */
-  function filterPass() {
-    // Read every control once, not once per listing. Four and a half thousand
-    // listings times fifteen DOM property reads is the difference between a
-    // filter that feels instant and one that hitches.
-    const c = {
-      rMax: radiusMiles(), pMax: maxPrice(),
+  // Read every control once, not once per listing. Four and a half thousand
+  // listings times fifteen DOM property reads is the difference between a
+  // filter that feels instant and one that hitches. Pulled out of filterPass()
+  // so nearestUncapped() can ask the same question with the radius switched
+  // off, rather than re-reading every control a second way.
+  function baseFilterConfig(rMax) {
+    return {
+      rMax, pMax: maxPrice(),
       kids: el.showKids.checked, seniors: el.showSeniors.checked,
       adults: el.showAdults.checked,
       food: el.foodOnly.checked, outdoor: el.outdoorOnly.checked,
@@ -805,6 +811,10 @@
       q: el.q.value.trim().toLowerCase(),
       showHidden: state.showHidden, venueFilter: state.venueFilter
     };
+  }
+
+  function filterPass() {
+    const c = baseFilterConfig(radiusMiles());
 
     const base = state.items.filter((item) => matchesBase(item, c));
 
@@ -876,6 +886,26 @@
     if (!matchesHorizon(item, c)) return false;
     if (c.q && !matchesQuery(item, c.q)) return false;
     return true;
+  }
+
+  /* "Nothing matches those filters, try widening the radius" is good advice
+     when the nearest thing that fits every other filter is 40 miles off, and
+     a lie when it is 200 — no radius the slider offers would ever reach it,
+     because the data itself does not go there yet. This asks matchesBase the
+     same question with the distance cap switched off, so it answers with the
+     nearest listing that clears every filter the reader actually set, not
+     just the nearest listing full stop. render() uses the distance to tell
+     the two cases apart. */
+  function nearestUncapped() {
+    if (!state.origin) return null;
+    const c = baseFilterConfig(Infinity);
+    let best = null;
+    for (const item of state.items) {
+      if (item._distance == null) continue;
+      if (best && item._distance >= best.miles) continue;
+      if (matchesBase(item, c)) best = { miles: item._distance, city: item.city };
+    }
+    return best;
   }
 
   const grouped = () => el.sort.value === 'soonest';
@@ -1640,9 +1670,24 @@
 
     el.empty.hidden = results.length > 0;
     if (!results.length) {
-      el.empty.textContent = state.items.length
-        ? 'Nothing matches those filters. Try looking further ahead, widening the radius, or clearing a category.'
-        : 'No upcoming listings.';
+      // Two different facts wore the same sentence: "widen the radius" is
+      // true advice near Beacon and false advice in Boston, where no radius
+      // the slider offers would ever reach anything — the data just does not
+      // go there yet. nearestUncapped() tells them apart by asking how far
+      // the closest listing is once the distance cap itself is lifted.
+      const near = state.items.length && radiusMiles() < Infinity
+        ? nearestUncapped() : null;
+      if (!state.items.length) {
+        el.empty.textContent = 'No upcoming listings.';
+      } else if (near && near.miles > MAX_RADIUS) {
+        const city = normaliseCity(near.city);
+        el.empty.textContent = 'Proximi does not reach this far yet. The nearest '
+          + `listing is ${formatDistance(near.miles)}${city ? ` (near ${city})` : ''} — `
+          + 'try one of the coverage areas under Location in Filters.';
+      } else {
+        el.empty.textContent =
+          'Nothing matches those filters. Try looking further ahead, widening the radius, or clearing a category.';
+      }
     }
 
     state.lastResults = results;
@@ -3369,7 +3414,8 @@
     get eats() { return state.eats; },
     get scope() { return state.placeScope; },
     openState,
-    hasCadence
+    hasCadence,
+    setOrigin
   };
 
   /* ── Boot ─────────────────────────────────────────────── */

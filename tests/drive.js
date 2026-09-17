@@ -687,6 +687,51 @@ const exe = process.env.CHROMIUM_PATH
     + `nearest place ${near.best.toFixed(1)} mi, ascending ${near.sorted}, `
     + `row says "${near.printed}"`);
 
+  // ── A reader the app does not reach yet ─────────────────
+  //    "Nothing matches those filters, try widening the radius" is a lie for
+  //    someone standing nowhere near any listing — no radius the slider
+  //    offers would ever reach Los Angeles. window.__proximi.setOrigin is the
+  //    test-only hook; it does exactly what the geocoder does once a lookup
+  //    resolves, without a real network call.
+  await page.locator('#tab-events').click();
+  await page.waitForTimeout(300);
+  const farAway = await page.evaluate(() => {
+    const radius = document.getElementById('radius');
+    radius.value = 75;
+    radius.dispatchEvent(new Event('input', { bubbles: true }));
+    radius.dispatchEvent(new Event('change', { bubbles: true }));
+    window.__proximi.setOrigin(34.0522, -118.2437, 'Los Angeles, CA');
+    return {
+      hidden: document.getElementById('empty').hidden,
+      text: document.getElementById('empty').textContent
+    };
+  });
+  ok('a reader far outside coverage is told so, not sent to widen the radius',
+    !farAway.hidden && /does not reach this far/.test(farAway.text)
+      && !/widening the radius/.test(farAway.text),
+    farAway.text);
+
+  const farAnyDistance = await page.evaluate(() => {
+    const radius = document.getElementById('radius');
+    radius.value = radius.max;   // "Any distance" — nothing is out of reach
+    radius.dispatchEvent(new Event('input', { bubbles: true }));
+    radius.dispatchEvent(new Event('change', { bubbles: true }));
+    window.__proximi.setOrigin(34.0522, -118.2437, 'Los Angeles, CA');
+    return { hidden: document.getElementById('empty').hidden };
+  });
+  ok('and it does not fire once the radius cap is lifted',
+    farAnyDistance.hidden, JSON.stringify(farAnyDistance));
+
+  // Put the reader back where the rest of the run expects to find them.
+  await page.evaluate(() => {
+    const radius = document.getElementById('radius');
+    radius.value = 75;
+    radius.dispatchEvent(new Event('input', { bubbles: true }));
+    radius.dispatchEvent(new Event('change', { bubbles: true }));
+    window.__proximi.setOrigin(41.5048, -73.9696, 'Beacon, NY');
+  });
+  await page.waitForTimeout(300);
+
   const overflow = await page.evaluate(() =>
     document.documentElement.scrollWidth - document.documentElement.clientWidth);
   ok('no horizontal overflow', overflow <= 0, `${overflow}px`);

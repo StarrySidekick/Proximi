@@ -62,11 +62,22 @@ filter over 27 groups read off the tags, an Open-now filter that refuses to
 guess, and an Independents-only toggle. The "Kind of place" select turned out
 never to have been wired to anything, which is fixed.
 
-**Still to do here:** an honest answer for a reader outside the covered area.
-Today someone in Boston gets an empty *events* list rather than being told the
-app does not reach them yet, which is the same class of problem the presets had.
-The presets themselves now offer the nearest coverage areas, so the location
-sheet at least says where the app does reach.
+**Third piece, 2026-09-17: an honest answer for a reader outside the covered
+area.** Someone in Boston used to get "Nothing matches those filters. Try
+widening the radius" — true advice near Beacon and a lie in Boston, since no
+radius the slider offers reaches that far and no amount of widening was ever
+going to help. The empty state now asks the same question the filters already
+answer — is the nearest thing that clears every other filter still farther
+than the widest radius on the slider — and says so plainly, with the actual
+distance and the nearest place, rather than sending someone looking for a
+control that cannot fix it. It only speaks up when a finite radius is chosen;
+"Any distance" already means no cap, so an empty result there is a real
+filter mismatch, not a coverage gap.
+
+Places never needed the same fix: it has no distance cap of its own — it
+already shows the whole directory, nearest first — so an empty Places list
+is always a scope filter (liked-only, open-now, a kind with nothing in it),
+and the existing messages already say which one.
 
 **And the one this trip exposed: the app does not work offline.** There is no
 service worker, so a PWA installed on a phone is a blank page in a valley with
