@@ -20,6 +20,16 @@
       <span class="brand-name">Proximi</span>
     </div>
 
+    <div class="topbar-actions">
+    <!-- Its own page: a full-screen map with its own lifecycle (GPS, speech,
+         a screen lock), and the map library loads only for those who drive. -->
+    <a class="filters-btn drive-link" href="drive.html">
+      <svg viewBox="0 0 16 16" aria-hidden="true" class="ico">
+        <path d="M8 1.5 13 14 8 10.8 3 14Z" stroke="currentColor" stroke-width="1.5"
+              stroke-linejoin="round" fill="none"/>
+      </svg>
+      Drive
+    </a>
     <button id="open-filters" class="filters-btn" type="button"
             aria-haspopup="dialog" aria-expanded="false" aria-controls="filter-sheet">
       <svg viewBox="0 0 16 16" aria-hidden="true" class="ico">
@@ -29,6 +39,7 @@
       Filters
       <span class="filters-count" id="filters-count" hidden></span>
     </button>
+    </div>
   </div>
 </header>
 
