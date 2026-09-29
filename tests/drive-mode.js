@@ -186,7 +186,7 @@ async function fakeServices(ctx, counts, base) {
     await page.goto(base + '/drive.html', { waitUntil: 'networkidle' });
     ok('questionnaire opens on first visit', await page.isVisible('#quiz'));
     const rows = await page.locator('#quiz .level-row').count();
-    ok('it asks about every interest', rows === 10, `${rows} rows`);
+    ok('it asks about every interest', rows === 11, `${rows} rows`);
     await page.click('#quiz .level-row[data-interest="history"] [data-level="love"]');
     await page.click('#quiz .level-row[data-interest="browsing"] [data-level="love"]');
     await page.click('#quiz .level-row[data-interest="gardens"] [data-level="skip"]');
@@ -203,13 +203,15 @@ async function fakeServices(ctx, counts, base) {
       && saved.levels.gardens === 'skip' && saved.maxDetour === 15
       && saved.mapSide === 'right' && !('voice' in saved) && !('cooldown' in saved), JSON.stringify(saved.levels));
     const w = await page.evaluate(() => {
-      const k = window.__drive.kindWeight;
-      return { castle: k('castle'), garden: k('garden'), park: k('park'), library: k('library') };
+      const k = window.__drive.typeWeight;
+      return { castle: k('castle'), memorial: k('memorial'), garden: k('garden'), park: k('park'), library: k('library') };
     });
-    // Love is 3; a park counts half of its interest; a library under a loved
-    // "browsing" still counts for less than a castle.
-    ok('answers become weights', w.castle === 3 && w.garden === 0 && w.park === 0.75
-      && w.library > 0 && w.library < 1, JSON.stringify(w));
+    // Love is 3; a memorial counts 0.6 of loved history; a town park 0.35 of
+    // "sometimes" views; a library under a loved "browsing" still counts for
+    // less than a castle.
+    const near = (a, b) => Math.abs(a - b) < 1e-9;
+    ok('answers become weights', w.castle === 3 && near(w.memorial, 1.8) && w.garden === 0
+      && near(w.park, 0.525) && near(w.library, 0.9), JSON.stringify(w));
     ok('map moves to the side asked for', await page.getAttribute('#drive-main', 'data-side') === 'right');
     const sides = await page.evaluate(() => [
       document.getElementById('map-slice').getBoundingClientRect().left,
@@ -218,6 +220,48 @@ async function fakeServices(ctx, counts, base) {
 
     await page.reload({ waitUntil: 'networkidle' });
     ok('not asked twice', !(await page.isVisible('#quiz')));
+
+    // Names split a kind: war memorials are not historic buildings.
+    const types = await page.evaluate(() => {
+      const t = window.__drive.typeOf;
+      return [t({ kind: 'historic site', name: 'Soldiers and Sailors Memorial' }),
+        t({ kind: 'historic site', name: 'Wentworth-Coolidge Mansion' }),
+        t({ kind: 'historic site', name: 'Fort Point Light' }),
+        t({ kind: 'park', name: 'Great Swamp Wildlife Management Area' }),
+        t({ kind: 'park', name: 'Harriman State Park' }),
+        t({ kind: 'park', name: 'Gale Park' }),
+        t({ kind: 'shop', name: 'Goodwill' }),
+        t({ kind: 'stadium', name: 'Yankee Stadium' })].join(',');
+    });
+    ok('names decide the type', types === 'memorial,building,lighthouse,wild,big-park,park,thrift,', types);
+
+    await page.waitForFunction(() => window.__drive.state.eats.length > 0, null, { timeout: 20000 }).catch(() => {});
+    const pool = () => page.evaluate(() => {
+      const p = window.__drive.state.pool;
+      return { memorial: p.filter((c) => c._type === 'memorial').length, eat: p.filter((c) => c._type === 'restaurant').length,
+        chains: p.filter((c) => c._chain).length, starbucks: p.filter((c) => c._chain === 'Starbucks').length,
+        michaels: p.filter((c) => c._chain === 'Michaels').length };
+    });
+    const p0 = await pool();
+    ok('restaurants are in play', p0.eat > 1000, `${p0.eat} restaurants`);
+    ok('chains are hidden by default', p0.chains === 0, `${p0.chains} chain locations`);
+
+    await page.click('#open-settings');
+    const chips = await page.locator('#kind-groups .chip').count();
+    ok('every type has a switch', chips === await page.evaluate(() => window.__drive.types.length), `${chips} switches`);
+    await page.click('#kind-groups .chip[data-type="memorial"]');
+    const p1 = await pool();
+    ok('memorials switch off on their own', p1.memorial === 0 && p0.memorial > 0, `${p0.memorial} → ${p1.memorial}`);
+    ok('the rest of history stays', await page.evaluate(() => window.__drive.typeWeight('building')) === 3);
+
+    await page.check('#opt-chains');
+    const p2 = await pool();
+    ok('show chains brings them in', p2.chains > 0 && p2.starbucks > 0, `${p2.chains} chain locations`);
+    await page.fill('#chain-search', 'starbucks');
+    await page.click('#chain-list .chip[data-chain="Starbucks"]');
+    const p3 = await pool();
+    ok('one chain can be switched off', p3.starbucks === 0 && p3.chains > 0, `${p2.starbucks} → ${p3.starbucks} Starbucks`);
+    await page.click('#close-settings');
     await page.click('#open-settings');
     const setRow = await page.getAttribute('#interest-levels .level-row[data-interest="history"] [data-level="love"]', 'aria-checked');
     ok('settings show the same answers', setRow === 'true');
@@ -252,13 +296,13 @@ async function fakeServices(ctx, counts, base) {
         const r = e.li.getBoundingClientRect();
         return {
           name: e.c.name, letter: e.letter, ahead: e.ahead, mid: (r.top + r.bottom) / 2 - list.top,
-          inView: r.bottom > list.top && r.top < list.bottom, go: e.li.querySelector('.deck-go').href
+          inView: r.bottom > list.top && r.top < list.bottom
         };
       });
     });
     const listH = await page.evaluate(() => document.getElementById('deck-list').clientHeight);
     const shown = deck.filter((d) => d.inView);
-    ok('two or three places on screen', shown.length >= 2 && shown.length <= 4,
+    ok('several places on screen', shown.length >= 2,
       shown.map((d) => `${d.letter} ${d.name} ${d.ahead.toFixed(1)}mi`).join(' / '));
     const byAhead = deck.slice().sort((a, b) => b.ahead - a.ahead);
     ok('further ahead is higher up', byAhead.every((d, i) => i === 0 || d.mid > byAhead[i - 1].mid));
@@ -266,12 +310,16 @@ async function fakeServices(ctx, counts, base) {
       const l = document.getElementById('deck-list').getBoundingClientRect();
       return document.getElementById('deck-now').getBoundingClientRect().top - l.top;
     });
-    ok('the line is across the middle', Math.abs(lineY - listH / 2) < 3, `${lineY.toFixed(0)} of ${listH}`);
+    ok('the line sits low, leaving room for what is coming', Math.abs(lineY - listH * 0.72) < 3, `${lineY.toFixed(0)} of ${listH}`);
+    ok('more than three cards fit', await page.evaluate(() => {
+      const h = document.getElementById('deck-list').clientHeight;
+      const c = [...window.__drive.entries.values()][0]?.li.getBoundingClientRect().height || h;
+      return h / c >= 5;
+    }));
     ok('letters on the map match the cards', await page.evaluate(() =>
       [...document.querySelectorAll('.deck-pin')].map((n) => n.textContent).sort().join('')
       === [...window.__drive.entries.values()].map((e) => e.letter).sort().join('')));
-    ok('go keeps the destination', deck.every((d) => d.go.includes('waypoints=')
-      && d.go.includes(encodeURIComponent(`${GARRISON.lat},${GARRISON.lon}`))));
+
 
     // Pictures: the site's own first, Wikipedia's otherwise, a drawing last.
     await page.waitForTimeout(2500);
@@ -362,15 +410,56 @@ async function fakeServices(ctx, counts, base) {
     });
     ok('passed places go below the line', past && past.below && past.dim, JSON.stringify(past));
 
-    // "Not for me" is the same mute the Places tab uses.
-    const target = await page.evaluate(() => [...window.__drive.entries.values()].find((e) => e.ahead > 0)?.c.name);
-    if (target) {
-      await page.evaluate((n) => [...window.__drive.entries.values()].find((e) => e.c.name === n).li.querySelector('.deck-no').click(), target);
+    // A card is the control. Touch goes through CDP, not the mouse: touch
+    // pointers are captured implicitly, which a mouse-driven test cannot see.
+    await page.evaluate(() => { window.__opened = []; window.open = (u) => { window.__opened.push(u); return null; }; });
+    const cdp = await ctx.newCDPSession(page);
+    const cardBox = (name) => page.evaluate((n) => {
+      const e = [...window.__drive.entries.values()].find((x) => x.c.name === n);
+      if (!e) return null;
+      const r = e.li.getBoundingClientRect();
+      return { x: r.left + r.width / 2, y: r.top + r.height / 2, w: r.width };
+    }, name);
+    const pickAhead = () => page.evaluate(() => {
+      const l = document.getElementById('deck-list').getBoundingClientRect();
+      const e = [...window.__drive.entries.values()].find((x) => {
+        const r = x.li.getBoundingClientRect();
+        return x.ahead > 0 && r.top > l.top + 4 && r.bottom < l.bottom - 4;
+      });
+      return e?.c.name;
+    });
+
+    const tapName = await pickAhead();
+    const tb = tapName && await cardBox(tapName);
+    if (tb) {
+      await cdp.send('Input.dispatchTouchEvent', { type: 'touchStart', touchPoints: [{ x: tb.x, y: tb.y }] });
+      await cdp.send('Input.dispatchTouchEvent', { type: 'touchEnd', touchPoints: [] });
+      await page.waitForTimeout(300);
+    }
+    const opened = await page.evaluate(() => window.__opened.slice());
+    ok('tapping a card opens directions', opened.length === 1 && opened[0].includes('google.com/maps/dir')
+      && opened[0].includes('waypoints=') && opened[0].includes(encodeURIComponent(`${GARRISON.lat},${GARRISON.lon}`)), opened[0]);
+
+    const swipeName = await pickAhead();
+    const sb = swipeName && await cardBox(swipeName);
+    if (sb) {
+      await cdp.send('Input.dispatchTouchEvent', { type: 'touchStart', touchPoints: [{ x: sb.x, y: sb.y }] });
+      for (let i = 1; i <= 10; i++) {
+        await cdp.send('Input.dispatchTouchEvent', { type: 'touchMove', touchPoints: [{ x: sb.x - sb.w * 0.6 * i / 10, y: sb.y }] });
+        await page.waitForTimeout(16);
+      }
+      await cdp.send('Input.dispatchTouchEvent', { type: 'touchEnd', touchPoints: [] });
+      await page.waitForTimeout(500);
       const muted = await page.evaluate(() => JSON.parse(localStorage.getItem('proximi.hiddenVenues.v1') || '[]'));
-      ok('not for me mutes the place', muted.includes(target), target);
-      ok('and takes its card away', !(await page.evaluate((n) => [...window.__drive.entries.values()].some((e) => e.c.name === n), target)));
+      ok('swiping a card hides it', muted.includes(swipeName)
+        && !(await page.evaluate((n) => [...window.__drive.entries.values()].some((e) => e.c.name === n), swipeName)), swipeName);
+      ok('a swipe is not a tap', (await page.evaluate(() => window.__opened.length)) === 1);
+      ok('and offers an undo', await page.isVisible('#drive-toast'));
+      await page.click('#drive-toast-undo');
+      const back = await page.evaluate(() => JSON.parse(localStorage.getItem('proximi.hiddenVenues.v1') || '[]'));
+      ok('which takes the hide back', !back.includes(swipeName));
     } else {
-      ok('a card ahead to mute', false);
+      ok('a card ahead to swipe', false);
     }
 
     ok('nothing was said aloud', (await page.evaluate(() => window.__spoken.length)) === 0);

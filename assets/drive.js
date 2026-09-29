@@ -22,64 +22,117 @@
 (() => {
   'use strict';
 
-  // Singular, the way it reads on a card. Order is only for reading.
-  const KINDS = [
-    ['castle', 'Castle'], ['historic house', 'Historic house'],
-    ['museum', 'Museum'], ['historic site', 'Historic site'],
-    ['landmark', 'Landmark'], ['lookout', 'Lookout'],
-    ['garden', 'Garden'], ['zoo', 'Zoo or aquarium'],
-    ['theme park', 'Theme park'], ['winery', 'Winery'],
-    ['farm', 'Farm or orchard'], ['park', 'Park'],
-    ['brewery', 'Brewery'], ['gallery', 'Gallery'],
-    ['antique shop', 'Antique shop'], ['bookshop', 'Bookshop'],
-    ['music venue', 'Music venue'], ['theatre', 'Theatre'],
-    ['cinema', 'Cinema'], ['mall', 'Market'], ['shop', 'Shop'],
-    ['library', 'Library']
-  ];
-  const KIND_LABEL = Object.fromEntries(KINDS);
-
   /* ── What you like ───────────────────────────────────────
-     The questionnaire asks about ten interests rather than twenty-two kinds
-     of place, because nobody has an opinion about "landmark" versus
-     "historic site". Each answer is a level, and a kind's weight is its
-     interest's level times a factor for how often that kind is actually
-     worth leaving the road for: 773 parks are mostly town greens, so a love
-     of views counts a lookout in full and a park at half. */
+     Two levels of it. The questionnaire asks about eleven interests, because
+     nobody has an opinion about "landmark" versus "historic site". Settings
+     then go one finer, to types of place, because within an interest people
+     do: someone who loves history may not want every war memorial on the
+     way, and does want the 1740s house beside it.
+
+     A type is a kind from the directory, narrowed by the place's name where
+     the name says what it is. The directory's kinds come from OpenStreetMap
+     tags, and "historic site" holds memorials, lighthouses, historic
+     districts, churches and forts alongside actual buildings; "park" holds
+     state parks, wildlife management areas and town greens. The names
+     separate them well: 105 "memorial" and 55 "monument" among the historic
+     sites, 201 "wildlife" among the parks. First matching type wins, so the
+     narrow ones come before their kind's catch-all.
+
+     A type's weight is its interest's level times its factor: how often a
+     place of that type is worth leaving the road for. */
   const INTERESTS = [
-    { id: 'history', label: 'History', hint: 'Castles, historic houses, battlefields, monuments',
-      kinds: ['castle', 'historic house', 'historic site', 'landmark'] },
-    { id: 'museums', label: 'Museums and art', hint: 'Museums, galleries, sculpture parks',
-      kinds: ['museum', 'gallery'] },
-    { id: 'gardens', label: 'Gardens', hint: 'Arboretums, botanical and formal gardens',
-      kinds: ['garden'] },
-    { id: 'views', label: 'Views and nature', hint: 'Lookouts, fire towers, state parks',
-      kinds: ['lookout', 'park'] },
-    { id: 'animals', label: 'Animals', hint: 'Zoos, aquariums, wildlife centres',
-      kinds: ['zoo'] },
-    { id: 'tasting', label: 'Food and drink', hint: 'Wineries, breweries, farms and orchards',
-      kinds: ['winery', 'brewery', 'farm'] },
-    { id: 'thrills', label: 'Rides and thrills', hint: 'Theme parks and water parks',
-      kinds: ['theme park'] },
-    { id: 'browsing', label: 'Browsing', hint: 'Antique shops, bookshops, markets',
-      kinds: ['antique shop', 'bookshop', 'mall', 'shop', 'library'] },
-    { id: 'shows', label: 'Shows', hint: 'Music venues, theatres, cinemas',
-      kinds: ['music venue', 'theatre', 'cinema'] },
-    { id: 'events', label: 'Things on right now', hint: 'A fair or festival happening as you pass',
-      kinds: ['event'] }
+    { id: 'history', label: 'History', hint: 'Castles, historic houses, forts, lighthouses, memorials' },
+    { id: 'museums', label: 'Museums and art', hint: 'Museums, galleries, historical societies' },
+    { id: 'gardens', label: 'Gardens', hint: 'Arboretums, botanical and formal gardens' },
+    { id: 'views', label: 'Views and nature', hint: 'Lookouts, fire towers, state parks' },
+    { id: 'animals', label: 'Animals', hint: 'Zoos, aquariums, wildlife centres' },
+    { id: 'tasting', label: 'Wineries, breweries and farms', hint: 'Tastings, orchards, farm stands' },
+    { id: 'eating', label: 'Places to eat', hint: 'Restaurants and cafés' },
+    { id: 'thrills', label: 'Rides and thrills', hint: 'Theme parks and water parks' },
+    { id: 'browsing', label: 'Browsing', hint: 'Antique shops, bookshops, thrift shops, markets' },
+    { id: 'shows', label: 'Shows', hint: 'Music venues, theatres, cinemas' },
+    { id: 'events', label: 'Things on right now', hint: 'A fair or festival happening as you pass' }
   ];
+
+  const TYPES = [
+    // History
+    { id: 'castle', label: 'Castles', one: 'Castle', interest: 'history', kinds: ['castle'] },
+    { id: 'memorial', label: 'Memorials and monuments', one: 'Memorial', interest: 'history', factor: 0.6,
+      kinds: ['historic site', 'landmark', 'park'],
+      name: /\b(memorial|monument|statue|veterans?|soldiers?|sailors|war|obelisk|cenotaph|plaque|marker|tablet|honor roll)\b/i },
+    { id: 'lighthouse', label: 'Lighthouses', one: 'Lighthouse', interest: 'history',
+      kinds: ['historic site', 'landmark', 'lookout'], name: /\b(light(house)?|lights)\b/i },
+    { id: 'fort', label: 'Forts and battlefields', one: 'Fort or battlefield', interest: 'history',
+      kinds: ['historic site', 'landmark', 'park'], name: /\b(fort|battle(field)?|redoubt|encampment|garrison)\b/i },
+    { id: 'district', label: 'Historic districts', one: 'Historic district', interest: 'history', factor: 0.5,
+      kinds: ['historic site'], name: /\bdistrict\b/i },
+    { id: 'church', label: 'Old churches and meeting houses', one: 'Old church', interest: 'history', factor: 0.7,
+      kinds: ['historic site', 'landmark'], name: /\b(church|chapel|meeting ?house|synagogue|cathedral|parish)\b/i },
+    { id: 'building', label: 'Historic houses and buildings', one: 'Historic building', interest: 'history',
+      kinds: ['historic house', 'historic site'] },
+    { id: 'landmark', label: 'Landmarks and curiosities', one: 'Landmark', interest: 'history', factor: 0.8,
+      kinds: ['landmark'] },
+    // Museums and art
+    { id: 'society', label: 'Historical societies', one: 'Historical society', interest: 'museums', factor: 0.7,
+      kinds: ['museum'], name: /histor(ical|ic) (society|association)|heritage (society|association)/i },
+    { id: 'kids-museum', label: "Children's museums", one: "Children's museum", interest: 'museums', factor: 0.5,
+      kinds: ['museum'], name: /\b(children'?s|kids)\b|discovery (center|museum)/i },
+    { id: 'museum', label: 'Museums', one: 'Museum', interest: 'museums', kinds: ['museum'] },
+    { id: 'gallery', label: 'Galleries', one: 'Gallery', interest: 'museums', kinds: ['gallery'] },
+    // Gardens
+    { id: 'garden', label: 'Gardens', one: 'Garden', interest: 'gardens', kinds: ['garden'] },
+    // Views and nature
+    { id: 'lookout', label: 'Lookouts and fire towers', one: 'Lookout', interest: 'views', kinds: ['lookout'] },
+    { id: 'wild', label: 'Wildlife areas and forests', one: 'Wildlife area', interest: 'views', factor: 0.5,
+      kinds: ['park'], name: /wildlife|management area|sanctuary|refuge|forest|preserve|reservation|woods/i },
+    { id: 'big-park', label: 'State and national parks', one: 'State park', interest: 'views',
+      kinds: ['park'], name: /\b(state|national)\b/i },
+    { id: 'park', label: 'Local parks', one: 'Park', interest: 'views', factor: 0.35, kinds: ['park'] },
+    // Animals
+    { id: 'zoo', label: 'Zoos and aquariums', one: 'Zoo or aquarium', interest: 'animals', kinds: ['zoo'] },
+    // Wineries, breweries and farms
+    { id: 'winery', label: 'Wineries', one: 'Winery', interest: 'tasting', kinds: ['winery'] },
+    { id: 'brewery', label: 'Breweries and distilleries', one: 'Brewery', interest: 'tasting', kinds: ['brewery'] },
+    { id: 'farm', label: 'Farms and orchards', one: 'Farm or orchard', interest: 'tasting', kinds: ['farm'] },
+    // Places to eat
+    { id: 'restaurant', label: 'Restaurants', one: 'Restaurant', interest: 'eating', factor: 0.6, kinds: ['restaurant'] },
+    { id: 'cafe', label: 'Cafés', one: 'Café', interest: 'eating', factor: 0.5, kinds: ['cafe'] },
+    // Rides and thrills
+    { id: 'theme-park', label: 'Theme and water parks', one: 'Theme park', interest: 'thrills', kinds: ['theme park'] },
+    // Browsing
+    { id: 'antiques', label: 'Antique shops', one: 'Antique shop', interest: 'browsing', kinds: ['antique shop'] },
+    { id: 'books', label: 'Bookshops', one: 'Bookshop', interest: 'browsing', kinds: ['bookshop'] },
+    { id: 'thrift', label: 'Thrift shops', one: 'Thrift shop', interest: 'browsing', factor: 0.5,
+      kinds: ['shop'], name: /goodwill|thrift|salvation army|savers|consign|second.?hand|vintage/i },
+    { id: 'garden-centre', label: 'Garden centres', one: 'Garden centre', interest: 'browsing', factor: 0.5,
+      kinds: ['shop'], name: /garden (center|centre)|nursery|greenhouse/i },
+    { id: 'market', label: 'Markets', one: 'Market', interest: 'browsing', factor: 0.5, kinds: ['mall'] },
+    { id: 'shop', label: 'Other shops', one: 'Shop', interest: 'browsing', factor: 0.4, kinds: ['shop'] },
+    { id: 'library', label: 'Libraries', one: 'Library', interest: 'browsing', factor: 0.3, kinds: ['library'] },
+    // Shows
+    { id: 'music', label: 'Music venues', one: 'Music venue', interest: 'shows', kinds: ['music venue'] },
+    { id: 'theatre', label: 'Theatres', one: 'Theatre', interest: 'shows', kinds: ['theatre'] },
+    { id: 'cinema', label: 'Cinemas', one: 'Cinema', interest: 'shows', factor: 0.5, kinds: ['cinema'] },
+    // Things on right now
+    { id: 'event', label: 'Things on right now', one: 'Happening now', interest: 'events', kinds: ['event'] }
+  ];
+  const TYPE = Object.fromEntries(TYPES.map((t) => [t.id, t]));
+
+  // The first type that claims this place, or null for kinds Drive never
+  // suggests (stadiums, schools, halls).
+  function typeOf(p) {
+    for (const t of TYPES) {
+      if (t.kinds.includes(p.kind) && (!t.name || t.name.test(p.name))) return t.id;
+    }
+    return null;
+  }
 
   const LEVELS = [['love', 'Love it', 3], ['some', 'Sometimes', 1.5], ['skip', 'Skip', 0]];
   const LEVEL_VALUE = Object.fromEntries(LEVELS.map(([id, , v]) => [id, v]));
 
-  // Kinds that are usually not worth the exit even when you like the thing.
-  const KIND_FACTOR = { park: 0.5, shop: 0.5, mall: 0.5, library: 0.3, cinema: 0.5, landmark: 0.8 };
-
-  const INTEREST_OF = {};
-  for (const i of INTERESTS) for (const k of i.kinds) INTEREST_OF[k] = i.id;
-
   const DEFAULT_LEVELS = {
     history: 'some', museums: 'some', gardens: 'some', views: 'some', animals: 'some',
-    tasting: 'some', thrills: 'skip', browsing: 'skip', shows: 'skip', events: 'some'
+    tasting: 'some', eating: 'some', thrills: 'skip', browsing: 'skip', shows: 'skip', events: 'some'
   };
 
   const DETOURS = [5, 10, 15, 20];          // minutes out of your way
@@ -88,7 +141,14 @@
 
   const DEFAULTS = {
     levels: DEFAULT_LEVELS, maxDetour: 10, onboarded: false,
-    liked: true, km: false, maps: 'google', mapSide: 'left', simSpeed: 10
+    liked: true, km: false, maps: 'google', mapSide: 'left', simSpeed: 10,
+    // Per type: true switches it on even if its interest is skipped, false
+    // switches it off even if its interest is loved. Absent follows the
+    // interest.
+    types: {},
+    // Chains are hidden unless asked for; chainsOff lists the ones turned
+    // off individually once they are shown.
+    showChains: false, chainsOff: []
   };
 
   const SETTINGS_KEY = 'proximi.drive.v1';
@@ -111,15 +171,31 @@
 
   const settings = { ...DEFAULTS, ...readJSON(SETTINGS_KEY, {}) };
   settings.levels = { ...DEFAULT_LEVELS, ...settings.levels };
+  settings.types = { ...settings.types };
+  settings.chainsOff = [...(settings.chainsOff || [])];
   // Gone: the first version's per-kind list, and the voice and its cooldown.
   for (const k of ['kinds', 'events', 'voice', 'cooldown']) delete settings[k];
   const saveSettings = () => writeJSON(SETTINGS_KEY, settings);
 
-  // The interest score's starting point: how much you like this kind of place.
-  function kindWeight(kind) {
-    const level = settings.levels[INTEREST_OF[kind]];
-    return (LEVEL_VALUE[level] || 0) * (KIND_FACTOR[kind] ?? 1);
+  // The interest score's starting point: how much you like this type of place.
+  function typeWeight(id) {
+    const t = TYPE[id];
+    if (!t) return 0;
+    const factor = t.factor ?? 1;
+    const base = (LEVEL_VALUE[settings.levels[t.interest]] || 0) * factor;
+    const own = settings.types[id];
+    if (own === false) return 0;
+    if (own === true && !base) return LEVEL_VALUE.some * factor;
+    return base;
   }
+
+  /* A chain is a place OpenStreetMap tags with a brand, or one whose name is
+     exactly a brand seen elsewhere: "Honey Dew Donuts" untagged is still
+     Honey Dew. Repeated names alone are not enough: fifteen unrelated "Great
+     Wall" restaurants are not a chain. Filled in when the data loads. */
+  const brands = new Map();   // lower-cased name → brand
+  const chainOf = (p) => p.brand || brands.get(p.name.toLowerCase()) || null;
+  const chainAllowed = (chain) => !chain || (settings.showChains && !settings.chainsOff.includes(chain));
 
   /* ── Geometry ─────────────────────────────────────────────
      Everything here happens within a few dozen miles, where the earth is flat
@@ -267,7 +343,7 @@
 
     detours: new Map(),        // candidate id → { min, toMin, at }
     checking: false, lastCheck: 0, routerDownUntil: 0,
-    ahead: [], odo: 0
+    ahead: [], odo: 0, eats: []
   };
 
   // The drive's clock. A simulated drive runs faster than real time, and the
@@ -278,8 +354,9 @@
 
   function interest(c) {
     if (state.muted.has(c.name)) return 0;
+    if (!chainAllowed(c._chain)) return 0;
     const liked = state.liked.has(c.name);
-    let s = kindWeight(c.kind);
+    let s = typeWeight(c._type);
     if (!s && liked && settings.liked) s = 1;
     if (!s) return 0;
     if (liked) s += 3;
@@ -331,13 +408,13 @@
         if (!onNow.has(host.id)) onNow.set(host.id, e);
       } else {
         eventOnly.push({
-          id: 'ev-' + e.id, name: e.venue || e.title, kind: 'event',
+          id: 'ev-' + e.id, name: e.venue || e.title, kind: 'event', _type: 'event', _chain: null,
           lat: e.lat, lon: e.lon, city: e.city, url: e.url, onNow: e
         });
       }
     }
     state.pool = [];
-    for (const p of state.places) {
+    for (const p of state.places.concat(state.eats)) {
       const c = onNow.has(p.id) ? { ...p, onNow: onNow.get(p.id) } : p;
       c._score = interest(c);
       if (c._score > 0) state.pool.push(c);
@@ -462,7 +539,7 @@
      deck shows four miles), so every card is built, measured and has its
      picture loading before it scrolls into view. */
 
-  const MAX_UPCOMING = 10;
+  const MAX_UPCOMING = 16;
 
   function evaluate() {
     if (state.phase !== 'driving' || !state.pos) return;
@@ -523,12 +600,15 @@
     setup: $('setup-panel'), destForm: $('dest-form'), destInput: $('dest-input'),
     deck: $('deck'), deckList: $('deck-list'), deckEmpty: $('deck-empty'), deckNow: $('deck-now'),
     dock: $('dock'), stop: $('stop-btn'),
+    toast: $('drive-toast'), toastMsg: $('drive-toast-msg'), toastUndo: $('drive-toast-undo'),
     simCtl: $('sim-ctl'), simSlower: $('sim-slower'), simFaster: $('sim-faster'), simSpeed: $('sim-speed'),
     openSettings: $('open-settings'), sheet: $('drive-settings'),
     scrim: $('settings-backdrop'), closeSettings: $('close-settings'),
     levels: $('interest-levels'), retake: $('retake-quiz'),
     detourChips: $('detour-chips'), sideChips: $('side-chips'), mapsChips: $('maps-chips'),
     optLiked: $('opt-liked'), optKm: $('opt-km'),
+    kindGroups: $('kind-groups'), optChains: $('opt-chains'), chainPick: $('chain-pick'),
+    chainSearch: $('chain-search'), chainList: $('chain-list'), chainNote: $('chain-note'),
     simForm: $('sim-form'), simFrom: $('sim-from'), simTo: $('sim-to'),
     quiz: $('quiz'), quizStep: $('quiz-step'), quizTitle: $('quiz-title'),
     quizLede: $('quiz-lede'), quizBody: $('quiz-body'), quizBack: $('quiz-back'), quizNext: $('quiz-next')
@@ -562,8 +642,10 @@
      is itself interpolated between GPS fixes. An empty stretch of road is an
      empty stretch of deck. */
 
-  const VIEW_MILES = 4;      // road shown between the line and the top of the deck
-  const GAP = 10;
+  const VIEW_MILES = 6;      // road shown between the line and the top of the deck
+  // The line sits low: what is coming matters more than what has gone by.
+  const LINE_AT = 0.72;
+  const GAP = 8;
 
   const entries = new Map();   // id → deck entry
   let letterNext = 0;
@@ -590,7 +672,7 @@
       along: state.route && o.along != null ? o.along : null,
       aheadAt: o.ahead, odoAt: disp.odo,
       letter: String.fromCharCode(65 + (letterNext++ % 26)),
-      y: null
+      y: null, dx: 0, dxTo: 0
     };
     e.li = cardFor(e);
     el.deckList.appendChild(e.li);
@@ -611,35 +693,46 @@
     letterNext = 0;
   }
 
+  // What the card calls the place: its type, and for somewhere to eat, what
+  // kind of food.
+  function typeLine(c) {
+    let s = TYPE[c._type]?.one || 'Place';
+    // A restaurant's line is its food: the fork on the card already says
+    // restaurant, and "Restaurant · American" does not fit a narrow card.
+    const food = (c.cuisine || [])[0];
+    if (food && c.kind === 'restaurant') s = food.replace(/_/g, ' ').replace(/^./, (x) => x.toUpperCase());
+    if (c._chain) s += ' · chain';
+    if (state.liked.has(c.name)) s += ' · liked';
+    return s;
+  }
+
+  /* A card is the whole control: tap it for directions, swipe it either way
+     to say "not for me". No buttons, so a card is small and more of the road
+     fits on the screen. */
   function cardFor(e) {
     const li = document.createElement('li');
     li.className = 'deck-card';
     li.dataset.id = e.c.id;
+    li.tabIndex = 0;
+    li.setAttribute('role', 'link');
+    li.setAttribute('aria-label', `${e.c.name}: directions. Swipe to hide.`);
     li.innerHTML = `
       <div class="deck-photo"></div>
       <div class="deck-body">
         <p class="deck-kind"><span class="deck-letter"></span><span class="deck-kind-t"></span></p>
         <h3 class="deck-name"></h3>
         <p class="deck-facts"></p>
-        <p class="deck-blurb"></p>
         <p class="deck-on" hidden></p>
-        <div class="deck-actions">
-          <a class="deck-go" target="_blank" rel="noopener">Go</a>
-          <button type="button" class="deck-no">Not for me</button>
-        </div>
       </div>`;
     const c = e.c;
     li.querySelector('.deck-letter').textContent = e.letter;
     li.querySelector('.deck-name').textContent = c.name;
-    li.querySelector('.deck-kind-t').textContent =
-      (c.kind === 'event' ? 'Happening now' : (KIND_LABEL[c.kind] || 'Place'))
-      + (state.liked.has(c.name) ? ' · liked' : '');
+    li.querySelector('.deck-kind-t').textContent = typeLine(c);
     if (c.onNow) {
       const on = li.querySelector('.deck-on');
       on.hidden = false;
       on.textContent = (c.kind === 'event' ? '' : 'On now: ') + c.onNow.title;
     }
-    li.querySelector('.deck-go').href = mapsUrl(c);
     fillPhoto(li, c);
     return li;
   }
@@ -654,10 +747,11 @@
   function layoutDeck(dt = 16) {
     const h = el.deckList.clientHeight;
     if (!h) return;
-    const mid = h / 2;
+    const line = h * LINE_AT;
     const cardH = cardHeight();
-    const pxPerMile = mid / VIEW_MILES;
-    const behindLimit = -(mid + cardH) / pxPerMile;
+    const pxPerMile = line / VIEW_MILES;
+    const behindLimit = -(h - line + cardH) / pxPerMile;
+    const width = el.deckList.clientWidth;
 
     const live = [];
     for (const e of entries.values()) {
@@ -669,7 +763,7 @@
     // Top of the screen first.
     live.sort((a, b) => b.ahead - a.ahead);
     const step = cardH + GAP;
-    const want = live.map((e, i) => (mid - e.ahead * pxPerMile - cardH / 2) - i * step);
+    const want = live.map((e, i) => (line - e.ahead * pxPerMile - cardH / 2) - i * step);
     const fit = isotonic(want);
     let nearest = null;
     /* The fit is continuous while the road is, but a card arriving or leaving
@@ -680,14 +774,17 @@
        lurching off. On a steady road the spring just follows, a fraction of
        a second behind. */
     const w = 8, t = Math.min(dt, 50) / 1000;
+    const slide = 1 - Math.exp(-dt / 70);
     live.forEach((e, i) => {
       const target = fit[i] + i * step;
       if (e.y == null) { e.y = target; e.vy = 0; }
       e.vy += (w * w * (target - e.y) - 2 * w * e.vy) * t;
       e.y += e.vy * t;
-      const y = e.y;
+      // Sideways: under the finger while dragged, otherwise sliding home or away.
+      if (!(drag && drag.e === e && drag.active)) e.dx += (e.dxTo - e.dx) * slide;
       e.li.style.height = `${cardH}px`;
-      e.li.style.transform = `translate3d(0, ${y.toFixed(1)}px, 0)`;
+      e.li.style.transform = `translate3d(${e.dx.toFixed(1)}px, ${e.y.toFixed(1)}px, 0)`;
+      e.li.style.opacity = e.dx ? String(Math.max(0.2, 1 - Math.abs(e.dx) / width)) : '';
       e.li.classList.toggle('is-past', e.ahead < -0.15);
       e.li.querySelector('.deck-facts').textContent = factsLine(e);
       if (!nearest || Math.abs(e.ahead) < Math.abs(nearest.ahead)) nearest = e;
@@ -718,29 +815,114 @@
     return out;
   }
 
-  // Three cards to a screen, give or take: two clear and one arriving.
-  const cardHeight = () => Math.max(170, Math.min(250, el.deckList.clientHeight / 3.1));
+  // About six to a screen now the buttons are gone.
+  const cardHeight = () => Math.max(96, Math.min(126, el.deckList.clientHeight / 6.2));
 
+  // "+9 min" is what the stop adds to the trip; short, because the card is.
   function factsLine(e) {
     const m = Math.round(e.detour);
-    const detour = m < 1 ? 'Barely a detour' : `${m} min detour`;
-    if (e.ahead < -0.15) return `${detour} · passed ${shortDistance(e.ahead)} back`;
-    if (e.ahead < 0.15) return `${detour} · beside you now`;
-    return `${detour} · ${shortDistance(e.ahead)} ahead`;
+    const detour = m < 1 ? 'On the way' : `+${m} min`;
+    if (e.ahead < -0.15) return `${detour} · ${shortDistance(e.ahead)} back`;
+    if (e.ahead < 0.15) return `${detour} · beside you`;
+    return `${detour} · ${shortDistance(e.ahead)}`;
   }
 
-  el.deckList.addEventListener('click', (ev) => {
-    const btn = ev.target.closest('.deck-no');
-    if (!btn) return;
-    const e = entries.get(btn.closest('.deck-card').dataset.id);
+  /* ── Tap and swipe ────────────────────────────────────────
+     Tracked on the window, not by capturing the pointer: a touch pointer is
+     already captured by whatever it went down on, and asking again transfers
+     it and fires lostpointercapture, which is the bug that once made the main
+     page's swipes work with a mouse and never with a finger. A drag only
+     becomes a swipe once it is clearly sideways, so a finger resting on the
+     deck while the car moves is not a swipe. */
+
+  let drag = null, lastSwipeAt = 0;
+  const SWIPE_AWAY = 0.3;      // of the card's width
+  const FLICK = 0.6;           // px per ms
+
+  el.deckList.addEventListener('pointerdown', (ev) => {
+    if (ev.pointerType === 'mouse' && ev.button !== 0) return;
+    const li = ev.target.closest('.deck-card');
+    const e = li && entries.get(li.dataset.id);
     if (!e) return;
-    // The same mute the Places tab uses, keyed by name the way it is there.
+    drag = { e, id: ev.pointerId, x0: ev.clientX, y0: ev.clientY, t0: performance.now(), active: false };
+  });
+
+  window.addEventListener('pointermove', (ev) => {
+    if (!drag || ev.pointerId !== drag.id) return;
+    const dx = ev.clientX - drag.x0, dy = ev.clientY - drag.y0;
+    if (!drag.active) {
+      if (Math.abs(dx) < 10 || Math.abs(dx) <= Math.abs(dy)) return;
+      drag.active = true;
+      drag.e.li.classList.add('is-dragging');
+    }
+    drag.e.dx = dx;
+    ev.preventDefault();
+  }, { passive: false });
+
+  function endDrag(ev) {
+    if (!drag || ev.pointerId !== drag.id) return;
+    const { e, active, t0 } = drag;
+    drag = null;
+    if (!active) return;
+    e.li.classList.remove('is-dragging');
+    lastSwipeAt = Date.now();
+    const width = el.deckList.clientWidth;
+    const speed = Math.abs(e.dx) / Math.max(1, performance.now() - t0);
+    if (Math.abs(e.dx) > width * SWIPE_AWAY || speed > FLICK) dismiss(e, Math.sign(e.dx) || 1);
+    else e.dxTo = 0;
+  }
+  window.addEventListener('pointerup', endDrag);
+  window.addEventListener('pointercancel', endDrag);
+
+  el.deckList.addEventListener('click', (ev) => {
+    if (ev.target.closest('a')) return;             // the picture's credit link
+    if (Date.now() - lastSwipeAt < 400) return;     // the end of a swipe is not a tap
+    const li = ev.target.closest('.deck-card');
+    const e = li && entries.get(li.dataset.id);
+    if (e) openDirections(e);
+  });
+
+  el.deckList.addEventListener('keydown', (ev) => {
+    const li = ev.target.closest('.deck-card');
+    const e = li && entries.get(li.dataset.id);
+    if (!e) return;
+    if (ev.key === 'Enter') openDirections(e);
+    if (ev.key === 'Delete' || ev.key === 'Backspace') dismiss(e, 1);
+  });
+
+  function openDirections(e) {
+    window.open(mapsUrl(e.c), '_blank', 'noopener');
+  }
+
+  /* "Not for me": the same mute the Places tab uses, keyed by name the way it
+     is there. The card slides off the way it was pushed, and an Undo stays
+     up for a few seconds, because a swipe on a moving car's dash is easy to
+     make by accident and should never be a one-way door. */
+  let undoTimer = null;
+
+  function dismiss(e, dir) {
+    e.dxTo = dir * (el.deckList.clientWidth + 40);
     state.muted = new Set(readJSON(VENUES_KEY, []));
     state.muted.add(e.c.name);
     writeJSON(VENUES_KEY, [...state.muted]);
-    drop(e);
+    setTimeout(() => { if (entries.get(e.c.id) === e) drop(e, 'is-gone'); }, 260);
     buildPool();
-  });
+    toast(`Hid “${e.c.name}”`, () => {
+      state.muted = new Set(readJSON(VENUES_KEY, []));
+      state.muted.delete(e.c.name);
+      writeJSON(VENUES_KEY, [...state.muted]);
+      buildPool();
+      evaluate();
+    });
+  }
+
+  function toast(text, undo) {
+    el.toastMsg.textContent = text;
+    el.toast.hidden = false;
+    el.toastUndo.onclick = () => { undo(); el.toast.hidden = true; };
+    clearTimeout(undoTimer);
+    undoTimer = setTimeout(() => { el.toast.hidden = true; }, 5000);
+  }
 
   /* ── Pictures ─────────────────────────────────────────────
      Two sources, best first. The place's own website's picture, found at
@@ -764,6 +946,9 @@
   function wantPhoto(c) {
     // Fetch the site's own picture now, so it is decoded before it is seen.
     if (c.image) { const img = new Image(); img.src = c.image; }
+    // Restaurants and cafés almost never have an article, and asking for
+    // every one would spend the rate limit on nothing.
+    if (c.kind === 'restaurant' || c.kind === 'cafe') return;
     if (photos.has(c.id) || photoQueue.some((q) => q.id === c.id)) return;
     photoQueue.push(c);
     pumpPhotos();
@@ -828,6 +1013,7 @@
     views: '<path d="M3 29 13 13l6 9 4-5 10 12ZM24 9a3 3 0 1 0 0 .1" />',
     animals: '<path d="M10 14a3 3 0 1 0 0 .1M26 14a3 3 0 1 0 0 .1M14 9a3 3 0 1 0 0 .1M22 9a3 3 0 1 0 0 .1M18 17c-5 0-8 6-8 9s3 3 8 3 8 0 8-3-3-9-8-9Z" />',
     tasting: '<path d="M12 5h12l-1 9a5 5 0 0 1-10 0ZM18 19v10M12 30h12" />',
+    eating: '<path d="M11 5v9a3 3 0 0 0 6 0V5M14 5v25M24 30V5c-3 2-4 6-4 10h4" />',
     thrills: '<path d="M4 30C8 10 14 6 18 6s10 4 14 24M9 30V18M18 30V6M27 30V18" />',
     browsing: '<path d="M6 8h24v22H6ZM6 14h24M13 8v6M23 8v6" />',
     shows: '<path d="M6 7h24v14c0 5-5 9-12 9S6 26 6 21ZM12 14h3M21 14h3M13 21c3 2 7 2 10 0" />',
@@ -837,7 +1023,8 @@
   function fillPhoto(li, c) {
     const box = li.querySelector('.deck-photo');
     const wiki = photos.get(c.id);
-    li.querySelector('.deck-blurb').textContent = wiki?.desc || c.description || c.city || '';
+    const blurb = li.querySelector('.deck-blurb');
+    if (blurb) blurb.textContent = wiki?.desc || c.description || c.city || '';
     const src = c.image || wiki?.img;
     const credit = c.image ? { text: 'Their site', href: c.url }
       : wiki?.img ? { text: 'Wikipedia', href: `https://en.wikipedia.org/wiki/${encodeURIComponent(wiki.title.replace(/ /g, '_'))}` }
@@ -871,7 +1058,7 @@
   function glyph(box, c) {
     if (box.classList.contains('is-glyph')) return;
     box.classList.add('is-glyph');
-    const interest = c.kind === 'event' ? 'events' : INTEREST_OF[c.kind] || 'history';
+    const interest = TYPE[c._type]?.interest || 'history';
     box.innerHTML = `<svg viewBox="0 0 36 36" aria-hidden="true">${GLYPHS[interest]}</svg>`;
   }
 
@@ -1359,8 +1546,86 @@
     el.optLiked.checked = settings.liked;
     el.optKm.checked = settings.km;
     el.main.dataset.side = settings.mapSide;
+    renderKinds();
+    renderChains();
     syncSimSpeed();
   }
+
+  /* Kinds of place, by group. A chip is on when its type counts for
+     anything; tapping records an explicit choice that outlives changing the
+     group's level. Counts are how many there are in the whole directory, so
+     a switch that governs three places reads as small. */
+  function renderKinds() {
+    const counts = {};
+    for (const p of state.places.concat(state.eats)) counts[p._type] = (counts[p._type] || 0) + 1;
+    el.kindGroups.replaceChildren(...INTERESTS.map((it) => {
+      const box = document.createElement('div');
+      box.className = 'kind-group';
+      box.dataset.interest = it.id;
+      const h = document.createElement('p');
+      h.className = 'kind-group-h';
+      h.textContent = `${it.label} · ${LEVELS.find(([id]) => id === settings.levels[it.id])?.[1] || ''}`;
+      const chips = document.createElement('div');
+      chips.className = 'chips';
+      for (const t of TYPES.filter((x) => x.interest === it.id)) {
+        const on = typeWeight(t.id) > 0;
+        const b = chip(t.label, on, () => {
+          settings.types[t.id] = !on;
+          // Back to following the group when the choice matches it anyway.
+          const base = (LEVEL_VALUE[settings.levels[t.interest]] || 0) > 0;
+          if (settings.types[t.id] === base) delete settings.types[t.id];
+          changed();
+        });
+        b.dataset.type = t.id;
+        if (counts[t.id]) {
+          const n = document.createElement('span');
+          n.className = 'chip-n';
+          n.textContent = counts[t.id].toLocaleString();
+          b.appendChild(n);
+        }
+        chips.appendChild(b);
+      }
+      box.append(h, chips);
+      return box;
+    }));
+  }
+
+  /* Chains: hidden unless asked for, and then one by one. Listed by how many
+     locations the directory has, with a search, because there are nearly
+     three hundred and only the big ones are worth scrolling past. */
+  function renderChains() {
+    const counts = new Map();
+    for (const p of state.places.concat(state.eats)) {
+      if (p._chain) counts.set(p._chain, (counts.get(p._chain) || 0) + 1);
+    }
+    el.optChains.checked = settings.showChains;
+    el.chainPick.classList.toggle('is-off', !settings.showChains);
+    const q = el.chainSearch.value.trim().toLowerCase();
+    const all = [...counts].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]));
+    const match = all.filter(([name]) => !q || name.toLowerCase().includes(q));
+    const shown = match.slice(0, 40);
+    el.chainList.replaceChildren(...shown.map(([name, n]) => {
+      const off = settings.chainsOff.includes(name);
+      const b = chip(name, settings.showChains && !off, () => {
+        if (!settings.showChains) return;
+        settings.chainsOff = off ? settings.chainsOff.filter((x) => x !== name) : settings.chainsOff.concat(name);
+        changed();
+      });
+      b.dataset.chain = name;
+      b.disabled = !settings.showChains;
+      const c = document.createElement('span');
+      c.className = 'chip-n';
+      c.textContent = n;
+      b.appendChild(c);
+      return b;
+    }));
+    el.chainNote.textContent = !all.length ? 'Loading chains…'
+      : match.length > shown.length ? `${shown.length} of ${match.length} shown. Search for the rest.`
+      : `${all.length} chains in the directory.`;
+  }
+
+  el.optChains.addEventListener('change', () => { settings.showChains = el.optChains.checked; changed(); });
+  el.chainSearch.addEventListener('input', renderChains);
 
   function changed() {
     saveSettings();
@@ -1468,21 +1733,58 @@
   setStatus('Loading places…');
   if (!settings.onboarded) showQuiz(0);
 
+  // Each row's type and chain, worked out once when it arrives.
+  function prepare(rows) {
+    const out = [];
+    for (const p of rows || []) {
+      if (!Number.isFinite(p.lat) || !Number.isFinite(p.lon) || !p.name) continue;
+      p._type = typeOf(p);
+      if (!p._type) continue;
+      out.push(p);
+    }
+    return out;
+  }
+
+  function learnBrands(rows) {
+    for (const p of rows) if (p.brand) brands.set(p.brand.toLowerCase(), p.brand);
+  }
+
+  function markChains(rows) {
+    for (const p of rows) p._chain = chainOf(p);
+  }
+
   Promise.all([
     fetch('data/places.json', { cache: 'no-cache' }).then((r) => (r.ok ? r.json() : null)),
     fetch('data/events.json', { cache: 'no-cache' }).then((r) => (r.ok ? r.json() : null)).catch(() => null)
   ]).then(([places, events]) => {
-    state.places = (places?.items || []).filter((p) => Number.isFinite(p.lat) && Number.isFinite(p.lon) && p.name);
+    state.places = prepare(places?.items);
+    learnBrands(state.places);
+    markChains(state.places);
     state.regions = places?.meta?.regions || [];
     state.events = events?.items || [];
     state.placesReady = true;
     buildPool();
+    renderKinds();
     if (state.phase === 'setup') setStatus(`${state.pool.length.toLocaleString()} places worth a stop, in Proximi's coverage`);
+    /* Somewhere to eat is its own file, five times the size of the rest and
+       not needed for the first screen, so it follows in the background. The
+       first version of this page never loaded it at all, which is why no
+       restaurant ever turned up on a drive. */
+    return fetch('data/eats.json', { cache: 'no-cache' }).then((r) => (r.ok ? r.json() : null)).then((eats) => {
+      state.eats = prepare(eats?.items);
+      learnBrands(state.eats);
+      markChains(state.places);
+      markChains(state.eats);
+      buildPool();
+      renderKinds();
+      renderChains();
+      if (state.phase === 'setup') setStatus(`${state.pool.length.toLocaleString()} places worth a stop, in Proximi's coverage`);
+    }).catch(() => { /* the drive works without somewhere to eat */ });
   }).catch(() => setStatus('The places file failed to load.'));
 
   // For tests and for poking at it from the console.
   window.__drive = {
     state, settings, disp, entries, buildRoute, locate, pointAt, candidatesAhead,
-    kindWeight, photos, isotonic, get map() { return map; }
+    typeWeight, typeOf, chainOf, types: TYPES, photos, isotonic, get map() { return map; }
   };
 })();

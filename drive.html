@@ -74,6 +74,11 @@
       <p class="deck-empty" id="deck-empty" hidden></p>
     </div>
 
+    <div class="drive-toast" id="drive-toast" role="status" aria-live="polite" hidden>
+      <span id="drive-toast-msg"></span>
+      <button type="button" id="drive-toast-undo">Undo</button>
+    </div>
+
     <nav class="drive-dock" id="dock" hidden aria-label="Drive controls">
       <div class="sim-ctl" id="sim-ctl" hidden role="group" aria-label="Simulated drive speed">
         <button type="button" class="sim-btn" id="sim-slower" aria-label="Slower">&minus;</button>
@@ -118,6 +123,27 @@
       <legend>What you like</legend>
       <div class="levels" id="interest-levels"></div>
       <button type="button" class="drive-quiet-btn drive-retake" id="retake-quiz">Take the questionnaire again</button>
+    </fieldset>
+
+    <!-- One finer than the questionnaire: each type of place on or off, so
+         "history" can mean the old house and not the war memorial. -->
+    <fieldset class="drive-set">
+      <legend>Kinds of place</legend>
+      <p class="drive-hint">On follows how much you said you like its group. Tap to
+        switch one off, or on even when its group is skipped.</p>
+      <div id="kind-groups" class="kind-groups"></div>
+    </fieldset>
+
+    <fieldset class="drive-set">
+      <legend>Chains</legend>
+      <label class="drive-check"><input type="checkbox" id="opt-chains">
+        Show chain locations</label>
+      <div class="chain-pick" id="chain-pick">
+        <input type="search" id="chain-search" class="chain-search" placeholder="Find a chain"
+               autocomplete="off" aria-label="Find a chain">
+        <div class="chips" id="chain-list" role="group" aria-label="Chains"></div>
+        <p class="drive-hint" id="chain-note"></p>
+      </div>
     </fieldset>
 
     <fieldset class="drive-set">
