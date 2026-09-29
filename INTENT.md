@@ -118,6 +118,10 @@ place, checked ten at a time; and the detour cap raised to half an hour.
 Ratings are built but switched off: they need a Google Places or Yelp key,
 and each has a per-request price, so that is Timothy's call.
 
+**Sixth pass, 2026-09-29**: cuisine filters (each family on, favourite or
+off) and a fantasy map as the default look, with a compass rose. The fantasy
+lettering is the open item there: it needs custom glyph files.
+
 **Next on it**, roughly in order: opening hours, so it stops suggesting closed
 museums; pulling places live along the route (Overpass, Wikipedia's geosearch)
 so it works outside the coverage circles; the 647 place pages that did not

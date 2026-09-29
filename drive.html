@@ -41,6 +41,16 @@
   <div class="map-slice" id="map-slice">
     <div class="drive-map" id="drive-map" aria-label="Map around your car, heading up"></div>
     <!-- Fixed in the strip; the map turns and slides under it. -->
+    <!-- A compass rose that turns against the map: on a heading-up map, the
+         only thing on screen that says where north is. -->
+    <svg class="map-compass" id="map-compass" viewBox="0 0 60 60" aria-hidden="true">
+      <circle cx="30" cy="30" r="27" class="rose-ring"/>
+      <circle cx="30" cy="30" r="22" class="rose-ring rose-inner"/>
+      <path d="M30 4 34 30 30 26 26 30Z" class="rose-n"/>
+      <path d="M30 56 26 30 30 34 34 30Z" class="rose-s"/>
+      <path d="M4 30 30 26 26 30 30 34Z M56 30 30 34 34 30 30 26Z" class="rose-ew"/>
+      <text x="30" y="14" class="rose-letter">N</text>
+    </svg>
     <div class="map-zoom" role="group" aria-label="Map zoom">
       <button type="button" class="map-zoom-btn" id="zoom-in" aria-label="Zoom in">+</button>
       <button type="button" class="map-zoom-btn" id="zoom-out" aria-label="Zoom out">&minus;</button>
@@ -90,7 +100,7 @@
         <button type="button" class="sim-btn" id="sim-faster" aria-label="Faster">+</button>
       </div>
       <button type="button" class="drive-dock-btn drive-map-btn" id="map-btn" aria-pressed="true">Map</button>
-      <button type="button" class="drive-dock-btn" id="stop-btn">End drive</button>
+      <button type="button" class="drive-dock-btn" id="stop-btn" aria-label="End drive">End</button>
     </nav>
   </section>
 </main>
@@ -140,6 +150,14 @@
     </fieldset>
 
     <fieldset class="drive-set">
+      <legend>Kinds of food</legend>
+      <p class="drive-hint">Tap to cycle: on, ★ favourite (ranked first), off. A place
+        stays unless everything it serves is off.</p>
+      <div class="chips" id="cuisine-chips" role="group" aria-label="Kinds of food"></div>
+      <p class="drive-hint" id="cuisine-note"></p>
+    </fieldset>
+
+    <fieldset class="drive-set">
       <legend>Chains</legend>
       <label class="drive-check"><input type="checkbox" id="opt-chains">
         Show chain locations</label>
@@ -166,6 +184,11 @@
         Show town lines</label>
       <label class="drive-check"><input type="checkbox" id="opt-map">
         Show the map</label>
+    </fieldset>
+
+    <fieldset class="drive-set">
+      <legend>Map look</legend>
+      <div class="chips" id="style-chips" role="radiogroup" aria-label="Map look"></div>
     </fieldset>
 
     <fieldset class="drive-set">
