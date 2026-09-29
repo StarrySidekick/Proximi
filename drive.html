@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Proximi Drive</title>
+<meta name="description" content="A driving buddy: it tells you, out loud, about places worth a short detour from the road you are on.">
+<meta name="theme-color" content="#E9E1CC" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#241C14" media="(prefers-color-scheme: dark)">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="stylesheet" href="assets/vendor/leaflet/leaflet.min.css">
+<link rel="stylesheet" href="assets/styles.css">
+<link rel="stylesheet" href="assets/drive.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='26'>📍</text></svg>">
+</head>
+<body class="drive">
+
+<header class="drive-bar">
+  <a class="drive-back" href="./">
+    <svg viewBox="0 0 16 16" aria-hidden="true" class="ico">
+      <path d="M10 3 5 8l5 5" stroke="currentColor" stroke-width="1.8"
+            stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    </svg>
+    Proximi
+  </a>
+  <p class="drive-status" id="drive-status" role="status" aria-live="polite">Getting ready…</p>
+  <button type="button" class="drive-icon-btn" id="open-settings"
+          aria-haspopup="dialog" aria-controls="drive-settings" aria-label="Drive settings">
+    <svg viewBox="0 0 16 16" aria-hidden="true" class="ico">
+      <path d="M2 4h12M4 8h8M6.5 12h3" stroke="currentColor" stroke-width="1.6"
+            stroke-linecap="round" fill="none"/>
+    </svg>
+  </button>
+</header>
+
+<div class="drive-map" id="drive-map" aria-label="Map around your car"></div>
+
+<button type="button" class="drive-recenter" id="recenter" hidden>Recenter</button>
+
+<!-- Before the drive: where to (optional), and the one tap that unlocks
+     speech and the screen lock. Browsers only allow audio after a gesture. -->
+<section class="drive-panel" id="setup-panel" aria-label="Start a drive">
+  <h1 class="drive-h">Driving buddy</h1>
+  <p class="drive-lede">Tells you, out loud, about places worth a short detour
+    from the road you are on. Keep this page open on a mounted phone.</p>
+  <form id="dest-form" class="drive-form" autocomplete="off">
+    <label class="drive-field">
+      <span>Where to? <em>optional</em></span>
+      <input id="dest-input" type="search" placeholder="Town or address"
+             enterkeyhint="go">
+    </label>
+    <p class="drive-hint" id="dest-hint">With a destination, detours are measured
+      against your real route. Without one, Drive follows the direction you are
+      heading.</p>
+    <button type="submit" class="drive-go" id="start-btn">Start driving</button>
+  </form>
+</section>
+
+<!-- One suggestion at a time, big enough to read at a glance. Nothing here
+     needs a tap: it has already been said aloud. -->
+<section class="drive-card" id="suggestion" hidden aria-live="polite" aria-label="Suggested stop">
+  <p class="drive-card-kind" id="sug-kind"></p>
+  <h2 class="drive-card-name" id="sug-name"></h2>
+  <p class="drive-card-facts" id="sug-facts"></p>
+  <p class="drive-card-on" id="sug-on" hidden></p>
+  <div class="drive-card-actions">
+    <a class="drive-go" id="sug-go" target="_blank" rel="noopener">Take me there</a>
+    <button type="button" class="drive-quiet-btn" id="sug-repeat">Say again</button>
+    <button type="button" class="drive-quiet-btn" id="sug-mute">Not for me</button>
+    <button type="button" class="drive-quiet-btn" id="sug-close" aria-label="Dismiss">✕</button>
+  </div>
+</section>
+
+<nav class="drive-dock" id="dock" hidden aria-label="Drive controls">
+  <button type="button" class="drive-dock-btn" id="voice-btn" aria-pressed="true">Voice on</button>
+  <button type="button" class="drive-dock-btn" id="stop-btn">End drive</button>
+</nav>
+
+<!-- Settings: what counts as worth stopping for, how far out of your way,
+     and how often it may speak. Saved per browser. -->
+<div class="scrim" id="settings-backdrop" hidden></div>
+<section class="sheet drive-sheet" id="drive-settings" role="dialog" aria-modal="true"
+         aria-labelledby="settings-title" hidden>
+  <div class="sheet-head">
+    <h2 id="settings-title">Drive settings</h2>
+    <button type="button" class="icon-btn" id="close-settings" aria-label="Close">✕</button>
+  </div>
+  <div class="sheet-body">
+    <fieldset class="drive-set">
+      <legend>Worth stopping for</legend>
+      <div class="chips" id="kind-chips" role="group" aria-label="Kinds of place"></div>
+    </fieldset>
+
+    <fieldset class="drive-set">
+      <legend>Longest detour</legend>
+      <div class="chips" id="detour-chips" role="radiogroup" aria-label="Longest detour"></div>
+    </fieldset>
+
+    <fieldset class="drive-set">
+      <legend>Speak at most</legend>
+      <div class="chips" id="cooldown-chips" role="radiogroup" aria-label="How often"></div>
+    </fieldset>
+
+    <fieldset class="drive-set">
+      <legend>Also</legend>
+      <label class="drive-check"><input type="checkbox" id="opt-events">
+        Mention things happening right now</label>
+      <label class="drive-check"><input type="checkbox" id="opt-liked">
+        Always mention places I liked</label>
+      <label class="drive-check"><input type="checkbox" id="opt-km">
+        Kilometres</label>
+    </fieldset>
+
+    <fieldset class="drive-set">
+      <legend>Navigate with</legend>
+      <div class="chips" id="maps-chips" role="radiogroup" aria-label="Maps app"></div>
+    </fieldset>
+
+    <fieldset class="drive-set">
+      <legend>Try it from your desk</legend>
+      <p class="drive-hint">Plays a drive along a real route, sped up, so you can
+        hear what it would say.</p>
+      <form id="sim-form" class="drive-form" autocomplete="off">
+        <label class="drive-field"><span>From</span>
+          <input id="sim-from" type="search" placeholder="Beacon, NY"></label>
+        <label class="drive-field"><span>To</span>
+          <input id="sim-to" type="search" placeholder="Hartford, CT"></label>
+        <button type="submit" class="drive-go">Simulate drive</button>
+      </form>
+    </fieldset>
+
+    <p class="fine">Places from <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>
+      contributors. Routes and detour times from
+      <a href="https://project-osrm.org/">OSRM</a>. Drive only knows places in
+      Proximi's coverage areas.</p>
+  </div>
+</section>
+
+<script src="assets/vendor/leaflet/leaflet.min.js"></script>
+<script src="assets/drive.js"></script>
+</body>
+</html>

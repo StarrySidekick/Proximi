@@ -1,0 +1,161 @@
+/* ── Drive ─────────────────────────────────────────────────
+   Read at arm's length on a mounted phone, in a moving car. So: one thing on
+   screen at a time, type large enough to take in with a glance, and targets
+   big enough for a passenger's thumb. Colours are the main app's tokens,
+   loaded first from styles.css, so it stays the same desk after dark.    */
+
+body.drive {
+  height: 100vh; height: 100dvh;
+  overflow: hidden;
+  display: flex; flex-direction: column;
+}
+
+.drive-bar {
+  position: relative; z-index: 20;
+  display: flex; align-items: center; gap: 10px;
+  min-height: var(--bar-h);
+  padding: env(safe-area-inset-top) 12px 0;
+  background: var(--surface);
+  border-bottom: 1px solid var(--line);
+}
+.drive-back {
+  display: flex; align-items: center; gap: 4px;
+  font-family: var(--serif); font-size: 17px; font-weight: 600;
+  color: var(--ink); text-decoration: none;
+  padding: 8px 4px;
+}
+.drive-status {
+  flex: 1; min-width: 0; margin: 0;
+  font-size: 13.5px; color: var(--ink-2);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.drive-icon-btn {
+  display: grid; place-items: center;
+  width: 40px; height: 40px; flex: none;
+  border-radius: 999px; border: 1px solid var(--line);
+  background: var(--surface-2); color: var(--ink); cursor: pointer;
+}
+.drive-icon-btn .ico { width: 18px; height: 18px; }
+
+.drive-map { flex: 1; min-height: 0; z-index: 1; background: var(--surface-2); }
+
+/* Tiles are light; in dark mode dim them rather than invert, so road colours
+   still mean what they mean. */
+@media (prefers-color-scheme: dark) {
+  .drive-map .leaflet-tile-pane { filter: brightness(.72) contrast(1.05) saturate(.8); }
+}
+.drive-map .leaflet-control-attribution {
+  background: color-mix(in srgb, var(--surface) 80%, transparent);
+  color: var(--ink-3); font-size: 10px;
+}
+.drive-map .leaflet-control-attribution a { color: var(--ink-3); }
+
+/* The car: a brass arrow pointing the way you are heading. */
+.car-marker { background: none; border: 0; }
+.car-marker svg { transition: transform .4s ease; transform-origin: 50% 50%; }
+.car-marker .car-halo { fill: color-mix(in srgb, var(--accent) 22%, transparent); stroke: var(--accent); stroke-width: 1.5; }
+.car-marker .car-arrow { fill: var(--accent); stroke: var(--accent-ink); stroke-width: 1.5; stroke-linejoin: round; }
+.car-marker svg.no-heading .car-arrow { opacity: .35; }
+
+.route-line { stroke: var(--event-ink); stroke-width: 6; stroke-opacity: .7; fill: none; stroke-linecap: round; }
+.ahead-dot { stroke: var(--rep-ink); stroke-width: 2; fill: var(--rep-bg); fill-opacity: .95; }
+.pick-dot { stroke: var(--act-ink); stroke-width: 3; fill: var(--act-bg); fill-opacity: 1; }
+
+.drive-recenter {
+  position: fixed; z-index: 15;
+  right: 12px; top: calc(var(--bar-h) + env(safe-area-inset-top) + 12px);
+  font: inherit; font-weight: 600; font-size: 14px;
+  padding: 9px 16px; border-radius: 999px;
+  border: 1px solid var(--line); background: var(--surface); color: var(--ink);
+  box-shadow: var(--shadow); cursor: pointer;
+}
+
+/* ── Bottom panels: setup, the suggestion, the dock ── */
+
+.drive-panel, .drive-card {
+  position: fixed; z-index: 10;
+  left: 0; right: 0; bottom: 0;
+  margin: 0 auto; max-width: 560px;
+  padding: 18px 16px max(18px, env(safe-area-inset-bottom));
+  background: var(--surface);
+  border-top: 1px solid var(--line);
+  border-radius: 14px 14px 0 0;
+  box-shadow: 0 -8px 28px rgba(10,14,20,.18), var(--panel);
+}
+
+.drive-h {
+  margin: 0 0 4px;
+  font-family: var(--serif); font-size: 24px; font-weight: 600;
+}
+.drive-lede, .drive-hint { margin: 0 0 12px; color: var(--ink-2); font-size: 14px; }
+.drive-hint { font-size: 12.5px; color: var(--ink-3); }
+
+.drive-form { display: flex; flex-direction: column; gap: 10px; }
+.drive-field { display: flex; flex-direction: column; gap: 5px; font-size: 13px; font-weight: 600; color: var(--ink-2); }
+.drive-field em { font-weight: 400; font-style: normal; color: var(--ink-3); }
+.drive-field input {
+  font: inherit; font-size: 16px;   /* 16px stops iOS zooming on focus */
+  padding: 11px 12px; border-radius: var(--radius);
+  border: 1px solid var(--line); background: var(--surface-2); color: var(--ink);
+}
+
+.drive-go {
+  display: inline-flex; align-items: center; justify-content: center;
+  font: inherit; font-size: 17px; font-weight: 700;
+  min-height: 52px; padding: 0 22px;
+  border-radius: 999px; border: 0;
+  background: var(--accent); color: var(--accent-ink);
+  text-decoration: none; cursor: pointer;
+}
+
+.drive-card { padding-top: 16px; }
+.drive-card-kind {
+  margin: 0;
+  font-family: var(--serif); font-size: 12.5px; font-weight: 600;
+  letter-spacing: .13em; text-transform: uppercase; color: var(--act-ink);
+}
+.drive-card-name {
+  margin: 2px 0 4px;
+  font-family: var(--serif); font-size: 27px; line-height: 1.15; font-weight: 600;
+}
+.drive-card-facts { margin: 0; font-size: 18px; font-weight: 600; color: var(--ink-2); }
+.drive-card-on { margin: 6px 0 0; font-size: 15px; color: var(--free); }
+.drive-card-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+.drive-card-actions .drive-go { flex: 1 1 100%; }
+.drive-quiet-btn {
+  flex: 1;
+  font: inherit; font-size: 15px; font-weight: 600;
+  min-height: 46px; padding: 0 14px;
+  border-radius: 999px; border: 1px solid var(--line);
+  background: var(--surface-2); color: var(--ink); cursor: pointer;
+}
+#sug-close { flex: 0 0 46px; padding: 0; }
+
+/* While driving and nothing is being suggested, only the dock shows. */
+.drive-dock {
+  position: fixed; z-index: 9;
+  left: 12px; right: 12px; bottom: max(12px, env(safe-area-inset-bottom));
+  display: flex; gap: 8px; justify-content: center;
+}
+.drive-card:not([hidden]) ~ .drive-dock { display: none; }
+.drive-dock-btn {
+  font: inherit; font-size: 15px; font-weight: 600;
+  min-height: 46px; padding: 0 18px;
+  border-radius: 999px; border: 1px solid var(--line);
+  background: var(--surface); color: var(--ink);
+  box-shadow: var(--shadow); cursor: pointer;
+}
+.drive-dock-btn[aria-pressed="false"] { color: var(--ink-3); text-decoration: line-through; }
+
+/* ── Settings ── */
+.drive-sheet .sheet-body { padding-bottom: max(20px, env(safe-area-inset-bottom)); }
+.drive-set { border: 0; margin: 0; padding: 14px 0; border-bottom: 1px solid var(--line-soft); }
+.drive-set legend {
+  padding: 0; margin-bottom: 10px;
+  font-family: var(--serif); font-size: 12px; font-weight: 600;
+  letter-spacing: .13em; text-transform: uppercase; color: var(--ink-3);
+}
+.drive-check { display: flex; align-items: center; gap: 9px; margin-top: 8px; font-size: 14.5px; cursor: pointer; }
+.drive-check input { accent-color: var(--accent); width: 18px; height: 18px; margin: 0; }
+.drive-sheet .chip { font-size: 14px; padding: 7px 13px; }
+.drive-sheet .fine { color: var(--ink-3); margin-top: 14px; }

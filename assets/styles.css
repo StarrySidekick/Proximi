@@ -116,6 +116,8 @@ a { color: var(--accent); }
 @supports not (backdrop-filter: blur(1px)) { .topbar { background: var(--surface); } }
 
 .topbar-inner { display: flex; align-items: center; justify-content: space-between; width: 100%; }
+.topbar-actions { display: flex; align-items: center; gap: 8px; }
+.drive-link { text-decoration: none; color: inherit; }
 .brand { display: flex; align-items: center; gap: 9px; }
 /* A brass drawer pull. */
 .brand-mark {

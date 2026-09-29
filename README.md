@@ -185,6 +185,68 @@ is being narrowed, and **Show everywhere** hands back exactly what you had.
 Nothing is lost in between: what you chose is what gets written to
 `localStorage` throughout, so a reload mid-look cannot cost you your filters.
 
+## Drive: a driving buddy
+
+`drive.html`, reached from the **Drive** button in the header. On a road trip
+you cannot be tapping through a list, so this page does the looking: it
+watches the road ahead and says, out loud, when something worth a short
+detour is coming up.
+
+> *Bull Hill. A lookout, barely out of your way, 4.5 miles ahead.*
+
+A car in the centre of a map, one big card for the current suggestion, and
+nothing that needs a tap once the drive has started. **Take me there** hands
+off to Google Maps (as a waypoint, so it carries on to your destination
+afterwards) or Apple Maps.
+
+**Two ways to drive, one code path.** Give it a destination and "ahead" means
+further along the real route. Give it nothing and "ahead" means a cone in the
+direction you are heading. Either way a candidate is described by two
+numbers, how far ahead and how far off the road, and a detour is:
+
+```
+detour = time(you → place) + time(place → back on the road) − time(you → back on the road)
+```
+
+"Back on the road" is a mile and a half past the place, along the route when
+there is one. One OSRM `table` request answers all three legs at once.
+
+**Cheap first, expensive last.** Straight-line geometry throws out nearly
+everything; only the handful of best survivors go to the router, because the
+public OSRM server allows about one request a second. The router matters: on
+I-84 through Fishkill, places under 3.5 miles from the road as the crow flies
+turned out to be 11 to 35 minute detours, because the exits are far apart.
+
+**What it will say.** Settings choose the kinds worth stopping for (castles,
+historic houses, museums, gardens, lookouts, wineries, farms and so on by
+default; parks, libraries and shops are off because most of them are a town
+green or a branch library), the longest detour (5 to 20 minutes), and how often
+it may speak. Liked places always qualify and are said as "one you liked";
+places muted on the Places tab never do, and **Not for me** in the car is that
+same mute. With **Mention things happening right now** on, an event from the
+feed that is on at a place ahead is said too, but only one-off listings with a
+real start time: a repeating series' dates say when it runs, not when it is on,
+and a wrong "happening now" costs a driver a detour.
+
+**Try it from your desk.** Settings → *Try it from your desk* replays a real
+route at twelve times speed through the same code the car uses, so you can hear
+what it would say on a drive before taking it. A rehearsal keeps its own memory
+and never uses up the real drive's announcements.
+
+**Limits, stated plainly.**
+
+- It only works while the page is on screen. iOS suspends a web page's
+  JavaScript when the screen locks or another app is in front, so this cannot
+  talk over Google Maps. The page takes a screen wake lock to stay on. Talking
+  over another navigation app, or CarPlay, needs a native app.
+- iOS only allows speech after a tap, so **Start driving** says "Driving
+  buddy on" to unlock it.
+- It knows only what `data/places.json` knows, which is the coverage circles.
+  Outside them the status line says so rather than going quiet.
+- Opening hours are not checked yet, so it can suggest a museum at 8pm.
+- Routes, detours and addresses are live calls to OSRM and Nominatim, so a
+  dead zone pauses new suggestions (it says so, and backs off).
+
 ## Look
 
 The theme is **Victorian**, lifted from the [Bureau](https://github.com/StarrySidekick/bureau)
@@ -331,6 +393,10 @@ Current category vocabulary: `music`, `show`, `art`, `market`, `sale`, `parade`,
 index.html              markup and the filter sheet
 assets/styles.css       styling, light + dark themes
 assets/app.js           loading, filtering, sorting, geolocation, rendering
+drive.html              the driving buddy: map, spoken suggestions, settings
+assets/drive.js         route geometry, detour checks, speech, simulation
+assets/drive.css        the Drive page, on the same tokens as styles.css
+assets/vendor/leaflet/  Leaflet 1.9.4, vendored so the map needs no CDN
 data/events.json        the listings the site serves
 data/places.json        the directory — somewhere to go, listings or not
 data/eats.json          somewhere to eat, loaded in the background
@@ -350,6 +416,8 @@ scripts/discover.py     find new venues (OSM) and probe them for feeds
 scripts/enrich.py       geocode, radius-filter, infer categories
 scripts/merge.py        collapse repeats, dedupe, fold into data/events.json
 scripts/validate.py     schema and radius gate, also run in CI
+tests/drive.js          the main page, driven in headless Chromium, in CI
+tests/drive-mode.js     the Drive page, with OSRM and Nominatim answered locally
 ```
 
 ## How listings get updated

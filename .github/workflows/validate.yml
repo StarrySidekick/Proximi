@@ -62,3 +62,6 @@ jobs:
 
       - name: Drive the app in headless Chromium
         run: node tests/drive.js
+
+      - name: Drive the Drive page (routes and addresses answered locally)
+        run: node tests/drive-mode.js

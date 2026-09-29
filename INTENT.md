@@ -73,6 +73,22 @@ service worker, so a PWA installed on a phone is a blank page in a valley with
 no signal — which is exactly where a directory of what is around you is worth
 most. Both data files are static and small enough to cache whole.
 
+**3. A driving buddy, 2026-09-28.** From the Maine trip, in Timothy's words:
+places "only a short detour from your drive" that would be interesting to stop
+at, which "just needs to kind of show up based on a predetermined set of
+settings" because a driver cannot be tapping. It is built as `drive.html`:
+spoken suggestions with the detour in minutes, settings for what counts and how
+far out of the way. Web first, on purpose, to learn what it should do before
+deciding whether it earns a native iPhone app. The native app is what would let
+it talk over Google Maps and run with the screen off (MapKit, Core Location in
+the background); the web page cannot.
+
+**Next on it**, roughly in order: opening hours, so it stops suggesting closed
+museums; pulling places live along the route (Overpass, Wikipedia's geosearch)
+so it works outside the coverage circles and can say *why* a place is worth it;
+and the service worker from the offline item above, which a car in a dead zone
+needs more than anyone.
+
 ## Deliberately not next
 
 - **Guessed prices.** Automating them is worth building *only if it can be
