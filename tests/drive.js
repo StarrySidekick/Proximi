@@ -154,10 +154,40 @@ const exe = process.env.CHROMIUM_PATH
     }
     await cdp.send('Input.dispatchTouchEvent', { type: 'touchEnd', touchPoints: [] });
   };
-  await page.locator('#list .card-slot').nth(2).scrollIntoViewIfNeeded();
+  /* A listing that repeats on a nameable cadence asks "just today, or every
+     time?" instead of hiding, and the repeat section below tests that. So
+     this swipe picks a card that hides outright: picking "the third card"
+     meant the test passed or failed by the hour it ran at, because the feed
+     is sorted by time and at 11pm the third card was a weekday cruise. */
+  const plainIdx = await page.evaluate(() => {
+    const P = window.__proximi;
+    const slots = [...document.querySelectorAll('#list .card-slot')];
+    const i = slots.findIndex((s, n) => n >= 2 && !P.hasCadence(P.byId.get(s.dataset.id)));
+    return i < 0 ? 2 : i;
+  });
+  const target = page.locator('#list .card-slot').nth(plainIdx);
+  await target.scrollIntoViewIfNeeded();
   await page.waitForTimeout(200);
-  const box = await page.locator('#list .card-slot').nth(2).boundingBox();
-  const idBefore = await page.locator('#list .card-slot').nth(2).getAttribute('data-id');
+  /* And it starts the swipe somewhere a swipe can start. A touch that lands
+     on a link or button stays a tap by design (delegateSwipe), and a tall
+     card can have its venue link or Sign up button right at the midpoint the
+     swipe used to aim for — so find a plain spot on the card, top to bottom. */
+  const box = await target.evaluate((slot) => {
+    const r = slot.getBoundingClientRect();
+    for (let f = 0.5; f < 0.95; f += 0.05) {
+      for (const g of [0.5, 0.35, 0.65, 0.2, 0.8]) {
+        const y = r.top + r.height * g;
+        const hit = document.elementFromPoint(r.left + r.width * f, y);
+        if (hit && slot.contains(hit) && !hit.closest('a, button')) {
+          // swipe() starts at 80% across and halfway down a box: aim both there.
+          const width = (r.width * f) / 0.8;
+          return { x: r.left, y: y - 10, width, height: 20 };
+        }
+      }
+    }
+    return { x: r.left, y: r.top, width: r.width, height: r.height };
+  });
+  const idBefore = await target.getAttribute('data-id');
   await swipe(box, -160);
   await page.waitForTimeout(300);
   ok('touch swipe left hides card',
