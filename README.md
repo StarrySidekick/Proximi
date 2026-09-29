@@ -194,10 +194,32 @@ detour is coming up.
 
 > *Bull Hill. A lookout, barely out of your way, 4.5 miles ahead.*
 
-A car in the centre of a map, one big card for the current suggestion, and
-nothing that needs a tap once the drive has started. **Take me there** hands
-off to Google Maps (as a waypoint, so it carries on to your destination
-afterwards) or Apple Maps.
+**The screen is split.** A narrow map sits on one side, nearest the driver,
+and turns so the road ahead is always up the screen (**heading up**). Leaflet
+cannot turn a map, so the map element is turned with CSS about the car, and
+made larger than its strip so no corner ever shows past the edge of the map.
+The rest of the screen is a **deck** of the two or three best places coming
+up, ordered like the road: nearest at the bottom beside the car, further ones
+above. Cards slide down as you drive and drop off once passed, each with a bar
+that fills as you approach and a number matching a pin on the map. Nothing
+needs a tap once the drive has started. **Go** hands off to Google Maps (as a
+waypoint, so it carries on to your destination afterwards) or Apple Maps.
+
+**A questionnaire first.** Before the first drive it asks about ten interests
+(history, gardens, food and drink, things on right now…) as *Love it /
+Sometimes / Skip*, then the longest detour, how often it may speak, and which
+side the map goes. Each interest's level times a per-kind factor is a place's
+starting interest score; a park counts half, because most of the 773 are town
+greens. Everything it asks lives on in settings, and it can be taken again.
+
+**Photos from Wikipedia, live.** The directory has no pictures, so each card
+on screen asks Wikipedia for an article by the place's name, and believes the
+answer only if the article's coordinates are close (within half a mile, or
+three miles when the names share a distinctive word). The article's lead
+image and one-line description go on the card, credited. One request at a
+time, a second apart, backing off when throttled, and every answer, including
+"no article", is kept on the phone. Well-known places match; most farms and
+wineries have no article and get an outline drawing of their kind instead.
 
 **Two ways to drive, one code path.** Give it a destination and "ahead" means
 further along the real route. Give it nothing and "ahead" means a cone in the
@@ -217,14 +239,11 @@ public OSRM server allows about one request a second. The router matters: on
 I-84 through Fishkill, places under 3.5 miles from the road as the crow flies
 turned out to be 11 to 35 minute detours, because the exits are far apart.
 
-**What it will say.** Settings choose the kinds worth stopping for (castles,
-historic houses, museums, gardens, lookouts, wineries, farms and so on by
-default; parks, libraries and shops are off because most of them are a town
-green or a branch library), the longest detour (5 to 20 minutes), and how often
-it may speak. Liked places always qualify and are said as "one you liked";
+**What it will say.** Whatever scores above zero from the questionnaire,
+within the longest detour, at most as often as allowed. Liked places always qualify and are said as "one you liked";
 places muted on the Places tab never do, and **Not for me** in the car is that
-same mute. With **Mention things happening right now** on, an event from the
-feed that is on at a place ahead is said too, but only one-off listings with a
+same mute. With *Things on right now* not skipped, an event from the feed that
+is on at a place ahead is said too, but only one-off listings with a
 real start time: a repeating series' dates say when it runs, not when it is on,
 and a wrong "happening now" costs a driver a detour.
 

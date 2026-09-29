@@ -47,8 +47,25 @@ const seconds = (a, b) => miles(a, b) * 1.3 / 30 * 3600;
 const PNG = Buffer.from('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+ip1sAAAAASUVORK5CYII=', 'base64');
 const CORS = { 'access-control-allow-origin': '*' };
 
+// Wikipedia answers for every place by name, at the place's own coordinates,
+// so photo matching is exercised end to end. Farms get no article, which is
+// the common case in real life and the one the fallback card is for.
+const PLACE_BY_NAME = new Map(JSON.parse(fs.readFileSync(__dirname + '/../data/places.json', 'utf8'))
+  .items.map((p) => [p.name, p]));
+
 async function fakeServices(ctx, counts) {
-  await ctx.route(/tile\.openstreetmap\.org/, (r) => r.fulfill({ body: PNG, contentType: 'image/png' }));
+  await ctx.route(/tile\.openstreetmap\.org|upload\.wikimedia\.org/, (r) => r.fulfill({ body: PNG, contentType: 'image/png' }));
+  await ctx.route(/wikipedia\.org\/w\/api\.php/, (r) => {
+    counts.wiki++;
+    const name = new URL(r.request().url()).searchParams.get('gsrsearch');
+    const p = PLACE_BY_NAME.get(name);
+    if (!p || /farm|orchard/i.test(name)) { r.fulfill({ json: { batchcomplete: '' }, headers: CORS }); return; }
+    r.fulfill({ json: { query: { pages: { 1: {
+      pageid: 1, index: 1, title: name, description: 'A place in a test',
+      coordinates: [{ lat: p.lat, lon: p.lon }],
+      thumbnail: { source: 'https://upload.wikimedia.org/test/' + encodeURIComponent(name) + '.png' }
+    } } } }, headers: CORS });
+  });
   await ctx.route(/nominatim\.openstreetmap\.org/, (r) => {
     const q = new URL(r.request().url()).searchParams.get('q').toLowerCase();
     const p = PLACES[q];
@@ -97,11 +114,20 @@ async function fakeServices(ctx, counts) {
     if (!cond) fail.push(name);
   };
 
-  async function newPage(opts = {}) {
+  async function newPage({ onboarded = true, ...opts } = {}) {
     const ctx = await browser.newContext({
       viewport: { width: 390, height: 844 }, hasTouch: true, isMobile: true, ...opts
     });
-    const counts = { route: 0, table: 0 };
+    const counts = { route: 0, table: 0, wiki: 0 };
+    // Most scenarios are about the drive, not the first-run questionnaire,
+    // so they start as somebody who has already answered it.
+    if (onboarded) {
+      await ctx.addInitScript(() => {
+        if (!localStorage.getItem('proximi.drive.v1')) {
+          localStorage.setItem('proximi.drive.v1', JSON.stringify({ onboarded: true }));
+        }
+      });
+    }
     await fakeServices(ctx, counts);
     // Speech is what the page is for, and a headless browser has no voice:
     // record what would have been said instead.
@@ -145,69 +171,157 @@ async function fakeServices(ctx, counts) {
     await ctx.close();
   }
 
-  // ── A simulated drive: route, suggestion, voice, handoff, mute ──
+  // ── First run: the questionnaire decides the interest score ──
+  {
+    const { ctx, page, errors } = await newPage({ onboarded: false });
+    await page.goto(base + '/drive.html', { waitUntil: 'networkidle' });
+    ok('questionnaire opens on first visit', await page.isVisible('#quiz'));
+    const rows = await page.locator('#quiz .level-row').count();
+    ok('it asks about every interest', rows === 10, `${rows} rows`);
+    await page.click('#quiz .level-row[data-interest="history"] [data-level="love"]');
+    await page.click('#quiz .level-row[data-interest="browsing"] [data-level="love"]');
+    await page.click('#quiz .level-row[data-interest="gardens"] [data-level="skip"]');
+    await page.click('#quiz-next');
+    await page.click('#quiz .quiz-choice:has(strong:text-is("15 minutes"))');
+    await page.click('#quiz-next');
+    await page.click('#quiz .quiz-choice:has(strong:text-is("Rarely"))');
+    await page.click('#quiz-next');
+    await page.click('#quiz .quiz-choice:has(strong:text-is("Right"))');
+    ok('last page says Done', (await page.textContent('#quiz-next')).trim() === 'Done');
+    await page.click('#quiz-next');
+    ok('and closes', !(await page.isVisible('#quiz')));
+
+    const saved = await page.evaluate(() => JSON.parse(localStorage.getItem('proximi.drive.v1')));
+    ok('answers are saved', saved.onboarded && saved.levels.history === 'love'
+      && saved.levels.gardens === 'skip' && saved.maxDetour === 15 && saved.cooldown === 20
+      && saved.mapSide === 'right', JSON.stringify(saved.levels));
+    const w = await page.evaluate(() => {
+      const k = window.__drive.kindWeight;
+      return { castle: k('castle'), garden: k('garden'), park: k('park'), library: k('library') };
+    });
+    // Love is 3; a park counts half of its interest; a library under a loved
+    // "browsing" still counts for less than a castle.
+    ok('answers become weights', w.castle === 3 && w.garden === 0 && w.park === 0.75
+      && w.library > 0 && w.library < 1, JSON.stringify(w));
+    ok('map moves to the side asked for', await page.getAttribute('#drive-main', 'data-side') === 'right');
+    const sides = await page.evaluate(() => [
+      document.getElementById('map-slice').getBoundingClientRect().left,
+      document.getElementById('deck').getBoundingClientRect().left]);
+    ok('and is drawn there', sides[0] > sides[1], JSON.stringify(sides));
+
+    await page.reload({ waitUntil: 'networkidle' });
+    ok('not asked twice', !(await page.isVisible('#quiz')));
+    await page.click('#open-settings');
+    const setRow = await page.getAttribute('#interest-levels .level-row[data-interest="history"] [data-level="love"]', 'aria-checked');
+    ok('settings show the same answers', setRow === 'true');
+    await page.click('#retake-quiz');
+    ok('and can ask again', await page.isVisible('#quiz'));
+    ok('no page errors (questionnaire)', errors.length === 0, errors.slice(0, 3).join(' | '));
+    await ctx.close();
+  }
+
+  // ── A simulated drive: the deck, the turned map, photos, voice ──
   {
     const { ctx, page, errors, counts } = await newPage();
     await page.goto(base + '/drive.html', { waitUntil: 'networkidle' });
     const status = await page.textContent('#drive-status');
     ok('places load', /\d[\d,]* places worth a stop/.test(status), status);
 
-    // Only kinds with a real candidate on this stretch, so the assertion is
-    // about the machinery rather than about this week's data.
     await page.click('#open-settings');
     ok('settings open', await page.isVisible('#drive-settings'));
-    const kinds = await page.locator('#kind-chips .chip').count();
-    ok('kind chips render', kinds > 10, `${kinds} chips`);
     await page.fill('#sim-from', 'Beacon, NY');
     await page.fill('#sim-to', 'Garrison, NY');
     await page.click('#sim-form button[type=submit]');
     ok('settings close on simulate', !(await page.isVisible('#drive-settings')));
 
-    await page.waitForSelector('#suggestion:not([hidden])', { timeout: 30000 }).catch(() => {});
-    const card = await page.evaluate(() => ({
-      shown: !document.getElementById('suggestion').hidden,
-      name: document.getElementById('sug-name').textContent,
-      facts: document.getElementById('sug-facts').textContent,
-      go: document.getElementById('sug-go').href,
-      spoken: window.__spoken.slice()
-    }));
-    ok('a stop is suggested', card.shown, card.name);
-    ok('with its detour and distance', /(\d+ min detour|Barely a detour) · [\d.]+ mi ahead/.test(card.facts), card.facts);
-    ok('said out loud', card.spoken.some((s) => card.name && s.startsWith(card.name + '.')),
-      card.spoken[card.spoken.length - 1]);
-    ok('first words unlock the voice', /^Driving buddy on\. Heading to Garrison, New York\./.test(card.spoken[0] || ''), card.spoken[0]);
-    ok('take me there keeps the destination',
-      card.go.includes('google.com/maps/dir') && card.go.includes('waypoints=')
-        && card.go.includes(encodeURIComponent(`${GARRISON.lat},${GARRISON.lon}`)));
+    // Two or three at once is the point of the deck.
+    await page.waitForFunction(() => document.querySelectorAll('.deck-card:not(.is-leaving)').length >= 2,
+      null, { timeout: 30000 }).catch(() => {});
+    await page.waitForTimeout(1500);   // let the slide settle
+    const deck = await page.evaluate(() => {
+      const list = document.getElementById('deck-list').getBoundingClientRect();
+      return [...document.querySelectorAll('.deck-card:not(.is-leaving)')].map((c) => {
+        const r = c.getBoundingClientRect();
+        const miles = parseFloat(c.querySelector('.deck-facts').textContent.split('·')[1]);
+        return {
+          name: c.querySelector('.deck-name').textContent, n: Number(c.querySelector('.deck-num').textContent),
+          top: r.top, whole: r.top >= list.top - 1 && r.bottom <= list.bottom + 1, miles,
+          photo: c.querySelector('.deck-photo img')?.src || '', glyph: c.querySelector('.deck-photo.is-glyph') != null,
+          go: c.querySelector('.deck-go').href
+        };
+      }).sort((a, b) => b.top - a.top);   // bottom of the screen first
+    });
+    ok('several places on screen at once', deck.filter((d) => d.whole).length >= 2,
+      deck.map((d) => `${d.n} ${d.name} ${d.miles}mi`).join(' / '));
+    ok('nearest at the bottom, further up', deck.every((d, i) => i === 0 || d.miles >= deck[i - 1].miles));
+    ok('numbered from the bottom', deck.every((d, i) => d.n === i + 1));
+    ok('pins on the map match the cards',
+      await page.locator('.deck-pin-n').count() === deck.length);
+    ok('go keeps the destination', deck.length > 0 && deck.every((d) => d.go.includes('waypoints=')
+      && d.go.includes(encodeURIComponent(`${GARRISON.lat},${GARRISON.lon}`))));
+
+    await page.waitForFunction(() => document.querySelector('.deck-photo img'), null, { timeout: 15000 }).catch(() => {});
+    const pics = await page.evaluate(() => [...document.querySelectorAll('.deck-card')].map((c) => ({
+      name: c.querySelector('.deck-name').textContent,
+      img: c.querySelector('.deck-photo img')?.src || '', glyph: !!c.querySelector('.deck-photo.is-glyph')
+    })));
+    ok('a place with an article gets its photo', pics.some((p) => p.img.includes('upload.wikimedia.org')),
+      pics.map((p) => `${p.name}:${p.img ? 'photo' : p.glyph ? 'glyph' : '?'}`).join(' / '));
+    ok('every card has a picture or a glyph', pics.every((p) => p.img || p.glyph));
+    ok('Wikipedia asked once per place', counts.wiki <= new Set(pics.map((p) => p.name)).size + 6, `${counts.wiki} calls`);
+
+    // Heading up: the map turns against the heading, the car with it, and
+    // the two cancel so the car points up the screen. Beacon to Garrison is
+    // a touch east of due south: about 172 degrees.
+    const turn = await page.evaluate(() => {
+      const deg = (t) => Number((t.match(/rotate\((-?[\d.]+)deg\)/) || [])[1]);
+      return {
+        map: deg(document.getElementById('drive-map').style.transform),
+        car: deg(document.querySelector('.car-marker svg').style.transform),
+        heading: window.__drive.state.heading
+      };
+    });
+    const norm = (d) => ((d % 360) + 360) % 360;
+    ok('map turned so the road is up', Math.abs(norm(-turn.map) - 172) < 12, JSON.stringify(turn));
+    ok('car points straight up', Math.abs(norm(turn.map + turn.car)) < 0.5 || Math.abs(norm(turn.map + turn.car) - 360) < 0.5);
+
+    const spoken = await page.evaluate(() => window.__spoken.slice());
+    ok('first words unlock the voice', /^Driving buddy on\. Heading to Garrison, New York\./.test(spoken[0] || ''), spoken[0]);
+    const said = await page.evaluate(() => document.querySelector('.deck-card.is-said .deck-name')?.textContent || '');
+    ok('the one said aloud is marked', said && spoken.some((t) => t.startsWith(said + '.')), said);
     ok('detours asked of the router', counts.table > 0, `${counts.table} table calls`);
 
-    // The card is announced once and read many times: it counts down.
-    const before = await page.textContent('#sug-facts');
+    // The deck moves with the car.
+    const nearest = deck[0];
     await page.waitForTimeout(2500);
-    const after = await page.evaluate(() => {
-      const c = document.getElementById('suggestion');
-      return c.hidden ? '(passed)' : document.getElementById('sug-facts').textContent;
-    });
-    ok('distance counts down', after !== before, `${before} → ${after}`);
+    const later = await page.evaluate((name) => {
+      const c = [...document.querySelectorAll('.deck-card:not(.is-leaving)')]
+        .find((x) => x.querySelector('.deck-name').textContent === name);
+      return c ? parseFloat(c.querySelector('.deck-facts').textContent.split('·')[1]) : 'passed';
+    }, nearest && nearest.name);
+    ok('distances count down', later === 'passed' || later < nearest.miles, `${nearest && nearest.miles} → ${later}`);
 
     // "Not for me" is the same mute the Places tab uses.
-    await page.waitForSelector('#suggestion:not([hidden])', { timeout: 30000 }).catch(() => {});
-    const name = await page.textContent('#sug-name');
-    if (await page.isVisible('#suggestion')) {
-      await page.click('#sug-mute');
+    const target = page.locator('.deck-card:not(.is-leaving)').first();
+    if (await target.count()) {
+      const name = await target.locator('.deck-name').textContent();
+      await target.locator('.deck-no').click();
       const muted = await page.evaluate(() => JSON.parse(localStorage.getItem('proximi.hiddenVenues.v1') || '[]'));
       ok('not for me mutes the place', muted.includes(name), name);
-      ok('and clears the card', !(await page.isVisible('#suggestion')));
+      await page.waitForTimeout(900);
+      const still = await page.evaluate((n) => [...document.querySelectorAll('.deck-card')]
+        .some((c) => c.querySelector('.deck-name').textContent === n), name);
+      ok('and takes its card away', !still);
     } else {
-      ok('a second suggestion to mute', false);
+      ok('a card to mute', false);
     }
 
-    // A rehearsal must not use up the real drive's announcements.
     const stored = await page.evaluate(() => localStorage.getItem('proximi.drive.announced.v1'));
     ok('simulated drive leaves no memory', !stored || stored === '{}', stored);
 
     await page.click('#stop-btn');
     ok('end drive returns to setup', await page.isVisible('#setup-panel'));
+    ok('and clears the deck', await page.locator('.deck-card:not(.is-leaving):not(.is-fading)').count() === 0);
     ok('no page errors (sim)', errors.length === 0, errors.slice(0, 3).join(' | '));
     await ctx.close();
   }

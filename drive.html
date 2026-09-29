@@ -33,48 +33,60 @@
   </button>
 </header>
 
-<div class="drive-map" id="drive-map" aria-label="Map around your car"></div>
+<!-- The drive: a narrow map on one side, turned so the road ahead is always
+     up the screen, and a deck of what is coming on the other. The deck is
+     ordered like the road: nearest at the bottom beside the car, further
+     ones above, sliding down as you drive and dropping off once passed. -->
+<main class="drive-main" id="drive-main" data-side="left">
+  <div class="map-slice" id="map-slice">
+    <div class="drive-map" id="drive-map" aria-label="Map around your car, heading up"></div>
+    <p class="map-credit">&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a></p>
+  </div>
 
-<button type="button" class="drive-recenter" id="recenter" hidden>Recenter</button>
+  <section class="deck" id="deck" aria-label="Places ahead">
+    <!-- Before the drive: where to (optional), and the one tap that unlocks
+         speech and the screen lock. Browsers only allow audio after a gesture. -->
+    <section class="drive-panel" id="setup-panel" aria-label="Start a drive">
+      <h1 class="drive-h">Driving buddy</h1>
+      <p class="drive-lede">Tells you, out loud, about places worth a short detour
+        from the road you are on. Keep this page open on a mounted phone.</p>
+      <form id="dest-form" class="drive-form" autocomplete="off">
+        <label class="drive-field">
+          <span>Where to? <em>optional</em></span>
+          <input id="dest-input" type="search" placeholder="Town or address"
+                 enterkeyhint="go">
+        </label>
+        <p class="drive-hint" id="dest-hint">With a destination, detours are measured
+          against your real route. Without one, Drive follows the direction you are
+          heading.</p>
+        <button type="submit" class="drive-go" id="start-btn">Start driving</button>
+      </form>
+    </section>
 
-<!-- Before the drive: where to (optional), and the one tap that unlocks
-     speech and the screen lock. Browsers only allow audio after a gesture. -->
-<section class="drive-panel" id="setup-panel" aria-label="Start a drive">
-  <h1 class="drive-h">Driving buddy</h1>
-  <p class="drive-lede">Tells you, out loud, about places worth a short detour
-    from the road you are on. Keep this page open on a mounted phone.</p>
-  <form id="dest-form" class="drive-form" autocomplete="off">
-    <label class="drive-field">
-      <span>Where to? <em>optional</em></span>
-      <input id="dest-input" type="search" placeholder="Town or address"
-             enterkeyhint="go">
-    </label>
-    <p class="drive-hint" id="dest-hint">With a destination, detours are measured
-      against your real route. Without one, Drive follows the direction you are
-      heading.</p>
-    <button type="submit" class="drive-go" id="start-btn">Start driving</button>
-  </form>
-</section>
+    <p class="deck-empty" id="deck-empty" hidden></p>
+    <ol class="deck-list" id="deck-list" aria-live="polite"></ol>
 
-<!-- One suggestion at a time, big enough to read at a glance. Nothing here
-     needs a tap: it has already been said aloud. -->
-<section class="drive-card" id="suggestion" hidden aria-live="polite" aria-label="Suggested stop">
-  <p class="drive-card-kind" id="sug-kind"></p>
-  <h2 class="drive-card-name" id="sug-name"></h2>
-  <p class="drive-card-facts" id="sug-facts"></p>
-  <p class="drive-card-on" id="sug-on" hidden></p>
-  <div class="drive-card-actions">
-    <a class="drive-go" id="sug-go" target="_blank" rel="noopener">Take me there</a>
-    <button type="button" class="drive-quiet-btn" id="sug-repeat">Say again</button>
-    <button type="button" class="drive-quiet-btn" id="sug-mute">Not for me</button>
-    <button type="button" class="drive-quiet-btn" id="sug-close" aria-label="Dismiss">✕</button>
+    <nav class="drive-dock" id="dock" hidden aria-label="Drive controls">
+      <button type="button" class="drive-dock-btn" id="voice-btn" aria-pressed="true">Voice on</button>
+      <button type="button" class="drive-dock-btn" id="stop-btn">End drive</button>
+    </nav>
+  </section>
+</main>
+
+<!-- First run: what you like, before anything is suggested. Every answer
+     can be changed later in settings, including the whole questionnaire. -->
+<section class="quiz" id="quiz" role="dialog" aria-modal="true" aria-labelledby="quiz-title" hidden>
+  <div class="quiz-inner">
+    <p class="quiz-step" id="quiz-step"></p>
+    <h1 class="quiz-h" id="quiz-title"></h1>
+    <p class="quiz-lede" id="quiz-lede"></p>
+    <div class="quiz-body" id="quiz-body"></div>
+    <div class="quiz-nav">
+      <button type="button" class="drive-quiet-btn" id="quiz-back">Back</button>
+      <button type="button" class="drive-go" id="quiz-next">Next</button>
+    </div>
   </div>
 </section>
-
-<nav class="drive-dock" id="dock" hidden aria-label="Drive controls">
-  <button type="button" class="drive-dock-btn" id="voice-btn" aria-pressed="true">Voice on</button>
-  <button type="button" class="drive-dock-btn" id="stop-btn">End drive</button>
-</nav>
 
 <!-- Settings: what counts as worth stopping for, how far out of your way,
      and how often it may speak. Saved per browser. -->
@@ -87,8 +99,9 @@
   </div>
   <div class="sheet-body">
     <fieldset class="drive-set">
-      <legend>Worth stopping for</legend>
-      <div class="chips" id="kind-chips" role="group" aria-label="Kinds of place"></div>
+      <legend>What you like</legend>
+      <div class="levels" id="interest-levels"></div>
+      <button type="button" class="drive-quiet-btn drive-retake" id="retake-quiz">Take the questionnaire again</button>
     </fieldset>
 
     <fieldset class="drive-set">
@@ -103,12 +116,15 @@
 
     <fieldset class="drive-set">
       <legend>Also</legend>
-      <label class="drive-check"><input type="checkbox" id="opt-events">
-        Mention things happening right now</label>
       <label class="drive-check"><input type="checkbox" id="opt-liked">
         Always mention places I liked</label>
       <label class="drive-check"><input type="checkbox" id="opt-km">
         Kilometres</label>
+    </fieldset>
+
+    <fieldset class="drive-set">
+      <legend>Map side</legend>
+      <div class="chips" id="side-chips" role="radiogroup" aria-label="Map side"></div>
     </fieldset>
 
     <fieldset class="drive-set">
@@ -131,7 +147,9 @@
 
     <p class="fine">Places from <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>
       contributors. Routes and detour times from
-      <a href="https://project-osrm.org/">OSRM</a>. Drive only knows places in
+      <a href="https://project-osrm.org/">OSRM</a>. Photos and one-line
+      descriptions from <a href="https://en.wikipedia.org/">Wikipedia</a>, where
+      a place has an article. Drive only knows places in
       Proximi's coverage areas.</p>
   </div>
 </section>

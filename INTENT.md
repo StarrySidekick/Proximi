@@ -83,6 +83,14 @@ deciding whether it earns a native iPhone app. The native app is what would let
 it talk over Google Maps and run with the screen off (MapKit, Core Location in
 the background); the web page cannot.
 
+**Second pass, 2026-09-29**, from Timothy after trying it: the map heading
+up with the car always going up the screen; a questionnaire before first use
+to set the interest score; pictures; two or three places on screen at once,
+scrolling by as time goes on; and the map as a vertical slice beside them.
+All built. Photos come from Wikipedia live, so obscure farms and wineries
+have none; pulling each venue site's own preview image during the weekly
+build would cover far more of them.
+
 **Next on it**, roughly in order: opening hours, so it stops suggesting closed
 museums; pulling places live along the route (Overpass, Wikipedia's geosearch)
 so it works outside the coverage circles and can say *why* a place is worth it;

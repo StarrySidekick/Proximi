@@ -37,52 +37,77 @@ body.drive {
 }
 .drive-icon-btn .ico { width: 18px; height: 18px; }
 
-.drive-map { flex: 1; min-height: 0; z-index: 1; background: var(--surface-2); }
+/* ── The split: a map slice and the deck ──
+   The map is a narrow strip nearest the driver; the deck of places takes
+   the rest. data-side flips them without touching the markup.          */
+.drive-main { flex: 1; min-height: 0; display: flex; }
+.drive-main[data-side="right"] { flex-direction: row-reverse; }
+
+.map-slice {
+  position: relative; overflow: hidden;
+  flex: 0 0 34%; min-width: 112px; max-width: 320px;
+  background: var(--surface-2);
+  border-right: 1px solid var(--line);
+}
+.drive-main[data-side="right"] .map-slice { border-right: 0; border-left: 1px solid var(--line); }
+
+/* Larger than the slice and turned about the car; drive.js sizes it. */
+.drive-map {
+  position: absolute; z-index: 1;
+  transform-origin: 50% 50%;
+  transition: transform .9s linear;
+  background: var(--surface-2);
+}
+.map-credit {
+  position: absolute; z-index: 5; left: 4px; bottom: 2px; margin: 0;
+  font-size: 9.5px; color: var(--ink-3);
+  background: color-mix(in srgb, var(--surface) 75%, transparent);
+  padding: 0 4px; border-radius: 3px;
+}
+.map-credit a { color: inherit; }
 
 /* Tiles are light; in dark mode dim them rather than invert, so road colours
    still mean what they mean. */
 @media (prefers-color-scheme: dark) {
   .drive-map .leaflet-tile-pane { filter: brightness(.72) contrast(1.05) saturate(.8); }
 }
-.drive-map .leaflet-control-attribution {
-  background: color-mix(in srgb, var(--surface) 80%, transparent);
-  color: var(--ink-3); font-size: 10px;
-}
-.drive-map .leaflet-control-attribution a { color: var(--ink-3); }
 
-/* The car: a brass arrow pointing the way you are heading. */
+/* The car: a brass arrow, always pointing up the screen. */
 .car-marker { background: none; border: 0; }
-.car-marker svg { transition: transform .4s ease; transform-origin: 50% 50%; }
+.car-marker svg { transition: transform .9s linear; transform-origin: 50% 50%; }
 .car-marker .car-halo { fill: color-mix(in srgb, var(--accent) 22%, transparent); stroke: var(--accent); stroke-width: 1.5; }
 .car-marker .car-arrow { fill: var(--accent); stroke: var(--accent-ink); stroke-width: 1.5; stroke-linejoin: round; }
 .car-marker svg.no-heading .car-arrow { opacity: .35; }
 
 .route-line { stroke: var(--event-ink); stroke-width: 6; stroke-opacity: .7; fill: none; stroke-linecap: round; }
-.ahead-dot { stroke: var(--rep-ink); stroke-width: 2; fill: var(--rep-bg); fill-opacity: .95; }
-.pick-dot { stroke: var(--act-ink); stroke-width: 3; fill: var(--act-bg); fill-opacity: 1; }
+.ahead-dot { stroke: var(--rep-ink); stroke-width: 1.5; fill: var(--rep-bg); fill-opacity: .9; }
 
-.drive-recenter {
-  position: fixed; z-index: 15;
-  right: 12px; top: calc(var(--bar-h) + env(safe-area-inset-top) + 12px);
-  font: inherit; font-weight: 600; font-size: 14px;
-  padding: 9px 16px; border-radius: 999px;
-  border: 1px solid var(--line); background: var(--surface); color: var(--ink);
-  box-shadow: var(--shadow); cursor: pointer;
+.deck-pin { background: none; border: 0; }
+.deck-pin-n {
+  display: grid; place-items: center;
+  width: 26px; height: 26px; border-radius: 50%;
+  font: 700 13px/1 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: var(--surface); color: var(--ink);
+  border: 2px solid var(--rep-ink);
+  box-shadow: 0 1px 3px rgba(0,0,0,.3);
+  transition: transform .9s linear;
+}
+.deck-pin-n.is-said { background: var(--act-ink); border-color: var(--act-ink); color: var(--accent-ink); }
+
+/* ── The deck ── */
+.deck {
+  flex: 1; min-width: 0;
+  display: flex; flex-direction: column;
+  container-type: inline-size;
 }
 
-/* ── Bottom panels: setup, the suggestion, the dock ── */
-
-.drive-panel, .drive-card {
-  position: fixed; z-index: 10;
-  left: 0; right: 0; bottom: 0;
-  margin: 0 auto; max-width: 560px;
+.drive-panel {
+  margin: auto 0 0;
   padding: 18px 16px max(18px, env(safe-area-inset-bottom));
   background: var(--surface);
   border-top: 1px solid var(--line);
-  border-radius: 14px 14px 0 0;
-  box-shadow: 0 -8px 28px rgba(10,14,20,.18), var(--panel);
+  box-shadow: var(--panel);
 }
-
 .drive-h {
   margin: 0 0 4px;
   font-family: var(--serif); font-size: 24px; font-weight: 600;
@@ -107,45 +132,169 @@ body.drive {
   background: var(--accent); color: var(--accent-ink);
   text-decoration: none; cursor: pointer;
 }
-
-.drive-card { padding-top: 16px; }
-.drive-card-kind {
-  margin: 0;
-  font-family: var(--serif); font-size: 12.5px; font-weight: 600;
-  letter-spacing: .13em; text-transform: uppercase; color: var(--act-ink);
-}
-.drive-card-name {
-  margin: 2px 0 4px;
-  font-family: var(--serif); font-size: 27px; line-height: 1.15; font-weight: 600;
-}
-.drive-card-facts { margin: 0; font-size: 18px; font-weight: 600; color: var(--ink-2); }
-.drive-card-on { margin: 6px 0 0; font-size: 15px; color: var(--free); }
-.drive-card-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
-.drive-card-actions .drive-go { flex: 1 1 100%; }
 .drive-quiet-btn {
-  flex: 1;
   font: inherit; font-size: 15px; font-weight: 600;
-  min-height: 46px; padding: 0 14px;
+  min-height: 46px; padding: 0 16px;
   border-radius: 999px; border: 1px solid var(--line);
   background: var(--surface-2); color: var(--ink); cursor: pointer;
 }
-#sug-close { flex: 0 0 46px; padding: 0; }
 
-/* While driving and nothing is being suggested, only the dock shows. */
-.drive-dock {
-  position: fixed; z-index: 9;
-  left: 12px; right: 12px; bottom: max(12px, env(safe-area-inset-bottom));
-  display: flex; gap: 8px; justify-content: center;
+.deck-empty {
+  margin: auto 16px; text-align: center;
+  font-family: var(--serif); font-size: 17px; color: var(--ink-3);
 }
-.drive-card:not([hidden]) ~ .drive-dock { display: none; }
+.drive-main:not(.is-driving) .deck-list { display: none; }
+
+/* Cards are stacked from the bottom and placed by --y, so a change of order
+   or a card passed is a slide rather than a jump. */
+.deck-list {
+  position: relative; flex: 1; min-height: 0;
+  margin: 0; padding: 0; list-style: none; overflow: hidden;
+}
+.deck-card {
+  position: absolute; left: 10px; right: 10px; bottom: 10px;
+  display: grid; grid-template-rows: 34% 1fr; overflow: hidden;
+  background: var(--surface);
+  border: 1px solid var(--line); border-radius: 10px;
+  box-shadow: var(--shadow), var(--panel);
+  transform: translateY(var(--y, 0));
+  transition: transform 1.1s cubic-bezier(.3,.7,.3,1), opacity .6s ease, height .4s ease;
+}
+.deck-card.is-entering { opacity: 0; }
+.deck-card.is-leaving { transform: translateY(calc(100% + 20px)); opacity: 0; }
+.deck-card.is-fading { opacity: 0; }
+.deck-card.is-said { border-color: var(--act-ink); box-shadow: 0 0 0 2px var(--act-ink), var(--shadow); }
+
+/* A wide deck (landscape, tablet) has room for the photo beside the words. */
+@container (min-width: 420px) {
+  .deck-card { grid-template-rows: none; grid-template-columns: 30% 1fr; }
+  /* Short and wide: the buttons get a column of their own at the right
+     rather than a row the card has no height for. */
+  .deck-card .deck-body { position: relative; padding-right: 132px; justify-content: center; }
+  .deck-card .deck-name { -webkit-line-clamp: 1; }
+  .deck-card .deck-actions {
+    position: absolute; right: 12px; top: 50%; transform: translateY(-50%);
+    flex-direction: column; margin: 0; padding: 0; width: 110px;
+  }
+}
+
+.deck-photo { position: relative; overflow: hidden; background: var(--surface-2); min-height: 0; }
+.deck-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.deck-photo.is-glyph {
+  display: grid; place-items: center;
+  background: linear-gradient(135deg, var(--rep-bg), var(--surface-2));
+}
+.deck-photo.is-glyph svg {
+  width: 46%; max-width: 72px; height: auto;
+  fill: none; stroke: var(--rep-ink); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round;
+}
+.deck-credit {
+  position: absolute; right: 4px; bottom: 3px;
+  font-size: 9.5px; color: #fff; text-decoration: none;
+  background: rgba(0,0,0,.45); padding: 0 4px; border-radius: 3px;
+}
+
+.deck-body { padding: 7px 12px 9px; min-width: 0; min-height: 0; display: flex; flex-direction: column; gap: 2px; overflow: hidden; }
+/* The name, the numbers and the buttons never give up space; the one-line
+   description is what goes when a card is short. */
+.deck-kind, .deck-name, .deck-facts, .deck-actions { flex-shrink: 0; }
+.deck-blurb, .deck-on { flex-shrink: 1; min-height: 0; }
+.deck-kind {
+  margin: 0; display: flex; align-items: center; gap: 7px;
+  font-family: var(--serif); font-size: 11.5px; font-weight: 600;
+  letter-spacing: .12em; text-transform: uppercase; color: var(--act-ink);
+}
+.deck-num {
+  display: grid; place-items: center; flex: none;
+  width: 20px; height: 20px; border-radius: 50%;
+  font: 700 11.5px/1 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; letter-spacing: 0;
+  border: 1.5px solid var(--rep-ink); color: var(--ink);
+}
+.deck-card.is-said .deck-num { background: var(--act-ink); border-color: var(--act-ink); color: var(--accent-ink); }
+.deck-name {
+  margin: 0; font-family: var(--serif); font-size: 19px; line-height: 1.15; font-weight: 600;
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+}
+.deck-facts { margin: 0; font-size: 15px; font-weight: 700; color: var(--ink-2); }
+.deck-blurb {
+  margin: 0; font-size: 13px; color: var(--ink-3);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.deck-blurb:empty { display: none; }
+.deck-on { margin: 0; font-size: 13px; color: var(--free); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.deck-actions { display: flex; gap: 6px; margin-top: auto; padding-top: 4px; }
+.deck-go, .deck-no {
+  font: inherit; font-size: 13.5px; font-weight: 700;
+  min-height: 34px; padding: 0 14px;
+  display: inline-flex; align-items: center; justify-content: center;
+  border-radius: 999px; cursor: pointer; text-decoration: none;
+}
+.deck-go { background: var(--accent); color: var(--accent-ink); border: 0; }
+.deck-no { background: var(--surface-2); color: var(--ink-2); border: 1px solid var(--line); }
+
+/* Fills as you approach: the deck's slow, continuous motion. */
+.deck-meter { position: absolute; left: 0; right: 0; bottom: 0; height: 3px; background: var(--line-soft); }
+.deck-meter span { display: block; height: 100%; background: var(--rep-ink); transition: width 1s linear; }
+
+.drive-dock {
+  display: flex; gap: 8px; justify-content: center;
+  padding: 8px 10px max(8px, env(safe-area-inset-bottom));
+  border-top: 1px solid var(--line-soft);
+}
 .drive-dock-btn {
-  font: inherit; font-size: 15px; font-weight: 600;
-  min-height: 46px; padding: 0 18px;
+  font: inherit; font-size: 14.5px; font-weight: 600;
+  min-height: 42px; padding: 0 16px; flex: 1; max-width: 180px;
   border-radius: 999px; border: 1px solid var(--line);
-  background: var(--surface); color: var(--ink);
-  box-shadow: var(--shadow); cursor: pointer;
+  background: var(--surface); color: var(--ink); cursor: pointer;
 }
 .drive-dock-btn[aria-pressed="false"] { color: var(--ink-3); text-decoration: line-through; }
+
+/* ── The questionnaire ── */
+.quiz {
+  position: fixed; inset: 0; z-index: 60;
+  display: flex; justify-content: center;
+  background: var(--bg);
+  padding: env(safe-area-inset-top) 0 env(safe-area-inset-bottom);
+}
+.quiz-inner {
+  width: 100%; max-width: 560px;
+  display: flex; flex-direction: column; min-height: 0;
+  padding: 20px 16px 12px;
+}
+.quiz-step { margin: 0; font-size: 12.5px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-3); }
+.quiz-h { margin: 4px 0 6px; font-family: var(--serif); font-size: 27px; line-height: 1.15; font-weight: 600; }
+.quiz-lede { margin: 0 0 14px; color: var(--ink-2); font-size: 15px; }
+.quiz-body { flex: 1; min-height: 0; overflow-y: auto; display: flex; flex-direction: column; gap: 10px; }
+.quiz-nav { display: flex; gap: 10px; padding-top: 12px; }
+.quiz-nav .drive-go { flex: 1; }
+.quiz-choice {
+  display: flex; flex-direction: column; align-items: flex-start; gap: 2px;
+  font: inherit; text-align: left; padding: 14px 16px; cursor: pointer;
+  border-radius: 10px; border: 1px solid var(--line);
+  background: var(--surface); color: var(--ink);
+}
+.quiz-choice strong { font-size: 17px; }
+.quiz-choice span { font-size: 13.5px; color: var(--ink-3); }
+.quiz-choice[aria-pressed="true"] { border-color: var(--accent); box-shadow: 0 0 0 2px var(--accent); }
+
+/* One row per interest: what it is, and a three-way switch. */
+.levels { display: flex; flex-direction: column; gap: 10px; }
+.level-row {
+  display: flex; flex-direction: column; gap: 7px;
+  padding: 10px 12px; border-radius: 10px;
+  background: var(--surface); border: 1px solid var(--line-soft);
+}
+.level-name { margin: 0; font-weight: 700; font-size: 15px; }
+.level-name span { display: block; font-weight: 400; font-size: 12.5px; color: var(--ink-3); }
+.level-seg { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; }
+.level-seg button {
+  font: inherit; font-size: 13.5px; font-weight: 600;
+  min-height: 38px; border-radius: 8px; cursor: pointer;
+  border: 1px solid var(--line); background: var(--surface-2); color: var(--ink-2);
+}
+.level-seg button[aria-checked="true"][data-level="love"] { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+.level-seg button[aria-checked="true"][data-level="some"] { background: var(--rep-bg); border-color: var(--rep-ink); color: var(--ink); }
+.level-seg button[aria-checked="true"][data-level="skip"] { background: var(--surface); border-color: var(--ink-3); color: var(--ink-3); text-decoration: line-through; }
 
 /* ── Settings ── */
 .drive-sheet .sheet-body { padding-bottom: max(20px, env(safe-area-inset-bottom)); }
@@ -159,3 +308,5 @@ body.drive {
 .drive-check input { accent-color: var(--accent); width: 18px; height: 18px; margin: 0; }
 .drive-sheet .chip { font-size: 14px; padding: 7px 13px; }
 .drive-sheet .fine { color: var(--ink-3); margin-top: 14px; }
+
+.drive-retake { margin-top: 12px; width: 100%; }
