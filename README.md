@@ -260,28 +260,67 @@ fifteen unrelated "Great Wall" restaurants are not a chain. *Show chain
 locations* brings all 283 in, and each can then be switched off on its own,
 Starbucks' 329 locations or Michaels' 66.
 
-**Pictures, three ways.** Best first:
+**Pictures, all found at build time** and shipped with the places, so a card
+has its picture before it is on screen and in a dead zone:
 
-1. **The place's own website's picture**, found at build time by
-   `scripts/images.py` (below) and shipped in `data/places.json`, so it is
-   there before the card is.
-2. **Wikipedia**, live, by name, believed only if the article's coordinates
-   are close (within half a mile, or three miles when the names share a
-   distinctive word). Not asked about restaurants and cafés, which almost
-   never have an article. One request at a time, cached on the phone.
-3. An outline drawing of the place's kind.
+- **The place's own website's picture** (`scripts/images.py`, below), now for
+  restaurants and cafés too: a restaurant's site nearly always shows its food.
+- **A Wikidata photograph** (`scripts/wikipics.py`): Wikidata's query service
+  lists every item with coordinates and a photograph in a box of map, which
+  covers historic houses, lighthouses and memorials that have no Wikipedia
+  article. Matched to places by name and distance, never by distance alone.
+- An outline drawing of the place's kind, when there is neither.
+
+Restaurants show their own site's picture first, because it is the food;
+everything else shows Wikidata's first, because a site's picture is often a
+banner with words on it. The page no longer asks Wikipedia anything live.
+
+**Town lines.** A slim card marks each town line ahead: *Entering East
+Fishkill, NY · leaving Fishkill*, and the status line says which town you are
+in. Nominatim's reverse lookup answers "what town is this point in" from real
+municipal boundaries; with a route, points every half mile along it are
+asked about and a line sits between two that disagree, so it is right to
+within a quarter mile. Questions queue at one a second, Nominatim's own
+limit: about fifty at the start of a drive, then one per half mile. A
+village inside a town wins, because that is what the sign on the road says.
+
+**Stars, for somewhere to eat.** A rated restaurant's card reads
+*Italian · ★ 4.5*. Ratings come from `scripts/ratings.py` at build time,
+combined across services by review count (4.6 from 900 Google reviews and 4.0
+from 100 Yelp reviews is 4.54, because each review counts once). No free
+source has them, so it needs a key in the environment
+(`GOOGLE_PLACES_API_KEY`, `YELP_API_KEY`) and does nothing without one.
+
+**The map can go.** *Show the map* in settings, or **Map** on the dock
+mid-drive, hides the strip and gives the deck the whole width. **+** and **−**
+on the map nudge its zoom by whole steps on top of the zoom the speed
+chooses, so it still pulls out on the highway.
 
 **Two ways to drive, one code path.** Give it a destination and "ahead" means
 further along the real route. Give it nothing and "ahead" means a cone in the
-direction you are heading. Either way a candidate is described by two
-numbers, how far ahead and how far off the road, and a detour is:
+direction you are heading.
+
+**What a stop costs** is how much later you get where you are going, not how
+far the place is from this road:
 
 ```
-detour = time(you → place) + time(place → back on the road) − time(you → back on the road)
+detour = time(you → place → destination) − time(you → destination)
 ```
 
-"Back on the road" is a mile and a half past the place, along the route when
-there is one. One OSRM `table` request answers all three legs at once.
+That counts the road you would take after the stop, which need not be the road
+you left: on a long drive with several nearly-equal ways to go, a place ten
+minutes off this road can sit near another good road and cost the whole trip
+three. (The first version measured against a point a mile and a half past the
+place on this road, which charged every such place for coming back to it.)
+With no destination, the end is a point six miles past the place along your
+heading. It is measured against the fastest way from here, so if you are on a
+slower road by choice, a place on the faster one can cost nothing. The
+longest detour can be set to half an hour, and places up to ten miles off the
+road are considered.
+
+One OSRM `table` request answers ten places at once: drive times from
+[you, place 1 … place 10] to [place 1 … place 10, destination] hold every
+you→place, place→destination and you→destination needed.
 
 **Cheap first, expensive last.** Straight-line geometry throws out nearly
 everything; only the handful of best survivors go to the router, because the
@@ -496,6 +535,7 @@ sources/registry.json   curated list of feeds, pages and APIs to check
 sources/geocache.json   remembered geocoding results, hits and misses alike
 sources/manual.json     listings read by hand from feedless sources
 sources/placeimages.json  each place page's own picture, read once (images.py)
+sources/wikiphotos.json   Wikidata items with photographs, and their places
 
 scripts/icsparse.py     minimal iCalendar reader
 scripts/harvest.py      pull feeds listed in the registry
@@ -509,6 +549,8 @@ scripts/enrich.py       geocode, radius-filter, infer categories
 scripts/merge.py        collapse repeats, dedupe, fold into data/events.json
 scripts/validate.py     schema and radius gate, also run in CI
 scripts/images.py       each place's own website picture, for the Drive cards
+scripts/wikipics.py     Wikidata photographs by box of map, matched to places
+scripts/ratings.py      star ratings for places to eat (needs a service key)
 tests/drive.js          the main page, driven in headless Chromium, in CI
 tests/drive-mode.js     the Drive page, with OSRM and Nominatim answered locally
 ```

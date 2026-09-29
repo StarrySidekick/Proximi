@@ -30,6 +30,12 @@ jobs:
       - name: Check the picture rules still refuse logos, stock and icons
         run: python3 scripts/images.py --selftest
 
+      - name: Check Wikidata matching still refuses towns and near-misses
+        run: python3 scripts/wikipics.py --selftest
+
+      - name: Check ratings still match by name and combine by review count
+        run: python3 scripts/ratings.py --selftest
+
       - name: Check the source registry parses
         run: |
           python3 -c "

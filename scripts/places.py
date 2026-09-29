@@ -1079,6 +1079,10 @@ def main():
     # Each place's own website picture, for the Drive page's cards. One fact,
     # one owner: sources/placeimages.json, written by scripts/images.py.
     pictured = images.merge_images(directory)
+    images.merge_images(food)
+    # And Wikidata's photographs, from sources/wikiphotos.json (wikipics.py).
+    images.wikipics.merge_wiki(directory)
+    images.wikipics.merge_wiki(food)
     # A hijacked domain loses its link wherever it appears; only the directory
     # gets "no event calendar", because a restaurant not publishing a calendar
     # is not news about the restaurant.

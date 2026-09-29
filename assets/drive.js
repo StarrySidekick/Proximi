@@ -135,7 +135,7 @@
     tasting: 'some', eating: 'some', thrills: 'skip', browsing: 'skip', shows: 'skip', events: 'some'
   };
 
-  const DETOURS = [5, 10, 15, 20];          // minutes out of your way
+  const DETOURS = [5, 10, 15, 20, 30];      // minutes a stop may add to the trip
   const MAPS = [['google', 'Google Maps'], ['apple', 'Apple Maps']];
   const SIDES = [['left', 'Left'], ['right', 'Right']];
 
@@ -148,11 +148,11 @@
     types: {},
     // Chains are hidden unless asked for; chainsOff lists the ones turned
     // off individually once they are shown.
-    showChains: false, chainsOff: []
+    showChains: false, chainsOff: [],
+    towns: true, showMap: true, zoomBias: 0
   };
 
   const SETTINGS_KEY = 'proximi.drive.v1';
-  const PHOTOS_KEY = 'proximi.drive.photos.v1';
   // Shared with the main page, so "Not for me" in the car is the same mute
   // as swiping a place left on the Places tab, and a liked place is liked
   // in both.
@@ -312,7 +312,9 @@
 
   /* Pre-place every candidate on the route once, when the route arrives, so
      each GPS fix afterwards is a cheap filter on two numbers per place. */
-  const CORRIDOR_MI = 6;
+  // Wide, because a trip-level detour can make a place ten miles off this
+  // road cheap if it sits on another good road to the destination.
+  const CORRIDOR_MI = 10;
   function indexRoute(route, pool) {
     const pad = CORRIDOR_MI / MI_PER_DEG;
     const padLon = pad / Math.cos(((route.bbox.minLat + route.bbox.maxLat) / 2) * RAD);
@@ -343,7 +345,8 @@
 
     detours: new Map(),        // candidate id → { min, toMin, at }
     checking: false, lastCheck: 0, routerDownUntil: 0,
-    ahead: [], odo: 0, eats: []
+    ahead: [], odo: 0, eats: [],
+    towns: { samples: new Map(), queue: [], busy: false, here: null, dismissed: new Set() }
   };
 
   // The drive's clock. A simulated drive runs faster than real time, and the
@@ -472,36 +475,61 @@
     return out.sort((a, b) => b.rank - a.rank);
   }
 
-  /* Where you would get back on the road after the stop: a mile and a half
-     past the place, measured along the route when there is one. */
-  function rejoinPoint(o) {
-    if (state.route && o.along != null) return pointAt(state.route, o.along + 1.5);
-    const h = headingVector(state.heading);
-    return fromXY({ x: h.x * (o.ahead + 1.5), y: h.y * (o.ahead + 1.5) }, state.pos);
-  }
+  /* ── What a stop costs ────────────────────────────────────
+     The question is not how far the place is from the road you are on; it
+     is how much later you get where you are going. So, with a destination:
+
+       detour = time(you → place → destination) − time(you → destination)
+
+     That counts the road you would take after the stop, which need not be
+     the road you left. On a long drive with several nearly-equal ways to go,
+     a place ten minutes off this road can sit near another one, and cost the
+     whole trip three. The first version measured against a point a mile and
+     a half past the place on this road, which charged every such place for
+     coming back to it.
+
+     With no destination there is no "where you are going", so the end is a
+     point six miles past the place along your heading: far enough that a
+     different road back can count, near enough to be a road you are on.
+
+     Both halves come out of one OSRM "table" request, for ten places at a
+     time: drive times from [you, place 1 … place n] to [place 1 … place n,
+     end], which holds you→place, place→end and you→end for every one.
+     The detour is measured against the fastest way from here; if you are on
+     a slower road by choice, a place on the faster one can cost nothing. */
 
   const OSRM = 'https://router.project-osrm.org';
   const ll = (p) => `${p.lon.toFixed(6)},${p.lat.toFixed(6)}`;
+  const BATCH = 10;
+  const END_BEYOND = 6;    // miles past the place, when there is no destination
 
-  /* Detour = (you → place → back on the road) − (you → back on the road).
-     One "table" request answers all three legs: it returns drive times from
-     each source to each destination, so asking from [you, place] to
-     [place, rejoin] gives you→place, you→rejoin and place→rejoin at once. */
-  async function checkDetour(o) {
-    const here = state.pos, rejoin = rejoinPoint(o);
-    const url = `${OSRM}/table/v1/driving/${ll(here)};${ll(o.c)};${ll(rejoin)}`
-      + '?sources=0;1&destinations=1;2';
+  function endPoint(o) {
+    if (state.dest) return state.dest;
+    const h = headingVector(state.heading);
+    const d = o.ahead + END_BEYOND;
+    return fromXY({ x: h.x * d, y: h.y * d }, state.pos);
+  }
+
+  async function checkDetours(batch) {
+    const here = state.pos, n = batch.length;
+    const shared = !!state.dest;           // one end for all, or one each
+    const ends = shared ? [state.dest] : batch.map(endPoint);
+    const pts = [here, ...batch.map((o) => o.c), ...ends];
+    const sources = [0, ...batch.map((_, i) => i + 1)];
+    const dests = [...batch.map((_, i) => i + 1), ...ends.map((_, j) => n + 1 + j)];
+    const url = `${OSRM}/table/v1/driving/${pts.map(ll).join(';')}`
+      + `?sources=${sources.join(';')}&destinations=${dests.join(';')}`;
     const res = await fetch(url);
     if (!res.ok) throw new Error('router ' + res.status);
     const data = await res.json();
     const d = data.durations;
     if (data.code !== 'Ok' || !d) throw new Error('router ' + data.code);
-    const toPlace = d[0][0], direct = d[0][1], onward = d[1][1];
-    if (toPlace == null || direct == null || onward == null) return { min: Infinity, toMin: Infinity };
-    return {
-      min: Math.max(0, (toPlace + onward - direct) / 60),
-      toMin: toPlace / 60
-    };
+    return batch.map((o, i) => {
+      const end = shared ? n : n + i;          // column of this place's end
+      const toPlace = d[0][i], direct = d[0][end], onward = d[i + 1][end];
+      if (toPlace == null || direct == null || onward == null) return { min: Infinity, toMin: Infinity };
+      return { min: Math.max(0, (toPlace + onward - direct) / 60), toMin: toPlace / 60 };
+    });
   }
 
   // A detour is measured against the road, not the car, so it holds while
@@ -511,16 +539,18 @@
   async function checkNext(list) {
     const t = Date.now();
     if (state.checking || t - state.lastCheck < 1200 || t < state.routerDownUntil) return;
-    const next = list.slice(0, 10).find((o) => {
+    // Ten at a time from the forty most promising, so a wider net costs no
+    // more requests than the old one-at-a-time did.
+    const next = list.slice(0, 40).filter((o) => {
       const d = state.detours.get(o.c.id);
       return !d || now() - d.at > DETOUR_TTL;
-    });
-    if (!next) return;
+    }).slice(0, BATCH);
+    if (!next.length) return;
     state.checking = true;
     state.lastCheck = t;
     try {
-      const d = await checkDetour(next);
-      state.detours.set(next.c.id, { ...d, at: now() });
+      const got = await checkDetours(next);
+      next.forEach((o, i) => state.detours.set(o.c.id, { ...got[i], at: now() }));
     } catch {
       // Back off rather than hammer a router that is down or refusing us;
       // a straight-line guess is not good enough to say aloud.
@@ -558,6 +588,7 @@
     for (const o of eligible) admit(o);
 
     checkNext(list);
+    planTowns();
     statusForDrive(eligible.length);
   }
 
@@ -572,7 +603,8 @@
       setStatus('No Proximi places around here yet');
       return;
     }
-    const where = state.route ? `to ${state.destName}` : 'following your heading';
+    const where = (state.towns.here ? `in ${state.towns.here.name} · ` : '')
+      + (state.route ? `to ${state.destName}` : 'following your heading');
     setStatus(n ? `${n} worth a look ahead · ${where}` : `Watching the road · ${where}`);
   }
 
@@ -606,7 +638,8 @@
     scrim: $('settings-backdrop'), closeSettings: $('close-settings'),
     levels: $('interest-levels'), retake: $('retake-quiz'),
     detourChips: $('detour-chips'), sideChips: $('side-chips'), mapsChips: $('maps-chips'),
-    optLiked: $('opt-liked'), optKm: $('opt-km'),
+    optLiked: $('opt-liked'), optKm: $('opt-km'), optTowns: $('opt-towns'), optMap: $('opt-map'),
+    mapBtn: $('map-btn'), zoomIn: $('zoom-in'), zoomOut: $('zoom-out'),
     kindGroups: $('kind-groups'), optChains: $('opt-chains'), chainPick: $('chain-pick'),
     chainSearch: $('chain-search'), chainList: $('chain-list'), chainNote: $('chain-note'),
     simForm: $('sim-form'), simFrom: $('sim-from'), simTo: $('sim-to'),
@@ -703,6 +736,7 @@
     if (food && c.kind === 'restaurant') s = food.replace(/_/g, ' ').replace(/^./, (x) => x.toUpperCase());
     if (c._chain) s += ' · chain';
     if (state.liked.has(c.name)) s += ' · liked';
+    if (c.rating) s += ` · ★ ${c.rating.stars.toFixed(1)}`;
     return s;
   }
 
@@ -715,7 +749,10 @@
     li.dataset.id = e.c.id;
     li.tabIndex = 0;
     li.setAttribute('role', 'link');
-    li.setAttribute('aria-label', `${e.c.name}: directions. Swipe to hide.`);
+    const r = e.c.rating;
+    li.setAttribute('aria-label', `${e.c.name}`
+      + (r ? `, rated ${r.stars.toFixed(1)} from ${r.count.toLocaleString()} reviews on ${r.from.join(' and ')}` : '')
+      + ': directions. Swipe to hide.');
     li.innerHTML = `
       <div class="deck-photo"></div>
       <div class="deck-body">
@@ -762,8 +799,12 @@
     }
     // Top of the screen first.
     live.sort((a, b) => b.ahead - a.ahead);
-    const step = cardH + GAP;
-    const want = live.map((e, i) => (line - e.ahead * pxPerMile - cardH / 2) - i * step);
+    // Cards differ in height (a town line is a slim strip), so each card's
+    // offset is the sum of the heights above it rather than a fixed step.
+    const offsets = [];
+    let acc = 0;
+    for (const e of live) { e.h = e.isTown ? TOWN_H : cardH; offsets.push(acc); acc += e.h + GAP; }
+    const want = live.map((e, i) => (line - e.ahead * pxPerMile - e.h / 2) - offsets[i]);
     const fit = isotonic(want);
     let nearest = null;
     /* The fit is continuous while the road is, but a card arriving or leaving
@@ -776,17 +817,18 @@
     const w = 8, t = Math.min(dt, 50) / 1000;
     const slide = 1 - Math.exp(-dt / 70);
     live.forEach((e, i) => {
-      const target = fit[i] + i * step;
+      const target = fit[i] + offsets[i];
       if (e.y == null) { e.y = target; e.vy = 0; }
       e.vy += (w * w * (target - e.y) - 2 * w * e.vy) * t;
       e.y += e.vy * t;
       // Sideways: under the finger while dragged, otherwise sliding home or away.
       if (!(drag && drag.e === e && drag.active)) e.dx += (e.dxTo - e.dx) * slide;
-      e.li.style.height = `${cardH}px`;
+      e.li.style.height = `${e.h}px`;
       e.li.style.transform = `translate3d(${e.dx.toFixed(1)}px, ${e.y.toFixed(1)}px, 0)`;
       e.li.style.opacity = e.dx ? String(Math.max(0.2, 1 - Math.abs(e.dx) / width)) : '';
       e.li.classList.toggle('is-past', e.ahead < -0.15);
-      e.li.querySelector('.deck-facts').textContent = factsLine(e);
+      e.li.querySelector('.deck-facts').textContent = e.isTown ? townFacts(e) : factsLine(e);
+      if (e.isTown) return;
       if (!nearest || Math.abs(e.ahead) < Math.abs(nearest.ahead)) nearest = e;
     });
     for (const e of live) e.li.classList.toggle('is-nearest', e === nearest && Math.abs(e.ahead) < VIEW_MILES);
@@ -825,6 +867,138 @@
     if (e.ahead < -0.15) return `${detour} · ${shortDistance(e.ahead)} back`;
     if (e.ahead < 0.15) return `${detour} · beside you`;
     return `${detour} · ${shortDistance(e.ahead)}`;
+  }
+
+  /* ── Towns ────────────────────────────────────────────────
+     Where the town lines are, and which town you are in. Nominatim, asked
+     "what town is this point in", answers from the real municipal
+     boundaries. With a route, points every half mile along the road ahead
+     are asked about, and where two neighbours disagree there is a town line
+     between them, to within a quarter mile; it goes on the deck as a slim
+     card at that distance and scrolls with everything else. Without a route,
+     the points are where you are and a mile apart along your heading.
+
+     Nominatim allows one request a second and asks that nobody go faster,
+     so the questions queue. The first half hour of a route is about fifty
+     questions; after that it is one every half mile. Answers are kept for
+     the drive, keyed to about a hundred metres. */
+
+  const TOWN_STEP = 0.5;       // miles between points asked about along a route
+  const TOWN_H = 48;           // a town line's card height, in px
+  const townAnswers = new Map();   // "lat,lon" to 3 places → town or null
+
+  const townKey = (p) => `${p.lat.toFixed(3)},${p.lon.toFixed(3)}`;
+
+  function askTown(p, where) {
+    const key = townKey(p);
+    const T = state.towns;
+    if (townAnswers.has(key)) { T.samples.set(where.id, { ...where, town: townAnswers.get(key) }); return; }
+    if (!T.queue.some((q) => q.key === key)) T.queue.push({ key, p, where });
+  }
+
+  function planTowns() {
+    if (!settings.towns || !state.pos) return;
+    const T = state.towns;
+    if (state.route && state.progress != null) {
+      const far = Math.min(state.route.length, state.progress + lookahead());
+      for (let a = Math.floor(state.progress / TOWN_STEP) * TOWN_STEP; a <= far; a += TOWN_STEP) {
+        askTown(pointAt(state.route, a), { id: `r${a.toFixed(1)}`, along: a });
+      }
+    } else if (state.heading != null) {
+      askTown(state.pos, { id: 'here', ahead: 0, odoAt: state.odo });
+      const h = headingVector(state.heading);
+      for (let d = 1; d <= 6; d++) {
+        // Snapped to whole miles of odometer, so the same point is not asked
+        // about afresh every second as the car creeps forward.
+        const odo = Math.round(state.odo) + d;
+        const ahead = odo - state.odo;
+        askTown(fromXY({ x: h.x * ahead, y: h.y * ahead }, state.pos), { id: `o${odo}`, ahead, odoAt: state.odo });
+      }
+    }
+    pumpTowns();
+    placeTownLines();
+  }
+
+  async function pumpTowns() {
+    const T = state.towns;
+    if (T.busy || !T.queue.length || Date.now() < (T.pauseUntil || 0)) return;
+    // Nearest first: the town line you will reach soonest matters most.
+    T.queue.sort((a, b) => (a.where.along ?? a.where.ahead) - (b.where.along ?? b.where.ahead));
+    const q = T.queue.shift();
+    T.busy = true;
+    try {
+      const town = await reverseTown(q.p);
+      townAnswers.set(q.key, town);
+      T.samples.set(q.where.id, { ...q.where, town });
+    } catch {
+      T.queue.push(q);
+      T.pauseUntil = Date.now() + 15000;
+    } finally {
+      // Nominatim's own rule: no more than one request a second.
+      setTimeout(() => { T.busy = false; pumpTowns(); }, 1100);
+    }
+  }
+
+  async function reverseTown(p) {
+    const res = await fetch('https://nominatim.openstreetmap.org/reverse?format=json&zoom=13&addressdetails=1'
+      + `&lat=${p.lat.toFixed(5)}&lon=${p.lon.toFixed(5)}`, { headers: { Accept: 'application/json' } });
+    if (!res.ok) throw new Error('reverse ' + res.status);
+    const a = (await res.json()).address || {};
+    // The smallest thing with a sign at its edge: a village inside a town
+    // is what the sign on the road says.
+    const raw = a.village || a.town || a.city || a.municipality || a.hamlet;
+    if (!raw) return null;
+    // "City of Beacon" is the charter's name; the sign on the road says Beacon.
+    const name = raw.replace(/^(city|town|village|borough|township) of /i, '');
+    const st = (a['ISO3166-2-lvl4'] || '').replace(/^US-/, '') || a.state || '';
+    return { name, state: st };
+  }
+
+  // Town lines between neighbouring answers that disagree.
+  function placeTownLines() {
+    const T = state.towns;
+    const pts = [...T.samples.values()].filter((s) => s.town)
+      .map((s) => ({ ...s, at: s.along ?? (s.odoAt + s.ahead) }))
+      .sort((a, b) => a.at - b.at);
+    const here = state.route ? state.progress : state.odo;
+    let current = null;
+    for (const s of pts) if (s.at <= here + 0.05) current = s.town;
+    T.here = current || T.here;
+    for (let i = 1; i < pts.length; i++) {
+      const a = pts[i - 1], b = pts[i];
+      if (a.town.name === b.town.name || b.at - a.at > 2) continue;
+      const at = (a.at + b.at) / 2;
+      const id = `town:${b.town.name}:${at.toFixed(1)}`;
+      if (entries.has(id) || T.dismissed.has(id) || at < here - 0.2) continue;
+      admitTown(id, a.town, b.town, at);
+    }
+  }
+
+  function admitTown(id, from, to, at) {
+    const e = {
+      c: { id, name: to.name }, isTown: true, from, to, score: 0, detour: 0,
+      along: state.route ? at : null, aheadAt: at - disp.odo, odoAt: disp.odo,
+      y: null, dx: 0, dxTo: 0
+    };
+    const li = document.createElement('li');
+    li.className = 'deck-card is-town';
+    li.dataset.id = id;
+    li.tabIndex = 0;
+    li.setAttribute('aria-label', `Town line: entering ${to.name}${to.state ? ', ' + to.state : ''}`);
+    li.innerHTML = '<p class="town-line"><span class="town-verb"></span> <strong class="town-name"></strong>'
+      + '<span class="town-st"></span></p><p class="deck-facts town-from"></p>';
+    li.querySelector('.town-name').textContent = to.name;
+    li.querySelector('.town-st').textContent = to.state ? ` ${to.state}` : '';
+    e.li = li;
+    el.deckList.appendChild(li);
+    entries.set(id, e);
+  }
+
+  function townFacts(e) {
+    e.li.querySelector('.town-verb').textContent = e.ahead < 0.1 ? 'Now in' : 'Entering';
+    const left = e.from && e.from.name !== e.to.name ? `leaving ${e.from.name}` : '';
+    const when = e.ahead < -0.1 ? '' : e.ahead < 0.1 ? 'town line now' : `in ${shortDistance(e.ahead)}`;
+    return [when, left].filter(Boolean).join(' · ');
   }
 
   /* ── Tap and swipe ────────────────────────────────────────
@@ -879,14 +1053,14 @@
     if (Date.now() - lastSwipeAt < 400) return;     // the end of a swipe is not a tap
     const li = ev.target.closest('.deck-card');
     const e = li && entries.get(li.dataset.id);
-    if (e) openDirections(e);
+    if (e && !e.isTown) openDirections(e);
   });
 
   el.deckList.addEventListener('keydown', (ev) => {
     const li = ev.target.closest('.deck-card');
     const e = li && entries.get(li.dataset.id);
     if (!e) return;
-    if (ev.key === 'Enter') openDirections(e);
+    if (ev.key === 'Enter' && !e.isTown) openDirections(e);
     if (ev.key === 'Delete' || ev.key === 'Backspace') dismiss(e, 1);
   });
 
@@ -902,6 +1076,11 @@
 
   function dismiss(e, dir) {
     e.dxTo = dir * (el.deckList.clientWidth + 40);
+    if (e.isTown) {
+      state.towns.dismissed.add(e.c.id);
+      setTimeout(() => { if (entries.get(e.c.id) === e) drop(e, 'is-gone'); }, 260);
+      return;
+    }
     state.muted = new Set(readJSON(VENUES_KEY, []));
     state.muted.add(e.c.name);
     writeJSON(VENUES_KEY, [...state.muted]);
@@ -925,84 +1104,31 @@
   }
 
   /* ── Pictures ─────────────────────────────────────────────
-     Two sources, best first. The place's own website's picture, found at
-     build time by scripts/images.py and shipped in data/places.json, so it
-     is there before the card is. Failing that, Wikipedia, live: a search by
-     name, believed only if the article's coordinates are close ("Olana"
-     three miles away is Olana; a same-named article two states over is
-     not). Wikipedia is asked about every card anyway for its one-line
-     description. Answers, including "no article", are kept on the phone. */
+     All found at build time and shipped with the places, so a card has its
+     picture before it is on screen and in a dead zone: the place's own
+     website's (scripts/images.py) and its Wikipedia article's
+     (scripts/wikipics.py). The first version asked Wikipedia live, per card,
+     from the phone; a sweep in advance covers every place instead of the
+     few that were ever on screen, and costs the phone nothing.
 
-  const photos = new Map(Object.entries(readJSON(PHOTOS_KEY, {})));
-  const photoQueue = [];
-  let photoBusy = false, photoPauseUntil = 0;
+     Which comes first depends on what the place is. A restaurant's own
+     picture is usually its food, which is the point; an attraction's is
+     often a banner with words on it, where Wikipedia's is a photograph of
+     the thing. Each is prefetched on admission, so it is decoded before it
+     scrolls into view. */
 
-  const GENERIC = new Set(['house', 'museum', 'park', 'state', 'historic', 'site', 'center',
-    'centre', 'farm', 'farms', 'winery', 'garden', 'gardens', 'the', 'and', 'memorial',
-    'national', 'historical', 'society', 'county', 'village', 'town', 'city', 'hill']);
-  const tokens = (s) => new Set(String(s).toLowerCase().split(/[^a-z0-9]+/)
-    .filter((w) => w.length >= 4 && !GENERIC.has(w)));
+  const FOOD = new Set(['restaurant', 'cafe']);
+
+  function picturesFor(c) {
+    const site = c.image ? { src: c.image, text: 'Their site', href: c.url } : null;
+    // Wikidata's photograph, credited to its Commons page, where its author
+    // and licence are.
+    const wiki = c.wikiImage ? { src: c.wikiImage, text: 'Wikimedia', href: c.wikiLink } : null;
+    return (FOOD.has(c.kind) ? [site, wiki] : [wiki, site]).filter(Boolean);
+  }
 
   function wantPhoto(c) {
-    // Fetch the site's own picture now, so it is decoded before it is seen.
-    if (c.image) { const img = new Image(); img.src = c.image; }
-    // Restaurants and cafés almost never have an article, and asking for
-    // every one would spend the rate limit on nothing.
-    if (c.kind === 'restaurant' || c.kind === 'cafe') return;
-    if (photos.has(c.id) || photoQueue.some((q) => q.id === c.id)) return;
-    photoQueue.push(c);
-    pumpPhotos();
-  }
-
-  async function pumpPhotos() {
-    if (photoBusy || !photoQueue.length) return;
-    const wait = photoPauseUntil - Date.now();
-    if (wait > 0) { setTimeout(pumpPhotos, wait); return; }
-    photoBusy = true;
-    const c = photoQueue.shift();
-    try {
-      const p = await lookupPhoto(c);
-      photos.set(c.id, p);
-      while (photos.size > 500) photos.delete(photos.keys().next().value);
-      writeJSON(PHOTOS_KEY, Object.fromEntries(photos));
-      if (p.img && !c.image) { const img = new Image(); img.src = p.img; }
-      const e = entries.get(c.id);
-      if (e) fillPhoto(e.li, c);
-      photoPauseUntil = Date.now() + 1000;
-    } catch {
-      // Throttled or offline: try this one again later, and back off.
-      photoQueue.push(c);
-      photoPauseUntil = Date.now() + 20000;
-    } finally {
-      photoBusy = false;
-      if (photoQueue.length) setTimeout(pumpPhotos, 50);
-    }
-  }
-
-  async function lookupPhoto(c) {
-    const q = new URLSearchParams({
-      action: 'query', generator: 'search', gsrsearch: c.name, gsrlimit: '4',
-      prop: 'pageimages|coordinates|description', piprop: 'thumbnail', pithumbsize: '480',
-      format: 'json', origin: '*'
-    });
-    const res = await fetch(`https://en.wikipedia.org/w/api.php?${q}`, {
-      // Wikimedia asks browser clients to say who they are this way.
-      headers: { 'Api-User-Agent': 'Proximi/1.0 (https://github.com/StarrySidekick/Proximi)' }
-    });
-    if (!res.ok) throw new Error('wikipedia ' + res.status);
-    const data = await res.json();
-    const pages = Object.values(data.query?.pages || {}).sort((a, b) => (a.index || 0) - (b.index || 0));
-    const mine = tokens(c.name);
-    for (const pg of pages) {
-      const at = pg.coordinates?.[0];
-      if (!at) continue;
-      const d = haversineMiles(c, { lat: at.lat, lon: at.lon });
-      const shared = [...tokens(pg.title)].some((w) => mine.has(w));
-      if (d <= 0.5 || (d <= 3 && shared)) {
-        return { img: pg.thumbnail?.source || null, desc: pg.description || null, title: pg.title };
-      }
-    }
-    return {};
+    for (const p of picturesFor(c)) { const img = new Image(); img.src = p.src; }
   }
 
   // Simple outline glyphs for a card with no photo, by interest.
@@ -1020,39 +1146,25 @@
     events: '<path d="M6 30 12 6h12l6 24M9 18h18M18 6V3" />'
   };
 
-  function fillPhoto(li, c) {
+  function fillPhoto(li, c, skip = 0) {
     const box = li.querySelector('.deck-photo');
-    const wiki = photos.get(c.id);
-    const blurb = li.querySelector('.deck-blurb');
-    if (blurb) blurb.textContent = wiki?.desc || c.description || c.city || '';
-    const src = c.image || wiki?.img;
-    const credit = c.image ? { text: 'Their site', href: c.url }
-      : wiki?.img ? { text: 'Wikipedia', href: `https://en.wikipedia.org/wiki/${encodeURIComponent(wiki.title.replace(/ /g, '_'))}` }
-      : null;
-    if (src && box.dataset.src !== src && box.dataset.failed !== src) {
-      box.dataset.src = src;
-      box.classList.remove('is-glyph');
-      const img = new Image();
-      img.alt = '';
-      img.decoding = 'async';
-      img.src = src;
-      // A site's picture can move or refuse strangers; fall back, never show a
-      // broken image.
-      img.onerror = () => {
-        box.dataset.failed = src;
-        delete box.dataset.src;
-        if (c.image === src) { c.image = null; fillPhoto(li, c); } else glyph(box, c);
-      };
-      const a = document.createElement('a');
-      a.className = 'deck-credit';
-      a.href = credit.href;
-      a.target = '_blank';
-      a.rel = 'noopener';
-      a.textContent = credit.text;
-      box.replaceChildren(img, a);
-      return;
-    }
-    if (!src) glyph(box, c);
+    const pic = picturesFor(c)[skip];
+    if (!pic) { glyph(box, c); return; }
+    box.classList.remove('is-glyph');
+    const img = new Image();
+    img.alt = '';
+    img.decoding = 'async';
+    img.src = pic.src;
+    // A site's picture can move or refuse strangers: try the next source,
+    // then a drawing, and never show a broken image.
+    img.onerror = () => fillPhoto(li, c, skip + 1);
+    const a = document.createElement('a');
+    a.className = 'deck-credit';
+    a.href = pic.href || '#';
+    a.target = '_blank';
+    a.rel = 'noopener';
+    a.textContent = pic.text;
+    box.replaceChildren(img, a);
   }
 
   function glyph(box, c) {
@@ -1200,7 +1312,7 @@
       disp.heading = (disp.heading + diff * (1 - Math.exp(-dt / 350)) + 360) % 360;
     }
     // Closer in when slow, further out on the highway; eased, never stepped.
-    const zTarget = state.speedMph > 45 ? 12.3 : state.speedMph > 20 ? 13.2 : 14;
+    const zTarget = (state.speedMph > 45 ? 12.3 : state.speedMph > 20 ? 13.2 : 14) + (settings.zoomBias || 0);
     disp.zoom += (zTarget - disp.zoom) * (1 - Math.exp(-dt / 1500));
 
     camera();
@@ -1332,6 +1444,8 @@
         e.aheadAt = aheadOf(e); e.odoAt = disp.odo; e.along = null;
       }
       state.route = route;
+      // Town answers along the old route are at the old route's mileages.
+      for (const id of [...state.towns.samples.keys()]) if (id.startsWith('r')) state.towns.samples.delete(id);
       state.progress = locate(state.route, from).along;
       disp.progress = state.progress;
       if (tween.to) { tween.from.progress = state.progress; tween.to.progress = state.progress; }
@@ -1438,6 +1552,7 @@
     tween.to = null; tween.lastAt = 0;
     setRouteLine(null);
     clearDeck();
+    state.towns = { samples: new Map(), queue: [], busy: false, here: null, dismissed: new Set() };
     el.dock.hidden = true;
     el.setup.hidden = false;
     el.main.classList.remove('is-driving');
@@ -1545,7 +1660,11 @@
       chip(label, settings.maps === id, () => { settings.maps = id; changed(); })));
     el.optLiked.checked = settings.liked;
     el.optKm.checked = settings.km;
+    el.optTowns.checked = settings.towns;
+    el.optMap.checked = settings.showMap;
+    el.mapBtn.setAttribute('aria-pressed', String(settings.showMap));
     el.main.dataset.side = settings.mapSide;
+    el.main.classList.toggle('no-map-view', !settings.showMap);
     renderKinds();
     renderChains();
     syncSimSpeed();
@@ -1637,6 +1756,31 @@
 
   el.optLiked.addEventListener('change', () => { settings.liked = el.optLiked.checked; changed(); });
   el.optKm.addEventListener('change', () => { settings.km = el.optKm.checked; changed(); });
+  el.optTowns.addEventListener('change', () => {
+    settings.towns = el.optTowns.checked;
+    if (!settings.towns) for (const e of [...entries.values()]) if (e.isTown) drop(e);
+    changed();
+  });
+
+  /* The map can go altogether, leaving the whole width to the deck, from
+     settings or from the dock mid-drive; and it zooms, as a nudge on top of
+     the zoom the speed chooses, so it still pulls out on the highway. */
+  function setMap(on) {
+    settings.showMap = on;
+    changed();
+    requestAnimationFrame(() => map?.resize());
+  }
+  el.optMap.addEventListener('change', () => setMap(el.optMap.checked));
+  el.mapBtn.addEventListener('click', () => setMap(!settings.showMap));
+  const ZOOM_BIAS = [-3, 3];
+  function nudgeZoom(d) {
+    settings.zoomBias = Math.max(ZOOM_BIAS[0], Math.min(ZOOM_BIAS[1], (settings.zoomBias || 0) + d));
+    saveSettings();
+    el.zoomIn.disabled = settings.zoomBias >= ZOOM_BIAS[1];
+    el.zoomOut.disabled = settings.zoomBias <= ZOOM_BIAS[0];
+  }
+  el.zoomIn.addEventListener('click', () => nudgeZoom(1));
+  el.zoomOut.addEventListener('click', () => nudgeZoom(-1));
 
   function openSettings() {
     el.sheet.hidden = false;
@@ -1673,9 +1817,10 @@
     },
     {
       title: 'How far out of your way?',
-      lede: 'The longest detour worth showing, there and back to the road.',
+      lede: 'The most time a stop may add to the whole trip, not counting the time you spend there.',
       body: () => DETOURS.map((m) => choice(`${m} minutes`,
-        { 5: 'Right off the exit', 10: 'A short hop', 15: 'Worth a little effort', 20: 'I have time' }[m],
+        { 5: 'Right off the exit', 10: 'A short hop', 15: 'Worth a little effort', 20: 'I have time',
+          30: 'Make a day of it' }[m],
         settings.maxDetour === m, () => { settings.maxDetour = m; }))
     },
     {
@@ -1785,6 +1930,6 @@
   // For tests and for poking at it from the console.
   window.__drive = {
     state, settings, disp, entries, buildRoute, locate, pointAt, candidatesAhead,
-    typeWeight, typeOf, chainOf, types: TYPES, photos, isotonic, get map() { return map; }
+    typeWeight, typeOf, chainOf, types: TYPES, picturesFor, typeLine, isotonic, get map() { return map; }
   };
 })();

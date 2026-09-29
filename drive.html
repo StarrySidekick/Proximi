@@ -41,6 +41,10 @@
   <div class="map-slice" id="map-slice">
     <div class="drive-map" id="drive-map" aria-label="Map around your car, heading up"></div>
     <!-- Fixed in the strip; the map turns and slides under it. -->
+    <div class="map-zoom" role="group" aria-label="Map zoom">
+      <button type="button" class="map-zoom-btn" id="zoom-in" aria-label="Zoom in">+</button>
+      <button type="button" class="map-zoom-btn" id="zoom-out" aria-label="Zoom out">&minus;</button>
+    </div>
     <svg class="map-car" id="map-car" viewBox="0 0 40 40" aria-hidden="true">
       <circle cx="20" cy="20" r="17" class="car-halo"/>
       <path d="M20 7 L30 31 L20 25 L10 31 Z" class="car-arrow"/>
@@ -85,6 +89,7 @@
         <span class="sim-speed" id="sim-speed" aria-live="polite">10×</span>
         <button type="button" class="sim-btn" id="sim-faster" aria-label="Faster">+</button>
       </div>
+      <button type="button" class="drive-dock-btn drive-map-btn" id="map-btn" aria-pressed="true">Map</button>
       <button type="button" class="drive-dock-btn" id="stop-btn">End drive</button>
     </nav>
   </section>
@@ -157,6 +162,10 @@
         Always mention places I liked</label>
       <label class="drive-check"><input type="checkbox" id="opt-km">
         Kilometres</label>
+      <label class="drive-check"><input type="checkbox" id="opt-towns">
+        Show town lines</label>
+      <label class="drive-check"><input type="checkbox" id="opt-map">
+        Show the map</label>
     </fieldset>
 
     <fieldset class="drive-set">

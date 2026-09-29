@@ -338,3 +338,34 @@ body.drive {
   font: inherit; font-size: 16px; padding: 9px 11px; border-radius: var(--radius);
   border: 1px solid var(--line); background: var(--surface-2); color: var(--ink);
 }
+
+/* No map: the deck takes the whole width. */
+.drive-main.no-map-view .map-slice { display: none; }
+.drive-dock .drive-map-btn { flex: 0 0 auto; }
+.drive-dock-btn[aria-pressed="false"] { color: var(--ink-3); }
+
+/* Zoom, as a nudge on the zoom the speed chooses. */
+.map-zoom {
+  position: absolute; z-index: 6; right: 8px; top: 8px;
+  display: flex; flex-direction: column; gap: 6px;
+}
+.map-zoom-btn {
+  width: 38px; height: 38px; border-radius: 10px;
+  font: 700 20px/1 -apple-system, BlinkMacSystemFont, sans-serif;
+  border: 1px solid var(--line); background: color-mix(in srgb, var(--surface) 92%, transparent);
+  color: var(--ink); box-shadow: var(--shadow); cursor: pointer;
+}
+.map-zoom-btn:disabled { opacity: .4; cursor: default; }
+
+/* A town line: a slim strip, not a place, so no picture and no pin. */
+.deck-card.is-town {
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 0 14px; cursor: default;
+  background: color-mix(in srgb, var(--rep-bg) 70%, var(--surface));
+  border-style: dashed; border-color: var(--rep-ink); box-shadow: none;
+}
+.town-line { margin: 0; font-size: 15px; line-height: 1.2; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.town-verb { font-family: var(--serif); font-size: 11px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--rep-ink); }
+.town-name { font-family: var(--serif); font-size: 17px; }
+.town-st { color: var(--ink-3); font-size: 13px; margin-left: 4px; }
+.deck-card.is-town .town-from { font-size: 12px; font-weight: 500; color: var(--ink-3); }

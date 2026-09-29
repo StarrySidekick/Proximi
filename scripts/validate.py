@@ -238,9 +238,15 @@ def check_places(path='data/places.json', label='places'):
         # place carrying both the label and a programme.
         # The Drive page puts this straight into an <img> on an https page,
         # where an http picture is blocked and anything else is a bug.
-        img = place.get('image')
-        if img is not None and not (isinstance(img, str) and img.startswith('https://')):
-            errors.append(f'{tag}: image must be an https address, got {img!r}')
+        for field in ('image', 'wikiImage'):
+            img = place.get(field)
+            if img is not None and not (isinstance(img, str) and img.startswith('https://')):
+                errors.append(f'{tag}: {field} must be an https address, got {img!r}')
+        # A rating a card will draw as stars: 1 to 5, from somebody.
+        r = place.get('rating')
+        if r is not None and not (isinstance(r, dict) and 1 <= r.get('stars', 0) <= 5
+                                  and r.get('count', 0) > 0 and r.get('from')):
+            errors.append(f'{tag}: rating must be 1–5 stars with a count and a source, got {r!r}')
         if place.get('eventInfo') not in (None, 'none'):
             errors.append(f"{tag}: eventInfo must be 'none' or absent, "
                           f"got {place['eventInfo']!r} — the client renders "
