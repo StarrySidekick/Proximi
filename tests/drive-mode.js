@@ -76,7 +76,16 @@ async function fakeServices(ctx, counts, base) {
     } } } }, headers: CORS });
   });
   await ctx.route(/nominatim\.openstreetmap\.org/, (r) => {
-    const q = new URL(r.request().url()).searchParams.get('q').toLowerCase();
+    const u = new URL(r.request().url());
+    // "What town is this point in": three towns down Route 9D, by latitude.
+    if (u.pathname.includes('reverse')) {
+      counts.reverse++;
+      const lat = Number(u.searchParams.get('lat'));
+      const address = lat > 41.46 ? { city: 'Beacon' } : lat > 41.42 ? { village: 'Nelsonville' } : { hamlet: 'Garrison' };
+      r.fulfill({ json: { address: { ...address, 'ISO3166-2-lvl4': 'US-NY' } }, headers: CORS });
+      return;
+    }
+    const q = u.searchParams.get('q').toLowerCase();
     const p = PLACES[q];
     const body = p ? [{
       lat: String(p.lat), lon: String(p.lon), display_name: `${q}, somewhere`,
@@ -100,6 +109,7 @@ async function fakeServices(ctx, counts, base) {
     }
     counts.table++;
     const src = u.searchParams.get('sources').split(';').map(Number);
+    counts.batch = Math.max(counts.batch, src.length - 1);
     const dst = u.searchParams.get('destinations').split(';').map(Number);
     const durations = src.map((i) => dst.map((j) => seconds(pts[i], pts[j])));
     r.fulfill({ json: { code: 'Ok', durations }, headers: CORS });
@@ -128,7 +138,7 @@ async function fakeServices(ctx, counts, base) {
     const ctx = await browser.newContext({
       viewport: { width: 390, height: 844 }, hasTouch: true, isMobile: true, ...opts
     });
-    const counts = { route: 0, table: 0, wiki: 0 };
+    const counts = { route: 0, table: 0, wiki: 0, reverse: 0, batch: 0 };
     // Most scenarios are about the drive, not the first-run questionnaire,
     // so they start as somebody who has already answered it.
     if (onboarded) {
@@ -191,6 +201,7 @@ async function fakeServices(ctx, counts, base) {
     await page.click('#quiz .level-row[data-interest="browsing"] [data-level="love"]');
     await page.click('#quiz .level-row[data-interest="gardens"] [data-level="skip"]');
     await page.click('#quiz-next');
+    ok('detours go up to half an hour', await page.locator('#quiz .quiz-choice:has(strong:text-is("30 minutes"))').count() === 1);
     await page.click('#quiz .quiz-choice:has(strong:text-is("15 minutes"))');
     await page.click('#quiz-next');
     await page.click('#quiz .quiz-choice:has(strong:text-is("Right"))');
@@ -234,6 +245,10 @@ async function fakeServices(ctx, counts, base) {
         t({ kind: 'stadium', name: 'Yankee Stadium' })].join(',');
     });
     ok('names decide the type', types === 'memorial,building,lighthouse,wild,big-park,park,thrift,', types);
+    const line = await page.evaluate(() => window.__drive.typeLine({
+      kind: 'restaurant', _type: 'restaurant', name: 'Test', cuisine: ['italian'],
+      rating: { stars: 4.54, count: 1000, from: ['Google', 'Yelp'] } }));
+    ok('a rated restaurant shows its stars', line === 'Italian · ★ 4.5', line);
 
     await page.waitForFunction(() => window.__drive.state.eats.length > 0, null, { timeout: 20000 }).catch(() => {});
     const pool = () => page.evaluate(() => {
@@ -321,18 +336,45 @@ async function fakeServices(ctx, counts, base) {
       === [...window.__drive.entries.values()].map((e) => e.letter).sort().join('')));
 
 
-    // Pictures: the site's own first, Wikipedia's otherwise, a drawing last.
-    await page.waitForTimeout(2500);
-    const pics = await page.evaluate(() => [...window.__drive.entries.values()].map((e) => ({
-      name: e.c.name, image: e.c.image || null,
+    // Pictures come with the data: the site's own first for somewhere to eat,
+    // Wikimedia's first for the rest, a drawing when there is neither.
+    await page.waitForTimeout(1500);
+    const pics = await page.evaluate(() => [...window.__drive.entries.values()].filter((e) => !e.isTown).map((e) => ({
+      name: e.c.name, want: window.__drive.picturesFor(e.c).map((p) => p.src),
       img: e.li.querySelector('.deck-photo img')?.getAttribute('src') || '',
-      credit: e.li.querySelector('.deck-credit')?.textContent || '',
       glyph: !!e.li.querySelector('.deck-photo.is-glyph')
     })));
     ok('every card has a picture or a drawing', pics.every((p) => p.img || p.glyph),
-      pics.map((p) => `${p.name}:${p.image ? 'site' : p.img ? 'wiki' : 'glyph'}`).join(' / '));
-    ok('a place with its own picture shows it', pics.filter((p) => p.image).every((p) => p.img === p.image && p.credit === 'Their site'));
-    ok('otherwise Wikipedia\'s', pics.some((p) => p.credit === 'Wikipedia'));
+      pics.map((p) => `${p.name}:${p.img ? 'photo' : 'glyph'}`).join(' / '));
+    ok('a card shows its first choice of picture', pics.every((p) => (p.want[0] || '') === p.img || (!p.want.length && p.glyph)));
+    ok('no live picture lookups', counts.wiki === 0, `${counts.wiki} Wikipedia calls`);
+
+    // Detours are asked about ten at a time.
+    ok('detours are asked in batches', counts.batch > 1, `up to ${counts.batch} places per request`);
+
+    // Town lines: Beacon, then Nelsonville, then Garrison, down 9D.
+    await page.waitForFunction(() => [...window.__drive.entries.values()].some((e) => e.isTown), null, { timeout: 30000 }).catch(() => {});
+    const towns = await page.evaluate(() => [...window.__drive.entries.values()].filter((e) => e.isTown)
+      .map((e) => ({ to: e.to.name, from: e.from.name, ahead: e.ahead, text: e.li.textContent })));
+    ok('a town line appears on the deck', towns.some((t) => t.to === 'Nelsonville' && t.from === 'Beacon'),
+      towns.map((t) => `${t.from}→${t.to} ${t.ahead?.toFixed(1)}mi`).join(' / '));
+    ok('the status says which town you are in', /in Beacon|in Nelsonville|in Garrison/.test(await page.textContent('#drive-status')),
+      await page.textContent('#drive-status'));
+    ok('town questions stay under one a second', counts.reverse <= 60, `${counts.reverse} asked`);
+
+    // The map can go, and come back; and zoom nudges it.
+    await page.click('#map-btn');
+    const noMap = await page.evaluate(() => ({ slice: getComputedStyle(document.getElementById('map-slice')).display,
+      deck: document.getElementById('deck').getBoundingClientRect().width, vw: innerWidth }));
+    ok('the map can be hidden', noMap.slice === 'none' && noMap.deck > noMap.vw - 2, JSON.stringify(noMap));
+    await page.click('#map-btn');
+    ok('and brought back', await page.isVisible('#map-slice'));
+    const z0 = await page.evaluate(() => window.__drive.map.getZoom());
+    await page.click('#zoom-in');
+    await page.waitForTimeout(2500);
+    const z1 = await page.evaluate(() => window.__drive.map.getZoom());
+    ok('zoom in brings the map closer', z1 > z0 + 0.5, `${z0.toFixed(2)} → ${z1.toFixed(2)}`);
+    await page.click('#zoom-out');
 
     // Heading up: the map's bearing is the heading, so the road is up.
     // Beacon to Garrison is a touch east of due south, about 172 degrees.

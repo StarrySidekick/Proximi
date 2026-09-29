@@ -2185,7 +2185,8 @@
       "url": "https://www.suppliesforcreativeliving.com",
       "phone": "+1-845-809-5900",
       "openingHours": "Su-Th 11:00-17:00; Fr 11:00-18:00; Sa 10:00-18:00",
-      "source": "OpenStreetMap"
+      "source": "OpenStreetMap",
+      "image": "https://static.wixstatic.com/media/80a1e1_609e99b98d8b4a60a244981764fed0d4%7Emv2.png/v1/fit/w_2500,h_1330,al_c/80a1e1_609e99b98d8b4a60a244981764fed0d4%7Emv2.png"
     },
     {
       "id": "osm-node-12951843358",
@@ -14524,7 +14525,8 @@
       "phone": "+1-203-740-8889",
       "openingHours": "Mo-We,Fr 10:00-18:00; Th 10:00-20:00; Sa 11:00-17:00; Su 12:00-16:00",
       "description": "Music store offering instruments of all kinds, plus repairs, lessons, and rental services.",
-      "source": "OpenStreetMap"
+      "source": "OpenStreetMap",
+      "image": "https://www.guitarhangar.com/wp-content/uploads/2018/11/a-hangar-full-of-guitars-cover-photo.jpg"
     },
     {
       "id": "osm-way-879494494",
@@ -51761,7 +51763,8 @@
       "city": "Bethany",
       "url": "https://clovernookfarm.com/",
       "events": 1,
-      "source": "OpenStreetMap"
+      "source": "OpenStreetMap",
+      "image": "https://img1.wsimg.com/isteam/ip/09f312e3-5f5f-4b07-9cfb-6de9f04525ed/467873110_18434696635074649_639253142655623800.jpg"
     },
     {
       "id": "osm-node-11876323574",
@@ -53106,7 +53109,8 @@
       "address": "354 Main Street, Winsted, CT",
       "url": "https://www.gilsoncafecinema.com/",
       "phone": "+1 860 3795108",
-      "source": "OpenStreetMap"
+      "source": "OpenStreetMap",
+      "image": "https://static.wixstatic.com/media/6691fe_e1d663f7c0344f00a03392eb675d78a0%7Emv2.jpg/v1/fit/w_2500,h_1330,al_c/6691fe_e1d663f7c0344f00a03392eb675d78a0%7Emv2.jpg"
     },
     {
       "id": "osm-way-43437440",
@@ -53328,7 +53332,8 @@
       "address": "418 Milford Street, Burlington, CT",
       "url": "https://tonnsmarketplace.com/",
       "openingHours": "Mo-Fr 10:00-19:00, Sa 09:00-19:00, Su 10:00-18:00",
-      "source": "OpenStreetMap"
+      "source": "OpenStreetMap",
+      "image": "https://i.vimeocdn.com/video/1619850615-1a0be0234a54416ef70c7298d2c10950cc76b84bba7c7b951f99a8c6cfa57410-d_1920x1080?r=pad"
     },
     {
       "id": "osm-way-302353853",
@@ -55653,7 +55658,8 @@
       "miles": 57.6,
       "city": "Plainville",
       "url": "https://www.vanwilgens.com/location/southington/",
-      "source": "OpenStreetMap"
+      "source": "OpenStreetMap",
+      "image": "https://www.vanwilgens.com/wp-content/uploads/2026/05/southington_location_6.jpg"
     },
     {
       "id": "osm-way-718033863",
@@ -72298,8 +72304,7 @@
       "miles": 85.3,
       "city": "Holyoke",
       "url": "https://www.volleyhall.org/",
-      "source": "OpenStreetMap",
-      "image": "https://www.volleyhall.org/uploads/3/9/6/0/39609237/published/2023-ivhf-corporate-stacked-full-color-ondark.png?1685553777"
+      "source": "OpenStreetMap"
     },
     {
       "id": "osm-way-1030574019",
@@ -72973,7 +72978,8 @@
       "address": "454 Cassidy Hill Road, Coventry, CT",
       "url": "https://cassidyhillvineyard.com/",
       "phone": "+18604981126",
-      "source": "OpenStreetMap"
+      "source": "OpenStreetMap",
+      "image": "https://i0.wp.com/cassidyhillvineyard.com/wp-content/uploads/2024/04/20210730_094405.jpg?ssl=1"
     },
     {
       "id": "osm-relation-14487825",
@@ -79714,7 +79720,8 @@
       "url": "https://www.chestnutstreetplayhouse.org",
       "phone": "+1 860 886 2378",
       "wheelchair": "limited",
-      "source": "OpenStreetMap"
+      "source": "OpenStreetMap",
+      "image": "https://static.wixstatic.com/media/4c32db_d14823cbc86e435ebf96558f03771dff%7Emv2.png/v1/fit/w_2500,h_1330,al_c/4c32db_d14823cbc86e435ebf96558f03771dff%7Emv2.png"
     },
     {
       "id": "osm-node-359279383",
@@ -97260,7 +97267,8 @@
       "city": "Bolton, MA",
       "address": "100 Wattaquadock Hill Road, Bolton, MA",
       "url": "https://nashobawinery.com/",
-      "source": "OpenStreetMap"
+      "source": "OpenStreetMap",
+      "image": "https://nashobawinery.com/wp-content/uploads/2026/03/js-spring-outside-1-768x1024.jpeg"
     },
     {
       "id": "osm-way-1337591897",
@@ -102220,7 +102228,8 @@
       "miles": 147.7,
       "city": "Westford",
       "url": "https://kimballfarm.com/",
-      "source": "OpenStreetMap"
+      "source": "OpenStreetMap",
+      "image": "https://www.kimballfarm.com/wp-content/uploads/2025/06/KF_IMG_037-1.webp"
     },
     {
       "id": "osm-node-2356705834",
@@ -107735,7 +107744,8 @@
       "city": "Belmont",
       "url": "https://www.mightysquirrel.com",
       "openingHours": "Mo-Sa 11:00-23:00; Su 13:00-21:00",
-      "source": "OpenStreetMap"
+      "source": "OpenStreetMap",
+      "image": "https://static.wixstatic.com/media/e50a98_9f2905aff28f4bd39c5f7367409adbea~mv2.jpg/v1/fill/w_2500,h_1668,al_c/e50a98_9f2905aff28f4bd39c5f7367409adbea~mv2.jpg"
     },
     {
       "id": "osm-way-29676864",
@@ -109041,7 +109051,8 @@
       "address": "200 Westgate Drive, Brockton, MA",
       "url": "https://www.shopatwestgatemall.com/",
       "phone": "+1 508 588 8916",
-      "source": "OpenStreetMap"
+      "source": "OpenStreetMap",
+      "image": "https://cdn-files.eu.placewise.com/f/CKuFPRCRBhoTY21zX2NvbXBvbmVudF9pbWFnZSIaaWQtMTc0OTgyNTI4NTI3MC03NzMzLWxvZ284i7bcRmUj1_Oedaw2ubzb0ND5QV4"
     },
     {
       "id": "osm-way-1340824885",
@@ -112917,7 +112928,8 @@
       "address": "7 Medford Street, Arlington, MA",
       "url": "https://regenttheatre.com/",
       "openingHours": "We-Fr 11:00-17:00; Sa 13:00-17:00",
-      "source": "OpenStreetMap"
+      "source": "OpenStreetMap",
+      "image": "https://regenttheatre-com.okyanust.com/wp-content/uploads/2023/05/Regent-graphic-2_clipped_rev_1.png"
     },
     {
       "id": "osm-node-367778156",
@@ -134207,7 +134219,8 @@
       "url": "http://www.yarnsinthesquare.com/",
       "phone": "+1-781-749-2280",
       "openingHours": "Tu-We 10:00-17:00; Th 12:00-19:00; Fr-Sa 10:00-17:00; Su 12:00-17:00",
-      "source": "OpenStreetMap"
+      "source": "OpenStreetMap",
+      "image": "https://meubelkayumurah.pics/wp-content/uploads/2026/08/5b40d2a6-eb6b-4760-a67e-9f8a978b756a.png"
     },
     {
       "id": "osm-way-296976960",
@@ -148157,7 +148170,8 @@
       "url": "https://bandedbrewing.com/",
       "phone": "+1-207-602-1561",
       "openingHours": "Mo-Th 16:00-21:00; Fr, Sa 12:00-22:00; Su 12:00-20:00",
-      "source": "OpenStreetMap"
+      "source": "OpenStreetMap",
+      "image": "https://static.wixstatic.com/media/157d00_a8df8bc01d754974b19643b9fc86c278%7Emv2.jpg/v1/fit/w_2500,h_1330,al_c/157d00_a8df8bc01d754974b19643b9fc86c278%7Emv2.jpg"
     },
     {
       "id": "osm-node-13756467683",
@@ -151168,7 +151182,8 @@
       "city": "Portland, ME",
       "address": "82 Hanover Street, Portland, ME",
       "url": "https://bandedbrewing.com/",
-      "source": "OpenStreetMap"
+      "source": "OpenStreetMap",
+      "image": "https://static.wixstatic.com/media/157d00_a8df8bc01d754974b19643b9fc86c278%7Emv2.jpg/v1/fit/w_2500,h_1330,al_c/157d00_a8df8bc01d754974b19643b9fc86c278%7Emv2.jpg"
     },
     {
       "id": "osm-node-7171973346",
@@ -161207,7 +161222,8 @@
       "miles": 303.5,
       "city": "Waterville",
       "url": "https://www.watervillehistoricalsociety.org/",
-      "source": "OpenStreetMap"
+      "source": "OpenStreetMap",
+      "image": "https://static.wixstatic.com/media/25b0ce_80a38f2c6e9c43069515c10a8f11063b.jpg/v1/fit/w_2500,h_1330,al_c/25b0ce_80a38f2c6e9c43069515c10a8f11063b.jpg"
     },
     {
       "id": "osm-node-7201673683",

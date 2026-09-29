@@ -109,6 +109,15 @@ names for now, because rebuilding the directory from Overpass is a six-hour
 job; `places.py` writing the type from the OSM tags themselves
 (`historic=memorial`, `historic=building`) would be sharper.
 
+**Fifth pass, 2026-09-29**: pictures from wherever they can be had (restaurant
+sites, and Wikidata's photographs by box of map); town-line cards and the
+current town in the status; star ratings for restaurants, combined across
+services by review count; the map hideable and zoomable; detours measured
+against the whole trip to the destination rather than a point just past the
+place, checked ten at a time; and the detour cap raised to half an hour.
+Ratings are built but switched off: they need a Google Places or Yelp key,
+and each has a per-request price, so that is Timothy's call.
+
 **Next on it**, roughly in order: opening hours, so it stops suggesting closed
 museums; pulling places live along the route (Overpass, Wikipedia's geosearch)
 so it works outside the coverage circles; the 647 place pages that did not

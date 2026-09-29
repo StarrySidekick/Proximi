@@ -17,7 +17,7 @@ every rebuild; this script also stamps them straight onto data/places.json so
 a batch reaches the site without waiting on Overpass.
 
 What it refuses, each for a reason found in the data:
-  · food: data/eats.json is not on the Drive page, and is five times the size;
+  · (food was refused until the Drive page loaded data/eats.json; it does now)
   · hosts in audit.SKIP_HOSTS: a venue whose website is its Facebook page has
     told us about Facebook, and facebook.com's og:image is Facebook's logo;
   · domains the audit found hijacked or parked: a betting site's banner on a
@@ -43,6 +43,7 @@ if hasattr(sys.stdout, 'reconfigure'):
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import audit
+import wikipics
 
 IMAGES_PATH = 'sources/placeimages.json'
 
@@ -54,6 +55,10 @@ KINDS = {
     'garden', 'lookout', 'park', 'zoo', 'winery', 'brewery', 'farm',
     'theme park', 'antique shop', 'bookshop', 'mall', 'shop', 'library',
     'music venue', 'theatre', 'cinema',
+    # Somewhere to eat, from data/eats.json. A restaurant's site nearly
+    # always declares a picture of its food or its room, and a card with a
+    # plate on it answers "is it worth stopping" faster than any word.
+    'restaurant', 'cafe',
 }
 
 # A found picture is good for a season; a page with none may grow one; a page
@@ -74,7 +79,7 @@ IMAGE_KEYS = ('og:image:secure_url', 'og:image', 'og:image:url',
 # path, where sites say so plainly ("logo.png", "/favicon/", "site-icon").
 NOT_A_PICTURE = re.compile(
     r'(logo|favicon|site-?icon|[-_]icon\b|apple-touch|/icons?/|placeholder|default|'
-    r'blank\.|spacer|avatar|badge|sprite|gravatar|/stock/|unsplash|shutterstock|istock|'
+    r'blank\.|spacer|avatar|badge|sprite|gravatar|/stock/|unsplash|shutterstock|istock|wordmark|stacked|'
     r'/google\.(?:jpe?g|png))', re.I)
 
 MIN_WIDTH = 300        # only when the page declares a width
@@ -147,6 +152,11 @@ def rejected(url, width=None):
         return 'facebook asset'
     if width is not None and width < MIN_WIDTH:
         return f'too small ({width}px)'
+    # Image hosts put the size in the address: Wix's "/fill/w_20,h_14/" is a
+    # twenty-pixel thumbnail however large the original was.
+    m = re.search(r'[/,_?&](?:w_|width=|w=)(\d+)', url)
+    if m and int(m.group(1)) < MIN_WIDTH:
+        return f'too small ({m.group(1)}px in the address)'
     return None
 
 
@@ -197,12 +207,15 @@ def key_of(url):
     return host + (p.path.rstrip('/') or '')
 
 
-def wanted(places_path, audit_path):
+def wanted(places_path, audit_path, eats_path=None):
     """Every page worth reading: {key: url}."""
     bad = {d for d, r in audit.load_audit(audit_path)['domains'].items()
            if r.get('verdict') in ('suspect', 'parked')}
     out = {}
-    for p in json.load(open(places_path))['items']:
+    rows = json.load(open(places_path))['items']
+    if eats_path and os.path.exists(eats_path):
+        rows = rows + json.load(open(eats_path))['items']
+    for p in rows:
         url = p.get('url')
         if not url or p.get('kind') not in KINDS:
             continue
@@ -268,6 +281,8 @@ def merge_images(places, path=IMAGES_PATH):
 def stamp(doc_path, path=IMAGES_PATH):
     doc = json.load(open(doc_path))
     n = merge_images(doc['items'], path)
+    # Wikidata's photographs ride along: one stamp, both sources.
+    wikipics.merge_wiki(doc['items'])
     json.dump(doc, open(doc_path, 'w'), indent=2, ensure_ascii=False)
     return n
 
@@ -306,6 +321,10 @@ def selftest():
         ('https://a.org/', '<meta property="og:image" content="https://a.org/favicon/f.png">', None),
         # http is upgraded, since an https page would block it as it stands.
         ('https://a.org/', '<meta property="og:image" content="http://a.org/x.jpg">', 'https://a.org/x.jpg'),
+        # The size is in the address.
+        ('https://a.org/', '<meta property="og:image" content="https://static.wixstatic.com/media/a~mv2.jpg/v1/fill/w_20,h_14/a.jpg">', None),
+        ('https://a.org/', '<meta property="og:image" content="https://static.wixstatic.com/media/a~mv2.jpg/v1/fill/w_1200,h_630/a.jpg">',
+         'https://static.wixstatic.com/media/a~mv2.jpg/v1/fill/w_1200,h_630/a.jpg'),
         # A stock photograph is a picture of somewhere else.
         ('https://a.org/', '<meta property="og:image" content="https://img1.wsimg.com/isteam/stock/100622">', None),
         ('https://a.org/', '<meta property="og:image" content="https://a.org/up/elisa-calvet-unsplash-1024.jpg">', None),
@@ -330,6 +349,9 @@ def selftest():
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--places', default='data/places.json')
+    ap.add_argument('--eats', default='data/eats.json')
+    ap.add_argument('--retry-unreachable', action='store_true',
+                    help='ask again now of pages that did not answer, whatever their age')
     ap.add_argument('--audit', default=audit.AUDIT_PATH)
     ap.add_argument('--images', default=IMAGES_PATH)
     ap.add_argument('--limit', type=int, default=400, help='pages this batch reads (0 = all)')
@@ -344,13 +366,14 @@ def main():
         return 0
 
     doc = load(args.images)
-    pages = wanted(args.places, args.audit)
+    pages = wanted(args.places, args.audit, args.eats)
     if args.report:
         report(doc, pages)
         return 0
 
     today = date.today()
-    todo = [k for k in pages if stale(doc['pages'].get(k), today)]
+    todo = [k for k in pages if stale(doc['pages'].get(k), today)
+            or (args.retry_unreachable and doc['pages'].get(k, {}).get('verdict') == 'unreachable')]
     if args.limit:
         todo = todo[:args.limit]
     print(f'{len(pages)} pages worth a picture; reading {len(todo)}')
@@ -374,6 +397,8 @@ def main():
     report(doc, pages)
     if not args.no_stamp:
         print(f'{stamp(args.places, args.images)} places now carry a picture')
+        if os.path.exists(args.eats):
+            print(f'{stamp(args.eats, args.images)} places to eat now carry a picture')
     return 0
 
 

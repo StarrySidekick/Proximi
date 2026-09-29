@@ -42,7 +42,9 @@ python3 scripts/merge.py       # collapse repeats, dedupe → data/events.json
 python3 scripts/prices.py      # read unpriced listings' own pages (cached)
 python3 scripts/places.py      # the directory → data/places.json + data/eats.json
 python3 scripts/audit.py       # read the next batch of venue sites (see below)
-python3 scripts/images.py --limit 400   # each place page's own picture, for Drive
+python3 scripts/wikipics.py    # Wikidata photographs; carries on where the last run stopped
+python3 scripts/images.py --limit 400   # each place page's own picture; stamps both
+python3 scripts/ratings.py --limit 500  # stars for places to eat (needs a service key)
 python3 scripts/validate.py    # gates both files; must pass before committing
 node tests/drive.js            # drives the page itself; must pass too
 ```
@@ -303,6 +305,17 @@ picture the poster; chains, logos, stock photos and anything named "default"
 are refused. Rules are re-applied at copy time, so **tighten a rule, rerun
 `places.py` or `images.py --limit 0` on an all-cached set, and old answers are
 cleaned without a single request.** `images.py --selftest` runs in CI.
+
+### Wikidata throttles by address
+
+`wikipics.py` queries Wikidata box by box and remembers every finished box.
+Wikimedia's edge refuses a busy shared address for long stretches (a 429 with
+no Retry-After), so after three refusals running it stops querying, matches
+what it has, and the next run carries on. A partial sweep is progress, not a
+failure; a sweep that finishes **zero** boxes two weeks running is one.
+
+`ratings.py` printing "skipped: no rating service key set" is a failure in
+the same sense as Ticketmaster's: the cards simply have no stars. Say so.
 
 ## 8. One fact, one owner
 
