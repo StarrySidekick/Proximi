@@ -276,6 +276,26 @@ async function fakeServices(ctx, counts, base) {
     await page.click('#chain-list .chip[data-chain="Starbucks"]');
     const p3 = await pool();
     ok('one chain can be switched off', p3.starbucks === 0 && p3.chains > 0, `${p2.starbucks} → ${p3.starbucks} Starbucks`);
+
+    // Kinds of food: off hides a cuisine, a favourite ranks it up, and a
+    // place serving two cuisines stays while either is on.
+    const food = () => page.evaluate(() => {
+      const p = window.__drive.state.pool;
+      const only = (c) => p.filter((x) => x.kind === 'restaurant' && x.cuisine && x.cuisine.length === 1 && x.cuisine[0] === c);
+      return { pizza: only('pizza').length, italian: only('italian')[0]?._score ?? null,
+        both: p.filter((x) => x.cuisine && x.cuisine.includes('pizza') && x.cuisine.includes('italian')).length };
+    });
+    const f0 = await food();
+    ok('cuisine chips render', await page.locator('#cuisine-chips .chip').count() > 20);
+    await page.click('#cuisine-chips .chip[data-cuisine="pizza"]');   // on → favourite
+    await page.click('#cuisine-chips .chip[data-cuisine="pizza"]');   // favourite → off
+    const f1 = await food();
+    ok('a cuisine can be switched off', f0.pizza > 0 && f1.pizza === 0, `${f0.pizza} → ${f1.pizza} pizza-only places`);
+    ok('a place serving another cuisine stays', f1.both === f0.both, `${f0.both} pizza-and-Italian places`);
+    await page.click('#cuisine-chips .chip[data-cuisine="italian"]');  // on → favourite
+    const f2 = await food();
+    ok('a favourite cuisine ranks higher', f2.italian - f0.italian === 2, `${f0.italian} → ${f2.italian}`);
+    ok('and says so on its chip', (await page.textContent('#cuisine-chips .chip[data-cuisine="italian"]')).startsWith('★'));
     await page.click('#close-settings');
     await page.click('#open-settings');
     const setRow = await page.getAttribute('#interest-levels .level-row[data-interest="history"] [data-level="love"]', 'aria-checked');
@@ -375,6 +395,38 @@ async function fakeServices(ctx, counts, base) {
     const z1 = await page.evaluate(() => window.__drive.map.getZoom());
     ok('zoom in brings the map closer', z1 > z0 + 0.5, `${z0.toFixed(2)} → ${z1.toFixed(2)}`);
     await page.click('#zoom-out');
+
+    // The fantasy chart is the default look: parchment under everything,
+    // hills shaded from elevation tiles, the route as a dashed red line.
+    const look = () => page.evaluate(() => {
+      const m = window.__drive.map;
+      return { pattern: m.getPaintProperty('background', 'background-pattern') || null,
+        hills: !!m.getLayer('fx-hills') || !!m.getSource('terrain'),
+        dash: !!m.getPaintProperty('route', 'line-dasharray'),
+        fantasyClass: document.getElementById('map-slice').classList.contains('is-fantasy') };
+    });
+    const l0 = await look();
+    ok('the map is a fantasy chart by default', l0.pattern === 'fx-parchment' && l0.hills && l0.dash && l0.fantasyClass, JSON.stringify(l0));
+    await page.click('#open-settings');
+    await page.click('#style-chips .chip:has-text("Standard")');
+    await page.click('#close-settings');
+    await page.waitForFunction(() => window.__drive.map.getLayer('route') && !window.__drive.map.getPaintProperty('route', 'line-dasharray'), null, { timeout: 10000 }).catch(() => {});
+    const l1 = await look();
+    ok('and can be plain again', !l1.pattern && !l1.dash && !l1.fantasyClass, JSON.stringify(l1));
+    await page.click('#open-settings');
+    await page.click('#style-chips .chip:has-text("Fantasy")');
+    await page.click('#close-settings');
+
+    // The compass turns against the map, so north is always where it says.
+    const rose = await page.evaluate(() => ({
+      t: document.getElementById('map-compass').style.transform, h: window.__drive.disp.heading }));
+    const roseDeg = Number((rose.t.match(/rotate\((-?[\d.]+)deg\)/) || [])[1]);
+    ok('the compass points north', Math.abs(roseDeg + rose.h) < 1, JSON.stringify(rose));
+
+    // Everything on the dock fits on the screen.
+    const dock = await page.evaluate(() => [...document.querySelectorAll('#dock button:not([hidden])')]
+      .filter((b) => b.offsetParent).every((b) => { const r = b.getBoundingClientRect(); return r.left >= 0 && r.right <= innerWidth && r.height < 48; }));
+    ok('the dock fits on one line', dock);
 
     // Heading up: the map's bearing is the heading, so the road is up.
     // Beacon to Garrison is a touch east of due south, about 172 degrees.

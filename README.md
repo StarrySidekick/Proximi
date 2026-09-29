@@ -291,6 +291,27 @@ from 100 Yelp reviews is 4.54, because each review counts once). No free
 source has them, so it needs a key in the environment
 (`GOOGLE_PLACES_API_KEY`, `YELP_API_KEY`) and does nothing without one.
 
+**The map is a fantasy chart** by default (*Map look* in settings switches to
+the plain one). A vector map is data plus a style, one entry per layer with its
+colours, widths and dashes, so the look is ours to write: `fantasize()` takes
+OpenFreeMap's style and rewrites it layer by layer into parchment land with a
+paper grain, blue-grey water with wave marks and an inked coast, woods stamped
+with trees, sepia roads with claret highways, hills shaded in sepia from AWS's
+free elevation tiles (lit from the map's northwest so relief reads right as it
+turns), labels in ink on parchment, and the route as a dashed red line. The
+textures are drawn on a canvas from a seeded random generator, so they need no
+files and never change between loads. A compass rose turns against the map,
+the only thing on screen that says where north is, and the chart's edges are
+darkened like old paper. What is not rewritten is the lettering: map labels
+need fonts cut into a special glyph format and OpenFreeMap serves sans-serifs
+only, so a storybook face means making and hosting those files.
+
+**Kinds of food.** Under settings, every cuisine family the data knows
+(pizza, Mexican, Japanese… 26 of them, plus *Not listed*) is a chip that
+cycles *on → ★ favourite → off*. Off hides a cuisine, but a place stays unless
+everything it serves is off; a favourite anywhere on a menu adds to the score,
+so those places rank first and win the deck's places.
+
 **The map can go.** *Show the map* in settings, or **Map** on the dock
 mid-drive, hides the strip and gives the deck the whole width. **+** and **−**
 on the map nudge its zoom by whole steps on top of the zoom the speed

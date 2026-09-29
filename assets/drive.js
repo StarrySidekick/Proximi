@@ -149,7 +149,10 @@
     // Chains are hidden unless asked for; chainsOff lists the ones turned
     // off individually once they are shown.
     showChains: false, chainsOff: [],
-    towns: true, showMap: true, zoomBias: 0
+    towns: true, showMap: true, zoomBias: 0,
+    mapStyle: 'fantasy',
+    // Per cuisine: 'love' ranks it up, 'off' hides it; absent is on.
+    cuisines: {}
   };
 
   const SETTINGS_KEY = 'proximi.drive.v1';
@@ -173,6 +176,7 @@
   settings.levels = { ...DEFAULT_LEVELS, ...settings.levels };
   settings.types = { ...settings.types };
   settings.chainsOff = [...(settings.chainsOff || [])];
+  settings.cuisines = { ...settings.cuisines };
   // Gone: the first version's per-kind list, and the voice and its cooldown.
   for (const k of ['kinds', 'events', 'voice', 'cooldown']) delete settings[k];
   const saveSettings = () => writeJSON(SETTINGS_KEY, settings);
@@ -345,7 +349,7 @@
 
     detours: new Map(),        // candidate id → { min, toMin, at }
     checking: false, lastCheck: 0, routerDownUntil: 0,
-    ahead: [], odo: 0, eats: [],
+    ahead: [], odo: 0, eats: [], cuisineLabels: {},
     towns: { samples: new Map(), queue: [], busy: false, here: null, dismissed: new Set() }
   };
 
@@ -360,9 +364,20 @@
     if (!chainAllowed(c._chain)) return 0;
     const liked = state.liked.has(c.name);
     let s = typeWeight(c._type);
+    /* Kinds of food: a place is out only if every cuisine it serves is off
+       (a pizza-and-pasta place stays for someone who has only turned pizza
+       off), and a favourite anywhere on its menu ranks it up. */
+    let loved = false;
+    if (c.kind === 'restaurant' || c.kind === 'cafe') {
+      const menu = c.cuisine && c.cuisine.length ? c.cuisine : ['none'];
+      const says = menu.map((x) => settings.cuisines[x] || 'on');
+      if (says.every((x) => x === 'off')) return 0;
+      loved = says.includes('love');
+    }
     if (!s && liked && settings.liked) s = 1;
     if (!s) return 0;
     if (liked) s += 3;
+    if (loved) s += 2;
     if (c.description) s += 0.5;
     if (c.url) s += 0.3;
     if (c.onNow) s += 2;
@@ -641,6 +656,8 @@
     optLiked: $('opt-liked'), optKm: $('opt-km'), optTowns: $('opt-towns'), optMap: $('opt-map'),
     mapBtn: $('map-btn'), zoomIn: $('zoom-in'), zoomOut: $('zoom-out'),
     kindGroups: $('kind-groups'), optChains: $('opt-chains'), chainPick: $('chain-pick'),
+    cuisineChips: $('cuisine-chips'), cuisineNote: $('cuisine-note'), styleChips: $('style-chips'),
+    compass: $('map-compass'),
     chainSearch: $('chain-search'), chainList: $('chain-list'), chainNote: $('chain-note'),
     simForm: $('sim-form'), simFrom: $('sim-from'), simTo: $('sim-to'),
     quiz: $('quiz'), quizStep: $('quiz-step'), quizTitle: $('quiz-title'),
@@ -726,6 +743,12 @@
     letterNext = 0;
   }
 
+  // "Mexican & Latin American" is the filter's name; on a card, "Mexican".
+  function cuisineShort(id) {
+    const label = state.cuisineLabels[id] || id.replace(/_/g, ' ');
+    return label.split(/ & |, /)[0].replace(/^./, (x) => x.toUpperCase());
+  }
+
   // What the card calls the place: its type, and for somewhere to eat, what
   // kind of food.
   function typeLine(c) {
@@ -733,7 +756,7 @@
     // A restaurant's line is its food: the fork on the card already says
     // restaurant, and "Restaurant · American" does not fit a narrow card.
     const food = (c.cuisine || [])[0];
-    if (food && c.kind === 'restaurant') s = food.replace(/_/g, ' ').replace(/^./, (x) => x.toUpperCase());
+    if (food && c.kind === 'restaurant') s = cuisineShort(food);
     if (c._chain) s += ' · chain';
     if (state.liked.has(c.name)) s += ' · liked';
     if (c.rating) s += ` · ★ ${c.rating.stars.toFixed(1)}`;
@@ -814,7 +837,7 @@
        changes smoothly, so a card eases out and eases in rather than
        lurching off. On a steady road the spring just follows, a fraction of
        a second behind. */
-    const w = 8, t = Math.min(dt, 50) / 1000;
+    const w = 11, t = Math.min(dt, 50) / 1000;
     const slide = 1 - Math.exp(-dt / 70);
     live.forEach((e, i) => {
       const target = fit[i] + offsets[i];
@@ -1188,6 +1211,167 @@
 
   let map = null, mapReady = false, pendingRoute = null;
 
+  /* ── The fantasy map ───────────────────────────────────────
+     A vector map is data plus a style: one entry per layer (water, woods,
+     roads, labels…), each with its colours, widths and dashes. So the look
+     is ours to write. This takes OpenFreeMap's style and rewrites it, layer
+     by layer, into an old explorer's chart: parchment land with a paper
+     grain, water washed blue-grey with little wave marks and an inked
+     coast, woods stamped with trees, roads in sepia ink with the highways in
+     claret, hills shaded in sepia from free elevation tiles, labels in ink
+     on parchment, and the route as a dashed red line.
+
+     The textures are drawn here, on a canvas, from a seeded random number
+     generator, so they are the same on every load and need no files. The
+     one thing not rewritten is the lettering: labels need fonts cut into a
+     special glyph format, and OpenFreeMap serves sans-serifs only. A true
+     storybook face is possible, but means making and hosting those files. */
+
+  const INK = '#3b2a1a', SEPIA = '#6b4f2c', PARCH = '#ead9b0', CLARET = '#8e3b2c';
+  const TERRAIN = 'https://s3.amazonaws.com/elevation-tiles-prod/terrarium/{z}/{x}/{y}.png';
+  const STYLES = [['fantasy', 'Fantasy'], ['standard', 'Standard']];
+
+  function fantasize(base) {
+    const style = JSON.parse(JSON.stringify(base));
+    style.sources.terrain = {
+      type: 'raster-dem', tiles: [TERRAIN], encoding: 'terrarium', tileSize: 256, maxzoom: 13,
+      attribution: 'Terrain tiles: Mapzen, via AWS Open Data'
+    };
+    const road = (id) => /motorway|trunk/.test(id) ? CLARET : /primary|secondary|tertiary/.test(id) ? '#7a5230' : '#9c7b52';
+    const out = [];
+    for (const l of style.layers) {
+      const id = l.id, sl = l['source-layer'] || '';
+      // What a chart would not show: 3-D buildings, casings (the darker
+      // edge under each road), hatching, arrows, shop and bus-stop icons,
+      // runways, sports pitches and the coarse world raster.
+      if (l.type === 'fill-extrusion' || l.type === 'raster') continue;
+      if (/casing|hatching|one_way|road_area_pattern/.test(id)) continue;
+      if (sl === 'poi' || sl === 'aeroway' || sl === 'aerodrome_label') continue;
+      if (/^landuse_(pitch|track|school|hospital)$/.test(id)) continue;
+      l.paint = l.paint || {};
+      l.layout = l.layout || {};
+      if (l.type === 'background') {
+        l.paint = { 'background-color': PARCH, 'background-pattern': 'fx-parchment' };
+      } else if (id === 'water') {
+        l.paint = { 'fill-pattern': 'fx-waves' };
+        out.push(l);
+        // An inked shoreline, drawn from the same shapes.
+        out.push({ id: 'fx-coast', type: 'line', source: l.source, 'source-layer': 'water',
+          paint: { 'line-color': '#2f4f5a', 'line-width': ['interpolate', ['linear'], ['zoom'], 8, 0.6, 14, 1.6], 'line-opacity': 0.8 } });
+        continue;
+      } else if (id === 'landcover_wood') {
+        l.paint = { 'fill-pattern': 'fx-trees', 'fill-opacity': 0.9 };
+        // Hills go in under the woods, so the trees sit on the slopes.
+        out.push({ id: 'fx-hills', type: 'hillshade', source: 'terrain', paint: {
+          'hillshade-shadow-color': '#5a3e1e', 'hillshade-highlight-color': '#fff4d6',
+          'hillshade-accent-color': SEPIA, 'hillshade-exaggeration': 0.45,
+          // Lit from the northwest of the map, so relief reads right as it turns.
+          'hillshade-illumination-anchor': 'map' } });
+      } else if (l.type === 'fill' && sl === 'park') {
+        l.paint = { 'fill-color': '#c3c98e', 'fill-opacity': 0.45 };
+      } else if (l.type === 'fill' && sl === 'landcover') {
+        l.paint = { 'fill-color': /wetland/.test(id) ? '#b3bf98' : /sand/.test(id) ? '#e3cc92' : /ice/.test(id) ? '#f4efe0' : '#cfd09b',
+          'fill-opacity': 0.45 };
+      } else if (l.type === 'fill' && sl === 'landuse') {
+        l.paint = { 'fill-color': id === 'landuse_cemetery' ? '#c2bb95' : '#d8c08e', 'fill-opacity': 0.35 };
+      } else if (l.type === 'fill' && sl === 'building') {
+        l.paint = { 'fill-color': '#c9b186', 'fill-opacity': 0.35, 'fill-outline-color': SEPIA };
+      } else if (l.type === 'line' && sl === 'waterway') {
+        l.paint = { ...l.paint, 'line-color': '#4f7482' };
+      } else if (l.type === 'line' && sl === 'park') {
+        l.paint = { 'line-color': '#7d8a52', 'line-width': 1, 'line-dasharray': [3, 2], 'line-opacity': 0.6 };
+      } else if (l.type === 'line' && sl === 'transportation') {
+        const rail = /rail/.test(id);
+        l.paint = { ...l.paint, 'line-color': rail ? '#5a4633' : road(id),
+          'line-opacity': /tunnel/.test(id) ? 0.35 : 0.95 };
+        if (rail || /path|service|track/.test(id)) l.paint['line-dasharray'] = [2, 1.5];
+      } else if (l.type === 'line' && sl === 'boundary') {
+        l.paint = { ...l.paint, 'line-color': CLARET, 'line-dasharray': [4, 2, 1, 2], 'line-opacity': 0.55 };
+      } else if (l.type === 'symbol') {
+        const water = sl === 'water_name' || sl === 'waterway';
+        l.paint = { ...l.paint, 'text-color': water ? '#2f5563' : INK,
+          'text-halo-color': 'rgba(234,217,176,0.9)', 'text-halo-width': 1.6, 'text-halo-blur': 0.5 };
+        if (sl === 'place' && /town|city|village|state/.test(id)) {
+          l.layout['text-transform'] = 'uppercase';
+          l.layout['text-letter-spacing'] = 0.18;
+          delete l.layout['icon-image'];
+        }
+      }
+      out.push(l);
+    }
+    style.layers = out;
+    return style;
+  }
+
+  // A small seeded generator: the same paper grain on every load.
+  function seeded(seed) {
+    return () => { seed = (seed * 1664525 + 1013904223) >>> 0; return seed / 4294967296; };
+  }
+
+  /* The textures, drawn on demand the first time the map asks for one, at
+     twice the size and half the pixel ratio so they stay crisp. */
+  const PATTERNS = {
+    'fx-parchment': (g, n, r) => {
+      g.fillStyle = PARCH; g.fillRect(0, 0, n, n);
+      for (let i = 0; i < 900; i++) {           // grain
+        const d = r() < 0.5;
+        g.fillStyle = d ? `rgba(120,86,40,${0.05 + r() * 0.08})` : `rgba(255,248,225,${0.1 + r() * 0.15})`;
+        g.fillRect(r() * n, r() * n, 1 + r() * 2, 1 + r() * 2);
+      }
+      g.strokeStyle = 'rgba(140,105,55,0.08)';  // fibres
+      for (let i = 0; i < 14; i++) {
+        const x = r() * n, y = r() * n, a = r() * Math.PI;
+        g.beginPath(); g.moveTo(x, y); g.lineTo(x + Math.cos(a) * 18, y + Math.sin(a) * 18); g.stroke();
+      }
+    },
+    'fx-waves': (g, n, r) => {
+      g.fillStyle = '#a9c1b8'; g.fillRect(0, 0, n, n);
+      g.strokeStyle = 'rgba(47,79,90,0.45)'; g.lineWidth = 1.4; g.lineCap = 'round';
+      for (let i = 0; i < 5; i++) {
+        const x = (i % 3) * (n / 3) + r() * 10 + 4, y = Math.floor(i / 3) * (n / 2) + (i % 2) * 14 + r() * 8 + 8;
+        g.beginPath(); g.arc(x, y, 5, Math.PI * 1.1, Math.PI * 1.9); g.arc(x + 9, y, 5, Math.PI * 1.1, Math.PI * 1.9); g.stroke();
+      }
+    },
+    'fx-trees': (g, n, r) => {
+      g.fillStyle = 'rgba(160,172,112,0.55)'; g.fillRect(0, 0, n, n);
+      for (const [x, y] of [[n * 0.25, n * 0.3], [n * 0.72, n * 0.22], [n * 0.5, n * 0.72], [n * 0.1, n * 0.85], [n * 0.9, n * 0.7]]) {
+        const s = 7 + r() * 3;
+        g.fillStyle = '#5d6b37'; g.strokeStyle = '#3f4a24'; g.lineWidth = 1;
+        g.beginPath(); g.moveTo(x, y - s); g.lineTo(x + s * 0.7, y + s * 0.5); g.lineTo(x - s * 0.7, y + s * 0.5); g.closePath();
+        g.fill(); g.stroke();
+        g.strokeStyle = '#4a3520'; g.beginPath(); g.moveTo(x, y + s * 0.5); g.lineTo(x, y + s * 0.9); g.stroke();
+      }
+    }
+  };
+
+  function paintPattern(id) {
+    const draw = PATTERNS[id];
+    if (!draw || !map || map.hasImage(id)) return;
+    const n = id === 'fx-parchment' ? 128 : 48;
+    const c = document.createElement('canvas');
+    c.width = c.height = n;
+    const g = c.getContext('2d');
+    draw(g, n, seeded(id.length * 7919));
+    map.addImage(id, g.getImageData(0, 0, n, n), { pixelRatio: 2 });
+  }
+
+  let baseStyle = null;
+  async function styleFor(kind) {
+    if (kind !== 'fantasy') return STYLE_URL;
+    if (!baseStyle) {
+      try { baseStyle = await (await fetch(STYLE_URL)).json(); } catch { return STYLE_URL; }
+    }
+    try { return fantasize(baseStyle); } catch { return baseStyle; }
+  }
+
+  async function applyMapStyle() {
+    if (!map) return;
+    const s = await styleFor(settings.mapStyle);
+    mapReady = false;
+    map.setStyle(s);
+    el.slice.classList.toggle('is-fantasy', settings.mapStyle === 'fantasy');
+  }
+
   function initMap() {
     if (!window.maplibregl) { setStatus('The map failed to load.'); return; }
     try {
@@ -1203,23 +1387,38 @@
       el.slice.classList.add('no-map');
       return;
     }
-    map.on('load', () => {
+    // Textures are drawn the first time a layer asks for one.
+    map.on('styleimagemissing', (e) => paintPattern(e.id));
+    // Our own layers go back on whenever a style is (re)loaded: the route is
+    // not part of either look, it is laid over both.
+    map.on('style.load', () => {
       mapReady = true;
-      // The Victorian desk's parchment under the roads, where the style allows.
-      try { map.setPaintProperty('background', 'background-color', '#EFEADA'); } catch { /* style without one */ }
-      map.addSource('route', { type: 'geojson', data: emptyLine() });
-      map.addLayer({
-        id: 'route', type: 'line', source: 'route',
-        layout: { 'line-cap': 'round', 'line-join': 'round' },
-        paint: { 'line-color': '#2F5F9E', 'line-width': 7, 'line-opacity': 0.85 }
-      });
+      const fantasy = settings.mapStyle === 'fantasy';
+      if (!fantasy) {
+        // The Victorian desk's parchment under the roads, where the style allows.
+        try { map.setPaintProperty('background', 'background-color', '#EFEADA'); } catch { /* style without one */ }
+      }
+      if (!map.getSource('route')) map.addSource('route', { type: 'geojson', data: emptyLine() });
+      if (!map.getLayer('route')) {
+        map.addLayer({
+          id: 'route', type: 'line', source: 'route',
+          layout: { 'line-cap': 'round', 'line-join': 'round' },
+          // A treasure-map dash in red ink on the chart; plain blue otherwise.
+          paint: fantasy
+            ? { 'line-color': '#9b2d20', 'line-width': 4, 'line-dasharray': [2, 1.4], 'line-opacity': 0.9 }
+            : { 'line-color': '#2F5F9E', 'line-width': 7, 'line-opacity': 0.85 }
+        });
+      }
       if (pendingRoute) setRouteLine(pendingRoute);
-      // The credit starts as its small "i", not a box over the road.
-      el.map.querySelector('.maplibregl-ctrl-attrib')?.classList.remove('maplibregl-compact-show');
+      // The credit starts as its small "i", not a box over the road. MapLibre
+      // opens it again as each source's credit arrives, so close it once the
+      // new style has finished loading.
+      map.once('idle', () => el.map.querySelector('.maplibregl-ctrl-attrib')?.classList.remove('maplibregl-compact-show'));
     });
     map.on('error', () => { /* a missing tile is not worth a word */ });
     new ResizeObserver(() => { map?.resize(); placeCar(); }).observe(el.slice);
     placeCar();
+    if (settings.mapStyle === 'fantasy') applyMapStyle();
   }
 
   const emptyLine = () => ({ type: 'FeatureCollection', features: [] });
@@ -1240,6 +1439,8 @@
   }
 
   function camera() {
+    // The compass turns against the map, so its needle always points north.
+    if (el.compass) el.compass.style.transform = `rotate(${-(disp.heading ?? 0)}deg)`;
     if (!map || !disp.pos) return;
     const h = el.slice.clientHeight;
     map.jumpTo({
@@ -1667,6 +1868,14 @@
     el.main.classList.toggle('no-map-view', !settings.showMap);
     renderKinds();
     renderChains();
+    renderCuisines();
+    el.styleChips.replaceChildren(...STYLES.map(([id, label]) =>
+      chip(label, settings.mapStyle === id, () => {
+        if (settings.mapStyle === id) return;
+        settings.mapStyle = id;
+        changed();
+        applyMapStyle();
+      })));
     syncSimSpeed();
   }
 
@@ -1741,6 +1950,39 @@
     el.chainNote.textContent = !all.length ? 'Loading chains…'
       : match.length > shown.length ? `${shown.length} of ${match.length} shown. Search for the rest.`
       : `${all.length} chains in the directory.`;
+  }
+
+  /* Kinds of food. Each chip cycles on → favourite → off, because there are
+     two things worth saying about a cuisine: "never" and "yes, especially".
+     Ordered by how many places serve it, with "Not listed" last for the
+     restaurants OpenStreetMap does not describe. */
+  const CUISINE_CYCLE = { on: 'love', love: 'off', off: 'on' };
+
+  function renderCuisines() {
+    const counts = new Map();
+    for (const p of state.eats) {
+      const menu = p.cuisine && p.cuisine.length ? p.cuisine : ['none'];
+      for (const x of menu) counts.set(x, (counts.get(x) || 0) + 1);
+    }
+    const ids = [...counts.keys()].filter((x) => x !== 'none').sort((a, b) => counts.get(b) - counts.get(a));
+    if (counts.has('none')) ids.push('none');
+    el.cuisineChips.replaceChildren(...ids.map((id) => {
+      const st = settings.cuisines[id] || 'on';
+      const label = id === 'none' ? 'Not listed' : (state.cuisineLabels[id] || id);
+      const b = chip((st === 'love' ? '★ ' : '') + label, st !== 'off', () => {
+        const next = CUISINE_CYCLE[st];
+        if (next === 'on') delete settings.cuisines[id]; else settings.cuisines[id] = next;
+        changed();
+      });
+      b.dataset.cuisine = id;
+      b.dataset.state = st;
+      const n = document.createElement('span');
+      n.className = 'chip-n';
+      n.textContent = counts.get(id).toLocaleString();
+      b.appendChild(n);
+      return b;
+    }));
+    el.cuisineNote.textContent = state.eats.length ? '' : 'Loading places to eat…';
   }
 
   el.optChains.addEventListener('change', () => { settings.showChains = el.optChains.checked; changed(); });
@@ -1917,12 +2159,14 @@
        restaurant ever turned up on a drive. */
     return fetch('data/eats.json', { cache: 'no-cache' }).then((r) => (r.ok ? r.json() : null)).then((eats) => {
       state.eats = prepare(eats?.items);
+      state.cuisineLabels = eats?.meta?.cuisineLabels || {};
       learnBrands(state.eats);
       markChains(state.places);
       markChains(state.eats);
       buildPool();
       renderKinds();
       renderChains();
+      renderCuisines();
       if (state.phase === 'setup') setStatus(`${state.pool.length.toLocaleString()} places worth a stop, in Proximi's coverage`);
     }).catch(() => { /* the drive works without somewhere to eat */ });
   }).catch(() => setStatus('The places file failed to load.'));

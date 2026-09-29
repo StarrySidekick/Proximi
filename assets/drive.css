@@ -369,3 +369,34 @@ body.drive {
 .town-name { font-family: var(--serif); font-size: 17px; }
 .town-st { color: var(--ink-3); font-size: 13px; margin-left: 4px; }
 .deck-card.is-town .town-from { font-size: 12px; font-weight: 500; color: var(--ink-3); }
+
+/* The compass rose, top left of the strip, turned against the map. */
+.map-compass {
+  position: absolute; z-index: 6; left: 8px; top: 8px; width: 46px; height: 46px;
+  pointer-events: none;
+}
+.map-compass .rose-ring { fill: rgba(234,217,176,.85); stroke: #6b4f2c; stroke-width: 1.2; }
+.map-compass .rose-inner { fill: none; stroke-dasharray: 2 2; }
+.map-compass .rose-n { fill: #8e3b2c; stroke: #3b2a1a; stroke-width: .8; }
+.map-compass .rose-s { fill: #ead9b0; stroke: #3b2a1a; stroke-width: .8; }
+.map-compass .rose-ew { fill: #c9b186; stroke: #3b2a1a; stroke-width: .6; }
+.map-compass .rose-letter { font: 700 9px/1 var(--serif); fill: #3b2a1a; text-anchor: middle; }
+
+/* The chart's edges, darkened like old paper. */
+.map-slice.is-fantasy::after {
+  content: ""; position: absolute; inset: 0; z-index: 4; pointer-events: none;
+  box-shadow: inset 0 0 28px 6px rgba(92, 62, 28, .45);
+}
+@media (prefers-color-scheme: dark) {
+  .map-slice.is-fantasy .drive-map canvas { filter: brightness(.82) sepia(.15); }
+}
+
+/* Cuisine chips: a favourite reads as claret, an off one as struck out. */
+#cuisine-chips .chip[data-state="love"] { background: var(--act-ink); border-color: var(--act-ink); color: var(--accent-ink); }
+#cuisine-chips .chip[data-state="off"] { text-decoration: line-through; opacity: .7; }
+
+/* The dock has to fit a narrow deck: speed, Map and End on one line. */
+.drive-dock { gap: 6px; padding-left: 8px; padding-right: 8px; }
+.drive-dock-btn { flex: 0 1 auto; padding: 0 14px; min-height: 40px; font-size: 14px; }
+.sim-btn { width: 36px; height: 36px; font-size: 18px; }
+.sim-speed { min-width: 34px; font-size: 14px; }
