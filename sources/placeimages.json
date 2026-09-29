@@ -15,6 +15,11 @@
       "why": "no og:image",
       "checked": "2026-09-29"
     },
+    "104mainpublichouse.com": {
+      "verdict": "image",
+      "image": "https://104mainpublichouse.com/wp-content/uploads/2020/07/IMG_5075-scaled.jpg",
+      "checked": "2026-09-29"
+    },
     "105twentyrest.com": {
       "verdict": "image",
       "image": "https://static.spotapps.co/website_images/ab_websites/123852_website_v1/social_share.jpg",
@@ -93,6 +98,11 @@
     "2brospizza.com/location/113-east-125th-street-new-york-ny-10035": {
       "verdict": "none",
       "why": "looks like a logo",
+      "checked": "2026-09-29"
+    },
+    "2catsbarharbor.com/cafe.html": {
+      "verdict": "none",
+      "why": "parked or suspect",
       "checked": "2026-09-29"
     },
     "2hopewell.com": {
@@ -280,6 +290,11 @@
       "why": 403,
       "checked": "2026-09-29"
     },
+    "86thismaine.com": {
+      "verdict": "image",
+      "image": "https://www.86thismaine.com/uploads/2/0/7/3/20732188/5513328.png?137",
+      "checked": "2026-09-29"
+    },
     "88riceshop.com": {
       "verdict": "unreachable",
       "why": "URLError",
@@ -380,9 +395,19 @@
       "image": "https://static1.squarespace.com/static/5d36040fa6e4d600012b686d/t/5d360abe42b5000001a184ff/1749047870031/Untitled-1-05.png?format=1500w",
       "checked": "2026-09-29"
     },
+    "abcmaine.beer": {
+      "verdict": "image",
+      "image": "https://lh7-us.googleusercontent.com/sitesv-images-rt/AMxu72sz1SmXfGwwgezEpYMf4NjWuUYqjCh0tgroQTNv7-4dThziJ8txofznOhwEqLwEDiaTxgX-ioNxn72gzvfs_dDZhrAHNlGy01VbWSswox3GsJHKjWP28s-o2KDDVfXgFfjTHZL5XKDMdVCgIadqJ-pTQCLgXVXaUYs6iIfyQN-Va3xp1BO1JzCBop29FAk=w16383",
+      "checked": "2026-09-29"
+    },
     "abeandlouies.com": {
       "verdict": "image",
       "image": "https://abeandlouies.com/wp-content/uploads/2025/05/Abe-and-Louies-Site-Image.png",
+      "checked": "2026-09-29"
+    },
+    "abelslobstermdi.com": {
+      "verdict": "none",
+      "why": "no og:image",
       "checked": "2026-09-29"
     },
     "abfishmarketny.com": {
@@ -513,6 +538,11 @@
     "acrosstheborderfood.com": {
       "verdict": "unreachable",
       "why": "URLError",
+      "checked": "2026-09-29"
+    },
+    "acsodashop.com": {
+      "verdict": "unreachable",
+      "why": 403,
       "checked": "2026-09-29"
     },
     "acton.lib.me.us": {
@@ -710,6 +740,11 @@
       "why": "no og:image",
       "checked": "2026-09-29"
     },
+    "airlinebrewing.com/pub": {
+      "verdict": "unreachable",
+      "why": 404,
+      "checked": "2026-09-29"
+    },
     "airportdinerlasuegra.co": {
       "verdict": "image",
       "image": "https://static.spotapps.co/website_images/ab_websites/313808_website_v1/shared_image.jpg",
@@ -773,6 +808,11 @@
     "akarisushi2.com": {
       "verdict": "none",
       "why": "no og:image",
+      "checked": "2026-09-29"
+    },
+    "akisushimaine.com": {
+      "verdict": "unreachable",
+      "why": "URLError",
       "checked": "2026-09-29"
     },
     "akita-ramen.com": {
@@ -1510,6 +1550,11 @@
       "image": "https://angelsdelict-com.cf-vps01-clipperwebdev-com.vps.ezhostingserver.com/wp-content/uploads/2022/05/GettyImages-511385346.jpg",
       "checked": "2026-09-29"
     },
+    "anglersseafoodrestaurant.com/locations/searsport": {
+      "verdict": "none",
+      "why": "looks like a logo",
+      "checked": "2026-09-29"
+    },
     "angryeggcafe.com": {
       "verdict": "image",
       "image": "https://static1.squarespace.com/static/624a5539d253354ab039b6ad/t/624b1808e6813d6cb4355e4a/1649088520681/Untitled+design.png?format=1500w",
@@ -1625,6 +1670,11 @@
       "image": "https://static.spotapps.co/website_images/ab_websites/160905_website_v1/social_share.jpg",
       "checked": "2026-09-29"
     },
+    "antigonispizza.com/antigonisaugusta": {
+      "verdict": "unreachable",
+      "why": 404,
+      "checked": "2026-09-29"
+    },
     "antikagrill.com": {
       "verdict": "image",
       "image": "https://static.spotapps.co/website_images/ab_websites/196597_website_v1/share_image.jpg",
@@ -1663,6 +1713,11 @@
     "antojitosdelmanguny.com": {
       "verdict": "none",
       "why": "no og:image",
+      "checked": "2026-09-29"
+    },
+    "antoniaspizzeria.com": {
+      "verdict": "none",
+      "why": "looks like a logo",
       "checked": "2026-09-29"
     },
     "antoniospizza.com": {
@@ -1823,6 +1878,11 @@
     "arabianhookahcafe.com": {
       "verdict": "image",
       "image": "https://arabianhookahcafe.com/assets/img/gallery/DSC_0673.jpg",
+      "checked": "2026-09-29"
+    },
+    "arabicacoffee.me": {
+      "verdict": "none",
+      "why": "no og:image",
       "checked": "2026-09-29"
     },
     "aracoffees.com": {
@@ -2155,9 +2215,19 @@
       "why": "looks like a logo",
       "checked": "2026-09-29"
     },
+    "asiancafeme.com": {
+      "verdict": "none",
+      "why": "no og:image",
+      "checked": "2026-09-29"
+    },
     "asianfusionnp.com": {
       "verdict": "image",
       "image": "https://asianfusionnp.com/wp-content/uploads/2020/05/location-1.png",
+      "checked": "2026-09-29"
+    },
+    "asiangardenme.com": {
+      "verdict": "none",
+      "why": "no og:image",
       "checked": "2026-09-29"
     },
     "asiangardenny.com": {
@@ -2295,9 +2365,19 @@
       "why": "parked or suspect",
       "checked": "2026-09-29"
     },
+    "atlanticbakingco.com": {
+      "verdict": "none",
+      "why": "looks like a logo",
+      "checked": "2026-09-29"
+    },
     "atlanticbrewing.com": {
       "verdict": "image",
       "image": "https://www.atlanticbrewing.com/wp-content/uploads/2015/03/IMG_0062-e1594418146720.jpg",
+      "checked": "2026-09-29"
+    },
+    "atlanticbrewing.com/mainly-meat-bbq": {
+      "verdict": "none",
+      "why": "no og:image",
       "checked": "2026-09-29"
     },
     "atlanticfish.com": {
@@ -2770,6 +2850,11 @@
       "image": "https://www.bakedbymelissa.com/cdn/shop/files/JUL25-WEB-SHOPIFY-SEO.jpg?v=1754318580",
       "checked": "2026-09-29"
     },
+    "bakedonmaine.com": {
+      "verdict": "unreachable",
+      "why": 429,
+      "checked": "2026-09-29"
+    },
     "bakehouse.us": {
       "verdict": "unreachable",
       "why": "URLError",
@@ -3075,6 +3160,21 @@
       "image": "https://bargoyana.com/wp-content/uploads/2026/02/Goyana.webp",
       "checked": "2026-09-29"
     },
+    "barharboricecreamboat.com": {
+      "verdict": "image",
+      "image": "https://static.wixstatic.com/media/9d4c2e_66b9847652d74a1386f904bb310b87d3~mv2.png/v1/fill/w_811,h_609,al_c/9d4c2e_66b9847652d74a1386f904bb310b87d3~mv2.png",
+      "checked": "2026-09-29"
+    },
+    "barharborlobsterpound.com": {
+      "verdict": "image",
+      "image": "https://static.wixstatic.com/media/41dd1f_98c144c97ee740f7b8a7c65285275510~mv2.jpg/v1/fill/w_2500,h_1872,al_c/41dd1f_98c144c97ee740f7b8a7c65285275510~mv2.jpg",
+      "checked": "2026-09-29"
+    },
+    "barharborpinkpastry.com": {
+      "verdict": "image",
+      "image": "https://img1.wsimg.com/isteam/ip/d016a95e-772e-46b9-b47c-1adf48ec7458/Dd1TYtDUTDS9uqKiAWz__g.jpg",
+      "checked": "2026-09-29"
+    },
     "barharbortea.com": {
       "verdict": "image",
       "image": "https://static.wixstatic.com/media/d01254_02983df11f3f494ab1de0d72d927fbf8~mv2.jpg/v1/fill/w_2500,h_1198,al_c/d01254_02983df11f3f494ab1de0d72d927fbf8~mv2.jpg",
@@ -3123,6 +3223,16 @@
     "barnbilly.com": {
       "verdict": "image",
       "image": "https://static.wixstatic.com/media/50dc94_dc2ba4617b9845d5a11711a69c9c97d0%7Emv2.jpg/v1/fit/w_2500,h_1330,al_c/50dc94_dc2ba4617b9845d5a11711a69c9c97d0%7Emv2.jpg",
+      "checked": "2026-09-29"
+    },
+    "barncastle.me": {
+      "verdict": "none",
+      "why": "looks like a logo",
+      "checked": "2026-09-29"
+    },
+    "barndoorbakingcompany.com": {
+      "verdict": "none",
+      "why": "no og:image",
       "checked": "2026-09-29"
     },
     "barnerbooks.com": {
@@ -3320,6 +3430,11 @@
       "why": "parked or suspect",
       "checked": "2026-09-29"
     },
+    "baybowlsme.com": {
+      "verdict": "unreachable",
+      "why": 403,
+      "checked": "2026-09-29"
+    },
     "bayhavenlobsterpound.com": {
       "verdict": "image",
       "image": "https://static.spotapps.co/website_images/ab_websites/541927_website_v1/social_share.jpg",
@@ -3338,6 +3453,11 @@
     "baypointewaterfrontrestaurant.com": {
       "verdict": "image",
       "image": "https://static.spotapps.co/website_images/ab_websites/299032_website_v1/events_page_back.jpg",
+      "checked": "2026-09-29"
+    },
+    "baysideamericancafe.com": {
+      "verdict": "image",
+      "image": "https://static1.squarespace.com/static/5ab423925417fc954e2fdae5/t/5ebc471f4b815f50bcff00c3/1589397281363/BaysideCoverPage.jpg?format=1500w",
       "checked": "2026-09-29"
     },
     "baystatebrewing.com": {
@@ -3460,6 +3580,11 @@
       "why": "no og:image",
       "checked": "2026-09-29"
     },
+    "beachblisscafe.com": {
+      "verdict": "unreachable",
+      "why": "URLError",
+      "checked": "2026-09-29"
+    },
     "beachclub-rye.com": {
       "verdict": "none",
       "why": "looks like a logo",
@@ -3506,6 +3631,11 @@
       "checked": "2026-09-29"
     },
     "bealslibrary.org": {
+      "verdict": "none",
+      "why": "no og:image",
+      "checked": "2026-09-29"
+    },
+    "bealslobster.com": {
       "verdict": "none",
       "why": "no og:image",
       "checked": "2026-09-29"
@@ -3603,6 +3733,11 @@
     "beckleyfurnace.org": {
       "verdict": "none",
       "why": "looks like a logo",
+      "checked": "2026-09-29"
+    },
+    "beckysdiner.com": {
+      "verdict": "image",
+      "image": "https://static1.squarespace.com/static/536a4b52e4b08099c2dbeb37/t/537a5755e4b095f55e7686fe/1400526687038/Becky%27s-Diner-Email-Header.png?format=1500w",
       "checked": "2026-09-29"
     },
     "bedforddepot.org": {
@@ -3715,6 +3850,11 @@
       "why": "parked or suspect",
       "checked": "2026-09-29"
     },
+    "belfast.coop": {
+      "verdict": "none",
+      "why": "no og:image",
+      "checked": "2026-09-29"
+    },
     "belfastmaskers.com": {
       "verdict": "none",
       "why": "looks like a logo",
@@ -3795,6 +3935,11 @@
       "why": "looks like a logo",
       "checked": "2026-09-29"
     },
+    "bellthecatinc.com/menu": {
+      "verdict": "unreachable",
+      "why": 403,
+      "checked": "2026-09-29"
+    },
     "belltowervenue.com": {
       "verdict": "none",
       "why": "no og:image",
@@ -3835,6 +3980,11 @@
       "why": "URLError",
       "checked": "2026-09-29"
     },
+    "benandbills.com": {
+      "verdict": "none",
+      "why": "too small (225px)",
+      "checked": "2026-09-29"
+    },
     "benchq.com": {
       "verdict": "none",
       "why": "no og:image",
@@ -3870,6 +4020,11 @@
       "why": "URLError",
       "checked": "2026-09-29"
     },
+    "benreubensknishery.com": {
+      "verdict": "none",
+      "why": "parked or suspect",
+      "checked": "2026-09-29"
+    },
     "bentara.com": {
       "verdict": "unreachable",
       "why": "URLError",
@@ -3878,6 +4033,11 @@
     "benton.uconn.edu": {
       "verdict": "image",
       "image": "https://benton.media.uconn.edu/wp-content/uploads/sites/2454/2020/12/Screen-Shot-2020-12-04-at-11.23.36-AM-copy-400x88.png",
+      "checked": "2026-09-29"
+    },
+    "bentosushi.com/us": {
+      "verdict": "image",
+      "image": "https://www.bentosushi.com/wp-content/uploads/2026/02/banner-two.webp",
       "checked": "2026-09-29"
     },
     "bergenfield.bccls.org": {
@@ -4175,6 +4335,11 @@
       "why": "icon format",
       "checked": "2026-09-29"
     },
+    "bigtopdeli.com": {
+      "verdict": "image",
+      "image": "https://www.bigtopdeli.com/wp-content/uploads/2019/12/big-top-location-map-image-300x240.jpg",
+      "checked": "2026-09-29"
+    },
     "bijougalleries.com": {
       "verdict": "none",
       "why": "no og:image",
@@ -4250,9 +4415,29 @@
       "image": "https://bimp.media.uconn.edu/wp-content/uploads/sites/2456/2021/09/Visit1200x800.jpg",
       "checked": "2026-09-29"
     },
+    "bingasstadium.com": {
+      "verdict": "unreachable",
+      "why": 502,
+      "checked": "2026-09-29"
+    },
+    "bingaswindham.com/menu": {
+      "verdict": "none",
+      "why": "parked or suspect",
+      "checked": "2026-09-29"
+    },
+    "bingaswingas.com": {
+      "verdict": "none",
+      "why": "no og:image",
+      "checked": "2026-09-29"
+    },
     "bingebowl.com": {
       "verdict": "none",
       "why": "no og:image",
+      "checked": "2026-09-29"
+    },
+    "bintliffs.com": {
+      "verdict": "image",
+      "image": "https://img1.wsimg.com/isteam/ip/6d191adb-5915-484d-a5e8-c3bf12432574/blob-38dd6f3.png",
       "checked": "2026-09-29"
     },
     "birchcoffee.com": {
@@ -4375,6 +4560,11 @@
       "image": "https://static1.squarespace.com/static/5f4eb3f2bf9598489ef9ffd0/t/5f7e423a4e0170471c9a8c17/1602110013337/.jpg?format=1500w",
       "checked": "2026-09-29"
     },
+    "blackcowburgers.com": {
+      "verdict": "none",
+      "why": "looks like a logo",
+      "checked": "2026-09-29"
+    },
     "blackcowrestaurants.com/newburyport": {
       "verdict": "unreachable",
       "why": 404,
@@ -4408,6 +4598,11 @@
     "blacklabcafe.com": {
       "verdict": "none",
       "why": "no og:image",
+      "checked": "2026-09-29"
+    },
+    "blackmoonpublichouse.com": {
+      "verdict": "unreachable",
+      "why": 403,
       "checked": "2026-09-29"
     },
     "blackoakcoventry.com": {
@@ -4475,6 +4670,11 @@
       "why": 403,
       "checked": "2026-09-29"
     },
+    "blanchardscreamery.com": {
+      "verdict": "none",
+      "why": "no og:image",
+      "checked": "2026-09-29"
+    },
     "blarneyscafe.com": {
       "verdict": "unreachable",
       "why": 404,
@@ -4485,9 +4685,24 @@
       "why": "no og:image",
       "checked": "2026-09-29"
     },
+    "blastfromthepasttoodiner.com": {
+      "verdict": "unreachable",
+      "why": "URLError",
+      "checked": "2026-09-29"
+    },
     "blastybough.com": {
       "verdict": "image",
       "image": "https://static1.squarespace.com/static/5ab264ec5b409b9a2f55c436/t/5b0419bf03ce64928f6b8064/1526995393327/fb_share.jpg?format=1500w",
+      "checked": "2026-09-29"
+    },
+    "blazebangor.hrpos.heartland.us/menu": {
+      "verdict": "none",
+      "why": "no og:image",
+      "checked": "2026-09-29"
+    },
+    "blazesburgers.org": {
+      "verdict": "none",
+      "why": "no og:image",
       "checked": "2026-09-29"
     },
     "bleacherbarboston.com": {
@@ -4830,9 +5045,19 @@
       "why": "looks like a logo",
       "checked": "2026-09-29"
     },
+    "bogushas.com": {
+      "verdict": "unreachable",
+      "why": "URLError",
+      "checked": "2026-09-29"
+    },
     "bohemiancoffee.com": {
       "verdict": "none",
       "why": "no og:image",
+      "checked": "2026-09-29"
+    },
+    "bohemiancoffeehouse.com": {
+      "verdict": "image",
+      "image": "https://static.wixstatic.com/media/b2a02d_d7e0053c1fc3435190f66cbe896c1898~mv2.jpg/v1/fill/w_560,h_262,al_c/b2a02d_d7e0053c1fc3435190f66cbe896c1898~mv2.jpg",
       "checked": "2026-09-29"
     },
     "bokmahopac.com": {
@@ -4873,6 +5098,11 @@
     "boltonstreettavern.com": {
       "verdict": "image",
       "image": "https://static.wixstatic.com/media/40fa53_f29914de403a4136a75440dee5c86053%7Emv2.jpg/v1/fit/w_2500,h_1330,al_c/40fa53_f29914de403a4136a75440dee5c86053%7Emv2.jpg",
+      "checked": "2026-09-29"
+    },
+    "bombaymahal.com": {
+      "verdict": "image",
+      "image": "https://static.wixstatic.com/media/01bf5a_1b7969ea90684c05a8f96bb7a5d3d253~mv2.png/v1/fill/w_2500,h_2500,al_c/01bf5a_1b7969ea90684c05a8f96bb7a5d3d253~mv2.png",
       "checked": "2026-09-29"
     },
     "bombayolivect.com": {
@@ -4988,6 +5218,11 @@
     "bookstore.colby.edu": {
       "verdict": "none",
       "why": "no og:image",
+      "checked": "2026-09-29"
+    },
+    "boonesfishhouse.com": {
+      "verdict": "none",
+      "why": "looks like a logo",
       "checked": "2026-09-29"
     },
     "boonsongthaicuisine.com": {
@@ -5410,6 +5645,11 @@
       "why": "URLError",
       "checked": "2026-09-29"
     },
+    "bramhallme.com": {
+      "verdict": "image",
+      "image": "https://static1.squarespace.com/static/5535b725e4b0666dc5b1716b/t/57f404021b631be9710e7c77/1475609604030/Bramhall_OG.jpg?format=1500w",
+      "checked": "2026-09-29"
+    },
     "brandeis.edu/about/visiting/map.html": {
       "verdict": "none",
       "why": "no og:image",
@@ -5453,6 +5693,11 @@
     "brassandbonect.com": {
       "verdict": "none",
       "why": "looks like a logo",
+      "checked": "2026-09-29"
+    },
+    "brasscompasscafe.com": {
+      "verdict": "unreachable",
+      "why": 503,
       "checked": "2026-09-29"
     },
     "brasserie292.com": {
@@ -5608,6 +5853,11 @@
     "brewettcity.com": {
       "verdict": "image",
       "image": "https://static1.squarespace.com/static/5e0e5a059a650a7753bed22e/t/5e1b885b51f223209a323bee/1578862685591/IMG_1461.PNG?format=1500w",
+      "checked": "2026-09-29"
+    },
+    "brewstersfinefoodanddrink.com": {
+      "verdict": "none",
+      "why": "no og:image",
       "checked": "2026-09-29"
     },
     "briarcliffdeli.com": {
@@ -5798,6 +6048,11 @@
     "broadway-dairy-maid.hub.biz": {
       "verdict": "unreachable",
       "why": 403,
+      "checked": "2026-09-29"
+    },
+    "broadway-delicatessen.com": {
+      "verdict": "image",
+      "image": "https://www.broadway-delicatessen.com/images/gallery/3.jpg",
       "checked": "2026-09-29"
     },
     "broadwayperformingarts.net": {
@@ -6145,6 +6400,11 @@
       "image": "https://static1.squarespace.com/static/55dd22dce4b0b9d28707ceb9/t/55e1a749e4b0d3fc613837e6/1440851786490/brunette_web.png?format=1500w",
       "checked": "2026-09-29"
     },
+    "brunswickdiner.com": {
+      "verdict": "unreachable",
+      "why": 403,
+      "checked": "2026-09-29"
+    },
     "brunswickfarmersmarket.com": {
       "verdict": "none",
       "why": "no og:image",
@@ -6315,6 +6575,11 @@
       "image": "https://static1.squarespace.com/static/51bdfe56e4b04f4d63b6318f/t/5a145091e2c483971eab77ef/1511280785498/Bunker-Brewing-Co-%281%29.jpg?format=1500w",
       "checked": "2026-09-29"
     },
+    "bunkersseafood.com": {
+      "verdict": "image",
+      "image": "https://cdn01.s4shops.com/skytabweb/uploads/76a9fc93-0bd8-ee11-85f9-6045bdb05feb/21b2ed10-43db-ee11-85fb-6045bdb05feb.jpg",
+      "checked": "2026-09-29"
+    },
     "bunrattytavern.com": {
       "verdict": "none",
       "why": "looks like a logo",
@@ -6328,6 +6593,11 @@
     "buongustowayne.com": {
       "verdict": "unreachable",
       "why": "URLError",
+      "checked": "2026-09-29"
+    },
+    "buranospizza.com": {
+      "verdict": "image",
+      "image": "https://spoton-prod-websites-user-assets.s3.amazonaws.com/static/uploads/VADRpJOT4e9LW2YVkOmB_galleryhome%20(1).jpg",
       "checked": "2026-09-29"
     },
     "burdickchocolate.com/chocolateshop-cafe-boston.aspx": {
@@ -6545,6 +6815,16 @@
       "why": "no og:image",
       "checked": "2026-09-29"
     },
+    "byrnesirishpub.com": {
+      "verdict": "none",
+      "why": "no og:image",
+      "checked": "2026-09-29"
+    },
+    "c-raylobster.com": {
+      "verdict": "none",
+      "why": "no og:image",
+      "checked": "2026-09-29"
+    },
     "cabernetfranks.com": {
       "verdict": "unreachable",
       "why": "URLError",
@@ -6635,6 +6915,11 @@
       "why": "no og:image",
       "checked": "2026-09-29"
     },
+    "cafedebangkok232.com": {
+      "verdict": "image",
+      "image": "https://www.cafedebangkok232.com",
+      "checked": "2026-09-29"
+    },
     "cafedusoleilny.com": {
       "verdict": "unreachable",
       "why": 403,
@@ -6665,6 +6950,11 @@
       "why": "URLError",
       "checked": "2026-09-29"
     },
+    "cafelunamaine.com": {
+      "verdict": "image",
+      "image": "https://cafelunamaine.com/wp-content/uploads/2024/01/2Y8A5533-768x1151.jpg",
+      "checked": "2026-09-29"
+    },
     "cafemangal.com": {
       "verdict": "image",
       "image": "https://static.spotapps.co/website_images/ab_websites/617426_website_v1/socials.jpg",
@@ -6688,6 +6978,11 @@
     "cafemediterraneangrillboston.com": {
       "verdict": "none",
       "why": "parked or suspect",
+      "checked": "2026-09-29"
+    },
+    "cafemiranda.com": {
+      "verdict": "none",
+      "why": "no og:image",
       "checked": "2026-09-29"
     },
     "cafemobaynj.com": {
@@ -6741,6 +7036,11 @@
       "checked": "2026-09-29"
     },
     "cafeteriaboston.com": {
+      "verdict": "none",
+      "why": "looks like a logo",
+      "checked": "2026-09-29"
+    },
+    "cafethisway.com": {
       "verdict": "none",
       "why": "looks like a logo",
       "checked": "2026-09-29"
@@ -7005,6 +7305,11 @@
       "why": 403,
       "checked": "2026-09-29"
     },
+    "cantinacalafia.com": {
+      "verdict": "none",
+      "why": "looks like a logo",
+      "checked": "2026-09-29"
+    },
     "cantinamexicanact.com": {
       "verdict": "image",
       "image": "https://static.hungerrush.com/menufy/width=1920,height=1080,fit=scale-down,format=auto/636238180644396455+17448.png",
@@ -7055,6 +7360,11 @@
       "why": "URLError",
       "checked": "2026-09-29"
     },
+    "capewhoopies.com": {
+      "verdict": "image",
+      "image": "https://capewhoopies.com/cdn/shop/files/summer_in_maine_whoopie_pies_slide_2_1_1200x1200.png?v=1752445996",
+      "checked": "2026-09-29"
+    },
     "capitoltheatreusa.com": {
       "verdict": "none",
       "why": "no og:image",
@@ -7068,6 +7378,11 @@
     "cappysseafood.com": {
       "verdict": "image",
       "image": "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/dbb331989a7996c75430650c1250beca/id-preview-88fae025--ecb2207d-0e51-4183-a2e0-25f39ea467d2.lovable.app-1788901389894.png",
+      "checked": "2026-09-29"
+    },
+    "cappzaspizza.com": {
+      "verdict": "image",
+      "image": "https://www.cappzaspizza.com/wp-content/uploads/2020/09/pizza-man.png",
       "checked": "2026-09-29"
     },
     "capricciopizza.com": {
@@ -7220,6 +7535,11 @@
       "why": "looks like a logo",
       "checked": "2026-09-29"
     },
+    "carriersmainelylobster.com": {
+      "verdict": "unreachable",
+      "why": "URLError",
+      "checked": "2026-09-29"
+    },
     "carseatery.com": {
       "verdict": "unreachable",
       "why": 403,
@@ -7255,6 +7575,11 @@
       "why": "no og:image",
       "checked": "2026-09-29"
     },
+    "casajaliscoellsworth.com": {
+      "verdict": "image",
+      "image": "https://static1.squarespace.com/static/6616979d98d49b7f9305df14/t/661698524eaa5672bdfc8d7f/1712756818232/Asset+1.png?format=1500w",
+      "checked": "2026-09-29"
+    },
     "casamiasparta.com": {
       "verdict": "none",
       "why": "no og:image",
@@ -7263,6 +7588,11 @@
     "casamiathehawthorne.com": {
       "verdict": "image",
       "image": "https://img1.wsimg.com/isteam/ip/fc2c26eb-d88c-417b-80b1-1df38600c7e7/Header.jpg",
+      "checked": "2026-09-29"
+    },
+    "casanovello.com": {
+      "verdict": "unreachable",
+      "why": 403,
       "checked": "2026-09-29"
     },
     "casaortegany.com": {
@@ -7540,6 +7870,11 @@
       "why": "looks like a logo",
       "checked": "2026-09-29"
     },
+    "central-provisions.com": {
+      "verdict": "none",
+      "why": "looks like a logo",
+      "checked": "2026-09-29"
+    },
     "centralcoffeecompany.com": {
       "verdict": "none",
       "why": "no og:image",
@@ -7785,9 +8120,19 @@
       "why": "no og:image",
       "checked": "2026-09-29"
     },
+    "chartroombarharbor.com": {
+      "verdict": "unreachable",
+      "why": 429,
+      "checked": "2026-09-29"
+    },
     "chasehillfarm.com": {
       "verdict": "unreachable",
       "why": "URLError",
+      "checked": "2026-09-29"
+    },
+    "chasesdaily.me": {
+      "verdict": "none",
+      "why": "no og:image",
       "checked": "2026-09-29"
     },
     "chashama.org/location/697-amsterdam-ave": {
@@ -7843,6 +8188,11 @@
     "chaunceycreek.com": {
       "verdict": "none",
       "why": "too small (227px)",
+      "checked": "2026-09-29"
+    },
+    "chavalmaine.com": {
+      "verdict": "image",
+      "image": "https://static1.squarespace.com/static/58ee7652725e2592673fb256/t/6a22c617b8747a5f2e50b20a/1780663831130/CHAVAL+-+07.08.17-084.jpg?format=1500w",
       "checked": "2026-09-29"
     },
     "chayenthaicookery.com": {
@@ -8125,6 +8475,11 @@
       "why": "URLError",
       "checked": "2026-09-29"
     },
+    "chinakingaugustamaine.com": {
+      "verdict": "unreachable",
+      "why": "URLError",
+      "checked": "2026-09-29"
+    },
     "chinamoontaftville6665.com": {
       "verdict": "unreachable",
       "why": "URLError",
@@ -8133,6 +8488,11 @@
     "chinapalaceglencove.com": {
       "verdict": "image",
       "image": "https://www.chinapalaceglencove.com/eiu7ktik/opengraph-image-959cal/og-image?7556391829faec18",
+      "checked": "2026-09-29"
+    },
+    "chinarosefreeport.com": {
+      "verdict": "unreachable",
+      "why": "URLError",
       "checked": "2026-09-29"
     },
     "chinaskymedfield.com": {
@@ -8166,6 +8526,11 @@
       "checked": "2026-09-29"
     },
     "chinatownsheltononline.com": {
+      "verdict": "none",
+      "why": "no og:image",
+      "checked": "2026-09-29"
+    },
+    "chinavillagemaine.com/Menu.html": {
       "verdict": "none",
       "why": "no og:image",
       "checked": "2026-09-29"
@@ -8218,6 +8583,11 @@
     "choatebridgepub.com": {
       "verdict": "none",
       "why": "no og:image",
+      "checked": "2026-09-29"
+    },
+    "choco-lattecafe.com": {
+      "verdict": "none",
+      "why": "looks like a logo",
       "checked": "2026-09-29"
     },
     "chococoabaking.com": {
@@ -8383,6 +8753,11 @@
     "ci.southbridge.ma.us/317/Fire-Department": {
       "verdict": "none",
       "why": "no og:image",
+      "checked": "2026-09-29"
+    },
+    "ciacafe.com": {
+      "verdict": "image",
+      "image": "https://ciacafe.com/wp-content/uploads/2017/07/all-day-breakfest.jpg",
       "checked": "2026-09-29"
     },
     "ciao-somerville.com": {
@@ -8630,6 +9005,11 @@
       "why": 403,
       "checked": "2026-09-29"
     },
+    "clawsrocklandmaine.com": {
+      "verdict": "none",
+      "why": "looks like a logo",
+      "checked": "2026-09-29"
+    },
     "claydreams.com": {
       "verdict": "none",
       "why": "no og:image",
@@ -8638,6 +9018,11 @@
     "clayovenlexington.com": {
       "verdict": "image",
       "image": "https://static.spotapps.co/website_images/ab_websites/152091_website_v1/social_share.jpg",
+      "checked": "2026-09-29"
+    },
+    "claytonscafe.com": {
+      "verdict": "none",
+      "why": "icon format",
       "checked": "2026-09-29"
     },
     "clearflourbread.com": {
@@ -8825,6 +9210,11 @@
       "why": 404,
       "checked": "2026-09-29"
     },
+    "coalsportland.com": {
+      "verdict": "none",
+      "why": "no og:image",
+      "checked": "2026-09-29"
+    },
     "coastalbyway.org/communities/lynn/lynn-heritage-state-park": {
       "verdict": "image",
       "image": "https://coastalbyway.org/wp-content/uploads/2019/05/Jesse_Scheinbart_Lynn-Heritage-State-Park_Ripples-and-Reflections-scaled.jpg",
@@ -8885,6 +9275,11 @@
       "why": "no og:image",
       "checked": "2026-09-29"
     },
+    "cocktailmary.com": {
+      "verdict": "image",
+      "image": "https://static1.squarespace.com/static/664f431e0890190713ad2244/t/69f4f5c423afb001e1dd551c/1777661380680/CocktailMary_Horizontal_Blue.png?format=1500w",
+      "checked": "2026-09-29"
+    },
     "cocobeet.com": {
       "verdict": "none",
       "why": "looks like a logo",
@@ -8908,6 +9303,11 @@
     "cocostropicalice.com": {
       "verdict": "none",
       "why": "no og:image",
+      "checked": "2026-09-29"
+    },
+    "codasouthwestharbor.com": {
+      "verdict": "unreachable",
+      "why": "TimeoutError",
       "checked": "2026-09-29"
     },
     "codmancommunityfarms.org": {
@@ -8940,6 +9340,11 @@
       "image": "https://www.coffeebreakcafe.net/wp-content/uploads/2021/03/CBC-About.jpg",
       "checked": "2026-09-29"
     },
+    "coffeebydesign.com": {
+      "verdict": "none",
+      "why": "looks like a logo",
+      "checked": "2026-09-29"
+    },
     "coffeebylt.com": {
       "verdict": "image",
       "image": "https://cdn.shopify.com/s/files/1/0024/2663/4284/files/IMG_0246.png?height=628&pad_color=ffffff&v=1613625555&width=1200",
@@ -8958,6 +9363,11 @@
     "coffeelabs.com": {
       "verdict": "image",
       "image": "https://www.coffeelabs.com/cdn/shop/files/CLR_SocialSharing_1200x628psd.jpg?v=1783863170",
+      "checked": "2026-09-29"
+    },
+    "coffeematter.biz": {
+      "verdict": "none",
+      "why": "looks like a logo",
       "checked": "2026-09-29"
     },
     "coffeeshackmarshfield.com": {
@@ -9078,6 +9488,16 @@
     "colleensmedford.com": {
       "verdict": "none",
       "why": "no og:image",
+      "checked": "2026-09-29"
+    },
+    "collegecarryout.biz": {
+      "verdict": "none",
+      "why": "no og:image",
+      "checked": "2026-09-29"
+    },
+    "colonelsrestaurant.com": {
+      "verdict": "image",
+      "image": "https://static.wixstatic.com/media/941718_e9cd2baf02934777a998895a0252dc1d%7Emv2.png/v1/fit/w_2500,h_1330,al_c/941718_e9cd2baf02934777a998895a0252dc1d%7Emv2.png",
       "checked": "2026-09-29"
     },
     "colonialccny.com": {
@@ -9365,6 +9785,11 @@
       "image": "https://static.wixstatic.com/media/251bfc_60a749984dbd491f937dfd24f7c5e687%7Emv2.jpg/v1/fit/w_2500,h_1330,al_c/251bfc_60a749984dbd491f937dfd24f7c5e687%7Emv2.jpg",
       "checked": "2026-09-29"
     },
+    "cookslobster.com": {
+      "verdict": "none",
+      "why": "looks like a logo",
+      "checked": "2026-09-29"
+    },
     "cookswindowwellesley.com": {
       "verdict": "none",
       "why": "no og:image",
@@ -9413,6 +9838,11 @@
     "copperhousetavern.com": {
       "verdict": "none",
       "why": "no og:image",
+      "checked": "2026-09-29"
+    },
+    "coppersmithtavern.com": {
+      "verdict": "unreachable",
+      "why": "URLError",
       "checked": "2026-09-29"
     },
     "coppolaslafantasiaristorante.com": {
@@ -9665,6 +10095,11 @@
       "image": "https://www.coventrypl.org/uploads/2/8/4/5/28453837/wicked-new-date-banner_orig.png",
       "checked": "2026-09-29"
     },
+    "covesiderestaurant.com": {
+      "verdict": "image",
+      "image": "https://static.wixstatic.com/media/f4c721_94ad0ef7bed0483f83f8c274d8f3fa42~mv2_d_2048_1536_s_2.jpg/v1/fill/w_1920,h_1080,al_c,q_90,enc_avif,quality_auto/f4c721_94ad0ef7bed0483f83f8c274d8f3fa42~mv2_d_2048_1536_s_2.jpg",
+      "checked": "2026-09-29"
+    },
     "covetboston.com": {
       "verdict": "none",
       "why": "looks like a logo",
@@ -9723,6 +10158,16 @@
     "craftrootsbrewing.com": {
       "verdict": "image",
       "image": "https://static1.squarespace.com/static/64ed0fea4b88d4032ea49c51/t/66f6c404226adb7427f88138/1727448071245/CR+Home.jpg?format=1500w",
+      "checked": "2026-09-29"
+    },
+    "craignair.com/maine-inn-restaurant": {
+      "verdict": "none",
+      "why": "no og:image",
+      "checked": "2026-09-29"
+    },
+    "cranberryisles.com/cranberry-house/hitty's-cafe.html": {
+      "verdict": "unreachable",
+      "why": 404,
       "checked": "2026-09-29"
     },
     "cranberryisles.com/cranberry-house/museum.html": {
@@ -9825,6 +10270,11 @@
       "image": "https://static.spotapps.co/website_images/ab_websites/677910_website_v2/social.jpg",
       "checked": "2026-09-29"
     },
+    "crazysumo.com": {
+      "verdict": "none",
+      "why": "no og:image",
+      "checked": "2026-09-29"
+    },
     "crazytacobar.com": {
       "verdict": "none",
       "why": "looks like a logo",
@@ -9883,6 +10333,11 @@
     "cromwelldiner.com": {
       "verdict": "none",
       "why": "looks like a logo",
+      "checked": "2026-09-29"
+    },
+    "crookedmilecafe.com": {
+      "verdict": "unreachable",
+      "why": "URLError",
       "checked": "2026-09-29"
     },
     "crosbybakerynh.com": {
@@ -10275,6 +10730,11 @@
       "why": "looks like a logo",
       "checked": "2026-09-29"
     },
+    "cushnocbrewing.com": {
+      "verdict": "none",
+      "why": "looks like a logo",
+      "checked": "2026-09-29"
+    },
     "cushnocbrewing.com/annex": {
       "verdict": "none",
       "why": "looks like a logo",
@@ -10365,6 +10825,11 @@
       "why": "no og:image",
       "checked": "2026-09-29"
     },
+    "dairyjoy04005.com": {
+      "verdict": "none",
+      "why": "parked or suspect",
+      "checked": "2026-09-29"
+    },
     "dakzen.net": {
       "verdict": "none",
       "why": "no og:image",
@@ -10388,6 +10853,11 @@
     "damariscottarivercruises.com": {
       "verdict": "none",
       "why": "no og:image",
+      "checked": "2026-09-29"
+    },
+    "damariscottarivergrill.com": {
+      "verdict": "image",
+      "image": "https://static1.squarespace.com/static/5da06f9f09ffae367fbd6be1/t/5df28f3a4c2e38505ceb10a9/1576177469639/Brownie+sundae+dessert+menu+01.jpg?format=1500w",
       "checked": "2026-09-29"
     },
     "damatosseafood.com": {
@@ -10495,6 +10965,16 @@
       "why": 403,
       "checked": "2026-09-29"
     },
+    "dara.kitchen": {
+      "verdict": "none",
+      "why": "looks like a logo",
+      "checked": "2026-09-29"
+    },
+    "darbysrestaurant.com": {
+      "verdict": "unreachable",
+      "why": "URLError",
+      "checked": "2026-09-29"
+    },
     "darhee.com": {
       "verdict": "none",
       "why": "parked or suspect",
@@ -10566,6 +11046,11 @@
       "checked": "2026-09-29"
     },
     "davincict.com": {
+      "verdict": "none",
+      "why": "no og:image",
+      "checked": "2026-09-29"
+    },
+    "davinciseatery.com": {
       "verdict": "none",
       "why": "no og:image",
       "checked": "2026-09-29"
@@ -11005,6 +11490,11 @@
       "why": "URLError",
       "checked": "2026-09-29"
     },
+    "delvinos.com": {
+      "verdict": "none",
+      "why": "no og:image",
+      "checked": "2026-09-29"
+    },
     "demersgardencenter.com": {
       "verdict": "none",
       "why": "no og:image",
@@ -11130,6 +11620,11 @@
       "image": "https://static1.squarespace.com/static/580fa92ce4fcb54017f28f70/t/587474fbe4fcb5d3fa419fac/1484027131727/deuxave-fb.png?format=1500w",
       "checked": "2026-09-29"
     },
+    "deweyspizza.com": {
+      "verdict": "image",
+      "image": "https://deweyspizza.com/wp-content/uploads/2022/06/facebook_pizzas_1.jpg",
+      "checked": "2026-09-29"
+    },
     "dhabawalahartford.com": {
       "verdict": "image",
       "image": "https://static1.squarespace.com/static/5ea99451a66a7a5f5b99aeea/t/5eab2499fd5f9d3a7a59e8bd/1588274337096/Untitled-8.png?format=1500w",
@@ -11223,6 +11718,11 @@
     "dillonsboston.com": {
       "verdict": "image",
       "image": "https://images.getbento.com/iuS60hjqTrWVTjeVBuq3_AynhyBDhQbS68z07U1Sh_42634dillons.wht.png?w=1200&fit=fill&auto=compress,format&cs=origin&h=600&bg=EDEDF1&pad=100",
+      "checked": "2026-09-29"
+    },
+    "dimillos.com": {
+      "verdict": "image",
+      "image": "https://www.dimillos.com/wp-content/uploads/2023/10/demo-header-1.png",
       "checked": "2026-09-29"
     },
     "dimitriousrestaurant.com": {
@@ -11440,6 +11940,11 @@
       "image": "https://www.dobbsferrylobsterguys.com/uploads/b/d3bc92a0-a08e-11ea-ae65-71964515d338/Best%20of%20West%20TALL%20TY%20Story%20A.png",
       "checked": "2026-09-29"
     },
+    "dobrateame.com": {
+      "verdict": "image",
+      "image": "https://www.teafarers.com/wp-content/uploads/2023/09/teafarers_white-150x150.png",
+      "checked": "2026-09-29"
+    },
     "dock-side.com": {
       "verdict": "none",
       "why": "no og:image",
@@ -11493,6 +11998,11 @@
     "dominicsdiner.com": {
       "verdict": "none",
       "why": "no og:image",
+      "checked": "2026-09-29"
+    },
+    "domoportsmouth.com": {
+      "verdict": "unreachable",
+      "why": "TimeoutError",
       "checked": "2026-09-29"
     },
     "domsbroadsteatery.com": {
@@ -11640,6 +12150,16 @@
       "why": 403,
       "checked": "2026-09-29"
     },
+    "doublegrazie.world": {
+      "verdict": "none",
+      "why": "no og:image",
+      "checked": "2026-09-29"
+    },
+    "doublegreatcoffee.com": {
+      "verdict": "none",
+      "why": "looks like a logo",
+      "checked": "2026-09-29"
+    },
     "doubleogrill.com": {
       "verdict": "image",
       "image": "https://images.getbento.com/czfVaHUBSq2BxnLNX0Fu_Double%20O%20white.png?w=1200&fit=fill&auto=compress,format&cs=origin&h=600&bg=EDEDF1&pad=100",
@@ -11685,9 +12205,19 @@
       "image": "https://downeastcider.com/cdn/shop/files/Flight_Glass_Draft_Pour_1_5362x3575.jpg?v=1705693679",
       "checked": "2026-09-29"
     },
+    "downeastpizza.com": {
+      "verdict": "image",
+      "image": "https://img1.wsimg.com/isteam/ip/46cfaf6e-e384-4f9c-86e4-8771174a01c6/UNADJUSTEDNONRAW_thumb_76e6-b0756ea.jpg",
+      "checked": "2026-09-29"
+    },
     "downrivericecream.com": {
       "verdict": "none",
       "why": "no og:image",
+      "checked": "2026-09-29"
+    },
+    "downshiftcoffeeme.com": {
+      "verdict": "image",
+      "image": "https://static1.squarespace.com/static/5e5aa241e925e0699b7a44b8/t/6269944a534e5c386d793d58/1651086417365/PXL_20211210_190519747.jpg?format=1500w",
       "checked": "2026-09-29"
     },
     "downtoearthmarkets.com/markets": {
@@ -11870,9 +12400,19 @@
       "image": "https://static1.squarespace.com/static/5262cc24e4b083920b8bf475/t/5efa70fa4ba50510f1b00cee/1593471228105/Ducali_Primary-TwoColor-GialloOnMarina.png?format=1500w",
       "checked": "2026-09-29"
     },
+    "duckfat.com": {
+      "verdict": "image",
+      "image": "https://static1.squarespace.com/static/5ac3b9524611a0074354c047/t/6823b58ebe2d5c36e1e66d1b/1747170702545/duckfat_social_sharing_600.png?format=1500w",
+      "checked": "2026-09-29"
+    },
     "dudleyhouseofpizza.com": {
       "verdict": "none",
       "why": "no og:image",
+      "checked": "2026-09-29"
+    },
+    "duffysmaine.com": {
+      "verdict": "image",
+      "image": "https://static.spotapps.co/website_images/ab_websites/99102_website_v1/social_share.jpg",
       "checked": "2026-09-29"
     },
     "duffysmaine.com/kennebunk.php": {
@@ -11960,6 +12500,11 @@
       "why": "no og:image",
       "checked": "2026-09-29"
     },
+    "dunstantapandtable.com": {
+      "verdict": "image",
+      "image": "https://static1.squarespace.com/static/58517a1e2994ca849cbfdf2b/t/5e7914d323e06465f6ce7278/1584993504258/5bbcc00a67fb5.cover.jpg?format=1500w",
+      "checked": "2026-09-29"
+    },
     "durhamhouseofpizza.com": {
       "verdict": "none",
       "why": "no og:image",
@@ -11993,6 +12538,11 @@
     "dutchcrownpk.com": {
       "verdict": "image",
       "image": "https://cdn.prod.website-files.com/665de137faaa10987e7a3a50/66607c1b73d1c84715a675ee_dutch-crown-og1.jpg",
+      "checked": "2026-09-29"
+    },
+    "dutchmans.me": {
+      "verdict": "none",
+      "why": "looks like a logo",
       "checked": "2026-09-29"
     },
     "duxbury.k12.ma.us/page/performing-arts-center": {
@@ -12048,6 +12598,11 @@
     "e2-elderberry-artandantiques.com": {
       "verdict": "none",
       "why": "no og:image",
+      "checked": "2026-09-29"
+    },
+    "eaglesnestrestaurant.shop": {
+      "verdict": "image",
+      "image": "https://static.menujoys.com/1202-mejoyphoto-1.jpg",
       "checked": "2026-09-29"
     },
     "eaglethaimclean.com": {
@@ -12128,6 +12683,11 @@
     "eastendbar.com": {
       "verdict": "none",
       "why": "no og:image",
+      "checked": "2026-09-29"
+    },
+    "eastenderportland.com": {
+      "verdict": "image",
+      "image": "https://static1.squarespace.com/static/68553dc7fdd13c25a88e0237/t/68a8d22d73dcbb30d8bd4a0c/1755894317628/Untitled-1.png?format=1500w",
       "checked": "2026-09-29"
     },
     "easternct.edu/library": {
@@ -12365,6 +12925,11 @@
       "why": "no og:image",
       "checked": "2026-09-29"
     },
+    "eatcheeselouise.com": {
+      "verdict": "none",
+      "why": "looks like a logo",
+      "checked": "2026-09-29"
+    },
     "eatcheesesteak.com": {
       "verdict": "unreachable",
       "why": 403,
@@ -12393,6 +12958,16 @@
     "eatestablishment.com/medford": {
       "verdict": "image",
       "image": "https://static.wixstatic.com/media/a5717b_641ed4246d73404abedc27bfe7f10d8f%7Emv2.jpg/v1/fit/w_2500,h_1330,al_c/a5717b_641ed4246d73404abedc27bfe7f10d8f%7Emv2.jpg",
+      "checked": "2026-09-29"
+    },
+    "eatfishmaine.com/fish-house-grill": {
+      "verdict": "image",
+      "image": "https://fishhousegrillme.com/files/2020/04/Fish-House-Grill-Food-2B_(2).jpg",
+      "checked": "2026-09-29"
+    },
+    "eatfishmaine.com/jalapenos": {
+      "verdict": "none",
+      "why": "no og:image",
       "checked": "2026-09-29"
     },
     "eatgrainmaker.com": {
@@ -12473,6 +13048,11 @@
     "eatplaya.com": {
       "verdict": "image",
       "image": "https://eatplaya.com/wp-content/uploads/2025/02/Sign-1-scaled-1.jpg",
+      "checked": "2026-09-29"
+    },
+    "eatprovender.com": {
+      "verdict": "none",
+      "why": "looks like a logo",
       "checked": "2026-09-29"
     },
     "eatseoulkitchen.com": {
@@ -12640,6 +13220,11 @@
       "why": "no og:image",
       "checked": "2026-09-29"
     },
+    "eighty8donuts.com": {
+      "verdict": "image",
+      "image": "https://static1.squarespace.com/static/5e206fa3848f2e33196a978e/t/5e4c078a518fab78b400d47e/1582040974240/eighty8-13.png?format=1500w",
+      "checked": "2026-09-29"
+    },
     "eightyeightcafema.com": {
       "verdict": "image",
       "image": "https://www.eightyeightcafema.com/bqy9cocr/opengraph-image-959cal/og-image?7556391829faec18",
@@ -12648,6 +13233,11 @@
     "ejchocolates.com": {
       "verdict": "image",
       "image": "https://ejchocolates.com/cdn/shop/files/ej-chocolates-batch1-36.jpg?v=1789751169",
+      "checked": "2026-09-29"
+    },
+    "elagavesaugusta.com": {
+      "verdict": "image",
+      "image": "https://static1.squarespace.com/static/6616e2a3d037f10789328233/t/6616e862c15b3c0e5204349b/1712777314320/Asset+2.png?format=1500w",
       "checked": "2026-09-29"
     },
     "elaguilanewyorkrestaurant.com": {
@@ -12695,6 +13285,11 @@
       "image": "https://img1.wsimg.com/isteam/ip/1aa2ab64-f2b8-452b-81b2-f6dec18e8d45/blob-97f826a.png",
       "checked": "2026-09-29"
     },
+    "elcorazonportland.com": {
+      "verdict": "unreachable",
+      "why": 403,
+      "checked": "2026-09-29"
+    },
     "eleanyc.com": {
       "verdict": "none",
       "why": "looks like a logo",
@@ -12713,6 +13308,16 @@
     "elegantfindingsantiques.com": {
       "verdict": "image",
       "image": "https://www.elegantfindingsantiques.com/wp-content/uploads/2015/06/indeximage.jpg",
+      "checked": "2026-09-29"
+    },
+    "elevateyogacafe.com": {
+      "verdict": "none",
+      "why": "no og:image",
+      "checked": "2026-09-29"
+    },
+    "elevensesme.com": {
+      "verdict": "none",
+      "why": "no og:image",
       "checked": "2026-09-29"
     },
     "elgallobk.com/locations": {
@@ -12820,6 +13425,11 @@
       "why": "looks like a logo",
       "checked": "2026-09-29"
     },
+    "ellsworthgiantsub.com": {
+      "verdict": "unreachable",
+      "why": 403,
+      "checked": "2026-09-29"
+    },
     "elmcitygames.com": {
       "verdict": "none",
       "why": "no og:image",
@@ -12903,6 +13513,16 @@
     "elpotromexicangrill.com": {
       "verdict": "unreachable",
       "why": "URLError",
+      "checked": "2026-09-29"
+    },
+    "elrayotaqueria.com": {
+      "verdict": "image",
+      "image": "https://elrayotaqueria.com/wp-content/uploads/2020/01/elrayo-homepage.jpg",
+      "checked": "2026-09-29"
+    },
+    "elrayotaqueria.com/scarborough": {
+      "verdict": "none",
+      "why": "no og:image",
       "checked": "2026-09-29"
     },
     "elsarape.com": {
@@ -13100,6 +13720,11 @@
       "why": "looks like a logo",
       "checked": "2026-09-29"
     },
+    "enotecaathena.com": {
+      "verdict": "image",
+      "image": "https://www.enotecaathena.com/uploads/9/0/7/3/90733571/webphoto2.jpg",
+      "checked": "2026-09-29"
+    },
     "entertainmentcinemas.com/locations/seymour": {
       "verdict": "unreachable",
       "why": 404,
@@ -13143,6 +13768,11 @@
     "eppingluckyfortune.com": {
       "verdict": "unreachable",
       "why": "URLError",
+      "checked": "2026-09-29"
+    },
+    "ericasseafood.com": {
+      "verdict": "image",
+      "image": "https://www.EricasSeafood.com/uploads/9/5/7/6/9576973/8988942.jpg",
       "checked": "2026-09-29"
     },
     "eriksonsicecream.com": {
@@ -13300,6 +13930,11 @@
       "why": "looks like a logo",
       "checked": "2026-09-29"
     },
+    "europeanbakerymaine.com": {
+      "verdict": "none",
+      "why": "no og:image",
+      "checked": "2026-09-29"
+    },
     "evaslittlekitchen.com": {
       "verdict": "image",
       "image": "https://images.getbento.com/accounts/60203ccb72a5505749bd08fe48e831ea/media/images/9270ELK_Horizontal__Secondary_Lockup_Green.png?w=1200&fit=fill&auto=compress,format&cs=origin&h=600&bg=EDEDF1&pad=100",
@@ -13318,6 +13953,11 @@
     "evelyns-kitchen.com/cafe": {
       "verdict": "image",
       "image": "https://evelyns-kitchen.com/wp-content/uploads/2026/09/EK_OG_Cute.png",
+      "checked": "2026-09-29"
+    },
+    "eventideoysterco.com": {
+      "verdict": "none",
+      "why": "looks like a logo",
       "checked": "2026-09-29"
     },
     "eventideoysterco.com/eventide-fenway": {
@@ -13340,6 +13980,11 @@
       "why": "looks like a logo",
       "checked": "2026-09-29"
     },
+    "everydayjoesbarharbor.com": {
+      "verdict": "none",
+      "why": "no og:image",
+      "checked": "2026-09-29"
+    },
     "everywhere-shop.com": {
       "verdict": "none",
       "why": "looks like a logo",
@@ -13348,6 +13993,11 @@
     "evmusicshop.com": {
       "verdict": "none",
       "why": "no og:image",
+      "checked": "2026-09-29"
+    },
+    "evoportland.com": {
+      "verdict": "image",
+      "image": "https://static1.squarespace.com/static/69dfd2f48fe2c06ee83bbfc6/t/69dfdaa3126a8b5973696b0b/1776278179247/EVOOGTerracotta.png?format=1500w",
       "checked": "2026-09-29"
     },
     "evvivatrattoria.com": {
@@ -13450,6 +14100,11 @@
       "why": "no og:image",
       "checked": "2026-09-29"
     },
+    "experiencemainemade.com": {
+      "verdict": "image",
+      "image": "https://experiencemainemade.com/cdn/shop/files/Experience_Maine_Gift_Collage_1200x1200.png?v=1614302544",
+      "checked": "2026-09-29"
+    },
     "exploretheoceanworld.com": {
       "verdict": "unreachable",
       "why": 403,
@@ -13510,6 +14165,11 @@
       "image": "https://ftc-web-prod-static.fairfieldtheatre.org/ftc_templates/assets/ftcpresents_opengraph.png",
       "checked": "2026-09-29"
     },
+    "fairgroundstavern.com": {
+      "verdict": "image",
+      "image": "https://static.wixstatic.com/media/6fd4e9_022c8fe80e274e7cb933051f9c21ca48%7Emv2.jpg/v1/fit/w_2500,h_1330,al_c/6fd4e9_022c8fe80e274e7cb933051f9c21ca48%7Emv2.jpg",
+      "checked": "2026-09-29"
+    },
     "fairhavenoysterco.com": {
       "verdict": "none",
       "why": "looks like a logo",
@@ -13543,6 +14203,11 @@
     "falafelonbroadwaynyctogo.com": {
       "verdict": "none",
       "why": "looks like a logo",
+      "checked": "2026-09-29"
+    },
+    "falafeltimeme.com": {
+      "verdict": "unreachable",
+      "why": 403,
       "checked": "2026-09-29"
     },
     "fallenleafbistro.com": {
@@ -13775,6 +14440,11 @@
       "why": "no og:image",
       "checked": "2026-09-29"
     },
+    "fattoadspub.com": {
+      "verdict": "none",
+      "why": "no og:image",
+      "checked": "2026-09-29"
+    },
     "fattoamanobreads.com": {
       "verdict": "none",
       "why": "looks like a logo",
@@ -13915,6 +14585,11 @@
       "why": "no og:image",
       "checked": "2026-09-29"
     },
+    "fielderschoiceicecream.com/location/brunswick": {
+      "verdict": "image",
+      "image": "https://fielderschoiceicecream.com/wp-content/uploads/2024/08/Brunswick-1600.webp",
+      "checked": "2026-09-29"
+    },
     "fieldmemoriallibrary.org": {
       "verdict": "image",
       "image": "https://fieldmemoriallibrary.org/wp-content/uploads/2026/01/field-memorial-1.jpg",
@@ -13970,6 +14645,11 @@
       "why": "no og:image",
       "checked": "2026-09-29"
     },
+    "finback-alehouse.com": {
+      "verdict": "image",
+      "image": "https://finback-alehouse.com/wp-content/uploads/2021/04/Finback-Bar-Harbor.jpeg",
+      "checked": "2026-09-29"
+    },
     "findagrave.com/cemetery/2299329/belcher-cemetery/photo": {
       "verdict": "unreachable",
       "why": 403,
@@ -14013,6 +14693,11 @@
     "finkelsteinlibrary.org": {
       "verdict": "none",
       "why": "no og:image",
+      "checked": "2026-09-29"
+    },
+    "finnsirishpub.com": {
+      "verdict": "image",
+      "image": "https://lh7-us.googleusercontent.com/sitesv-images-rt/AMxu72uXCOTS63nfRClriDtk2--Updvbjo9BXvh1tvGL20OHmZY14SYS80Nj4minjmrlr2nUFe9JJDHi_8F2gRRG3VDuLLdX6IxpOyYL7WNv5mqXESO9dqXOwuBdMmYj0fq-YqM0eLnGngRz0HL4RxtpYId6wym00vHhbamt-1_LVomxybXimU2_8j6dwoHqYvx_dRUfIYZnPYBHdOqsfCffUNf82kvGswe8OHrboPo2=w1280",
       "checked": "2026-09-29"
     },
     "finopizzabar.com": {
@@ -14110,6 +14795,11 @@
       "image": "https://fishercenter.bard.edu/wp-content/uploads/2021/12/bard-college-richard-b-fisher-center-for-the-performing-arts-01.jpg",
       "checked": "2026-09-29"
     },
+    "fishermensnet-me.com": {
+      "verdict": "image",
+      "image": "https://fishermensnet-me.com/wp-content/uploads/2025/08/bg_top.png",
+      "checked": "2026-09-29"
+    },
     "fishhaus.shop": {
       "verdict": "image",
       "image": "https://fishhaus.shop/cdn/shop/files/fishhausbrand-06.jpg?v=1784074457",
@@ -14123,6 +14813,11 @@
     "fishmarketsushibar.com": {
       "verdict": "unreachable",
       "why": "URLError",
+      "checked": "2026-09-29"
+    },
+    "fishnetmaine.com": {
+      "verdict": "unreachable",
+      "why": 403,
       "checked": "2026-09-29"
     },
     "fishshackrockport.com": {
@@ -14190,6 +14885,11 @@
       "why": "looks like a logo",
       "checked": "2026-09-29"
     },
+    "fiveislandslobster.com": {
+      "verdict": "none",
+      "why": "no og:image",
+      "checked": "2026-09-29"
+    },
     "fizarestaurant.com": {
       "verdict": "unreachable",
       "why": "URLError",
@@ -14240,6 +14940,11 @@
       "why": "no og:image",
       "checked": "2026-09-29"
     },
+    "flatbreadcompany.com": {
+      "verdict": "none",
+      "why": "no og:image",
+      "checked": "2026-09-29"
+    },
     "flatbreadcompany.com/FlatbreadAmesbury2010.html": {
       "verdict": "unreachable",
       "why": 404,
@@ -14248,6 +14953,11 @@
     "flatbreadcompany.com/providence": {
       "verdict": "none",
       "why": "no og:image",
+      "checked": "2026-09-29"
+    },
+    "flatironcoffeebar.com": {
+      "verdict": "none",
+      "why": "looks like a logo",
       "checked": "2026-09-29"
     },
     "flatironsteakhouse.com": {
@@ -14288,6 +14998,11 @@
     "fletchersbbqshop.com": {
       "verdict": "none",
       "why": "looks like a logo",
+      "checked": "2026-09-29"
+    },
+    "flexitcafe.com": {
+      "verdict": "image",
+      "image": "https://lh7-us.googleusercontent.com/sitesv-images-rt/AMxu72sqmkftBqOlwjQcjvpUXslrgFLwCgwfYaQlAAIUOADwi7LCrTN6tDiAkAnAcjwXdlnJmZSSABDNIqtshz2lZYX-xaBoj2hbuVnlUR42GGTSUJnvA0y4UDetgag6eWTqnDooSYl1uQlleV18-AwrMdrBoKW4kDKtEPKHrYBA4JqAn_NJHd5AwIfQKghkgQM=w16383",
       "checked": "2026-09-29"
     },
     "flightcenterbc.com": {
@@ -14360,6 +15075,11 @@
       "why": "no og:image",
       "checked": "2026-09-29"
     },
+    "fluxnomnom.com": {
+      "verdict": "unreachable",
+      "why": "URLError",
+      "checked": "2026-09-29"
+    },
     "flw.org/landmarks.html": {
       "verdict": "unreachable",
       "why": 403,
@@ -14391,6 +15111,11 @@
       "checked": "2026-09-29"
     },
     "fomuicecream.com/find-fomu": {
+      "verdict": "none",
+      "why": "no og:image",
+      "checked": "2026-09-29"
+    },
+    "fonskitchen.com": {
       "verdict": "none",
       "why": "no og:image",
       "checked": "2026-09-29"
@@ -14430,6 +15155,11 @@
       "image": "https://cdn.foodeist.com/foodeist/place/2025/10/563999_1761863424845_af1qipo-qhymjztl9r-i6trazljvgheysfpj-lxm.png",
       "checked": "2026-09-29"
     },
+    "foodeist.com/place/unclemoesdiner": {
+      "verdict": "image",
+      "image": "https://cdn.foodeist.com/foodeist/place/2025/10/3906133_1761825865386_the-main-seating-area.jpg",
+      "checked": "2026-09-29"
+    },
     "foodworkschinese.com": {
       "verdict": "image",
       "image": "https://foodworkschinese.com/assets/images/Banner.webp",
@@ -14463,6 +15193,11 @@
     "forestavegrill.com": {
       "verdict": "unreachable",
       "why": 429,
+      "checked": "2026-09-29"
+    },
+    "forestreet.biz": {
+      "verdict": "none",
+      "why": "looks like a logo",
       "checked": "2026-09-29"
     },
     "forevercoffeenyc.com": {
@@ -14605,6 +15340,11 @@
       "image": "https://static1.squarespace.com/static/59567917d2b8572c2fb61e20/t/595679848419c2438144d9b2/1498839438823/luggage+patch+no+bg.png?format=1500w",
       "checked": "2026-09-29"
     },
+    "foxslobster.com": {
+      "verdict": "unreachable",
+      "why": "URLError",
+      "checked": "2026-09-29"
+    },
     "foxypizza.com": {
       "verdict": "none",
       "why": "no og:image",
@@ -14705,6 +15445,11 @@
       "why": "no og:image",
       "checked": "2026-09-29"
     },
+    "franksrestaurantpub.com": {
+      "verdict": "image",
+      "image": "https://static.wixstatic.com/media/98397a_dc247c4b6b004f049253a08ccd56816d%7Emv2.jpg/v1/fit/w_2500,h_1330,al_c/98397a_dc247c4b6b004f049253a08ccd56816d%7Emv2.jpg",
+      "checked": "2026-09-29"
+    },
     "frankssteakhouse.com": {
       "verdict": "image",
       "image": "https://laurent.qodeinteractive.com/wp-content/themes/laurent/assets/img/open_graph.jpg",
@@ -14748,6 +15493,11 @@
     "freeportlibrary.com": {
       "verdict": "none",
       "why": "looks like a logo",
+      "checked": "2026-09-29"
+    },
+    "freeportpizza.com": {
+      "verdict": "none",
+      "why": "too small (200px)",
       "checked": "2026-09-29"
     },
     "freetothrift.com": {
@@ -14813,6 +15563,11 @@
     "frescosseaside.com": {
       "verdict": "none",
       "why": "no og:image",
+      "checked": "2026-09-29"
+    },
+    "freshgingerfusion.com": {
+      "verdict": "unreachable",
+      "why": 404,
       "checked": "2026-09-29"
     },
     "freshsidema.com": {
@@ -14910,6 +15665,11 @@
       "why": "URLError",
       "checked": "2026-09-29"
     },
+    "frontstreetpub.com": {
+      "verdict": "image",
+      "image": "https://static.wixstatic.com/media/ae690b_5b4e2a7dc66943e2ad3acbdab1edc2d0~mv2.jpg/v1/fill/w_2500,h_1386,al_c/ae690b_5b4e2a7dc66943e2ad3acbdab1edc2d0~mv2.jpg",
+      "checked": "2026-09-29"
+    },
     "frostgullyviolins.com": {
       "verdict": "image",
       "image": "https://frostgullyviolins.com/wp-content/uploads/2016/11/Frost-Gully-Violins-Maine-s-1-Stringed-Instrument-Store-Brunsiwick-ME..png",
@@ -14918,6 +15678,11 @@
     "frostgullyviolins.com/fgv/index.html": {
       "verdict": "none",
       "why": "no og:image",
+      "checked": "2026-09-29"
+    },
+    "frostysdonuts.com": {
+      "verdict": "image",
+      "image": "https://www.frostysdonuts.com/images/about-us.jpg",
       "checked": "2026-09-29"
     },
     "frozenhoagies.com": {
@@ -14933,6 +15698,11 @@
     "fruitlands.org": {
       "verdict": "none",
       "why": "no og:image",
+      "checked": "2026-09-29"
+    },
+    "fryesleap.com": {
+      "verdict": "unreachable",
+      "why": 403,
       "checked": "2026-09-29"
     },
     "fscsalem.com": {
@@ -15185,6 +15955,11 @@
       "image": "https://static.wixstatic.com/media/5735e9_b58d59ac77624335ace09f5df7e53567%7Emv2.jpg/v1/fit/w_2500,h_1330,al_c/5735e9_b58d59ac77624335ace09f5df7e53567%7Emv2.jpg",
       "checked": "2026-09-29"
     },
+    "galynsbarharbor.com": {
+      "verdict": "none",
+      "why": "looks like a logo",
+      "checked": "2026-09-29"
+    },
     "gamedaysportsbarny.com": {
       "verdict": "none",
       "why": "parked or suspect",
@@ -15340,6 +16115,11 @@
       "why": 404,
       "checked": "2026-09-29"
     },
+    "gathermaine.com": {
+      "verdict": "image",
+      "image": "https://static1.squarespace.com/static/639127a01e70b726ce7bc786/t/6393d215bb485862278a3a84/1670631958683/Profile_Pic-21.png?format=1500w",
+      "checked": "2026-09-29"
+    },
     "gathernewhaven.org": {
       "verdict": "none",
       "why": "no og:image",
@@ -15380,9 +16160,19 @@
       "image": "https://static1.squarespace.com/static/594d538fd482e95ff48fbccc/t/60ab788daa94945b3ae90d52/1621850319286/BAGSPINK2.jpg?format=1500w",
       "checked": "2026-09-29"
     },
+    "geaghans.com": {
+      "verdict": "none",
+      "why": "no og:image",
+      "checked": "2026-09-29"
+    },
     "gearybrewing.com/visit": {
       "verdict": "image",
       "image": "https://static1.squarespace.com/static/5ced8d1d9df0ce0001a0177d/t/5ced8dc96e9a7f11bf503d1f/1559072204330/G.png?format=1500w",
+      "checked": "2026-09-29"
+    },
+    "geddys.com": {
+      "verdict": "image",
+      "image": "https://geddys.com/wp-content/uploads/2020/04/AdobeStock_137313447-300x200-1.jpeg",
       "checked": "2026-09-29"
     },
     "gelateriasorella.com": {
@@ -15393,6 +16183,16 @@
     "gelatissimoartisangelato.com": {
       "verdict": "none",
       "why": "no og:image",
+      "checked": "2026-09-29"
+    },
+    "gelatofiasco.com": {
+      "verdict": "none",
+      "why": "no og:image",
+      "checked": "2026-09-29"
+    },
+    "gelatofiasco.com/locations/brunswick": {
+      "verdict": "none",
+      "why": "looks like a logo",
       "checked": "2026-09-29"
     },
     "gelonelyndhurst.com": {
@@ -15485,6 +16285,11 @@
       "why": "no og:image",
       "checked": "2026-09-29"
     },
+    "georgespizza.com": {
+      "verdict": "none",
+      "why": "no og:image",
+      "checked": "2026-09-29"
+    },
     "georgespizzadinner.com": {
       "verdict": "unreachable",
       "why": "URLError",
@@ -15523,6 +16328,11 @@
     "geppettospizza.net": {
       "verdict": "unreachable",
       "why": "URLError",
+      "checked": "2026-09-29"
+    },
+    "gerardspizza.com": {
+      "verdict": "none",
+      "why": "no og:image",
       "checked": "2026-09-29"
     },
     "germanosct.com": {
@@ -15748,6 +16558,11 @@
     "ginzaexpress.menufy.com": {
       "verdict": "none",
       "why": "no og:image",
+      "checked": "2026-09-29"
+    },
+    "ginzatown.com": {
+      "verdict": "unreachable",
+      "why": "URLError",
       "checked": "2026-09-29"
     },
     "gioiamianj.com": {
@@ -16235,6 +17050,11 @@
       "why": 404,
       "checked": "2026-09-29"
     },
+    "governorsrestaurant.com": {
+      "verdict": "image",
+      "image": "https://www.governorsrestaurant.com/wp-content/uploads/2017/04/history.jpg",
+      "checked": "2026-09-29"
+    },
     "gpl.org": {
       "verdict": "none",
       "why": "no og:image",
@@ -16405,6 +17225,11 @@
       "why": "looks like a logo",
       "checked": "2026-09-29"
     },
+    "greatlostbear.com": {
+      "verdict": "image",
+      "image": "https://greatlostbear.com/wp-content/uploads/2024/10/GLB1.jpg",
+      "checked": "2026-09-29"
+    },
     "greatmovieslowerprices.com/new-paltz-cinemas": {
       "verdict": "image",
       "image": "https://greatmovieslowerprices.com/wp-content/uploads/2024/10/04-Copy-2.webp",
@@ -16453,6 +17278,11 @@
     "greatwall-florence.com": {
       "verdict": "unreachable",
       "why": 403,
+      "checked": "2026-09-29"
+    },
+    "greatwallbuffetaugusta.com": {
+      "verdict": "unreachable",
+      "why": 404,
       "checked": "2026-09-29"
     },
     "greatwallnewyorkcity.com": {
@@ -16516,6 +17346,11 @@
       "checked": "2026-09-29"
     },
     "greenchopllc.com": {
+      "verdict": "none",
+      "why": "no og:image",
+      "checked": "2026-09-29"
+    },
+    "greenelephantmaine.com": {
       "verdict": "none",
       "why": "no og:image",
       "checked": "2026-09-29"
@@ -16660,6 +17495,11 @@
       "why": "no og:image",
       "checked": "2026-09-29"
     },
+    "greyhavens.com/restaurant-dining": {
+      "verdict": "image",
+      "image": "https://greyhavens.com/wp-content/uploads/2022/12/frutti-di-mare.jpg",
+      "checked": "2026-09-29"
+    },
     "greymatterbookstore.com": {
       "verdict": "none",
       "why": "no og:image",
@@ -16693,6 +17533,11 @@
     "grill445.com": {
       "verdict": "none",
       "why": "looks like a logo",
+      "checked": "2026-09-29"
+    },
+    "grillabowl.com/menu": {
+      "verdict": "none",
+      "why": "no og:image",
       "checked": "2026-09-29"
     },
     "grille151.com": {
@@ -16763,6 +17608,11 @@
     "groundedcoffeecompany.org": {
       "verdict": "none",
       "why": "no og:image",
+      "checked": "2026-09-29"
+    },
+    "groundround.com/Sports-Grille/Hallowell": {
+      "verdict": "unreachable",
+      "why": 404,
       "checked": "2026-09-29"
     },
     "groundsdonuthouse.com": {
@@ -16880,6 +17730,11 @@
       "why": "URLError",
       "checked": "2026-09-29"
     },
+    "guerreromaya.com": {
+      "verdict": "none",
+      "why": "no og:image",
+      "checked": "2026-09-29"
+    },
     "gufocambridge.com": {
       "verdict": "image",
       "image": "https://static1.squarespace.com/static/630d0de1b56cf7627002c56e/t/6322347b5a104f1c2e9bcf06/1663186043158/gufo_sharing-13.png?format=1500w",
@@ -16958,6 +17813,11 @@
     "gustazo-cubancafe.com/waltham": {
       "verdict": "none",
       "why": "no og:image",
+      "checked": "2026-09-29"
+    },
+    "guthriesplace.com": {
+      "verdict": "image",
+      "image": "https://www.guthriesplace.com/uploads/b/7b6c0730-b723-11ea-9c34-cd3420a4b21a/eGiftCard_art(JPEG).jpg",
       "checked": "2026-09-29"
     },
     "guyscocina.com": {
@@ -17300,6 +18160,11 @@
       "image": "https://net-engine.s3.us-east-2.amazonaws.com/landings/YLrnRC00gNfVrsMr7McM53c96rge2YIkbyOyBPps.png",
       "checked": "2026-09-29"
     },
+    "happygardenme.com": {
+      "verdict": "image",
+      "image": "https://www.happygardenme.com/rf4zje5r/opengraph-image-959cal/og-image?7556391829faec18",
+      "checked": "2026-09-29"
+    },
     "happyhothunanny.com": {
       "verdict": "image",
       "image": "https://imagedelivery.net/9lr8zq_Jvl7h6OFWqEi9IA/c06abfc3-8a0d-4dc5-1e3d-40a753f4ba00/public",
@@ -17338,6 +18203,11 @@
     "harborcreamery.com": {
       "verdict": "none",
       "why": "no og:image",
+      "checked": "2026-09-29"
+    },
+    "harbornutritionmaine.com": {
+      "verdict": "unreachable",
+      "why": "URLError",
       "checked": "2026-09-29"
     },
     "harborviewmarket.com": {
@@ -17411,6 +18281,11 @@
       "checked": "2026-09-29"
     },
     "harpswell.maine.gov/index.asp": {
+      "verdict": "none",
+      "why": "no og:image",
+      "checked": "2026-09-29"
+    },
+    "harraseeketlunchandlobster.com": {
       "verdict": "none",
       "why": "no og:image",
       "checked": "2026-09-29"
@@ -17553,6 +18428,11 @@
     "harvardsquare.com/venue/capital-one-360-cafe": {
       "verdict": "image",
       "image": "https://harvardsquare.com/wp-content/uploads/2026/05/DSC04793-1-1-scaled.jpg",
+      "checked": "2026-09-29"
+    },
+    "harvestmoondeli.com": {
+      "verdict": "none",
+      "why": "no og:image",
       "checked": "2026-09-29"
     },
     "harvestmoonfarmandorchard.com": {
@@ -17815,12 +18695,22 @@
       "image": "https://helmicksculpture.com/wp-content/uploads/2018/02/a-0061-front-detail-1024x768.jpg",
       "checked": "2026-09-29"
     },
+    "helmportland.com": {
+      "verdict": "unreachable",
+      "why": "URLError",
+      "checked": "2026-09-29"
+    },
     "henandheifer.com": {
       "verdict": "none",
       "why": "no og:image",
       "checked": "2026-09-29"
     },
     "henchickenrice.com": {
+      "verdict": "unreachable",
+      "why": 403,
+      "checked": "2026-09-29"
+    },
+    "hennys.me": {
       "verdict": "unreachable",
       "why": 403,
       "checked": "2026-09-29"
@@ -17863,6 +18753,11 @@
     "herrickchristmastreefarm.com": {
       "verdict": "none",
       "why": "no og:image",
+      "checked": "2026-09-29"
+    },
+    "heysailorhey.com": {
+      "verdict": "unreachable",
+      "why": 401,
       "checked": "2026-09-29"
     },
     "hfhistoricalsociety.org": {
@@ -17955,6 +18850,11 @@
       "why": "no og:image",
       "checked": "2026-09-29"
     },
+    "highrollerlobster.com": {
+      "verdict": "image",
+      "image": "https://craftpeak-cooler-images.imgix.net/the-highroller-lobster-co/High-Roller-roll-1-of-1-2.jpg?auto=compress%2Cformat&ixlib=php-3.3.1&s=baf48f1ed549ca203d8fc74092b08f5c",
+      "checked": "2026-09-29"
+    },
     "highspotdeli.com": {
       "verdict": "unreachable",
       "why": "URLError",
@@ -17973,6 +18873,11 @@
     "hillsidepub.com": {
       "verdict": "unreachable",
       "why": 403,
+      "checked": "2026-09-29"
+    },
+    "hillsseafoodco.com": {
+      "verdict": "none",
+      "why": "no og:image",
       "checked": "2026-09-29"
     },
     "hillstead.org": {
@@ -18505,6 +19410,11 @@
       "why": "no og:image",
       "checked": "2026-09-29"
     },
+    "hotsuppa.com": {
+      "verdict": "image",
+      "image": "https://static1.squarespace.com/static/574f456f044262fd9c23abdb/t/5769823ae6f2e14c6e0b87f7/1466532412390/HS_SocialSharing.png?format=1500w",
+      "checked": "2026-09-29"
+    },
     "hottable.com": {
       "verdict": "image",
       "image": "https://hottable.com/wp-content/uploads/2023/11/TV-DIGITAL-SIGN-HORIZONTAL-HOLIDAY-GIFT-CARD-PROMO-2023-1024x576.png",
@@ -18573,6 +19483,11 @@
     "howardsmedcafe.com": {
       "verdict": "none",
       "why": "no og:image",
+      "checked": "2026-09-29"
+    },
+    "howiespub.com": {
+      "verdict": "unreachable",
+      "why": "URLError",
       "checked": "2026-09-29"
     },
     "howinpalacema.com": {
@@ -18658,6 +19573,11 @@
     "hsgct.org/visit-us-1": {
       "verdict": "unreachable",
       "why": 404,
+      "checked": "2026-09-29"
+    },
+    "hstrial-thelibrarycafe.intuitwebsites.com": {
+      "verdict": "unreachable",
+      "why": "URLError",
       "checked": "2026-09-29"
     },
     "https//www.gallery263.org": {
@@ -18775,6 +19695,11 @@
       "image": "https://static1.squarespace.com/static/651c6d5eaefc7c3b2e8364dc/t/69d7c6544d15e019629a7880/1775748692577/Hugh+O_Neills+S%26A-1.jpg?format=1500w",
       "checked": "2026-09-29"
     },
+    "hugos.net": {
+      "verdict": "unreachable",
+      "why": 404,
+      "checked": "2026-09-29"
+    },
     "hullartwalk.com": {
       "verdict": "unreachable",
       "why": "URLError",
@@ -18856,6 +19781,11 @@
       "checked": "2026-09-29"
     },
     "huntlibrary.org": {
+      "verdict": "none",
+      "why": "no og:image",
+      "checked": "2026-09-29"
+    },
+    "huotsseafoodrestaurant.com": {
       "verdict": "none",
       "why": "no og:image",
       "checked": "2026-09-29"
@@ -19200,6 +20130,11 @@
       "why": 403,
       "checked": "2026-09-29"
     },
+    "indiapalacemaine.com": {
+      "verdict": "none",
+      "why": "no og:image",
+      "checked": "2026-09-29"
+    },
     "indiapavilion.co": {
       "verdict": "none",
       "why": "no og:image",
@@ -19258,6 +20193,11 @@
     "innisfreegarden.org": {
       "verdict": "image",
       "image": "https://static1.squarespace.com/static/640f583fa482d7102980ec1a/t/69d0745afff8fd69ac0358de/1775268954228/innisfree_charcoal_final.png?format=1500w",
+      "checked": "2026-09-29"
+    },
+    "innonpeaks.com/dining": {
+      "verdict": "none",
+      "why": "no og:image",
       "checked": "2026-09-29"
     },
     "innontheblues.com": {
@@ -19410,6 +20350,11 @@
       "why": "no og:image",
       "checked": "2026-09-29"
     },
+    "islandinnmonhegan.com/the-barnacle": {
+      "verdict": "image",
+      "image": "https://islandinnmonhegan.com/wp-content/uploads/2014/11/barnaclebg.jpg",
+      "checked": "2026-09-29"
+    },
     "islandny.com": {
       "verdict": "none",
       "why": "looks like a logo",
@@ -19508,6 +20453,11 @@
     "iyasushi.com": {
       "verdict": "none",
       "why": "too small (272px)",
+      "checked": "2026-09-29"
+    },
+    "izakayaminato.com": {
+      "verdict": "none",
+      "why": "too small (200px)",
       "checked": "2026-09-29"
     },
     "izumi376.com/locations": {
@@ -19618,6 +20568,11 @@
     "jafajems.com": {
       "verdict": "image",
       "image": "https://jafajems.com/wp-content/uploads/2015/11/HomePage.jpg",
+      "checked": "2026-09-29"
+    },
+    "jaffame.com": {
+      "verdict": "none",
+      "why": "no og:image",
       "checked": "2026-09-29"
     },
     "jaho.com/pages/boston-locations": {
@@ -19825,6 +20780,11 @@
       "why": 429,
       "checked": "2026-09-29"
     },
+    "jcsvariety.com": {
+      "verdict": "unreachable",
+      "why": "URLError",
+      "checked": "2026-09-29"
+    },
     "jdstogo.com": {
       "verdict": "none",
       "why": "no og:image",
@@ -19833,6 +20793,11 @@
     "jeaniejohnstonpub.com": {
       "verdict": "none",
       "why": "no og:image",
+      "checked": "2026-09-29"
+    },
+    "jeanniesbreakfast.com": {
+      "verdict": "image",
+      "image": "https://blogger.googleusercontent.com/img/a/AVvXsEgimcDgNPH2YzmHNB8k0svYr0DfNGfXyueHLHEjeBhO8VFikMvBWzMnT3T5n4rCLwVXsIS-7J__mc7X2-rDJM7B_udDjyoq-TLe-9SXaBCKws8wepxnMVfSl55jhumYTAeQWbQtFTWn71E3H9p8i7KZg6mKPNFlhpPnLsGUkT3A2QxbTGOgwtof-tEyPZs=w1200-h630-p-k-no-nu",
       "checked": "2026-09-29"
     },
     "jeffersondiner.com": {
@@ -20018,6 +20983,11 @@
     "jjgrimsbys.com": {
       "verdict": "image",
       "image": "https://static.spotapps.co/website_images/ab_websites/56418_website_v1/food.jpg",
+      "checked": "2026-09-29"
+    },
+    "jjseatery.com": {
+      "verdict": "unreachable",
+      "why": "URLError",
       "checked": "2026-09-29"
     },
     "jjstacks.com": {
@@ -20400,6 +21370,11 @@
       "why": "URLError",
       "checked": "2026-09-29"
     },
+    "juicednatural.com": {
+      "verdict": "none",
+      "why": "no og:image",
+      "checked": "2026-09-29"
+    },
     "juicegeneration.com/locations": {
       "verdict": "none",
       "why": "looks like a logo",
@@ -20426,6 +21401,11 @@
       "checked": "2026-09-29"
     },
     "juliansprovidence.com": {
+      "verdict": "none",
+      "why": "no og:image",
+      "checked": "2026-09-29"
+    },
+    "juliettesbakeryanddeli.com": {
       "verdict": "none",
       "why": "no og:image",
       "checked": "2026-09-29"
@@ -20513,6 +21493,11 @@
     "kabobonthecliff.com": {
       "verdict": "image",
       "image": "https://kabobonthecliff.com/wp-content/uploads/2018/09/fork-free-img.png",
+      "checked": "2026-09-29"
+    },
+    "kachaithaistreetfood.com": {
+      "verdict": "none",
+      "why": "no og:image",
       "checked": "2026-09-29"
     },
     "kaiasianfusion.com/index.php/home": {
@@ -20635,6 +21620,11 @@
       "why": "URLError",
       "checked": "2026-09-29"
     },
+    "katiemadebakery.com": {
+      "verdict": "none",
+      "why": "no og:image",
+      "checked": "2026-09-29"
+    },
     "katonahmuseum.org": {
       "verdict": "image",
       "image": "https://www.katonahmuseum.org/content/page_images/image_2_image_compress_80.JPG",
@@ -20745,6 +21735,11 @@
       "why": "parked or suspect",
       "checked": "2026-09-29"
     },
+    "kennebectavern.com": {
+      "verdict": "image",
+      "image": "https://static1.squarespace.com/static/53b85865e4b0998a1be77675/t/5a10960f419202823552b43b/1511036431945/sssocialsharing.jpg?format=1500w",
+      "checked": "2026-09-29"
+    },
     "kennebunklibrary.org": {
       "verdict": "none",
       "why": "no og:image",
@@ -20798,6 +21793,11 @@
     "kerriquirk.com": {
       "verdict": "none",
       "why": "icon format",
+      "checked": "2026-09-29"
+    },
+    "kettlecoveicecream.com": {
+      "verdict": "image",
+      "image": "https://www.kettlecoveicecream.com/uploads/b/984153d0-8299-11ea-bd80-d713c66e1d49/Vibrant_split_NDk2ND.jpg",
       "checked": "2026-09-29"
     },
     "kezarfallslibrary.org": {
@@ -20915,6 +21915,11 @@
       "why": "looks like a logo",
       "checked": "2026-09-29"
     },
+    "kimberlysmarina.com": {
+      "verdict": "image",
+      "image": "https://kimberlysmarina.com/assets/images/3b9e4540fcb98e2ddfe19675764b0a0a.png",
+      "checked": "2026-09-29"
+    },
     "kimchipapi.com": {
       "verdict": "image",
       "image": "https://static1.squarespace.com/static/682764e7abca7f498648588d/t/692d363f718ec3222df92280/1764570687529/kimchipapi+banner+no+background.png?format=1500w",
@@ -20943,6 +21948,11 @@
     "kingsbridgesocialclub.com": {
       "verdict": "none",
       "why": "looks like a logo",
+      "checked": "2026-09-29"
+    },
+    "kingsheadpubfreeport.com": {
+      "verdict": "image",
+      "image": "https://www.kingsheadpubfreeport.com/assets/Kingshead-Freeport.png",
       "checked": "2026-09-29"
     },
     "kingsleytavern.com": {
@@ -21160,6 +22170,11 @@
       "why": "no og:image",
       "checked": "2026-09-29"
     },
+    "konhibachi.com": {
+      "verdict": "none",
+      "why": "no og:image",
+      "checked": "2026-09-29"
+    },
     "konnacafe.com": {
       "verdict": "image",
       "image": "https://konnacafe.com/wp-content/uploads/2026/08/socialbu-resized-1536x2048-1.png",
@@ -21178,6 +22193,11 @@
     "korkaithai.com": {
       "verdict": "unreachable",
       "why": 403,
+      "checked": "2026-09-29"
+    },
+    "kornerstoreanddeli.com": {
+      "verdict": "none",
+      "why": "no og:image",
       "checked": "2026-09-29"
     },
     "koronetpizzany.com": {
@@ -21380,6 +22400,11 @@
       "why": 404,
       "checked": "2026-09-29"
     },
+    "laanxangcafe.com": {
+      "verdict": "unreachable",
+      "why": "URLError",
+      "checked": "2026-09-29"
+    },
     "labastidebyac.com": {
       "verdict": "image",
       "image": "https://irp.cdn-website.com/4e5f874b/dms3rep/multi/opt/LaBast-1920w.png",
@@ -21433,6 +22458,11 @@
     "lacascias.com": {
       "verdict": "none",
       "why": "no og:image",
+      "checked": "2026-09-29"
+    },
+    "lacasitaonthecircle.com": {
+      "verdict": "unreachable",
+      "why": "URLError",
       "checked": "2026-09-29"
     },
     "lacatenaardsley.com": {
@@ -21610,6 +22640,11 @@
       "why": "no og:image",
       "checked": "2026-09-29"
     },
+    "lambsmaine.com": {
+      "verdict": "none",
+      "why": "no og:image",
+      "checked": "2026-09-29"
+    },
     "lamiesinn.com/the-old-salt": {
       "verdict": "none",
       "why": "no og:image",
@@ -21645,6 +22680,11 @@
       "why": "no og:image",
       "checked": "2026-09-29"
     },
+    "landmarkfinedining.com": {
+      "verdict": "unreachable",
+      "why": "TimeoutError",
+      "checked": "2026-09-29"
+    },
     "landthaikitchen.com": {
       "verdict": "none",
       "why": "no og:image",
@@ -21668,6 +22708,11 @@
     "langesofbronxville.com": {
       "verdict": "unreachable",
       "why": 403,
+      "checked": "2026-09-29"
+    },
+    "langostabarharbor.com": {
+      "verdict": "image",
+      "image": "https://static.wixstatic.com/media/fa7151283dbe4417a51bcb0cf7a5447e.jpg/v1/fit/w_2500,h_1330,al_c/fa7151283dbe4417a51bcb0cf7a5447e.jpg",
       "checked": "2026-09-29"
     },
     "langwaterfarm.com": {
@@ -21965,6 +23010,11 @@
       "why": 465,
       "checked": "2026-09-29"
     },
+    "lbkitchenportlandme.com": {
+      "verdict": "image",
+      "image": "https://cdn.prod.website-files.com/6a26fb1dd36a13c8f05ac2db/6a6237ae6f116935c1bdc4a4_dad482e3d04ca657e56aec3b8abffa56_LBKITCHEN071420260350-crop%20%281%29.avif",
+      "checked": "2026-09-29"
+    },
     "lbmusicschool.com": {
       "verdict": "none",
       "why": "looks like a logo",
@@ -21973,6 +23023,11 @@
     "lcchen.com": {
       "verdict": "image",
       "image": "https://static.hungerrush.com/menufy/width=1920,height=1080,fit=scale-down,format=auto/637178082419193669+146307.png",
+      "checked": "2026-09-29"
+    },
+    "ldilobster.com": {
+      "verdict": "none",
+      "why": "looks like a logo",
       "checked": "2026-09-29"
     },
     "leafandanna.com": {
@@ -21988,6 +23043,11 @@
     "learningcommons.emmanuel.edu/library": {
       "verdict": "image",
       "image": "https://learningcommons.emmanuel.edu/ld.php?screenshot=jhjcai.png&size=facebook&cb=1790655073",
+      "checked": "2026-09-29"
+    },
+    "learyslanding.com": {
+      "verdict": "image",
+      "image": "https://static.wixstatic.com/media/b2f355_33473934ae75488d8deeb83d963f2099%7Emv2.png/v1/fit/w_2500,h_1330,al_c/b2f355_33473934ae75488d8deeb83d963f2099%7Emv2.png",
       "checked": "2026-09-29"
     },
     "lebanonctlibrary.org": {
@@ -22026,6 +23086,11 @@
       "checked": "2026-09-29"
     },
     "leememoriallibrary.org": {
+      "verdict": "none",
+      "why": "looks like a logo",
+      "checked": "2026-09-29"
+    },
+    "leewardmaine.com": {
       "verdict": "none",
       "why": "looks like a logo",
       "checked": "2026-09-29"
@@ -22165,6 +23230,11 @@
       "why": "no og:image",
       "checked": "2026-09-29"
     },
+    "leonardosonline.com": {
+      "verdict": "none",
+      "why": "no og:image",
+      "checked": "2026-09-29"
+    },
     "leonesmontclair.com": {
       "verdict": "unreachable",
       "why": 403,
@@ -22288,6 +23358,11 @@
     "lexrestaurant.com": {
       "verdict": "image",
       "image": "https://lexrestaurant.com/wp-content/uploads/2024/08/DSC06793-scaled.webp",
+      "checked": "2026-09-29"
+    },
+    "lfkportland.me": {
+      "verdict": "unreachable",
+      "why": 429,
       "checked": "2026-09-29"
     },
     "liarsbenchbeer.com": {
@@ -22620,6 +23695,11 @@
       "why": "no og:image",
       "checked": "2026-09-29"
     },
+    "liljamcookies.com": {
+      "verdict": "none",
+      "why": "no og:image",
+      "checked": "2026-09-29"
+    },
     "lillylibrary.org": {
       "verdict": "none",
       "why": "no og:image",
@@ -22670,6 +23750,11 @@
       "why": "no og:image",
       "checked": "2026-09-29"
     },
+    "lincolnandmain.net": {
+      "verdict": "none",
+      "why": "no og:image",
+      "checked": "2026-09-29"
+    },
     "lincolncountyhistory.org/visit/museums/chapman-hall-house": {
       "verdict": "none",
       "why": "no og:image",
@@ -22703,6 +23788,11 @@
     "lincolntheater.org": {
       "verdict": "image",
       "image": "https://static.wixstatic.com/media/404419_bc481684366340a58314437b733c53cd%7Emv2.png/v1/fit/w_2500,h_1330,al_c/404419_bc481684366340a58314437b733c53cd%7Emv2.png",
+      "checked": "2026-09-29"
+    },
+    "lindabeansperfectmaine.com": {
+      "verdict": "unreachable",
+      "why": "URLError",
       "checked": "2026-09-29"
     },
     "lindasbreakfast.com": {
@@ -22753,6 +23843,11 @@
     "lisasiangourmet.com": {
       "verdict": "unreachable",
       "why": "TimeoutError",
+      "checked": "2026-09-29"
+    },
+    "lisaspizzaoob.com": {
+      "verdict": "none",
+      "why": "no og:image",
       "checked": "2026-09-29"
     },
     "lisaspizzeriamedford.com": {
@@ -22920,6 +24015,11 @@
       "why": "no og:image",
       "checked": "2026-09-29"
     },
+    "littlenotchcafe.com": {
+      "verdict": "unreachable",
+      "why": 429,
+      "checked": "2026-09-29"
+    },
     "littlepub.com": {
       "verdict": "image",
       "image": "https://media.gonation.com/w_400/gonation.data.dev/voec1doi6li7qqklrkfi",
@@ -22928,6 +24028,11 @@
     "littleriveratlemeks.net": {
       "verdict": "unreachable",
       "why": "URLError",
+      "checked": "2026-09-29"
+    },
+    "littlesaigonme.com": {
+      "verdict": "none",
+      "why": "no og:image",
       "checked": "2026-09-29"
     },
     "littlesisterpvd.com": {
@@ -22945,9 +24050,19 @@
       "why": "no og:image",
       "checked": "2026-09-29"
     },
+    "littletaphouse.com": {
+      "verdict": "image",
+      "image": "https://static.spotapps.co/website_images/ab_websites/87618_website_v1/share_image.jpg",
+      "checked": "2026-09-29"
+    },
     "littlethaikitchen.com": {
       "verdict": "none",
       "why": "no og:image",
+      "checked": "2026-09-29"
+    },
+    "littletokyomaine.com": {
+      "verdict": "none",
+      "why": "looks like a logo",
       "checked": "2026-09-29"
     },
     "littletonsub.com": {
@@ -23060,7 +24175,22 @@
       "why": "no og:image",
       "checked": "2026-09-29"
     },
+    "lobstercooker.net": {
+      "verdict": "unreachable",
+      "why": "URLError",
+      "checked": "2026-09-29"
+    },
     "lobsterhouse.com": {
+      "verdict": "none",
+      "why": "no og:image",
+      "checked": "2026-09-29"
+    },
+    "lobsterpot.com": {
+      "verdict": "unreachable",
+      "why": 403,
+      "checked": "2026-09-29"
+    },
+    "lobsterpoundmaine.com": {
       "verdict": "none",
       "why": "no og:image",
       "checked": "2026-09-29"
@@ -23071,6 +24201,11 @@
       "checked": "2026-09-29"
     },
     "lobstershantysalem.com": {
+      "verdict": "none",
+      "why": "no og:image",
+      "checked": "2026-09-29"
+    },
+    "lobsterstogo.com": {
       "verdict": "none",
       "why": "no og:image",
       "checked": "2026-09-29"
@@ -23100,12 +24235,22 @@
       "why": "no og:image",
       "checked": "2026-09-29"
     },
+    "locallysaucedme.com": {
+      "verdict": "image",
+      "image": "https://www.locallysaucedme.com/wp-content/uploads/2025/05/collage.jpg",
+      "checked": "2026-09-29"
+    },
     "localnorthampton.com": {
       "verdict": "none",
       "why": "no og:image",
       "checked": "2026-09-29"
     },
     "localnorthampton.com/easthampton-menu": {
+      "verdict": "none",
+      "why": "no og:image",
+      "checked": "2026-09-29"
+    },
+    "localsproutscooperative.com": {
       "verdict": "none",
       "why": "no og:image",
       "checked": "2026-09-29"
@@ -23138,6 +24283,11 @@
     "locations.grandluxcafe.com/nj/paramus/11": {
       "verdict": "none",
       "why": "looks like a logo",
+      "checked": "2026-09-29"
+    },
+    "locations.ottoportland.com/otto-9ebbbe0e2a58": {
+      "verdict": "none",
+      "why": "no og:image",
       "checked": "2026-09-29"
     },
     "locations.ottoportland.com/otto-d36cbef4fcb2": {
@@ -23230,6 +24380,11 @@
       "why": "looks like a logo",
       "checked": "2026-09-29"
     },
+    "logicalsip.com": {
+      "verdict": "unreachable",
+      "why": "URLError",
+      "checked": "2026-09-29"
+    },
     "lokal83.com": {
       "verdict": "unreachable",
       "why": "URLError",
@@ -23255,6 +24410,11 @@
       "why": "no og:image",
       "checked": "2026-09-29"
     },
+    "lolita-portland.com": {
+      "verdict": "none",
+      "why": "no og:image",
+      "checked": "2026-09-29"
+    },
     "lolitamexican.com/location/lolita-back-bay": {
       "verdict": "image",
       "image": "https://images.getbento.com/accounts/730a54b4c6084d6454367c87c5fb1011/media/images/50422Main_Dining_Room_-_Lolita_Back_Bay_Boston_-_Ryan_Fischer_-_Hi_Res-1.jpg?w=1200&fit=crop&auto=compress,format&cs=origin&h=600",
@@ -23263,6 +24423,11 @@
     "lombardisnj.com": {
       "verdict": "none",
       "why": "no og:image",
+      "checked": "2026-09-29"
+    },
+    "lompoccafe.com": {
+      "verdict": "image",
+      "image": "https://static1.squarespace.com/static/62a0d3b082d3c66e6a9aedf1/t/62b619890d93f25f665cbc2b/1656101261763/Lompoc-Cafe-dijon-mussels.jpg?format=1500w",
       "checked": "2026-09-29"
     },
     "londisofsalem.com": {
@@ -23311,6 +24476,11 @@
       "checked": "2026-09-29"
     },
     "longfordsicecream.com": {
+      "verdict": "none",
+      "why": "no og:image",
+      "checked": "2026-09-29"
+    },
+    "longgraincamden.com": {
       "verdict": "none",
       "why": "no og:image",
       "checked": "2026-09-29"
@@ -23535,6 +24705,11 @@
       "why": 429,
       "checked": "2026-09-29"
     },
+    "luchadortacos.com": {
+      "verdict": "image",
+      "image": "https://www.luchadortacos.com/uploads/b/ddd88d40-72b8-11ea-8148-c3d56242d711/Untitled%20design%20(4).png",
+      "checked": "2026-09-29"
+    },
     "luciab.st": {
       "verdict": "none",
       "why": "looks like a logo",
@@ -23568,6 +24743,11 @@
     "luckydogthriftshop.com": {
       "verdict": "image",
       "image": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhfwLqA_M_7YoCf4jHT6UKudq40fmo0-TV0gcf97YGbhMyEoLoAnqxJ0q3s-pg0Qk9Ng0fgFJQWXLIZESPkv5pEje82sgPZopAbZDYwL-vO1pgsv8wj7etcYuxMFjlOH7wATVFfJXGbRJwq02tQQZdWORXsJVEpLeDLRszYriQBmCmZvbJUWpqRXFECgds/w1200-h630-p-k-no-nu/download%20%283%29.jpg",
+      "checked": "2026-09-29"
+    },
+    "luckygardenme.com": {
+      "verdict": "image",
+      "image": "https://w77.pro/v",
       "checked": "2026-09-29"
     },
     "luckylousbarandgrill.com": {
@@ -23625,6 +24805,11 @@
       "why": "looks like a logo",
       "checked": "2026-09-29"
     },
+    "lukeslobster.com/pages/portland-pier": {
+      "verdict": "none",
+      "why": "looks like a logo",
+      "checked": "2026-09-29"
+    },
     "lukeslobster.com/uws": {
       "verdict": "unreachable",
       "why": 404,
@@ -23678,6 +24863,11 @@
     "luzzosuppereastside.com": {
       "verdict": "image",
       "image": "https://slicelife.com/sf2/static/images/slicelife-meta.jpg",
+      "checked": "2026-09-29"
+    },
+    "lw.orderelrodeome.com": {
+      "verdict": "image",
+      "image": "https://static.hungerrush.com/menufy/width=1920,height=1080,fit=scale-down,format=auto/638324661512185019+1243496.png",
       "checked": "2026-09-29"
     },
     "lymeartassociation.org": {
@@ -23950,6 +25140,16 @@
       "why": "looks like a logo",
       "checked": "2026-09-29"
     },
+    "magnoterra.com": {
+      "verdict": "none",
+      "why": "no og:image",
+      "checked": "2026-09-29"
+    },
+    "magnusonwater.com": {
+      "verdict": "image",
+      "image": "https://static1.squarespace.com/static/5bfab30096d4550b42f693a0/t/5e2136aefbd67d6abce1073b/1579234994758/Magnus-Symbol_Red-RGB.png?format=1500w",
+      "checked": "2026-09-29"
+    },
     "magnussonfarm.com": {
       "verdict": "none",
       "why": "no og:image",
@@ -24045,9 +25245,19 @@
       "why": "no og:image",
       "checked": "2026-09-29"
     },
+    "mainebread.com": {
+      "verdict": "none",
+      "why": "looks like a logo",
+      "checked": "2026-09-29"
+    },
     "mainecarmuseum.com": {
       "verdict": "image",
       "image": "https://irp.cdn-website.com/bc0bbb96/dms3rep/multi/opt/1659633033069_1659632998860_12b-1920w.jpg",
+      "checked": "2026-09-29"
+    },
+    "mainecfc.com/index.html": {
+      "verdict": "none",
+      "why": "no og:image",
       "checked": "2026-09-29"
     },
     "mainecraftdistilling.com": {
@@ -24090,6 +25300,16 @@
       "image": "https://mainelighthousemuseum.org/wp-content/uploads/2018/05/mmldoor.jpg",
       "checked": "2026-09-29"
     },
+    "mainelobsterlady.com": {
+      "verdict": "image",
+      "image": "https://mainelobsterlady.com/wp-content/uploads/2026/07/Maine-Lobster-Lady-fi.jpg",
+      "checked": "2026-09-29"
+    },
+    "mainelycustard.com": {
+      "verdict": "none",
+      "why": "no og:image",
+      "checked": "2026-09-29"
+    },
     "mainemaritimemuseum.org": {
       "verdict": "image",
       "image": "https://static1.squarespace.com/static/6567e8cd435e594c186ee695/t/66561a372d81031865509268/1716918839665/Maritime+History+Building+June+2023.jpg?format=1500w",
@@ -24108,6 +25328,16 @@
     "mainestatemuseum.org": {
       "verdict": "image",
       "image": "https://mainestatemuseum.org/wp-content/uploads/2025/07/hero-athomemaine.jpg",
+      "checked": "2026-09-29"
+    },
+    "mainestreetbistro.com": {
+      "verdict": "unreachable",
+      "why": "URLError",
+      "checked": "2026-09-29"
+    },
+    "mainewine.com": {
+      "verdict": "image",
+      "image": "https://mainewine.com/wp-content/uploads/mainewine-cellardoor-winery-wrapped.jpg",
       "checked": "2026-09-29"
     },
     "mainstgrilleputnam.com": {
@@ -24163,6 +25393,11 @@
     "maitlandfarms.com": {
       "verdict": "unreachable",
       "why": 403,
+      "checked": "2026-09-29"
+    },
+    "maizportland.com": {
+      "verdict": "image",
+      "image": "https://static1.squarespace.com/static/5e7920bebad12c2af88ccbc2/t/5ee51be8389cec341ae64c4d/1592073314420/pasabocas+for+website.jpg?format=1500w",
       "checked": "2026-09-29"
     },
     "majorleagueroastbeef.com": {
@@ -24530,6 +25765,11 @@
       "why": "no og:image",
       "checked": "2026-09-29"
     },
+    "mariasrestaurant.com": {
+      "verdict": "none",
+      "why": "no og:image",
+      "checked": "2026-09-29"
+    },
     "mariastaqueriaboston.com": {
       "verdict": "unreachable",
       "why": "URLError",
@@ -24685,6 +25925,11 @@
       "image": "https://static.spotapps.co/website_images/ab_websites/111900_website_v2/social_back.jpg",
       "checked": "2026-09-29"
     },
+    "marlintinisgrill.com": {
+      "verdict": "none",
+      "why": "no og:image",
+      "checked": "2026-09-29"
+    },
     "marlowbistro.com": {
       "verdict": "none",
       "why": "looks like a logo",
@@ -24713,6 +25958,11 @@
     "marthas-exchange.com": {
       "verdict": "none",
       "why": "no og:image",
+      "checked": "2026-09-29"
+    },
+    "marthasdiner.com": {
+      "verdict": "unreachable",
+      "why": 503,
       "checked": "2026-09-29"
     },
     "martinscoffeeshop.com": {
@@ -24788,6 +26038,11 @@
     "mashousect.com": {
       "verdict": "unreachable",
       "why": "URLError",
+      "checked": "2026-09-29"
+    },
+    "masiello.com/rockland-me": {
+      "verdict": "image",
+      "image": "https://dl6bglhcfn2kh.cloudfront.net/phplp0UGz.jpg?version=1738249302",
       "checked": "2026-09-29"
     },
     "masonsandwiches.com": {
@@ -25295,6 +26550,11 @@
       "why": 403,
       "checked": "2026-09-29"
     },
+    "mdiic.com/7-firefly-lane": {
+      "verdict": "unreachable",
+      "why": 404,
+      "checked": "2026-09-29"
+    },
     "mdiwine.com": {
       "verdict": "image",
       "image": "https://lh7-us.googleusercontent.com/sitesv-images-rt/AMxu72t-n644SDxZ4R0QOucga1I9XfZkemqqdHJslSRxMmO6Mi1cwEguzbgirbCdq0ZhKTztpydd21nGgwgYEfgyCpyyjPhkdDnuSu5BWmyUoQp__uTlPMOSRBPeZ5Nn-lbISW8_HViQoFFWik7EHtESsStrlerLxAbh_bJfiU5BE7kPGh7Vjg92iPbN29k1odA=w16383",
@@ -25331,6 +26591,11 @@
       "checked": "2026-09-29"
     },
     "meandollies.com": {
+      "verdict": "none",
+      "why": "no og:image",
+      "checked": "2026-09-29"
+    },
+    "meanwhile-in-belfast.com": {
       "verdict": "none",
       "why": "no og:image",
       "checked": "2026-09-29"
@@ -25425,6 +26690,11 @@
       "why": "no og:image",
       "checked": "2026-09-29"
     },
+    "mekongasianbistro.com": {
+      "verdict": "image",
+      "image": "https://www.specialedspot.com/img/slot-tri.png",
+      "checked": "2026-09-29"
+    },
     "melbasrestaurant.com": {
       "verdict": "none",
       "why": "looks like a logo",
@@ -25488,6 +26758,16 @@
     "menotomygrill.com": {
       "verdict": "image",
       "image": "https://static.spotapps.co/website_images/ab_websites/41118_website_v1/social_share.jpg",
+      "checked": "2026-09-29"
+    },
+    "menupix.com/maine/restaurants/31659508/The-Landing-China-ME": {
+      "verdict": "image",
+      "image": "https://www.menupix.com/images/core/menupix-wordmark-blue.png",
+      "checked": "2026-09-29"
+    },
+    "meowcatlounge.com": {
+      "verdict": "none",
+      "why": "no og:image",
       "checked": "2026-09-29"
     },
     "meraibar.com": {
@@ -25563,6 +26843,11 @@
     "metaterestaurantny.com/metatepalisade": {
       "verdict": "unreachable",
       "why": 403,
+      "checked": "2026-09-29"
+    },
+    "metcalfsub.com": {
+      "verdict": "image",
+      "image": "https://static.spotapps.co/website_images/ab_websites/177277_website_v1/social_share.jpg",
       "checked": "2026-09-29"
     },
     "metmuseum.org/art/collection/search/470314": {
@@ -25915,6 +27200,11 @@
       "why": "no og:image",
       "checked": "2026-09-29"
     },
+    "milagrobrothers.com": {
+      "verdict": "unreachable",
+      "why": "URLError",
+      "checked": "2026-09-29"
+    },
     "milaneserestaurant.com": {
       "verdict": "none",
       "why": "no og:image",
@@ -25938,6 +27228,11 @@
     "milfordtownlibrary.org": {
       "verdict": "unreachable",
       "why": 403,
+      "checked": "2026-09-29"
+    },
+    "milkandhoneykitchen.com": {
+      "verdict": "none",
+      "why": "looks like a logo",
       "checked": "2026-09-29"
     },
     "milkbarstore.com/pages/location": {
@@ -26030,6 +27325,11 @@
       "why": "no og:image",
       "checked": "2026-09-29"
     },
+    "mingleerestaurant.com": {
+      "verdict": "unreachable",
+      "why": "URLError",
+      "checked": "2026-09-29"
+    },
     "minglewoodharborside.com": {
       "verdict": "unreachable",
       "why": 403,
@@ -26090,9 +27390,19 @@
       "image": "https://static.wixstatic.com/media/1da8ad_40c22762b3d2458ab96d66a3b5097890%7Emv2.png/v1/fit/w_2500,h_1330,al_c/1da8ad_40c22762b3d2458ab96d66a3b5097890%7Emv2.png",
       "checked": "2026-09-29"
     },
+    "mirakuyawaterville.com": {
+      "verdict": "none",
+      "why": "no og:image",
+      "checked": "2026-09-29"
+    },
     "mirchination.com/brookline": {
       "verdict": "unreachable",
       "why": 403,
+      "checked": "2026-09-29"
+    },
+    "misennoodlebar.com": {
+      "verdict": "none",
+      "why": "looks like a logo",
       "checked": "2026-09-29"
     },
     "mishmishcafe.com": {
@@ -26128,6 +27438,21 @@
     "misssaigonamherst.com": {
       "verdict": "none",
       "why": "no og:image",
+      "checked": "2026-09-29"
+    },
+    "misterbagelbrunswick.com": {
+      "verdict": "none",
+      "why": "no og:image",
+      "checked": "2026-09-29"
+    },
+    "misterbagelforestave.com": {
+      "verdict": "none",
+      "why": "no og:image",
+      "checked": "2026-09-29"
+    },
+    "misterbagelyarmouth.com": {
+      "verdict": "unreachable",
+      "why": "URLError",
       "checked": "2026-09-29"
     },
     "mistermonut.com": {
@@ -26390,6 +27715,11 @@
       "why": "no og:image",
       "checked": "2026-09-29"
     },
+    "monheganfishhouse.com": {
+      "verdict": "none",
+      "why": "no og:image",
+      "checked": "2026-09-29"
+    },
     "monicasboston.com": {
       "verdict": "unreachable",
       "why": 403,
@@ -26493,6 +27823,11 @@
     "montereymasslibrary.org": {
       "verdict": "none",
       "why": "looks like a logo",
+      "checked": "2026-09-29"
+    },
+    "montesportland.com": {
+      "verdict": "image",
+      "image": "https://static1.squarespace.com/static/5b7ab1a385ede1e2f5566d41/t/5d1fd96aad195500010dcd88/1562368364673/Montes_Identity_FINAL.2018.png?format=1500w",
       "checked": "2026-09-29"
     },
     "montgomeryma.gov/library": {
@@ -26655,6 +27990,11 @@
       "why": "looks like a logo",
       "checked": "2026-09-29"
     },
+    "mortonsmoo.com/index.html": {
+      "verdict": "none",
+      "why": "parked or suspect",
+      "checked": "2026-09-29"
+    },
     "mos.org": {
       "verdict": "image",
       "image": "https://www.mos.org/sites/default/files/styles/1200x675_16_9_lg_/public/2024-02/Museum-Exterior-1x1.jpg?itok=d_Y1X48L",
@@ -26666,6 +28006,11 @@
       "checked": "2026-09-29"
     },
     "moshi-moshi.res-menu.com": {
+      "verdict": "none",
+      "why": "no og:image",
+      "checked": "2026-09-29"
+    },
+    "motherindiame.com": {
       "verdict": "none",
       "why": "no og:image",
       "checked": "2026-09-29"
@@ -26723,6 +28068,11 @@
     "mountauburn.org/washington-tower": {
       "verdict": "none",
       "why": "no og:image",
+      "checked": "2026-09-29"
+    },
+    "mountdessertbakery.com": {
+      "verdict": "image",
+      "image": "https://static.wixstatic.com/media/612cf3_ce2127670c984b88890ea18ee6f121dd%7Emv2.png/v1/fit/w_2500,h_1330,al_c/612cf3_ce2127670c984b88890ea18ee6f121dd%7Emv2.png",
       "checked": "2026-09-29"
     },
     "mountgrace.org/accessible-nature-trail-first-northfield": {
@@ -26800,6 +28150,11 @@
       "why": "no og:image",
       "checked": "2026-09-29"
     },
+    "mrgoodbars.com": {
+      "verdict": "image",
+      "image": "https://cdn.domainmarket.com/dm-com/social/mrgoodbars-com.jpg",
+      "checked": "2026-09-29"
+    },
     "mrgreeks.com": {
       "verdict": "image",
       "image": "https://static.wixstatic.com/media/a2fbaa_337d5bc2db6849a3899c04caeeacf654%7Emv2.png/v1/fit/w_2500,h_1330,al_c/a2fbaa_337d5bc2db6849a3899c04caeeacf654%7Emv2.png",
@@ -26835,6 +28190,11 @@
       "why": "URLError",
       "checked": "2026-09-29"
     },
+    "mrtunamaine.com/locations": {
+      "verdict": "none",
+      "why": "no og:image",
+      "checked": "2026-09-29"
+    },
     "mrwonton88.com": {
       "verdict": "none",
       "why": "no og:image",
@@ -26858,6 +28218,11 @@
     "mtfujirestaurants.com": {
       "verdict": "unreachable",
       "why": 403,
+      "checked": "2026-09-29"
+    },
+    "mthaibangor.com": {
+      "verdict": "none",
+      "why": "no og:image",
       "checked": "2026-09-29"
     },
     "mtkiscodiner.com": {
@@ -26938,6 +28303,11 @@
     "muffinsonmain.com": {
       "verdict": "none",
       "why": "no og:image",
+      "checked": "2026-09-29"
+    },
+    "mughalpalacechelsea.com": {
+      "verdict": "image",
+      "image": "https://mughalpalacechelsea.com/wp-content/uploads/2021/06/01-1.png",
       "checked": "2026-09-29"
     },
     "mughlaicuisineny.com": {
@@ -27465,6 +28835,11 @@
       "why": "URLError",
       "checked": "2026-09-29"
     },
+    "nautilusseafoodandgrill.com": {
+      "verdict": "unreachable",
+      "why": 403,
+      "checked": "2026-09-29"
+    },
     "naxosestiatorio.com": {
       "verdict": "image",
       "image": "https://static.spotapps.co/website_images/ab_websites/227799_website_v1/food_back.jpg",
@@ -27625,6 +29000,11 @@
       "why": "no og:image",
       "checked": "2026-09-29"
     },
+    "nestbangor.com": {
+      "verdict": "none",
+      "why": "no og:image",
+      "checked": "2026-09-29"
+    },
     "nesteakandseafood.com": {
       "verdict": "none",
       "why": "no og:image",
@@ -27780,6 +29160,11 @@
       "why": "looks like a logo",
       "checked": "2026-09-29"
     },
+    "newcastlepublickhouse.com": {
+      "verdict": "none",
+      "why": "no og:image",
+      "checked": "2026-09-29"
+    },
     "newcitydiner.com": {
       "verdict": "unreachable",
       "why": "URLError",
@@ -27888,6 +29273,11 @@
     "newkitchennj.com": {
       "verdict": "none",
       "why": "no og:image",
+      "checked": "2026-09-29"
+    },
+    "newlewistonmandarinbuffet.com": {
+      "verdict": "image",
+      "image": "https://lh7-us.googleusercontent.com/sitesv-images-rt/AMxu72to9SxVsQ1j4I-RsP93xo4k4hxSwx56dem0hBE-QUnNLyE4lbaoUexQYjjMVTA2-WYyeV5aRqlF2_CsjJf_QMbNc76tCsmWz5mctpKfTtyQysm6sQtnEVaNCU46uwDxnRTDydEbunDPd9JRp-vFFf7nPsJhf7uWClhWg0cPc5Ny0ruNRBQYhylz8UtD=w16383",
       "checked": "2026-09-29"
     },
     "newmarketchurch.org/thrift-shop": {
@@ -28053,6 +29443,11 @@
     "nexmexthing.com": {
       "verdict": "unreachable",
       "why": 307,
+      "checked": "2026-09-29"
+    },
+    "nextdoormaine.com": {
+      "verdict": "unreachable",
+      "why": "URLError",
       "checked": "2026-09-29"
     },
     "nfaschool.org/academics/edwin-h-land-library": {
@@ -28238,6 +29633,16 @@
     "nicospizzapv.com": {
       "verdict": "none",
       "why": "no og:image",
+      "checked": "2026-09-29"
+    },
+    "nightingalevh.com": {
+      "verdict": "none",
+      "why": "parked or suspect",
+      "checked": "2026-09-29"
+    },
+    "nightmovesbread.com": {
+      "verdict": "none",
+      "why": "looks like a logo",
       "checked": "2026-09-29"
     },
     "nightshiftbrewing.com/locations/everett-taproom": {
@@ -28460,6 +29865,11 @@
       "image": "https://irp.cdn-website.com/b0262c78/dms3rep/multi/opt/NochesDeColumbia_NochesToGo_IG_v01+copy-1920w.jpg",
       "checked": "2026-09-29"
     },
+    "nocturnemdrafthaus.com": {
+      "verdict": "none",
+      "why": "no og:image",
+      "checked": "2026-09-29"
+    },
     "nodhillbrewery.com/biergarten": {
       "verdict": "image",
       "image": "https://static.wixstatic.com/media/c4a09f_901d0c7c6f60426198fc8dd866edeb51%7Emv2.png/v1/fit/w_2500,h_1330,al_c/c4a09f_901d0c7c6f60426198fc8dd866edeb51%7Emv2.png",
@@ -28483,6 +29893,11 @@
     "nomamesmexicancantina.com": {
       "verdict": "none",
       "why": "looks like a logo",
+      "checked": "2026-09-29"
+    },
+    "nonesuchriverbrewing.com": {
+      "verdict": "none",
+      "why": "icon format",
       "checked": "2026-09-29"
     },
     "nonnaclementina1.com": {
@@ -28580,6 +29995,11 @@
       "why": "no og:image",
       "checked": "2026-09-29"
     },
+    "northbeaconoyster.com": {
+      "verdict": "none",
+      "why": "looks like a logo",
+      "checked": "2026-09-29"
+    },
     "northboroughlibrary.org": {
       "verdict": "none",
       "why": "no og:image",
@@ -28675,6 +30095,11 @@
       "why": "no og:image",
       "checked": "2026-09-29"
     },
+    "noshkitchenbar.com": {
+      "verdict": "none",
+      "why": "parked or suspect",
+      "checked": "2026-09-29"
+    },
     "nostalgiaprovidence.com/contact.html": {
       "verdict": "image",
       "image": "https://nostalgiaprovidence.com/wp-content/uploads/2021/01/export_2.png",
@@ -28748,6 +30173,11 @@
     "nourishyoursoul.com/in-store-menu/lululemon-menu": {
       "verdict": "unreachable",
       "why": "URLError",
+      "checked": "2026-09-29"
+    },
+    "novareresbiercafe.com": {
+      "verdict": "none",
+      "why": "no og:image",
       "checked": "2026-09-29"
     },
     "novomarketplace.com": {
@@ -29705,6 +31135,16 @@
       "why": "URLError",
       "checked": "2026-09-29"
     },
+    "oceanhousebakery.com": {
+      "verdict": "none",
+      "why": "looks like a logo",
+      "checked": "2026-09-29"
+    },
+    "oceanhousemarket.com": {
+      "verdict": "none",
+      "why": "no og:image",
+      "checked": "2026-09-29"
+    },
     "ochastamford.com": {
       "verdict": "none",
       "why": "no og:image",
@@ -29713,6 +31153,11 @@
     "ochocafe.com": {
       "verdict": "unreachable",
       "why": "URLError",
+      "checked": "2026-09-29"
+    },
+    "ocotillo.me": {
+      "verdict": "none",
+      "why": "no og:image",
       "checked": "2026-09-29"
     },
     "ocpizzeriastoughton.com": {
@@ -29741,6 +31186,11 @@
       "checked": "2026-09-29"
     },
     "odeens.com/odeens-at-ridgefield-golf-course": {
+      "verdict": "none",
+      "why": "no og:image",
+      "checked": "2026-09-29"
+    },
+    "odonoghuesme.com": {
       "verdict": "none",
       "why": "no og:image",
       "checked": "2026-09-29"
@@ -29818,6 +31268,11 @@
     "oishijapanesewestsimsbury.com": {
       "verdict": "unreachable",
       "why": "URLError",
+      "checked": "2026-09-29"
+    },
+    "oishirestaurantme.com": {
+      "verdict": "none",
+      "why": "no og:image",
       "checked": "2026-09-29"
     },
     "oishisono.com": {
@@ -30135,6 +31590,11 @@
       "image": "https://www.opafreshgreek.com/uploads/b/37241900-df06-11ed-a9ca-41557fe67bd0/Untitled-33.png",
       "checked": "2026-09-29"
     },
+    "opalcollection.com/samoset/restaurants/la-bella-vita-ristorante": {
+      "verdict": "none",
+      "why": "no og:image",
+      "checked": "2026-09-29"
+    },
     "openvault.wgbh.org/visiting-the-archives": {
       "verdict": "unreachable",
       "why": 404,
@@ -30375,6 +31835,11 @@
       "why": 403,
       "checked": "2026-09-29"
     },
+    "oreillyscure.com": {
+      "verdict": "none",
+      "why": "looks like a logo",
+      "checked": "2026-09-29"
+    },
     "oremsdiner.com": {
       "verdict": "none",
       "why": "looks like a logo",
@@ -30540,6 +32005,11 @@
       "why": "URLError",
       "checked": "2026-09-29"
     },
+    "othersidediner.com": {
+      "verdict": "image",
+      "image": "https://static1.squarespace.com/static/5c9fba3ec46f6d5875699349/t/61532ee33820cd75805a1c81/1632841443178/Yanni_1.jpg?format=1500w",
+      "checked": "2026-09-29"
+    },
     "otislibrarynorwich.org": {
       "verdict": "none",
       "why": "no og:image",
@@ -30625,6 +32095,11 @@
       "image": "https://static1.squarespace.com/static/57e6af4a29687f1c49bdb6fe/t/6055477cca24454a73089acd/1616201596957/5829d79a6fbaa.jpg?format=1500w",
       "checked": "2026-09-29"
     },
+    "owlbearsrest.com": {
+      "verdict": "none",
+      "why": "no og:image",
+      "checked": "2026-09-29"
+    },
     "owlibrary.org": {
       "verdict": "none",
       "why": "no og:image",
@@ -30643,6 +32118,11 @@
     "owlshopcigars.com": {
       "verdict": "none",
       "why": "looks like a logo",
+      "checked": "2026-09-29"
+    },
+    "oxbowbeer.com/location/oxford": {
+      "verdict": "image",
+      "image": "https://craftpeak-cooler-images.imgix.net/oxbow-brewing-company/OXBOW-87.jpg?auto=compress%2Cformat&fit=scale&h=2880&ixlib=php-3.3.1&w=1920&wpsize=full_width_photo&s=e940865e74407a61f14e5015922a3c0f",
       "checked": "2026-09-29"
     },
     "oxford.pizza": {
@@ -30715,6 +32195,11 @@
       "why": "looks like a logo",
       "checked": "2026-09-29"
     },
+    "paddymurphysbangor.com": {
+      "verdict": "none",
+      "why": "no og:image",
+      "checked": "2026-09-29"
+    },
     "paddys.us": {
       "verdict": "none",
       "why": "looks like a logo",
@@ -30733,6 +32218,11 @@
     "padthainewhavenct.com": {
       "verdict": "image",
       "image": "https://static.hungerrush.com/menufy/width=1920,height=1080,fit=scale-down,format=auto/637249935364643512+201838.png",
+      "checked": "2026-09-29"
+    },
+    "paellaseafood.com": {
+      "verdict": "none",
+      "why": "no og:image",
       "checked": "2026-09-29"
     },
     "pagespast.com": {
@@ -31455,9 +32945,29 @@
       "why": "no og:image",
       "checked": "2026-09-29"
     },
+    "patspizzabrunswick.com": {
+      "verdict": "none",
+      "why": "no og:image",
+      "checked": "2026-09-29"
+    },
     "patspizzaoflowermills.com": {
       "verdict": "unreachable",
       "why": "URLError",
+      "checked": "2026-09-29"
+    },
+    "patspizzaoldport.com": {
+      "verdict": "none",
+      "why": "no og:image",
+      "checked": "2026-09-29"
+    },
+    "patspizzawindham.com": {
+      "verdict": "unreachable",
+      "why": "URLError",
+      "checked": "2026-09-29"
+    },
+    "patsyarmouth.com": {
+      "verdict": "none",
+      "why": "no og:image",
       "checked": "2026-09-29"
     },
     "pattaconk1850.com": {
@@ -31745,6 +33255,11 @@
       "image": "https://static-assets.artlogic.net/w_1200,h_630,c_fill,g_xy_center,x_w_mul_0.54,y_h_mul_0.14,f_auto,fl_lossy,q_auto/ws-artlogicwebsite0158/usr/exhibitions/images/exhibitions/37/image-1.jpeg?focal=54,14",
       "checked": "2026-09-29"
     },
+    "pemaquidlobstercoop.com": {
+      "verdict": "unreachable",
+      "why": "URLError",
+      "checked": "2026-09-29"
+    },
     "pembrokepubliclibrary.org": {
       "verdict": "image",
       "image": "https://www.wuildit.com/weebly/heaps/blocksbackgrounds/_ges815tngn_TeenVolunteersCarousel.png",
@@ -31825,6 +33340,11 @@
       "why": 404,
       "checked": "2026-09-29"
     },
+    "perryslobstershack.com": {
+      "verdict": "none",
+      "why": "parked or suspect",
+      "checked": "2026-09-29"
+    },
     "persimmonri.com": {
       "verdict": "none",
       "why": "looks like a logo",
@@ -31843,6 +33363,11 @@
     "peterdougherty.com/dreamstate": {
       "verdict": "image",
       "image": "https://static1.squarespace.com/static/611e76c4cde72800e6562bf4/t/6a262ae858b73f530a6e8725/1780886248847/DREAMSTATE_FINAL.jpg?format=1500w",
+      "checked": "2026-09-29"
+    },
+    "peterotts.com": {
+      "verdict": "image",
+      "image": "https://static1.squarespace.com/static/5ea86b7d82eccf57fed3731e/t/69dfa3415424f00ad22fc9d8/1776264001426/B8461E3C-E680-48D2-B233-01A810CE3A40.png?format=1500w",
       "checked": "2026-09-29"
     },
     "petersbellapizza.com": {
@@ -31898,6 +33423,11 @@
     "petitrobertbistro.com": {
       "verdict": "none",
       "why": "looks like a logo",
+      "checked": "2026-09-29"
+    },
+    "petrillosfreeport.com": {
+      "verdict": "none",
+      "why": "no og:image",
       "checked": "2026-09-29"
     },
     "petronespizza.com": {
@@ -32175,6 +33705,11 @@
       "why": "looks like a logo",
       "checked": "2026-09-29"
     },
+    "pigeonsmaine.com": {
+      "verdict": "unreachable",
+      "why": "URLError",
+      "checked": "2026-09-29"
+    },
     "pigseyepub.com": {
       "verdict": "none",
       "why": "no og:image",
@@ -32433,6 +33968,11 @@
     "pizzagrillweymouth.com": {
       "verdict": "none",
       "why": "no og:image",
+      "checked": "2026-09-29"
+    },
+    "pizzaioloportland.com": {
+      "verdict": "image",
+      "image": "https://static.spotapps.co/website_images/ab_websites/106747_website/share_link_img.jpg",
       "checked": "2026-09-29"
     },
     "pizzakingleominster.com": {
@@ -32805,6 +34345,11 @@
       "image": "https://pml.providence.edu/wp-content/uploads/sites/33/2023/12/front_center_exterior_pml-scaled.jpg",
       "checked": "2026-09-29"
     },
+    "poboysandpickles.com": {
+      "verdict": "image",
+      "image": "https://static1.squarespace.com/static/69652276f1ba0f3086294376/t/699371b2a163916234fdcc09/1771270578968/PoBoys_PrimaryHorizontal-SaltGherkin_RGB.png?format=1500w",
+      "checked": "2026-09-29"
+    },
     "pocionlounge.com": {
       "verdict": "none",
       "why": "parked or suspect",
@@ -32873,6 +34418,11 @@
     "pollardml.org": {
       "verdict": "none",
       "why": "no og:image",
+      "checked": "2026-09-29"
+    },
+    "pomelia.restaurant": {
+      "verdict": "unreachable",
+      "why": 403,
       "checked": "2026-09-29"
     },
     "pomfretlibrary.org": {
@@ -33050,6 +34600,11 @@
       "image": "https://portcitycoin.com/wp-content/uploads/2018/02/Gold-Eagles-300x300.png",
       "checked": "2026-09-29"
     },
+    "portcitynutrition.com": {
+      "verdict": "none",
+      "why": "no og:image",
+      "checked": "2026-09-29"
+    },
     "portcitysandwichco.com": {
       "verdict": "unreachable",
       "why": 403,
@@ -33080,6 +34635,11 @@
       "why": "looks like a logo",
       "checked": "2026-09-29"
     },
+    "portholemaine.com": {
+      "verdict": "none",
+      "why": "no og:image",
+      "checked": "2026-09-29"
+    },
     "porticobrewing.com": {
       "verdict": "none",
       "why": "looks like a logo",
@@ -33093,6 +34653,11 @@
     "portlanddiscovery.com": {
       "verdict": "image",
       "image": "https://portlanddiscovery.com/wp-content/uploads/sites/7200/2024/03/trolleyphl6.jpg?w=700&h=700&zoom=2",
+      "checked": "2026-09-29"
+    },
+    "portlandempire.com": {
+      "verdict": "none",
+      "why": "looks like a logo",
       "checked": "2026-09-29"
     },
     "portlandhistsoc.com": {
@@ -33120,6 +34685,11 @@
       "why": "no og:image",
       "checked": "2026-09-29"
     },
+    "portlandlobstercompany.com": {
+      "verdict": "image",
+      "image": "https://portlandlobstercompany.com/site/assets/files/1061/socialsharingplc.1200x630.jpg",
+      "checked": "2026-09-29"
+    },
     "portlandmaine.gov/1059/Hobart-Street-Wildlife-Sanctuary": {
       "verdict": "unreachable",
       "why": "URLError",
@@ -33138,6 +34708,41 @@
     "portlandmuseum.org": {
       "verdict": "image",
       "image": "https://www.portlandmuseum.org/wp-content/uploads/2026/01/homer-brand-white-72dpi-03.17.26-1.avif",
+      "checked": "2026-09-29"
+    },
+    "portlandpie.com": {
+      "verdict": "none",
+      "why": "no og:image",
+      "checked": "2026-09-29"
+    },
+    "portlandpie.com/brunswickppc": {
+      "verdict": "none",
+      "why": "no og:image",
+      "checked": "2026-09-29"
+    },
+    "portlandpie.com/portlandppc": {
+      "verdict": "none",
+      "why": "no og:image",
+      "checked": "2026-09-29"
+    },
+    "portlandpie.com/westbrook": {
+      "verdict": "unreachable",
+      "why": 404,
+      "checked": "2026-09-29"
+    },
+    "portlandpizza.com": {
+      "verdict": "image",
+      "image": "https://static.spotapps.co/website_images/ab_websites/89816_website_v1/specials.jpg",
+      "checked": "2026-09-29"
+    },
+    "portlandpizzajoint.com": {
+      "verdict": "none",
+      "why": "no og:image",
+      "checked": "2026-09-29"
+    },
+    "portlandpottery.com/about": {
+      "verdict": "none",
+      "why": "looks like a logo",
       "checked": "2026-09-29"
     },
     "porto-boston.com": {
@@ -33395,6 +35000,11 @@
       "why": "no og:image",
       "checked": "2026-09-29"
     },
+    "primorestaurant.com": {
+      "verdict": "image",
+      "image": "https://static1.squarespace.com/static/6442e4dbca0483159170ae41/t/6515d70f107b72636de90ffa/1695930127758/Alex%2BWill+room+sparkle.jpg?format=1500w",
+      "checked": "2026-09-29"
+    },
     "primospizzahadley.com": {
       "verdict": "none",
       "why": "no og:image",
@@ -33605,6 +35215,11 @@
       "why": "no og:image",
       "checked": "2026-09-29"
     },
+    "pullingcorksmaine.com": {
+      "verdict": "image",
+      "image": "https://static1.squarespace.com/static/65368d6b353cde2efb37d7be/t/67d85348be1e6b7fa9655182/1742230344274/Screenshot%25202025-03-17%2520at%252012.48.42%25E2%2580%25AFPM-remove-background.com.png?format=1500w",
+      "checked": "2026-09-29"
+    },
     "punchbowlbrookline.com": {
       "verdict": "none",
       "why": "no og:image",
@@ -33658,6 +35273,11 @@
     "purplecarrotbreadco.com": {
       "verdict": "none",
       "why": "looks like a logo",
+      "checked": "2026-09-29"
+    },
+    "purplecowmaine.com/ordereze/default.aspx": {
+      "verdict": "unreachable",
+      "why": 409,
       "checked": "2026-09-29"
     },
     "purplepalaceyork.com": {
@@ -33745,14 +35365,29 @@
       "image": "https://static.hungerrush.com/menufy/width=1920,height=1080,fit=scale-down,format=auto/638344414527000503+1260302.png",
       "checked": "2026-09-29"
     },
+    "qstreetdiner.com": {
+      "verdict": "none",
+      "why": "no og:image",
+      "checked": "2026-09-29"
+    },
     "qu.edu/student-life/dining/dining-locations": {
       "verdict": "none",
       "why": "looks like a logo",
       "checked": "2026-09-29"
     },
+    "quantobasta.me": {
+      "verdict": "unreachable",
+      "why": "URLError",
+      "checked": "2026-09-29"
+    },
     "quarrycoffeeco.com": {
       "verdict": "image",
       "image": "https://static.wixstatic.com/media/c2b4cd_973b72d848eb474597fdf6ecbdc35704%7Emv2.png/v1/fit/w_2500,h_1330,al_c/c2b4cd_973b72d848eb474597fdf6ecbdc35704%7Emv2.png",
+      "checked": "2026-09-29"
+    },
+    "quarrytaproom.com": {
+      "verdict": "image",
+      "image": "https://static1.squarespace.com/static/57ed5dd31b631b5d6cb839f7/t/581ccd686b8f5bb5be747907/1478282601028/preview-8.jpg?format=1500w",
       "checked": "2026-09-29"
     },
     "quartertonecoffee.com": {
@@ -33880,6 +35515,11 @@
       "image": "https://static1.squarespace.com/static/6742847b5a0db278359b0744/t/676f67bb0f41031bdf34480c/1747843711552/Social-Ralph-Waldo-Emerson-profile.jpg?format=1500w",
       "checked": "2026-09-29"
     },
+    "ramblerbistro.me": {
+      "verdict": "unreachable",
+      "why": 429,
+      "checked": "2026-09-29"
+    },
     "ramblinghousenyc.com": {
       "verdict": "image",
       "image": "https://ramblinghousenyc.com/wp-content/uploads/2024/09/cropped-Screenshot-2025-11-10-at-5.45.10-PM.png",
@@ -33893,6 +35533,16 @@
     "ramisboston.com": {
       "verdict": "none",
       "why": "looks like a logo",
+      "checked": "2026-09-29"
+    },
+    "ramonas.me": {
+      "verdict": "image",
+      "image": "https://static1.squarespace.com/static/5de67f08b30945256df2b4ea/t/5e599c7c109ebc16845a4797/1582931069659/ramonas_web_01.png?format=1500w",
+      "checked": "2026-09-29"
+    },
+    "rampgrill.com": {
+      "verdict": "unreachable",
+      "why": 403,
       "checked": "2026-09-29"
     },
     "rancs.com": {
@@ -33938,6 +35588,11 @@
     "rarebreedcoffee.com": {
       "verdict": "none",
       "why": "looks like a logo",
+      "checked": "2026-09-29"
+    },
+    "rasaofmaine.com": {
+      "verdict": "image",
+      "image": "https://rasaofmaine.com/assets/public/images/og-rasa.jpg",
       "checked": "2026-09-29"
     },
     "rasoiindianframingham.com": {
@@ -34205,9 +35860,24 @@
       "why": "no og:image",
       "checked": "2026-09-29"
     },
+    "redsdairyfreeze.com": {
+      "verdict": "image",
+      "image": "https://static.wixstatic.com/media/650bb1_78f2bf83913a41e3be20d099d5de2729%7Emv2_d_4032_3024_s_4_2.jpg/v1/fit/w_2500,h_1330,al_c/650bb1_78f2bf83913a41e3be20d099d5de2729%7Emv2_d_4032_3024_s_4_2.jpg",
+      "checked": "2026-09-29"
+    },
+    "redseatsmaine.com": {
+      "verdict": "none",
+      "why": "no og:image",
+      "checked": "2026-09-29"
+    },
     "redskyhull.com": {
       "verdict": "image",
       "image": "https://www.redskyhull.com/preview.png",
+      "checked": "2026-09-29"
+    },
+    "redskyrestaurant.com": {
+      "verdict": "none",
+      "why": "no og:image",
       "checked": "2026-09-29"
     },
     "redstonegrill.com/restaurants/burlington": {
@@ -34258,6 +35928,11 @@
     "regalmexicangrillma.com": {
       "verdict": "none",
       "why": "no og:image",
+      "checked": "2026-09-29"
+    },
+    "regardsmaine.com": {
+      "verdict": "none",
+      "why": "looks like a logo",
       "checked": "2026-09-29"
     },
     "regenttheatre.com": {
@@ -34325,6 +36000,11 @@
       "why": 403,
       "checked": "2026-09-29"
     },
+    "restaurantgrace.com": {
+      "verdict": "unreachable",
+      "why": "URLError",
+      "checked": "2026-09-29"
+    },
     "restaurantji.com/order.php": {
       "verdict": "unreachable",
       "why": 403,
@@ -34373,6 +36053,11 @@
     "reverepubliclibrary.org": {
       "verdict": "none",
       "why": "no og:image",
+      "checked": "2026-09-29"
+    },
+    "reveriecoffeehouses.com": {
+      "verdict": "image",
+      "image": "https://static.spotapps.co/website_images/ab_websites/618339_website_v1/shared_image.jpg",
       "checked": "2026-09-29"
     },
     "revitalivecafe.com": {
@@ -34490,6 +36175,11 @@
       "why": "no og:image",
       "checked": "2026-09-29"
     },
+    "riceandnoodle2018.com": {
+      "verdict": "none",
+      "why": "looks like a logo",
+      "checked": "2026-09-29"
+    },
     "riceburg1.com": {
       "verdict": "image",
       "image": "https://static.wixstatic.com/media/a16ad0_79c04c0ad3f34af983edae3a389591e8%7Emv2.jpg/v1/fit/w_2500,h_1330,al_c/a16ad0_79c04c0ad3f34af983edae3a389591e8%7Emv2.jpg",
@@ -34498,6 +36188,16 @@
     "ricepassions.com": {
       "verdict": "image",
       "image": "https://img1.wsimg.com/isteam/videos/uA41GmyyG8IMaxXdb",
+      "checked": "2026-09-29"
+    },
+    "ricettas.com": {
+      "verdict": "none",
+      "why": "no og:image",
+      "checked": "2026-09-29"
+    },
+    "richardsgermanamericancuisine.com": {
+      "verdict": "none",
+      "why": "no og:image",
       "checked": "2026-09-29"
     },
     "richardsonsicecream.com": {
@@ -34635,6 +36335,11 @@
       "image": "https://static1.squarespace.com/static/5e4bd8577fcd934d19dbf3d7/t/64e22100b6bf7d46d2756605/1692541184942/Screen+Shot+2021-03-09+at+2.23.26+PM.png?format=1500w",
       "checked": "2026-09-29"
     },
+    "rira.com": {
+      "verdict": "unreachable",
+      "why": "URLError",
+      "checked": "2026-09-29"
+    },
     "risdmuseum.org": {
       "verdict": "unreachable",
       "why": 403,
@@ -34655,14 +36360,34 @@
       "why": "URLError",
       "checked": "2026-09-29"
     },
+    "risingsun207.com": {
+      "verdict": "unreachable",
+      "why": "URLError",
+      "checked": "2026-09-29"
+    },
     "ristorantelimoncello.com": {
       "verdict": "none",
       "why": "looks like a logo",
       "checked": "2026-09-29"
     },
+    "ritashouseofpizza.co": {
+      "verdict": "image",
+      "image": "https://static1.squarespace.com/static/62f052add3d6c440c3c9cd8a/t/62f946060005e1512c54f02d/1660503558720/imgonline-com-ua-ReplaceColor-hhjzsDikVrc5o3.png?format=1500w",
+      "checked": "2026-09-29"
+    },
     "ritceyeast.com": {
       "verdict": "image",
       "image": "https://static1.squarespace.com/static/5924646a03596e4cb001977e/t/5a25725c8165f55746f1bc8f/1748141149757/Full+Color.png?format=1500w",
+      "checked": "2026-09-29"
+    },
+    "ritualbakehouse.com": {
+      "verdict": "unreachable",
+      "why": "URLError",
+      "checked": "2026-09-29"
+    },
+    "rivalriesmaine.com": {
+      "verdict": "none",
+      "why": "no og:image",
       "checked": "2026-09-29"
     },
     "riverbendbookshop.com": {
@@ -34675,9 +36400,19 @@
       "why": "looks like a logo",
       "checked": "2026-09-29"
     },
+    "riverfrontbbq.com": {
+      "verdict": "none",
+      "why": "no og:image",
+      "checked": "2026-09-29"
+    },
     "riverhouse53bow.com": {
       "verdict": "none",
       "why": "no og:image",
+      "checked": "2026-09-29"
+    },
+    "riverhouseme.com": {
+      "verdict": "image",
+      "image": "https://static1.squarespace.com/static/69caf58d85eda267ab9a1c99/t/6a6a77a398f72327f794961f/1785362339206/RH-F%26B-11-1.jpg?format=1500w",
       "checked": "2026-09-29"
     },
     "riverrunbookstore.com": {
@@ -34690,6 +36425,11 @@
       "image": "https://i.imgur.com/mdyiSqk.jpg",
       "checked": "2026-09-29"
     },
+    "riversidegolfcourseme.com": {
+      "verdict": "none",
+      "why": "no og:image",
+      "checked": "2026-09-29"
+    },
     "riversideparknyc.org/parks/pollinator-meadow": {
       "verdict": "image",
       "image": "https://riversideparknyc.org/wp-content/uploads/2025/01/Pollinator-Meadow-near-LRL.jpg",
@@ -34698,6 +36438,11 @@
     "riversideparknyc.org/riverside-valley-community-garden": {
       "verdict": "none",
       "why": "looks like a logo",
+      "checked": "2026-09-29"
+    },
+    "rivertapandgrill.com": {
+      "verdict": "image",
+      "image": "https://static.spotapps.co/website_images/ab_websites/541986_website_v1/social_share_img.jpg",
       "checked": "2026-09-29"
     },
     "riverviewfarmsct.com": {
@@ -34783,6 +36528,11 @@
     "robertsmainegrill.com": {
       "verdict": "none",
       "why": "no og:image",
+      "checked": "2026-09-29"
+    },
+    "robinsons-wharf.com": {
+      "verdict": "none",
+      "why": "looks like a logo",
       "checked": "2026-09-29"
     },
     "roccoscucina.com": {
@@ -34950,6 +36700,16 @@
       "image": "https://static.wixstatic.com/media/6fdb26_8f981fbb16b54ced83c72239de714567%7Emv2.png/v1/fit/w_2500,h_1330,al_c/6fdb26_8f981fbb16b54ced83c72239de714567%7Emv2.png",
       "checked": "2026-09-29"
     },
+    "rolliesmaine.com": {
+      "verdict": "image",
+      "image": "https://www.rolliesmaine.com/files/2019/02/1549896635237_rollies_14.jpeg",
+      "checked": "2026-09-29"
+    },
+    "rollysnewauburn.com": {
+      "verdict": "none",
+      "why": "no og:image",
+      "checked": "2026-09-29"
+    },
     "rolypolyinc.com": {
       "verdict": "image",
       "image": "https://static.wixstatic.com/media/c81bbb_3348c9515d034eef85def97e294a7e1a%7Emv2.png/v1/fit/w_2500,h_1330,al_c/c81bbb_3348c9515d034eef85def97e294a7e1a%7Emv2.png",
@@ -35030,6 +36790,11 @@
       "image": "https://static.wixstatic.com/media/0a7de5_7d2af0a561e647b1b30401d090748591%7Emv2.jpg/v1/fit/w_2500,h_1330,al_c/0a7de5_7d2af0a561e647b1b30401d090748591%7Emv2.jpg",
       "checked": "2026-09-29"
     },
+    "rosaliespizza.com": {
+      "verdict": "none",
+      "why": "looks like a logo",
+      "checked": "2026-09-29"
+    },
     "rosamexicano.com": {
       "verdict": "none",
       "why": "no og:image",
@@ -35055,6 +36820,11 @@
       "image": "https://www.rosebudkitchen.com/images/og/og.avif",
       "checked": "2026-09-29"
     },
+    "rosefoods.me": {
+      "verdict": "image",
+      "image": "https://static1.squarespace.com/static/5abb2ddfcc8fed75da600ac0/t/5abb31b7f950b7364ccb8162/1522217405193/rose_social-share.jpg?format=1500w",
+      "checked": "2026-09-29"
+    },
     "rosegardenma.com": {
       "verdict": "none",
       "why": "no og:image",
@@ -35071,6 +36841,11 @@
       "checked": "2026-09-29"
     },
     "rosellos.com": {
+      "verdict": "none",
+      "why": "no og:image",
+      "checked": "2026-09-29"
+    },
+    "roselynthai.com": {
       "verdict": "none",
       "why": "no og:image",
       "checked": "2026-09-29"
@@ -35143,6 +36918,11 @@
     "roundheadbrewing.com": {
       "verdict": "image",
       "image": "https://roundheadbrewing.com/wp-content/uploads/2022/10/photo12.jpg",
+      "checked": "2026-09-29"
+    },
+    "roundtopicecream.com": {
+      "verdict": "image",
+      "image": "https://roundtopicecream.com/assets/hero-cones-sprinkles-xVYXH0DO.jpg",
       "checked": "2026-09-29"
     },
     "roundturndistilling.com": {
@@ -35230,6 +37010,11 @@
       "image": "https://static.wixstatic.com/media/7a14d8_561fea35e9f44e26970f83b51fb4ee2d%7Emv2.png/v1/fit/w_2500,h_1330,al_c/7a14d8_561fea35e9f44e26970f83b51fb4ee2d%7Emv2.png",
       "checked": "2026-09-29"
     },
+    "royalrivergrillhouse.com": {
+      "verdict": "image",
+      "image": "https://static1.squarespace.com/static/55101debe4b0299913beeae2/t/5c057173562fa7ef25bbe160/1651688074758/RR.White.png?format=1500w",
+      "checked": "2026-09-29"
+    },
     "royalroastbeefstoneham.com": {
       "verdict": "image",
       "image": "https://static1.squarespace.com/static/58b70dbb3e00be25736a1096/t/6aa6a7cfd2c0b57f6dba1973/1789306831515/D051374B-1E48-4625-AFEA-D22D82633A0A.png?format=1500w",
@@ -35290,6 +37075,16 @@
       "image": "https://imagedelivery.net/9lr8zq_Jvl7h6OFWqEi9IA/1d571d6e-bd8c-45b1-8820-4101d4240800/public",
       "checked": "2026-09-29"
     },
+    "rubyswestend.com": {
+      "verdict": "unreachable",
+      "why": 404,
+      "checked": "2026-09-29"
+    },
+    "rubythailandcuisine.com": {
+      "verdict": "none",
+      "why": "no og:image",
+      "checked": "2026-09-29"
+    },
     "ruggleshouse.org": {
       "verdict": "image",
       "image": "https://img1.wsimg.com/isteam/ip/13d734eb-142f-4c9a-b34b-994456915579/Ruggles_building_cover.jpg",
@@ -35330,6 +37125,11 @@
       "why": "no og:image",
       "checked": "2026-09-29"
     },
+    "rusticamaine.com": {
+      "verdict": "none",
+      "why": "no og:image",
+      "checked": "2026-09-29"
+    },
     "rustyrailct.com": {
       "verdict": "none",
       "why": "looks like a logo",
@@ -35353,6 +37153,11 @@
     "ruttshut.com": {
       "verdict": "none",
       "why": "no og:image",
+      "checked": "2026-09-29"
+    },
+    "rwandabean.com": {
+      "verdict": "image",
+      "image": "https://rwandabean.com/wp-content/uploads/2026/04/shop-all.jpg",
       "checked": "2026-09-29"
     },
     "ryebrook.buddhaasianbistrony.com": {
@@ -35395,6 +37200,11 @@
       "image": "https://static.hungerrush.com/menufy/width=1920,height=1080,fit=scale-down,format=auto/637919407753903154+849977.png",
       "checked": "2026-09-29"
     },
+    "sabiengthai.com": {
+      "verdict": "none",
+      "why": "no og:image",
+      "checked": "2026-09-29"
+    },
     "sabinaspizzeria.com": {
       "verdict": "image",
       "image": "https://img.cdn4dd.com/cdn-cgi/image/fit=contain,width=1200,height=672,format=auto/https://doordash-static.s3-us-west-2.amazonaws.com/media/store/header/71d7f5f2-6f93-42cc-9142-e776f1f18380.jpeg",
@@ -35410,6 +37220,11 @@
       "image": "https://sacomuseum.org/wp-content/uploads/2024/05/icon_faq.png",
       "checked": "2026-09-29"
     },
+    "sacopeevalleypizza.com": {
+      "verdict": "image",
+      "image": "https://www.sacopeevalleypizza.com/uploads/1/1/9/7/119717098/lobster-rolls-and-fries_orig.jpg",
+      "checked": "2026-09-29"
+    },
     "saddlebrook.bccls.org": {
       "verdict": "unreachable",
       "why": "URLError",
@@ -35418,6 +37233,11 @@
     "sadiessunrisecafe.com": {
       "verdict": "none",
       "why": "no og:image",
+      "checked": "2026-09-29"
+    },
+    "saengthaihousemaine.com": {
+      "verdict": "image",
+      "image": "https://saengthaihousemaine.com/wp-content/uploads/2023/07/DFF521C9-BA69-4E4C-B1DA-78B50EDB517C-44270-00001D7DEF2EC660-683x1024.jpg",
       "checked": "2026-09-29"
     },
     "safariharlem.com": {
@@ -35695,6 +37515,11 @@
       "image": "https://static.spotapps.co/website_images/ab_websites/166551_website/food_back.jpg",
       "checked": "2026-09-29"
     },
+    "saltwharf.com": {
+      "verdict": "image",
+      "image": "https://static.wixstatic.com/media/d8fa7e_adce43acf4994f46b113343dce53a58f~mv2.png/v1/fill/w_2500,h_2194,al_c/d8fa7e_adce43acf4994f46b113343dce53a58f~mv2.png",
+      "checked": "2026-09-29"
+    },
     "saltydogboston.biz": {
       "verdict": "unreachable",
       "why": "URLError",
@@ -35711,6 +37536,11 @@
       "checked": "2026-09-29"
     },
     "salutect.com": {
+      "verdict": "unreachable",
+      "why": "URLError",
+      "checked": "2026-09-29"
+    },
+    "salvagebbq.com": {
       "verdict": "unreachable",
       "why": "URLError",
       "checked": "2026-09-29"
@@ -35750,6 +37580,16 @@
       "why": "no og:image",
       "checked": "2026-09-29"
     },
+    "sammysscoops.com": {
+      "verdict": "image",
+      "image": "https://sammysscoops.com/wp-content/uploads/2025/04/sammys-og.jpg",
+      "checked": "2026-09-29"
+    },
+    "samosetresort.com/clubhouse-grille": {
+      "verdict": "none",
+      "why": "no og:image",
+      "checked": "2026-09-29"
+    },
     "samsfamouspizza.com": {
       "verdict": "unreachable",
       "why": 400,
@@ -35758,6 +37598,11 @@
     "samsinnri.com": {
       "verdict": "none",
       "why": "no og:image",
+      "checked": "2026-09-29"
+    },
+    "samsitalian.com": {
+      "verdict": "image",
+      "image": "https://static1.squarespace.com/static/6430103d3a3e9800862f62c2/t/6a5acc9d2a579d632c65f590/1682953517199/Sam%27s.SocialSharingImage.png?format=1500w",
       "checked": "2026-09-29"
     },
     "samsitalianristorante.com": {
@@ -35940,6 +37785,11 @@
       "image": "https://saporimontclair.com/wp-content/uploads/2025/10/Sapori-HP-D.png",
       "checked": "2026-09-29"
     },
+    "sappororestaurant.toast.site": {
+      "verdict": "unreachable",
+      "why": 403,
+      "checked": "2026-09-29"
+    },
     "sappsuws.com": {
       "verdict": "unreachable",
       "why": 403,
@@ -36080,6 +37930,11 @@
       "why": "no og:image",
       "checked": "2026-09-29"
     },
+    "scalesrestaurant.com": {
+      "verdict": "none",
+      "why": "looks like a logo",
+      "checked": "2026-09-29"
+    },
     "scaliniosteria.com": {
       "verdict": "image",
       "image": "https://www.scaliniosteria.com/wp-content/uploads/2024/01/scalini-osteria-featured-img.jpg",
@@ -36125,6 +37980,11 @@
       "why": "no og:image",
       "checked": "2026-09-29"
     },
+    "schemengees.com": {
+      "verdict": "unreachable",
+      "why": 404,
+      "checked": "2026-09-29"
+    },
     "schoolhousearts.org": {
       "verdict": "image",
       "image": "https://static.wixstatic.com/media/913d58_455ecea398914b4a8b940bbacc267eb7%7Emv2.png/v1/fit/w_2500,h_1330,al_c/913d58_455ecea398914b4a8b940bbacc267eb7%7Emv2.png",
@@ -36138,6 +37998,11 @@
     "schoolhousepizzeria.com": {
       "verdict": "image",
       "image": "https://schoolhousepizzeria.com/img/banner.webp",
+      "checked": "2026-09-29"
+    },
+    "schoonerlandingmaine.com": {
+      "verdict": "image",
+      "image": "https://static.wixstatic.com/media/b5bdc7_c4fec280591d476292c1c50cccc495f7%7Emv2.jpg/v1/fit/w_2500,h_1330,al_c/b5bdc7_c4fec280591d476292c1c50cccc495f7%7Emv2.jpg",
       "checked": "2026-09-29"
     },
     "schoonersdining.com": {
@@ -36295,6 +38160,11 @@
       "image": "https://images.getbento.com/accounts/6d07fd7eac86b3a48471d0091a2426d9/media/images/58506exeter.jpg?w=1200&fit=crop&auto=compress,format&cs=origin&h=600",
       "checked": "2026-09-29"
     },
+    "seafoodketch.com": {
+      "verdict": "none",
+      "why": "no og:image",
+      "checked": "2026-09-29"
+    },
     "seafoodvilleagenewburgh.com": {
       "verdict": "unreachable",
       "why": "URLError",
@@ -36330,12 +38200,22 @@
       "why": "looks like a logo",
       "checked": "2026-09-29"
     },
+    "seasonsbangor.com": {
+      "verdict": "none",
+      "why": "no og:image",
+      "checked": "2026-09-29"
+    },
     "seasontotaste.com": {
       "verdict": "image",
       "image": "https://static1.squarespace.com/static/5eb5a9508bf4be15225eb949/t/63c868653f6da20a9981f22e/1674078310019/Temporary+Dining+Room.jpg?format=1500w",
       "checked": "2026-09-29"
     },
     "seawalkrestaurant.com": {
+      "verdict": "none",
+      "why": "no og:image",
+      "checked": "2026-09-29"
+    },
+    "sebagobrewing.com/brewpubs/scarborough-brewpub": {
       "verdict": "none",
       "why": "no og:image",
       "checked": "2026-09-29"
@@ -36353,6 +38233,11 @@
     "secondpoquonockgiant.com": {
       "verdict": "image",
       "image": "https://mypizza-assets-production.imgix.net/url-preview-background.png?mark64=aHR0cHM6Ly9hc3NldHMuaW1naXgubmV0L350ZXh0P2g9NDEwJnR4dDY0PVUwVkRUMDVFSUZCUFVWVlBUazlEU3lCSFNVRk9WQ0JIVWtsT1JFVlMmdHh0LWNvbG9yPXdoaXRlJnR4dC1mb250PUFyaWFsLUJsYWNrJnR4dC1zaXplPTc1Jnc9ODQw&mark-x=86&mark-y=180",
+      "checked": "2026-09-29"
+    },
+    "secondrodeocoffeeshop.com": {
+      "verdict": "unreachable",
+      "why": 403,
       "checked": "2026-09-29"
     },
     "secretspothampton.com": {
@@ -36393,6 +38278,11 @@
     "seisvecinos.com": {
       "verdict": "none",
       "why": "looks like a logo",
+      "checked": "2026-09-29"
+    },
+    "selahteacafe.com": {
+      "verdict": "image",
+      "image": "https://img1.wsimg.com/isteam/videos/ubwAw3P1NGSn7Qly4",
       "checked": "2026-09-29"
     },
     "selectboston.com": {
@@ -36605,6 +38495,11 @@
       "why": "URLError",
       "checked": "2026-09-29"
     },
+    "sheepscotgeneral.com": {
+      "verdict": "none",
+      "why": "too small (192px)",
+      "checked": "2026-09-29"
+    },
     "sheltonave.pizzaplusnow.com": {
       "verdict": "unreachable",
       "why": "URLError",
@@ -36626,6 +38521,11 @@
       "checked": "2026-09-29"
     },
     "sherbornma.org/288/Library": {
+      "verdict": "none",
+      "why": "no og:image",
+      "checked": "2026-09-29"
+    },
+    "sherepunjabme.com": {
       "verdict": "none",
       "why": "no og:image",
       "checked": "2026-09-29"
@@ -36935,9 +38835,19 @@
       "why": "URLError",
       "checked": "2026-09-29"
     },
+    "siamorchidme.com": {
+      "verdict": "image",
+      "image": "https://siamorchid.us/img/Siam-Orchid-Thai-Restaurant.tile.png",
+      "checked": "2026-09-29"
+    },
     "siamorchidsbranfordct.com": {
       "verdict": "image",
       "image": "https://static.hungerrush.com/menufy/width=1920,height=1080,fit=scale-down,format=auto/637213405910814173+167175.png",
+      "checked": "2026-09-29"
+    },
+    "siamskyrestaurant.com": {
+      "verdict": "none",
+      "why": "no og:image",
       "checked": "2026-09-29"
     },
     "sibiespizza.com": {
@@ -36963,6 +38873,16 @@
     "sichuangourmetma.com": {
       "verdict": "image",
       "image": "https://www.sichuangourmetma.com/rr5ie5rh/opengraph-image-959cal/og-image?7556391829faec18",
+      "checked": "2026-09-29"
+    },
+    "sichuankitchenportland.com": {
+      "verdict": "unreachable",
+      "why": 403,
+      "checked": "2026-09-29"
+    },
+    "sidetreats.com": {
+      "verdict": "none",
+      "why": "looks like a logo",
       "checked": "2026-09-29"
     },
     "sidsallamerican.com": {
@@ -37125,6 +39045,11 @@
       "image": "https://img1.wsimg.com/isteam/ip/5c775b91-609a-4148-b681-db317dd598fc/IMG_8118.JPG",
       "checked": "2026-09-29"
     },
+    "sipsmdi.com": {
+      "verdict": "none",
+      "why": "no og:image",
+      "checked": "2026-09-29"
+    },
     "sipsteria.com": {
       "verdict": "none",
       "why": "no og:image",
@@ -37133,6 +39058,11 @@
     "siris-artinventories.si.edu/ipac20/ipac.jsp": {
       "verdict": "unreachable",
       "why": 403,
+      "checked": "2026-09-29"
+    },
+    "sirkingkitchen.com": {
+      "verdict": "unreachable",
+      "why": "URLError",
       "checked": "2026-09-29"
     },
     "sissonpizzahartford.com": {
@@ -37268,6 +39198,11 @@
     "slaters.biz": {
       "verdict": "unreachable",
       "why": "URLError",
+      "checked": "2026-09-29"
+    },
+    "slatesrestaurant.com": {
+      "verdict": "none",
+      "why": "no og:image",
       "checked": "2026-09-29"
     },
     "slathai.com": {
@@ -37538,6 +39473,11 @@
     "solisrestaurantmenu.com": {
       "verdict": "image",
       "image": "https://mypizza-assets-production.imgix.net/url-preview-background.png?mark64=aHR0cHM6Ly9hc3NldHMuaW1naXgubmV0L350ZXh0P2g9NDEwJnR4dDY0PVUwOU1TVk1nVWtWVFZFRlZVa0ZPVkElM0QlM0QmdHh0LWNvbG9yPXdoaXRlJnR4dC1mb250PUFyaWFsLUJsYWNrJnR4dC1zaXplPTc1Jnc9ODQw&mark-x=86&mark-y=180",
+      "checked": "2026-09-29"
+    },
+    "solo-pane.com": {
+      "verdict": "image",
+      "image": "https://static1.squarespace.com/static/6224e9f63ad92d15fc5f0a6c/t/69d7fef954fe08710a38253f/1775763193906/mangia+pane+red+filled.png?format=1500w",
       "checked": "2026-09-29"
     },
     "solodkoboston.com": {
@@ -37835,6 +39775,11 @@
       "why": "no og:image",
       "checked": "2026-09-29"
     },
+    "sp-foods.com": {
+      "verdict": "unreachable",
+      "why": 403,
+      "checked": "2026-09-29"
+    },
     "spaccarellisrestaurant.com": {
       "verdict": "image",
       "image": "https://spaccarellisrestaurant.com/wp-content/uploads/2026/02/IMG_7843-home.jpeg",
@@ -37875,6 +39820,11 @@
       "why": "no og:image",
       "checked": "2026-09-29"
     },
+    "speckledax.com": {
+      "verdict": "none",
+      "why": "no og:image",
+      "checked": "2026-09-29"
+    },
     "spectrapearl.com": {
       "verdict": "image",
       "image": "https://irp.cdn-website.com/5afabd00/dms3rep/multi/opt/SpectraPearl+%281%29-1920w.png",
@@ -37906,6 +39856,11 @@
       "checked": "2026-09-29"
     },
     "spicemerchants.biz/providence": {
+      "verdict": "none",
+      "why": "looks like a logo",
+      "checked": "2026-09-29"
+    },
+    "spicepizzeria.com": {
       "verdict": "none",
       "why": "looks like a logo",
       "checked": "2026-09-29"
@@ -37948,6 +39903,11 @@
     "spinnerspizzaparlor.com": {
       "verdict": "none",
       "why": "no og:image",
+      "checked": "2026-09-29"
+    },
+    "spinneysmaine.com": {
+      "verdict": "image",
+      "image": "https://static.wixstatic.com/media/97bd99_35477b1957854ecf8d4142a18b4afb24%7Emv2.png/v1/fit/w_2500,h_1330,al_c/97bd99_35477b1957854ecf8d4142a18b4afb24%7Emv2.png",
       "checked": "2026-09-29"
     },
     "spinningyarnsnh.com": {
@@ -38210,6 +40170,11 @@
       "why": "no og:image",
       "checked": "2026-09-29"
     },
+    "stackspancakeco.com": {
+      "verdict": "image",
+      "image": "https://static.wixstatic.com/media/065a04_d39a7f35609447b986ecad9b5654c003%7Emv2.jpeg/v1/fit/w_2500,h_1330,al_c/065a04_d39a7f35609447b986ecad9b5654c003%7Emv2.jpeg",
+      "checked": "2026-09-29"
+    },
     "staffordhousepizza.com": {
       "verdict": "none",
       "why": "no og:image",
@@ -38248,6 +40213,11 @@
     "standardbagel.com": {
       "verdict": "none",
       "why": "no og:image",
+      "checked": "2026-09-29"
+    },
+    "standardbakingco.com": {
+      "verdict": "image",
+      "image": "https://standardbakingco.com/wp-content/uploads/2023/06/sbc-featured.jpg",
       "checked": "2026-09-29"
     },
     "stanhopeandspencergallery.com": {
@@ -38300,6 +40270,11 @@
       "why": "no og:image",
       "checked": "2026-09-29"
     },
+    "statelunch.com": {
+      "verdict": "none",
+      "why": "no og:image",
+      "checked": "2026-09-29"
+    },
     "statepark.is": {
       "verdict": "none",
       "why": "no og:image",
@@ -38328,6 +40303,21 @@
     "statsboston.com": {
       "verdict": "image",
       "image": "https://static1.squarespace.com/static/5e723c03a9b2bc68e367cc02/t/5e723e7506c29562283882dc/1584545402956/STATS+-+PNG+%281%29.jpg?format=1500w",
+      "checked": "2026-09-29"
+    },
+    "stavrospizzadeli.com": {
+      "verdict": "unreachable",
+      "why": "URLError",
+      "checked": "2026-09-29"
+    },
+    "staycaffinated.com": {
+      "verdict": "unreachable",
+      "why": "URLError",
+      "checked": "2026-09-29"
+    },
+    "steakbarharbor.com": {
+      "verdict": "image",
+      "image": "https://static.wixstatic.com/media/335757_ac9c93c038034f408ccad75318446d8c%7Emv2.jpg/v1/fit/w_2500,h_1330,al_c/335757_ac9c93c038034f408ccad75318446d8c%7Emv2.jpg",
       "checked": "2026-09-29"
     },
     "steamednewhaven.com": {
@@ -38455,6 +40445,11 @@
       "image": "https://static.wixstatic.com/media/35d81d_00923083652a41499038e28a52ee1cfd~mv2.png/v1/fill/w_1436,h_462,al_c/35d81d_00923083652a41499038e28a52ee1cfd~mv2.png",
       "checked": "2026-09-29"
     },
+    "stewmanslobsterpound.com": {
+      "verdict": "none",
+      "why": "looks like a logo",
+      "checked": "2026-09-29"
+    },
     "stgeorge.ma.goarch.org": {
       "verdict": "image",
       "image": "https://stgeorge.ma.goarch.org/assets/images/big-images/og-christ.jpg",
@@ -38481,6 +40476,11 @@
       "checked": "2026-09-29"
     },
     "stitchedinstone.com": {
+      "verdict": "none",
+      "why": "no og:image",
+      "checked": "2026-09-29"
+    },
+    "stjoescafe.com": {
       "verdict": "none",
       "why": "no og:image",
       "checked": "2026-09-29"
@@ -38980,6 +40980,11 @@
       "why": "no og:image",
       "checked": "2026-09-29"
     },
+    "sunnyfieldbaking.com": {
+      "verdict": "image",
+      "image": "https://sunnyfieldbaking.com/cdn/shop/files/00572D19-9E19-4F66-9F39-F4DB70395B98_8a626d6c-2b88-4ecd-a175-58cbd0a00954.jpg?v=1763866126",
+      "checked": "2026-09-29"
+    },
     "sunnygirlboston.com": {
       "verdict": "none",
       "why": "looks like a logo",
@@ -39010,6 +41015,11 @@
       "why": "no og:image",
       "checked": "2026-09-29"
     },
+    "sunrisebagelme.com": {
+      "verdict": "image",
+      "image": "https://static.spotapps.co/website_images/ab_websites/177209_website_v1/sunrise.jpg",
+      "checked": "2026-09-29"
+    },
     "sunrisebagelsdeli.com": {
       "verdict": "unreachable",
       "why": "URLError",
@@ -39036,6 +41046,11 @@
       "checked": "2026-09-29"
     },
     "sunsetcove.net": {
+      "verdict": "none",
+      "why": "no og:image",
+      "checked": "2026-09-29"
+    },
+    "sunsetoob.com": {
       "verdict": "none",
       "why": "no og:image",
       "checked": "2026-09-29"
@@ -39140,6 +41155,11 @@
       "why": "no og:image",
       "checked": "2026-09-29"
     },
+    "sur-lie.com": {
+      "verdict": "none",
+      "why": "looks like a logo",
+      "checked": "2026-09-29"
+    },
     "surabbqkorean.com": {
       "verdict": "none",
       "why": "looks like a logo",
@@ -39173,6 +41193,11 @@
     "surryartsandevents.com": {
       "verdict": "unreachable",
       "why": "URLError",
+      "checked": "2026-09-29"
+    },
+    "susansfishnchips.com": {
+      "verdict": "none",
+      "why": "no og:image",
       "checked": "2026-09-29"
     },
     "sushibada59.com": {
@@ -39435,6 +41460,11 @@
       "why": "looks like a logo",
       "checked": "2026-09-29"
     },
+    "sweetpeascafemaine.com": {
+      "verdict": "unreachable",
+      "why": 429,
+      "checked": "2026-09-29"
+    },
     "sweetpeasogunquit.com": {
       "verdict": "none",
       "why": "no og:image",
@@ -39600,6 +41630,11 @@
       "image": "https://static1.squarespace.com/static/6661fda2ac86293584f9a165/t/6662036d67d51a41b51584ab/1717699437195/TD_Script_Lime.png?format=1500w",
       "checked": "2026-09-29"
     },
+    "tacoescobarr.com": {
+      "verdict": "none",
+      "why": "no og:image",
+      "checked": "2026-09-29"
+    },
     "tacoguyct.com": {
       "verdict": "image",
       "image": "https://cdn.prod.website-files.com/656e11b1cf2e8dfd7ac476a7/65a056f6378c8473431eb7b7_65a02789adb229d5e118a28a_image%2059%20(1).jpg",
@@ -39633,6 +41668,11 @@
     "tacoslupita.com": {
       "verdict": "none",
       "why": "looks like a logo",
+      "checked": "2026-09-29"
+    },
+    "tacosytequilace.com": {
+      "verdict": "none",
+      "why": "no og:image",
       "checked": "2026-09-29"
     },
     "tacticaltabletopgaming.com": {
@@ -39678,6 +41718,11 @@
     "takarajapaneserestaurant.com/Wellesley/menu.asp": {
       "verdict": "unreachable",
       "why": 404,
+      "checked": "2026-09-29"
+    },
+    "takeahikecafemaine.com": {
+      "verdict": "unreachable",
+      "why": "URLError",
       "checked": "2026-09-29"
     },
     "takeflightadv.com": {
@@ -39745,6 +41790,11 @@
       "image": "https://schoolhousepizzeria.com/img/banner.webp",
       "checked": "2026-09-29"
     },
+    "tamilynsplace.com": {
+      "verdict": "image",
+      "image": "https://static.wixstatic.com/media/4f8ab2_4f85072b43f54928affe5ab3ccfb3902.jpg/v1/fill/w_640,h_530,al_c/4f8ab2_4f85072b43f54928affe5ab3ccfb3902.jpg",
+      "checked": "2026-09-29"
+    },
     "tampercafe.com": {
       "verdict": "none",
       "why": "looks like a logo",
@@ -39756,6 +41806,11 @@
       "checked": "2026-09-29"
     },
     "tandembagelco.com": {
+      "verdict": "none",
+      "why": "no og:image",
+      "checked": "2026-09-29"
+    },
+    "tandemcoffee.com/bakery": {
       "verdict": "none",
       "why": "no og:image",
       "checked": "2026-09-29"
@@ -39786,6 +41841,11 @@
       "checked": "2026-09-29"
     },
     "tanthonypizzeria.com": {
+      "verdict": "none",
+      "why": "no og:image",
+      "checked": "2026-09-29"
+    },
+    "tapandbarreltavern.com": {
       "verdict": "none",
       "why": "no og:image",
       "checked": "2026-09-29"
@@ -39920,6 +41980,11 @@
       "why": "parked or suspect",
       "checked": "2026-09-29"
     },
+    "tasteofindiabangormaine.com": {
+      "verdict": "none",
+      "why": "no og:image",
+      "checked": "2026-09-29"
+    },
     "tasteofindiari.com": {
       "verdict": "unreachable",
       "why": "URLError",
@@ -39983,6 +42048,11 @@
     "tavernagrill.net": {
       "verdict": "unreachable",
       "why": "URLError",
+      "checked": "2026-09-29"
+    },
+    "tavernakhione.com": {
+      "verdict": "image",
+      "image": "https://www.tavernakhione.com/assets/octopus.webp",
       "checked": "2026-09-29"
     },
     "tavernattheendoftheworld.com": {
@@ -40245,6 +42315,11 @@
       "why": "no og:image",
       "checked": "2026-09-29"
     },
+    "terlingua.me": {
+      "verdict": "image",
+      "image": "https://static1.squarespace.com/static/54db9acce4b012c34eaae620/t/6733df6c1ca8183c521985c7/1731452780639/Screen+Shot+2024-11-06+at+12.58.56+PM.png?format=1500w",
+      "checked": "2026-09-29"
+    },
     "terminal110.com": {
       "verdict": "image",
       "image": "https://static.wixstatic.com/media/e6e709_a37f63d5ce8143719e25218662686d10%7Emv2.png/v1/fit/w_2500,h_1330,al_c/e6e709_a37f63d5ce8143719e25218662686d10%7Emv2.png",
@@ -40363,6 +42438,16 @@
     "thaichillimaynard.com": {
       "verdict": "image",
       "image": "https://static.hungerrush.com/menufy/width=1920,height=1080,fit=scale-down,format=auto/637551545024593877+440582.png",
+      "checked": "2026-09-29"
+    },
+    "thaidishrestaurant.com": {
+      "verdict": "none",
+      "why": "no og:image",
+      "checked": "2026-09-29"
+    },
+    "thaigardenfreeport.com": {
+      "verdict": "none",
+      "why": "no og:image",
       "checked": "2026-09-29"
     },
     "thaigardennorthampton.com": {
@@ -40525,6 +42610,11 @@
       "why": "looks like a logo",
       "checked": "2026-09-29"
     },
+    "theabbeymaine.com": {
+      "verdict": "image",
+      "image": "https://static1.squarespace.com/static/6511a27661a2382c87336a98/t/654ad857b9a467496ed31beb/1699403863540/the+abbey+icon-01.png?format=1500w",
+      "checked": "2026-09-29"
+    },
     "theafricacenter.org": {
       "verdict": "none",
       "why": "no og:image",
@@ -40553,6 +42643,11 @@
     "theaterproject.com": {
       "verdict": "none",
       "why": "looks like a logo",
+      "checked": "2026-09-29"
+    },
+    "theathenspizza.com": {
+      "verdict": "none",
+      "why": "no og:image",
       "checked": "2026-09-29"
     },
     "theatlanticgrill.com": {
@@ -40590,6 +42685,11 @@
       "why": "URLError",
       "checked": "2026-09-29"
     },
+    "thebakeshopmaine.com": {
+      "verdict": "none",
+      "why": "no og:image",
+      "checked": "2026-09-29"
+    },
     "thebangkokmelrose.com": {
       "verdict": "none",
       "why": "looks like a logo",
@@ -40613,6 +42713,16 @@
     "thebasilleafrestaurant.com": {
       "verdict": "image",
       "image": "https://img1.wsimg.com/isteam/ip/8ccc6737-fa11-4515-9e19-f4839ba0caa5/0O8A0753.jpg",
+      "checked": "2026-09-29"
+    },
+    "thebayoukitchenmaine.com": {
+      "verdict": "none",
+      "why": "no og:image",
+      "checked": "2026-09-29"
+    },
+    "thebaywrap.com": {
+      "verdict": "none",
+      "why": "no og:image",
       "checked": "2026-09-29"
     },
     "thebeachplum.net": {
@@ -40700,6 +42810,16 @@
       "why": "looks like a logo",
       "checked": "2026-09-29"
     },
+    "thebirdandco.com": {
+      "verdict": "image",
+      "image": "https://img1.wsimg.com/isteam/ip/4d156e7e-28a6-4795-8fce-46a993fe1d8e/IMG_1275.jpg",
+      "checked": "2026-09-29"
+    },
+    "theblackharpoon.com": {
+      "verdict": "none",
+      "why": "no og:image",
+      "checked": "2026-09-29"
+    },
     "theblkprojek.org": {
       "verdict": "none",
       "why": "no og:image",
@@ -40768,6 +42888,11 @@
     "thebrownstonehartford.com": {
       "verdict": "image",
       "image": "https://static.spotapps.co/website_images/ab_websites/108881_website_v1/socials.jpg",
+      "checked": "2026-09-29"
+    },
+    "thebrunswick.com": {
+      "verdict": "unreachable",
+      "why": "URLError",
       "checked": "2026-09-29"
     },
     "thebullpenboston.com": {
@@ -40895,6 +43020,11 @@
       "image": "https://cdn.domainmarket.com/dm-com/social/thecathedralrestaurant-com.jpg",
       "checked": "2026-09-29"
     },
+    "thecatsfamiliar.net": {
+      "verdict": "none",
+      "why": "no og:image",
+      "checked": "2026-09-29"
+    },
     "thecausewayrestaurant.com": {
       "verdict": "none",
       "why": "no og:image",
@@ -40908,6 +43038,11 @@
     "thecedarcafe.com": {
       "verdict": "unreachable",
       "why": 403,
+      "checked": "2026-09-29"
+    },
+    "thecentralmaine.com": {
+      "verdict": "unreachable",
+      "why": "URLError",
       "checked": "2026-09-29"
     },
     "thechancetheater.com": {
@@ -41015,6 +43150,11 @@
       "why": "looks like a logo",
       "checked": "2026-09-29"
     },
+    "thecornerroomkitchenandbar.com": {
+      "verdict": "image",
+      "image": "https://thecornerroomkitchenandbar.com/wp-content/uploads/2022/07/Family-Style-61.jpg",
+      "checked": "2026-09-29"
+    },
     "thecountrydiner.com": {
       "verdict": "image",
       "image": "https://static.spotapps.co/website_images/ab_websites/191378_website_v1/shared_image.jpg",
@@ -41090,6 +43230,11 @@
       "why": "no og:image",
       "checked": "2026-09-29"
     },
+    "thedairycorner.com": {
+      "verdict": "none",
+      "why": "no og:image",
+      "checked": "2026-09-29"
+    },
     "thedeadpoet.com": {
       "verdict": "image",
       "image": "https://static.spotapps.co/website_images/ab_websites/4171_website/specials_back.jpg",
@@ -41135,6 +43280,11 @@
       "why": "URLError",
       "checked": "2026-09-29"
     },
+    "thedolphin.me": {
+      "verdict": "none",
+      "why": "no og:image",
+      "checked": "2026-09-29"
+    },
     "thedonutstand.com": {
       "verdict": "image",
       "image": "https://img1.wsimg.com/isteam/ip/af55e5c4-0930-4387-8366-4351935d8daa/ig_18387030289183047.jpg",
@@ -41158,6 +43308,11 @@
     "thedutchessbiercafe.com": {
       "verdict": "image",
       "image": "https://static.wixstatic.com/media/39c467_4cd4c8e059fe4a399dba72808af7ab2e~mv2.jpeg/v1/fill/w_2500,h_2799,al_c/39c467_4cd4c8e059fe4a399dba72808af7ab2e~mv2.jpeg",
+      "checked": "2026-09-29"
+    },
+    "theearlybitebreakfast.com": {
+      "verdict": "none",
+      "why": "no og:image",
       "checked": "2026-09-29"
     },
     "theeastendpvd.com": {
@@ -41255,6 +43410,11 @@
       "why": "no og:image",
       "checked": "2026-09-29"
     },
+    "thefountainicecream.com": {
+      "verdict": "unreachable",
+      "why": "URLError",
+      "checked": "2026-09-29"
+    },
     "thefours.com/boston": {
       "verdict": "unreachable",
       "why": 404,
@@ -41320,6 +43480,11 @@
       "why": 403,
       "checked": "2026-09-29"
     },
+    "thefrogandturtle.com": {
+      "verdict": "unreachable",
+      "why": 404,
+      "checked": "2026-09-29"
+    },
     "thefrontporch.com": {
       "verdict": "unreachable",
       "why": 403,
@@ -41338,6 +43503,11 @@
     "thegalleynorwalkcovemarina.toast.site": {
       "verdict": "unreachable",
       "why": 403,
+      "checked": "2026-09-29"
+    },
+    "thegaragebbq.com": {
+      "verdict": "none",
+      "why": "no og:image",
       "checked": "2026-09-29"
     },
     "thegardencafewoodstock.com": {
@@ -41405,6 +43575,11 @@
       "image": "https://static1.squarespace.com/static/63ab5ae17fc30d1be282e249/t/64247d9af5ce7652ae74bef1/1680113051001/The_Good_Good_black.png?format=1500w",
       "checked": "2026-09-29"
     },
+    "thegoodtablerestaurant.net": {
+      "verdict": "none",
+      "why": "parked or suspect",
+      "checked": "2026-09-29"
+    },
     "thegovernorsacademy.org": {
       "verdict": "image",
       "image": "https://resources.finalsite.net/images/v1568656497/governor/ery75qkjq1u7gkknn9vs/Aerialphoto_visitus.jpg",
@@ -41413,6 +43588,11 @@
     "thegraftoninnma.com": {
       "verdict": "image",
       "image": "https://zakrademos.com/flavourfuse/wp-content/uploads/sites/182/2024/04/hero-1-compressed-1.jpg",
+      "checked": "2026-09-29"
+    },
+    "thegrandcentralcafe.com": {
+      "verdict": "none",
+      "why": "no og:image",
       "checked": "2026-09-29"
     },
     "thegrandfeast.nyc": {
@@ -41433,6 +43613,11 @@
     "thegrapevinegrille.com": {
       "verdict": "image",
       "image": "https://static.spotapps.co/website_images/ab_websites/121449_website/about/aboutuspg_left_1.jpg",
+      "checked": "2026-09-29"
+    },
+    "thegreatimpasta.net": {
+      "verdict": "image",
+      "image": "https://thegreatimpasta.net/wp-content/uploads/2020/05/617053B7-1138-4BBF-A7E3-76FBB9C5C78F.png",
       "checked": "2026-09-29"
     },
     "thegreendoorathome.com": {
@@ -41530,9 +43715,29 @@
       "why": "no og:image",
       "checked": "2026-09-29"
     },
+    "theholydonut.com": {
+      "verdict": "image",
+      "image": "https://www.theholydonut.com/wp-content/uploads/2021/10/HD-03-Gather-Round-Large.png",
+      "checked": "2026-09-29"
+    },
+    "theholydonut.com/locations/brunswick-me": {
+      "verdict": "unreachable",
+      "why": 404,
+      "checked": "2026-09-29"
+    },
+    "thehoneypaw.com": {
+      "verdict": "none",
+      "why": "looks like a logo",
+      "checked": "2026-09-29"
+    },
     "thehoneywellnyc.com": {
       "verdict": "none",
       "why": "looks like a logo",
+      "checked": "2026-09-29"
+    },
+    "thehootnorthport.com": {
+      "verdict": "image",
+      "image": "https://static1.squarespace.com/static/67e36f624b7c416dac9d1967/t/6aad8050aff6e21b6ee1a0e1/1789755472847/Feather.png?format=1500w",
       "checked": "2026-09-29"
     },
     "thehorseandhoundinn.com": {
@@ -41645,6 +43850,11 @@
       "why": "looks like a logo",
       "checked": "2026-09-29"
     },
+    "thekingsheadportland.com": {
+      "verdict": "image",
+      "image": "https://www.thekingsheadportland.com/assets/IMG-20210310-085235-092.jpg",
+      "checked": "2026-09-29"
+    },
     "thekitchenbronx.com": {
       "verdict": "none",
       "why": "parked or suspect",
@@ -41695,6 +43905,11 @@
       "image": "https://irp.cdn-website.com/2c113613/dms3rep/multi/opt/social+image-1920w.png",
       "checked": "2026-09-29"
     },
+    "thelobshack.com": {
+      "verdict": "none",
+      "why": "no og:image",
+      "checked": "2026-09-29"
+    },
     "thelobsterpost.com": {
       "verdict": "unreachable",
       "why": "URLError",
@@ -41741,6 +43956,11 @@
       "checked": "2026-09-29"
     },
     "themadrasgrill.com": {
+      "verdict": "unreachable",
+      "why": "URLError",
+      "checked": "2026-09-29"
+    },
+    "themainebagel.com": {
       "verdict": "unreachable",
       "why": "URLError",
       "checked": "2026-09-29"
@@ -42140,6 +44360,11 @@
       "why": "no og:image",
       "checked": "2026-09-29"
     },
+    "theportlandzoo.com": {
+      "verdict": "image",
+      "image": "https://portland-zoo.myshopify.com/cdn/shop/files/see_the_city_see_the_zoo_1200x1200.jpg?v=1614305732",
+      "checked": "2026-09-29"
+    },
     "thepostmenu.com": {
       "verdict": "image",
       "image": "https://slicelife.com/sf2/static/images/slicelife-meta.jpg",
@@ -42163,6 +44388,11 @@
     "thequartiere.com": {
       "verdict": "unreachable",
       "why": 404,
+      "checked": "2026-09-29"
+    },
+    "theramandbull.com": {
+      "verdict": "none",
+      "why": "looks like a logo",
       "checked": "2026-09-29"
     },
     "theramenclubnh.com": {
@@ -42240,6 +44470,11 @@
       "image": "https://static1.squarespace.com/static/65a741c02d278c2ca1c4cd0b/t/65c171b0ad54d65a713ac608/1707176369018/Rose+Room+Cafe_Social+Sharing+Image.png?format=1500w",
       "checked": "2026-09-29"
     },
+    "theroyalbarharbor.com": {
+      "verdict": "none",
+      "why": "no og:image",
+      "checked": "2026-09-29"
+    },
     "theroyalpunjabict.com": {
       "verdict": "none",
       "why": "no og:image",
@@ -42278,6 +44513,11 @@
     "thesalempantry.org": {
       "verdict": "unreachable",
       "why": 403,
+      "checked": "2026-09-29"
+    },
+    "thesalsamexicangrill.com": {
+      "verdict": "unreachable",
+      "why": "URLError",
       "checked": "2026-09-29"
     },
     "thesaltypig.com": {
@@ -42335,12 +44575,22 @@
       "image": "https://www.theshoppershaven.com/uploads/1/3/5/8/13587008/9257866.jpg?183",
       "checked": "2026-09-29"
     },
+    "theshuckstation.com": {
+      "verdict": "none",
+      "why": "no og:image",
+      "checked": "2026-09-29"
+    },
     "thesiciliansun.us": {
       "verdict": "unreachable",
       "why": "URLError",
       "checked": "2026-09-29"
     },
     "thesidedoorjazz.com": {
+      "verdict": "none",
+      "why": "no og:image",
+      "checked": "2026-09-29"
+    },
+    "thesinfulkitchen.com": {
       "verdict": "none",
       "why": "no og:image",
       "checked": "2026-09-29"
@@ -42353,6 +44603,11 @@
     "thesmokeshopbbq.com": {
       "verdict": "none",
       "why": "no og:image",
+      "checked": "2026-09-29"
+    },
+    "thesmoothiespotme.com": {
+      "verdict": "none",
+      "why": "looks like a logo",
       "checked": "2026-09-29"
     },
     "thesole.com": {
@@ -42488,6 +44743,11 @@
     "thetoastoffice.us": {
       "verdict": "unreachable",
       "why": 429,
+      "checked": "2026-09-29"
+    },
+    "thetravelinlobster.com": {
+      "verdict": "none",
+      "why": "looks like a logo",
       "checked": "2026-09-29"
     },
     "thetreebarandlounge.com": {
@@ -42680,6 +44940,11 @@
       "why": "no og:image",
       "checked": "2026-09-29"
     },
+    "theweststreethotel.com/bar-harbor-restaurants/paddys": {
+      "verdict": "none",
+      "why": "no og:image",
+      "checked": "2026-09-29"
+    },
     "thewindhamfreelibrary.org": {
       "verdict": "none",
       "why": "no og:image",
@@ -42761,6 +45026,16 @@
       "checked": "2026-09-29"
     },
     "thirstymoosetaphouse.com/dover": {
+      "verdict": "unreachable",
+      "why": 403,
+      "checked": "2026-09-29"
+    },
+    "thirstypigportland.com": {
+      "verdict": "none",
+      "why": "looks like a logo",
+      "checked": "2026-09-29"
+    },
+    "thirstywhaletavern.com": {
       "verdict": "unreachable",
       "why": 403,
       "checked": "2026-09-29"
@@ -42860,6 +45135,11 @@
       "why": "no og:image",
       "checked": "2026-09-29"
     },
+    "threerobberspub-me.com": {
+      "verdict": "none",
+      "why": "no og:image",
+      "checked": "2026-09-29"
+    },
     "threesistersri.com": {
       "verdict": "image",
       "image": "https://static.wixstatic.com/media/bacc64_d8f5dc692e95434c97f14718dd89ac76%7Emv2.png/v1/fit/w_2500,h_1330,al_c/bacc64_d8f5dc692e95434c97f14718dd89ac76%7Emv2.png",
@@ -42883,6 +45163,11 @@
     "thriftycity.com/thrifty-Pages/detail/St.-Luke's-Thrift-Shop/55": {
       "verdict": "unreachable",
       "why": "URLError",
+      "checked": "2026-09-29"
+    },
+    "thrivebarharbor.com": {
+      "verdict": "image",
+      "image": "https://static1.squarespace.com/static/5ff47d12ef224b7421181300/t/662bb38598d3ae76a409e40f/1714140037930/Artboard+1+copy+29largetransparentweb.png?format=1500w",
       "checked": "2026-09-29"
     },
     "thriveexchange.net": {
@@ -42911,6 +45196,11 @@
       "checked": "2026-09-29"
     },
     "thurstonoutlet.com": {
+      "verdict": "unreachable",
+      "why": "URLError",
+      "checked": "2026-09-29"
+    },
+    "thurstonwgb.com": {
       "verdict": "unreachable",
       "why": "URLError",
       "checked": "2026-09-29"
@@ -43028,6 +45318,11 @@
     "timetoclay.com": {
       "verdict": "none",
       "why": "no og:image",
+      "checked": "2026-09-29"
+    },
+    "tinderhearth.com": {
+      "verdict": "none",
+      "why": "looks like a logo",
       "checked": "2026-09-29"
     },
     "tingausa.com": {
@@ -43195,6 +45490,11 @@
       "image": "https://static1.squarespace.com/static/52c6cfe3e4b02b1e85cae962/t/5b351a3d575d1f336ce75fde/1530206789602/tomaquag_Header_No_Address.png?format=1500w",
       "checked": "2026-09-29"
     },
+    "tomasoscanteen.com": {
+      "verdict": "image",
+      "image": "https://tomasoscanteen.com/wp-content/uploads/2025/01/file_2300-1.jpg",
+      "checked": "2026-09-29"
+    },
     "tomatoandcheese.com": {
       "verdict": "none",
       "why": "no og:image",
@@ -43223,6 +45523,11 @@
     "tomsrestaurant.net": {
       "verdict": "unreachable",
       "why": 403,
+      "checked": "2026-09-29"
+    },
+    "tonicmaine.com": {
+      "verdict": "unreachable",
+      "why": "URLError",
       "checked": "2026-09-29"
     },
     "toninojp.com": {
@@ -43305,6 +45610,11 @@
       "why": "no og:image",
       "checked": "2026-09-29"
     },
+    "tootsicecream.com": {
+      "verdict": "none",
+      "why": "looks like a logo",
+      "checked": "2026-09-29"
+    },
     "topmixbar.com": {
       "verdict": "image",
       "image": "https://static1.squarespace.com/static/66a2c3145be86b11cf172b49/t/67464b096f7f2825eba989e2/1732659977414/TopMix_Redo.png?format=1500w",
@@ -43313,6 +45623,11 @@
     "topnotchcaribbean.com": {
       "verdict": "none",
       "why": "no og:image",
+      "checked": "2026-09-29"
+    },
+    "topofthehillgrille.com": {
+      "verdict": "unreachable",
+      "why": 403,
       "checked": "2026-09-29"
     },
     "topolinonh.com": {
@@ -43438,6 +45753,11 @@
     "tougasfamilyfarm.com": {
       "verdict": "image",
       "image": "https://tougasfamilyfarm.com/wp-content/uploads/2024/04/FruitSeasonsBlue.png",
+      "checked": "2026-09-29"
+    },
+    "tovesalon.com": {
+      "verdict": "unreachable",
+      "why": 429,
       "checked": "2026-09-29"
     },
     "towacofortunecity.com": {
@@ -43583,6 +45903,11 @@
     "tpsscoreboard.com": {
       "verdict": "image",
       "image": "https://www.scoreboardwoburn.com/0",
+      "checked": "2026-09-29"
+    },
+    "tracisdinerme.com": {
+      "verdict": "unreachable",
+      "why": 403,
       "checked": "2026-09-29"
     },
     "track15ri.com": {
@@ -43895,6 +46220,11 @@
       "why": "no og:image",
       "checked": "2026-09-29"
     },
+    "tucasaportland.com": {
+      "verdict": "unreachable",
+      "why": "TimeoutError",
+      "checked": "2026-09-29"
+    },
     "tuckahoe.com/library": {
       "verdict": "none",
       "why": "no og:image",
@@ -43985,6 +46315,11 @@
       "why": "looks like a logo",
       "checked": "2026-09-29"
     },
+    "tuscanbrickovenbistro.com": {
+      "verdict": "none",
+      "why": "looks like a logo",
+      "checked": "2026-09-29"
+    },
     "tuscanyoven.com": {
       "verdict": "unreachable",
       "why": "URLError",
@@ -44048,6 +46383,21 @@
     "twobeespatisserie.com": {
       "verdict": "image",
       "image": "https://www.twobeespatisserie.com/wp-content/uploads/2023/02/19652B39-FD75-44C9-A5C1-2534FDCE315D-1024x683.jpeg",
+      "checked": "2026-09-29"
+    },
+    "twocentpub.com": {
+      "verdict": "image",
+      "image": "https://static.spotapps.co/website_images/ab_websites/177215_website_v1/about_us_left.jpg",
+      "checked": "2026-09-29"
+    },
+    "twofatcatsbakery.com": {
+      "verdict": "none",
+      "why": "no og:image",
+      "checked": "2026-09-29"
+    },
+    "twomumskitchen.com": {
+      "verdict": "none",
+      "why": "no og:image",
       "checked": "2026-09-29"
     },
     "twowheels.nyc": {
@@ -44280,6 +46630,11 @@
       "image": "https://static1.squarespace.com/static/685350b34764690804ef212e/t/68dc50efe4fb696e93a38dd0/1759269103988/Untitled+design+%2817%29.png?format=1500w",
       "checked": "2026-09-29"
     },
+    "unchartedtea.com": {
+      "verdict": "none",
+      "why": "no og:image",
+      "checked": "2026-09-29"
+    },
     "unclebobsgarden.com": {
       "verdict": "image",
       "image": "https://unclebobsgarden.com/opengraph-image?204b0d6cfe42e5cd",
@@ -44415,6 +46770,11 @@
       "why": "looks like a logo",
       "checked": "2026-09-29"
     },
+    "upperdeckdining.com": {
+      "verdict": "none",
+      "why": "no og:image",
+      "checked": "2026-09-29"
+    },
     "uppersaddleriverlibrary.org": {
       "verdict": "none",
       "why": "no og:image",
@@ -44543,6 +46903,11 @@
     "uyapoke.com": {
       "verdict": "none",
       "why": "no og:image",
+      "checked": "2026-09-29"
+    },
+    "vacationlandcoffeeroasters.com": {
+      "verdict": "unreachable",
+      "why": "URLError",
       "checked": "2026-09-29"
     },
     "valbellagreenwich.com": {
@@ -44688,6 +47053,21 @@
     "ventresslibrary.org": {
       "verdict": "none",
       "why": "no og:image",
+      "checked": "2026-09-29"
+    },
+    "verandakitchen.com": {
+      "verdict": "image",
+      "image": "https://img1.wsimg.com/isteam/ip/ca6926da-5807-4833-8102-509af8516223/pad%20thai.jpg",
+      "checked": "2026-09-29"
+    },
+    "verandanoodlebar.com": {
+      "verdict": "image",
+      "image": "https://img1.wsimg.com/isteam/ip/02654a43-6de8-41dd-a843-bb2434161d9a/IMG_3010.JPG",
+      "checked": "2026-09-29"
+    },
+    "verandathaicuisine.com": {
+      "verdict": "unreachable",
+      "why": "URLError",
       "checked": "2026-09-29"
     },
     "verdello.nyc": {
@@ -45330,6 +47710,11 @@
       "why": "no og:image",
       "checked": "2026-09-29"
     },
+    "walterscafebrunswick.com": {
+      "verdict": "unreachable",
+      "why": 525,
+      "checked": "2026-09-29"
+    },
     "waltham.lib.ma.us/history": {
       "verdict": "image",
       "image": "https://waltham.lib.ma.us/wp-content/uploads/2019/10/Buttrick-picture-233x300.jpg",
@@ -45348,6 +47733,11 @@
     "wanczyknursery.com": {
       "verdict": "image",
       "image": "https://static.wixstatic.com/media/5d45f5_02404c0347b548e3ab0febb0b19f3140%7Emv2.png/v1/fit/w_2500,h_1330,al_c/5d45f5_02404c0347b548e3ab0febb0b19f3140%7Emv2.png",
+      "checked": "2026-09-29"
+    },
+    "wanderlustjuicery.com": {
+      "verdict": "none",
+      "why": "looks like a logo",
       "checked": "2026-09-29"
     },
     "wangskitchenwethersfield.com": {
@@ -45470,6 +47860,11 @@
       "why": "looks like a logo",
       "checked": "2026-09-29"
     },
+    "watamiinmaine.com": {
+      "verdict": "none",
+      "why": "no og:image",
+      "checked": "2026-09-29"
+    },
     "watchungbooksellers.com": {
       "verdict": "none",
       "why": "looks like a logo",
@@ -45560,6 +47955,11 @@
       "why": "looks like a logo",
       "checked": "2026-09-29"
     },
+    "watervillemenus.com/early_bird.html": {
+      "verdict": "unreachable",
+      "why": "URLError",
+      "checked": "2026-09-29"
+    },
     "watkinson.org": {
       "verdict": "image",
       "image": "https://watkinson.org/wp-content/uploads/2022/02/Watkinson2019-333-scaled.jpg",
@@ -45626,6 +48026,11 @@
       "checked": "2026-09-29"
     },
     "waypointharvard.com": {
+      "verdict": "none",
+      "why": "looks like a logo",
+      "checked": "2026-09-29"
+    },
+    "waysidetavernmaine.com": {
       "verdict": "none",
       "why": "looks like a logo",
       "checked": "2026-09-29"
@@ -45805,6 +48210,11 @@
       "why": "no og:image",
       "checked": "2026-09-29"
     },
+    "westbrookhouseofpizza.biz": {
+      "verdict": "none",
+      "why": "no og:image",
+      "checked": "2026-09-29"
+    },
     "westbrooklibrary.org": {
       "verdict": "none",
       "why": "no og:image",
@@ -45958,6 +48368,11 @@
     "westsiderrecords.com/bookstore.html": {
       "verdict": "image",
       "image": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1440,h=756,fit=crop,f=jpeg/mnlJ7rW5G3SgeBO3/17bookstore-1-2-Aq2Je1Ne7ZCj8eXO.jpg",
+      "checked": "2026-09-29"
+    },
+    "weststreetcafe.com": {
+      "verdict": "image",
+      "image": "https://static1.squarespace.com/static/5ea9de7a8518562075064efd/t/60380364b842db6314ca5a9e/1614283627942/WSC+Color+45+Web.png?format=1500w",
       "checked": "2026-09-29"
     },
     "weststreettavern.net": {
@@ -46250,6 +48665,11 @@
       "why": "URLError",
       "checked": "2026-09-29"
     },
+    "wickedwhoopies.com": {
+      "verdict": "none",
+      "why": "looks like a logo",
+      "checked": "2026-09-29"
+    },
     "wickhampark.org": {
       "verdict": "none",
       "why": "no og:image",
@@ -46305,6 +48725,11 @@
       "why": "looks like a logo",
       "checked": "2026-09-29"
     },
+    "wildfloursmaine.com": {
+      "verdict": "image",
+      "image": "https://static1.squarespace.com/static/5aa300893e2d09e2a1db1b81/t/67a54c77d3344301be3a07be/1738886263739/1.png?format=1500w",
+      "checked": "2026-09-29"
+    },
     "wildgingerbronxvilleny.com": {
       "verdict": "image",
       "image": "https://static.hungerrush.com/menufy/width=1920,height=1080,fit=scale-down,format=auto/637598943404588306+489760.png",
@@ -46345,6 +48770,11 @@
       "image": "https://www.wildwoodque.com/uploads/5/5/5/0/55505405/8773301.jpg",
       "checked": "2026-09-29"
     },
+    "wileysonmain.com": {
+      "verdict": "unreachable",
+      "why": "URLError",
+      "checked": "2026-09-29"
+    },
     "wilkensfarm.com/white-hill-vineyard": {
       "verdict": "none",
       "why": "no og:image",
@@ -46355,6 +48785,11 @@
       "why": "no og:image",
       "checked": "2026-09-29"
     },
+    "willardscoops.com": {
+      "verdict": "unreachable",
+      "why": 429,
+      "checked": "2026-09-29"
+    },
     "williamfogglibrary.org": {
       "verdict": "image",
       "image": "https://static1.squarespace.com/static/63ed1bbd70b5ee5b177c3666/t/67e177f1687fec2d0c1d6a92/1742829553814/William+Fogg+Social+Share+%281%29.jpg?format=1500w",
@@ -46363,6 +48798,11 @@
     "williamsburgsnackbar.com": {
       "verdict": "unreachable",
       "why": "URLError",
+      "checked": "2026-09-29"
+    },
+    "williamsonthegreenbarharbor.com": {
+      "verdict": "image",
+      "image": "https://static1.squarespace.com/static/68b60f394b04505aef76f530/t/68baf5c6a6d32f18f999b8bf/1757083078976/Sign2.png?format=1500w",
       "checked": "2026-09-29"
     },
     "williessteakhousebronx.com": {
@@ -46405,6 +48845,11 @@
       "why": "no og:image",
       "checked": "2026-09-29"
     },
+    "willowspizza.com": {
+      "verdict": "none",
+      "why": "looks like a logo",
+      "checked": "2026-09-29"
+    },
     "willyssteakhouse.com": {
       "verdict": "unreachable",
       "why": 403,
@@ -46418,6 +48863,11 @@
     "wilmlibrary.org/bookstore": {
       "verdict": "none",
       "why": "no og:image",
+      "checked": "2026-09-29"
+    },
+    "wilsoncountybarbecue.com": {
+      "verdict": "image",
+      "image": "https://static1.squarespace.com/static/648b081be9374132b8e90316/t/64e8ef4f09ecfd263a3e0edb/1692987215160/Wilson+County+Barbecue+in+Portland+Maine.png?format=1500w",
       "checked": "2026-09-29"
     },
     "wiltonlibrary.org": {
@@ -46880,6 +49330,11 @@
       "why": "looks like a logo",
       "checked": "2026-09-29"
     },
+    "workscafe.com/locations/portland": {
+      "verdict": "none",
+      "why": "looks like a logo",
+      "checked": "2026-09-29"
+    },
     "workshop13.org": {
       "verdict": "none",
       "why": "looks like a logo",
@@ -46985,6 +49440,11 @@
       "image": "https://static.wixstatic.com/media/b7d5f5_c1ad921e30e2485880c1a41d3c23a397%7Emv2.jpg/v1/fit/w_2500,h_1330,al_c/b7d5f5_c1ad921e30e2485880c1a41d3c23a397%7Emv2.jpg",
       "checked": "2026-09-29"
     },
+    "www1.beyondmenu.com/25326/freeport/fuji-sakura-freeport-04032.aspx": {
+      "verdict": "none",
+      "why": "no og:image",
+      "checked": "2026-09-29"
+    },
     "www2.clarku.edu/departments/peacestudies/libraryoverview.cfm": {
       "verdict": "image",
       "image": "https://cdn.clarku.edu/programs/wp-content/uploads/sites/2/2024/11/peace-conflict-studies.jpg",
@@ -47076,6 +49536,11 @@
       "checked": "2026-09-29"
     },
     "yannispizzarestaurant.com": {
+      "verdict": "none",
+      "why": "no og:image",
+      "checked": "2026-09-29"
+    },
+    "yardieting.com": {
       "verdict": "none",
       "why": "no og:image",
       "checked": "2026-09-29"
@@ -47355,6 +49820,11 @@
       "why": 521,
       "checked": "2026-09-29"
     },
+    "zeppaspizza.com": {
+      "verdict": "image",
+      "image": "https://static1.squarespace.com/static/6270822d970c7036d3fc4637/t/6296872bbb66ff133ee1d6e2/1654032171583/ZeppasPizzaWhite.png?format=1500w",
+      "checked": "2026-09-29"
+    },
     "zeugmagrill.com": {
       "verdict": "unreachable",
       "why": 403,
@@ -47460,6 +49930,11 @@
       "image": "https://slicelink-assets-production.imgix.net/partner-buttons/slice-button-medium-red-start-order.png",
       "checked": "2026-09-29"
     },
+    "zubakery.com": {
+      "verdict": "image",
+      "image": "https://www.zubakery.com/uploads/1/2/1/0/121057182/img-2422_orig.jpg",
+      "checked": "2026-09-29"
+    },
     "zukas.com": {
       "verdict": "image",
       "image": "https://cdn.sanity.io/images/95n97i7v/production/a4467724a056f6966dfc25b50bf3a8b10d648de7-5000x3333.jpg?rect=0,355,5000,2625&w=1200&h=630&fm=jpg&q=80&fit=crop",
@@ -47503,5 +49978,5 @@
   },
   "schemaVersion": 1,
   "note": "The picture each place's own page declares for itself (og:image), so a page is read once rather than every week. Written by scripts/images.py; read by scripts/places.py, which copies the image onto the place.",
-  "updated": "2026-09-29T17:11:29+00:00"
+  "updated": "2026-09-29T17:12:30+00:00"
 }

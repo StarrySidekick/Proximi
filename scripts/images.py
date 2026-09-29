@@ -79,7 +79,7 @@ IMAGE_KEYS = ('og:image:secure_url', 'og:image', 'og:image:url',
 # path, where sites say so plainly ("logo.png", "/favicon/", "site-icon").
 NOT_A_PICTURE = re.compile(
     r'(logo|favicon|site-?icon|[-_]icon\b|apple-touch|/icons?/|placeholder|default|'
-    r'blank\.|spacer|avatar|badge|sprite|gravatar|/stock/|unsplash|shutterstock|istock|'
+    r'blank\.|spacer|avatar|badge|sprite|gravatar|/stock/|unsplash|shutterstock|istock|wordmark|stacked|'
     r'/google\.(?:jpe?g|png))', re.I)
 
 MIN_WIDTH = 300        # only when the page declares a width
@@ -152,6 +152,11 @@ def rejected(url, width=None):
         return 'facebook asset'
     if width is not None and width < MIN_WIDTH:
         return f'too small ({width}px)'
+    # Image hosts put the size in the address: Wix's "/fill/w_20,h_14/" is a
+    # twenty-pixel thumbnail however large the original was.
+    m = re.search(r'[/,_?&](?:w_|width=|w=)(\d+)', url)
+    if m and int(m.group(1)) < MIN_WIDTH:
+        return f'too small ({m.group(1)}px in the address)'
     return None
 
 
@@ -316,6 +321,10 @@ def selftest():
         ('https://a.org/', '<meta property="og:image" content="https://a.org/favicon/f.png">', None),
         # http is upgraded, since an https page would block it as it stands.
         ('https://a.org/', '<meta property="og:image" content="http://a.org/x.jpg">', 'https://a.org/x.jpg'),
+        # The size is in the address.
+        ('https://a.org/', '<meta property="og:image" content="https://static.wixstatic.com/media/a~mv2.jpg/v1/fill/w_20,h_14/a.jpg">', None),
+        ('https://a.org/', '<meta property="og:image" content="https://static.wixstatic.com/media/a~mv2.jpg/v1/fill/w_1200,h_630/a.jpg">',
+         'https://static.wixstatic.com/media/a~mv2.jpg/v1/fill/w_1200,h_630/a.jpg'),
         # A stock photograph is a picture of somewhere else.
         ('https://a.org/', '<meta property="og:image" content="https://img1.wsimg.com/isteam/stock/100622">', None),
         ('https://a.org/', '<meta property="og:image" content="https://a.org/up/elisa-calvet-unsplash-1024.jpg">', None),
