@@ -91,9 +91,18 @@ All built. Photos come from Wikipedia live, so obscure farms and wineries
 have none; pulling each venue site's own preview image during the weekly
 build would cover far more of them.
 
+**Third pass, 2026-09-29**, after trying the second: a speed control for the
+simulated drive; motion that glides instead of clicking from fix to fix; map
+labels that stay readable as the map turns; no voice at all for now, and no
+landscape; the website-picture scrape; and the deck as a gently scrolling
+strip of road, the nearest place on a line across the middle, what is coming
+above and what is passed below. All built. The map moved to MapLibre and
+vector tiles for the labels, which also retired the CSS rotation.
+
 **Next on it**, roughly in order: opening hours, so it stops suggesting closed
 museums; pulling places live along the route (Overpass, Wikipedia's geosearch)
-so it works outside the coverage circles and can say *why* a place is worth it;
+so it works outside the coverage circles; the 647 place pages that did not
+answer the picture scrape, which the weekly run retries;
 and the service worker from the offline item above, which a car in a dead zone
 needs more than anyone.
 

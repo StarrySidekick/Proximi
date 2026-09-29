@@ -4,11 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Proximi Drive</title>
-<meta name="description" content="A driving buddy: it tells you, out loud, about places worth a short detour from the road you are on.">
+<meta name="description" content="A driving buddy: places worth a short detour from the road you are on, beside a heading-up map.">
 <meta name="theme-color" content="#E9E1CC" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#241C14" media="(prefers-color-scheme: dark)">
 <link rel="manifest" href="manifest.webmanifest">
-<link rel="stylesheet" href="assets/vendor/leaflet/leaflet.min.css">
+<link rel="stylesheet" href="assets/vendor/maplibre/maplibre-gl.css">
 <link rel="stylesheet" href="assets/styles.css">
 <link rel="stylesheet" href="assets/drive.css">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='26'>📍</text></svg>">
@@ -34,13 +34,17 @@
 </header>
 
 <!-- The drive: a narrow map on one side, turned so the road ahead is always
-     up the screen, and a deck of what is coming on the other. The deck is
-     ordered like the road: nearest at the bottom beside the car, further
-     ones above, sliding down as you drive and dropping off once passed. -->
+     up the screen, and a deck of what is coming on the other. The deck is a
+     strip of road: the line across its middle is where you are, what is
+     coming is above it and slides down, what you have passed goes below. -->
 <main class="drive-main" id="drive-main" data-side="left">
   <div class="map-slice" id="map-slice">
     <div class="drive-map" id="drive-map" aria-label="Map around your car, heading up"></div>
-    <p class="map-credit">&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a></p>
+    <!-- Fixed in the strip; the map turns and slides under it. -->
+    <svg class="map-car" id="map-car" viewBox="0 0 40 40" aria-hidden="true">
+      <circle cx="20" cy="20" r="17" class="car-halo"/>
+      <path d="M20 7 L30 31 L20 25 L10 31 Z" class="car-arrow"/>
+    </svg>
   </div>
 
   <section class="deck" id="deck" aria-label="Places ahead">
@@ -48,8 +52,8 @@
          speech and the screen lock. Browsers only allow audio after a gesture. -->
     <section class="drive-panel" id="setup-panel" aria-label="Start a drive">
       <h1 class="drive-h">Driving buddy</h1>
-      <p class="drive-lede">Tells you, out loud, about places worth a short detour
-        from the road you are on. Keep this page open on a mounted phone.</p>
+      <p class="drive-lede">Shows places worth a short detour from the road you
+        are on, as you drive. Keep this page open on a mounted phone, upright.</p>
       <form id="dest-form" class="drive-form" autocomplete="off">
         <label class="drive-field">
           <span>Where to? <em>optional</em></span>
@@ -63,15 +67,27 @@
       </form>
     </section>
 
-    <p class="deck-empty" id="deck-empty" hidden></p>
-    <ol class="deck-list" id="deck-list" aria-live="polite"></ol>
+    <div class="deck-road">
+      <ol class="deck-list" id="deck-list"></ol>
+      <!-- Where you are. A card on this line is the place beside you. -->
+      <div class="deck-now" id="deck-now" aria-hidden="true"><span>Beside you</span></div>
+      <p class="deck-empty" id="deck-empty" hidden></p>
+    </div>
 
     <nav class="drive-dock" id="dock" hidden aria-label="Drive controls">
-      <button type="button" class="drive-dock-btn" id="voice-btn" aria-pressed="true">Voice on</button>
+      <div class="sim-ctl" id="sim-ctl" hidden role="group" aria-label="Simulated drive speed">
+        <button type="button" class="sim-btn" id="sim-slower" aria-label="Slower">&minus;</button>
+        <span class="sim-speed" id="sim-speed" aria-live="polite">10×</span>
+        <button type="button" class="sim-btn" id="sim-faster" aria-label="Faster">+</button>
+      </div>
       <button type="button" class="drive-dock-btn" id="stop-btn">End drive</button>
     </nav>
   </section>
 </main>
+
+<!-- Drive is laid out for a phone held upright; turned, it says so rather
+     than squeezing the deck into a strip too short to scroll. -->
+<p class="turn-upright" aria-hidden="true">Turn your phone upright to drive.</p>
 
 <!-- First run: what you like, before anything is suggested. Every answer
      can be changed later in settings, including the whole questionnaire. -->
@@ -110,11 +126,6 @@
     </fieldset>
 
     <fieldset class="drive-set">
-      <legend>Speak at most</legend>
-      <div class="chips" id="cooldown-chips" role="radiogroup" aria-label="How often"></div>
-    </fieldset>
-
-    <fieldset class="drive-set">
       <legend>Also</legend>
       <label class="drive-check"><input type="checkbox" id="opt-liked">
         Always mention places I liked</label>
@@ -135,7 +146,7 @@
     <fieldset class="drive-set">
       <legend>Try it from your desk</legend>
       <p class="drive-hint">Plays a drive along a real route, sped up, so you can
-        hear what it would say.</p>
+        see what it would show. Change the speed with &minus; and + while it runs.</p>
       <form id="sim-form" class="drive-form" autocomplete="off">
         <label class="drive-field"><span>From</span>
           <input id="sim-from" type="search" placeholder="Beacon, NY"></label>
@@ -145,16 +156,16 @@
       </form>
     </fieldset>
 
-    <p class="fine">Places from <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>
+    <p class="fine">Map by <a href="https://openfreemap.org/">OpenFreeMap</a>. Places from <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>
       contributors. Routes and detour times from
       <a href="https://project-osrm.org/">OSRM</a>. Photos and one-line
-      descriptions from <a href="https://en.wikipedia.org/">Wikipedia</a>, where
-      a place has an article. Drive only knows places in
+      descriptions from each place's own website, or
+      <a href="https://en.wikipedia.org/">Wikipedia</a> where it has an article. Drive only knows places in
       Proximi's coverage areas.</p>
   </div>
 </section>
 
-<script src="assets/vendor/leaflet/leaflet.min.js"></script>
+<script src="assets/vendor/maplibre/maplibre-gl.js"></script>
 <script src="assets/drive.js"></script>
 </body>
 </html>

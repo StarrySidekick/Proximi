@@ -236,6 +236,11 @@ def check_places(path='data/places.json', label='places'):
         # it may only ever say what the audit actually found. Two ways it could
         # start lying quietly: a verdict the client does not render, and a
         # place carrying both the label and a programme.
+        # The Drive page puts this straight into an <img> on an https page,
+        # where an http picture is blocked and anything else is a bug.
+        img = place.get('image')
+        if img is not None and not (isinstance(img, str) and img.startswith('https://')):
+            errors.append(f'{tag}: image must be an https address, got {img!r}')
         if place.get('eventInfo') not in (None, 'none'):
             errors.append(f"{tag}: eventInfo must be 'none' or absent, "
                           f"got {place['eventInfo']!r} — the client renders "
