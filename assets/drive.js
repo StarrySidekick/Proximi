@@ -1222,17 +1222,32 @@
      on parchment, and the route as a dashed red line.
 
      The textures are drawn here, on a canvas, from a seeded random number
-     generator, so they are the same on every load and need no files. The
-     one thing not rewritten is the lettering: labels need fonts cut into a
-     special glyph format, and OpenFreeMap serves sans-serifs only. A true
-     storybook face is possible, but means making and hosting those files. */
+     generator, so they are the same on every load and need no files.
+
+     The lettering is IM Fell English, a revival of type cut in the 1670s:
+     small capitals for towns, italic for water, roman for roads. Map labels
+     are drawn on the GPU from glyph files rather than the browser's fonts,
+     so these are cut by scripts/fonts.js and served from assets/fonts. Once
+     the style's glyphs point there, every label has to use one of them. */
 
   const INK = '#3b2a1a', SEPIA = '#6b4f2c', PARCH = '#ead9b0', CLARET = '#8e3b2c';
   const TERRAIN = 'https://s3.amazonaws.com/elevation-tiles-prod/terrarium/{z}/{x}/{y}.png';
   const STYLES = [['fantasy', 'Fantasy'], ['standard', 'Standard']];
 
+  // Our own glyph files, beside the page. Built by hand rather than with URL(),
+  // which would escape the {fontstack} and {range} that MapLibre fills in.
+  const FONT_GLYPHS = location.href.replace(/[#?].*$/, '').replace(/[^/]*$/, '') + 'assets/fonts/{fontstack}/{range}.pbf';
+
+  function fellFor(l) {
+    const sl = l['source-layer'] || '';
+    if (sl === 'place') return 'FellSC';
+    if (sl === 'water_name' || sl === 'waterway') return 'FellItalic';
+    return 'FellRoman';
+  }
+
   function fantasize(base) {
     const style = JSON.parse(JSON.stringify(base));
+    style.glyphs = FONT_GLYPHS;
     style.sources.terrain = {
       type: 'raster-dem', tiles: [TERRAIN], encoding: 'terrarium', tileSize: 256, maxzoom: 13,
       attribution: 'Terrain tiles: Mapzen, via AWS Open Data'
@@ -1289,11 +1304,12 @@
         l.paint = { ...l.paint, 'line-color': CLARET, 'line-dasharray': [4, 2, 1, 2], 'line-opacity': 0.55 };
       } else if (l.type === 'symbol') {
         const water = sl === 'water_name' || sl === 'waterway';
+        if (l.layout['text-field'] !== undefined || l.layout['text-font']) l.layout['text-font'] = [fellFor(l)];
         l.paint = { ...l.paint, 'text-color': water ? '#2f5563' : INK,
           'text-halo-color': 'rgba(234,217,176,0.9)', 'text-halo-width': 1.6, 'text-halo-blur': 0.5 };
         if (sl === 'place' && /town|city|village|state/.test(id)) {
-          l.layout['text-transform'] = 'uppercase';
-          l.layout['text-letter-spacing'] = 0.18;
+          l.layout['text-letter-spacing'] = 0.12;
+          l.layout['text-size'] = /city/.test(id) ? 17 : /town/.test(id) ? 15 : 13;
           delete l.layout['icon-image'];
         }
       }

@@ -407,6 +407,15 @@ async function fakeServices(ctx, counts, base) {
     });
     const l0 = await look();
     ok('the map is a fantasy chart by default', l0.pattern === 'fx-parchment' && l0.hills && l0.dash && l0.fantasyClass, JSON.stringify(l0));
+    // Its lettering is our own: the glyph files for all three Fell faces are
+    // where the style says they are.
+    const glyphs = await page.evaluate(async () => {
+      const url = window.__drive.map.getStyle().glyphs;
+      const got = await Promise.all(['FellSC', 'FellItalic', 'FellRoman'].map((f) =>
+        fetch(url.replace('{fontstack}', f).replace('{range}', '0-255')).then((r) => r.ok && r.headers.get('content-length') !== '0')));
+      return { url, got };
+    });
+    ok('the chart is lettered in IM Fell', glyphs.url.includes('assets/fonts/{fontstack}/{range}.pbf') && glyphs.got.every(Boolean), JSON.stringify(glyphs));
     await page.click('#open-settings');
     await page.click('#style-chips .chip:has-text("Standard")');
     await page.click('#close-settings');
