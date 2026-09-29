@@ -122,12 +122,25 @@ and each has a per-request price, so that is Timothy's call.
 off) and a fantasy map as the default look, with a compass rose. The fantasy
 lettering is the open item there: it needs custom glyph files.
 
-**Next on it**, roughly in order: opening hours, so it stops suggesting closed
-museums; pulling places live along the route (Overpass, Wikipedia's geosearch)
-so it works outside the coverage circles; the 647 place pages that did not
-answer the picture scrape, which the weekly run retries;
-and the service worker from the offline item above, which a car in a dead zone
-needs more than anyone.
+**Seventh pass, 2026-09-29**: the questionnaire's answers live only in the
+questionnaire (settings reads them back and offers to ask again), and it was
+redone around the finer switches: interests, then the kinds inside them to
+leave out, then food and chains, then detour and side; address suggestions as
+you type (Photon), so a destination is confirmed before the drive; the deck
+floating over a full-screen map with the car in its strip; a driver you can
+dress (shape, colour, size); a **Hungry** switch on the dock, which is now the
+only thing deciding whether food shows; Simulate as a toggle on the dock once
+there is a route, returning to where you really are; and, for the data,
+opening hours checked at arrival time, plus `places.py` recording the OSM tag
+and designation that decide a place's type, so types stop being guessed from
+names. That last one lands with the next weekly rebuild; until then the names
+still decide, as before.
+
+**Next on it**, roughly in order: pulling places live along the route
+(Overpass, Wikipedia's geosearch) so it works outside the coverage circles;
+the 647 place pages that did not answer the picture scrape, which the weekly
+run retries; and the service worker from the offline item above, which a car
+in a dead zone needs more than anyone.
 
 ## Deliberately not next
 
