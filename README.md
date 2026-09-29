@@ -302,9 +302,17 @@ turns), labels in ink on parchment, and the route as a dashed red line. The
 textures are drawn on a canvas from a seeded random generator, so they need no
 files and never change between loads. A compass rose turns against the map,
 the only thing on screen that says where north is, and the chart's edges are
-darkened like old paper. What is not rewritten is the lettering: map labels
-need fonts cut into a special glyph format and OpenFreeMap serves sans-serifs
-only, so a storybook face means making and hosting those files.
+darkened like old paper.
+
+The lettering is **IM Fell English** (Open Font License), a revival of type
+cut in the 1670s: small capitals for towns, italic for water, roman for roads.
+Map labels are drawn on the GPU, not with the browser's fonts: each character
+is pre-rendered as a signed distance field (every pixel holds its distance
+from the letter's edge, which keeps text crisp at any size and angle and is
+what the halo is drawn from), packed one file per block of 256 characters.
+`scripts/fonts.js` cuts those files with `fontnik` into `assets/fonts/`
+(804 KB for three faces, Latin, Greek and typographic punctuation), beside
+the font's licence.
 
 **Kinds of food.** Under settings, every cuisine family the data knows
 (pizza, Mexican, Japanese… 26 of them, plus *Not listed*) is a chip that
@@ -572,6 +580,8 @@ scripts/validate.py     schema and radius gate, also run in CI
 scripts/images.py       each place's own website picture, for the Drive cards
 scripts/wikipics.py     Wikidata photographs by box of map, matched to places
 scripts/ratings.py      star ratings for places to eat (needs a service key)
+scripts/fonts.js        cut the fantasy map's lettering into glyph files
+assets/fonts/           IM Fell English glyphs, and its licence (OFL)
 tests/drive.js          the main page, driven in headless Chromium, in CI
 tests/drive-mode.js     the Drive page, with OSRM and Nominatim answered locally
 ```
