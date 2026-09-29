@@ -1,14 +1,18 @@
 /* Proximi Drive — a driving buddy.
  *
  * While you drive, it watches the road ahead for places worth a short detour
- * and says them out loud: what it is, how many minutes out of your way, how
- * far ahead. Nothing needs a tap once the drive has started.
+ * and lays them out beside a heading-up map: a deck of cards that scrolls
+ * with the road, what is coming above a line that marks where you are, and
+ * what you have passed below it. Nothing needs a tap once the drive starts.
  *
  * Where the answers come from:
- *   · places     data/places.json, the same directory the Places tab reads
+ *   · places     data/places.json, the same directory the Places tab reads,
+ *                with each place's own website picture (scripts/images.py)
  *   · on now     data/events.json, only one-off listings with a real time
  *   · routes     OSRM's public server (router.project-osrm.org), live
  *   · addresses  Nominatim, live, the same lookup the main page uses
+ *   · the map    OpenFreeMap vector tiles, drawn by MapLibre GL
+ *   · pictures   Wikipedia, live, for places whose site has none
  *
  * Two ways to drive, one code path. With a destination, "ahead" means further
  * along the real route and a detour rejoins that route. Without one, "ahead"
@@ -18,10 +22,7 @@
 (() => {
   'use strict';
 
-  /* ── Settings ─────────────────────────────────────────── */
-
-  // Singular, the way it is said aloud: "A castle, about 6 minutes out of
-  // your way." Order is the order the chips appear in.
+  // Singular, the way it reads on a card. Order is only for reading.
   const KINDS = [
     ['castle', 'Castle'], ['historic house', 'Historic house'],
     ['museum', 'Museum'], ['historic site', 'Historic site'],
@@ -82,17 +83,15 @@
   };
 
   const DETOURS = [5, 10, 15, 20];          // minutes out of your way
-  const COOLDOWNS = [2, 5, 10, 20];         // minutes between announcements
   const MAPS = [['google', 'Google Maps'], ['apple', 'Apple Maps']];
   const SIDES = [['left', 'Left'], ['right', 'Right']];
 
   const DEFAULTS = {
-    levels: DEFAULT_LEVELS, maxDetour: 10, cooldown: 5, onboarded: false,
-    liked: true, km: false, maps: 'google', voice: true, mapSide: 'left'
+    levels: DEFAULT_LEVELS, maxDetour: 10, onboarded: false,
+    liked: true, km: false, maps: 'google', mapSide: 'left', simSpeed: 10
   };
 
   const SETTINGS_KEY = 'proximi.drive.v1';
-  const ANNOUNCED_KEY = 'proximi.drive.announced.v1';
   const PHOTOS_KEY = 'proximi.drive.photos.v1';
   // Shared with the main page, so "Not for me" in the car is the same mute
   // as swiping a place left on the Places tab, and a liked place is liked
@@ -112,8 +111,8 @@
 
   const settings = { ...DEFAULTS, ...readJSON(SETTINGS_KEY, {}) };
   settings.levels = { ...DEFAULT_LEVELS, ...settings.levels };
-  delete settings.kinds;     // the first version's per-kind list, before the questionnaire
-  delete settings.events;
+  // Gone: the first version's per-kind list, and the voice and its cooldown.
+  for (const k of ['kinds', 'events', 'voice', 'cooldown']) delete settings[k];
   const saveSettings = () => writeJSON(SETTINGS_KEY, settings);
 
   // The interest score's starting point: how much you like this kind of place.
@@ -261,7 +260,6 @@
     liked: new Set(readJSON(SAVED_KEY, [])),
     muted: new Set(readJSON(VENUES_KEY, [])),
     decisions: readJSON(DECISIONS_KEY, {}),
-    announced: new Map(Object.entries(readJSON(ANNOUNCED_KEY, {}))),
 
     pos: null, heading: null, speedMph: 0, lastFix: null, headingFrom: null,
     dest: null, destName: '', route: null, progress: null, offCount: 0, lastReroute: 0,
@@ -269,11 +267,11 @@
 
     detours: new Map(),        // candidate id → { min, toMin, at }
     checking: false, lastCheck: 0, routerDownUntil: 0,
-    lastSpoken: -Infinity, saidId: null, ahead: [], deck: []
+    ahead: [], odo: 0
   };
 
   // The drive's clock. A simulated drive runs faster than real time, and the
-  // cooldown and "on now" windows should run with it rather than with the wall.
+  // detour cache and "on now" windows should run with it rather than the wall.
   const now = () => (state.sim ? state.sim.clock() : Date.now());
 
   /* ── What is worth a stop ─────────────────────────────── */
@@ -457,21 +455,19 @@
     evaluate();
   }
 
-  /* ── Deciding to speak ────────────────────────────────── */
+  /* ── Deciding what goes on the deck ───────────────────────
+     Once a second: find what is ahead, ask the router about the best of it,
+     and admit whatever is worth the detour. Admission happens well before a
+     place is on screen (the lookahead is fifteen minutes of driving and the
+     deck shows four miles), so every card is built, measured and has its
+     picture loading before it scrolls into view. */
 
-  const ANNOUNCE_MEMORY = 12 * 3600000;   // do not repeat a place within a day's drive
-
-  function wasAnnounced(id) {
-    const at = state.announced.get(id);
-    return at != null && now() - at < ANNOUNCE_MEMORY;
-  }
+  const MAX_UPCOMING = 10;
 
   function evaluate() {
     if (state.phase !== 'driving' || !state.pos) return;
     if (now() - (state.poolBuiltAt || 0) > 5 * 60000) buildPool();
 
-    // Everything ahead stays in play until it is passed; having been said
-    // aloud only keeps a place from being said twice.
     const list = candidatesAhead();
     state.ahead = list;
 
@@ -479,19 +475,13 @@
     for (const o of list) {
       const d = state.detours.get(o.c.id);
       if (!d || now() - d.at > DETOUR_TTL || d.min > settings.maxDetour) continue;
-      eligible.push({ ...o, detour: d.min, toMin: d.toMin, score: o.c._score - d.min * 0.15 });
+      eligible.push({ ...o, detour: d.min, score: o.c._score - d.min * 0.15 });
     }
     eligible.sort((a, b) => b.score - a.score);
+    for (const o of eligible) admit(o);
 
-    renderDeck(pickDeck(eligible));
-    drawAhead();
-
-    const fresh = eligible.find((o) => !wasAnnounced(o.c.id));
-    const coolMs = settings.cooldown * 60000;
-    if (fresh && now() - state.lastSpoken >= coolMs) announce(fresh);
-    else checkNext(list);
-
-    statusForDrive(state.deck.length);
+    checkNext(list);
+    statusForDrive(eligible.length);
   }
 
   function statusForDrive(n) {
@@ -510,76 +500,18 @@
   }
 
   // Coverage is a chain of circles; outside them the directory is empty, and
-  // silence should read as "not covered" rather than "nothing here".
+  // an empty deck should read as "not covered" rather than "nothing here".
   function coveredNear(p) {
     const regions = state.regions || [];
     if (!regions.length) return true;
     return regions.some((r) => haversineMiles(p, r) <= (r.radiusMiles || 40) + 15);
   }
 
-  /* ── Saying it ────────────────────────────────────────── */
-
-  const distUnit = () => (settings.km ? 'kilometres' : 'miles');
   const distValue = (mi) => (settings.km ? mi * 1.609344 : mi);
 
-  function spokenDistance(mi) {
-    const d = distValue(mi);
-    const n = d < 10 ? Math.round(d * 2) / 2 : Math.round(d);   // halves read well aloud
-    return `${n} ${n === 1 ? distUnit().replace(/s$/, '') : distUnit()}`;
-  }
-
   function shortDistance(mi) {
-    const d = distValue(mi);
+    const d = distValue(Math.abs(mi));
     return `${d < 10 ? d.toFixed(1) : Math.round(d)} ${settings.km ? 'km' : 'mi'}`;
-  }
-
-  function kindPhrase(c) {
-    if (c.kind === 'event') return 'Happening now';
-    const label = (KIND_LABEL[c.kind] || 'Place').toLowerCase();
-    return (/^[aeiou]/.test(label) ? 'An ' : 'A ') + label;
-  }
-
-  function detourPhrase(min) {
-    const m = Math.round(min);
-    if (m < 1) return 'barely out of your way';
-    return `about ${m} minute${m === 1 ? '' : 's'} out of your way`;
-  }
-
-  function sentence(o) {
-    const c = o.c;
-    const liked = state.liked.has(c.name) ? ', one you liked' : '';
-    let s = `${c.name}. ${kindPhrase(c)}${liked}, ${detourPhrase(o.detour)}, `
-      + `${spokenDistance(o.ahead)} ahead.`;
-    if (c.onNow && c.kind !== 'event') s += ` On there now: ${c.onNow.title}.`;
-    if (c.kind === 'event') s += ` ${c.onNow.title}.`;
-    return s;
-  }
-
-  function speak(text) {
-    if (!settings.voice || !('speechSynthesis' in window)) return;
-    try {
-      speechSynthesis.cancel();
-      const u = new SpeechSynthesisUtterance(text);
-      u.rate = 1;
-      speechSynthesis.speak(u);
-    } catch { /* a silent card is still a card */ }
-  }
-
-  function announce(o) {
-    state.lastSpoken = now();
-    state.announced.set(o.c.id, now());
-    pruneAnnounced();
-    // A desk rehearsal must not use up the real drive's announcements.
-    if (!state.sim) writeJSON(ANNOUNCED_KEY, Object.fromEntries(state.announced));
-    state.saidId = o.c.id;
-    renderDeck(state.deck);
-    speak(sentence(o));
-  }
-
-  function pruneAnnounced() {
-    for (const [id, at] of state.announced) {
-      if (now() - at > ANNOUNCE_MEMORY) state.announced.delete(id);
-    }
   }
 
   /* ── The page ─────────────────────────────────────────── */
@@ -587,14 +519,15 @@
   const $ = (id) => document.getElementById(id);
   const el = {
     status: $('drive-status'), main: $('drive-main'), slice: $('map-slice'), map: $('drive-map'),
+    car: $('map-car'),
     setup: $('setup-panel'), destForm: $('dest-form'), destInput: $('dest-input'),
-    deckList: $('deck-list'), deckEmpty: $('deck-empty'),
-    dock: $('dock'), voice: $('voice-btn'), stop: $('stop-btn'),
+    deck: $('deck'), deckList: $('deck-list'), deckEmpty: $('deck-empty'), deckNow: $('deck-now'),
+    dock: $('dock'), stop: $('stop-btn'),
+    simCtl: $('sim-ctl'), simSlower: $('sim-slower'), simFaster: $('sim-faster'), simSpeed: $('sim-speed'),
     openSettings: $('open-settings'), sheet: $('drive-settings'),
     scrim: $('settings-backdrop'), closeSettings: $('close-settings'),
     levels: $('interest-levels'), retake: $('retake-quiz'),
-    detourChips: $('detour-chips'), cooldownChips: $('cooldown-chips'),
-    sideChips: $('side-chips'), mapsChips: $('maps-chips'),
+    detourChips: $('detour-chips'), sideChips: $('side-chips'), mapsChips: $('maps-chips'),
     optLiked: $('opt-liked'), optKm: $('opt-km'),
     simForm: $('sim-form'), simFrom: $('sim-from'), simTo: $('sim-to'),
     quiz: $('quiz'), quizStep: $('quiz-step'), quizTitle: $('quiz-title'),
@@ -621,43 +554,71 @@
   }
 
   /* ── The deck ─────────────────────────────────────────────
-     Two or three places on screen at once, ordered like the road. Membership
-     is sticky: a card stays until it is passed or something clearly better
-     turns up, because a deck that reshuffles every second cannot be read at
-     a glance. Position is by distance, so the deck moves as the car does. */
+     A strip of road, drawn as cards. The line across the middle is where you
+     are: a card's height above it is how far ahead its place is, so what is
+     coming slides down towards the line, the place beside you sits on it,
+     and what you have passed carries on below until it leaves the screen.
+     Nothing jumps: positions are recomputed every frame from a distance that
+     is itself interpolated between GPS fixes. An empty stretch of road is an
+     empty stretch of deck. */
 
-  const DECK_SIZE = 4;
-  const PASSED = 0.2;      // miles: behind you, near enough
+  const VIEW_MILES = 4;      // road shown between the line and the top of the deck
+  const GAP = 10;
 
-  function pickDeck(eligible) {
-    const byId = new Map(eligible.map((o) => [o.c.id, o]));
-    const keep = state.deck.map((o) => byId.get(o.c.id)).filter((o) => o && o.ahead > PASSED);
-    const kept = new Set(keep.map((o) => o.c.id));
-    for (const o of eligible) {
-      if (kept.has(o.c.id) || o.ahead <= PASSED) continue;
-      if (keep.length < DECK_SIZE) { keep.push(o); kept.add(o.c.id); continue; }
-      // Full: a newcomer has to beat the weakest card by a clear margin.
-      const weakest = keep.reduce((w, k) => (k.score < w.score ? k : w));
-      if (o.score > weakest.score + 1) {
-        keep.splice(keep.indexOf(weakest), 1, o);
-        kept.delete(weakest.c.id); kept.add(o.c.id);
-      }
-    }
-    // Nearest first: index 0 is the bottom card, the one beside the car.
-    state.deck = keep.sort((a, b) => a.ahead - b.ahead);
-    return state.deck;
+  const entries = new Map();   // id → deck entry
+  let letterNext = 0;
+
+  // Where an entry's place is now, relative to you, in miles along the road.
+  function aheadOf(e) {
+    if (e.along != null && state.route && disp.progress != null) return e.along - disp.progress;
+    return e.aheadAt - (disp.odo - e.odoAt);
   }
 
-  const cardEls = new Map();   // id → <li>
+  function admit(o) {
+    if (entries.has(o.c.id)) return;
+    const upcoming = [...entries.values()].filter((e) => aheadOf(e) > 0);
+    if (upcoming.length >= MAX_UPCOMING) {
+      // Full: a newcomer has to clearly beat the weakest card that is still
+      // off the top of the screen. A card already in view is never swapped out.
+      const offTop = upcoming.filter((e) => aheadOf(e) > VIEW_MILES + 1);
+      const weakest = offTop.sort((a, b) => a.score - b.score)[0];
+      if (!weakest || o.score <= weakest.score + 1) return;
+      drop(weakest);
+    }
+    const e = {
+      c: o.c, score: o.score, detour: o.detour,
+      along: state.route && o.along != null ? o.along : null,
+      aheadAt: o.ahead, odoAt: disp.odo,
+      letter: String.fromCharCode(65 + (letterNext++ % 26)),
+      y: null
+    };
+    e.li = cardFor(e);
+    el.deckList.appendChild(e.li);
+    e.pin = pinFor(e);
+    entries.set(o.c.id, e);
+    wantPhoto(o.c);
+  }
 
-  function cardFor(o) {
+  function drop(e, how = 'is-fading') {
+    entries.delete(e.c.id);
+    e.pin?.remove();
+    e.li.classList.add(how);
+    setTimeout(() => e.li.remove(), 600);
+  }
+
+  function clearDeck() {
+    for (const e of [...entries.values()]) drop(e);
+    letterNext = 0;
+  }
+
+  function cardFor(e) {
     const li = document.createElement('li');
     li.className = 'deck-card';
-    li.dataset.id = o.c.id;
+    li.dataset.id = e.c.id;
     li.innerHTML = `
       <div class="deck-photo"></div>
       <div class="deck-body">
-        <p class="deck-kind"><span class="deck-num"></span><span class="deck-kind-t"></span></p>
+        <p class="deck-kind"><span class="deck-letter"></span><span class="deck-kind-t"></span></p>
         <h3 class="deck-name"></h3>
         <p class="deck-facts"></p>
         <p class="deck-blurb"></p>
@@ -666,98 +627,129 @@
           <a class="deck-go" target="_blank" rel="noopener">Go</a>
           <button type="button" class="deck-no">Not for me</button>
         </div>
-      </div>
-      <div class="deck-meter" aria-hidden="true"><span></span></div>`;
-    const c = o.c;
+      </div>`;
+    const c = e.c;
+    li.querySelector('.deck-letter').textContent = e.letter;
     li.querySelector('.deck-name').textContent = c.name;
     li.querySelector('.deck-kind-t').textContent =
       (c.kind === 'event' ? 'Happening now' : (KIND_LABEL[c.kind] || 'Place'))
       + (state.liked.has(c.name) ? ' · liked' : '');
-    const on = li.querySelector('.deck-on');
     if (c.onNow) {
+      const on = li.querySelector('.deck-on');
       on.hidden = false;
       on.textContent = (c.kind === 'event' ? '' : 'On now: ') + c.onNow.title;
     }
+    li.querySelector('.deck-go').href = mapsUrl(c);
     fillPhoto(li, c);
     return li;
   }
 
-  function factsLine(o) {
-    const m = Math.round(o.detour);
-    return `${m < 1 ? 'Barely a detour' : `${m} min detour`} · ${shortDistance(o.ahead)} ahead`;
-  }
+  /* Card positions, every frame. Each card wants its centre at its distance
+     up from the line; two places close together cannot both have that, so
+     the positions are the closest ones that keep every card in order and a
+     gap apart. That is isotonic regression (pool-adjacent-violators): cards
+     that would overlap are pooled and share their average, which moves
+     continuously as the distances do, so cards ease apart and together
+     rather than snapping. */
+  function layoutDeck(dt = 16) {
+    const h = el.deckList.clientHeight;
+    if (!h) return;
+    const mid = h / 2;
+    const cardH = cardHeight();
+    const pxPerMile = mid / VIEW_MILES;
+    const behindLimit = -(mid + cardH) / pxPerMile;
 
-  function renderDeck(deck) {
-    const list = el.deckList;
-    const h = list.clientHeight;
-    // Two and a half cards to a screen: the half is how you know more is coming.
-    // A wide deck (a phone on its side) puts the photo beside the words, so
-    // a card needs far less height and two still fit in a short screen.
-    const gap = 10;
-    const minH = list.clientWidth >= 420 ? 96 : 150;
-    const cardH = Math.max(minH, Math.min(260, (h - gap * 2) / 2.5));
-    const seen = new Set();
-    deck.forEach((o, i) => {
-      seen.add(o.c.id);
-      let li = cardEls.get(o.c.id);
-      if (!li) {
-        li = cardFor(o);
-        cardEls.set(o.c.id, li);
-        li.style.setProperty('--y', `${-(i + 1) * (cardH + gap)}px`);   // enter from above
-        li.classList.add('is-entering');
-        list.appendChild(li);
-        requestAnimationFrame(() => li.classList.remove('is-entering'));
-        wantPhoto(o.c);
-      }
-      li.style.height = `${cardH}px`;
-      li.style.setProperty('--y', `${-i * (cardH + gap)}px`);
-      li.querySelector('.deck-num').textContent = String(i + 1);
-      li.querySelector('.deck-facts').textContent = factsLine(o);
-      li.querySelector('.deck-go').href = mapsUrl(o.c);
-      li.classList.toggle('is-said', state.saidId === o.c.id);
-      // How close it is, as a bar that fills as you approach.
-      const far = lookahead();
-      li.querySelector('.deck-meter span').style.width =
-        `${Math.round(Math.max(0, Math.min(1, 1 - o.ahead / far)) * 100)}%`;
-    });
-    for (const [id, li] of cardEls) {
-      if (seen.has(id)) continue;
-      cardEls.delete(id);
-      // Passed places drop off the bottom; anything else fades where it is.
-      li.classList.add(li.classList.contains('is-muted') ? 'is-fading' : 'is-leaving');
-      setTimeout(() => li.remove(), 700);
+    const live = [];
+    for (const e of entries.values()) {
+      const a = aheadOf(e);
+      if (a < behindLimit) { drop(e, 'is-gone'); continue; }
+      e.ahead = a;
+      live.push(e);
     }
-    el.deckEmpty.hidden = state.phase !== 'driving' || deck.length > 0;
+    // Top of the screen first.
+    live.sort((a, b) => b.ahead - a.ahead);
+    const step = cardH + GAP;
+    const want = live.map((e, i) => (mid - e.ahead * pxPerMile - cardH / 2) - i * step);
+    const fit = isotonic(want);
+    let nearest = null;
+    /* The fit is continuous while the road is, but a card arriving or leaving
+       re-pools its neighbours, and their targets move a whole card at once.
+       So each card is pulled towards its target by a critically damped
+       spring: the fastest settle that never overshoots, and one whose speed
+       changes smoothly, so a card eases out and eases in rather than
+       lurching off. On a steady road the spring just follows, a fraction of
+       a second behind. */
+    const w = 8, t = Math.min(dt, 50) / 1000;
+    live.forEach((e, i) => {
+      const target = fit[i] + i * step;
+      if (e.y == null) { e.y = target; e.vy = 0; }
+      e.vy += (w * w * (target - e.y) - 2 * w * e.vy) * t;
+      e.y += e.vy * t;
+      const y = e.y;
+      e.li.style.height = `${cardH}px`;
+      e.li.style.transform = `translate3d(0, ${y.toFixed(1)}px, 0)`;
+      e.li.classList.toggle('is-past', e.ahead < -0.15);
+      e.li.querySelector('.deck-facts').textContent = factsLine(e);
+      if (!nearest || Math.abs(e.ahead) < Math.abs(nearest.ahead)) nearest = e;
+    });
+    for (const e of live) e.li.classList.toggle('is-nearest', e === nearest && Math.abs(e.ahead) < VIEW_MILES);
+    el.deckEmpty.hidden = state.phase !== 'driving' || live.some((e) => e.y > -cardH && e.y < h);
     if (!el.deckEmpty.hidden) {
       el.deckEmpty.textContent = state.placesReady
-        ? `Nothing worth a stop in the next ${shortDistance(lookahead())} yet. Watching the road.`
+        ? 'Nothing worth a stop on this stretch. Watching the road.'
         : 'Loading places…';
     }
   }
 
-  el.deckList.addEventListener('click', (e) => {
-    const btn = e.target.closest('.deck-no');
+  // Least-squares non-decreasing fit, by pooling adjacent violators.
+  function isotonic(v) {
+    const blocks = [];
+    for (const x of v) {
+      blocks.push({ sum: x, n: 1 });
+      while (blocks.length > 1) {
+        const b = blocks[blocks.length - 1], a = blocks[blocks.length - 2];
+        if (a.sum / a.n <= b.sum / b.n) break;
+        a.sum += b.sum; a.n += b.n;
+        blocks.pop();
+      }
+    }
+    const out = [];
+    for (const b of blocks) for (let i = 0; i < b.n; i++) out.push(b.sum / b.n);
+    return out;
+  }
+
+  // Three cards to a screen, give or take: two clear and one arriving.
+  const cardHeight = () => Math.max(170, Math.min(250, el.deckList.clientHeight / 3.1));
+
+  function factsLine(e) {
+    const m = Math.round(e.detour);
+    const detour = m < 1 ? 'Barely a detour' : `${m} min detour`;
+    if (e.ahead < -0.15) return `${detour} · passed ${shortDistance(e.ahead)} back`;
+    if (e.ahead < 0.15) return `${detour} · beside you now`;
+    return `${detour} · ${shortDistance(e.ahead)} ahead`;
+  }
+
+  el.deckList.addEventListener('click', (ev) => {
+    const btn = ev.target.closest('.deck-no');
     if (!btn) return;
-    const li = btn.closest('.deck-card');
-    const o = state.deck.find((d) => d.c.id === li.dataset.id);
-    if (!o) return;
+    const e = entries.get(btn.closest('.deck-card').dataset.id);
+    if (!e) return;
     // The same mute the Places tab uses, keyed by name the way it is there.
     state.muted = new Set(readJSON(VENUES_KEY, []));
-    state.muted.add(o.c.name);
+    state.muted.add(e.c.name);
     writeJSON(VENUES_KEY, [...state.muted]);
-    li.classList.add('is-muted');
-    state.deck = state.deck.filter((d) => d !== o);
+    drop(e);
     buildPool();
-    evaluate();
   });
 
-  /* ── Photos ───────────────────────────────────────────────
-     From Wikipedia, live, for the cards on screen and nothing else. The
-     directory has no pictures, and most places worth a detour have an
-     article with a lead image. A search by name is checked against distance
-     before it is believed: "Olana" three miles away is Olana, a same-named
-     article two states over is not. Answers, including "no article", are
-     kept on the phone so no place is asked about twice. */
+  /* ── Pictures ─────────────────────────────────────────────
+     Two sources, best first. The place's own website's picture, found at
+     build time by scripts/images.py and shipped in data/places.json, so it
+     is there before the card is. Failing that, Wikipedia, live: a search by
+     name, believed only if the article's coordinates are close ("Olana"
+     three miles away is Olana; a same-named article two states over is
+     not). Wikipedia is asked about every card anyway for its one-line
+     description. Answers, including "no article", are kept on the phone. */
 
   const photos = new Map(Object.entries(readJSON(PHOTOS_KEY, {})));
   const photoQueue = [];
@@ -770,6 +762,8 @@
     .filter((w) => w.length >= 4 && !GENERIC.has(w)));
 
   function wantPhoto(c) {
+    // Fetch the site's own picture now, so it is decoded before it is seen.
+    if (c.image) { const img = new Image(); img.src = c.image; }
     if (photos.has(c.id) || photoQueue.some((q) => q.id === c.id)) return;
     photoQueue.push(c);
     pumpPhotos();
@@ -782,12 +776,13 @@
     photoBusy = true;
     const c = photoQueue.shift();
     try {
-      photos.set(c.id, await lookupPhoto(c));
-      // Keep the cache to the most recent few hundred places.
+      const p = await lookupPhoto(c);
+      photos.set(c.id, p);
       while (photos.size > 500) photos.delete(photos.keys().next().value);
       writeJSON(PHOTOS_KEY, Object.fromEntries(photos));
-      const li = cardEls.get(c.id);
-      if (li) fillPhoto(li, c);
+      if (p.img && !c.image) { const img = new Image(); img.src = p.img; }
+      const e = entries.get(c.id);
+      if (e) fillPhoto(e.li, c);
       photoPauseUntil = Date.now() + 1000;
     } catch {
       // Throttled or offline: try this one again later, and back off.
@@ -819,11 +814,7 @@
       const d = haversineMiles(c, { lat: at.lat, lon: at.lon });
       const shared = [...tokens(pg.title)].some((w) => mine.has(w));
       if (d <= 0.5 || (d <= 3 && shared)) {
-        return {
-          img: pg.thumbnail?.source || null,
-          desc: pg.description || null,
-          title: pg.title
-        };
+        return { img: pg.thumbnail?.source || null, desc: pg.description || null, title: pg.title };
       }
     }
     return {};
@@ -845,27 +836,39 @@
 
   function fillPhoto(li, c) {
     const box = li.querySelector('.deck-photo');
-    const p = photos.get(c.id);
-    const blurb = li.querySelector('.deck-blurb');
-    blurb.textContent = p?.desc || c.description || c.city || '';
-    if (p?.img) {
-      if (box.dataset.src === p.img) return;
-      box.dataset.src = p.img;
+    const wiki = photos.get(c.id);
+    li.querySelector('.deck-blurb').textContent = wiki?.desc || c.description || c.city || '';
+    const src = c.image || wiki?.img;
+    const credit = c.image ? { text: 'Their site', href: c.url }
+      : wiki?.img ? { text: 'Wikipedia', href: `https://en.wikipedia.org/wiki/${encodeURIComponent(wiki.title.replace(/ /g, '_'))}` }
+      : null;
+    if (src && box.dataset.src !== src && box.dataset.failed !== src) {
+      box.dataset.src = src;
       box.classList.remove('is-glyph');
-      box.innerHTML = '';
       const img = new Image();
       img.alt = '';
-      img.loading = 'lazy';
-      img.src = p.img;
-      const credit = document.createElement('a');
-      credit.className = 'deck-credit';
-      credit.href = `https://en.wikipedia.org/wiki/${encodeURIComponent(p.title.replace(/ /g, '_'))}`;
-      credit.target = '_blank';
-      credit.rel = 'noopener';
-      credit.textContent = 'Wikipedia';
-      box.append(img, credit);
+      img.decoding = 'async';
+      img.src = src;
+      // A site's picture can move or refuse strangers; fall back, never show a
+      // broken image.
+      img.onerror = () => {
+        box.dataset.failed = src;
+        delete box.dataset.src;
+        if (c.image === src) { c.image = null; fillPhoto(li, c); } else glyph(box, c);
+      };
+      const a = document.createElement('a');
+      a.className = 'deck-credit';
+      a.href = credit.href;
+      a.target = '_blank';
+      a.rel = 'noopener';
+      a.textContent = credit.text;
+      box.replaceChildren(img, a);
       return;
     }
+    if (!src) glyph(box, c);
+  }
+
+  function glyph(box, c) {
     if (box.classList.contains('is-glyph')) return;
     box.classList.add('is-glyph');
     const interest = c.kind === 'event' ? 'events' : INTEREST_OF[c.kind] || 'history';
@@ -873,111 +876,158 @@
   }
 
   /* ── The map ──────────────────────────────────────────────
-     Heading up: the road ahead is always up the screen. Leaflet cannot turn
-     a map, so the map element is turned instead, with CSS, about the car.
-     It is made larger than its slice so that no corner of the slice ever
-     shows past the edge of the map while it turns, and it is sized so the
-     car sits low in the slice, leaving more of the screen for the road
-     ahead. Dragging is off: a turned map drags the wrong way, and nobody
-     driving should be dragging a map. */
+     Vector tiles, drawn by MapLibre GL. The earlier map was raster tiles:
+     pictures with the street names painted in, so turning the map turned
+     the names upside down. Vector tiles arrive as shapes and words, and the
+     words are laid out fresh for every frame, upright whatever the bearing.
+     The bearing is the heading, so the road ahead is always up, and the
+     camera's padding puts the car low in the strip to leave room for what
+     is coming. Tiles from OpenFreeMap: free, no key. */
 
-  const PIVOT_Y = 0.78;    // where the car sits, as a fraction down the slice
+  const STYLE_URL = 'https://tiles.openfreemap.org/styles/liberty';
+  const PIVOT_Y = 0.78;    // where the car sits, as a fraction down the strip
 
-  let map = null, carMarker = null, routeLine = null, aheadLayer = null;
-  let spin = 0, spinFrom = null;   // unwound heading, so 359° to 1° turns 2° and not 358°
-
-  const CAR_SVG = '<svg viewBox="0 0 40 40" width="40" height="40" aria-hidden="true">'
-    + '<circle cx="20" cy="20" r="17" class="car-halo"/>'
-    + '<path d="M20 7 L30 31 L20 25 L10 31 Z" class="car-arrow"/></svg>';
+  let map = null, mapReady = false, pendingRoute = null;
 
   function initMap() {
-    if (!window.L) { setStatus('The map failed to load.'); return; }
-    map = L.map(el.map, {
-      zoomControl: false, attributionControl: false,
-      dragging: false, touchZoom: false, scrollWheelZoom: false,
-      doubleClickZoom: false, boxZoom: false, keyboard: false
-    }).setView([41.5048, -73.9696], 12);
-    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19 }).addTo(map);
-    aheadLayer = L.layerGroup().addTo(map);
-    layoutMap();
-    window.addEventListener('resize', layoutMap);
-  }
-
-  function layoutMap() {
-    if (!map) return;
-    const w = el.slice.clientWidth, h = el.slice.clientHeight;
-    const px = w / 2, py = h * PIVOT_Y;
-    // Far enough from the pivot to reach every corner at any angle.
-    const r = Math.max(Math.hypot(px, py), Math.hypot(w - px, py),
-      Math.hypot(px, h - py), Math.hypot(w - px, h - py));
-    const d = Math.ceil(r * 2) + 4;
-    Object.assign(el.map.style, {
-      width: `${d}px`, height: `${d}px`, left: `${px - d / 2}px`, top: `${py - d / 2}px`
+    if (!window.maplibregl) { setStatus('The map failed to load.'); return; }
+    try {
+      map = new maplibregl.Map({
+        container: el.map, style: STYLE_URL,
+        center: [-73.9696, 41.5048], zoom: 12, bearing: 0,
+        interactive: false, fadeDuration: 0,
+        attributionControl: { compact: true }
+      });
+    } catch {
+      // No WebGL: the deck still works, the strip just stays blank.
+      map = null;
+      el.slice.classList.add('no-map');
+      return;
+    }
+    map.on('load', () => {
+      mapReady = true;
+      // The Victorian desk's parchment under the roads, where the style allows.
+      try { map.setPaintProperty('background', 'background-color', '#EFEADA'); } catch { /* style without one */ }
+      map.addSource('route', { type: 'geojson', data: emptyLine() });
+      map.addLayer({
+        id: 'route', type: 'line', source: 'route',
+        layout: { 'line-cap': 'round', 'line-join': 'round' },
+        paint: { 'line-color': '#2F5F9E', 'line-width': 7, 'line-opacity': 0.85 }
+      });
+      if (pendingRoute) setRouteLine(pendingRoute);
+      // The credit starts as its small "i", not a box over the road.
+      el.map.querySelector('.maplibregl-ctrl-attrib')?.classList.remove('maplibregl-compact-show');
     });
-    map.invalidateSize(false);
-    if (state.pos) follow();
+    map.on('error', () => { /* a missing tile is not worth a word */ });
+    new ResizeObserver(() => { map?.resize(); placeCar(); }).observe(el.slice);
+    placeCar();
   }
 
-  function turnTo(heading) {
-    if (heading == null) return;
-    if (spinFrom == null) { spin = heading; spinFrom = heading; }
-    const d = ((heading - spinFrom) % 360 + 540) % 360 - 180;
-    spin += d;
-    spinFrom = heading;
-    el.map.style.transform = `rotate(${-spin}deg)`;
+  const emptyLine = () => ({ type: 'FeatureCollection', features: [] });
+
+  function setRouteLine(route) {
+    pendingRoute = route;
+    if (!mapReady) return;
+    map.getSource('route').setData(route ? {
+      type: 'Feature', properties: {},
+      geometry: { type: 'LineString', coordinates: route.pts.map((p) => [p.lon, p.lat]) }
+    } : emptyLine());
   }
 
-  function follow() {
-    if (!map || !state.pos) return;
-    // Closer in when slow, further out on the highway where the next exit is
-    // a few miles off.
-    const z = state.speedMph > 45 ? 12 : state.speedMph > 20 ? 13 : 14;
-    map.setView([state.pos.lat, state.pos.lon], z, { animate: false });
+  // The car is not on the map: it is fixed in the strip, and the map moves
+  // under it. That is what keeps it perfectly still while everything turns.
+  function placeCar() {
+    el.car.style.top = `${PIVOT_Y * 100}%`;
   }
 
-  function drawCar() {
-    if (!map || !state.pos) return;
-    const icon = L.divIcon({ className: 'car-marker', html: CAR_SVG, iconSize: [40, 40] });
-    if (!carMarker) carMarker = L.marker([state.pos.lat, state.pos.lon], { icon, interactive: false, zIndexOffset: 1000 }).addTo(map);
-    else carMarker.setLatLng([state.pos.lat, state.pos.lon]);
-    const svg = carMarker.getElement()?.querySelector('svg');
-    if (svg) {
-      // Turned by the heading within a map turned against it: straight up.
-      svg.style.transform = `rotate(${spin}deg)`;
-      svg.classList.toggle('no-heading', state.heading == null);
+  function camera() {
+    if (!map || !disp.pos) return;
+    const h = el.slice.clientHeight;
+    map.jumpTo({
+      center: [disp.pos.lon, disp.pos.lat],
+      bearing: disp.heading ?? 0,
+      zoom: disp.zoom,
+      // Padding moves the focal point: top padding P puts the centre at
+      // P + (h - P) / 2, so this puts it at PIVOT_Y of the way down.
+      padding: { top: Math.max(0, (2 * PIVOT_Y - 1) * h), bottom: 0, left: 0, right: 0 }
+    });
+  }
+
+  // The deck's letters on the map. MapLibre keeps HTML markers upright.
+  function pinFor(e) {
+    if (!map) return null;
+    const node = document.createElement('div');
+    node.className = 'deck-pin';
+    node.textContent = e.letter;
+    return new maplibregl.Marker({ element: node }).setLngLat([e.c.lon, e.c.lat]).addTo(map);
+  }
+
+  /* ── Motion ───────────────────────────────────────────────
+     GPS arrives about once a second; the screen redraws sixty times a
+     second. Drawing only on a fix is what made everything click from one
+     position to the next. So a fix sets where things are going, and every
+     frame draws where they are on the way: position, distance travelled
+     and progress along the route slide linearly from the last drawn value
+     to the new fix over the time the fix took to arrive, and the heading
+     eases round. The picture runs about one fix behind the GPS, which is
+     the price of never jumping. */
+
+  const disp = { pos: null, heading: null, progress: null, odo: 0, zoom: 13 };
+  const tween = { from: null, to: null, t0: 0, dur: 1000, lastAt: 0 };
+  let frameId = null, lastFrame = 0, lastEval = 0;
+
+  function retarget() {
+    const t = performance.now();
+    const gap = tween.lastAt ? t - tween.lastAt : 1000;
+    tween.lastAt = t;
+    const to = { pos: state.pos, progress: state.progress, odo: state.odo };
+    if (!disp.pos) {
+      Object.assign(disp, to, { heading: state.heading });
+      tween.from = tween.to = to;
+      return;
     }
+    tween.from = { pos: disp.pos, progress: disp.progress, odo: disp.odo };
+    tween.to = to;
+    tween.t0 = t;
+    tween.dur = Math.max(100, Math.min(2500, gap));
   }
 
-  function drawRoute() {
-    if (!map) return;
-    if (routeLine) routeLine.remove();
-    routeLine = null;
-    if (!state.route) return;
-    routeLine = L.polyline(state.route.pts.map((p) => [p.lat, p.lon]), { className: 'route-line' }).addTo(map);
+  const lerp = (a, b, k) => a + (b - a) * k;
+
+  function frame(t) {
+    frameId = requestAnimationFrame(frame);
+    const dt = lastFrame ? Math.min(100, t - lastFrame) : 16;
+    lastFrame = t;
+    if (state.sim) state.sim.step(dt);
+
+    if (tween.to) {
+      const k = Math.min(1, (t - tween.t0) / tween.dur);
+      const f = tween.from, g = tween.to;
+      disp.pos = { lat: lerp(f.pos.lat, g.pos.lat, k), lon: lerp(f.pos.lon, g.pos.lon, k) };
+      disp.odo = lerp(f.odo, g.odo, k);
+      disp.progress = f.progress != null && g.progress != null ? lerp(f.progress, g.progress, k) : g.progress;
+    }
+    if (state.heading != null) {
+      if (disp.heading == null) disp.heading = state.heading;
+      const diff = ((state.heading - disp.heading) % 360 + 540) % 360 - 180;
+      disp.heading = (disp.heading + diff * (1 - Math.exp(-dt / 350)) + 360) % 360;
+    }
+    // Closer in when slow, further out on the highway; eased, never stepped.
+    const zTarget = state.speedMph > 45 ? 12.3 : state.speedMph > 20 ? 13.2 : 14;
+    disp.zoom += (zTarget - disp.zoom) * (1 - Math.exp(-dt / 1500));
+
+    camera();
+    layoutDeck(dt);
+    if (t - lastEval > 1000) { lastEval = t; evaluate(); }
   }
 
-  /* The deck's numbers on the map, so "2" on a card is "2" beside the road.
-     Labels sit inside the turned map, so each is turned back to stay upright. */
-  function drawAhead() {
-    if (!aheadLayer) return;
-    aheadLayer.clearLayers();
-    const inDeck = new Map(state.deck.map((o, i) => [o.c.id, i + 1]));
-    for (const o of state.ahead.slice(0, 30)) {
-      if (inDeck.has(o.c.id)) continue;
-      L.circleMarker([o.c.lat, o.c.lon], { radius: 4, className: 'ahead-dot', interactive: false }).addTo(aheadLayer);
-    }
-    for (const o of state.deck) {
-      const n = inDeck.get(o.c.id);
-      const said = state.saidId === o.c.id ? ' is-said' : '';
-      L.marker([o.c.lat, o.c.lon], {
-        interactive: false,
-        icon: L.divIcon({
-          className: 'deck-pin',
-          html: `<span class="deck-pin-n${said}" style="transform:rotate(${spin}deg)">${n}</span>`,
-          iconSize: [26, 26]
-        })
-      }).addTo(aheadLayer);
-    }
+  function startFrames() {
+    if (frameId == null) { lastFrame = 0; frameId = requestAnimationFrame(frame); }
+  }
+
+  function stopFrames() {
+    if (frameId != null) cancelAnimationFrame(frameId);
+    frameId = null;
   }
 
   /* ── Position ─────────────────────────────────────────── */
@@ -998,30 +1048,28 @@
       state.headingFrom = p;
     }
     if (!state.headingFrom) state.headingFrom = p;
-    if ((speedMps == null) && prev) {
-      const dt = (now() - prev.t) / 3600000;
-      if (dt > 0) state.speedMph = haversineMiles(prev.p, p) / dt;
+    if (prev) {
+      const moved = haversineMiles(prev.p, p);
+      state.odo += moved;
+      if (speedMps == null) {
+        const dt = (now() - prev.t) / 3600000;
+        if (dt > 0) state.speedMph = moved / dt;
+      }
     }
     state.lastFix = { p, t: now() };
 
     if (state.route) trackRoute(p);
-    turnTo(state.heading);
-    follow();
-    drawCar();
+    retarget();
 
     if (state.dest && !state.route && !state.routing) routeTo(state.dest, state.destName);
-    evaluate();
   }
 
   function trackRoute(p) {
     const at = locate(state.route, p, state.progress);
     state.progress = at.along;
     if (state.progress >= state.route.length - 0.2) {
-      speak(`You have arrived at ${state.destName}.`);
       setStatus(`Arrived at ${state.destName}`);
       if (state.sim) stopSim();
-      state.route = null; state.dest = null; state.progress = null;
-      drawRoute();
       return;
     }
     // Off the route for three fixes running: you took a turn, so the route
@@ -1089,10 +1137,19 @@
     state.routing = true;
     if (!quiet) setStatus(`Finding the way to ${name}…`);
     try {
-      state.route = await fetchRoute(from, dest);
+      const route = await fetchRoute(from, dest);
+      /* Cards already on the deck measured themselves in miles along the old
+         route, which mean nothing on this one. Carry each over as a distance
+         ahead right now, counted down by the odometer from here on. */
+      for (const e of entries.values()) {
+        e.aheadAt = aheadOf(e); e.odoAt = disp.odo; e.along = null;
+      }
+      state.route = route;
       state.progress = locate(state.route, from).along;
+      disp.progress = state.progress;
+      if (tween.to) { tween.from.progress = state.progress; tween.to.progress = state.progress; }
       indexRoute(state.route, state.pool);
-      drawRoute();
+      setRouteLine(state.route);
     } catch {
       setStatus('Could not find a route. Following your heading instead.');
       state.route = null;
@@ -1102,40 +1159,64 @@
   }
 
   /* ── A drive you can take from your desk ──────────────────
-     Replays a real route at twelve times speed with the same code the car
-     uses: fixes go through onFix, the clock runs fast so cooldowns and "on
-     now" behave as they would, and only the source of the positions differs. */
+     Replays a real route through the same code the car uses: positions go
+     through onFix, four times a second, and are smoothed like GPS. The
+     clock runs as fast as the drive, so detours and "on now" behave as they
+     would. The speed can change mid-drive: the clock keeps its place and
+     only its rate changes. */
 
-  const SIM_MPH = 55, SIM_SPEEDUP = 12, SIM_TICK = 1000;
+  const SIM_MPH = 55;
+  const SIM_SPEEDS = [1, 2, 5, 10, 20, 40];
+  const SIM_FIX_MS = 250;
 
   function startSim(route) {
     stopSim();
-    const t0 = Date.now(), c0 = Date.now();
-    let along = 0;
-    state.sim = {
-      clock: () => c0 + (Date.now() - t0) * SIM_SPEEDUP,
-      timer: setInterval(() => {
-        along += SIM_MPH / 3600 * SIM_SPEEDUP * (SIM_TICK / 1000);
+    let along = 0, sinceFix = SIM_FIX_MS, simT = Date.now(), realT = Date.now();
+    const sim = {
+      speed: SIM_SPEEDS.includes(settings.simSpeed) ? settings.simSpeed : 10,
+      clock: () => simT + (Date.now() - realT) * sim.speed,
+      setSpeed(v) { simT = sim.clock(); realT = Date.now(); sim.speed = v; },
+      step(dt) {
+        along += SIM_MPH / 3600 * sim.speed * (dt / 1000);
+        sinceFix += dt;
+        if (sinceFix < SIM_FIX_MS) return;
+        sinceFix = 0;
         const p = pointAt(route, along);
-        const ahead = pointAt(route, along + 0.05);
-        onFix(p, bearing(p, ahead), SIM_MPH / MPS_TO_MPH);
-      }, SIM_TICK)
+        onFix(p, bearing(p, pointAt(route, along + 0.05)), SIM_MPH / MPS_TO_MPH);
+      }
     };
-    // A rehearsal starts from a clean slate and forgets itself afterwards:
-    // neither earlier rehearsals nor real drives should silence it.
-    state.lastSpoken = -Infinity;
-    state.announced = new Map();
+    state.sim = sim;
     state.detours.clear();
+    el.simCtl.hidden = false;
+    syncSimSpeed();
   }
 
   function stopSim() {
     if (!state.sim) return;
-    clearInterval(state.sim.timer);
     state.sim = null;
-    state.announced = new Map(Object.entries(readJSON(ANNOUNCED_KEY, {})));
     state.detours.clear();
-    state.lastSpoken = -Infinity;
+    el.simCtl.hidden = true;
   }
+
+  function syncSimSpeed() {
+    const v = state.sim?.speed ?? settings.simSpeed;
+    el.simSpeed.textContent = `${v}×`;
+    el.simSlower.disabled = v <= SIM_SPEEDS[0];
+    el.simFaster.disabled = v >= SIM_SPEEDS[SIM_SPEEDS.length - 1];
+  }
+
+  function nudgeSpeed(dir) {
+    if (!state.sim) return;
+    const i = SIM_SPEEDS.indexOf(state.sim.speed);
+    const next = SIM_SPEEDS[Math.max(0, Math.min(SIM_SPEEDS.length - 1, i + dir))];
+    state.sim.setSpeed(next);
+    settings.simSpeed = next;
+    saveSettings();
+    syncSimSpeed();
+  }
+
+  el.simSlower.addEventListener('click', () => nudgeSpeed(-1));
+  el.simFaster.addEventListener('click', () => nudgeSpeed(1));
 
   /* ── Starting and stopping ────────────────────────────── */
 
@@ -1150,12 +1231,9 @@
     el.setup.hidden = true;
     el.dock.hidden = false;
     el.main.classList.add('is-driving');
-    renderDeck(state.deck);
-    // Speech must start inside the tap on iOS, or every later utterance is
-    // silently dropped. This first sentence is what unlocks it.
-    speak(state.dest ? `Driving buddy on. Heading to ${state.destName}.` : 'Driving buddy on.');
     keepAwake();
     buildPool();
+    startFrames();
   }
 
   function endDrive() {
@@ -1164,19 +1242,19 @@
     state.watchId = null;
     try { state.wakeLock?.release(); } catch { /* already gone */ }
     state.wakeLock = null;
-    try { speechSynthesis.cancel(); } catch { /* nothing speaking */ }
+    stopFrames();
     Object.assign(state, {
       phase: 'setup', route: null, dest: null, progress: null, heading: null,
-      headingFrom: null, lastFix: null, ahead: []
+      headingFrom: null, lastFix: null, ahead: [], odo: 0
     });
-    drawRoute();
-    state.deck = [];
-    state.saidId = null;
-    renderDeck([]);
-    drawAhead();
+    Object.assign(disp, { pos: null, heading: null, progress: null, odo: 0 });
+    tween.to = null; tween.lastAt = 0;
+    setRouteLine(null);
+    clearDeck();
     el.dock.hidden = true;
     el.setup.hidden = false;
     el.main.classList.remove('is-driving');
+    el.deckEmpty.hidden = true;
     setStatus('Drive ended');
   }
 
@@ -1211,29 +1289,16 @@
       if (!from || !to) { setStatus('Could not find one of those places.'); return; }
       state.dest = to;
       state.destName = to.name;
-      state.sim = { clock: Date.now };   // so beginDrive's clock is sane
-      beginDrive();
       await routeTo(to, to.name, { from });
       if (!state.route) return;
       startSim(state.route);
+      beginDrive();
     } catch {
       setStatus('Could not reach the address or routing service.');
-      state.sim = null;
     }
   });
 
   el.stop.addEventListener('click', endDrive);
-
-  el.voice.addEventListener('click', () => {
-    settings.voice = !settings.voice;
-    saveSettings();
-    syncVoice();
-    if (!settings.voice) try { speechSynthesis.cancel(); } catch { /* ok */ }
-  });
-  const syncVoice = () => {
-    el.voice.setAttribute('aria-pressed', String(settings.voice));
-    el.voice.textContent = settings.voice ? 'Voice on' : 'Voice off';
-  };
 
   // The phone locks, the lock is lost; coming back should take it again.
   document.addEventListener('visibilitychange', () => {
@@ -1287,29 +1352,22 @@
     el.levels.replaceChildren(...levelRows(changed));
     el.detourChips.replaceChildren(...DETOURS.map((m) =>
       chip(`${m} min`, settings.maxDetour === m, () => { settings.maxDetour = m; changed(); })));
-    el.cooldownChips.replaceChildren(...COOLDOWNS.map((m) =>
-      chip(`Every ${m} min`, settings.cooldown === m, () => { settings.cooldown = m; changed(); })));
     el.sideChips.replaceChildren(...SIDES.map(([id, label]) =>
       chip(label, settings.mapSide === id, () => { settings.mapSide = id; changed(); })));
     el.mapsChips.replaceChildren(...MAPS.map(([id, label]) =>
       chip(label, settings.maps === id, () => { settings.maps = id; changed(); })));
     el.optLiked.checked = settings.liked;
     el.optKm.checked = settings.km;
-    applySide();
-    syncVoice();
-  }
-
-  function applySide() {
-    if (el.main.dataset.side === settings.mapSide) return;
     el.main.dataset.side = settings.mapSide;
-    layoutMap();
+    syncSimSpeed();
   }
 
   function changed() {
     saveSettings();
     renderSettings();
     if (state.placesReady) buildPool();
-    evaluate();
+    // A narrower taste should take away what no longer qualifies.
+    for (const e of [...entries.values()]) if (!(interest(e.c) > 0)) drop(e);
   }
 
   el.optLiked.addEventListener('change', () => { settings.liked = el.optLiked.checked; changed(); });
@@ -1338,29 +1396,22 @@
 
   /* ── The questionnaire ────────────────────────────────────
      Asked once, before the first drive, because a driving buddy that does
-     not know what you like has two bad options: say everything, or guess.
-     Four short pages, every answer a tap, and every one of them lives on in
+     not know what you like has two bad options: show everything, or guess.
+     Three short pages, every answer a tap, and every one of them lives on in
      the settings sheet afterwards. */
 
   const QUIZ = [
     {
       title: 'What makes you pull over?',
-      lede: 'It will only speak up for things you like. Love it counts for the most.',
+      lede: 'Only places you like will show up. Love it counts for the most.',
       body: () => levelRows(() => {})
     },
     {
       title: 'How far out of your way?',
-      lede: 'The longest detour worth mentioning, there and back to the road.',
+      lede: 'The longest detour worth showing, there and back to the road.',
       body: () => DETOURS.map((m) => choice(`${m} minutes`,
         { 5: 'Right off the exit', 10: 'A short hop', 15: 'Worth a little effort', 20: 'I have time' }[m],
         settings.maxDetour === m, () => { settings.maxDetour = m; }))
-    },
-    {
-      title: 'How often may it speak?',
-      lede: 'At most once every so often. The cards keep updating either way.',
-      body: () => COOLDOWNS.slice().reverse().map((m) => choice(
-        { 20: 'Rarely', 10: 'Now and then', 5: 'Often', 2: 'Chatty' }[m], `Every ${m} minutes at most`,
-        settings.cooldown === m, () => { settings.cooldown = m; }))
     },
     {
       title: 'Which side for the map?',
@@ -1378,7 +1429,7 @@
     b.type = 'button';
     b.className = 'quiz-choice';
     b.setAttribute('aria-pressed', String(on));
-    b.innerHTML = `<strong></strong><span></span>`;
+    b.innerHTML = '<strong></strong><span></span>';
     b.firstChild.textContent = label;
     b.lastChild.textContent = sub;
     b.addEventListener('click', () => {
@@ -1395,12 +1446,10 @@
     el.quizTitle.textContent = page.title;
     el.quizLede.textContent = page.lede;
     el.quizBody.replaceChildren(...page.body());
-    el.quizBody.className = 'quiz-body' + (at === 0 ? ' is-levels' : '');
     el.quizBack.hidden = at === 0;
     el.quizNext.textContent = at === QUIZ.length - 1 ? 'Done' : 'Next';
     el.quiz.hidden = false;
     el.quizBody.scrollTop = 0;
-    el.quizTitle.focus?.();
   }
 
   el.quizBack.addEventListener('click', () => showQuiz(Math.max(0, quizAt - 1)));
@@ -1429,9 +1478,11 @@
     state.placesReady = true;
     buildPool();
     if (state.phase === 'setup') setStatus(`${state.pool.length.toLocaleString()} places worth a stop, in Proximi's coverage`);
-    else evaluate();
   }).catch(() => setStatus('The places file failed to load.'));
 
   // For tests and for poking at it from the console.
-  window.__drive = { state, settings, buildRoute, locate, pointAt, candidatesAhead, sentence, kindWeight, photos };
+  window.__drive = {
+    state, settings, disp, entries, buildRoute, locate, pointAt, candidatesAhead,
+    kindWeight, photos, isotonic, get map() { return map; }
+  };
 })();

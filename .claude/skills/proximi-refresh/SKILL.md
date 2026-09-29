@@ -42,6 +42,7 @@ python3 scripts/merge.py       # collapse repeats, dedupe → data/events.json
 python3 scripts/prices.py      # read unpriced listings' own pages (cached)
 python3 scripts/places.py      # the directory → data/places.json + data/eats.json
 python3 scripts/audit.py       # read the next batch of venue sites (see below)
+python3 scripts/images.py --limit 400   # each place page's own picture, for Drive
 python3 scripts/validate.py    # gates both files; must pass before committing
 node tests/drive.js            # drives the page itself; must pass too
 ```
@@ -287,6 +288,21 @@ to catch the next hijacked domain — the first batch re-caught
 its link** in `data/places.json`: OSM will carry that `website` tag for years,
 and tapping *Website* on a cinema should not open a betting site. Check the
 list `--report` prints at the end of every batch.
+
+## 7b. Pictures: the page's own, never the site's
+
+`scripts/images.py` reads the head of each place's own page and records its
+`og:image` in `sources/placeimages.json`; `places.py` copies it onto rows.
+A weekly `--limit 400` batch retries what did not answer and rechecks old
+answers. Run `--report` to see why pages have none.
+
+The rules that matter, all found in the data: a picture carried by more than
+two places is the site's, not the place's, and is not used; places known only
+from an event listing are skipped, because their page is the event and its
+picture the poster; chains, logos, stock photos and anything named "default"
+are refused. Rules are re-applied at copy time, so **tighten a rule, rerun
+`places.py` or `images.py --limit 0` on an all-cached set, and old answers are
+cleaned without a single request.** `images.py --selftest` runs in CI.
 
 ## 8. One fact, one owner
 

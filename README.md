@@ -189,37 +189,60 @@ Nothing is lost in between: what you chose is what gets written to
 
 `drive.html`, reached from the **Drive** button in the header. On a road trip
 you cannot be tapping through a list, so this page does the looking: it
-watches the road ahead and says, out loud, when something worth a short
-detour is coming up.
+watches the road ahead and lays out what is worth a short detour, on a phone
+held upright on the dash. Nothing needs a tap once the drive has started, and
+nothing is spoken: the voice was removed on purpose.
 
-> *Bull Hill. A lookout, barely out of your way, 4.5 miles ahead.*
+**The screen is split.** A narrow map sits on the driver's side and turns so
+the road ahead is always up the screen (**heading up**). It is drawn by
+MapLibre GL from OpenFreeMap's **vector tiles**: the map arrives as shapes and
+words rather than as pictures, so the words are laid out fresh every frame and
+stay upright however the map turns. (The first version used raster tiles,
+turned with CSS, and every street name turned with it.) The car is fixed in
+the strip, low down to leave room for the road ahead, and the map moves under
+it.
 
-**The screen is split.** A narrow map sits on one side, nearest the driver,
-and turns so the road ahead is always up the screen (**heading up**). Leaflet
-cannot turn a map, so the map element is turned with CSS about the car, and
-made larger than its strip so no corner ever shows past the edge of the map.
-The rest of the screen is a **deck** of the two or three best places coming
-up, ordered like the road: nearest at the bottom beside the car, further ones
-above. Cards slide down as you drive and drop off once passed, each with a bar
-that fills as you approach and a number matching a pin on the map. Nothing
-needs a tap once the drive has started. **Go** hands off to Google Maps (as a
-waypoint, so it carries on to your destination afterwards) or Apple Maps.
+**The deck is a strip of road.** The rest of the screen is cards, one per
+place worth the detour. A dashed line across the middle is where you are: a
+card's height above it is how far ahead its place is, so what is coming slides
+down towards the line, the place beside you sits on it, and what you have
+passed carries on below, dimmed, until it leaves the screen. About three cards
+fit at once; an empty stretch of road is an empty stretch of deck. Each card
+carries a letter that matches a pin on the map. **Go** hands off to Google Maps
+(as a waypoint, so it carries on to your destination afterwards) or Apple Maps.
+
+Places are admitted well before they are on screen (the lookahead is fifteen
+minutes of driving; the deck shows four miles), so a card is built, its detour
+known and its picture loading before it scrolls into view. Two places close
+together cannot both sit at their distance, so the positions are the closest
+ones that keep every card in order and a gap apart: isotonic regression
+(pool-adjacent-violators), which moves continuously as the distances do.
+
+**Smooth, not stepped.** GPS arrives about once a second and the screen draws
+sixty times a second. A fix only sets where things are going; every frame
+draws where they are on the way, interpolating position, distance and progress
+and easing the heading round. Cards follow their positions on a critically
+damped spring, so a card arriving or leaving eases its neighbours aside rather
+than shoving them. `tests/drive-mode.js` measures this frame by frame, and
+was seen to fail on the stepped version.
 
 **A questionnaire first.** Before the first drive it asks about ten interests
 (history, gardens, food and drink, things on right now…) as *Love it /
-Sometimes / Skip*, then the longest detour, how often it may speak, and which
-side the map goes. Each interest's level times a per-kind factor is a place's
-starting interest score; a park counts half, because most of the 773 are town
-greens. Everything it asks lives on in settings, and it can be taken again.
+Sometimes / Skip*, then the longest detour and which side the map goes. Each
+interest's level times a per-kind factor is a place's starting interest score;
+a park counts half, because most of the 773 are town greens. Everything it
+asks lives on in settings, and it can be taken again.
 
-**Photos from Wikipedia, live.** The directory has no pictures, so each card
-on screen asks Wikipedia for an article by the place's name, and believes the
-answer only if the article's coordinates are close (within half a mile, or
-three miles when the names share a distinctive word). The article's lead
-image and one-line description go on the card, credited. One request at a
-time, a second apart, backing off when throttled, and every answer, including
-"no article", is kept on the phone. Well-known places match; most farms and
-wineries have no article and get an outline drawing of their kind instead.
+**Pictures, three ways.** Best first:
+
+1. **The place's own website's picture**, found at build time by
+   `scripts/images.py` (below) and shipped in `data/places.json`, so it is
+   there before the card is.
+2. **Wikipedia**, live, by name, believed only if the article's coordinates
+   are close (within half a mile, or three miles when the names share a
+   distinctive word). Asked about every card anyway, for its one-line
+   description. One request at a time, cached on the phone.
+3. An outline drawing of the place's kind.
 
 **Two ways to drive, one code path.** Give it a destination and "ahead" means
 further along the real route. Give it nothing and "ahead" means a cone in the
@@ -239,32 +262,54 @@ public OSRM server allows about one request a second. The router matters: on
 I-84 through Fishkill, places under 3.5 miles from the road as the crow flies
 turned out to be 11 to 35 minute detours, because the exits are far apart.
 
-**What it will say.** Whatever scores above zero from the questionnaire,
-within the longest detour, at most as often as allowed. Liked places always qualify and are said as "one you liked";
-places muted on the Places tab never do, and **Not for me** in the car is that
-same mute. With *Things on right now* not skipped, an event from the feed that
-is on at a place ahead is said too, but only one-off listings with a
-real start time: a repeating series' dates say when it runs, not when it is on,
-and a wrong "happening now" costs a driver a detour.
+**What makes the deck.** Whatever scores above zero from the questionnaire,
+within the longest detour. Liked places always qualify; places muted on the
+Places tab never do, and **Not for me** in the car is that same mute. With
+*Things on right now* not skipped, an event on at a place ahead is shown too,
+but only one-off listings with a real start time: a repeating series' dates
+say when it runs, not when it is on, and a wrong "happening now" costs a
+driver a detour.
 
 **Try it from your desk.** Settings → *Try it from your desk* replays a real
-route at twelve times speed through the same code the car uses, so you can hear
-what it would say on a drive before taking it. A rehearsal keeps its own memory
-and never uses up the real drive's announcements.
+route through the same code the car uses. **−** and **+** beside *End drive*
+change the speed while it runs, from real time to forty times; the drive's
+clock keeps its place and only its rate changes.
 
 **Limits, stated plainly.**
 
-- It only works while the page is on screen. iOS suspends a web page's
-  JavaScript when the screen locks or another app is in front, so this cannot
-  talk over Google Maps. The page takes a screen wake lock to stay on. Talking
-  over another navigation app, or CarPlay, needs a native app.
-- iOS only allows speech after a tap, so **Start driving** says "Driving
-  buddy on" to unlock it.
+- Upright only. Turned sideways it says so, rather than squeezing the deck
+  into a strip too short to scroll.
+- It only works while the page is on screen: iOS suspends a web page's
+  JavaScript when the screen locks or another app is in front. The page takes
+  a screen wake lock to stay on.
 - It knows only what `data/places.json` knows, which is the coverage circles.
-  Outside them the status line says so rather than going quiet.
+  Outside them the status line says so.
 - Opening hours are not checked yet, so it can suggest a museum at 8pm.
-- Routes, detours and addresses are live calls to OSRM and Nominatim, so a
-  dead zone pauses new suggestions (it says so, and backs off).
+- Routes, detours, addresses, map tiles and Wikipedia are live, so a dead zone
+  pauses new cards (it says so, and backs off). OpenFreeMap is a free
+  community service with no key and no stated limit.
+
+### Pictures from the places' own sites
+
+`scripts/images.py` reads each place's own page once, keeps only the `<head>`,
+and records the picture the page declares for sharing (`og:image`, or
+Twitter's tag). It owns `sources/placeimages.json`, keyed by page rather than
+domain because a state-parks site declares a different picture on every
+park's page; `places.py` copies the answers onto the rows on every rebuild.
+
+It refuses, each for a reason found in the data: food places; places known
+only from an event listing (their "website" is the event, and its picture the
+poster: "Les Misérables — sold out" on a theatre); chains (Michaels' "Discover
+your next DIY"); social and ticketing hosts; domains the audit found hijacked
+or parked; logos, icons, stock photography and anything named "default"; and
+any picture carried by more than two places, which is the site's rather than
+the place's (one view of the Charlestown Navy Yard was about to stand for 27
+buildings). The rules are re-applied when the answers are copied onto places,
+so tightening one cleans up old answers without re-reading a site.
+
+First run, 2026-09-29: 3,447 pages read, 975 pictures found, 858 places
+carrying one after the rules; 647 pages did not answer and are asked again in
+three weeks.
 
 ## Look
 
@@ -413,9 +458,9 @@ index.html              markup and the filter sheet
 assets/styles.css       styling, light + dark themes
 assets/app.js           loading, filtering, sorting, geolocation, rendering
 drive.html              the driving buddy: map, spoken suggestions, settings
-assets/drive.js         route geometry, detour checks, speech, simulation
+assets/drive.js         route geometry, detour checks, the deck, the map, simulation
 assets/drive.css        the Drive page, on the same tokens as styles.css
-assets/vendor/leaflet/  Leaflet 1.9.4, vendored so the map needs no CDN
+assets/vendor/maplibre/ MapLibre GL 5.24, vendored so the map library needs no CDN
 data/events.json        the listings the site serves
 data/places.json        the directory — somewhere to go, listings or not
 data/eats.json          somewhere to eat, loaded in the background
@@ -423,6 +468,7 @@ data/eats.json          somewhere to eat, loaded in the background
 sources/registry.json   curated list of feeds, pages and APIs to check
 sources/geocache.json   remembered geocoding results, hits and misses alike
 sources/manual.json     listings read by hand from feedless sources
+sources/placeimages.json  each place page's own picture, read once (images.py)
 
 scripts/icsparse.py     minimal iCalendar reader
 scripts/harvest.py      pull feeds listed in the registry
@@ -435,6 +481,7 @@ scripts/discover.py     find new venues (OSM) and probe them for feeds
 scripts/enrich.py       geocode, radius-filter, infer categories
 scripts/merge.py        collapse repeats, dedupe, fold into data/events.json
 scripts/validate.py     schema and radius gate, also run in CI
+scripts/images.py       each place's own website picture, for the Drive cards
 tests/drive.js          the main page, driven in headless Chromium, in CI
 tests/drive-mode.js     the Drive page, with OSRM and Nominatim answered locally
 ```
@@ -462,6 +509,7 @@ sources/manual.json       listings read by hand, versioned so they survive rerun
         ├─ places.py      the place directory (OSM)  → data/places.json
         │                                             + data/eats.json
         ├─ audit.py       read venue sites once      → sources/placeaudit.json
+        ├─ images.py      each place page's picture  → sources/placeimages.json
         ├─ enrich.py      geocode, radius-filter, classify
         ├─ merge.py       collapse repeats, dedupe → data/events.json
         └─ validate.py    gate before anything ships

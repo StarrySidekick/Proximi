@@ -59,6 +59,7 @@ if hasattr(sys.stdout, 'reconfigure'):
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import placekinds
+import images
 
 UA = 'Mozilla/5.0 (compatible; ProximiBot/0.1; +https://github.com/StarrySidekick/Proximi)'
 
@@ -1075,6 +1076,9 @@ def main():
     directory = [p for p in places if p['kind'] not in placekinds.FOOD]
 
     audited = merge_audit(directory, args.audit)
+    # Each place's own website picture, for the Drive page's cards. One fact,
+    # one owner: sources/placeimages.json, written by scripts/images.py.
+    pictured = images.merge_images(directory)
     # A hijacked domain loses its link wherever it appears; only the directory
     # gets "no event calendar", because a restaurant not publishing a calendar
     # is not news about the restaurant.
@@ -1133,6 +1137,7 @@ def main():
           f'{withh} carry opening hours')
     if audited:
         print(f'{audited} marked "no event calendar" from {args.audit}')
+    print(f'{pictured} places carry their own website\'s picture')
     if failed:
         print(f'partial: {", ".join(failed)} could not be fetched', file=sys.stderr)
     if skipped:
