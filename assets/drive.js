@@ -10,7 +10,8 @@
  *                with each place's own website picture (scripts/images.py)
  *   · on now     data/events.json, only one-off listings with a real time
  *   · routes     OSRM's public server (router.project-osrm.org), live
- *   · addresses  Nominatim, live, the same lookup the main page uses
+ *   · addresses  Photon as you type; Nominatim for anything typed and not picked
+ *   · hours      assets/hours.js, the same parser the Places tab uses
  *   · the map    OpenFreeMap vector tiles, drawn by MapLibre GL
  *   · pictures   Wikipedia, live, for places whose site has none
  *
@@ -47,7 +48,9 @@
     { id: 'views', label: 'Views and nature', hint: 'Lookouts, fire towers, state parks' },
     { id: 'animals', label: 'Animals', hint: 'Zoos, aquariums, wildlife centres' },
     { id: 'tasting', label: 'Wineries, breweries and farms', hint: 'Tastings, orchards, farm stands' },
-    { id: 'eating', label: 'Places to eat', hint: 'Restaurants and cafés' },
+    // Not asked in the questionnaire: whether food shows is the Hungry
+    // switch on the drive, because it changes by the hour, not by the person.
+    { id: 'eating', label: 'Places to eat', hint: 'Restaurants and cafés', quiz: false },
     { id: 'thrills', label: 'Rides and thrills', hint: 'Theme parks and water parks' },
     { id: 'browsing', label: 'Browsing', hint: 'Antique shops, bookshops, thrift shops, markets' },
     { id: 'shows', label: 'Shows', hint: 'Music venues, theatres, cinemas' },
@@ -58,12 +61,14 @@
     // History
     { id: 'castle', label: 'Castles', one: 'Castle', interest: 'history', kinds: ['castle'] },
     { id: 'memorial', label: 'Memorials and monuments', one: 'Memorial', interest: 'history', factor: 0.6,
-      kinds: ['historic site', 'landmark', 'park'],
+      kinds: ['historic site', 'landmark', 'park'], tags: ['historic=memorial', 'historic=monument'],
       name: /\b(memorial|monument|statue|veterans?|soldiers?|sailors|war|obelisk|cenotaph|plaque|marker|tablet|honor roll)\b/i },
     { id: 'lighthouse', label: 'Lighthouses', one: 'Lighthouse', interest: 'history',
-      kinds: ['historic site', 'landmark', 'lookout'], name: /\b(light(house)?|lights)\b/i },
+      kinds: ['historic site', 'landmark', 'lookout'], tags: ['man_made=lighthouse', 'historic=lighthouse'],
+      name: /\b(light(house)?|lights)\b/i },
     { id: 'fort', label: 'Forts and battlefields', one: 'Fort or battlefield', interest: 'history',
-      kinds: ['historic site', 'landmark', 'park'], name: /\b(fort|battle(field)?|redoubt|encampment|garrison)\b/i },
+      kinds: ['historic site', 'landmark', 'park'], tags: ['historic=fort', 'historic=battlefield'],
+      name: /\b(fort|battle(field)?|redoubt|encampment|garrison)\b/i },
     { id: 'district', label: 'Historic districts', one: 'Historic district', interest: 'history', factor: 0.5,
       kinds: ['historic site'], name: /\bdistrict\b/i },
     { id: 'church', label: 'Old churches and meeting houses', one: 'Old church', interest: 'history', factor: 0.7,
@@ -84,7 +89,8 @@
     // Views and nature
     { id: 'lookout', label: 'Lookouts and fire towers', one: 'Lookout', interest: 'views', kinds: ['lookout'] },
     { id: 'wild', label: 'Wildlife areas and forests', one: 'Wildlife area', interest: 'views', factor: 0.5,
-      kinds: ['park'], name: /wildlife|management area|sanctuary|refuge|forest|preserve|reservation|woods/i },
+      kinds: ['park'], tags: ['leisure=nature_reserve'],
+      name: /wildlife|management area|sanctuary|refuge|forest|preserve|reservation|woods/i },
     { id: 'big-park', label: 'State and national parks', one: 'State park', interest: 'views',
       kinds: ['park'], name: /\b(state|national)\b/i },
     { id: 'park', label: 'Local parks', one: 'Park', interest: 'views', factor: 0.35, kinds: ['park'] },
@@ -118,9 +124,26 @@
   ];
   const TYPE = Object.fromEntries(TYPES.map((t) => [t.id, t]));
 
-  // The first type that claims this place, or null for kinds Drive never
-  // suggests (stadiums, schools, halls).
+  /* The first type that claims this place, or null for kinds Drive never
+     suggests (stadiums, schools, halls). What OpenStreetMap says the thing is
+     comes first: places.py records the tag that decided a place's kind
+     (`tag`, "historic=memorial"), and a type that lists it takes the place
+     whatever it is called, so a "Memorial Hall" tagged as a building stays a
+     building. The name is the fallback, for rows built before the tag was
+     kept and for tags that say less than the name does ("heritage"). A
+     protected area's official designation ("State Park") is read before its
+     name, so Sterling Forest is a state park and not a wildlife area. */
   function typeOf(p) {
+    if (p.tag) {
+      for (const t of TYPES) {
+        if (t.tags && t.kinds.includes(p.kind) && t.tags.includes(p.tag)) return t.id;
+      }
+    }
+    if (p.designation) {
+      for (const t of TYPES) {
+        if (t.name && t.kinds.includes(p.kind) && t.name.test(p.designation)) return t.id;
+      }
+    }
     for (const t of TYPES) {
       if (t.kinds.includes(p.kind) && (!t.name || t.name.test(p.name))) return t.id;
     }
@@ -152,7 +175,11 @@
     towns: true, showMap: true, zoomBias: 0,
     mapStyle: 'fantasy',
     // Per cuisine: 'love' ranks it up, 'off' hides it; absent is on.
-    cuisines: {}
+    cuisines: {},
+    // Food shows only while this is on: the button on the drive.
+    hungry: true,
+    // What the car on the map looks like.
+    driver: { shape: 'arrow', color: 'accent', size: 'm' }
   };
 
   const SETTINGS_KEY = 'proximi.drive.v1';
@@ -177,6 +204,7 @@
   settings.types = { ...settings.types };
   settings.chainsOff = [...(settings.chainsOff || [])];
   settings.cuisines = { ...settings.cuisines };
+  settings.driver = { ...DEFAULTS.driver, ...settings.driver };
   // Gone: the first version's per-kind list, and the voice and its cooldown.
   for (const k of ['kinds', 'events', 'voice', 'cooldown']) delete settings[k];
   const saveSettings = () => writeJSON(SETTINGS_KEY, settings);
@@ -186,8 +214,13 @@
     const t = TYPE[id];
     if (!t) return 0;
     const factor = t.factor ?? 1;
-    const base = (LEVEL_VALUE[settings.levels[t.interest]] || 0) * factor;
+    // Food follows the Hungry switch and nothing else: hungry, it counts as
+    // "sometimes" (a favourite cuisine ranks it up from there); not hungry,
+    // it is gone, even a type switched on by hand.
+    const level = t.interest === 'eating' ? (settings.hungry ? 'some' : 'skip') : settings.levels[t.interest];
+    const base = (LEVEL_VALUE[level] || 0) * factor;
     const own = settings.types[id];
+    if (t.interest === 'eating' && !settings.hungry) return 0;
     if (own === false) return 0;
     if (own === true && !base) return LEVEL_VALUE.some * factor;
     return base;
@@ -586,6 +619,19 @@
 
   const MAX_UPCOMING = 16;
 
+  /* Open when you would get there, and for long enough to be worth it. The
+     question is asked at the arrival time, not now: a museum that is open as
+     you pass the sign an hour out and shut by the time you reach it is a
+     wasted detour. Twenty minutes is enough for a coffee; a place to look
+     round wants half an hour. A place whose hours say nothing readable is
+     not held against it: most of the directory has none, and "unknown" is
+     not "closed". */
+  const STAY_MIN = { food: 20, other: 30 };
+  function openLeftAt(c, toMin) {
+    if (!c.openingHours || !window.ProximiHours) return null;
+    return window.ProximiHours.minutesLeft(c.openingHours, new Date(now() + (toMin || 0) * 60000));
+  }
+
   function evaluate() {
     if (state.phase !== 'driving' || !state.pos) return;
     if (now() - (state.poolBuiltAt || 0) > 5 * 60000) buildPool();
@@ -597,7 +643,9 @@
     for (const o of list) {
       const d = state.detours.get(o.c.id);
       if (!d || now() - d.at > DETOUR_TTL || d.min > settings.maxDetour) continue;
-      eligible.push({ ...o, detour: d.min, score: o.c._score - d.min * 0.15 });
+      const left = openLeftAt(o.c, d.toMin);
+      if (left != null && left < (FOOD.has(o.c.kind) ? STAY_MIN.food : STAY_MIN.other)) continue;
+      eligible.push({ ...o, detour: d.min, openLeft: left, score: o.c._score - d.min * 0.15 });
     }
     eligible.sort((a, b) => b.score - a.score);
     for (const o of eligible) admit(o);
@@ -645,21 +693,22 @@
     status: $('drive-status'), main: $('drive-main'), slice: $('map-slice'), map: $('drive-map'),
     car: $('map-car'),
     setup: $('setup-panel'), destForm: $('dest-form'), destInput: $('dest-input'),
+    destSuggest: $('dest-suggest'), destHint: $('dest-hint'),
     deck: $('deck'), deckList: $('deck-list'), deckEmpty: $('deck-empty'), deckNow: $('deck-now'),
     dock: $('dock'), stop: $('stop-btn'),
     toast: $('drive-toast'), toastMsg: $('drive-toast-msg'), toastUndo: $('drive-toast-undo'),
     simCtl: $('sim-ctl'), simSlower: $('sim-slower'), simFaster: $('sim-faster'), simSpeed: $('sim-speed'),
+    simBtn: $('sim-btn'), hungryBtn: $('hungry-btn'),
     openSettings: $('open-settings'), sheet: $('drive-settings'),
     scrim: $('settings-backdrop'), closeSettings: $('close-settings'),
-    levels: $('interest-levels'), retake: $('retake-quiz'),
-    detourChips: $('detour-chips'), sideChips: $('side-chips'), mapsChips: $('maps-chips'),
+    answers: $('answers-summary'), retake: $('retake-quiz'), mapsChips: $('maps-chips'),
+    driverShapes: $('driver-shapes'), driverColours: $('driver-colours'), driverSizes: $('driver-sizes'),
     optLiked: $('opt-liked'), optKm: $('opt-km'), optTowns: $('opt-towns'), optMap: $('opt-map'),
     mapBtn: $('map-btn'), zoomIn: $('zoom-in'), zoomOut: $('zoom-out'),
     kindGroups: $('kind-groups'), optChains: $('opt-chains'), chainPick: $('chain-pick'),
     cuisineChips: $('cuisine-chips'), cuisineNote: $('cuisine-note'), styleChips: $('style-chips'),
     compass: $('map-compass'),
     chainSearch: $('chain-search'), chainList: $('chain-list'), chainNote: $('chain-note'),
-    simForm: $('sim-form'), simFrom: $('sim-from'), simTo: $('sim-to'),
     quiz: $('quiz'), quizStep: $('quiz-step'), quizTitle: $('quiz-title'),
     quizLede: $('quiz-lede'), quizBody: $('quiz-body'), quizBack: $('quiz-back'), quizNext: $('quiz-next')
   };
@@ -718,7 +767,7 @@
       drop(weakest);
     }
     const e = {
-      c: o.c, score: o.score, detour: o.detour,
+      c: o.c, score: o.score, detour: o.detour, openLeft: o.openLeft,
       along: state.route && o.along != null ? o.along : null,
       aheadAt: o.ahead, odoAt: disp.odo,
       letter: String.fromCharCode(65 + (letterNext++ % 26)),
@@ -792,6 +841,12 @@
       const on = li.querySelector('.deck-on');
       on.hidden = false;
       on.textContent = (c.kind === 'event' ? '' : 'On now: ') + c.onNow.title;
+    } else if (e.openLeft != null && e.openLeft < 90) {
+      // Worth knowing before you turn off: it is open, but not for long.
+      const on = li.querySelector('.deck-on');
+      on.hidden = false;
+      on.classList.add('is-closing');
+      on.textContent = `Closes about ${Math.round(e.openLeft / 5) * 5} min after you arrive`;
     }
     fillPhoto(li, c);
     return li;
@@ -1121,7 +1176,8 @@
   function toast(text, undo) {
     el.toastMsg.textContent = text;
     el.toast.hidden = false;
-    el.toastUndo.onclick = () => { undo(); el.toast.hidden = true; };
+    el.toastUndo.hidden = !undo;
+    el.toastUndo.onclick = () => { undo?.(); el.toast.hidden = true; };
     clearTimeout(undoTimer);
     undoTimer = setTimeout(() => { el.toast.hidden = true; }, 5000);
   }
@@ -1395,7 +1451,8 @@
         container: el.map, style: STYLE_URL,
         center: [-73.9696, 41.5048], zoom: 12, bearing: 0,
         interactive: false, fadeDuration: 0,
-        attributionControl: { compact: true }
+        // Added by placeCredit(), in the corner the cards do not cover.
+        attributionControl: false
       });
     } catch {
       // No WebGL: the deck still works, the strip just stays blank.
@@ -1432,8 +1489,9 @@
       map.once('idle', () => el.map.querySelector('.maplibregl-ctrl-attrib')?.classList.remove('maplibregl-compact-show'));
     });
     map.on('error', () => { /* a missing tile is not worth a word */ });
-    new ResizeObserver(() => { map?.resize(); placeCar(); }).observe(el.slice);
+    new ResizeObserver(() => { placeCar(); map?.resize(); }).observe(el.slice);
     placeCar();
+    placeCredit();
     if (settings.mapStyle === 'fantasy') applyMapStyle();
   }
 
@@ -1448,25 +1506,110 @@
     } : emptyLine());
   }
 
+  /* The map fills the screen and the deck floats over it, but the car keeps
+     its strip down one side: the width the old map slice had. Worked out
+     here, once, and handed to the stylesheet as --strip, so the car, the
+     compass, the zoom buttons, the deck's edge and the camera all agree on
+     where the strip is. */
+  const stripWidth = (w) => Math.round(Math.max(112, Math.min(320, w * 0.34)));
+  let strip = 0;
+
   // The car is not on the map: it is fixed in the strip, and the map moves
   // under it. That is what keeps it perfectly still while everything turns.
   function placeCar() {
+    strip = stripWidth(el.main.clientWidth || innerWidth);
+    el.main.style.setProperty('--strip', `${strip}px`);
     el.car.style.top = `${PIVOT_Y * 100}%`;
+  }
+
+  // The map's credit, in the bottom corner of the strip, where no card goes.
+  let credit = null;
+  function placeCredit() {
+    if (!map) return;
+    if (credit) map.removeControl(credit);
+    credit = new maplibregl.AttributionControl({ compact: true });
+    map.addControl(credit, settings.mapSide === 'right' ? 'bottom-right' : 'bottom-left');
+    // It starts as its small "i", not a box over the road; MapLibre opens it
+    // again as each source's credit arrives, so it is closed again once the
+    // map settles.
+    const shut = () => el.map.querySelector('.maplibregl-ctrl-attrib')?.classList.remove('maplibregl-compact-show');
+    shut();
+    map.once('idle', shut);
   }
 
   function camera() {
     // The compass turns against the map, so its needle always points north.
     if (el.compass) el.compass.style.transform = `rotate(${-(disp.heading ?? 0)}deg)`;
     if (!map || !disp.pos) return;
-    const h = el.slice.clientHeight;
+    const h = el.slice.clientHeight, w = el.slice.clientWidth;
+    // Padding moves the focal point. Top padding P puts the centre at
+    // P + (h - P) / 2, so this puts it PIVOT_Y of the way down; padding on
+    // the deck's side puts it in the middle of the strip. With the deck
+    // gone (map on its own) the car is in the middle of the screen.
+    const side = settings.showMap && state.phase === 'driving' ? Math.max(0, w - strip) : 0;
     map.jumpTo({
       center: [disp.pos.lon, disp.pos.lat],
       bearing: disp.heading ?? 0,
       zoom: disp.zoom,
-      // Padding moves the focal point: top padding P puts the centre at
-      // P + (h - P) / 2, so this puts it at PIVOT_Y of the way down.
-      padding: { top: Math.max(0, (2 * PIVOT_Y - 1) * h), bottom: 0, left: 0, right: 0 }
+      padding: { top: Math.max(0, (2 * PIVOT_Y - 1) * h), bottom: 0,
+        left: settings.mapSide === 'right' ? side : 0, right: settings.mapSide === 'right' ? 0 : side }
     });
+  }
+
+  /* ── Your driver ──────────────────────────────────────────
+     The car on the map is yours to dress: a shape, a colour and a size. Each
+     shape is drawn looking down on it, nose up, in a 40-unit square, with
+     the parts that take your colour marked `car-body`; the rest (windows,
+     wheels, a sail) keeps its own. */
+  const DRIVER_SHAPES = [
+    ['arrow', 'Arrow', `<circle cx="20" cy="20" r="17" class="car-halo"/>
+      <path d="M20 7 L30 31 L20 25 L10 31 Z" class="car-body"/>`],
+    ['dot', 'Dot', `<circle cx="20" cy="20" r="17" class="car-halo"/>
+      <circle cx="20" cy="20" r="8.5" class="car-body car-ringed"/>`],
+    ['car', 'Car', `<rect x="10.5" y="9" width="2.5" height="6" rx="1" class="car-wheel"/>
+      <rect x="27" y="9" width="2.5" height="6" rx="1" class="car-wheel"/>
+      <rect x="10.5" y="25" width="2.5" height="6" rx="1" class="car-wheel"/>
+      <rect x="27" y="25" width="2.5" height="6" rx="1" class="car-wheel"/>
+      <rect x="12" y="4.5" width="16" height="31" rx="6" class="car-body"/>
+      <path d="M14.5 13.5 Q20 10.5 25.5 13.5 L24.5 17.5 Q20 16.3 15.5 17.5 Z" class="car-glass"/>
+      <rect x="15" y="28" width="10" height="3.6" rx="1.6" class="car-glass"/>
+      <circle cx="15.5" cy="6.4" r="1.2" class="car-lamp"/><circle cx="24.5" cy="6.4" r="1.2" class="car-lamp"/>`],
+    ['truck', 'Pickup', `<rect x="10.5" y="7" width="2.5" height="6" rx="1" class="car-wheel"/>
+      <rect x="27" y="7" width="2.5" height="6" rx="1" class="car-wheel"/>
+      <rect x="10.5" y="27" width="2.5" height="6" rx="1" class="car-wheel"/>
+      <rect x="27" y="27" width="2.5" height="6" rx="1" class="car-wheel"/>
+      <rect x="12" y="3" width="16" height="15" rx="4.5" class="car-body"/>
+      <rect x="12" y="18.5" width="16" height="18.5" rx="2" class="car-body"/>
+      <rect x="14.2" y="20.5" width="11.6" height="14.3" rx="1" class="car-shade"/>
+      <path d="M14.5 10 Q20 7.5 25.5 10 L25 14 Q20 13 15 14 Z" class="car-glass"/>`],
+    ['bike', 'Motorbike', `<rect x="18.3" y="3.5" width="3.4" height="8" rx="1.5" class="car-wheel"/>
+      <rect x="18.3" y="28.5" width="3.4" height="8" rx="1.5" class="car-wheel"/>
+      <path d="M11 12.5 L29 12.5" class="car-bar"/>
+      <ellipse cx="20" cy="20" rx="4.6" ry="11" class="car-body"/>
+      <circle cx="20" cy="21" r="4.4" class="car-rider"/>`],
+    ['ship', 'Ship', `<path d="M20 2.5 C27.5 10 28.5 22 26.5 36 L13.5 36 C11.5 22 12.5 10 20 2.5 Z" class="car-body"/>
+      <path d="M20 5 L20 34" class="car-bar"/>
+      <path d="M10 15 Q20 11 30 15 L30 19.5 Q20 15.5 10 19.5 Z" class="car-sail"/>
+      <path d="M12 24.5 Q20 21 28 24.5 L28 28.5 Q20 25 12 28.5 Z" class="car-sail"/>`]
+  ];
+  const DRIVER_COLOURS = [
+    ['accent', 'Theme', 'var(--accent)'], ['blue', 'Blue', '#2F5F9E'], ['red', 'Red', '#B23A2E'],
+    ['green', 'Green', '#2E7D4F'], ['gold', 'Gold', '#D69A1F'], ['violet', 'Violet', '#6B3FA0'],
+    ['black', 'Black', '#26221E'], ['white', 'White', '#F4F1E8']
+  ];
+  const DRIVER_SIZES = [['s', 'Small', 30], ['m', 'Medium', 40], ['l', 'Large', 54]];
+
+  const colourOf = (id) => (DRIVER_COLOURS.find(([k]) => k === id) || DRIVER_COLOURS[0])[2];
+  const shapeOf = (id) => (DRIVER_SHAPES.find(([k]) => k === id) || DRIVER_SHAPES[0])[2];
+
+  function drawDriver(svg = el.car, d = settings.driver) {
+    svg.innerHTML = shapeOf(d.shape);
+    svg.style.setProperty('--car', colourOf(d.color));
+    svg.dataset.shape = d.shape;
+    if (svg === el.car) {
+      const px = (DRIVER_SIZES.find(([k]) => k === d.size) || DRIVER_SIZES[1])[2];
+      svg.style.width = svg.style.height = `${px}px`;
+    }
   }
 
   // The deck's letters on the map. MapLibre keeps HTML markers upright.
@@ -1584,8 +1727,8 @@
     const at = locate(state.route, p, state.progress);
     state.progress = at.along;
     if (state.progress >= state.route.length - 0.2) {
+      if (state.sim) { setSim(false); setStatus('The simulated drive arrived. Back to where you are.'); return; }
       setStatus(`Arrived at ${state.destName}`);
-      if (state.sim) stopSim();
       return;
     }
     // Off the route for three fixes running: you took a turn, so the route
@@ -1605,13 +1748,15 @@
     }
     state.watchId = navigator.geolocation.watchPosition(
       (pos) => {
-        if (state.sim) return;
         const c = pos.coords;
-        onFix({ lat: c.latitude, lon: c.longitude }, c.heading, c.speed);
+        // Kept while a simulation runs, so ending it puts you back here.
+        state.realFix = { p: { lat: c.latitude, lon: c.longitude }, heading: c.heading, speed: c.speed };
+        if (state.sim) return;
+        onFix(state.realFix.p, c.heading, c.speed);
       },
       (err) => {
         setStatus(err.code === 1
-          ? 'Drive needs your location. Allow it in the browser, or try a simulated drive in settings.'
+          ? 'Drive needs your location. Allow it in the browser to start.'
           : 'Waiting for a GPS fix…');
       },
       { enableHighAccuracy: true, maximumAge: 2000, timeout: 20000 }
@@ -1668,6 +1813,7 @@
       if (tween.to) { tween.from.progress = state.progress; tween.to.progress = state.progress; }
       indexRoute(state.route, state.pool);
       setRouteLine(state.route);
+      syncDock();
     } catch {
       setStatus('Could not find a route. Following your heading instead.');
       state.route = null;
@@ -1677,19 +1823,21 @@
   }
 
   /* ── A drive you can take from your desk ──────────────────
-     Replays a real route through the same code the car uses: positions go
-     through onFix, four times a second, and are smoothed like GPS. The
-     clock runs as fast as the drive, so detours and "on now" behave as they
-     would. The speed can change mid-drive: the clock keeps its place and
-     only its rate changes. */
+     Once there is a route, Simulate plays the rest of it from where you
+     are, sped up, through the same code the car uses: positions go through
+     onFix four times a second and are smoothed like GPS. The clock runs as
+     fast as the drive, so detours and "on now" behave as they would. The
+     speed can change mid-drive: the clock keeps its place and only its rate
+     changes. Pressing Simulate again ends it and puts you back where the
+     GPS says you are, on the same route. */
 
   const SIM_MPH = 55;
   const SIM_SPEEDS = [1, 2, 5, 10, 20, 40];
   const SIM_FIX_MS = 250;
 
-  function startSim(route) {
+  function startSim(route, from = 0) {
     stopSim();
-    let along = 0, sinceFix = SIM_FIX_MS, simT = Date.now(), realT = Date.now();
+    let along = from, sinceFix = SIM_FIX_MS, simT = Date.now(), realT = Date.now();
     const sim = {
       speed: SIM_SPEEDS.includes(settings.simSpeed) ? settings.simSpeed : 10,
       clock: () => simT + (Date.now() - realT) * sim.speed,
@@ -1705,15 +1853,39 @@
     };
     state.sim = sim;
     state.detours.clear();
-    el.simCtl.hidden = false;
-    syncSimSpeed();
+    syncDock();
   }
 
   function stopSim() {
     if (!state.sim) return;
     state.sim = null;
     state.detours.clear();
-    el.simCtl.hidden = true;
+    syncDock();
+  }
+
+  /* In and out of a simulation. Either way the deck starts again: its cards
+     were placed by where you were, and the other drive is somewhere else.
+     The motion is reset too, or the map would glide the whole distance
+     between the two. */
+  function setSim(on) {
+    if (on === !!state.sim) return;
+    if (on && !state.route) return;
+    clearDeck();
+    Object.assign(state, { lastFix: null, headingFrom: null, offCount: 0 });
+    Object.assign(disp, { pos: null, progress: null });
+    tween.to = null; tween.lastAt = 0;
+    if (on) {
+      startSim(state.route, state.progress || 0);
+      setStatus(`Simulating the drive to ${state.destName}`);
+      return;
+    }
+    stopSim();
+    if (state.realFix) {
+      state.progress = null;
+      onFix(state.realFix.p, state.realFix.heading, state.realFix.speed);
+      if (state.route) state.progress = locate(state.route, state.realFix.p).along;
+    }
+    setStatus('Back to where you are');
   }
 
   function syncSimSpeed() {
@@ -1721,6 +1893,19 @@
     el.simSpeed.textContent = `${v}×`;
     el.simSlower.disabled = v <= SIM_SPEEDS[0];
     el.simFaster.disabled = v >= SIM_SPEEDS[SIM_SPEEDS.length - 1];
+  }
+
+  // The dock says what is possible now: Simulate once there is a route, and
+  // its speed only while it runs.
+  function syncDock() {
+    const on = !!state.sim;
+    el.simCtl.hidden = !(state.route && state.dest) && !on;
+    el.simBtn.setAttribute('aria-pressed', String(on));
+    el.simBtn.setAttribute('aria-label', on ? 'Simulating: tap to go back to where you are' : 'Simulate the rest of the drive');
+    el.simBtn.firstChild.textContent = on ? 'Sim ' : 'Simulate';
+    el.simSpeed.hidden = el.simSlower.hidden = el.simFaster.hidden = !on;
+    el.hungryBtn.setAttribute('aria-pressed', String(settings.hungry));
+    syncSimSpeed();
   }
 
   function nudgeSpeed(dir) {
@@ -1735,6 +1920,16 @@
 
   el.simSlower.addEventListener('click', () => nudgeSpeed(-1));
   el.simFaster.addEventListener('click', () => nudgeSpeed(1));
+  el.simBtn.addEventListener('click', () => setSim(!state.sim));
+
+  /* Hungry or not. Food is most of the directory, and a driver who has just
+     eaten does not want the deck full of diners; one tap takes every place
+     to eat off the road, and one puts them back. */
+  el.hungryBtn.addEventListener('click', () => {
+    const flip = () => { settings.hungry = !settings.hungry; changed(); };
+    flip();
+    toast(settings.hungry ? 'Showing places to eat' : 'No places to eat for now', flip);
+  });
 
   /* ── Starting and stopping ────────────────────────────── */
 
@@ -1749,6 +1944,7 @@
     el.setup.hidden = true;
     el.dock.hidden = false;
     el.main.classList.add('is-driving');
+    syncDock();
     keepAwake();
     buildPool();
     startFrames();
@@ -1763,7 +1959,7 @@
     stopFrames();
     Object.assign(state, {
       phase: 'setup', route: null, dest: null, progress: null, heading: null,
-      headingFrom: null, lastFix: null, ahead: [], odo: 0
+      headingFrom: null, lastFix: null, realFix: null, ahead: [], odo: 0
     });
     Object.assign(disp, { pos: null, heading: null, progress: null, odo: 0 });
     tween.to = null; tween.lastAt = 0;
@@ -1774,48 +1970,151 @@
     el.setup.hidden = false;
     el.main.classList.remove('is-driving');
     el.deckEmpty.hidden = true;
+    syncDock();
     setStatus('Drive ended');
   }
 
   el.destForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     const q = el.destInput.value.trim();
+    const picked = suggest.picked && suggest.picked.label === q ? suggest.picked : null;
+    closeSuggest();
     state.dest = null;
     state.destName = '';
     beginDrive();
     startWatching();
     if (!q) return;
     try {
-      const hit = await geocode(q);
+      // A suggestion that was picked is the place itself; anything typed and
+      // not picked goes to the geocoder for its best guess, as before.
+      const hit = picked || await geocode(q);
       if (!hit) { setStatus(`No place found for “${q}”. Following your heading.`); return; }
-      state.dest = hit;
+      state.dest = { lat: hit.lat, lon: hit.lon };
       state.destName = hit.name;
-      if (state.pos) routeTo(hit, hit.name);
+      if (state.pos) routeTo(state.dest, hit.name);
     } catch {
       setStatus('Address lookup is unavailable. Following your heading.');
     }
   });
 
-  el.simForm.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const fromQ = el.simFrom.value.trim() || el.simFrom.placeholder;
-    const toQ = el.simTo.value.trim() || el.simTo.placeholder;
-    closeSettings();
-    if (state.phase === 'driving') endDrive();
-    setStatus(`Looking up ${fromQ} and ${toQ}…`);
+  /* ── Address suggestions ──────────────────────────────────
+     As you type a destination, what the lookup thinks you mean, so you can
+     see it has the right Main Street before the drive starts rather than
+     after. From Photon, which is built for search-as-you-type: it is the
+     same OpenStreetMap data as Nominatim, but Nominatim's rules forbid
+     sending it a request per keystroke and Photon's do not. Results lean
+     towards where you are, and only the United States is offered. */
+
+  const PHOTON = 'https://photon.komoot.io/api/';
+  const suggest = { items: [], at: -1, picked: null, timer: null, ctl: null, asked: '' };
+
+  function describeHit(pr) {
+    const street = [pr.housenumber, pr.street].filter(Boolean).join(' ');
+    const town = pr.city || pr.town || pr.village || pr.district || pr.locality || pr.county;
+    const title = pr.name || street || town || '';
+    const where = [pr.name && street ? street : null, town !== title ? town : null, pr.state]
+      .filter(Boolean).join(', ');
+    // What the status line and directions call it: a place and its state.
+    const name = [title, pr.state].filter(Boolean).join(', ');
+    return { title, where, name };
+  }
+
+  async function lookupSuggestions(q) {
+    suggest.ctl?.abort();
+    const ctl = suggest.ctl = new AbortController();
+    const bias = state.pos || state.realFix?.p;
+    let url = `${PHOTON}?limit=8&lang=en&q=${encodeURIComponent(q)}`;
+    if (bias) url += `&lat=${bias.lat.toFixed(4)}&lon=${bias.lon.toFixed(4)}`;
     try {
-      const [from, to] = await Promise.all([geocode(fromQ), geocode(toQ)]);
-      if (!from || !to) { setStatus('Could not find one of those places.'); return; }
-      state.dest = to;
-      state.destName = to.name;
-      await routeTo(to, to.name, { from });
-      if (!state.route) return;
-      startSim(state.route);
-      beginDrive();
-    } catch {
-      setStatus('Could not reach the address or routing service.');
+      const res = await fetch(url, { signal: ctl.signal });
+      if (!res.ok) return;
+      const data = await res.json();
+      if (ctl !== suggest.ctl || el.destInput.value.trim() !== q) return;
+      const seen = new Set();
+      suggest.items = (data.features || []).filter((f) => f.properties?.countrycode === 'US')
+        .map((f) => {
+          const [lon, lat] = f.geometry.coordinates;
+          const d = describeHit(f.properties);
+          return { lat, lon, ...d, label: d.where ? `${d.title}, ${d.where}` : d.title };
+        })
+        .filter((x) => x.title && !seen.has(x.label) && seen.add(x.label))
+        .slice(0, 6);
+      suggest.at = -1;
+      drawSuggest();
+    } catch { /* aborted, or offline: typing still works, the geocoder decides */ }
+  }
+
+  function drawSuggest() {
+    const list = el.destSuggest;
+    list.replaceChildren(...suggest.items.map((x, i) => {
+      const li = document.createElement('li');
+      li.className = 'suggest-item';
+      li.id = `dest-opt-${i}`;
+      li.setAttribute('role', 'option');
+      li.setAttribute('aria-selected', String(i === suggest.at));
+      li.innerHTML = '<strong></strong><span></span>';
+      li.firstChild.textContent = x.title;
+      li.lastChild.textContent = x.where;
+      // pointerdown, not click: a click lands after the field's blur has
+      // already closed the list.
+      li.addEventListener('pointerdown', (ev) => { ev.preventDefault(); pickSuggestion(i); });
+      return li;
+    }));
+    const open = suggest.items.length > 0;
+    list.hidden = !open;
+    el.destInput.setAttribute('aria-expanded', String(open));
+    if (suggest.at >= 0) el.destInput.setAttribute('aria-activedescendant', `dest-opt-${suggest.at}`);
+    else el.destInput.removeAttribute('aria-activedescendant');
+  }
+
+  function closeSuggest() {
+    suggest.ctl?.abort();
+    clearTimeout(suggest.timer);
+    suggest.items = [];
+    suggest.at = -1;
+    drawSuggest();
+  }
+
+  function pickSuggestion(i) {
+    const x = suggest.items[i];
+    if (!x) return;
+    suggest.picked = x;
+    el.destInput.value = x.label;
+    closeSuggest();
+    showPicked();
+  }
+
+  // Confirmed or not, said under the field: the confirmation is the point.
+  const HINT = el.destHint.textContent;
+  function showPicked() {
+    const p = suggest.picked && suggest.picked.label === el.destInput.value.trim() ? suggest.picked : null;
+    el.destHint.textContent = p ? `Going to ${p.label}.` : HINT;
+    el.destHint.classList.toggle('is-picked', !!p);
+  }
+
+  el.destInput.addEventListener('input', () => {
+    showPicked();
+    const q = el.destInput.value.trim();
+    clearTimeout(suggest.timer);
+    if (q.length < 3) { closeSuggest(); return; }
+    suggest.timer = setTimeout(() => lookupSuggestions(q), 250);
+  });
+  el.destInput.addEventListener('keydown', (e) => {
+    const n = suggest.items.length;
+    if (!n) return;
+    if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+      e.preventDefault();
+      if (e.key === 'ArrowDown') suggest.at = (suggest.at + 1) % n;
+      else suggest.at = suggest.at <= 0 ? n - 1 : suggest.at - 1;
+      drawSuggest();
+    } else if (e.key === 'Enter' && suggest.at >= 0) {
+      e.preventDefault();
+      pickSuggestion(suggest.at);
+    } else if (e.key === 'Escape') {
+      closeSuggest();
     }
   });
+  el.destInput.addEventListener('blur', () => setTimeout(closeSuggest, 150));
 
   el.stop.addEventListener('click', endDrive);
 
@@ -1839,7 +2138,7 @@
   // A three-way switch per interest, used by the questionnaire and the
   // settings sheet alike, so the two can never disagree about what you said.
   function levelRows(onChange) {
-    return INTERESTS.map((it) => {
+    return INTERESTS.filter((it) => it.quiz !== false).map((it) => {
       const row = document.createElement('div');
       row.className = 'level-row';
       row.innerHTML = `<p class="level-name">${it.label}<span>${it.hint}</span></p>`;
@@ -1867,12 +2166,23 @@
     });
   }
 
+  /* The questionnaire's answers, read back in a sentence. They are changed
+     by taking it again rather than by a second set of switches here, so
+     there is one place each answer is given. */
+  function answersLine() {
+    const named = (lvl) => INTERESTS.filter((it) => it.quiz !== false && settings.levels[it.id] === lvl)
+      .map((it) => it.label.toLowerCase());
+    const love = named('love'), some = named('some');
+    const parts = [];
+    if (love.length) parts.push(`You love ${listing(love)}`);
+    if (some.length) parts.push(`${love.length ? 'and sometimes stop for' : 'You sometimes stop for'} ${listing(some)}`);
+    const likes = parts.length ? parts.join(', ') + '.' : 'Nothing is switched on, so only places you have liked will show.';
+    return `${likes} Detours up to ${settings.maxDetour} minutes. Car on the ${settings.mapSide}.`;
+  }
+  const listing = (xs) => (xs.length < 2 ? xs.join('') : `${xs.slice(0, -1).join(', ')} and ${xs[xs.length - 1]}`);
+
   function renderSettings() {
-    el.levels.replaceChildren(...levelRows(changed));
-    el.detourChips.replaceChildren(...DETOURS.map((m) =>
-      chip(`${m} min`, settings.maxDetour === m, () => { settings.maxDetour = m; changed(); })));
-    el.sideChips.replaceChildren(...SIDES.map(([id, label]) =>
-      chip(label, settings.mapSide === id, () => { settings.mapSide = id; changed(); })));
+    el.answers.textContent = answersLine();
     el.mapsChips.replaceChildren(...MAPS.map(([id, label]) =>
       chip(label, settings.maps === id, () => { settings.maps = id; changed(); })));
     el.optLiked.checked = settings.liked;
@@ -1880,11 +2190,16 @@
     el.optTowns.checked = settings.towns;
     el.optMap.checked = settings.showMap;
     el.mapBtn.setAttribute('aria-pressed', String(settings.showMap));
-    el.main.dataset.side = settings.mapSide;
+    if (el.main.dataset.side !== settings.mapSide) {
+      el.main.dataset.side = settings.mapSide;
+      placeCredit();
+    }
     el.main.classList.toggle('no-map-view', !settings.showMap);
     renderKinds();
     renderChains();
     renderCuisines();
+    renderDriver();
+    syncDock();
     el.styleChips.replaceChildren(...STYLES.map(([id, label]) =>
       chip(label, settings.mapStyle === id, () => {
         if (settings.mapStyle === id) return;
@@ -1900,15 +2215,23 @@
      group's level. Counts are how many there are in the whole directory, so
      a switch that governs three places reads as small. */
   function renderKinds() {
+    el.kindGroups.replaceChildren(...kindGroupEls(INTERESTS, changed));
+  }
+
+  // Shared by the settings sheet (every group) and the questionnaire (the
+  // groups you did not skip), so the two can never disagree.
+  function kindGroupEls(interests, onChange) {
     const counts = {};
     for (const p of state.places.concat(state.eats)) counts[p._type] = (counts[p._type] || 0) + 1;
-    el.kindGroups.replaceChildren(...INTERESTS.map((it) => {
+    return interests.map((it) => {
       const box = document.createElement('div');
       box.className = 'kind-group';
       box.dataset.interest = it.id;
       const h = document.createElement('p');
       h.className = 'kind-group-h';
-      h.textContent = `${it.label} · ${LEVELS.find(([id]) => id === settings.levels[it.id])?.[1] || ''}`;
+      const level = it.id === 'eating' ? (settings.hungry ? 'Hungry' : 'Not hungry')
+        : LEVELS.find(([id]) => id === settings.levels[it.id])?.[1] || '';
+      h.textContent = `${it.label} · ${level}`;
       const chips = document.createElement('div');
       chips.className = 'chips';
       for (const t of TYPES.filter((x) => x.interest === it.id)) {
@@ -1916,9 +2239,9 @@
         const b = chip(t.label, on, () => {
           settings.types[t.id] = !on;
           // Back to following the group when the choice matches it anyway.
-          const base = (LEVEL_VALUE[settings.levels[t.interest]] || 0) > 0;
+          const base = t.interest === 'eating' ? settings.hungry : (LEVEL_VALUE[settings.levels[t.interest]] || 0) > 0;
           if (settings.types[t.id] === base) delete settings.types[t.id];
-          changed();
+          onChange();
         });
         b.dataset.type = t.id;
         if (counts[t.id]) {
@@ -1931,7 +2254,7 @@
       }
       box.append(h, chips);
       return box;
-    }));
+    });
   }
 
   /* Chains: hidden unless asked for, and then one by one. Listed by how many
@@ -1975,20 +2298,25 @@
   const CUISINE_CYCLE = { on: 'love', love: 'off', off: 'on' };
 
   function renderCuisines() {
+    el.cuisineChips.replaceChildren(...cuisineChipEls(changed));
+    el.cuisineNote.textContent = state.eats.length ? '' : 'Loading places to eat…';
+  }
+
+  function cuisineChipEls(onChange, limit = Infinity) {
     const counts = new Map();
     for (const p of state.eats) {
       const menu = p.cuisine && p.cuisine.length ? p.cuisine : ['none'];
       for (const x of menu) counts.set(x, (counts.get(x) || 0) + 1);
     }
-    const ids = [...counts.keys()].filter((x) => x !== 'none').sort((a, b) => counts.get(b) - counts.get(a));
-    if (counts.has('none')) ids.push('none');
-    el.cuisineChips.replaceChildren(...ids.map((id) => {
+    const ids = [...counts.keys()].filter((x) => x !== 'none').sort((a, b) => counts.get(b) - counts.get(a)).slice(0, limit);
+    if (counts.has('none') && limit === Infinity) ids.push('none');
+    return ids.map((id) => {
       const st = settings.cuisines[id] || 'on';
       const label = id === 'none' ? 'Not listed' : (state.cuisineLabels[id] || id);
       const b = chip((st === 'love' ? '★ ' : '') + label, st !== 'off', () => {
         const next = CUISINE_CYCLE[st];
         if (next === 'on') delete settings.cuisines[id]; else settings.cuisines[id] = next;
-        changed();
+        onChange();
       });
       b.dataset.cuisine = id;
       b.dataset.state = st;
@@ -1997,8 +2325,44 @@
       n.textContent = counts.get(id).toLocaleString();
       b.appendChild(n);
       return b;
+    });
+  }
+
+  /* Your driver: shapes drawn as themselves, in your colour, then the colour
+     swatches, then the size. The car on the map changes as you tap. */
+  function renderDriver() {
+    const d = settings.driver;
+    const set = (k, v) => { settings.driver = { ...settings.driver, [k]: v }; saveSettings(); renderDriver(); };
+    el.driverShapes.replaceChildren(...DRIVER_SHAPES.map(([id, label]) => {
+      const b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'driver-pick';
+      b.dataset.shape = id;
+      b.setAttribute('role', 'radio');
+      b.setAttribute('aria-checked', String(d.shape === id));
+      b.setAttribute('aria-label', label);
+      b.innerHTML = '<svg viewBox="0 0 40 40" aria-hidden="true"></svg><span></span>';
+      drawDriver(b.firstChild, { ...d, shape: id });
+      b.lastChild.textContent = label;
+      b.addEventListener('click', () => set('shape', id));
+      return b;
     }));
-    el.cuisineNote.textContent = state.eats.length ? '' : 'Loading places to eat…';
+    el.driverColours.replaceChildren(...DRIVER_COLOURS.map(([id, label, value]) => {
+      const b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'driver-swatch';
+      b.dataset.color = id;
+      b.style.setProperty('--swatch', value);
+      b.setAttribute('role', 'radio');
+      b.setAttribute('aria-checked', String(d.color === id));
+      b.setAttribute('aria-label', label);
+      b.title = label;
+      b.addEventListener('click', () => set('color', id));
+      return b;
+    }));
+    el.driverSizes.replaceChildren(...DRIVER_SIZES.map(([id, label]) =>
+      chip(label, d.size === id, () => set('size', id))));
+    drawDriver();
   }
 
   el.optChains.addEventListener('change', () => { settings.showChains = el.optChains.checked; changed(); });
@@ -2064,14 +2428,52 @@
   /* ── The questionnaire ────────────────────────────────────
      Asked once, before the first drive, because a driving buddy that does
      not know what you like has two bad options: show everything, or guess.
-     Three short pages, every answer a tap, and every one of them lives on in
-     the settings sheet afterwards. */
+     It is also the only way to change these answers: settings reads them
+     back and offers to ask again, and keeps the finer switches.
+
+     Broad to narrow. What makes you pull over, by interest; then, inside the
+     interests you did not skip, the kinds of place you would rather not see,
+     because loving history does not mean every war memorial; then food,
+     which shows only while you say you are hungry; then how far out of your
+     way, and which side the car sits. Every answer is a tap. */
 
   const QUIZ = [
     {
       title: 'What makes you pull over?',
-      lede: 'Only places you like will show up. Love it counts for the most.',
+      lede: 'Only places you like will show up. Love it counts for the most. Food has its own page.',
       body: () => levelRows(() => {})
+    },
+    {
+      title: 'Anything to leave out?',
+      lede: 'These are on because of what you just said. Tap any you would rather not see.',
+      body: () => {
+        const groups = INTERESTS.filter((it) => it.quiz !== false && settings.levels[it.id] !== 'skip');
+        if (!groups.length) return [note('You skipped everything, so there is nothing to narrow. Places you have liked will still show.')];
+        return kindGroupEls(groups, quizChanged);
+      }
+    },
+    {
+      title: 'When you are hungry',
+      lede: 'Places to eat show only while Hungry is on during a drive. Tap a kind of food once to make it a favourite, twice to never see it.',
+      body: () => {
+        if (!state.eats.length) return [note('Loading places to eat…')];
+        const chips = document.createElement('div');
+        chips.className = 'chips quiz-chips';
+        chips.append(...cuisineChipEls(quizChanged, 24));
+        const chains = [false, true].map((on) => choice(on ? 'Chains are fine' : 'Skip the chains',
+          on ? 'Starbucks, Panera and the rest show like anywhere else' : 'Only independent places; any chain can be let back in from settings',
+          settings.showChains === on, () => { settings.showChains = on; saveSettings(); }));
+        const h = document.createElement('p');
+        h.className = 'quiz-sub';
+        h.textContent = 'Chains';
+        const all = document.createElement('p');
+        all.className = 'drive-hint';
+        all.textContent = 'The 24 most common are here; every kind is in settings.';
+        const group = document.createElement('div');
+        group.className = 'quiz-group';
+        group.append(...chains);
+        return [chips, all, h, group];
+      }
     },
     {
       title: 'How far out of your way?',
@@ -2082,14 +2484,27 @@
         settings.maxDetour === m, () => { settings.maxDetour = m; }))
     },
     {
-      title: 'Which side for the map?',
-      lede: 'The map takes a narrow strip; the places take the rest. Put the map nearest the driver.',
-      body: () => SIDES.map(([id, label]) => choice(label, id === 'left' ? 'Map on the left, places on the right' : 'Places on the left, map on the right',
+      title: 'Which side for the car?',
+      lede: 'The map fills the screen and the places float over it; the car keeps a strip down one side. Put it nearest the driver.',
+      body: () => SIDES.map(([id, label]) => choice(label, id === 'left' ? 'Car on the left, places on the right' : 'Places on the left, car on the right',
         settings.mapSide === id, () => { settings.mapSide = id; }))
     }
   ];
 
   let quizAt = 0;
+
+  function note(text) {
+    const p = document.createElement('p');
+    p.className = 'quiz-note';
+    p.textContent = text;
+    return p;
+  }
+
+  // A chip in the questionnaire redraws its page in place, keeping the scroll.
+  function quizChanged() {
+    saveSettings();
+    showQuiz(quizAt, { keepScroll: true });
+  }
 
   // One big answer button; picking it marks it and clears its siblings.
   function choice(label, sub, on, pick) {
@@ -2107,17 +2522,19 @@
     return b;
   }
 
-  function showQuiz(at = 0) {
+  function showQuiz(at = 0, { keepScroll = false } = {}) {
+    const top = el.quizBody.scrollTop;
     quizAt = at;
     const page = QUIZ[at];
     el.quizStep.textContent = `${at + 1} of ${QUIZ.length}`;
     el.quizTitle.textContent = page.title;
     el.quizLede.textContent = page.lede;
     el.quizBody.replaceChildren(...page.body());
+    el.quizBody.dataset.page = String(at);
     el.quizBack.hidden = at === 0;
     el.quizNext.textContent = at === QUIZ.length - 1 ? 'Done' : 'Next';
     el.quiz.hidden = false;
-    el.quizBody.scrollTop = 0;
+    el.quizBody.scrollTop = keepScroll ? top : 0;
   }
 
   el.quizBack.addEventListener('click', () => showQuiz(Math.max(0, quizAt - 1)));
@@ -2183,6 +2600,7 @@
       renderKinds();
       renderChains();
       renderCuisines();
+      if (!el.quiz.hidden) showQuiz(quizAt, { keepScroll: true });
       if (state.phase === 'setup') setStatus(`${state.pool.length.toLocaleString()} places worth a stop, in Proximi's coverage`);
     }).catch(() => { /* the drive works without somewhere to eat */ });
   }).catch(() => setStatus('The places file failed to load.'));

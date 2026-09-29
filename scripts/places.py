@@ -399,6 +399,37 @@ def matches(tags, sel):
     return key in tags and re.search(val, tags[key]) is not None
 
 
+def tag_of(tags, kind):
+    """The OSM tag that made this place its kind, as "key=value".
+
+    A kind is a bucket: "historic site" holds memorials, lighthouses, forts
+    and ruins alike, and "park" holds state parks, nature reserves and the
+    town green. Drive splits those buckets into types a person can switch on
+    and off, and until this field existed it could only do that by reading
+    the place's name, which calls a "Memorial Hall" a war memorial. The tag
+    is what OpenStreetMap actually says the thing is. A presence selector
+    ("heritage") is reported as its bare key.
+    """
+    for rule_kind, selectors in placekinds.OSM_RULES:
+        if rule_kind != kind:
+            continue
+        for sel in selectors:
+            if matches(tags, sel):
+                key, op, _ = parse_selector(sel)
+                return key if op is None else f'{key}={tags[key]}'
+    return None
+
+
+def designation_of(tags):
+    """What a protected area calls itself: "State Park", "Wildlife Management
+    Area". OSM's protect_class is a number nobody reads; these are words."""
+    for key in ('protection_title', 'designation'):
+        value = (tags.get(key) or '').strip()
+        if value:
+            return value[:60]
+    return None
+
+
 def classify(tags):
     """Every kind whose OSM rules this place satisfies, most specific first."""
     hits = []
@@ -466,6 +497,11 @@ def test_selectors():
     # significance, so this is really a test that the order has not drifted.
     assert classify({'amenity': 'pub', 'microbrewery': 'yes'})[0] == 'brewery', \
         'a brewpub should lead with brewery, not restaurant'
+    assert tag_of({'historic': 'memorial', 'name': 'x'}, 'historic site') == 'historic=memorial'
+    assert tag_of({'man_made': 'lighthouse'}, 'historic site') == 'man_made=lighthouse'
+    assert tag_of({'heritage': '2'}, 'historic site') == 'heritage'
+    assert tag_of({'craft': 'cidery'}, 'brewery') == 'craft=cidery'
+    assert designation_of({'protection_title': 'State Park'}) == 'State Park'
     assert classify({'shop': 'chocolate'})[0] == 'shop', \
         'a chocolate shop is a specialty shop, not a caf\u00e9'
 
@@ -691,6 +727,7 @@ def to_place(element, kinds, center):
         'name': tags['name'].strip(),
         'kind': kinds[0],
         'kinds': kinds,
+        'tag': tag_of(tags, kinds[0]),
         'lat': round(lat, 6),
         'lon': round(lon, 6),
         'miles': round(miles(center['lat'], center['lon'], lat, lon), 1),
@@ -715,6 +752,7 @@ def to_place(element, kinds, center):
                        or bool(SECOND_HAND_NAME.search(tags.get('name', '')))) or None,
         'free': None if fee is None else (fee == 'no'),
         'wheelchair': tags.get('wheelchair'),
+        'designation': designation_of(tags) if kinds[0] == 'park' else None,
         'description': describe(tags.get('description')),
         'events': 0,
         'source': 'OpenStreetMap',

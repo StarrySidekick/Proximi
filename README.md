@@ -193,8 +193,14 @@ watches the road ahead and lays out what is worth a short detour, on a phone
 held upright on the dash. Nothing needs a tap once the drive has started, and
 nothing is spoken: the voice was removed on purpose.
 
-**The screen is split.** A narrow map sits on the driver's side and turns so
-the road ahead is always up the screen (**heading up**). It is drawn by
+**The map is the whole screen, and the places float over it.** The map turns
+so the road ahead is always up the screen (**heading up**). The car keeps a
+strip down the driver's side, a third of the width, and the cards sit over the
+rest with no background of their own, so the road around them stays visible.
+The camera's padding puts the car in the middle of its strip rather than the
+middle of the screen, and the strip's width is worked out once in `drive.js`
+and handed to the stylesheet as `--strip`, so the car, the compass, the zoom
+buttons, the map's credit and the deck's edge all agree on where it is. It is drawn by
 MapLibre GL from OpenFreeMap's **vector tiles**: the map arrives as shapes and
 words rather than as pictures, so the words are laid out fresh every frame and
 stay upright however the map turns. (The first version used raster tiles,
@@ -234,24 +240,47 @@ damped spring, so a card arriving or leaving eases its neighbours aside rather
 than shoving them. `tests/drive-mode.js` measures this frame by frame, and
 was seen to fail on the stepped version.
 
-**A questionnaire first, then finer.** Before the first drive it asks about
-eleven interests (history, gardens, places to eat, things on right now…) as
-*Love it / Sometimes / Skip*, then the longest detour and which side the map
-goes. Settings then go one finer, to **35 types of place**, each switchable on
-its own: someone who loves history can drop the 209 memorials and monuments
-and keep the 810 historic houses and buildings.
+**A questionnaire first, then finer.** Before the first drive it asks five
+pages, broad to narrow: ten interests (history, gardens, things on right
+now…) as *Love it / Sometimes / Skip*; then, inside the interests you kept,
+the kinds of place you would rather not see; then food (favourite cuisines,
+and whether chains are welcome); then the longest detour and which side the
+car sits. It is the only place those answers are given: settings reads them
+back in a sentence and offers *Take the questionnaire again*, which starts
+from what you said last time. Settings keeps the finer switches: all
+**35 types of place**, every cuisine, and each chain.
 
-A type is a directory kind narrowed by the place's name, where the name says
-what it is: OpenStreetMap's "historic site" holds memorials, lighthouses,
+A type is a directory kind narrowed by what OpenStreetMap says the thing is,
+and failing that by its name: "historic site" holds memorials, lighthouses,
 historic districts, churches and forts alongside actual buildings, and "park"
-holds state parks, wildlife management areas and town greens. A type's weight
+holds state parks, wildlife management areas and town greens. `places.py`
+records the tag that decided each place's kind (`tag`: `historic=memorial`,
+`man_made=lighthouse`) and a protected area's official designation
+(`designation`: "State Park"), and a type that lists the tag takes the place
+whatever it is called, so a "Memorial Hall" tagged as a building stays a
+building and Sterling Forest is a state park. Rows built before those fields
+existed fall back to the name, as before. A type's weight
 is its interest's level times a factor for how often that type is worth the
 exit (a town park 0.35, a memorial 0.6, a castle 1), and that is where a
 place's interest score starts.
 
-**Somewhere to eat.** Restaurants and cafés (14,688, from `data/eats.json`)
-load in the background after the directory. The first versions of this page
-never loaded that file, which is why no restaurant ever turned up on a drive.
+**Somewhere to eat, when you are hungry.** Restaurants and cafés (14,688,
+from `data/eats.json`) load in the background after the directory. The first
+versions of this page never loaded that file, which is why no restaurant ever
+turned up on a drive. Whether they show is **Hungry** on the dock, not a
+questionnaire answer, because it changes by the hour rather than by the
+person: off, every place to eat leaves the road at once (with an Undo); on,
+they count as *Sometimes*, and a favourite cuisine ranks them up from there.
+
+**Open when you get there.** A place's opening hours are read at the time you
+would arrive, not now: open, and for at least twenty minutes more for
+somewhere to eat or half an hour for anywhere else, or it is not suggested. A
+card for somewhere that shuts within an hour and a half of your arrival says
+so. Hours that cannot be read fully (holidays, seasons, "sunset") count for
+nothing either way; most of the directory has none, and unknown is not
+closed. The parser is `assets/hours.js`, shared with the Places tab's *Open
+now*, and it reads `10:00-26:00` as open until two in the morning, which the
+Places tab used to get wrong.
 
 **Chains, off unless asked for.** A chain is a place OpenStreetMap tags with a
 brand, or one whose name is exactly a brand seen elsewhere ("Honey Dew Donuts"
@@ -320,14 +349,26 @@ cycles *on → ★ favourite → off*. Off hides a cuisine, but a place stays un
 everything it serves is off; a favourite anywhere on a menu adds to the score,
 so those places rank first and win the deck's places.
 
+**Your driver.** The car on the map is an arrow, a dot, a car, a pickup, a
+motorbike or a ship, drawn looking down on it, in one of eight colours and
+three sizes (settings → *Your driver*).
+
 **The map can go.** *Show the map* in settings, or **Map** on the dock
-mid-drive, hides the strip and gives the deck the whole width. **+** and **−**
+mid-drive, hides the map and gives the deck the whole screen. **+** and **−**
 on the map nudge its zoom by whole steps on top of the zoom the speed
 chooses, so it still pulls out on the highway.
 
 **Two ways to drive, one code path.** Give it a destination and "ahead" means
 further along the real route. Give it nothing and "ahead" means a cone in the
 direction you are heading.
+
+**Addresses are suggested as you type**, so you can see it has the right Main
+Street before the drive starts. Suggestions come from Photon, which is the same
+OpenStreetMap data as Nominatim but built for search-as-you-type (Nominatim's
+usage policy forbids a request per keystroke). They lean towards where you are
+and are limited to the United States. Picking one says *Going to …* under the
+field and is used as it stands; anything typed and not picked goes to
+Nominatim for its best guess, as before.
 
 **What a stop costs** is how much later you get where you are going, not how
 far the place is from this road:
@@ -365,10 +406,14 @@ but only one-off listings with a real start time: a repeating series' dates
 say when it runs, not when it is on, and a wrong "happening now" costs a
 driver a detour.
 
-**Try it from your desk.** Settings → *Try it from your desk* replays a real
-route through the same code the car uses. **−** and **+** beside *End drive*
-change the speed while it runs, from real time to forty times; the drive's
-clock keeps its place and only its rate changes.
+**Simulate.** Once a drive has a route, **Simulate** on the dock plays the
+rest of it from where you are, sped up, through the same code the car uses.
+**−** and **+** either side of it change the speed, from real time to forty
+times; the drive's clock keeps its place and only its rate changes. Press it
+again and you are back where the GPS says you are, on the same route: the
+location watch keeps running underneath a simulation and remembers the real
+fix. Either way the deck starts afresh, because its cards were placed by the
+other drive.
 
 **Limits, stated plainly.**
 
@@ -379,7 +424,8 @@ clock keeps its place and only its rate changes.
   a screen wake lock to stay on.
 - It knows only what `data/places.json` knows, which is the coverage circles.
   Outside them the status line says so.
-- Opening hours are not checked yet, so it can suggest a museum at 8pm.
+- Opening hours are only as good as OpenStreetMap's: about one place in
+  seven in the directory, and two in five places to eat, carry any.
 - Routes, detours, addresses, map tiles and Wikipedia are live, so a dead zone
   pauses new cards (it says so, and backs off). OpenFreeMap is a free
   community service with no key and no stated limit.
@@ -552,8 +598,9 @@ Current category vocabulary: `music`, `show`, `art`, `market`, `sale`, `parade`,
 index.html              markup and the filter sheet
 assets/styles.css       styling, light + dark themes
 assets/app.js           loading, filtering, sorting, geolocation, rendering
-drive.html              the driving buddy: map, spoken suggestions, settings
+drive.html              the driving buddy: map, the deck, settings, the questionnaire
 assets/drive.js         route geometry, detour checks, the deck, the map, simulation
+assets/hours.js         opening hours, shared by the Places tab and Drive
 assets/drive.css        the Drive page, on the same tokens as styles.css
 assets/vendor/maplibre/ MapLibre GL 5.24, vendored so the map library needs no CDN
 data/events.json        the listings the site serves

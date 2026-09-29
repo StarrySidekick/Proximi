@@ -85,6 +85,7 @@ async function fakeServices(ctx, counts, base) {
       r.fulfill({ json: { address: { ...address, 'ISO3166-2-lvl4': 'US-NY' } }, headers: CORS });
       return;
     }
+    counts.search++;
     const q = u.searchParams.get('q').toLowerCase();
     const p = PLACES[q];
     const body = p ? [{
@@ -93,6 +94,19 @@ async function fakeServices(ctx, counts, base) {
       address: { state: 'New York' }
     }] : [];
     r.fulfill({ json: body, headers: CORS });
+  });
+  // Address suggestions: Garrison as the reader types it, with a namesake
+  // abroad that must not be offered.
+  await ctx.route(/photon\.komoot\.io/, (r) => {
+    counts.photon++;
+    const q = new URL(r.request().url()).searchParams.get('q').toLowerCase();
+    const features = q.startsWith('garr') ? [
+      { type: 'Feature', geometry: { type: 'Point', coordinates: [0.1, 51.5] },
+        properties: { name: 'Garrison', city: 'London', country: 'United Kingdom', countrycode: 'GB' } },
+      { type: 'Feature', geometry: { type: 'Point', coordinates: [GARRISON.lon, GARRISON.lat] },
+        properties: { name: 'Garrison', county: 'Putnam County', state: 'New York', countrycode: 'US' } }
+    ] : [];
+    r.fulfill({ json: { type: 'FeatureCollection', features }, headers: CORS });
   });
   await ctx.route(/router\.project-osrm\.org/, (r) => {
     const u = new URL(r.request().url());
@@ -138,7 +152,7 @@ async function fakeServices(ctx, counts, base) {
     const ctx = await browser.newContext({
       viewport: { width: 390, height: 844 }, hasTouch: true, isMobile: true, ...opts
     });
-    const counts = { route: 0, table: 0, wiki: 0, reverse: 0, batch: 0 };
+    const counts = { route: 0, table: 0, wiki: 0, reverse: 0, batch: 0, photon: 0, search: 0 };
     // Most scenarios are about the drive, not the first-run questionnaire,
     // so they start as somebody who has already answered it.
     if (onboarded) {
@@ -196,11 +210,30 @@ async function fakeServices(ctx, counts, base) {
     await page.goto(base + '/drive.html', { waitUntil: 'networkidle' });
     ok('questionnaire opens on first visit', await page.isVisible('#quiz'));
     const rows = await page.locator('#quiz .level-row').count();
-    ok('it asks about every interest', rows === 11, `${rows} rows`);
+    ok('it asks about every interest but food', rows === 10
+      && await page.locator('#quiz .level-row[data-interest="eating"]').count() === 0, `${rows} rows`);
     await page.click('#quiz .level-row[data-interest="history"] [data-level="love"]');
     await page.click('#quiz .level-row[data-interest="browsing"] [data-level="love"]');
     await page.click('#quiz .level-row[data-interest="gardens"] [data-level="skip"]');
     await page.click('#quiz-next');
+
+    // Narrowing: the kinds inside what you did not skip, and nothing else.
+    const groups = await page.$$eval('#quiz .kind-group', (xs) => xs.map((x) => x.dataset.interest));
+    ok('it narrows only what you kept', groups.includes('history') && groups.includes('browsing')
+      && !groups.includes('gardens') && !groups.includes('eating'), groups.join(','));
+    await page.click('#quiz .chip[data-type="district"]');
+    ok('a kind switches off in place', await page.getAttribute('#quiz .chip[data-type="district"]', 'aria-pressed') === 'false');
+    await page.click('#quiz-next');
+
+    // Food: favourites and chains, before the first drive.
+    await page.waitForSelector('#quiz .quiz-chips .chip', { timeout: 20000 }).catch(() => {});
+    const foodChips = await page.locator('#quiz .quiz-chips .chip').count();
+    ok('it asks about food', foodChips > 10 && foodChips <= 24, `${foodChips} kinds of food`);
+    ok('chains are skipped unless you say', await page.getAttribute('#quiz .quiz-choice:has(strong:text-is("Skip the chains"))', 'aria-pressed') === 'true');
+    await page.click('#quiz .quiz-chips .chip[data-cuisine="seafood"]');
+    ok('a favourite is marked in place', (await page.textContent('#quiz .quiz-chips .chip[data-cuisine="seafood"]')).startsWith('★'));
+    await page.click('#quiz-next');
+
     ok('detours go up to half an hour', await page.locator('#quiz .quiz-choice:has(strong:text-is("30 minutes"))').count() === 1);
     await page.click('#quiz .quiz-choice:has(strong:text-is("15 minutes"))');
     await page.click('#quiz-next');
@@ -211,23 +244,31 @@ async function fakeServices(ctx, counts, base) {
 
     const saved = await page.evaluate(() => JSON.parse(localStorage.getItem('proximi.drive.v1')));
     ok('answers are saved', saved.onboarded && saved.levels.history === 'love'
-      && saved.levels.gardens === 'skip' && saved.maxDetour === 15
+      && saved.levels.gardens === 'skip' && saved.maxDetour === 15 && saved.cuisines.seafood === 'love'
       && saved.mapSide === 'right' && !('voice' in saved) && !('cooldown' in saved), JSON.stringify(saved.levels));
     const w = await page.evaluate(() => {
       const k = window.__drive.typeWeight;
-      return { castle: k('castle'), memorial: k('memorial'), garden: k('garden'), park: k('park'), library: k('library') };
+      return { castle: k('castle'), memorial: k('memorial'), garden: k('garden'), park: k('park'), library: k('library'),
+        district: k('district') };
     });
     // Love is 3; a memorial counts 0.6 of loved history; a town park 0.35 of
     // "sometimes" views; a library under a loved "browsing" still counts for
     // less than a castle.
     const near = (a, b) => Math.abs(a - b) < 1e-9;
     ok('answers become weights', w.castle === 3 && near(w.memorial, 1.8) && w.garden === 0
-      && near(w.park, 0.525) && near(w.library, 0.9), JSON.stringify(w));
+      && near(w.park, 0.525) && near(w.library, 0.9) && w.district === 0, JSON.stringify(w));
     ok('map moves to the side asked for', await page.getAttribute('#drive-main', 'data-side') === 'right');
-    const sides = await page.evaluate(() => [
-      document.getElementById('map-slice').getBoundingClientRect().left,
-      document.getElementById('deck').getBoundingClientRect().left]);
-    ok('and is drawn there', sides[0] > sides[1], JSON.stringify(sides));
+    // Measured as it is while driving: the car in its strip on the right,
+    // the deck floating over the rest of the map to its left.
+    const sides = await page.evaluate(() => {
+      const main = document.getElementById('drive-main');
+      main.classList.add('is-driving');
+      const car = document.getElementById('map-car').getBoundingClientRect();
+      const deck = document.getElementById('deck').getBoundingClientRect();
+      main.classList.remove('is-driving');
+      return { car: (car.left + car.right) / 2, deckRight: deck.right, vw: innerWidth };
+    });
+    ok('and is drawn there', sides.car > sides.deckRight && sides.deckRight < sides.vw, JSON.stringify(sides));
 
     await page.reload({ waitUntil: 'networkidle' });
     ok('not asked twice', !(await page.isVisible('#quiz')));
@@ -245,6 +286,24 @@ async function fakeServices(ctx, counts, base) {
         t({ kind: 'stadium', name: 'Yankee Stadium' })].join(',');
     });
     ok('names decide the type', types === 'memorial,building,lighthouse,wild,big-park,park,thrift,', types);
+    // What OpenStreetMap says the thing is beats what it is called.
+    const tagged = await page.evaluate(() => {
+      const t = window.__drive.typeOf;
+      return [t({ kind: 'historic site', name: 'Soldiers Memorial Light', tag: 'man_made=lighthouse' }),
+        t({ kind: 'historic site', name: 'Old Stone Fort', tag: 'historic=memorial' }),
+        t({ kind: 'park', name: 'Sterling Forest', designation: 'State Park' }),
+        t({ kind: 'historic site', name: 'Veterans Hall', tag: 'heritage' })].join(',');
+    });
+    ok('tags and designations decide it first', tagged === 'lighthouse,memorial,big-park,memorial', tagged);
+
+    // Opening hours, read at a time: minutes left before it shuts.
+    const hrs = await page.evaluate(() => {
+      const m = window.ProximiHours.minutesLeft;
+      const at = (d, h, mi) => new Date(2026, 8, 27 + d, h, mi);   // 27 Sep 2026 is a Sunday
+      return [m('Mo-Su 09:00-17:00', at(1, 16, 40)), m('Mo-Su 09:00-17:00', at(1, 18, 0)),
+        m('Fr,Sa 10:00-26:00', at(0, 1, 0)), m('Mo-Fr 09:00-17:00; PH off', at(1, 12, 0)), m('24/7', at(0, 3, 0))].join(',');
+    });
+    ok('opening hours know how long is left', hrs === '20,0,60,,Infinity', hrs);
     const line = await page.evaluate(() => window.__drive.typeLine({
       kind: 'restaurant', _type: 'restaurant', name: 'Test', cuisine: ['italian'],
       rating: { stars: 4.54, count: 1000, from: ['Google', 'Yelp'] } }));
@@ -298,29 +357,57 @@ async function fakeServices(ctx, counts, base) {
     ok('and says so on its chip', (await page.textContent('#cuisine-chips .chip[data-cuisine="italian"]')).startsWith('★'));
     await page.click('#close-settings');
     await page.click('#open-settings');
-    const setRow = await page.getAttribute('#interest-levels .level-row[data-interest="history"] [data-level="love"]', 'aria-checked');
-    ok('settings show the same answers', setRow === 'true');
+    ok('settings no longer ask what the questionnaire asks', await page.locator('#drive-settings .level-row').count() === 0
+      && await page.locator('#detour-chips, #side-chips').count() === 0);
+    const summary = await page.textContent('#answers-summary');
+    ok('settings read the answers back', /love history and browsing/.test(summary) && /15 minutes/.test(summary)
+      && /Car on the right/.test(summary), summary);
     await page.click('#retake-quiz');
     ok('and can ask again', await page.isVisible('#quiz'));
+    ok('starting from what you said', await page.getAttribute('#quiz .level-row[data-interest="history"] [data-level="love"]', 'aria-checked') === 'true');
     ok('no page errors (questionnaire)', errors.length === 0, errors.slice(0, 3).join(' | '));
     await ctx.close();
   }
 
   // ── A simulated drive: the deck, the map, pictures, smoothness ──
+  // It starts the way a real one does: from where you are (Beacon), to a
+  // destination picked from the suggestions. Simulate then plays the rest.
   {
-    const { ctx, page, errors, counts } = await newPage();
+    const { ctx, page, errors, counts } = await newPage({
+      geolocation: { latitude: BEACON.lat, longitude: BEACON.lon }, permissions: ['geolocation']
+    });
     await page.goto(base + '/drive.html', { waitUntil: 'networkidle' });
     const status = await page.textContent('#drive-status');
     ok('places load', /\d[\d,]* places worth a stop/.test(status), status);
     ok('no voice control', await page.locator('#voice-btn').count() === 0);
+    ok('simulating is not a setting any more', await page.locator('#sim-form').count() === 0);
 
-    await page.click('#open-settings');
-    await page.fill('#sim-from', 'Beacon, NY');
-    await page.fill('#sim-to', 'Garrison, NY');
-    await page.click('#sim-form button[type=submit]');
-    ok('settings close on simulate', !(await page.isVisible('#drive-settings')));
+    // Suggestions as you type, only in the United States, and picking one
+    // says which place it is.
+    await page.click('#dest-input');
+    await page.keyboard.type('Garr', { delay: 30 });
+    await page.waitForSelector('#dest-suggest:not([hidden]) .suggest-item', { timeout: 5000 }).catch(() => {});
+    const offered = await page.$$eval('#dest-suggest .suggest-item', (xs) => xs.map((x) => x.textContent));
+    ok('addresses are suggested as you type', offered.length === 1 && /Garrison/.test(offered[0]) && /New York/.test(offered[0]),
+      JSON.stringify(offered));
+    await page.dispatchEvent('#dest-suggest .suggest-item', 'pointerdown');
+    ok('picking one fills the field', (await page.inputValue('#dest-input')).startsWith('Garrison'));
+    ok('and says where it is going', /Going to Garrison/.test(await page.textContent('#dest-hint')));
+    ok('the list closes', !(await page.isVisible('#dest-suggest')));
+    const searchesBefore = counts.search;
+    await page.click('#start-btn');
+    await page.waitForFunction(() => window.__drive.state.route, null, { timeout: 20000 }).catch(() => {});
+    ok('a picked place needs no second lookup', counts.search === searchesBefore, `${counts.search - searchesBefore} geocoder calls`);
+    ok('the route goes to it', await page.evaluate(() => {
+      const d = window.__drive.state.dest;
+      return !!d && Math.abs(d.lat - 41.3812) < 1e-6 && !!window.__drive.state.route;
+    }));
+
     await page.waitForSelector('#sim-ctl:not([hidden])', { timeout: 20000 }).catch(() => {});
-    ok('speed control shows while simulating', await page.isVisible('#sim-ctl'));
+    ok('Simulate is offered once there is a route', await page.isVisible('#sim-btn') && !(await page.isVisible('#sim-faster')));
+    await page.click('#sim-btn');
+    ok('speed control shows while simulating', await page.isVisible('#sim-faster')
+      && await page.getAttribute('#sim-btn', 'aria-pressed') === 'true');
 
     await page.waitForFunction(() => window.__drive.entries.size >= 2, null, { timeout: 30000 }).catch(() => {});
     await page.waitForTimeout(3000);
@@ -448,6 +535,25 @@ async function fakeServices(ctx, counts, base) {
       return ((c.top + c.bottom) / 2 - s.top) / s.height;
     });
     ok('car sits low in the strip', Math.abs(carY - 0.78) < 0.02, carY.toFixed(3));
+    // The map fills the screen and the deck floats over it; the car keeps
+    // its strip on the left, clear of the cards.
+    const layout = await page.evaluate(() => {
+      const s = document.getElementById('map-slice').getBoundingClientRect();
+      const d = document.getElementById('deck').getBoundingClientRect();
+      const c = document.getElementById('map-car').getBoundingClientRect();
+      return { sliceW: s.width, vw: innerWidth, deckLeft: d.left, car: (c.left + c.right) / 2,
+        deckBg: getComputedStyle(document.getElementById('deck')).backgroundColor };
+    });
+    ok('the map is the whole screen under the deck', layout.sliceW >= layout.vw - 1 && layout.deckLeft > 100
+      && layout.car < layout.deckLeft && /rgba\(0, 0, 0, 0\)|transparent/.test(layout.deckBg), JSON.stringify(layout));
+    // And the map's own centre is the car, not the middle of the screen.
+    const centred = await page.evaluate(() => {
+      const m = window.__drive.map, c = document.getElementById('map-car').getBoundingClientRect();
+      const s = document.getElementById('map-slice').getBoundingClientRect();
+      const px = m.project(m.getCenter());
+      return { dx: Math.abs(px.x - ((c.left + c.right) / 2 - s.left)) };
+    });
+    ok('the camera follows the car in its strip', centred.dx < 3, JSON.stringify(centred));
 
     // Smooth: a card moves by steady small steps every frame, never a jump.
     const track = await page.evaluate(() => new Promise((done) => {
@@ -565,13 +671,47 @@ async function fakeServices(ctx, counts, base) {
       ok('a card ahead to swipe', false);
     }
 
+    // Hungry: one tap takes every place to eat off the road, one brings them back.
+    const eatsIn = () => page.evaluate(() => window.__drive.state.pool.filter((c) => c.kind === 'restaurant' || c.kind === 'cafe').length);
+    await page.waitForFunction(() => window.__drive.state.eats.length > 0, null, { timeout: 20000 }).catch(() => {});
+    const e0 = await eatsIn();
+    await page.click('#hungry-btn');
+    const e1 = await eatsIn();
+    const deckFood = await page.evaluate(() => [...window.__drive.entries.values()].filter((e) => e.c.kind === 'restaurant' || e.c.kind === 'cafe').length);
+    ok('not hungry: no places to eat', e0 > 0 && e1 === 0 && deckFood === 0
+      && await page.getAttribute('#hungry-btn', 'aria-pressed') === 'false', `${e0} → ${e1}`);
+    await page.click('#hungry-btn');
+    ok('hungry again: they come back', (await eatsIn()) === e0);
+
+    // Your driver: a shape, a colour and a size, drawn on the map at once.
+    await page.click('#open-settings');
+    await page.click('#driver-shapes [data-shape="ship"]');
+    await page.click('#driver-colours [data-color="red"]');
+    await page.click('#driver-sizes .chip:has-text("Large")');
+    await page.click('#close-settings');
+    const car = await page.evaluate(() => {
+      const c = document.getElementById('map-car');
+      return { shape: c.dataset.shape, colour: c.style.getPropertyValue('--car'), w: c.getBoundingClientRect().width,
+        saved: JSON.parse(localStorage.getItem('proximi.drive.v1')).driver };
+    });
+    ok('the driver can be dressed', car.shape === 'ship' && car.colour === '#B23A2E' && Math.round(car.w) === 54
+      && car.saved.shape === 'ship' && car.saved.size === 'l', JSON.stringify(car));
+
+    // Out of the simulation: back to where you actually are, still on the way.
+    await page.click('#sim-btn');
+    await page.waitForTimeout(600);
+    const back = await page.evaluate(() => ({ sim: !!window.__drive.state.sim, pos: window.__drive.state.pos,
+      route: !!window.__drive.state.route, faster: !document.getElementById('sim-faster').hidden }));
+    ok('Simulate again returns to where you are', !back.sim && back.route && !back.faster
+      && Math.abs(back.pos.lat - BEACON.lat) < 1e-4 && Math.abs(back.pos.lon - BEACON.lon) < 1e-4, JSON.stringify(back));
+
     ok('nothing was said aloud', (await page.evaluate(() => window.__spoken.length)) === 0);
     ok('detours asked of the router', counts.table > 0, `${counts.table} table calls`);
 
     await page.click('#stop-btn');
     ok('end drive returns to setup', await page.isVisible('#setup-panel'));
     ok('and clears the deck', await page.evaluate(() => window.__drive.entries.size === 0));
-    ok('speed control goes with it', !(await page.isVisible('#sim-ctl')));
+    ok('Simulate goes with it', !(await page.isVisible('#sim-ctl')));
     ok('no page errors (sim)', errors.length === 0, errors.slice(0, 3).join(' | '));
     await ctx.close();
   }
@@ -594,6 +734,7 @@ async function fakeServices(ctx, counts, base) {
     await page.goto(base + '/drive.html', { waitUntil: 'networkidle' });
     await page.click('#start-btn');
     ok('drive starts without a destination', await page.isVisible('#dock'));
+    ok('with nowhere to go there is nothing to simulate', !(await page.isVisible('#sim-ctl')));
 
     // Drive north up 9D towards Beacon, one fix at a time.
     for (let i = 1; i <= 12; i++) {

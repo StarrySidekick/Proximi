@@ -37,19 +37,19 @@ body.drive {
 }
 .drive-icon-btn .ico { width: 18px; height: 18px; }
 
-/* ── The split: a map slice and the deck ──
-   The map is a narrow strip nearest the driver; the deck of places takes
-   the rest. data-side flips them without touching the markup.          */
-.drive-main { flex: 1; min-height: 0; display: flex; }
-.drive-main[data-side="right"] { flex-direction: row-reverse; }
+/* ── The map under everything, the deck over it ──
+   The map fills the screen. The car keeps a strip down the side nearest
+   the driver (--strip, set by drive.js from the screen's width), and the
+   deck of places floats over the rest with no background of its own, so
+   the road around the cards stays visible. data-side flips the strip
+   without touching the markup. Before a drive starts nothing is in the
+   strip: the car sits in the middle and the start panel spans the width. */
+.drive-main { position: relative; flex: 1; min-height: 0; --strip: 34%; }
 
 .map-slice {
-  position: relative; overflow: hidden;
-  flex: 0 0 34%; min-width: 112px; max-width: 320px;
+  position: absolute; inset: 0; overflow: hidden;
   background: var(--surface-2);
-  border-right: 1px solid var(--line);
 }
-.drive-main[data-side="right"] .map-slice { border-right: 0; border-left: 1px solid var(--line); }
 
 .drive-map { position: absolute; inset: 0; z-index: 1; background: var(--surface-2); }
 .map-slice.no-map .drive-map { display: none; }
@@ -61,14 +61,29 @@ body.drive {
 }
 .drive-map .maplibregl-ctrl-attrib { font-size: 10px; }
 
-/* The car: fixed in the strip, always pointing up; the map turns under it. */
+/* The car: fixed in the strip, always pointing up; the map turns under it.
+   Its shape, colour and size are yours (Your driver, in settings); --car is
+   the colour, and each shape marks the parts that take it as .car-body. */
 .map-car {
-  position: absolute; z-index: 5; left: 50%; top: 78%;
+  position: absolute; z-index: 5; left: calc(var(--strip) / 2); top: 78%;
   width: 40px; height: 40px; transform: translate(-50%, -50%);
-  pointer-events: none;
+  pointer-events: none; overflow: visible;
+  filter: drop-shadow(0 1px 2px rgba(0,0,0,.35));
 }
-.map-car .car-halo { fill: color-mix(in srgb, var(--accent) 22%, transparent); stroke: var(--accent); stroke-width: 1.5; }
-.map-car .car-arrow { fill: var(--accent); stroke: var(--accent-ink); stroke-width: 1.5; stroke-linejoin: round; }
+.drive-main[data-side="right"] .map-car { left: calc(100% - var(--strip) / 2); }
+.drive-main:not(.is-driving) .map-car,
+.drive-main.no-map-view .map-car { left: 50%; }
+
+.car-halo { fill: color-mix(in srgb, var(--car, var(--accent)) 22%, transparent); stroke: var(--car, var(--accent)); stroke-width: 1.5; }
+.car-body { fill: var(--car, var(--accent)); stroke: rgba(0,0,0,.45); stroke-width: 1.1; stroke-linejoin: round; }
+.car-ringed { stroke: #fff; stroke-width: 3; }
+.car-glass { fill: rgba(214,232,246,.88); stroke: rgba(0,0,0,.3); stroke-width: .6; }
+.car-wheel { fill: #1f1d1b; }
+.car-lamp { fill: #fff3c4; }
+.car-shade { fill: rgba(0,0,0,.22); }
+.car-bar { fill: none; stroke: #2b2724; stroke-width: 2; stroke-linecap: round; }
+.car-rider { fill: #2b2724; stroke: rgba(255,255,255,.7); stroke-width: 1; }
+.car-sail { fill: #f4ecd6; stroke: #6b4f2c; stroke-width: .8; }
 
 /* The deck's letters, on the map. MapLibre keeps them upright. */
 .deck-pin {
@@ -82,9 +97,16 @@ body.drive {
 
 /* ── The deck ── */
 .deck {
-  position: relative; flex: 1; min-width: 0;
+  position: absolute; z-index: 7; top: 0; bottom: 0; left: var(--strip); right: 0; min-width: 0;
   display: flex; flex-direction: column;
+  pointer-events: none;   /* the map shows through; the cards take the taps */
 }
+.deck > * { pointer-events: auto; }
+.deck-road, .deck-list { pointer-events: none; }
+.deck-card { pointer-events: auto; }
+.drive-main[data-side="right"] .deck { left: 0; right: var(--strip); }
+.drive-main:not(.is-driving) .deck { left: 0; right: 0; }
+.drive-main.no-map-view .deck { left: 0; right: 0; background: var(--bg); }
 
 .drive-panel {
   margin: auto 0 0;
@@ -147,13 +169,16 @@ body.drive {
   position: absolute; right: 12px; top: -11px;
   font-family: var(--serif); font-size: 11px; font-weight: 600;
   letter-spacing: .12em; text-transform: uppercase;
-  color: var(--act-ink); background: var(--bg); padding: 1px 6px; border-radius: 4px;
+  color: var(--act-ink); background: var(--surface); padding: 1px 6px; border-radius: 4px;
+  box-shadow: var(--shadow);
 }
 
 .deck-empty {
   position: absolute; left: 16px; right: 16px; top: 72%; transform: translateY(-160%);
   margin: 0; text-align: center;
-  font-family: var(--serif); font-size: 16px; color: var(--ink-3);
+  font-family: var(--serif); font-size: 16px; color: var(--ink-2);
+  background: color-mix(in srgb, var(--surface) 92%, transparent);
+  padding: 8px 12px; border-radius: 10px; box-shadow: var(--shadow);
 }
 
 /* A card is the control: tap for directions, swipe to hide. Picture on the
@@ -216,7 +241,7 @@ body.drive {
 
 /* Undo, for a swipe made by accident. */
 .drive-toast {
-  position: absolute; z-index: 6; left: 12px; right: 12px; bottom: 70px;
+  position: absolute; z-index: 6; left: 12px; right: 12px; bottom: 14px;
   display: flex; align-items: center; gap: 10px; justify-content: space-between;
   padding: 10px 12px 10px 14px; border-radius: 10px;
   background: var(--ink); color: var(--bg); font-size: 14px;
@@ -224,16 +249,20 @@ body.drive {
 }
 .drive-toast[hidden] { display: none; }
 .drive-toast span { min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.drive-toast button[hidden] { display: none; }
 .drive-toast button {
   flex: none; font: inherit; font-weight: 700; color: var(--accent-sc);
   background: none; border: 0; padding: 6px 4px; cursor: pointer;
 }
 
 .drive-dock {
-  display: flex; gap: 8px; justify-content: center;
+  position: relative; z-index: 20;
+  display: flex; gap: 8px; justify-content: center; align-items: center;
   padding: 8px 10px max(8px, env(safe-area-inset-bottom));
-  border-top: 1px solid var(--line-soft);
+  background: var(--surface);
+  border-top: 1px solid var(--line);
 }
+.drive-dock[hidden] { display: none; }
 .drive-dock-btn {
   font: inherit; font-size: 14.5px; font-weight: 600;
   min-height: 42px; padding: 0 16px; flex: 1; max-width: 180px;
@@ -241,8 +270,14 @@ body.drive {
   background: var(--surface); color: var(--ink); cursor: pointer;
 }
 
-/* The simulated drive's speed, beside End drive while one runs. */
+/* Simulate, and its speed either side of it while one runs. */
 .sim-ctl { display: flex; align-items: center; gap: 4px; }
+.sim-btn[hidden], .sim-speed[hidden] { display: none; }
+.drive-dock .sim-toggle[aria-pressed="false"] { color: var(--ink); }
+.drive-dock .sim-toggle[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+.sim-toggle .sim-speed { min-width: 0; font-size: inherit; }
+/* Not hungry: the button reads as switched off. */
+#hungry-btn[aria-pressed="false"] { text-decoration: line-through; }
 .sim-ctl[hidden] { display: none; }
 .sim-btn {
   width: 42px; height: 42px; border-radius: 50%;
@@ -344,11 +379,13 @@ body.drive {
 .drive-dock .drive-map-btn { flex: 0 0 auto; }
 .drive-dock-btn[aria-pressed="false"] { color: var(--ink-3); }
 
-/* Zoom, as a nudge on the zoom the speed chooses. */
+/* Zoom, as a nudge on the zoom the speed chooses: in the strip, on the
+   side away from the compass. */
 .map-zoom {
   position: absolute; z-index: 6; right: 8px; top: 8px;
   display: flex; flex-direction: column; gap: 6px;
 }
+.drive-main.is-driving:not(.no-map-view):not([data-side="right"]) .map-zoom { right: auto; left: calc(var(--strip) - 46px); }
 .map-zoom-btn {
   width: 38px; height: 38px; border-radius: 10px;
   font: 700 20px/1 -apple-system, BlinkMacSystemFont, sans-serif;
@@ -375,6 +412,7 @@ body.drive {
   position: absolute; z-index: 6; left: 8px; top: 8px; width: 46px; height: 46px;
   pointer-events: none;
 }
+.drive-main.is-driving:not(.no-map-view)[data-side="right"] .map-compass { left: calc(100% - var(--strip) + 8px); }
 .map-compass .rose-ring { fill: rgba(234,217,176,.85); stroke: #6b4f2c; stroke-width: 1.2; }
 .map-compass .rose-inner { fill: none; stroke-dasharray: 2 2; }
 .map-compass .rose-n { fill: #8e3b2c; stroke: #3b2a1a; stroke-width: .8; }
@@ -395,8 +433,63 @@ body.drive {
 #cuisine-chips .chip[data-state="love"] { background: var(--act-ink); border-color: var(--act-ink); color: var(--accent-ink); }
 #cuisine-chips .chip[data-state="off"] { text-decoration: line-through; opacity: .7; }
 
-/* The dock has to fit a narrow deck: speed, Map and End on one line. */
+/* The dock fits a phone's width on one line: Hungry, Map, the simulation
+   and its speed, and End. */
 .drive-dock { gap: 6px; padding-left: 8px; padding-right: 8px; }
-.drive-dock-btn { flex: 0 1 auto; padding: 0 14px; min-height: 40px; font-size: 14px; }
-.sim-btn { width: 36px; height: 36px; font-size: 18px; }
+.drive-dock-btn { flex: 0 1 auto; padding: 0 12px; min-height: 40px; font-size: 14px; white-space: nowrap; }
+.sim-btn { width: 34px; height: 34px; font-size: 18px; flex: none; }
 .sim-speed { min-width: 34px; font-size: 14px; }
+
+/* ── Address suggestions, under the destination field ── */
+.drive-form { position: relative; }
+.suggest {
+  list-style: none; margin: -6px 0 0; padding: 4px 0;
+  border: 1px solid var(--line); border-radius: var(--radius);
+  background: var(--surface); box-shadow: var(--shadow), var(--panel);
+  max-height: 46vh; overflow-y: auto;
+}
+.suggest[hidden] { display: none; }
+.suggest-item {
+  display: flex; flex-direction: column; gap: 1px;
+  padding: 9px 12px; cursor: pointer; min-height: 44px; justify-content: center;
+}
+.suggest-item + .suggest-item { border-top: 1px solid var(--line-soft); }
+.suggest-item strong { font-size: 15.5px; font-weight: 600; color: var(--ink); }
+.suggest-item span { font-size: 13px; color: var(--ink-3); }
+.suggest-item[aria-selected="true"], .suggest-item:hover { background: var(--surface-2); }
+.drive-hint.is-picked { color: var(--ink); font-weight: 600; }
+.drive-hint.is-picked::before { content: "\2713  "; color: var(--free); }
+
+/* ── Your driver ── */
+.driver-shapes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.driver-pick {
+  display: flex; flex-direction: column; align-items: center; gap: 4px;
+  padding: 10px 4px 8px; border-radius: 10px; cursor: pointer;
+  font: inherit; font-size: 13px; color: var(--ink-2);
+  border: 1px solid var(--line); background: var(--surface-2);
+}
+.driver-pick svg { width: 38px; height: 38px; overflow: visible; }
+.driver-pick[aria-checked="true"] { border-color: var(--accent); box-shadow: 0 0 0 2px var(--accent); color: var(--ink); }
+.driver-colours { display: flex; flex-wrap: wrap; gap: 10px; margin: 14px 0 12px; }
+.driver-swatch {
+  width: 34px; height: 34px; border-radius: 50%; cursor: pointer;
+  background: var(--swatch); border: 2px solid var(--line);
+  box-shadow: inset 0 0 0 2px var(--surface);
+}
+.driver-swatch[aria-checked="true"] { border-color: var(--ink); box-shadow: inset 0 0 0 2px var(--surface), 0 0 0 2px var(--accent); }
+
+/* ── The questionnaire's answers, read back in settings ── */
+.drive-answers { margin: 0; font-size: 14.5px; line-height: 1.45; color: var(--ink-2); }
+
+/* The questionnaire's narrower pages. */
+.quiz-body .kind-groups, .quiz-body .kind-group { flex-shrink: 0; }
+.quiz-body .chip { font-size: 14px; padding: 7px 13px; }
+.quiz-chips { flex-shrink: 0; }
+.quiz-sub { margin: 10px 0 0; font-family: var(--serif); font-size: 12px; font-weight: 600; letter-spacing: .13em; text-transform: uppercase; color: var(--ink-3); }
+.quiz-group { display: flex; flex-direction: column; gap: 10px; }
+.quiz-note { margin: 0; color: var(--ink-3); font-size: 15px; }
+.quiz-chips .chip[data-state="love"] { background: var(--act-ink); border-color: var(--act-ink); color: var(--accent-ink); }
+.quiz-chips .chip[data-state="off"] { text-decoration: line-through; opacity: .7; }
+
+/* A place that will not be open for long once you get there. */
+.deck-on.is-closing { color: var(--act-ink); }

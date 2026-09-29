@@ -33,10 +33,11 @@
   </button>
 </header>
 
-<!-- The drive: a narrow map on one side, turned so the road ahead is always
-     up the screen, and a deck of what is coming on the other. The deck is a
-     strip of road: the line across its middle is where you are, what is
-     coming is above it and slides down, what you have passed goes below. -->
+<!-- The drive: the map fills the screen, turned so the road ahead is always
+     up, with the car in a strip down one side; the deck of what is coming
+     floats over the rest of it. The deck is a strip of road: the line across
+     it is where you are, what is coming is above it and slides down, what you
+     have passed goes below. -->
 <main class="drive-main" id="drive-main" data-side="left">
   <div class="map-slice" id="map-slice">
     <div class="drive-map" id="drive-map" aria-label="Map around your car, heading up"></div>
@@ -55,10 +56,8 @@
       <button type="button" class="map-zoom-btn" id="zoom-in" aria-label="Zoom in">+</button>
       <button type="button" class="map-zoom-btn" id="zoom-out" aria-label="Zoom out">&minus;</button>
     </div>
-    <svg class="map-car" id="map-car" viewBox="0 0 40 40" aria-hidden="true">
-      <circle cx="20" cy="20" r="17" class="car-halo"/>
-      <path d="M20 7 L30 31 L20 25 L10 31 Z" class="car-arrow"/>
-    </svg>
+    <!-- Drawn by drive.js from the "Your driver" setting. -->
+    <svg class="map-car" id="map-car" viewBox="0 0 40 40" aria-hidden="true"></svg>
   </div>
 
   <section class="deck" id="deck" aria-label="Places ahead">
@@ -72,8 +71,12 @@
         <label class="drive-field">
           <span>Where to? <em>optional</em></span>
           <input id="dest-input" type="search" placeholder="Town or address"
-                 enterkeyhint="go">
+                 enterkeyhint="go" role="combobox" aria-autocomplete="list"
+                 aria-expanded="false" aria-controls="dest-suggest">
         </label>
+        <!-- What the address lookup thinks you mean, as you type. Picking one
+             is how you know it has the right place. -->
+        <ul class="suggest" id="dest-suggest" role="listbox" aria-label="Matching places" hidden></ul>
         <p class="drive-hint" id="dest-hint">With a destination, detours are measured
           against your real route. Without one, Drive follows the direction you are
           heading.</p>
@@ -93,24 +96,30 @@
       <button type="button" id="drive-toast-undo">Undo</button>
     </div>
 
-    <nav class="drive-dock" id="dock" hidden aria-label="Drive controls">
-      <div class="sim-ctl" id="sim-ctl" hidden role="group" aria-label="Simulated drive speed">
-        <button type="button" class="sim-btn" id="sim-slower" aria-label="Slower">&minus;</button>
-        <span class="sim-speed" id="sim-speed" aria-live="polite">10×</span>
-        <button type="button" class="sim-btn" id="sim-faster" aria-label="Faster">+</button>
-      </div>
-      <button type="button" class="drive-dock-btn drive-map-btn" id="map-btn" aria-pressed="true">Map</button>
-      <button type="button" class="drive-dock-btn" id="stop-btn" aria-label="End drive">End</button>
-    </nav>
   </section>
 </main>
+
+<!-- Across the bottom while driving. Simulate appears once there is a route
+     to simulate: it plays the rest of the trip, sped up, from where you are,
+     and pressing it again puts you back where you actually are. -->
+<nav class="drive-dock" id="dock" hidden aria-label="Drive controls">
+  <button type="button" class="drive-dock-btn" id="hungry-btn" aria-pressed="true">Hungry</button>
+  <button type="button" class="drive-dock-btn drive-map-btn" id="map-btn" aria-pressed="true">Map</button>
+  <div class="sim-ctl" id="sim-ctl" hidden role="group" aria-label="Simulated drive">
+    <button type="button" class="sim-btn" id="sim-slower" aria-label="Slower" hidden>&minus;</button>
+    <button type="button" class="drive-dock-btn sim-toggle" id="sim-btn" aria-pressed="false">Simulate<span class="sim-speed" id="sim-speed" aria-live="polite" hidden>10×</span></button>
+    <button type="button" class="sim-btn" id="sim-faster" aria-label="Faster" hidden>+</button>
+  </div>
+  <button type="button" class="drive-dock-btn" id="stop-btn" aria-label="End drive">End</button>
+</nav>
 
 <!-- Drive is laid out for a phone held upright; turned, it says so rather
      than squeezing the deck into a strip too short to scroll. -->
 <p class="turn-upright" aria-hidden="true">Turn your phone upright to drive.</p>
 
-<!-- First run: what you like, before anything is suggested. Every answer
-     can be changed later in settings, including the whole questionnaire. -->
+<!-- First run: what you like, before anything is suggested. The answers
+     are changed by taking it again, from settings; the finer switches it
+     starts you on (kinds of place, food, chains) are in settings too. -->
 <section class="quiz" id="quiz" role="dialog" aria-modal="true" aria-labelledby="quiz-title" hidden>
   <div class="quiz-inner">
     <p class="quiz-step" id="quiz-step"></p>
@@ -135,9 +144,9 @@
   </div>
   <div class="sheet-body">
     <fieldset class="drive-set">
-      <legend>What you like</legend>
-      <div class="levels" id="interest-levels"></div>
-      <button type="button" class="drive-quiet-btn drive-retake" id="retake-quiz">Take the questionnaire again</button>
+      <legend>Your answers</legend>
+      <p class="drive-answers" id="answers-summary"></p>
+      <button type="button" class="drive-go drive-retake" id="retake-quiz">Take the questionnaire again</button>
     </fieldset>
 
     <!-- One finer than the questionnaire: each type of place on or off, so
@@ -151,8 +160,8 @@
 
     <fieldset class="drive-set">
       <legend>Kinds of food</legend>
-      <p class="drive-hint">Tap to cycle: on, ★ favourite (ranked first), off. A place
-        stays unless everything it serves is off.</p>
+      <p class="drive-hint">Places to eat show while Hungry is on. Tap to cycle: on,
+        ★ favourite (ranked first), off. A place stays unless everything it serves is off.</p>
       <div class="chips" id="cuisine-chips" role="group" aria-label="Kinds of food"></div>
       <p class="drive-hint" id="cuisine-note"></p>
     </fieldset>
@@ -167,11 +176,6 @@
         <div class="chips" id="chain-list" role="group" aria-label="Chains"></div>
         <p class="drive-hint" id="chain-note"></p>
       </div>
-    </fieldset>
-
-    <fieldset class="drive-set">
-      <legend>Longest detour</legend>
-      <div class="chips" id="detour-chips" role="radiogroup" aria-label="Longest detour"></div>
     </fieldset>
 
     <fieldset class="drive-set">
@@ -192,8 +196,10 @@
     </fieldset>
 
     <fieldset class="drive-set">
-      <legend>Map side</legend>
-      <div class="chips" id="side-chips" role="radiogroup" aria-label="Map side"></div>
+      <legend>Your driver</legend>
+      <div class="driver-shapes" id="driver-shapes" role="radiogroup" aria-label="Driver"></div>
+      <div class="driver-colours" id="driver-colours" role="radiogroup" aria-label="Colour"></div>
+      <div class="chips" id="driver-sizes" role="radiogroup" aria-label="Size"></div>
     </fieldset>
 
     <fieldset class="drive-set">
@@ -201,22 +207,10 @@
       <div class="chips" id="maps-chips" role="radiogroup" aria-label="Maps app"></div>
     </fieldset>
 
-    <fieldset class="drive-set">
-      <legend>Try it from your desk</legend>
-      <p class="drive-hint">Plays a drive along a real route, sped up, so you can
-        see what it would show. Change the speed with &minus; and + while it runs.</p>
-      <form id="sim-form" class="drive-form" autocomplete="off">
-        <label class="drive-field"><span>From</span>
-          <input id="sim-from" type="search" placeholder="Beacon, NY"></label>
-        <label class="drive-field"><span>To</span>
-          <input id="sim-to" type="search" placeholder="Hartford, CT"></label>
-        <button type="submit" class="drive-go">Simulate drive</button>
-      </form>
-    </fieldset>
-
     <p class="fine">Map by <a href="https://openfreemap.org/">OpenFreeMap</a>. Places from <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>
       contributors. Routes and detour times from
-      <a href="https://project-osrm.org/">OSRM</a>. Photos and one-line
+      <a href="https://project-osrm.org/">OSRM</a>. Address suggestions from
+      <a href="https://photon.komoot.io/">Photon</a>. Photos and one-line
       descriptions from each place's own website, or
       <a href="https://en.wikipedia.org/">Wikipedia</a> where it has an article. Drive only knows places in
       Proximi's coverage areas.</p>
@@ -224,6 +218,7 @@
 </section>
 
 <script src="assets/vendor/maplibre/maplibre-gl.js"></script>
+<script src="assets/hours.js"></script>
 <script src="assets/drive.js"></script>
 </body>
 </html>

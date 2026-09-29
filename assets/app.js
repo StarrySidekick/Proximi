@@ -1780,74 +1780,8 @@
      returns null and the row says nothing at all rather than guessing. A day
      the string never mentions is closed, which is what the format means. And
      the answer is only ever as fresh as the map: the label says so. */
-  const DAY_N = { Su: 0, Mo: 1, Tu: 2, We: 3, Th: 4, Fr: 5, Sa: 6 };
-  const DAY = '(?:Mo|Tu|We|Th|Fr|Sa|Su)';
-  const HOURS_RULE = new RegExp(
-    `(?:(${DAY}(?:\\s*[-,]\\s*${DAY})*)\\s+)?` +
-    '(off|closed|\\d{1,2}:\\d{2}\\s*-\\s*\\d{1,2}:\\d{2}' +
-    '(?:\\s*,\\s*\\d{1,2}:\\d{2}\\s*-\\s*\\d{1,2}:\\d{2})*)', 'g');
-  /* Everything this parser cannot evaluate. Each one is a reason to say
-     nothing: a holiday clause, a season, a school term, a comment. */
-  const HOURS_BEYOND_US =
-    /\b(PH|SH|su?n(rise|set)|dawn|dusk|easter|open|week\s*\d|Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\b|"|\[/i;
-
-  function daysOf(spec) {
-    if (!spec) return [0, 1, 2, 3, 4, 5, 6];
-    const out = new Set();
-    for (const part of spec.split(',')) {
-      const ends = part.split('-').map((x) => DAY_N[x.trim()]);
-      if (ends[0] == null) continue;
-      if (ends.length === 1) { out.add(ends[0]); continue; }
-      if (ends[1] == null) continue;
-      for (let d = ends[0]; ; d = (d + 1) % 7) {   // Sa-Su wraps the week end
-        out.add(d);
-        if (d === ends[1]) break;
-      }
-    }
-    return [...out];
-  }
-
-  function rangesOf(spec) {
-    if (/^(off|closed)$/i.test(spec.trim())) return [];
-    const out = [];
-    for (const part of spec.split(',')) {
-      const m = part.match(/(\d{1,2}):(\d{2})\s*-\s*(\d{1,2}):(\d{2})/);
-      if (m) out.push([+m[1] * 60 + +m[2], +m[3] * 60 + +m[4]]);
-    }
-    return out;
-  }
-
-  function openState(hours, now = new Date()) {
-    const text = String(hours || '').trim();
-    if (!text) return null;
-    if (/^24\/7$/.test(text)) return 'open';
-    if (HOURS_BEYOND_US.test(text)) return null;
-
-    const rules = [];
-    const leftover = text.replace(HOURS_RULE, (_m, days, spec) => {
-      rules.push({ days, spec });
-      return '';
-    });
-    // Anything left but separators means the string said something else too,
-    // and a half-read rule is the one that gets somebody's evening wrong.
-    if (!rules.length || !/^[\s;,]*$/.test(leftover)) return null;
-
-    const day = now.getDay();
-    const mins = now.getHours() * 60 + now.getMinutes();
-    let today = false;
-    for (const rule of rules) {           // a later rule wins for the days it names
-      if (daysOf(rule.days).includes(day)) {
-        today = rangesOf(rule.spec).some(
-          ([from, to]) => (to > from ? mins >= from && mins < to : mins >= from));
-      }
-    }
-    // Yesterday's kitchen may still be open: "Fr,Sa 17:00-01:00" on a Saturday
-    // at half past midnight is Friday's rule still running.
-    const tail = rules.some((rule) =>
-      daysOf(rule.days).includes((day + 6) % 7)
-      && rangesOf(rule.spec).some(([from, to]) => to <= from && mins < to));
-    return today || tail ? 'open' : 'closed';
-  }
+  // The parser is shared with the Drive page: assets/hours.js.
+  const { openState } = window.ProximiHours;
 
   /* Somewhere the audit has read and found nothing to read: no feed, no
      calendar page, no dated sales or specials. Worth saying on the card,
