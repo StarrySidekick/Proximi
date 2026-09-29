@@ -203,13 +203,21 @@ the strip, low down to leave room for the road ahead, and the map moves under
 it.
 
 **The deck is a strip of road.** The rest of the screen is cards, one per
-place worth the detour. A dashed line across the middle is where you are: a
-card's height above it is how far ahead its place is, so what is coming slides
-down towards the line, the place beside you sits on it, and what you have
-passed carries on below, dimmed, until it leaves the screen. About three cards
-fit at once; an empty stretch of road is an empty stretch of deck. Each card
-carries a letter that matches a pin on the map. **Go** hands off to Google Maps
-(as a waypoint, so it carries on to your destination afterwards) or Apple Maps.
+place worth the detour. A dashed line low across the deck, 72% of the way
+down, is where you are: a card's height above it is how far ahead its place
+is, so what is coming slides down towards the line, the place beside you sits
+on it, and what you have passed carries on below, dimmed, until it leaves the
+screen. The line is low because what is coming matters more than what has
+gone. About six cards fit at once; an empty stretch of road is an empty
+stretch of deck. Each card carries a letter that matches a pin on the map.
+
+**A card is the whole control.** Tap it for directions: Google Maps (as a
+waypoint, so it carries on to your destination afterwards) or Apple Maps.
+Swipe it either way to hide it, which is the same mute as swiping a place
+left on the Places tab, with an Undo for a few seconds because a swipe on a
+moving dash is easy to make by accident. A card reads its type or, for a
+restaurant, its food, then "+9 min · 3.2 mi": what the stop adds to the trip,
+and how far ahead it is.
 
 Places are admitted well before they are on screen (the lookahead is fifteen
 minutes of driving; the deck shows four miles), so a card is built, its detour
@@ -226,12 +234,31 @@ damped spring, so a card arriving or leaving eases its neighbours aside rather
 than shoving them. `tests/drive-mode.js` measures this frame by frame, and
 was seen to fail on the stepped version.
 
-**A questionnaire first.** Before the first drive it asks about ten interests
-(history, gardens, food and drink, things on right now…) as *Love it /
-Sometimes / Skip*, then the longest detour and which side the map goes. Each
-interest's level times a per-kind factor is a place's starting interest score;
-a park counts half, because most of the 773 are town greens. Everything it
-asks lives on in settings, and it can be taken again.
+**A questionnaire first, then finer.** Before the first drive it asks about
+eleven interests (history, gardens, places to eat, things on right now…) as
+*Love it / Sometimes / Skip*, then the longest detour and which side the map
+goes. Settings then go one finer, to **35 types of place**, each switchable on
+its own: someone who loves history can drop the 209 memorials and monuments
+and keep the 810 historic houses and buildings.
+
+A type is a directory kind narrowed by the place's name, where the name says
+what it is: OpenStreetMap's "historic site" holds memorials, lighthouses,
+historic districts, churches and forts alongside actual buildings, and "park"
+holds state parks, wildlife management areas and town greens. A type's weight
+is its interest's level times a factor for how often that type is worth the
+exit (a town park 0.35, a memorial 0.6, a castle 1), and that is where a
+place's interest score starts.
+
+**Somewhere to eat.** Restaurants and cafés (14,688, from `data/eats.json`)
+load in the background after the directory. The first versions of this page
+never loaded that file, which is why no restaurant ever turned up on a drive.
+
+**Chains, off unless asked for.** A chain is a place OpenStreetMap tags with a
+brand, or one whose name is exactly a brand seen elsewhere ("Honey Dew Donuts"
+untagged is still Honey Dew); repeated names alone are not enough, because
+fifteen unrelated "Great Wall" restaurants are not a chain. *Show chain
+locations* brings all 283 in, and each can then be switched off on its own,
+Starbucks' 329 locations or Michaels' 66.
 
 **Pictures, three ways.** Best first:
 
@@ -240,8 +267,8 @@ asks lives on in settings, and it can be taken again.
    there before the card is.
 2. **Wikipedia**, live, by name, believed only if the article's coordinates
    are close (within half a mile, or three miles when the names share a
-   distinctive word). Asked about every card anyway, for its one-line
-   description. One request at a time, cached on the phone.
+   distinctive word). Not asked about restaurants and cafés, which almost
+   never have an article. One request at a time, cached on the phone.
 3. An outline drawing of the place's kind.
 
 **Two ways to drive, one code path.** Give it a destination and "ahead" means
@@ -262,8 +289,8 @@ public OSRM server allows about one request a second. The router matters: on
 I-84 through Fishkill, places under 3.5 miles from the road as the crow flies
 turned out to be 11 to 35 minute detours, because the exits are far apart.
 
-**What makes the deck.** Whatever scores above zero from the questionnaire,
-within the longest detour. Liked places always qualify; places muted on the
+**What makes the deck.** Whatever scores above zero from the questionnaire and
+the type switches, within the longest detour, chains only if shown. Liked places always qualify; places muted on the
 Places tab never do, and **Not for me** in the car is that same mute. With
 *Things on right now* not skipped, an event on at a place ahead is shown too,
 but only one-off listings with a real start time: a repeating series' dates

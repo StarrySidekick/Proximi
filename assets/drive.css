@@ -82,7 +82,7 @@ body.drive {
 
 /* ── The deck ── */
 .deck {
-  flex: 1; min-width: 0;
+  position: relative; flex: 1; min-width: 0;
   display: flex; flex-direction: column;
 }
 
@@ -134,7 +134,7 @@ body.drive {
 /* Under the cards, so the card beside you is never covered by its own
    marker; the notch in the margin shows where the line is regardless. */
 .deck-now {
-  position: absolute; left: 0; right: 0; top: 50%; z-index: 0;
+  position: absolute; left: 0; right: 0; top: 72%; z-index: 0;
   height: 0; border-top: 2px dashed var(--act-ink);
   pointer-events: none;
 }
@@ -151,77 +151,83 @@ body.drive {
 }
 
 .deck-empty {
-  position: absolute; left: 16px; right: 16px; top: 50%; transform: translateY(-140%);
+  position: absolute; left: 16px; right: 16px; top: 72%; transform: translateY(-160%);
   margin: 0; text-align: center;
   font-family: var(--serif); font-size: 16px; color: var(--ink-3);
 }
 
+/* A card is the control: tap for directions, swipe to hide. Picture on the
+   left, words on the right, short enough for six to a screen. */
 .deck-card {
   position: absolute; left: 10px; right: 10px; top: 0;
-  display: grid; grid-template-rows: 30% 1fr; overflow: hidden;
+  display: grid; grid-template-columns: 30% 1fr; overflow: hidden;
   background: var(--surface);
   border: 1px solid var(--line); border-radius: 10px;
   box-shadow: var(--shadow), var(--panel);
-  will-change: transform;
+  will-change: transform; cursor: pointer;
+  /* The card owns sideways drags; the page itself never scrolls. */
+  touch-action: none; user-select: none; -webkit-user-select: none;
   transition: opacity .5s ease, border-color .4s ease, box-shadow .4s ease;
 }
+.deck-card.is-dragging { transition: none; box-shadow: var(--shadow), 0 8px 24px rgba(0,0,0,.18); }
+.deck-card:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
 .deck-card.is-fading, .deck-card.is-gone { opacity: 0; }
 .deck-card.is-past { opacity: .55; }
 .deck-card.is-nearest { border-color: var(--act-ink); box-shadow: 0 0 0 2px var(--act-ink), var(--shadow); }
 
 .deck-photo { position: relative; overflow: hidden; background: var(--surface-2); min-height: 0; }
-.deck-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.deck-photo img { width: 100%; height: 100%; object-fit: cover; display: block; pointer-events: none; }
 .deck-photo.is-glyph {
   display: grid; place-items: center;
   background: linear-gradient(135deg, var(--rep-bg), var(--surface-2));
 }
 .deck-photo.is-glyph svg {
-  width: 46%; max-width: 72px; height: auto;
+  width: 52%; max-width: 48px; height: auto;
   fill: none; stroke: var(--rep-ink); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round;
 }
 .deck-credit {
-  position: absolute; right: 4px; bottom: 3px;
-  font-size: 9.5px; color: #fff; text-decoration: none;
+  position: absolute; left: 3px; bottom: 3px;
+  font-size: 9px; color: #fff; text-decoration: none;
   background: rgba(0,0,0,.45); padding: 0 4px; border-radius: 3px;
 }
 
-.deck-body { padding: 7px 12px 9px; min-width: 0; min-height: 0; display: flex; flex-direction: column; gap: 2px; overflow: hidden; }
-/* The name, the numbers and the buttons never give up space; the one-line
-   description is what goes when a card is short. */
-.deck-kind, .deck-name, .deck-facts, .deck-actions { flex-shrink: 0; }
-.deck-blurb, .deck-on { flex-shrink: 1; min-height: 0; }
+.deck-body { padding: 7px 10px 7px 11px; min-width: 0; min-height: 0; display: flex; flex-direction: column; justify-content: center; gap: 2px; overflow: hidden; }
+.deck-kind, .deck-name, .deck-facts { flex-shrink: 0; }
+.deck-on { flex-shrink: 1; min-height: 0; }
 .deck-kind {
-  margin: 0; display: flex; align-items: center; gap: 7px;
-  font-family: var(--serif); font-size: 11.5px; font-weight: 600;
-  letter-spacing: .12em; text-transform: uppercase; color: var(--act-ink);
+  margin: 0; display: flex; align-items: center; gap: 6px; min-width: 0;
+  font-family: var(--serif); font-size: 10.5px; font-weight: 600;
+  letter-spacing: .1em; text-transform: uppercase; color: var(--act-ink);
 }
+.deck-kind-t { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .deck-letter {
   display: grid; place-items: center; flex: none;
-  width: 20px; height: 20px; border-radius: 50%;
-  font: 700 11.5px/1 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; letter-spacing: 0;
+  width: 18px; height: 18px; border-radius: 50%;
+  font: 700 10.5px/1 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; letter-spacing: 0;
   border: 1.5px solid var(--rep-ink); color: var(--ink);
 }
 .deck-card.is-nearest .deck-letter { background: var(--act-ink); border-color: var(--act-ink); color: var(--accent-ink); }
 .deck-name {
-  margin: 0; font-family: var(--serif); font-size: 19px; line-height: 1.15; font-weight: 600;
+  margin: 0; font-family: var(--serif); font-size: 17px; line-height: 1.15; font-weight: 600;
   display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
 }
-.deck-facts { margin: 0; font-size: 15px; font-weight: 700; color: var(--ink-2); }
-.deck-blurb {
-  margin: 0; font-size: 13px; color: var(--ink-3);
-  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+.deck-facts { margin: 0; font-size: 13.5px; font-weight: 700; color: var(--ink-2); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.deck-on { margin: 0; font-size: 12.5px; color: var(--free); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+/* Undo, for a swipe made by accident. */
+.drive-toast {
+  position: absolute; z-index: 6; left: 12px; right: 12px; bottom: 70px;
+  display: flex; align-items: center; gap: 10px; justify-content: space-between;
+  padding: 10px 12px 10px 14px; border-radius: 10px;
+  background: var(--ink); color: var(--bg); font-size: 14px;
+  box-shadow: var(--shadow);
 }
-.deck-blurb:empty { display: none; }
-.deck-on { margin: 0; font-size: 13px; color: var(--free); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.deck-actions { display: flex; gap: 6px; margin-top: auto; padding-top: 4px; }
-.deck-go, .deck-no {
-  font: inherit; font-size: 13.5px; font-weight: 700;
-  min-height: 34px; padding: 0 14px;
-  display: inline-flex; align-items: center; justify-content: center;
-  border-radius: 999px; cursor: pointer; text-decoration: none;
+.drive-toast[hidden] { display: none; }
+.drive-toast span { min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.drive-toast button {
+  flex: none; font: inherit; font-weight: 700; color: var(--accent-sc);
+  background: none; border: 0; padding: 6px 4px; cursor: pointer;
 }
-.deck-go { background: var(--accent); color: var(--accent-ink); border: 0; }
-.deck-no { background: var(--surface-2); color: var(--ink-2); border: 1px solid var(--line); }
 
 .drive-dock {
   display: flex; gap: 8px; justify-content: center;
@@ -318,3 +324,17 @@ body.drive {
 .drive-sheet .fine { color: var(--ink-3); margin-top: 14px; }
 
 .drive-retake { margin-top: 12px; width: 100%; }
+
+/* Kinds of place, one group per interest. */
+.kind-groups { display: flex; flex-direction: column; gap: 12px; margin-top: 4px; }
+.kind-group-h { margin: 0 0 6px; font-weight: 700; font-size: 14px; }
+.drive-sheet .chip:disabled { opacity: .45; cursor: default; }
+
+/* Chains: the list stays visible but reads as inert while chains are hidden. */
+.chain-pick { margin-top: 10px; }
+.chain-pick.is-off .chips { opacity: .5; }
+.chain-search {
+  width: 100%; margin-bottom: 8px;
+  font: inherit; font-size: 16px; padding: 9px 11px; border-radius: var(--radius);
+  border: 1px solid var(--line); background: var(--surface-2); color: var(--ink);
+}

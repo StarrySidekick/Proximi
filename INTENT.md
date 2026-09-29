@@ -99,6 +99,16 @@ strip of road, the nearest place on a line across the middle, what is coming
 above and what is passed below. All built. The map moved to MapLibre and
 vector tiles for the labels, which also retired the CSS rotation.
 
+**Fourth pass, 2026-09-29**: cards with no buttons (tap for directions, swipe
+to hide) and about six to a screen; the "you are here" line moved down to
+leave more room for what is coming; restaurants, which had never been loaded
+at all; switches for 35 types of place under the questionnaire's interests,
+so war memorials and historic buildings are separate choices; and chains
+hidden by default, with each one switchable once shown. Types come from
+names for now, because rebuilding the directory from Overpass is a six-hour
+job; `places.py` writing the type from the OSM tags themselves
+(`historic=memorial`, `historic=building`) would be sharper.
+
 **Next on it**, roughly in order: opening hours, so it stops suggesting closed
 museums; pulling places live along the route (Overpass, Wikipedia's geosearch)
 so it works outside the coverage circles; the 647 place pages that did not
