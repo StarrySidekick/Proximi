@@ -603,6 +603,9 @@ assets/drive.js         route geometry, detour checks, the deck, the map, simula
 assets/hours.js         opening hours, shared by the Places tab and Drive
 assets/drive.css        the Drive page, on the same tokens as styles.css
 assets/vendor/maplibre/ MapLibre GL 5.24, vendored so the map library needs no CDN
+assets/icon.svg         the app's icon: a brass pin on parchment
+assets/icon-*.png       the same, drawn for the home screen and the tab (icons.js)
+manifest.webmanifest    name, colours and icons for saving it to a phone
 data/events.json        the listings the site serves
 data/places.json        the directory — somewhere to go, listings or not
 data/eats.json          somewhere to eat, loaded in the background
@@ -628,6 +631,7 @@ scripts/images.py       each place's own website picture, for the Drive cards
 scripts/wikipics.py     Wikidata photographs by box of map, matched to places
 scripts/ratings.py      star ratings for places to eat (needs a service key)
 scripts/fonts.js        cut the fantasy map's lettering into glyph files
+scripts/icons.js        draw the icon PNGs from assets/icon.svg, in Chromium
 assets/fonts/           IM Fell English glyphs, and its licence (OFL)
 tests/drive.js          the main page, driven in headless Chromium, in CI
 tests/drive-mode.js     the Drive page, with OSRM and Nominatim answered locally
