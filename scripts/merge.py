@@ -18,7 +18,7 @@ Three jobs, in order:
 
 import argparse, json, os, re, sys
 from collections import defaultdict, Counter
-from datetime import datetime, timezone
+from datetime import date, datetime, timezone
 from math import radians, sin, cos, asin, sqrt
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -33,17 +33,27 @@ from enrich import (type_of, types_of, audience_of, place_name, place_kind,
 DERIVED = ('type', 'types', 'audience', 'setting', 'timeOfDay', 'cadence',
            'hasFood', 'repeats', 'recurrence', 'until')
 
+# Facts the source reports, as against the fields above that we compute. They
+# move for exactly the reason the comment above gives, and it took a worse bug
+# to notice: 917 library listings sat at midnight UTC — eight the previous
+# evening in New York — because the collector read a bare startDate and
+# ignored the doorTime beside it. Teaching it to read them changed nothing,
+# because a corrected record is not a *richer* record and only richness moved
+# anything. So the feed owns when and where. A person owns the rest, which is
+# why curated records are exempt from this as well.
+REPORTED = ('start', 'end', 'city', 'address', 'lat', 'lon')
+
 
 def is_curated(item):
     return str(item.get('id', '')).startswith('manual-')
 
 
 def adopt_derived(old, new):
-    """Take `new`'s derived fields onto `old`, keeping everything else."""
+    """Take `new`'s derived and reported fields onto `old`, keeping the rest."""
     if is_curated(old):
         return old
     merged = dict(old)
-    for f in DERIVED:
+    for f in DERIVED + REPORTED:
         if f in new:
             merged[f] = new[f]
     # repeats and recurrence describe one fact and have to move together. Taken
@@ -81,16 +91,38 @@ ROOM_NAME = re.compile(
 def building_of(item):
     """The place an event is really at, not the room it booked."""
     venue, host = item.get('venue'), item.get('host')
-    if not venue or not ROOM_NAME.search(venue):
+    if not venue or not is_a_venue(venue):
+        # "See listing" and "Virtual - no room needed" are not rooms inside
+        # anything, and promoting them to the host puts an online programme on
+        # the map at the library's front door and gives 32 listings a venue
+        # called "775 Broadway". A placeholder stays a placeholder here;
+        # canonicalise_venues is what nulls it.
         return venue
-    # "Stern Auditorium, Carnegie Hall" already names its building, and its
-    # host is the Berliner Philharmoniker — the act, not the address. When the
-    # venue spells out where it is, believe the venue over the host.
-    if ',' in venue:
-        tail = venue.rsplit(',', 1)[1].strip()
-        if tail and not ROOM_NAME.search(tail):
-            return tail
-    if host and host != venue and not ROOM_NAME.search(host):
+    if ROOM_NAME.search(venue):
+        # "Stern Auditorium, Carnegie Hall" already names its building, and
+        # its host is the Berliner Philharmoniker — the act, not the address.
+        # When the venue spells out where it is, believe the venue over the
+        # host.
+        if ',' in venue:
+            tail = venue.rsplit(',', 1)[1].strip()
+            if tail and not ROOM_NAME.search(tail):
+                return tail
+        if host and host != venue and not ROOM_NAME.search(host):
+            return host
+        return venue
+    # A room the list above has never heard of. No list of adjectives keeps up
+    # with what a library calls its rooms — "Lake View Room", "Garden View
+    # Room", "Learning Lab", "Fireplace Room", "Youth Floor", "Miss Julie's
+    # Project Room" — and the list also has to go on sparing "Rye Free Reading
+    # Room", which is a library and not a room in one. So stop guessing from
+    # the name and read the address, which names the building outright:
+    # "Learning Lab, Mahopac Public Library, 668 Route 6, Mahopac, NY". When
+    # the host is written into the address and is not the venue itself, the
+    # host is the building and the venue is somewhere inside it.
+    address = norm(item.get('address') or '')
+    if (host and host != venue and address and norm(host) and norm(host) in address
+            # A street is where a place is, not what it is called.
+            and not STREET_ONLY.search(host) and is_a_venue(host)):
         return host
     return venue
 
@@ -100,7 +132,14 @@ def building_of(item):
 # claiming ninety-two events.
 NOT_A_VENUE = {'see listing', 'tba', 'tbd', 'various', 'various locations',
                'online', 'virtual', 'virtual event', 'zoom', 'n/a', 'unknown',
-               'home', 'off site', 'offsite', 'to be announced'}
+               'home', 'off site', 'offsite', 'to be announced',
+               # What a booking system writes when the thing has no room
+               # because it has no building. Seven of these were a directory
+               # row called "Virtual - no room needed". Written as norm()
+               # leaves them — it drops the punctuation, so the hyphenated
+               # spelling would never have matched.
+               'virtual no room needed', 'no room needed', 'virtual program',
+               'virtual meeting', 'google meet'}
 
 # A venue field is free text and feeds put anything in it. These are the shapes
 # that are demonstrably not a place you can go: a bare state code, a town on its
@@ -194,7 +233,15 @@ CLOSURE = re.compile(
     r'|\b(?:library|office|building|branch|museum|center|centre|cottage|gallery|park)'
     r'\s+clos(?:ed|ing)\b'
     r'|\bclosed\s+(?:to the public|all day|in observance|for\s+(?:a\s+)?private\b)'
-    r'|\bclosing\s+(?:early\b|at\s+\d)', re.I)
+    r'|\bclosing\s+(?:early\b|at\s+\d)'
+    # The same notice in the other word. Six of these were live at once —
+    # "Cancelled - OFL - In Person Yoga", "EVENT CANCELLED - Autumn Tree
+    # Identification" — and a cancelled session is a worse answer to "what is
+    # on" than no answer. Held to a separator, like the closures above, so
+    # "Cancelled Stamps: a collector's talk" is still a talk; and the word
+    # itself, so "Cancel Culture" and a cancellation policy do not match.
+    r'|^[\s\[(*]*(?:event\s+)?cancell?ed\s*(?:$|[-–—:)\]*]|from\b|for\b|due\b)'
+    r'|\*{2,}\s*cancell?ed\b', re.I)
 
 # The running of a school, which reaches us through district, campus and
 # aggregator feeds alike. Kept separate from the campus rule below because it
@@ -725,6 +772,31 @@ def main():
     for item in merged:
         item['venueKey'] = building_of(item)
     canonicalise_venues(merged)
+
+    # What is over is not what is on. merge keeps every listing it has ever
+    # held, which is the right instinct for a feed that goes quiet for a week
+    # and the wrong one forever after: a two-month-old file was carrying 4,085
+    # listings whose date had passed, and the fix at the time was to prune
+    # them by hand — fixing the record, not the rule, so it came straight
+    # back. 178 were in this file.
+    #
+    # A repeating listing stays whatever its `start` says. The client derives
+    # the next occurrence from the first, so an old date on a weekly session
+    # is where the series began and not a stale listing; and a standing
+    # offering — the garden's self-guided tours, dated to the April it opened
+    # — has no `until` and never expires. What goes is a one-off whose last
+    # day is behind us, and a series that has reached its `until`.
+    stamp = date.today().isoformat()
+
+    def finished(item):
+        if item.get('repeats'):
+            return bool(item.get('until')) and day(item['until']) < stamp
+        return span(item)[1] < stamp
+
+    over = [i for i in merged if finished(i)]
+    if over:
+        merged = [i for i in merged if not finished(i)]
+        print(f'  −{len(over)} already over')
 
     # A listing with nothing to link to cannot render and validate.py rejects
     # the whole file for it. They arrived from a Google Calendar ICS, which

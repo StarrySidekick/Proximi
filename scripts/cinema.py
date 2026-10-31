@@ -229,8 +229,30 @@ GMLP = [
 GM_HEAD = re.compile(
     r'^(?:mon|tue|wed|thu|fri|sat|sun)\w*(?:\s+thru\s+\w+)?\s+'
     r'(\d{1,2})/(\d{1,2})(?:\s*[-–]\s*(\d{1,2})/(\d{1,2}))?\s*$', re.I)
-GM_TIMES = re.compile(r'^(?:\d{1,2}:\d{2}\s*)+$')
 GM_RATING = re.compile(r'\s*\((G|PG|PG13|PG-13|R|NC17|NC-17|NR)\)\s*$', re.I)
+
+# Two of the three houses now qualify the times instead of printing them bare:
+#
+#   THE MONGOOSE (R)
+#   Daily 4:00 7:15 9:15
+#   Sat & Sun 1:20 4:00 7:15 9:15
+#
+# A rule that demanded a line of nothing but times matched Lyceum and nothing
+# at all at Roosevelt and New Paltz — two houses, zero screenings, a clean run.
+# These two qualifiers are the only ones the three pages use; a third is
+# reported rather than guessed at, because the guess sends somebody to a cinema
+# on an afternoon with no show. A weekend line repeats the daily times and adds
+# the matinee, so the times for a day are the union of every line that covers
+# it, not one line per card.
+GM_TIMES = re.compile(r'^(?P<qualifier>[A-Za-z&/.\s]*?)\s*'
+                      r'(?P<times>(?:\d{1,2}:\d{2}\s*)+)$')
+GM_DAYS = {
+    '': None,                   # bare times, and "Daily": every day in the span
+    'daily': None,
+    'sat & sun': {5, 6},
+    'sat and sun': {5, 6},
+    'sat/sun': {5, 6},
+}
 
 
 # Titles come off the page shouted. Plain .title() would render "Insidious:
@@ -284,20 +306,26 @@ def read_gmlp():
         except Exception as exc:
             print(f'! {slug}: {exc}', file=sys.stderr)
             continue
-        span, previous, found = None, '', 0
+        span, title, shows = None, None, {}
         for line in lines:
             if line.lower().startswith('coming soon'):
                 span = None
             head = GM_HEAD.match(line)
+            times = None if head else GM_TIMES.match(line)
             if head:
                 first = near_year(int(head.group(1)), int(head.group(2)), today)
                 last = (near_year(int(head.group(3)), int(head.group(4)), today)
                         if head.group(3) else first)
                 span = (first, last) if first and last and last >= first else None
-            elif span and GM_TIMES.match(line) and previous:
-                title = headline(GM_RATING.sub('', previous).strip())
+            elif times and span and title:
+                qualifier = ' '.join(times.group('qualifier').lower().split())
+                if qualifier not in GM_DAYS:
+                    print(f'! {slug}: showtimes qualified "{qualifier}" for '
+                          f'{title} — no rule for that, skipped', file=sys.stderr)
+                    continue
+                weekdays = GM_DAYS[qualifier]
                 clocks = []
-                for clock in line.split():
+                for clock in times.group('times').split():
                     hour, minute = (int(x) for x in clock.split(':'))
                     pm = clock_pm(hour, minute)
                     if pm:
@@ -307,22 +335,27 @@ def read_gmlp():
                               file=sys.stderr)
                 if not clocks:
                     continue
-                # One card per film per day, not per showtime. Four rows of the
-                # same film four hours apart is the same answer to "what can I
-                # see tonight" printed four times; the times belong in the card.
-                shown = ', '.join(f'{h - 12 if h > 12 else h}:{m:02d}' for h, m in clocks)
                 day = span[0]
                 while day <= span[1]:
-                    start = day.replace(hour=clocks[0][0], minute=clocks[0][1],
-                                        second=0, microsecond=0)
-                    out.append(shape(
-                        title, start.isoformat(timespec='seconds'),
-                        f'https://greatmovieslowerprices.com/{slug}/', house,
-                        f'Showtimes that day: {shown} pm.'))
-                    found += 1
+                    if weekdays is None or day.weekday() in weekdays:
+                        shows.setdefault((title, day), set()).update(clocks)
                     day += timedelta(days=1)
-            previous = line
-        print(f'    {house["venue"]:<20} {found:>4}')
+            elif not times:
+                title = headline(GM_RATING.sub('', line).strip())
+
+        # One card per film per day, not per showtime. Four rows of the same
+        # film four hours apart is the same answer to "what can I see tonight"
+        # printed four times; the times belong in the card.
+        for (name, day), clocks in sorted(shows.items(), key=lambda kv: kv[0][::-1]):
+            ordered = sorted(clocks)
+            shown = ', '.join(f'{h - 12 if h > 12 else h}:{m:02d}' for h, m in ordered)
+            start = day.replace(hour=ordered[0][0], minute=ordered[0][1],
+                                second=0, microsecond=0)
+            out.append(shape(
+                name, start.isoformat(timespec='seconds'),
+                f'https://greatmovieslowerprices.com/{slug}/', house,
+                f'Showtimes that day: {shown} pm.'))
+        print(f'    {house["venue"]:<20} {len(shows):>4}')
     return out
 
 

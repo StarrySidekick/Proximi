@@ -3,7 +3,7 @@
     "name": "Beacon, NY",
     "lat": 41.5048,
     "lon": -73.9696,
-    "radiusMiles": 100,
+    "radiusMiles": 75,
     "timezone": "America/New_York",
     "placesRadiusMiles": 50
   },
@@ -126,8 +126,8 @@
     },
     {
       "id": "maverickconcerts",
-      "kind": "ics",
-      "url": "https://maverickconcerts.org/events/?ical=1",
+      "kind": "tribe",
+      "url": "https://maverickconcerts.org/events/",
       "publisher": "Maverick Concerts",
       "scope": "venue",
       "venue": {
@@ -137,7 +137,7 @@
         "lat": 42.018,
         "lon": -74.087
       },
-      "note": "2026-08-28: same SiteGround captcha block as opus40 (HTTP 202, text/html). Left enabled in case the challenge lifts."
+      "note": "2026-08-28: same SiteGround captcha block as opus40 (HTTP 202, text/html). Left enabled in case the challenge lifts. 2026-10-31: moved from ics to tribe. The challenge sits in front of the site’s pages and /events/?ical=1 is one of them; /wp-json/tribe/events/v1/ is not, and reading it showed what the block was hiding — 46 listings from 2026-06-06 to 2026-09-25 and nothing after. That is the Maverick summer chamber season, not a broken feed, so the honest status is \"nothing scheduled yet\" until June."
     },
     {
       "id": "clearwater",
@@ -183,11 +183,11 @@
     },
     {
       "id": "millbrookwine",
-      "kind": "ics",
-      "url": "https://millbrookwine.com/?post_type=tribe_events&ical=1",
+      "kind": "tribe",
+      "url": "https://millbrookwine.com/events/",
       "publisher": "Millbrook Vineyards & Winery",
       "scope": "venue",
-      "note": "Found by scripts/discover.py --probe. Exactly the long-tail case: winery dinners and tastings that never reach a county calendar.",
+      "note": "Found by scripts/discover.py --probe. Exactly the long-tail case: winery dinners and tastings that never reach a county calendar. 2026-10-31: moved from ics to tribe. The iCal route answered a bot challenge; the REST API answers 55 listings running 2026-01-17 to 2026-09-26 and nothing after, which is a vineyard that has closed its event programme for the winter rather than a feed that died.",
       "venue": {
         "name": "Millbrook Vineyards & Winery",
         "city": "Millbrook, NY",
@@ -658,11 +658,31 @@
     },
     {
       "id": "lib-putnamvalley",
-      "kind": "html",
-      "url": "https://putnamvalleylibrary.org/calendar/",
+      "kind": "ics",
+      "url": "https://calendar.google.com/calendar/ical/v6758p3h4f8n8q45p8f5433pjkhjb22k%40import.calendar.google.com/public/basic.ics",
       "publisher": "Putnam Valley Free Library",
-      "scope": "local",
-      "note": "Assabet Interactive — schema.org Events on the calendar page, read by jsonld.py. Found by fingerprinting the library homepage for an assabetinteractive.com link; guessing the subdomain from the domain name does not work. Its calendar page carried 159 JSON-LD events when probed but jsonld.py reads none — worth a re-check; the markup may be built client-side."
+      "scope": "venue",
+      "note": "Assabet Interactive — schema.org Events on the calendar page, read by jsonld.py. Found by fingerprinting the library homepage for an assabetinteractive.com link; guessing the subdomain from the domain name does not work. Its calendar page carried 159 JSON-LD events when probed but jsonld.py reads none — worth a re-check; the markup may be built client-side. Re-checked 2026-10-31 and the hypothesis was right: the served HTML carries no JSON-LD at all, because /calendar/ is an embedded Google Calendar iframe built client-side. The embed names two calendars and both have public iCal: this one is the imported programme — 634 future events, every one with a room and a link — and lib-putnamvalley-community is the other. So this is an ics source after all, and no scraping is needed.",
+      "venue": {
+        "name": "Putnam Valley Free Library",
+        "city": "Putnam Valley, NY",
+        "address": "30 Oscawana Lake Rd, Putnam Valley, NY 10579"
+      },
+      "homepage": "https://putnamvalleylibrary.org/calendar/"
+    },
+    {
+      "id": "lib-putnamvalley-community",
+      "kind": "ics",
+      "url": "https://calendar.google.com/calendar/ical/c_7b375f18b10dd58cb6d9444ab875f0f92e124fc21d2e5d50ea31d042a7ccaafe%40group.calendar.google.com/public/basic.ics",
+      "publisher": "Putnam Valley Free Library",
+      "scope": "venue",
+      "note": "The second calendar on the same embed as lib-putnamvalley, and not a subset of it — its two future entries (\"Fall Fun and Community Action\", an AARP driver course) appear nowhere in the imported programme. Registered 2026-10-31. Thin, and that is fine: merge folds near-duplicates, so the cost of keeping both is nothing and the cost of guessing wrong is a community event nobody hears about.",
+      "venue": {
+        "name": "Putnam Valley Free Library",
+        "city": "Putnam Valley, NY",
+        "address": "30 Oscawana Lake Rd, Putnam Valley, NY 10579"
+      },
+      "homepage": "https://putnamvalleylibrary.org/calendar/"
     },
     {
       "id": "lib-pleasantvalley",
@@ -904,11 +924,11 @@
     },
     {
       "id": "osm-thecastlefuncenter",
-      "kind": "ics",
-      "url": "https://thecastlefuncenter.com/events/?ical=1&eventDisplay=list",
+      "kind": "tribe",
+      "url": "https://thecastlefuncenter.com/events/",
       "publisher": "The Castle Fun Center",
       "scope": "venue",
-      "note": "Found by discover.py --probe over data/places.json (3 future events at registration).",
+      "note": "Found by discover.py --probe over data/places.json (3 future events at registration). 2026-10-31: moved from ics to tribe. Was reported blocked; the REST API reads fine and holds 13 listings between February and September 2026, none ahead. A thin, seasonal calendar, not a failure.",
       "venue": {
         "name": "The Castle Fun Center",
         "city": "Chester",
@@ -988,7 +1008,7 @@
       "url": "https://calendar.google.com/calendar/ical/youtube%40hurleyheritagesociety.org/public/basic.ics",
       "publisher": "Hurley Heritage Museum",
       "scope": "venue",
-      "note": "Found by discover.py --probe over data/places.json (3 future events at registration).",
+      "note": "Found by discover.py --probe over data/places.json (3 future events at registration). Reported frozen 2026-10-30 (nothing after 2026-09-20) and deliberately left enabled: the feed is a live Google Calendar and its 19 events fall in February, May, August and September, which is a museum season rather than a dead export. If a May run still shows nothing new, that is the frozen one.",
       "venue": {
         "name": "Hurley Heritage Museum",
         "city": "Hurley, NY",
@@ -1036,7 +1056,7 @@
       "url": "https://tockify.com/api/feeds/ics/fourbrothers",
       "publisher": "Four Brothers Drive-In",
       "scope": "venue",
-      "note": "Found by discover.py --probe over data/places.json (1 future events at registration).",
+      "note": "Found by discover.py --probe over data/places.json (1 future events at registration). Reported 2026-10-30 as \"no VEVENTs — not an iCal feed?\"; it is a perfectly good Tockify feed with nothing in it. The drive-in is seasonal and its JSON API agrees — 0 events over the next 90 days — so the feed stays and harvest_ics now says \"nothing scheduled yet\" for an empty VCALENDAR.",
       "venue": {
         "name": "Four Brothers Drive-In",
         "city": "Amenia",
@@ -1128,11 +1148,11 @@
     },
     {
       "id": "osm-millriverpark",
-      "kind": "ics",
-      "url": "https://millriverpark.org/events/?ical=1",
+      "kind": "tribe",
+      "url": "https://millriverpark.org/events/",
       "publisher": "Whittingham Discovery Center",
       "scope": "venue",
-      "note": "Found by discover.py --probe over data/places.json (30 future events at registration).",
+      "note": "Found by discover.py --probe over data/places.json (30 future events at registration). 2026-10-31: moved from ics to tribe. The iCal route answered HTTP 504 on 2026-10-30; the REST API answered 112 upcoming listings the next day. This is the one of the five that was costing real listings.",
       "venue": {
         "name": "Whittingham Discovery Center",
         "city": "Stamford, CT",
@@ -1228,7 +1248,7 @@
       "url": "https://webb.edu/events/?ical=1",
       "publisher": "Livingston Library",
       "scope": "venue",
-      "note": "Found by discover.py --probe over data/places.json (1 future events at registration).",
+      "note": "Found by discover.py --probe over data/places.json (1 future events at registration). Disabled 2026-10-31. It was reported as a bot challenge on the iCal route; /wp-json/tribe/ reads fine, and what it reads is the problem. The calendar is Webb Institute’s national alumni tour — \"San Diego, CA Regional Event\", \"Seattle, WA Regional Event\" — and 11 of its 17 listings carry no venue of their own, so each one would inherit this entry’s Glen Cove address and land 40 miles from Beacon as something you could go to tonight. Only 3 of the 17 are actually at the institute. Three local listings a year is not worth fourteen confident wrong ones; discover.py registered this on a single future event.",
       "venue": {
         "name": "Livingston Library",
         "city": "Glen Cove",
@@ -1236,15 +1256,16 @@
         "lat": 40.884374,
         "lon": -73.645336
       },
-      "homepage": "https://webb.edu/"
+      "homepage": "https://webb.edu/",
+      "enabled": false
     },
     {
       "id": "osm-derbynecklibrary",
-      "kind": "ics",
-      "url": "https://derbynecklibrary.org/events/?ical=1",
+      "kind": "wpfc",
+      "url": "https://derbynecklibrary.org/events/",
       "publisher": "Derby Neck Library",
       "scope": "venue",
-      "note": "Found by discover.py --probe over data/places.json (22 future events at registration).",
+      "note": "Found by discover.py --probe over data/places.json (22 future events at registration). Moved from ics to wpfc 2026-10-31: the library left The Events Calendar for WP Events Manager and the old plugin's export stayed up, orphaned — /events/?ical=1 and /events.ics both serve 50 VEVENTs ending 2026-09-02, which reads as a library that stopped running programmes. There is no iCal route on the new stack, so harvest_wpfc reads wp-fullcalendar's JSON instead; the url here is the human calendar page and the handler derives the endpoint from its host.",
       "venue": {
         "name": "Derby Neck Library",
         "city": "Derby, CT",
@@ -1353,11 +1374,11 @@
     },
     {
       "id": "osm-cornerbookstorenyc",
-      "kind": "ics",
-      "url": "https://cornerbookstorenyc.com/events/?ical=1",
+      "kind": "tribe",
+      "url": "https://cornerbookstorenyc.com/events/",
       "publisher": "The Corner Bookstore",
       "scope": "venue",
-      "note": "Found by discover.py --probe over data/places.json (8 future events at registration).",
+      "note": "Found by discover.py --probe over data/places.json (8 future events at registration). 2026-10-31: moved from ics to tribe. Was reported blocked; the REST API reads fine and its last reading was 2026-10-28, with nothing booked ahead. A bookstore schedules a few weeks out, so this one refills on its own.",
       "venue": {
         "name": "The Corner Bookstore",
         "city": "Guttenberg",

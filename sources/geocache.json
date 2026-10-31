@@ -3566,5 +3566,2801 @@
 "display": "Fairfield, Greater Bridgeport Planning Region, Connecticut, United States",
 "matched": "Fairfield, CT",
 "precision": 1
+},
+"m-arch projects, 89 franklin street, new york, ny, 10013, united states": {
+"lat": 40.71788,
+"lon": -74.0049757,
+"display": "89, Franklin Street, Civic Center, Lower Manhattan, Manhattan, New York County, New York, 10013, United States",
+"matched": "89 Franklin Street, New York, NY",
+"precision": 1
+},
+"franklin d. roosevelt state park, 2957 crompond rd., yorktown heights, ny, 10598, united states": {
+"lat": 41.2933625,
+"lon": -73.8129164,
+"display": "2957, Crompond Road, Lake Mohegan, Town of Yorktown, Westchester County, New York, 10598, United States",
+"matched": "2957 Crompond Rd., Yorktown Heights, NY",
+"precision": 1
+},
+"pure terror scream park, 1010 ny-17m, monroe, ny, 10950, united states": {
+"lat": 41.3449974,
+"lon": -74.1995721,
+"display": "1010, State Highway 17M, Smiths Clove, Village of Monroe, Town of Monroe, Town of Blooming Grove, Orange County, New York, 10950, United States",
+"matched": "1010 NY-17M, Monroe, NY",
+"precision": 1
+},
+"academy building, 24 main st, salisbury, ct, 06068, united states": {
+"lat": 41.9819288,
+"lon": -73.4224039,
+"display": "24, Main Street, Lakeville, Salisbury, Northwest Hills Planning Region, Connecticut, 06068, United States",
+"matched": "24 Main St, Salisbury, CT",
+"precision": 1
+},
+"library, suffern, ny": {
+"lat": 41.113448,
+"lon": -74.1371693,
+"display": "Suffern Free Library, 210, Lafayette Avenue, Village of Suffern, Town of Ramapo, Rockland County, New York, 10901, United States",
+"matched": "Library, Suffern, NY",
+"precision": 0
+},
+"historic hudson valley library, 639 bedford rd., sleepy hollow, ny, 10591": {
+"lat": 41.0863622,
+"lon": -73.8571327,
+"display": "Bedford Road, Village of Sleepy Hollow, Town of Mount Pleasant, Westchester County, New York, 10570, United States",
+"matched": "639 Bedford Rd., Sleepy Hollow, NY",
+"precision": 1
+},
+"playland park, 1 playland pkwy, rye, ny, 10580": {
+"lat": 40.9659452,
+"lon": -73.6731284,
+"display": "Rye Playland, 1, Playland Parkway, Milton, City of Rye, Westchester County, New York, 10580, United States",
+"matched": "Playland Park, 1 Playland Pkwy, Rye, NY",
+"precision": 0
+},
+"new york state museum, 222 madison avenue, albany, ny, 12230, united states": {
+"lat": 42.6484367,
+"lon": -73.7615936,
+"display": "New York State Museum, 222, Madison Avenue, Capitol Hill, City of Albany, Albany County, New York, 12202, United States",
+"matched": "New York State Museum, 222 Madison Avenue, Albany, NY",
+"precision": 0
+},
+"lyndhurst, 635 south broadway, tarrytown, ny, 10591, united states": {
+"lat": 41.0539676,
+"lon": -73.8673634,
+"display": "Lyndhurst Mansion, 635, South Broadway, Village of Tarrytown, Town of Greenburgh, Westchester County, New York, 10591, United States",
+"matched": "Lyndhurst, 635 South Broadway, Tarrytown, NY",
+"precision": 0
+},
+"the armour-stiner octagon house, 45 w clinton ave, irvington, ny, 10533, united states": {
+"lat": 41.0308495,
+"lon": -73.8704675,
+"display": "The Armour-Stiner Octagon House, 45, West Clinton Avenue, Ardsley-on-Hudson, Village of Irvington, Town of Greenburgh, Westchester County, New York, 10533, United States",
+"matched": "The Armour-Stiner Octagon House, 45 W Clinton Ave, Irvington, NY",
+"precision": 0
+},
+"katonah museum of art, 134 jay st., katonah, ny, 10536, united states": {
+"lat": 41.2627468,
+"lon": -73.6732798,
+"display": "Katonah Museum of Art, 134, Jay Street, Katonah, Town of Bedford, Westchester County, New York, 10536, United States",
+"matched": "Katonah Museum of Art, 134 Jay St., Katonah, NY",
+"precision": 0
+},
+"henry s. miller judaica research room, fourth floor, walsh family library": null,
+"idilko butler gallery, lowenstein center, and susan lipani gallery, lowenstein center": null,
+"rome, ga.": {
+"lat": 34.257038,
+"lon": -85.1646726,
+"display": "Rome, Floyd County, Georgia, United States",
+"matched": "Rome, Ga.",
+"precision": 0
+},
+"midtown student center lobby, danbury, ct": {
+"lat": 41.394817,
+"lon": -73.4540111,
+"display": "Danbury, Western Connecticut Planning Region, Connecticut, United States",
+"matched": "Danbury, CT",
+"precision": 1
+},
+"danbury ice arena, 1 independence way, danbury, ct, 06810": {
+"lat": 41.3952239,
+"lon": -73.450354,
+"display": "Danbury Ice Arena, 1, Independence Way, Main Street Historic District, Germantown, Danbury, Western Connecticut Planning Region, Connecticut, 06810, United States",
+"matched": "Danbury Ice Arena, 1 Independence Way, Danbury, CT",
+"precision": 0
+},
+"campus center cc, bean (near 518 market & starbucks)": null,
+"bartels student activity center (bsac), 103": null,
+"midtown student center 202, 181 white st., danbury, ct": {
+"lat": 41.4004954,
+"lon": -73.445022,
+"display": "Western Connecticut State University, 181, White Street, Main Street Historic District, Germantown, Danbury, Western Connecticut Planning Region, Connecticut, 06810, United States",
+"matched": "181 White St., Danbury, CT",
+"precision": 1
+},
+"bergami center, west haven, ct": {
+"lat": 41.2910466,
+"lon": -72.9601607,
+"display": "Bergami Center for Science, Innovation, and Technology, Campbell Avenue, Allingtown, West Haven, South Central Connecticut Planning Region, Connecticut, 06519, United States",
+"matched": "Bergami Center, West Haven, CT",
+"precision": 0
+},
+"the well at colonial group exercise studio,  zenger b041, group exercise studio": null,
+"arbeiter maenner chor (german club), boston post road, west haven, ct, usa": {
+"lat": 41.2844777,
+"lon": -72.9787545,
+"display": "Boston Post Road, Allingtown, West Haven, South Central Connecticut Planning Region, Connecticut, 06516, United States",
+"matched": "Boston Post Road, West Haven, CT",
+"precision": 1
+},
+"the well at colonial cycling room, zenger b011": null,
+"alumni lounge and annex, west haven, ct": {
+"lat": 41.2706527,
+"lon": -72.9470471,
+"display": "West Haven, South Central Connecticut Planning Region, Connecticut, 06516, United States",
+"matched": "West Haven, CT",
+"precision": 1
+},
+"wnhu/bergami broadcast media center, west haven, ct": {
+"lat": 41.2706527,
+"lon": -72.9470471,
+"display": "West Haven, South Central Connecticut Planning Region, Connecticut, 06516, United States",
+"matched": "West Haven, CT",
+"precision": 1
+},
+"studio theatre, vpac, 43 lake ave. extension, danbury, ct": {
+"lat": 41.394817,
+"lon": -73.4540111,
+"display": "Danbury, Western Connecticut Planning Region, Connecticut, United States",
+"matched": "Danbury, CT",
+"precision": 3
+},
+"echlin hall (rm: 206), west haven, ct": {
+"lat": 41.2706527,
+"lon": -72.9470471,
+"display": "West Haven, South Central Connecticut Planning Region, Connecticut, 06516, United States",
+"matched": "West Haven, CT",
+"precision": 1
+},
+"princeton, n.j.": {
+"lat": 40.3496953,
+"lon": -74.6597376,
+"display": "Princeton, Mercer County, New Jersey, United States",
+"matched": "Princeton, N.J.",
+"precision": 0
+},
+"echlin hall (rm: 209), west haven, ct": {
+"lat": 41.2706527,
+"lon": -72.9470471,
+"display": "West Haven, South Central Connecticut Planning Region, Connecticut, 06516, United States",
+"matched": "West Haven, CT",
+"precision": 1
+},
+"chicago, ill.": {
+"lat": 41.8755616,
+"lon": -87.6244212,
+"display": "Chicago, South Chicago Township, Cook County, Illinois, United States",
+"matched": "Chicago, Ill.",
+"precision": 0
+},
+"300 boston post road, west haven, ct, usa (rm: hcl 301)": null,
+"dedominicus meeting room, west haven, ct": {
+"lat": 41.2706527,
+"lon": -72.9470471,
+"display": "West Haven, South Central Connecticut Planning Region, Connecticut, 06516, United States",
+"matched": "West Haven, CT",
+"precision": 1
+},
+"60 north plains highway, wallingford, ct, usa": {
+"lat": 41.473882,
+"lon": -72.8203421,
+"display": "60, North Plains Highway, Casimir Pulaski Industrial Park, Yalesville, Wallingford, South Central Connecticut Planning Region, Connecticut, 06492, United States",
+"matched": "60 North Plains Highway, Wallingford, CT",
+"precision": 0
+},
+"vpac, room 334, 43 lake ave. extension, danbury, ct": {
+"lat": 41.394817,
+"lon": -73.4540111,
+"display": "Danbury, Western Connecticut Planning Region, Connecticut, United States",
+"matched": "Danbury, CT",
+"precision": 3
+},
+"maxcy hall, west haven, ct": {
+"lat": 41.2912607,
+"lon": -72.9615402,
+"display": "Maxcy Hall, Boston Post Road, Allingtown, West Haven, South Central Connecticut Planning Region, Connecticut, 06516, United States",
+"matched": "Maxcy Hall, West Haven, CT",
+"precision": 0
+},
+"harugari hall, west haven, ct": {
+"lat": 41.2886733,
+"lon": -72.9595607,
+"display": "Harugari Hall, Campbell Avenue, Allingtown, West Haven, South Central Connecticut Planning Region, Connecticut, 06516, United States",
+"matched": "Harugari Hall, West Haven, CT",
+"precision": 0
+},
+"sunflower valley farm, 366 county rd 12, new hampton, ny, 10958, united states": {
+"lat": 41.3367734,
+"lon": -74.4850691,
+"display": "366, County Route 12, Gardnerville, Town of Wawayanda, Orange County, New York, 10958, United States",
+"matched": "366 County Rd 12, New Hampton, NY",
+"precision": 1
+},
+"ny, suffern, ny": {
+"lat": 41.1151876,
+"lon": -74.1507151,
+"display": "Lafayette Avenue, Antrim, Village of Suffern, Town of Ramapo, Rockland County, New York, 07495, United States",
+"matched": "NY, Suffern, NY",
+"precision": 0
+},
+"w 150th street & riverside drive, w 150th street & riverside drive, ny": null,
+"in-person, cliffside park, nj": {
+"lat": 40.8214894,
+"lon": -73.9876388,
+"display": "Cliffside Park, Bergen County, New Jersey, 07010, United States",
+"matched": "Cliffside Park, NJ",
+"precision": 1
+},
+"300 boston post road, west haven, ct, usa (rm: bergami tables)": null,
+"mechanicsville, va. / pole green park": {
+"lat": 37.6451048,
+"lon": -77.3300226,
+"display": "Historic Pole Green Church Park, Rural Point Road, Strawhorn, Mechanicsville, Hanover County, Virginia, 23111, United States",
+"matched": "Mechanicsville, Va. / Pole Green Park",
+"precision": 0
+},
+"brooks place, the westport library, 20 jesup road, westport, ct, 06880, united states": {
+"lat": 41.1396873,
+"lon": -73.3612903,
+"display": "The Westport Library, 20, Jesup Road, Westport, Western Connecticut Planning Region, Connecticut, 06880, United States",
+"matched": "The Westport Library, 20 Jesup Road, Westport, CT",
+"precision": 1
+},
+"bronx, n.y., col. francis b. messmore aquatic center": null,
+"the well at colonial mulitpurpose room, zenger 102": null,
+"bronx, n.y., moglia stadium at jack coffey field": null,
+"bixler / gerber quad, ruden pl, west haven, ct, usa": {
+"lat": 41.2899099,
+"lon": -72.9630772,
+"display": "Ruden Place, Allingtown, West Haven, South Central Connecticut Planning Region, Connecticut, 06516, United States",
+"matched": "Ruden Pl, West Haven, CT",
+"precision": 1
+},
+"winchester hall, west haven, ct": {
+"lat": 41.2898648,
+"lon": -72.9636806,
+"display": "Winchester Hall, 1, Ruden Place, Allingtown, West Haven, New Haven, Connecticut, 06516, United States",
+"matched": "Winchester Hall, West Haven, CT",
+"precision": 0
+},
+"princeton, nj (lake carnegie)": {
+"lat": 40.3528539,
+"lon": -74.6268363,
+"display": "Lake Carnegie, Plainsboro Township, Middlesex County, New Jersey, United States",
+"matched": "Princeton, NJ (Lake Carnegie)",
+"precision": 0
+},
+"lasdon main house, 2610 amawalk road route 35 route 35, katonah, ny, 10536, united states": {
+"lat": 41.2558715,
+"lon": -73.6847453,
+"display": "Katonah, Town of Bedford, Westchester County, New York, United States",
+"matched": "Katonah, NY",
+"precision": 3
+},
+"bill williams gym, berkshire hall, 181 white st., danbury, ct": {
+"lat": 41.394817,
+"lon": -73.4540111,
+"display": "Danbury, Western Connecticut Planning Region, Connecticut, United States",
+"matched": "Danbury, CT",
+"precision": 3
+},
+"mile 22 \u2013 5th avenue and east 116th street, bronx, ny": {
+"lat": 40.8466508,
+"lon": -73.8785937,
+"display": "The Bronx, Bronx County, New York, United States",
+"matched": "Bronx, NY",
+"precision": 1
+},
+"north hall, west haven, ct": {
+"lat": 41.2706527,
+"lon": -72.9470471,
+"display": "West Haven, South Central Connecticut Planning Region, Connecticut, 06516, United States",
+"matched": "West Haven, CT",
+"precision": 1
+},
+"eisenhower hall theatre at west point, 655 pitcher road, west point, ny, 10996, united states": {
+"lat": 41.3912693,
+"lon": -73.9658803,
+"display": "United States Military Academy, 845, Brewerton Road, Town of Highlands, Orange County, New York, 10996, United States",
+"matched": "West Point, NY",
+"precision": 3
+},
+"richmond, va.": {
+"lat": 37.5385087,
+"lon": -77.43428,
+"display": "Richmond, Virginia, United States",
+"matched": "Richmond, Va.",
+"precision": 0
+},
+"bergami center of science and technology (rm: 202), west haven, ct": {
+"lat": 41.2706527,
+"lon": -72.9470471,
+"display": "West Haven, South Central Connecticut Planning Region, Connecticut, 06516, United States",
+"matched": "West Haven, CT",
+"precision": 1
+},
+"bartels hall, boston post road, west haven, ct, usa": {
+"lat": 41.2918261,
+"lon": -72.9604387,
+"display": "Bartels Hall, Boston Post Road, Allingtown, West Haven, South Central Connecticut Planning Region, Connecticut, 06516, United States",
+"matched": "Bartels Hall, Boston Post Road, West Haven, CT",
+"precision": 0
+},
+"university of new haven, boston post road, west haven, ct, usa (rm: echlin hall 209)": null,
+"westside hall (rm: westside hall 112), west haven, ct": {
+"lat": 41.2706527,
+"lon": -72.9470471,
+"display": "West Haven, South Central Connecticut Planning Region, Connecticut, 06516, United States",
+"matched": "West Haven, CT",
+"precision": 1
+},
+"aquinas hall, 122": {
+"lat": 38.938222,
+"lon": -76.9994211,
+"display": "Aquinas Hall, Fort Slemmer Drive Northeast, University Heights, Ward 5, Washington, District of Columbia, 20064, United States",
+"matched": "Aquinas Hall, 122",
+"precision": 0
+},
+"bergami center (rm: 307), west haven, ct": {
+"lat": 41.2706527,
+"lon": -72.9470471,
+"display": "West Haven, South Central Connecticut Planning Region, Connecticut, 06516, United States",
+"matched": "West Haven, CT",
+"precision": 1
+},
+"henry c. lee institute of forensic science (rm: room 102), west haven, ct": {
+"lat": 41.2706527,
+"lon": -72.9470471,
+"display": "West Haven, South Central Connecticut Planning Region, Connecticut, 06516, United States",
+"matched": "West Haven, CT",
+"precision": 1
+},
+"buckman hall, west haven, ct": {
+"lat": 41.2911518,
+"lon": -72.9604891,
+"display": "Buckman Hall, Ruden Street, Allingtown, West Haven, South Central Connecticut Planning Region, Connecticut, 06516, United States",
+"matched": "Buckman Hall, West Haven, CT",
+"precision": 0
+},
+"300 boston post road, west haven, ct, usa (rm: kaplan 107)": null,
+"bergami center (rm: 203), west haven, ct": {
+"lat": 41.2706527,
+"lon": -72.9470471,
+"display": "West Haven, South Central Connecticut Planning Region, Connecticut, 06516, United States",
+"matched": "West Haven, CT",
+"precision": 1
+},
+"bartels tables, west haven, ct": {
+"lat": 41.2706527,
+"lon": -72.9470471,
+"display": "West Haven, South Central Connecticut Planning Region, Connecticut, 06516, United States",
+"matched": "West Haven, CT",
+"precision": 1
+},
+"food bartels hall, campus center, boston post road, west haven, ct, usa (rm: jazzman's cafe)": null,
+"bergami center of science and technology (rm: 203), west haven, ct": {
+"lat": 41.2706527,
+"lon": -72.9470471,
+"display": "West Haven, South Central Connecticut Planning Region, Connecticut, 06516, United States",
+"matched": "West Haven, CT",
+"precision": 1
+},
+"blessed rupert mayer, sj, chapel, lowenstein center": null,
+"children's library, the westport library, 20 jesup road, westport, ct, 06880, united states": {
+"lat": 41.1396873,
+"lon": -73.3612903,
+"display": "The Westport Library, 20, Jesup Road, Westport, Western Connecticut Planning Region, Connecticut, 06880, United States",
+"matched": "The Westport Library, 20 Jesup Road, Westport, CT",
+"precision": 1
+},
+"university of new haven, boston post road, west haven, ct, usa (rm: bcst 307 - peterson auditorium)": null,
+"the northside hub \u2013 auditorium, 58 parker ave, poughkeepsie, ny, 12601, united states": {
+"lat": 41.7112164,
+"lon": -73.924615,
+"display": "58, Parker Avenue, City of Poughkeepsie, Dutchess County, New York, 12601, United States",
+"matched": "58 Parker Ave, Poughkeepsie, NY",
+"precision": 1
+},
+"chappaqua public library, 195 south greeley avenue, chappaqua, new york, 10514": {
+"lat": 41.1550855,
+"lon": -73.7731683,
+"display": "Chappaqua Library, 195, South Greeley Avenue, Chappaqua, Town of Mount Pleasant, Town of New Castle, Westchester County, New York, 10514, United States",
+"matched": "195 South Greeley Avenue, Chappaqua, New York",
+"precision": 1
+},
+"emeritus center uab 134, albany, ny": {
+"lat": 42.6511674,
+"lon": -73.754968,
+"display": "City of Albany, Albany County, New York, United States",
+"matched": "Albany, NY",
+"precision": 1
+},
+"humanities building hu, 354": {
+"lat": 30.5414252,
+"lon": 114.3623661,
+"display": "\u4eba\u6587\u9986, \u4eba\u6587\u8def, \u6885\u56ed, \u73de\u73c8\u5c71\u8857\u9053, \u6b66\u660c\u533a, \u6b66\u6c49\u5e02, \u6e56\u5317\u7701, 430072, \u4e2d\u56fd",
+"matched": "Humanities Building HU, 354",
+"precision": 0
+},
+"campus center cc 111 thrive ualbany , 111": null,
+"hudson hall, 05": {
+"lat": 34.2479106,
+"lon": -83.8873878,
+"display": "Hudson Drive, Oakwood, Hall County, Georgia, 30566, United States",
+"matched": "Hudson Hall, 05",
+"precision": 0
+},
+"maxcy 124, west haven, ct": {
+"lat": 41.2912607,
+"lon": -72.9615402,
+"display": "Maxcy Hall, Boston Post Road, Allingtown, West Haven, South Central Connecticut Planning Region, Connecticut, 06516, United States",
+"matched": "Maxcy 124, West Haven, CT",
+"precision": 0
+},
+"university of new haven, boston post road, west haven, ct, usa (rm: alumni lounge)": null,
+"celentano hall, west haven, ct": {
+"lat": 41.2898828,
+"lon": -72.9618252,
+"display": "Celentano Hall, Ruden Street, Allingtown, West Haven, South Central Connecticut Planning Region, Connecticut, 06516, United States",
+"matched": "Celentano Hall, West Haven, CT",
+"precision": 0
+},
+"university church, bronx, ny": {
+"lat": 40.8635246,
+"lon": -73.886388,
+"display": "University Church, 425, East Fordham Road, The Bronx, Bronx County, New York, 10458, United States",
+"matched": "University Church, Bronx, NY",
+"precision": 0
+},
+"bronx, n.y., rose hill gym": null,
+"john and leona gehring hall, boston post road, west haven, ct, usa (rm: 301)": null,
+"alumni annex (rm: alumni annex), west haven, ct": {
+"lat": 41.2706527,
+"lon": -72.9470471,
+"display": "West Haven, South Central Connecticut Planning Region, Connecticut, 06516, United States",
+"matched": "West Haven, CT",
+"precision": 1
+},
+"maxcy hall 226, west haven, ct": {
+"lat": 41.2912607,
+"lon": -72.9615402,
+"display": "Maxcy Hall, Boston Post Road, Allingtown, West Haven, South Central Connecticut Planning Region, Connecticut, 06516, United States",
+"matched": "Maxcy Hall 226, West Haven, CT",
+"precision": 0
+},
+"maxcy hall (rm: conference 309 a&s lounge), west haven, ct": {
+"lat": 41.2706527,
+"lon": -72.9470471,
+"display": "West Haven, South Central Connecticut Planning Region, Connecticut, 06516, United States",
+"matched": "West Haven, CT",
+"precision": 1
+},
+"google meet, newburgh, ny": {
+"lat": 41.5000767,
+"lon": -74.0098299,
+"display": "City of Newburgh, Orange County, New York, United States",
+"matched": "Newburgh, NY",
+"precision": 1
+},
+"lawrence, ks": {
+"lat": 38.9719137,
+"lon": -95.2359403,
+"display": "Lawrence, Douglas County, Kansas, United States",
+"matched": "Lawrence, KS",
+"precision": 0
+},
+"dedominicis meeting room, west haven, ct": {
+"lat": 41.2706527,
+"lon": -72.9470471,
+"display": "West Haven, South Central Connecticut Planning Region, Connecticut, 06516, United States",
+"matched": "West Haven, CT",
+"precision": 1
+},
+"food bartels hall, campus center, boston post road, west haven, ct, usa (rm: alumni laiunge)": null,
+"ardsley public library, 9 american legion drive, ardsley, new york, 10502": {
+"lat": 41.013477,
+"lon": -73.8442021,
+"display": "9, American Legion Drive, Village of Ardsley, Town of Greenburgh, Westchester County, New York, 10502, United States",
+"matched": "9 American Legion Drive, Ardsley, New York",
+"precision": 1
+},
+"berkshire hall, 181 white st., danbury, ct": {
+"lat": 41.4004954,
+"lon": -73.445022,
+"display": "Western Connecticut State University, 181, White Street, Main Street Historic District, Germantown, Danbury, Western Connecticut Planning Region, Connecticut, 06810, United States",
+"matched": "181 White St., Danbury, CT",
+"precision": 1
+},
+"fordham westchester, bronx, ny": {
+"lat": 40.8466508,
+"lon": -73.8785937,
+"display": "The Bronx, Bronx County, New York, United States",
+"matched": "Bronx, NY",
+"precision": 1
+},
+"bergami science center (rm: table 1), west haven, ct": {
+"lat": 41.2706527,
+"lon": -72.9470471,
+"display": "West Haven, South Central Connecticut Planning Region, Connecticut, 06516, United States",
+"matched": "West Haven, CT",
+"precision": 1
+},
+"dominican center, 218": {
+"lat": 36.187775,
+"lon": -86.798861,
+"display": "DOMINICAN DR & METRO CENTER BLVD EB, Dominican Drive, Nashville, Davidson County, Middle Tennessee, Tennessee, 37208, United States",
+"matched": "Dominican Center, 218",
+"precision": 0
+},
+"german club, west haven, ct": {
+"lat": 41.2706527,
+"lon": -72.9470471,
+"display": "West Haven, South Central Connecticut Planning Region, Connecticut, 06516, United States",
+"matched": "West Haven, CT",
+"precision": 1
+},
+"sheffield hall, west haven, ct": {
+"lat": 41.2901621,
+"lon": -72.9630818,
+"display": "Sheffield Hall, 300, Boston Post Road, Allingtown, West Haven, New Haven, Connecticut, 06516, United States",
+"matched": "Sheffield Hall, West Haven, CT",
+"precision": 0
+},
+"bergami center for science, technology, and innovation (rm: 302)": null,
+"henry c. lee institute of forensic science, boston post road, west haven, ct, usa (rm: 102)": null,
+"bergami center of science and technology (rm: berg 301), west haven, ct": {
+"lat": 41.2706527,
+"lon": -72.9470471,
+"display": "West Haven, South Central Connecticut Planning Region, Connecticut, 06516, United States",
+"matched": "West Haven, CT",
+"precision": 1
+},
+"300 boston post road, west haven, ct, usa (rm: maxcy 203)": null,
+"butler commons, duane library": null,
+"dodds hall, west haven, ct": {
+"lat": 41.2918069,
+"lon": -72.959493,
+"display": "Dodds Hall, Campbell Avenue, Allingtown, West Haven, South Central Connecticut Planning Region, Connecticut, 06519, United States",
+"matched": "Dodds Hall, West Haven, CT",
+"precision": 0
+},
+"dominican center field, newburgh, ny": {
+"lat": 41.5000767,
+"lon": -74.0098299,
+"display": "City of Newburgh, Orange County, New York, United States",
+"matched": "Newburgh, NY",
+"precision": 1
+},
+"david a. beckerman recreation center, west haven, ct": {
+"lat": 41.2913765,
+"lon": -72.9628676,
+"display": "David A. Beckerman Recreation Center, Boston Post Road, Allingtown, West Haven, South Central Connecticut Planning Region, Connecticut, 06516, United States",
+"matched": "David A. Beckerman Recreation Center, West Haven, CT",
+"precision": 0
+},
+"bartels hall (rm: alumni annex), west haven, ct": {
+"lat": 41.2706527,
+"lon": -72.9470471,
+"display": "West Haven, South Central Connecticut Planning Region, Connecticut, 06516, United States",
+"matched": "West Haven, CT",
+"precision": 1
+},
+"henry c. lee institute of forensic science, boston post road, west haven, ct, usa (rm: 301)": null,
+"westside hall, west haven, ct": {
+"lat": 41.2892741,
+"lon": -72.9635578,
+"display": "Westside Hall, Ruden Place, Allingtown, West Haven, South Central Connecticut Planning Region, Connecticut, 06516, United States",
+"matched": "Westside Hall, West Haven, CT",
+"precision": 0
+},
+"desmond fish public library, address here, city, ny, 564546, united states": {
+"lat": 41.3764434,
+"lon": -73.9424,
+"display": "Desmond-Fish Public Library, 472, State Highway 403, Forsonville, Garrison, Town of Philipstown, Putnam County, New York, 10524, United States",
+"matched": "Desmond Fish Public Library, NY, 564546",
+"precision": 2
+},
+"gerber hall, west haven, ct": {
+"lat": 41.2907533,
+"lon": -72.9626923,
+"display": "Gerber Hall, Ruden Place, Allingtown, West Haven, South Central Connecticut Planning Region, Connecticut, 06516, United States",
+"matched": "Gerber Hall, West Haven, CT",
+"precision": 0
+},
+"hybrid, valhalla, ny": {
+"lat": 41.075213,
+"lon": -73.7750061,
+"display": "Valhalla, Town of Mount Pleasant, Westchester County, New York, United States",
+"matched": "Valhalla, NY",
+"precision": 1
+},
+"kaplan (rm: 208), west haven, ct": {
+"lat": 41.2706527,
+"lon": -72.9470471,
+"display": "West Haven, South Central Connecticut Planning Region, Connecticut, 06516, United States",
+"matched": "West Haven, CT",
+"precision": 1
+},
+"mcmahon hall, 109": {
+"lat": 40.7709761,
+"lon": -73.986295,
+"display": "McMahon Hall, 155, West 60th Street, Lincoln Square, Manhattan Community Board 7, Manhattan, New York County, New York, 10023, United States",
+"matched": "McMahon Hall, 109",
+"precision": 0
+},
+"dutch quad, health and counseling lobby": null,
+"campus center cc, go desk (across from starbucks)": null,
+"freeman hall, 103": {
+"lat": 31.9222059,
+"lon": -90.766478,
+"display": "Freeman Hall, Claiborne County, Mississippi, 39175, United States",
+"matched": "Freeman Hall, 103",
+"precision": 0
+},
+"aquinas hall, 100c (student lounge)": null,
+"moulton longe, west haven, ct": {
+"lat": 41.2706527,
+"lon": -72.9470471,
+"display": "West Haven, South Central Connecticut Planning Region, Connecticut, 06516, United States",
+"matched": "West Haven, CT",
+"precision": 1
+},
+"refuge gallery, institute of international humanitarian affairs, canisius hall": null,
+"minerva room - reading room, university main library, minerva room": null,
+"gehrig hall room 301 (rm: 301), west haven, ct": {
+"lat": 41.2706527,
+"lon": -72.9470471,
+"display": "West Haven, South Central Connecticut Planning Region, Connecticut, 06516, United States",
+"matched": "West Haven, CT",
+"precision": 1
+},
+"bartels student activity center, boston post road, west haven, ct, usa": {
+"lat": 41.2844777,
+"lon": -72.9787545,
+"display": "Boston Post Road, Allingtown, West Haven, South Central Connecticut Planning Region, Connecticut, 06516, United States",
+"matched": "Boston Post Road, West Haven, CT",
+"precision": 1
+},
+"university of new haven, boston post road, west haven, ct, usa (rm: north hall 104)": null,
+"dominican center, dc cafe": null,
+"science library sl 330 standish room, science library sl 330 standish room": null,
+"maxcy hall (rm: 124), west haven, ct": {
+"lat": 41.2706527,
+"lon": -72.9470471,
+"display": "West Haven, South Central Connecticut Planning Region, Connecticut, 06516, United States",
+"matched": "West Haven, CT",
+"precision": 1
+},
+"maxcy 309, west haven, ct": {
+"lat": 41.2912607,
+"lon": -72.9615402,
+"display": "Maxcy Hall, Boston Post Road, Allingtown, West Haven, South Central Connecticut Planning Region, Connecticut, 06516, United States",
+"matched": "Maxcy 309, West Haven, CT",
+"precision": 0
+},
+"maxcy hall (rm: 309), west haven, ct": {
+"lat": 41.2706527,
+"lon": -72.9470471,
+"display": "West Haven, South Central Connecticut Planning Region, Connecticut, 06516, United States",
+"matched": "West Haven, CT",
+"precision": 1
+},
+"university of new haven, boston post road, west haven, ct, usa (rm: moulton lounge)": null,
+"bergami hall, west haven, ct": {
+"lat": 41.2908796,
+"lon": -72.9643793,
+"display": "Bergami Hall, Hoffman Street, Allingtown, West Haven, South Central Connecticut Planning Region, Connecticut, 06516, United States",
+"matched": "Bergami Hall, West Haven, CT",
+"precision": 0
+},
+"berkshire hall lounge, 181 white st., danbury, ct": {
+"lat": 41.4004954,
+"lon": -73.445022,
+"display": "Western Connecticut State University, 181, White Street, Main Street Historic District, Germantown, Danbury, Western Connecticut Planning Region, Connecticut, 06810, United States",
+"matched": "181 White St., Danbury, CT",
+"precision": 1
+},
+"white hall 127, 181 white st., danbury, ct": {
+"lat": 41.4004954,
+"lon": -73.445022,
+"display": "Western Connecticut State University, 181, White Street, Main Street Historic District, Germantown, Danbury, Western Connecticut Planning Region, Connecticut, 06810, United States",
+"matched": "181 White St., Danbury, CT",
+"precision": 1
+},
+"kaplan hall (rm: 203), west haven, ct": {
+"lat": 41.2706527,
+"lon": -72.9470471,
+"display": "West Haven, South Central Connecticut Planning Region, Connecticut, 06516, United States",
+"matched": "West Haven, CT",
+"precision": 1
+},
+"bepler commons, faber hall": null,
+"bergami center for science and technology (rm: 201), west haven, ct": {
+"lat": 41.2706527,
+"lon": -72.9470471,
+"display": "West Haven, South Central Connecticut Planning Region, Connecticut, 06516, United States",
+"matched": "West Haven, CT",
+"precision": 1
+},
+"fisher center, luma theater": null,
+"kaplan hall (rm: kaplan 208), west haven, ct": {
+"lat": 41.2706527,
+"lon": -72.9470471,
+"display": "West Haven, South Central Connecticut Planning Region, Connecticut, 06516, United States",
+"matched": "West Haven, CT",
+"precision": 1
+},
+"guzman hall - msmc, newburgh, ny": {
+"lat": 41.5000767,
+"lon": -74.0098299,
+"display": "City of Newburgh, Orange County, New York, United States",
+"matched": "Newburgh, NY",
+"precision": 1
+},
+"bergami center for science and technology (rm: 203), west haven, ct": {
+"lat": 41.2706527,
+"lon": -72.9470471,
+"display": "West Haven, South Central Connecticut Planning Region, Connecticut, 06516, United States",
+"matched": "West Haven, CT",
+"precision": 1
+},
+"gatehouse (rm: 100), west haven, ct": {
+"lat": 41.2706527,
+"lon": -72.9470471,
+"display": "West Haven, South Central Connecticut Planning Region, Connecticut, 06516, United States",
+"matched": "West Haven, CT",
+"precision": 1
+},
+"alumni lounge, west haven, ct": {
+"lat": 41.2706527,
+"lon": -72.9470471,
+"display": "West Haven, South Central Connecticut Planning Region, Connecticut, 06516, United States",
+"matched": "West Haven, CT",
+"precision": 1
+},
+"300 boston post road, west haven, ct, usa (rm: moulton lounge)": null,
+"passion pickleball, fairfield, ct": {
+"lat": 41.1412078,
+"lon": -73.2637258,
+"display": "Fairfield, Greater Bridgeport Planning Region, Connecticut, United States",
+"matched": "Fairfield, CT",
+"precision": 1
+},
+"the philadelphia club, bronx, ny": {
+"lat": 40.8466508,
+"lon": -73.8785937,
+"display": "The Bronx, Bronx County, New York, United States",
+"matched": "Bronx, NY",
+"precision": 1
+},
+"humanities building hu, humanities 354": null,
+"forest hills apartments building 3, homeside avenue, west haven, ct, usa": {
+"lat": 41.2855899,
+"lon": -72.968088,
+"display": "Homeside Avenue, Allingtown, West Haven, South Central Connecticut Planning Region, Connecticut, 06516, United States",
+"matched": "Homeside Avenue, West Haven, CT",
+"precision": 1
+},
+"in-person, bronx, ny": {
+"lat": 40.8466508,
+"lon": -73.8785937,
+"display": "The Bronx, Bronx County, New York, United States",
+"matched": "Bronx, NY",
+"precision": 1
+},
+"bartels student activity center, boston post road, west haven, ct, usa (rm: conference room)": null,
+"virtual event, verona": null,
+"maxcy 203, west haven, ct": {
+"lat": 41.2912607,
+"lon": -72.9615402,
+"display": "Maxcy Hall, Boston Post Road, Allingtown, West Haven, South Central Connecticut Planning Region, Connecticut, 06516, United States",
+"matched": "Maxcy 203, West Haven, CT",
+"precision": 0
+},
+"bsct 302 (rm: 302), west haven, ct": {
+"lat": 41.2706527,
+"lon": -72.9470471,
+"display": "West Haven, South Central Connecticut Planning Region, Connecticut, 06516, United States",
+"matched": "West Haven, CT",
+"precision": 1
+},
+"borscht belt museum, 90 canal st, ellenville, ny, 12428, united states": {
+"lat": 41.7174625,
+"lon": -74.3944922,
+"display": "Borscht Belt Museum, 90, Canal Street, Village of Ellenville, Town of Wawarsing, Ulster County, New York, 12428, United States",
+"matched": "Borscht Belt Museum, 90 Canal St, Ellenville, NY",
+"precision": 0
+},
+"kaplan 109, west haven, ct": {
+"lat": 41.2911773,
+"lon": -72.9595279,
+"display": "Kaplan Hall, Campbell Avenue, Allingtown, West Haven, South Central Connecticut Planning Region, Connecticut, 06519, United States",
+"matched": "Kaplan 109, West Haven, CT",
+"precision": 0
+},
+"university of new haven, boston post road, west haven, ct, usa - myatt center": null,
+"south lounge, bronx, ny": {
+"lat": 40.8466508,
+"lon": -73.8785937,
+"display": "The Bronx, Bronx County, New York, United States",
+"matched": "Bronx, NY",
+"precision": 1
+},
+"university of new haven, boston post road, west haven, ct, usa (rm: peterson auditorium)": null,
+"bartels campus center (rm: moulton lounge), west haven, ct": {
+"lat": 41.2706527,
+"lon": -72.9470471,
+"display": "West Haven, South Central Connecticut Planning Region, Connecticut, 06516, United States",
+"matched": "West Haven, CT",
+"precision": 1
+},
+"moulton lounge (rm: moulton lounge), west haven, ct": {
+"lat": 41.2706527,
+"lon": -72.9470471,
+"display": "West Haven, South Central Connecticut Planning Region, Connecticut, 06516, United States",
+"matched": "West Haven, CT",
+"precision": 1
+},
+"old austerlitz, 11550 state route 22, austerlitz, ny, 12017, united states": {
+"lat": 42.3066204,
+"lon": -73.4713284,
+"display": "The Shop at Old Austerlitz, 11550, Harvey Mountain Road, Town of Austerlitz, Columbia County, New York, 12017, United States",
+"matched": "Old Austerlitz, Austerlitz, NY",
+"precision": 2
+},
+"bronx, n.y., hawthorn/rooney tennis courts": null,
+"berkeley, calif.": {
+"lat": 37.8708393,
+"lon": -122.272863,
+"display": "Berkeley, Alameda County, California, United States",
+"matched": "Berkeley, Calif.",
+"precision": 0
+},
+"cold spring farmers market, 1601 ny-9d, garrison, 10524, united states": {
+"lat": 41.3832787,
+"lon": -73.9362355,
+"display": "State Highway 9D, Garrison, Town of Philipstown, Putnam County, New York, 10997, United States",
+"matched": "1601 NY-9D, Garrison",
+"precision": 1
+},
+"kube art center, 20 kent street, beacon, ny, 12508, united states": {
+"lat": 41.5063862,
+"lon": -73.9653539,
+"display": "20, Kent Street, City of Beacon, Dutchess County, New York, 12508, United States",
+"matched": "20 Kent Street, Beacon, NY",
+"precision": 1
+},
+"costantino room, fordham law school": null,
+"poughkeepsie, n.y. (vassar)": {
+"lat": 41.6546195,
+"lon": -73.8743979,
+"display": "Poughkeepsie Steak House, 11, Vassar Road, City of Poughkeepsie, Town of Poughkeepsie, Dutchess County, New York, 12603, United States",
+"matched": "Poughkeepsie, N.Y. (Vassar)",
+"precision": 0
+},
+"lewisburg, pa": {
+"lat": 40.9645337,
+"lon": -76.8847639,
+"display": "Lewisburg, Union County, Pennsylvania, United States",
+"matched": "Lewisburg, PA",
+"precision": 0
+},
+"cobleskill, ny": {
+"lat": 42.677853,
+"lon": -74.4854172,
+"display": "Village of Cobleskill, Town of Cobleskill, Schoharie County, New York, United States",
+"matched": "Cobleskill, NY",
+"precision": 0
+},
+"majed j. nesheiwat convention center, 14 civic center plaza, poughkeepsie, new york, 12601": {
+"lat": 41.7048972,
+"lon": -73.9294833,
+"display": "Mid-Hudson Civic Center, 14, Civic Center Plaza, City of Poughkeepsie, Dutchess County, New York, 12601, United States",
+"matched": "14 Civic Center Plaza, Poughkeepsie, New York",
+"precision": 1
+},
+"equine advocates, 3212 state route 66, valatie, ny, 12184": {
+"lat": 42.4134168,
+"lon": -73.6731749,
+"display": "Village of Valatie, Town of Kinderhook, Columbia County, New York, United States",
+"matched": "Valatie, NY",
+"precision": 3
+},
+"city winery hudson valley, 23 factory street, montgomery, ny, 12549, united states": {
+"lat": 41.5298798,
+"lon": -74.2263673,
+"display": "23, Factory Street, Montgomery Mills, Village of Montgomery, Town of Montgomery, Orange County, New York, 12549, United States",
+"matched": "23 Factory Street, Montgomery, NY",
+"precision": 1
+},
+"bronx, n.y., lombardi squash courts": null,
+"bergami center of science and technology (rm: 301), west haven, ct": {
+"lat": 41.2706527,
+"lon": -72.9470471,
+"display": "West Haven, South Central Connecticut Planning Region, Connecticut, 06516, United States",
+"matched": "West Haven, CT",
+"precision": 1
+},
+"stanford, calif.": {
+"lat": 37.4265407,
+"lon": -122.1703055,
+"display": "Stanford, Palo Alto, Santa Clara County, California, United States",
+"matched": "Stanford, Calif.",
+"precision": 0
+},
+"bixler/gerber quad, west haven, ct": {
+"lat": 41.2905375,
+"lon": -72.9624043,
+"display": "Bixler/Gerber Quad, Allingtown, West Haven, South Central Connecticut Planning Region, Connecticut, United States",
+"matched": "Bixler/Gerber Quad, West Haven, CT",
+"precision": 0
+},
+"cultural arts theater, 145 college road, suffern, ny, 10901, united states": {
+"lat": 41.1330926,
+"lon": -74.0886395,
+"display": "Rockland Community College, 145, College Road, Village of Suffern, Town of Ramapo, Rockland County, New York, 10901, United States",
+"matched": "145 College Road, Suffern, NY",
+"precision": 1
+},
+"university of new haven, boston post road, west haven, ct, usa (rm: 1st flr lobby)": null,
+"bixler hall, west haven, ct": {
+"lat": 41.2903064,
+"lon": -72.9621404,
+"display": "Bixler Hall, Ruden Place, Allingtown, West Haven, South Central Connecticut Planning Region, Connecticut, 06516, United States",
+"matched": "Bixler Hall, West Haven, CT",
+"precision": 0
+},
+"dimenna-nyselius library, nys 101, library auditorium": null,
+"buckman 120, west haven, ct": {
+"lat": 41.2911518,
+"lon": -72.9604891,
+"display": "Buckman Hall, Ruden Street, Allingtown, West Haven, South Central Connecticut Planning Region, Connecticut, 06516, United States",
+"matched": "Buckman 120, West Haven, CT",
+"precision": 0
+},
+"dunham hall, west haven, ct": {
+"lat": 41.28956,
+"lon": -72.9629733,
+"display": "Dunham Hall, Ruden Place, Allingtown, West Haven, South Central Connecticut Planning Region, Connecticut, 06516, United States",
+"matched": "Dunham Hall, West Haven, CT",
+"precision": 0
+},
+"dedom, maxcy 309": null,
+"university of new haven, boston post road, west haven, ct, usa (rm: kaplan hall 206)": null,
+"celentano hall lobby, west haven, ct": {
+"lat": 41.2706527,
+"lon": -72.9470471,
+"display": "West Haven, South Central Connecticut Planning Region, Connecticut, 06516, United States",
+"matched": "West Haven, CT",
+"precision": 1
+},
+"lasdon public gardens, whitehall corners": null,
+"sheffield hall duty desk, west haven, ct": {
+"lat": 41.2706527,
+"lon": -72.9470471,
+"display": "West Haven, South Central Connecticut Planning Region, Connecticut, 06516, United States",
+"matched": "West Haven, CT",
+"precision": 1
+},
+"aquinas hall, outside of the view": null,
+"campus center ballroom cc 202, albany, ny": {
+"lat": 42.6511674,
+"lon": -73.754968,
+"display": "City of Albany, Albany County, New York, United States",
+"matched": "Albany, NY",
+"precision": 1
+},
+"campus center assembly hall cc 212, albany, ny": {
+"lat": 42.6511674,
+"lon": -73.754968,
+"display": "City of Albany, Albany County, New York, United States",
+"matched": "Albany, NY",
+"precision": 1
+},
+"university of new haven, boston post road, west haven, ct, usa (rm: makerspace)": null,
+"kaplan 202, west haven, ct": {
+"lat": 41.2911773,
+"lon": -72.9595279,
+"display": "Kaplan Hall, Campbell Avenue, Allingtown, West Haven, South Central Connecticut Planning Region, Connecticut, 06519, United States",
+"matched": "Kaplan 202, West Haven, CT",
+"precision": 0
+},
+"university of new haven, boston post road, west haven, ct, usa (rm: bcst 203)": null,
+"south campus hall, west haven, ct": {
+"lat": 41.2892585,
+"lon": -72.9601886,
+"display": "South Campus Hall, Cook Avenue, Allingtown, West Haven, South Central Connecticut Planning Region, Connecticut, 06516, United States",
+"matched": "South Campus Hall, West Haven, CT",
+"precision": 0
+},
+"visual arts complex, sl24l": null,
+"fordham london, bronx, ny": {
+"lat": 40.8466508,
+"lon": -73.8785937,
+"display": "The Bronx, Bronx County, New York, United States",
+"matched": "Bronx, NY",
+"precision": 1
+},
+"bergami first floor lounge, west haven, ct": {
+"lat": 41.2706527,
+"lon": -72.9470471,
+"display": "West Haven, South Central Connecticut Planning Region, Connecticut, 06516, United States",
+"matched": "West Haven, CT",
+"precision": 1
+},
+"300 boston post road, west haven, ct, usa (rm: marvin k. peterson library)": null,
+"kaplan hall 101, west haven, ct": {
+"lat": 41.2911773,
+"lon": -72.9595279,
+"display": "Kaplan Hall, Campbell Avenue, Allingtown, West Haven, South Central Connecticut Planning Region, Connecticut, 06519, United States",
+"matched": "Kaplan Hall 101, West Haven, CT",
+"precision": 0
+},
+"downtown bookstore, fairfield, ct": {
+"lat": 41.1412078,
+"lon": -73.2637258,
+"display": "Fairfield, Greater Bridgeport Planning Region, Connecticut, United States",
+"matched": "Fairfield, CT",
+"precision": 1
+},
+"bethel hall, west haven, ct": {
+"lat": 41.2926753,
+"lon": -72.9594879,
+"display": "Bethel Hall, Campbell Avenue, Allingtown, West Haven, South Central Connecticut Planning Region, Connecticut, 06519, United States",
+"matched": "Bethel Hall, West Haven, CT",
+"precision": 0
+},
+"dobbs ferry public library, 55 main st, dobbs ferry, new york, 10522": {
+"lat": 41.0134153,
+"lon": -73.8769362,
+"display": "Dobbs Ferry Public Library, 55, Main Street, Village of Dobbs Ferry, Town of Greenburgh, Westchester County, New York, 10522, United States",
+"matched": "Dobbs Ferry Public Library, 55 Main St, Dobbs Ferry, New York",
+"precision": 0
+},
+"bellarmine hall, diffley board room": null,
+"charles f. dolan school of business, dolan event hall": null,
+"12th-floor lounge, lowenstein center": null,
+"mcnally amphitheatre, bronx, ny": {
+"lat": 40.8466508,
+"lon": -73.8785937,
+"display": "The Bronx, Bronx County, New York, United States",
+"matched": "Bronx, NY",
+"precision": 1
+},
+"angel of harlem, bronx, ny": {
+"lat": 40.8466508,
+"lon": -73.8785937,
+"display": "The Bronx, Bronx County, New York, United States",
+"matched": "Bronx, NY",
+"precision": 1
+},
+"300 boston post road, west haven, ct, usa (rm: kaplan 104)": null,
+"new london, ct": {
+"lat": 41.3556187,
+"lon": -72.0997804,
+"display": "New London, Southeastern Connecticut Planning Region, Connecticut, 06320, United States",
+"matched": "New London, CT",
+"precision": 0
+},
+"sony hall, bronx, ny": {
+"lat": 40.8466508,
+"lon": -73.8785937,
+"display": "The Bronx, Bronx County, New York, United States",
+"matched": "Bronx, NY",
+"precision": 1
+},
+"rowley center for science and engineering, gerry forum room 010, suny orange middletown campus, 10 east conkling avenue, middletown, 10940, united states": {
+"lat": 41.4393018,
+"lon": -74.427407,
+"display": "Rowley Center for Science and Engineering, 10, East Conkling Avenue, City of Middletown, Orange County, New York, 10940, United States",
+"matched": "Rowley Center for Science and Engineering, 10 East Conkling Avenue, Middletown",
+"precision": 2
+},
+"fairfield university, bellarmine hall galleries": null,
+"bateman room, fordham law school, 2nd floor": null,
+"virtual program, bridgewater": null,
+"keeler tavern, 152 main street, ridgefield, ct, 06877, united states": {
+"lat": 41.2732188,
+"lon": -73.496235,
+"display": "Keeler Tavern Museum, 132, Main Street, Ridgefield, Western Connecticut Planning Region, Connecticut, 06877, United States",
+"matched": "Keeler Tavern, 152 Main Street, Ridgefield, CT",
+"precision": 0
+},
+"milne hall, downtown campus, 0001": {
+"lat": 28.5467144,
+"lon": -81.3857984,
+"display": "University of Central Florida Downtown Campus, 500, West Livingston Street, Callahan, Orlando, Orange County, Florida, 32801, United States",
+"matched": "Downtown Campus, 0001",
+"precision": 1
+},
+"hudson hall, fluet auditorium": null,
+"la plume, pa": {
+"lat": 41.5565738,
+"lon": -75.7551655,
+"display": "La Plume Township, Lackawanna County, Pennsylvania, 18440, United States",
+"matched": "La Plume, PA",
+"precision": 0
+},
+"fire place lounge bartels, west haven, ct": {
+"lat": 41.2706527,
+"lon": -72.9470471,
+"display": "West Haven, South Central Connecticut Planning Region, Connecticut, 06516, United States",
+"matched": "West Haven, CT",
+"precision": 1
+},
+"house of the redeemer, bronx, ny": {
+"lat": 40.8466508,
+"lon": -73.8785937,
+"display": "The Bronx, Bronx County, New York, United States",
+"matched": "Bronx, NY",
+"precision": 1
+},
+"henry c. lee college of criminal justice and forensic sciences, boston post road, west haven, ct, usa (rm: 301)": null,
+"hudson hall, 103": {
+"lat": 35.7866545,
+"lon": -78.6845768,
+"display": "Hudson Hall, 2760, Wolf Village Way, Method, Raleigh, Wake County, North Carolina, 27695, United States",
+"matched": "Hudson Hall, 103",
+"precision": 0
+},
+"the knight spot, newburgh, ny": {
+"lat": 41.5000767,
+"lon": -74.0098299,
+"display": "City of Newburgh, Orange County, New York, United States",
+"matched": "Newburgh, NY",
+"precision": 1
+},
+"south orange, nj": {
+"lat": 40.7474966,
+"lon": -74.2635376,
+"display": "South Orange, Essex County, New Jersey, 07079, United States",
+"matched": "South Orange, NJ",
+"precision": 0
+},
+"anthony\u2019s banquet hall, route 23b, leeds, ny, 12451, united states": {
+"lat": 42.255095,
+"lon": -73.8922975,
+"display": "Leeds, Jefferson Heights, Town of Catskill, Greene County, New York, United States",
+"matched": "Leeds, NY",
+"precision": 3
+},
+"bethpage, n.y. / bethpage state park": {
+"lat": 40.7414274,
+"lon": -73.4570621,
+"display": "Bethpage State Park, Main Drive, Old Bethpage, Town of Oyster Bay, Nassau County, New York, 11735, United States",
+"matched": "Bethpage, N.Y. / Bethpage State Park",
+"precision": 0
+},
+"bellarmine hall,  diffley board room": null,
+"winchester avenue, new haven, ct, usa": {
+"lat": 41.3342256,
+"lon": -72.9248971,
+"display": "Winchester Avenue, Dixwell, New Haven, South Central Connecticut Planning Region, Connecticut, 06517, United States",
+"matched": "Winchester Avenue, New Haven, CT",
+"precision": 0
+},
+"student union \u2013 nelson mandela room, 145, suffern, ny, 10901, united states": {
+"lat": 41.1330926,
+"lon": -74.0886395,
+"display": "Rockland Community College, 145, College Road, Village of Suffern, Town of Ramapo, Rockland County, New York, 10901, United States",
+"matched": "145, Suffern, NY",
+"precision": 1
+},
+"church center for the united nations, 8th fl": null,
+"the myatt center, west haven, ct": {
+"lat": 41.2706527,
+"lon": -72.9470471,
+"display": "West Haven, South Central Connecticut Planning Region, Connecticut, 06516, United States",
+"matched": "West Haven, CT",
+"precision": 1
+},
+"kaplan 107, west haven, ct": {
+"lat": 41.2911773,
+"lon": -72.9595279,
+"display": "Kaplan Hall, Campbell Avenue, Allingtown, West Haven, South Central Connecticut Planning Region, Connecticut, 06519, United States",
+"matched": "Kaplan 107, West Haven, CT",
+"precision": 0
+},
+"gerber 1st floor lounge, west haven, ct": {
+"lat": 41.2706527,
+"lon": -72.9470471,
+"display": "West Haven, South Central Connecticut Planning Region, Connecticut, 06516, United States",
+"matched": "West Haven, CT",
+"precision": 1
+},
+"300 boston post road, west haven, ct, usa (rm: buckman 120)": null,
+"lowenstein lobby, bronx, ny": {
+"lat": 40.8466508,
+"lon": -73.8785937,
+"display": "The Bronx, Bronx County, New York, United States",
+"matched": "Bronx, NY",
+"precision": 1
+},
+"annapolis, md.": {
+"lat": 38.9786401,
+"lon": -76.492786,
+"display": "Annapolis, Anne Arundel County, Maryland, United States",
+"matched": "Annapolis, Md.",
+"precision": 0
+},
+"bergami center (rm: room 302), west haven, ct": {
+"lat": 41.2706527,
+"lon": -72.9470471,
+"display": "West Haven, South Central Connecticut Planning Region, Connecticut, 06516, United States",
+"matched": "West Haven, CT",
+"precision": 1
+},
+"norton, ma": {
+"lat": 41.9670616,
+"lon": -71.1875071,
+"display": "Norton, Bristol County, Massachusetts, 02766, United States",
+"matched": "Norton, MA",
+"precision": 0
+},
+"westside lobby (rm: first floor lobby), west haven, ct": {
+"lat": 41.2706527,
+"lon": -72.9470471,
+"display": "West Haven, South Central Connecticut Planning Region, Connecticut, 06516, United States",
+"matched": "West Haven, CT",
+"precision": 1
+},
+"davidson, n.c.": {
+"lat": 35.7902384,
+"lon": -80.2115053,
+"display": "Davidson County, North Carolina, United States",
+"matched": "Davidson, N.C.",
+"precision": 0
+},
+"bergami science center, west haven, ct": {
+"lat": 41.2910466,
+"lon": -72.9601607,
+"display": "Bergami Center for Science, Innovation, and Technology, Campbell Avenue, Allingtown, West Haven, South Central Connecticut Planning Region, Connecticut, 06519, United States",
+"matched": "Bergami Science Center, West Haven, CT",
+"precision": 0
+},
+"newburgh, ny, kaplan center pool": null,
+"granville, oh": {
+"lat": 40.0681192,
+"lon": -82.5196037,
+"display": "Granville, Granville Township, Licking County, Ohio, 43023, United States",
+"matched": "Granville, OH",
+"precision": 0
+},
+"712 kitchawan rd, ossining, ny 10562, usa, 712 kitchawan rd, ossining, new york, 10562": {
+"lat": 41.2201701,
+"lon": -73.7856992,
+"display": "712, Kitchawan Road, Kitchawan, Town of Ossining, Westchester County, New York, 10562, United States",
+"matched": "712 Kitchawan Rd, Ossining, New York",
+"precision": 2
+},
+"the hennessy center, 470 western highway, blauvelt, ny, 10913, united states": {
+"lat": 41.078064,
+"lon": -73.9633235,
+"display": "Western Highway North, Blauvelt, Town of Orangetown, Rockland County, New York, 10913, United States",
+"matched": "470 Western Highway, Blauvelt, NY",
+"precision": 1
+},
+"homeport barn at the hudson river maritime museum, 50 rondout landing, kingston, 12401, united states": null,
+"in person, cliffside park, nj": {
+"lat": 40.8214894,
+"lon": -73.9876388,
+"display": "Cliffside Park, Bergen County, New Jersey, 07010, United States",
+"matched": "Cliffside Park, NJ",
+"precision": 1
+},
+"etec lobby, albany, ny": {
+"lat": 42.6511674,
+"lon": -73.754968,
+"display": "City of Albany, Albany County, New York, United States",
+"matched": "Albany, NY",
+"precision": 1
+},
+"fairfield university - bellarmine hall, bellarmine hall galleries, museum classroom": null,
+"milton, ma": {
+"lat": 42.2501425,
+"lon": -71.065573,
+"display": "Milton, Norfolk County, Massachusetts, United States",
+"matched": "Milton, MA",
+"precision": 0
+},
+"bartel's campus center (rm: alumni lounge), west haven, ct": {
+"lat": 41.2706527,
+"lon": -72.9470471,
+"display": "West Haven, South Central Connecticut Planning Region, Connecticut, 06516, United States",
+"matched": "West Haven, CT",
+"precision": 1
+},
+"pittsburgh, pa.": {
+"lat": 40.4406968,
+"lon": -80.0025666,
+"display": "Pittsburgh, Allegheny County, Pennsylvania, United States",
+"matched": "Pittsburgh, Pa.",
+"precision": 0
+},
+"community unitarian universalist congregation (cuuc), 468 rosedale ave, white plains, ny, 10605, united states": {
+"lat": 41.0013277,
+"lon": -73.7305408,
+"display": "468, Rosedale Avenue, Rosedale, City of White Plains, Westchester County, New York, 10605, United States",
+"matched": "468 Rosedale Ave, White Plains, NY",
+"precision": 1
+},
+"leo d. mahoney arena diffley club, fairfield, ct": {
+"lat": 41.1412078,
+"lon": -73.2637258,
+"display": "Fairfield, Greater Bridgeport Planning Region, Connecticut, United States",
+"matched": "Fairfield, CT",
+"precision": 1
+},
+"sunny meadow farm, 66 northrup street, bridgewater, ct, 06752, united states": {
+"lat": 41.5055928,
+"lon": -73.3681176,
+"display": "Sunny Meadow Farm, Bridgewater, Western Connecticut Planning Region, Connecticut, United States",
+"matched": "Sunny Meadow Farm, Bridgewater, CT",
+"precision": 2
+},
+"old st. joseph's church, fairfield, ct": {
+"lat": 41.1412078,
+"lon": -73.2637258,
+"display": "Fairfield, Greater Bridgeport Planning Region, Connecticut, United States",
+"matched": "Fairfield, CT",
+"precision": 1
+},
+"university of new haven, boston post road, west haven, ct, usa (rm: bsct table)": null,
+"300 boston post road, west haven, ct, usa (rm: jazzman's tables)": null,
+"d\u2019ambra auditorium, life sciences research bldg, 1400 washington ave, albany, ny 12206, d'ambra auditorium": null,
+"the david rubenstein atrium, bronx, ny": {
+"lat": 40.8466508,
+"lon": -73.8785937,
+"display": "The Bronx, Bronx County, New York, United States",
+"matched": "Bronx, NY",
+"precision": 1
+},
+"athens, ga..": {
+"lat": 33.9597677,
+"lon": -83.376398,
+"display": "Athens, Clarke County, Georgia, United States",
+"matched": "Athens, Ga..",
+"precision": 0
+},
+"bcst lobby table, west haven, ct": {
+"lat": 41.2706527,
+"lon": -72.9470471,
+"display": "West Haven, South Central Connecticut Planning Region, Connecticut, 06516, United States",
+"matched": "West Haven, CT",
+"precision": 1
+},
+"mcshane campus center, entrance": null,
+"the view, dining hall": null,
+"emeritus center uab 134, uab 134": null,
+"murray-weigel hall, bronx, ny": {
+"lat": 40.8601089,
+"lon": -73.8873263,
+"display": "Murray-Weigel Hall, Bathgate Avenue, Belmont, The Bronx, Bronx County, New York, 10458, United States",
+"matched": "Murray-Weigel Hall, Bronx, NY",
+"precision": 0
+},
+"university of new haven, boston post road, west haven, ct, usa (rm: bartels lobby table)": null,
+"university library instruction lab li b16, albany, ny": {
+"lat": 42.6511674,
+"lon": -73.754968,
+"display": "City of Albany, Albany County, New York, United States",
+"matched": "Albany, NY",
+"precision": 1
+},
+"o'hare special collections room, walsh library": null,
+"buies creek, nc": {
+"lat": 35.4123325,
+"lon": -78.7366506,
+"display": "Buies Creek, Harnett County, North Carolina, 27506, United States",
+"matched": "Buies Creek, NC",
+"precision": 0
+},
+"kaplan 205 (rm: 205), west haven, ct": {
+"lat": 41.2706527,
+"lon": -72.9470471,
+"display": "West Haven, South Central Connecticut Planning Region, Connecticut, 06516, United States",
+"matched": "West Haven, CT",
+"precision": 1
+},
+"300 boston post road, west haven, ct, usa": {
+"lat": 41.2910455,
+"lon": -72.9613788,
+"display": "300, Boston Post Road, Allingtown, West Haven, South Central Connecticut Planning Region, Connecticut, 06516, United States",
+"matched": "300 Boston Post Road, West Haven, CT",
+"precision": 0
+},
+"ct, washington, ct": {
+"lat": 41.6305636,
+"lon": -73.311271,
+"display": "Washington, Northwest Hills Planning Region, Connecticut, United States",
+"matched": "CT, Washington, CT",
+"precision": 0
+},
+"kaplan 104, west haven, ct": {
+"lat": 41.2911773,
+"lon": -72.9595279,
+"display": "Kaplan Hall, Campbell Avenue, Allingtown, West Haven, South Central Connecticut Planning Region, Connecticut, 06519, United States",
+"matched": "Kaplan 104, West Haven, CT",
+"precision": 0
+},
+"bergami center 301, west haven, ct": {
+"lat": 41.2910466,
+"lon": -72.9601607,
+"display": "Bergami Center for Science, Innovation, and Technology, Campbell Avenue, Allingtown, West Haven, South Central Connecticut Planning Region, Connecticut, 06519, United States",
+"matched": "Bergami Center 301, West Haven, CT",
+"precision": 0
+},
+"bethel hall f lounge (rm: f lounge), west haven, ct": {
+"lat": 41.2706527,
+"lon": -72.9470471,
+"display": "West Haven, South Central Connecticut Planning Region, Connecticut, 06516, United States",
+"matched": "West Haven, CT",
+"precision": 1
+},
+"bergami center 203, west haven, ct": {
+"lat": 41.2910466,
+"lon": -72.9601607,
+"display": "Bergami Center for Science, Innovation, and Technology, Campbell Avenue, Allingtown, West Haven, South Central Connecticut Planning Region, Connecticut, 06519, United States",
+"matched": "Bergami Center 203, West Haven, CT",
+"precision": 0
+},
+"dimenna-nyselius library (1073 north benson road, fairfield, ct), main campus": {
+"lat": 41.6493277,
+"lon": -72.8999261,
+"display": "ESPN Headquarters - Main Campus, Bristol, Naugatuck Valley Planning Region, Connecticut, United States",
+"matched": "CT), Main Campus",
+"precision": 3
+},
+"durham, nc": {
+"lat": 35.996653,
+"lon": -78.9018053,
+"display": "Durham, Durham County, North Carolina, United States",
+"matched": "Durham, NC",
+"precision": 0
+},
+"library children\u2019s room, briarcliff manor, ny": {
+"lat": 41.1456512,
+"lon": -73.8237456,
+"display": "Village of Briarcliff Manor, Town of Ossining, Westchester County, New York, 10510, United States",
+"matched": "Briarcliff Manor, NY",
+"precision": 1
+},
+"spellman hall, bronx, ny": {
+"lat": 40.9113443,
+"lon": -73.9081994,
+"display": "Spellman Hall, 900, West 261st Street, The Bronx, Bronx County, New York, 10471, United States",
+"matched": "Spellman Hall, Bronx, NY",
+"precision": 0
+},
+"the doering charger center, 495 western highway, blauvelt, ny, 10913, united states": {
+"lat": 41.0541367,
+"lon": -73.9525411,
+"display": "495, Western Highway, Blauvelt, Town of Orangetown, Rockland County, New York, 10913, United States",
+"matched": "495 Western Highway, Blauvelt, NY",
+"precision": 1
+},
+"celentano hall 1st  floor lobby, west haven, ct": {
+"lat": 41.2706527,
+"lon": -72.9470471,
+"display": "West Haven, South Central Connecticut Planning Region, Connecticut, 06516, United States",
+"matched": "West Haven, CT",
+"precision": 1
+},
+"slattery's midtown pub, bronx, ny": {
+"lat": 40.8466508,
+"lon": -73.8785937,
+"display": "The Bronx, Bronx County, New York, United States",
+"matched": "Bronx, NY",
+"precision": 1
+},
+"dimenna-nyselius library (1073 north benson road, fairfield, ct), online": {
+"lat": 41.8831074,
+"lon": 2.2431519,
+"display": "Compra online, la Riera de M\u00fanter, Malla, Osona, Barcelona, Catalunya, 08505, Espa\u00f1a",
+"matched": "CT), Online",
+"precision": 3
+},
+"lewisburg, pa.": {
+"lat": 40.9645337,
+"lon": -76.8847639,
+"display": "Lewisburg, Union County, Pennsylvania, United States",
+"matched": "Lewisburg, Pa.",
+"precision": 0
+},
+"bixler / gerber quad, ruden pl, west haven, ct, usa (rm: bixler gerber quad, alumni lounge as rain location)": null,
+"eugene, or": {
+"lat": 44.0505054,
+"lon": -123.0950506,
+"display": "Eugene, Lane County, Oregon, United States",
+"matched": "Eugene, OR",
+"precision": 0
+},
+"lawrence room, rosary hall, 488\u2013500 western highway south, orangeburg, ny, 10962, united states": {
+"lat": 41.0514735,
+"lon": -73.9343136,
+"display": "Orangeburg, Town of Orangetown, Rockland County, New York, 10962, United States",
+"matched": "Orangeburg, NY",
+"precision": 3
+},
+"kaplan hall (rm: rooms 208 and 210), west haven, ct": {
+"lat": 41.2706527,
+"lon": -72.9470471,
+"display": "West Haven, South Central Connecticut Planning Region, Connecticut, 06516, United States",
+"matched": "West Haven, CT",
+"precision": 1
+},
+"celentano first floor lounge, west haven, ct": {
+"lat": 41.2706527,
+"lon": -72.9470471,
+"display": "West Haven, South Central Connecticut Planning Region, Connecticut, 06516, United States",
+"matched": "West Haven, CT",
+"precision": 1
+},
+"beczak environmental education center, 35 alexander street, yonkers, ny, 10701": {
+"lat": 40.9382666,
+"lon": -73.9018337,
+"display": "Sarah Lawrence College Center for the Urban River at Beczak, 35, Alexander Street, City of Yonkers, Westchester County, New York, 10701, United States",
+"matched": "35 Alexander Street, Yonkers, NY",
+"precision": 1
+},
+"palm springs, calif., acrisure arena": {
+"lat": 33.7797941,
+"lon": -116.340545,
+"display": "Acrisure Arena, 75702, Varner Road, Palm Desert, Riverside County, California, 92211, United States",
+"matched": "Calif., Acrisure Arena",
+"precision": 1
+},
+"carlisle, pa": {
+"lat": 40.201499,
+"lon": -77.1890783,
+"display": "Carlisle, Cumberland County, Pennsylvania, 17013, United States",
+"matched": "Carlisle, PA",
+"precision": 0
+},
+"corvallis, or": {
+"lat": 44.5645659,
+"lon": -123.2620435,
+"display": "Corvallis, Benton County, Oregon, United States",
+"matched": "Corvallis, OR",
+"precision": 0
+},
+"albany, ny": {
+"lat": 42.6511674,
+"lon": -73.754968,
+"display": "City of Albany, Albany County, New York, United States",
+"matched": "Albany, NY",
+"precision": 0
+},
+"conservatory plaza, 2610 amawalk road route 35 route 35, katonah, ny, 10536, united states": {
+"lat": 41.2558715,
+"lon": -73.6847453,
+"display": "Katonah, Town of Bedford, Westchester County, New York, United States",
+"matched": "Katonah, NY",
+"precision": 3
+},
+"bartels table 1 (rm: bartels), west haven, ct": {
+"lat": 41.2706527,
+"lon": -72.9470471,
+"display": "West Haven, South Central Connecticut Planning Region, Connecticut, 06516, United States",
+"matched": "West Haven, CT",
+"precision": 1
+},
+"celentano first floor lounge (rm: duty desk), west haven, ct": {
+"lat": 41.2706527,
+"lon": -72.9470471,
+"display": "West Haven, South Central Connecticut Planning Region, Connecticut, 06516, United States",
+"matched": "West Haven, CT",
+"precision": 1
+},
+"radio city music hall, bronx, ny": {
+"lat": 40.8466508,
+"lon": -73.8785937,
+"display": "The Bronx, Bronx County, New York, United States",
+"matched": "Bronx, NY",
+"precision": 1
+},
+"oakville branch library, 55 davis st, oakville, ct 06779, usa": {
+"lat": 41.5876016,
+"lon": -73.0886202,
+"display": "Oakville Branch Library, 55, Davis Street, Oakville, Watertown, Naugatuck Valley Planning Region, Connecticut, 06779, United States",
+"matched": "Oakville Branch Library, 55 Davis St, Oakville, CT 06779",
+"precision": 0
+},
+"bartels lobby tables (rm: bartels table 2), west haven, ct": {
+"lat": 41.2706527,
+"lon": -72.9470471,
+"display": "West Haven, South Central Connecticut Planning Region, Connecticut, 06516, United States",
+"matched": "West Haven, CT",
+"precision": 1
+},
+"fireplace lounge, west haven, ct": {
+"lat": 41.2706527,
+"lon": -72.9470471,
+"display": "West Haven, South Central Connecticut Planning Region, Connecticut, 06516, United States",
+"matched": "West Haven, CT",
+"precision": 1
+},
+"john and leona gehring hall, boston post road, west haven, ct, usa (rm: gehring hall, room 201)": null,
+"bethlehem, pa": {
+"lat": -1.45056,
+"lon": -48.4682453,
+"display": "Bel\u00e9m, Par\u00e1, Regi\u00e3o Norte, Brasil",
+"matched": "Bethlehem, PA",
+"precision": 0
+},
+"rosary hall, 480 western hwy south, orangeburg, 10962, united states": null,
+"the white hart inn, 15 under mountain rd, salisbury, 06068, united states": {
+"lat": 41.9847776,
+"lon": -73.4226346,
+"display": "15, Under Mountain Road, Salisbury, Northwest Hills Planning Region, Connecticut, 06068, United States",
+"matched": "15 Under Mountain Rd, Salisbury",
+"precision": 1
+},
+"university of new haven, boston post road, west haven, ct, usa (rm: kaplan 204)": null,
+"guzman hall multipurpose room, newburgh, ny": {
+"lat": 41.5000767,
+"lon": -74.0098299,
+"display": "City of Newburgh, Orange County, New York, United States",
+"matched": "Newburgh, NY",
+"precision": 1
+},
+"la jolla, calif.": {
+"lat": 32.8458529,
+"lon": -117.2575702,
+"display": "La Jolla, San Diego, San Diego County, California, United States",
+"matched": "La Jolla, Calif.",
+"precision": 0
+},
+"performing arts lab, studio a": null,
+"performing arts lab, studio c": null,
+"performing arts lab, studio d": null,
+"congregational church of salisbury, 30 main street, salisbury, ct": {
+"lat": 41.9814708,
+"lon": -73.4224224,
+"display": "30, Main Street, Lakeville, Salisbury, Northwest Hills Planning Region, Connecticut, 06068, United States",
+"matched": "30 Main Street, Salisbury, CT",
+"precision": 1
+},
+"university of new haven, boston post road, west haven, ct, usa (rm: bcst 302)": null,
+"arbeiter maenner chor (german club), boston post road, west haven, ct, usa (rm: german club ballroom)": null,
+"clinton, ny": {
+"lat": 44.7278943,
+"lon": -73.6686982,
+"display": "Clinton County, New York, United States",
+"matched": "Clinton, NY",
+"precision": 0
+},
+"bergami center (rm: room 201), west haven, ct": {
+"lat": 41.2706527,
+"lon": -72.9470471,
+"display": "West Haven, South Central Connecticut Planning Region, Connecticut, 06516, United States",
+"matched": "West Haven, CT",
+"precision": 1
+},
+"university of new haven, boston post road, west haven, ct, usa (rm: bergami 301/302)": null,
+"alumni lounge & annex (rm: alumni lounge & annex), west haven, ct": {
+"lat": 41.2706527,
+"lon": -72.9470471,
+"display": "West Haven, South Central Connecticut Planning Region, Connecticut, 06516, United States",
+"matched": "West Haven, CT",
+"precision": 1
+},
+"arbeiter maenner chor (german club), boston post road, west haven, ct, usa (rm: ballroom)": null,
+"dover, de": {
+"lat": 39.158168,
+"lon": -75.5243682,
+"display": "Dover, Kent County, Delaware, United States",
+"matched": "Dover, DE",
+"precision": 0
+},
+"langhorne, pa": {
+"lat": 40.1761812,
+"lon": -74.9202481,
+"display": "Langhorne, Bucks County, Pennsylvania, United States",
+"matched": "Langhorne, PA",
+"precision": 0
+},
+"portland, maine": {
+"lat": 43.6573605,
+"lon": -70.2586618,
+"display": "Portland, Cumberland County, Maine, United States",
+"matched": "Portland, Maine",
+"precision": 0
+},
+"fairfield university - bellarmine hall, bellarmine hall galleries": null,
+"fairfield university art museum, bellarmine hall, museum classroom": null,
+"charles f. dolan school of business, event hall a&b": null,
+"fairfield university - bellarmine hall, bellarmine, museum classroom": null,
+"library cafe, bronx, ny": {
+"lat": 40.8466508,
+"lon": -73.8785937,
+"display": "The Bronx, Bronx County, New York, United States",
+"matched": "Bronx, NY",
+"precision": 1
+},
+"hudson river sloop clearwater office, 724 wolcott ave, beacon, ny, 12508, united states": {
+"lat": 41.489615,
+"lon": -73.9645841,
+"display": "Hudson River Sloop Clearwater, Inc., 724, Wolcott Avenue, City of Beacon, Dutchess County, New York, 12508, United States",
+"matched": "724 Wolcott Ave, Beacon, NY",
+"precision": 1
+},
+"university park, pa": {
+"lat": 40.8128971,
+"lon": -77.8710571,
+"display": "Penn State University, 201, Shamrock Avenue, Dalevue, Lemont, College Township, Centre County, Pennsylvania, 16802, United States",
+"matched": "University Park, PA",
+"precision": 0
+},
+"kingston, ri": {
+"lat": 41.473211,
+"lon": -71.5224977,
+"display": "Kingston, South Kingstown, South County, Rhode Island, 02881, United States",
+"matched": "Kingston, RI",
+"precision": 0
+},
+"philadelphia, pa": {
+"lat": 39.9527237,
+"lon": -75.1635262,
+"display": "Philadelphia, Philadelphia County, Pennsylvania, United States",
+"matched": "Philadelphia, PA",
+"precision": 0
+},
+"fairfax, va": {
+"lat": 38.8462236,
+"lon": -77.3063733,
+"display": "Fairfax, Virginia, 20030, United States",
+"matched": "Fairfax, VA",
+"precision": 0
+},
+"miami, fla.": {
+"lat": 25.7741566,
+"lon": -80.1935973,
+"display": "Miami, Miami-Dade County, Florida, United States",
+"matched": "Miami, Fla.",
+"precision": 0
+},
+"boynton beach fl, bronx, ny": {
+"lat": 40.8466508,
+"lon": -73.8785937,
+"display": "The Bronx, Bronx County, New York, United States",
+"matched": "Bronx, NY",
+"precision": 1
+},
+"pittsburgh, pa": {
+"lat": 40.4406968,
+"lon": -80.0025666,
+"display": "Pittsburgh, Allegheny County, Pennsylvania, United States",
+"matched": "Pittsburgh, PA",
+"precision": 0
+},
+"boynton beach fla., bronx, ny": {
+"lat": 40.8466508,
+"lon": -73.8785937,
+"display": "The Bronx, Bronx County, New York, United States",
+"matched": "Bronx, NY",
+"precision": 1
+},
+"hudson river watershed alliance, 36 saint james street, unit e, kingston, ny, 12401": {
+"lat": 41.9287812,
+"lon": -74.0023825,
+"display": "City of Kingston, Ulster County, New York, United States",
+"matched": "Kingston, NY",
+"precision": 3
+},
+"washington, d.c": {
+"lat": 38.8950982,
+"lon": -77.0363849,
+"display": "Washington, District of Columbia, United States",
+"matched": "Washington, D.C",
+"precision": 0
+},
+"amherst, mass.": {
+"lat": 42.3731948,
+"lon": -72.5198761,
+"display": "Amherst, Hampshire County, Massachusetts, United States",
+"matched": "Amherst, Mass.",
+"precision": 0
+},
+"amherst, ma": {
+"lat": 42.3731948,
+"lon": -72.5198761,
+"display": "Amherst, Hampshire County, Massachusetts, United States",
+"matched": "Amherst, MA",
+"precision": 0
+},
+"davidson, nc": {
+"lat": 35.7902384,
+"lon": -80.2115053,
+"display": "Davidson County, North Carolina, United States",
+"matched": "Davidson, NC",
+"precision": 0
+},
+"st. bonaventure, n.y.": {
+"lat": 42.08047,
+"lon": -78.4772369,
+"display": "Saint Bonaventure, Town of Allegany, Cattaraugus County, New York, 14778, United States",
+"matched": "St. Bonaventure, N.Y.",
+"precision": 0
+},
+"lancaster, pa": {
+"lat": 40.0379958,
+"lon": -76.3056707,
+"display": "Lancaster, Lancaster County, Pennsylvania, 17575, United States",
+"matched": "Lancaster, PA",
+"precision": 0
+},
+"chicago, il": {
+"lat": 41.8755616,
+"lon": -87.6244212,
+"display": "Chicago, South Chicago Township, Cook County, Illinois, United States",
+"matched": "Chicago, IL",
+"precision": 0
+},
+"middletown, ct": {
+"lat": 41.5623178,
+"lon": -72.6509061,
+"display": "Middletown, Lower Connecticut River Valley Planning Region, Connecticut, United States",
+"matched": "Middletown, CT",
+"precision": 0
+},
+"flom auditorium, walsh library": null,
+"greenville, n.c.": {
+"lat": 35.613224,
+"lon": -77.3724593,
+"display": "Greenville, Pitt County, North Carolina, United States",
+"matched": "Greenville, N.C.",
+"precision": 0
+},
+"st. lawrence, n.y.": {
+"lat": 44.4973591,
+"lon": -75.0657043,
+"display": "Saint Lawrence County, New York, United States",
+"matched": "St. Lawrence, N.Y.",
+"precision": 0
+},
+"greenville, nc": {
+"lat": 35.613224,
+"lon": -77.3724593,
+"display": "Greenville, Pitt County, North Carolina, United States",
+"matched": "Greenville, NC",
+"precision": 0
+},
+"hampton, va. / hampton aquaplex": {
+"lat": 37.038445,
+"lon": -76.3858737,
+"display": "Hampton Virginia Aquaplex, 1908, Coliseum Drive, West Hampton, Hampton, Virginia, 23666, United States",
+"matched": "Hampton, Va. / Hampton Aquaplex",
+"precision": 0
+},
+"deland, fla.": {
+"lat": 29.0281051,
+"lon": -81.3034183,
+"display": "DeLand, Volusia County, Florida, 32723, United States",
+"matched": "DeLand, Fla.",
+"precision": 0
+},
+"deland, fl": {
+"lat": 29.0281051,
+"lon": -81.3034183,
+"display": "DeLand, Volusia County, Florida, 32723, United States",
+"matched": "DeLand, FL",
+"precision": 0
+},
+"medford, mass., tufts squash center": null,
+"dayton, oh": {
+"lat": 39.7589478,
+"lon": -84.1916069,
+"display": "Dayton, Montgomery County, Ohio, United States",
+"matched": "Dayton, OH",
+"precision": 0
+},
+"philadelphia, pa. (arlen specter)": {
+"lat": 39.9565241,
+"lon": -75.1886844,
+"display": "Arlen Specter US Squash Center, Cuthbert Street, Powelton Village, West Philadelphia, Philadelphia, Philadelphia County, Pennsylvania, 19104, United States",
+"matched": "Philadelphia, Pa. (Arlen Specter)",
+"precision": 0
+},
+"fripp island, s.c. (ocean creek golf course)": null,
+"nashville, tn": {
+"lat": 36.1622767,
+"lon": -86.7742984,
+"display": "Nashville, Davidson County, Middle Tennessee, Tennessee, United States",
+"matched": "Nashville, TN",
+"precision": 0
+},
+"henrico, va., henrico sports & events center": {
+"lat": 37.6770803,
+"lon": -77.4532422,
+"display": "Henrico Sports & Events Center, 11000, Telegraph Road, Glen Allen, Henrico County, Virginia, 23059, United States",
+"matched": "Henrico, Va., Henrico Sports & Events Center",
+"precision": 0
+},
+"clarksville, tn": {
+"lat": 36.5277607,
+"lon": -87.3588703,
+"display": "Clarksville, Montgomery County, Middle Tennessee, Tennessee, United States",
+"matched": "Clarksville, TN",
+"precision": 0
+},
+"richmond, va": {
+"lat": 37.5385087,
+"lon": -77.43428,
+"display": "Richmond, Virginia, United States",
+"matched": "Richmond, VA",
+"precision": 0
+},
+"new britain, conn.": {
+"lat": 41.6611881,
+"lon": -72.7795594,
+"display": "New Britain, Capitol Planning Region, Connecticut, United States",
+"matched": "New Britain, Conn.",
+"precision": 0
+},
+"austin, texas": {
+"lat": 30.2649261,
+"lon": -97.7474086,
+"display": "Austin, Travis County, Texas, United States",
+"matched": "Austin, Texas",
+"precision": 0
+},
+"fairfield, conn., alumni field": {
+"lat": 41.1637735,
+"lon": -73.2585386,
+"display": "Alumni Field, Fairfield, Greater Bridgeport Planning Region, Connecticut, 06824, United States",
+"matched": "Fairfield, Conn., Alumni Field",
+"precision": 0
+},
+"la jolla, calif. (torrey pines golf course)": {
+"lat": 32.8968959,
+"lon": -117.2455316,
+"display": "Torrey Pines South Course, 11480, North Torrey Pines Road, Torrey Pines, San Diego, San Diego County, California, 92037, United States",
+"matched": "La Jolla, Calif. (Torrey Pines Golf Course)",
+"precision": 0
+},
+"hempstead, ny": {
+"lat": 40.6736812,
+"lon": -73.6190736,
+"display": "Town of Hempstead, Nassau County, New York, United States",
+"matched": "Hempstead, NY",
+"precision": 0
+},
+"berlin, md. (rum pointe gc)": null,
+"springfield, pa. (rolling green golf club)": {
+"lat": 39.9457389,
+"lon": -75.3383248,
+"display": "Rolling Green Golf Club, Old State Road, Springfield Township, Delaware County, Pennsylvania, 19064, United States",
+"matched": "Springfield, Pa. (Rolling Green Golf Club)",
+"precision": 0
+},
+"easton, penn. (northampton cc)": null,
+"kingston, n.y. (wiltwyck golf club)": {
+"lat": 41.914838,
+"lon": -74.0399259,
+"display": "Wiltwyck Golf Club, 404, Stewart Lane, Hillside, City of Kingston, Town of Ulster, Ulster County, New York, 12401, United States",
+"matched": "Kingston, N.Y. (Wiltwyck Golf Club)",
+"precision": 0
+},
+"west haven, ct": {
+"lat": 41.2706527,
+"lon": -72.9470471,
+"display": "West Haven, South Central Connecticut Planning Region, Connecticut, 06516, United States",
+"matched": "West Haven, CT",
+"precision": 0
+},
+"orlando, fla. (evermore)": {
+"lat": 28.4093432,
+"lon": -81.5269461,
+"display": "Conrad Orlando, 1500, Eastbeach Way, Evermore Houses, Orlando, Orange County, Florida, 32836, United States",
+"matched": "Orlando, Fla. (Evermore)",
+"precision": 0
+},
+"the library, pleasant valley library, 1584 main st, pleasant valley, ny, 12569": {
+"lat": 41.7443444,
+"lon": -73.8247785,
+"display": "Pleasant Valley, Town of Pleasant Valley, Dutchess County, New York, 12569, United States",
+"matched": "Pleasant Valley, NY",
+"precision": 3
+},
+"main area, beekman library, 11 town center blvd, hopewell jct, ny, 12533": {
+"lat": 41.5810881,
+"lon": -73.8106688,
+"display": "Hopewell Junction, Town of East Fishkill, Dutchess County, New York, United States",
+"matched": "Hopewell JCT, NY",
+"precision": 3
+},
+"125 phelps way": {
+"lat": 41.1117367,
+"lon": -73.8362081,
+"display": "Visitor's Center, 125, Phelps Way, Philipse Manor, Town of Mount Pleasant, Westchester County, New York, 10570, United States",
+"matched": "125 Phelps Way",
+"precision": 0
+},
+"195a east post rd": {
+"lat": 36.0747011,
+"lon": -115.0858447,
+"display": "East Post Road, Whitney, Clark County, Nevada, 89120, United States",
+"matched": "195A East Post Rd",
+"precision": 0
+},
+"125 phelps way, pleasantville, ny 10570, usa": {
+"lat": 41.1117367,
+"lon": -73.8362081,
+"display": "Visitor's Center, 125, Phelps Way, Philipse Manor, Town of Mount Pleasant, Westchester County, New York, 10570, United States",
+"matched": "125 Phelps Way, Pleasantville, NY 10570",
+"precision": 0
+},
+"4079 albany post road": {
+"lat": 41.7692781,
+"lon": -73.9339335,
+"display": "4079, Albany Post Road, Town of Hyde Park, Dutchess County, New York, 12538, United States",
+"matched": "4079 Albany Post Road",
+"precision": 0
+},
+"c4wm+2v, nelsonville, ny 10516, usa": {
+"lat": 41.4245276,
+"lon": -73.94692,
+"display": "Village of Nelsonville, Town of Philipstown, Putnam County, New York, United States",
+"matched": "Nelsonville, NY 10516",
+"precision": 1
+},
+"s. franklin avenue and artopee way": null,
+"201 hawley rd": {
+"lat": 44.3927158,
+"lon": -73.2085081,
+"display": "201, Hawley Road, Shelburne, Chittenden County, Vermont, 05482, United States",
+"matched": "201 Hawley Rd",
+"precision": 0
+},
+"41 main st": {
+"lat": 54.2117685,
+"lon": -3.2747913,
+"display": "The Plough Inn, 41, Holborn Hill, Knott End, Haverigg, Millom, Cumberland, England, LA18 5BH, United Kingdom",
+"matched": "41 Main St",
+"precision": 0
+},
+"albany st, glasco, ny 12432, usa": {
+"lat": 42.0428458,
+"lon": -73.9434184,
+"display": "Albany Street, Glasco, Town of Saugerties, Ulster County, New York, 12432, United States",
+"matched": "Albany St, Glasco, NY 12432",
+"precision": 0
+},
+"427 main street, main program room": null,
+"43 south main st": {
+"lat": 35.1440674,
+"lon": -90.0535305,
+"display": "Botto Jewelry Market, 43, South Main Street, Beale Street Historic District, Downtown, Memphis, Shelby County, West Tennessee, Tennessee, 38103, United States",
+"matched": "43 South Main St",
+"precision": 0
+},
+"88 south colden st, newburgh, ny 12550, usa": {
+"lat": 41.5000767,
+"lon": -74.0098299,
+"display": "City of Newburgh, Orange County, New York, United States",
+"matched": "Newburgh, NY 12550",
+"precision": 1
+},
+"will be sent to attendees prior to the event": null,
+"56 pole bridge rd, sandy hook, ct 06482, usa": {
+"lat": 41.4201499,
+"lon": -73.2817075,
+"display": "Sandy Hook, Newtown, Western Connecticut Planning Region, Connecticut, 06482, United States",
+"matched": "Sandy Hook, CT 06482",
+"precision": 1
+},
+"560 south avenue": {
+"lat": 43.1447497,
+"lon": -77.6046322,
+"display": "560, South Avenue, South Wedge, City of Rochester, Monroe County, New York, 14620, United States",
+"matched": "560 South Avenue",
+"precision": 0
+},
+"227 greenwood ave,": {
+"lat": 43.6700908,
+"lon": -79.3274696,
+"display": "227, Greenwood Avenue, Greenwood-Coxwell, Toronto\u2014Danforth, Toronto, Ontario, M4L 1Y7, Canada",
+"matched": "227 Greenwood Ave",
+"precision": 0
+},
+"430-442 breakneck rd": null,
+"19 rose hill, red hook, ny 12571, usa": {
+"lat": 42.0085286,
+"lon": -73.8504407,
+"display": "19, Rose Hill, Town of Red Hook, Dutchess County, New York, 12571, United States",
+"matched": "19 Rose Hill, Red Hook, NY 12571",
+"precision": 0
+},
+"178 main st, poughkeepsie, ny 12601, usa": {
+"lat": 41.7049382,
+"lon": -73.9324488,
+"display": "Zeus Brewing Company, 178, Main Street, City of Poughkeepsie, Dutchess County, New York, 12601, United States",
+"matched": "178 Main St, Poughkeepsie, NY 12601",
+"precision": 0
+},
+"423 tarrytown road": {
+"lat": 41.0429806,
+"lon": -73.7974095,
+"display": "423, Tarrytown Road, Fairview, City of White Plains, Town of Greenburgh, Westchester County, New York, 10607, United States",
+"matched": "423 Tarrytown Road",
+"precision": 0
+},
+"189 greenwood ave": {
+"lat": 43.6693,
+"lon": -79.32698,
+"display": "189, Greenwood Avenue, Greenwood-Coxwell, Toronto\u2014Danforth, Toronto, Ontario, M4L 1Y7, Canada",
+"matched": "189 Greenwood Ave",
+"precision": 0
+},
+"88 colden street": {
+"lat": 41.4973386,
+"lon": -74.0080018,
+"display": "88, Colden Street, Varick Homes, City of Newburgh, Orange County, New York, 12550, United States",
+"matched": "88 Colden Street",
+"precision": 0
+},
+"91 mamaroneck ave": {
+"lat": 41.0303221,
+"lon": -73.7653825,
+"display": "91, Mamaroneck Avenue, City of White Plains, Westchester County, New York, 10601, United States",
+"matched": "91 Mamaroneck Ave",
+"precision": 0
+},
+"445 main st": {
+"lat": 45.4009605,
+"lon": -75.6730689,
+"display": "445, Main Street, Old Ottawa East, Capital, Ottawa, Eastern Ontario, Ontario, K1H 1A2, Canada",
+"matched": "445 Main St",
+"precision": 0
+},
+"343 lakeside road": {
+"lat": 41.5481172,
+"lon": -74.0963764,
+"display": "343, Lakeside Road, Leptondale, Orange Lake, Town of Newburgh, Orange County, New York, 12586, United States",
+"matched": "343 Lakeside Road",
+"precision": 0
+},
+"42 route 218": {
+"lat": 46.3652383,
+"lon": -72.0067949,
+"display": "Route 218, Manseau, B\u00e9cancour (MRC), Centre-du-Qu\u00e9bec, Qu\u00e9bec, G1J 1Y2, Canada",
+"matched": "42 Route 218",
+"precision": 0
+},
+"1015 little britain road": {
+"lat": 41.4860938,
+"lon": -74.091292,
+"display": "1015, Little Britain Road, Town of New Windsor, Orange County, New York, 12553, United States",
+"matched": "1015 Little Britain Road",
+"precision": 0
+},
+"3 veterans dr, new paltz, ny 12561, usa": {
+"lat": 41.7564441,
+"lon": -74.0806186,
+"display": "New Paltz Community Center, 3, Veterans Drive, Village of New Paltz, Town of New Paltz, Ulster County, New York, 12561, United States",
+"matched": "3 Veterans Dr, New Paltz, NY 12561",
+"precision": 0
+},
+"13 spencer place": {
+"lat": 40.9119038,
+"lon": -73.8972933,
+"display": "13, Spencer Place, Lowerre, City of Yonkers, Westchester County, New York, 10705, United States",
+"matched": "13 Spencer Place",
+"precision": 0
+},
+"local history room, irvington public library, irvington, ny": {
+"lat": 41.0396316,
+"lon": -73.8726902,
+"display": "Irvington Public Library, South Astor Street, Village of Irvington, Town of Greenburgh, Westchester County, New York, 10533, United States",
+"matched": "Irvington Public Library, Irvington, NY",
+"precision": 1
+},
+"fiction room, grinnell library, wappingers falls, wappingers falls, ny": {
+"lat": 41.5983619,
+"lon": -73.9184564,
+"display": "Grinnell Public Library, 2642, East Main Street, Village of Wappingers Falls, Town of Wappinger, Dutchess County, New York, 12590, United States",
+"matched": "Grinnell Library, Wappingers Falls, Wappingers Falls, NY",
+"precision": 1
+},
+"online, grinnell library, wappingers falls, wappingers falls, ny": {
+"lat": 41.5983619,
+"lon": -73.9184564,
+"display": "Grinnell Public Library, 2642, East Main Street, Village of Wappingers Falls, Town of Wappinger, Dutchess County, New York, 12590, United States",
+"matched": "Grinnell Library, Wappingers Falls, Wappingers Falls, NY",
+"precision": 1
+},
+"boe/library lobby, main library - grand st., riverview meeting room, newburgh free library, newburgh, ny": {
+"lat": 41.5000767,
+"lon": -74.0098299,
+"display": "City of Newburgh, Orange County, New York, United States",
+"matched": "Newburgh, NY",
+"precision": 3
+},
+"boe auditorium, newburgh free library, newburgh, ny": {
+"lat": 41.5036031,
+"lon": -74.0084233,
+"display": "Newburgh Free Library, 124, Grand Street, Varick Homes, City of Newburgh, Orange County, New York, 12550, United States",
+"matched": "Newburgh Free Library, Newburgh, NY",
+"precision": 1
+},
+"2nd floor meeting space, newburgh free library, newburgh, ny": {
+"lat": 41.5036031,
+"lon": -74.0084233,
+"display": "Newburgh Free Library, 124, Grand Street, Varick Homes, City of Newburgh, Orange County, New York, 12550, United States",
+"matched": "Newburgh Free Library, Newburgh, NY",
+"precision": 1
+},
+"nissen carousel, 30 west broad street, stamford, ct": {
+"lat": 41.055698,
+"lon": -73.545433,
+"display": "30, West Broad Street, Northfield, Stamford, Western Connecticut Planning Region, Connecticut, 06902, United States",
+"matched": "30 West Broad Street, Stamford, CT",
+"precision": 1
+},
+"mill river park, 1040 washington blvd., stamford, ct": {
+"lat": 41.0534311,
+"lon": -73.5438766,
+"display": "Whittingham Discovery Center, 1040, Washington Boulevard, Northfield, Stamford, Western Connecticut Planning Region, Connecticut, 06901, United States",
+"matched": "1040 Washington Blvd., Stamford, CT",
+"precision": 1
+},
+"whittingham discovery center, 17 w park place, stamford, ct": {
+"lat": 41.0535964,
+"lon": -73.544249,
+"display": "17, West Park Place, Glenbrook, Stamford, Western Connecticut Planning Region, Connecticut, 06901, United States",
+"matched": "17 W Park Place, Stamford, CT",
+"precision": 1
+},
+"307 hawthorne avenue, derby, ct": {
+"lat": 41.3308192,
+"lon": -73.1007946,
+"display": "Derby Neck Library, 307, Hawthorne Avenue, East Derby, Derby, Naugatuck Valley Planning Region, Connecticut, 06418, United States",
+"matched": "307 Hawthorne Avenue, Derby, CT",
+"precision": 0
+},
+"ritz theater, 107 broadway, newburgh, ny, 12550": {
+"lat": 41.4994885,
+"lon": -74.0113888,
+"display": "107, Broadway, Varick Homes, City of Newburgh, Orange County, New York, 12550, United States",
+"matched": "107 Broadway, Newburgh, NY",
+"precision": 1
+},
+"lowenstein center, ll 524": null,
+"science building, 181 white st., danbury, ct": {
+"lat": 41.4004954,
+"lon": -73.445022,
+"display": "Western Connecticut State University, 181, White Street, Main Street Historic District, Germantown, Danbury, Western Connecticut Planning Region, Connecticut, 06810, United States",
+"matched": "181 White St., Danbury, CT",
+"precision": 1
+},
+"o\u2019neill center, 43 lake ave. extension, danbury, ct": {
+"lat": 41.386653,
+"lon": -73.487807,
+"display": "43, Lake Avenue Extension, Beckettville, Danbury, Western Connecticut Planning Region, Connecticut, 06811, United States",
+"matched": "43 Lake Ave. Extension, Danbury, CT",
+"precision": 1
+},
+"o\u2019hare special collections, 4th floor | walsh family library": null,
+"300 boston post road, west haven, ct, usa (rm: f lounge)": null,
+"westchester county center, 98 central park avenue, white plains, 10601, united states": null,
+"beckerman recreation center - group fitness studio 205, west haven, ct": {
+"lat": 41.2706527,
+"lon": -72.9470471,
+"display": "West Haven, South Central Connecticut Planning Region, Connecticut, 06516, United States",
+"matched": "West Haven, CT",
+"precision": 1
+},
+"echlin (rm: 209), west haven, ct": {
+"lat": 41.2706527,
+"lon": -72.9470471,
+"display": "West Haven, South Central Connecticut Planning Region, Connecticut, 06516, United States",
+"matched": "West Haven, CT",
+"precision": 1
+},
+"300 boston post road, west haven, ct, usa (rm: bergami 301)": null,
+"fairfield university - jesuit community center (st. ignatius hall), fairfield, ct": {
+"lat": 41.1412078,
+"lon": -73.2637258,
+"display": "Fairfield, Greater Bridgeport Planning Region, Connecticut, United States",
+"matched": "Fairfield, CT",
+"precision": 1
+},
+"cohen skating center, 1040 washington boulevard, stamford, ct": {
+"lat": 41.0534311,
+"lon": -73.5438766,
+"display": "Whittingham Discovery Center, 1040, Washington Boulevard, Northfield, Stamford, Western Connecticut Planning Region, Connecticut, 06901, United States",
+"matched": "1040 Washington Boulevard, Stamford, CT",
+"precision": 1
+},
+"230 sawmill river rd., (in plaza, intersection of 133 and 100) upstairs": null,
+"97 broadway": {
+"lat": 51.509729,
+"lon": -0.3259246,
+"display": "Cake Box, 97, Broadway, West Ealing, Hanwell, London Borough of Ealing, Greater London, England, W13 9BP, United Kingdom",
+"matched": "97 Broadway",
+"precision": 0
+},
+"23 long dock rd.": {
+"lat": 41.5038406,
+"lon": -73.9873484,
+"display": "Kayak Storage, 23, Long Dock Road, City of Beacon, Dutchess County, New York, 12508, United States",
+"matched": "23 Long Dock Rd.",
+"precision": 0
+},
+"178 main street": {
+"lat": 36.1400372,
+"lon": -5.3538171,
+"display": "Gelateria Dolce Vita, 178, Main Street, Villa Vieja, Gibraltar, GX11 1AA, Gibraltar",
+"matched": "178 Main Street",
+"precision": 0
+},
+"route 52": {
+"lat": 49.9039109,
+"lon": -97.134958,
+"display": "Main Street, St. Boniface, Downtown, Winnipeg, Manitoba, R2W 3N4, Canada",
+"matched": "Route 52",
+"precision": 0
+},
+"youth floor, putnam valley, ny": {
+"lat": 41.3406164,
+"lon": -73.8769558,
+"display": "Town of Putnam Valley, Putnam County, New York, United States",
+"matched": "Putnam Valley, NY",
+"precision": 1
+},
+"meeting room, putnam valley, ny": {
+"lat": 41.3406164,
+"lon": -73.8769558,
+"display": "Town of Putnam Valley, Putnam County, New York, United States",
+"matched": "Putnam Valley, NY",
+"precision": 1
+},
+"community room, 30 oscawana lake road, putnam valley ny 10579-3009": {
+"lat": 41.3363858,
+"lon": -73.8740889,
+"display": "30, Oscawana Lake Road, Crofts Corners, Town of Putnam Valley, Putnam County, New York, 10579, United States",
+"matched": "30 Oscawana Lake Road, Putnam Valley NY 10579-3009",
+"precision": 1
+},
+"fireplace room, putnam valley, ny": {
+"lat": 41.3406164,
+"lon": -73.8769558,
+"display": "Town of Putnam Valley, Putnam County, New York, United States",
+"matched": "Putnam Valley, NY",
+"precision": 1
+},
+"zoom, putnam valley, ny": {
+"lat": 41.3406164,
+"lon": -73.8769558,
+"display": "Town of Putnam Valley, Putnam County, New York, United States",
+"matched": "Putnam Valley, NY",
+"precision": 1
+},
+"main room, howland public library, 313 main street, beacon, ny, 12508": {
+"lat": 41.5053602,
+"lon": -73.9710687,
+"display": "Howland Public Library, 313, Main Street, City of Beacon, Dutchess County, New York, 12508, United States",
+"matched": "Howland Public Library, 313 Main Street, Beacon, NY",
+"precision": 1
+},
+"world's end comics, 319 wall street, unit 1, kingston, ny, 12401": {
+"lat": 41.9287812,
+"lon": -74.0023825,
+"display": "City of Kingston, Ulster County, New York, United States",
+"matched": "Kingston, NY",
+"precision": 3
+},
+"meeting room, kingston library, new york (uptown), 61 crown street, kingston, ny, 12401": {
+"lat": 41.9287812,
+"lon": -74.0023825,
+"display": "City of Kingston, Ulster County, New York, United States",
+"matched": "Kingston, NY",
+"precision": 3
+},
+"teen space, kingston library, new york (uptown), 61 crown street, kingston, ny, 12401": {
+"lat": 41.9287812,
+"lon": -74.0023825,
+"display": "City of Kingston, Ulster County, New York, United States",
+"matched": "Kingston, NY",
+"precision": 3
+},
+"lagrange association library, lagrange association library, 1110 route 55, lagrangeville, ny, 12540": {
+"lat": 41.6504465,
+"lon": -73.7642453,
+"display": "Lagrangeville, Town of La Grange, Dutchess County, New York, 12540, United States",
+"matched": "LaGrangeville, NY",
+"precision": 3
+},
+"children's program room, lagrange association library, 1110 route 55, lagrangeville, ny, 12540": {
+"lat": 41.6504465,
+"lon": -73.7642453,
+"display": "Lagrangeville, Town of La Grange, Dutchess County, New York, 12540, United States",
+"matched": "LaGrangeville, NY",
+"precision": 3
+},
+"children's play area, lagrange association library, 1110 route 55, lagrangeville, ny, 12540": {
+"lat": 41.6504465,
+"lon": -73.7642453,
+"display": "Lagrangeville, Town of La Grange, Dutchess County, New York, 12540, United States",
+"matched": "LaGrangeville, NY",
+"precision": 3
+},
+"zoom, virtual, 1110 route 55, lagrangeville, ny, 12540": {
+"lat": 41.6504465,
+"lon": -73.7642453,
+"display": "Lagrangeville, Town of La Grange, Dutchess County, New York, 12540, United States",
+"matched": "LaGrangeville, NY",
+"precision": 3
+},
+"located in the teen room": null,
+"email": {
+"lat": -7.0850248,
+"lon": -37.4444879,
+"display": "Correios, Rua Jos\u00e9 Nunes, Santa Terezinha, Para\u00edba, Regi\u00e3o Nordeste, Brasil",
+"matched": "Email",
+"precision": 0
+},
+"located in the reading room": null,
+"in the children's room": null,
+"go to the reference desk": null,
+"a zoom presentation": null,
+"miss julie's project room, pleasant valley library, 1584 main st, pleasant valley, ny, 12569": {
+"lat": 41.7443444,
+"lon": -73.8247785,
+"display": "Pleasant Valley, Town of Pleasant Valley, Dutchess County, New York, 12569, United States",
+"matched": "Pleasant Valley, NY",
+"precision": 3
+},
+"teen room, pleasant valley library, 1584 main st, pleasant valley, ny, 12569": {
+"lat": 41.7443444,
+"lon": -73.8247785,
+"display": "Pleasant Valley, Town of Pleasant Valley, Dutchess County, New York, 12569, United States",
+"matched": "Pleasant Valley, NY",
+"precision": 3
+},
+"children's garden, red hook public library, 7444 s broadway, red hook, ny, 12571": {
+"lat": 41.9933277,
+"lon": -73.8768137,
+"display": "Red Hook Public Library, 7444, South Broadway, Village of Red Hook, Town of Red Hook, Dutchess County, New York, 12571, United States",
+"matched": "Red Hook Public Library, 7444 S Broadway, Red Hook, NY",
+"precision": 1
+},
+"taste budd's cafe": {
+"lat": 41.9952928,
+"lon": -73.8772684,
+"display": "Taste Budd's Cafe, 40, West Market Street, Village of Red Hook, Town of Red Hook, Dutchess County, New York, 12571, United States",
+"matched": "Taste Budd's Cafe",
+"precision": 0
+},
+"lasting joy, 485 lasher rd, tivoli, ny, 12583": {
+"lat": 42.0633168,
+"lon": -73.8533777,
+"display": "485, Lasher Road, Nevis, Town of Clermont, Columbia County, New York, 12583, United States",
+"matched": "485 Lasher Rd, Tivoli, NY",
+"precision": 1
+},
+"the fisher center at bard, 30 campus road, annandale-on-hudson, ny, 12504": {
+"lat": 42.0225482,
+"lon": -73.9107242,
+"display": "Bard College, 30, Campus Road, Annandale-on-Hudson, Town of Red Hook, Dutchess County, New York, 12504, United States",
+"matched": "30 Campus Road, Annandale-on-Hudson, NY",
+"precision": 1
+},
+"outdoors, beekman library, 11 town center blvd, hopewell jct, ny, 12533": {
+"lat": 41.5810881,
+"lon": -73.8106688,
+"display": "Hopewell Junction, Town of East Fishkill, Dutchess County, New York, United States",
+"matched": "Hopewell JCT, NY",
+"precision": 3
+},
+"garden view room, mahopac public library, 668 route 6, mahopac, ny, 10541": {
+"lat": 41.3712985,
+"lon": -73.7390641,
+"display": "Mahopac, Town of Carmel, Putnam County, New York, United States",
+"matched": "Mahopac, NY",
+"precision": 3
+},
+"land use room, mahopac public library, 668 route 6, mahopac, ny, 10541": {
+"lat": 41.3712985,
+"lon": -73.7390641,
+"display": "Mahopac, Town of Carmel, Putnam County, New York, United States",
+"matched": "Mahopac, NY",
+"precision": 3
+},
+"third floor gallery, mahopac public library, 668 route 6, mahopac, ny, 10541": {
+"lat": 41.3712985,
+"lon": -73.7390641,
+"display": "Mahopac, Town of Carmel, Putnam County, New York, United States",
+"matched": "Mahopac, NY",
+"precision": 3
+},
+"youth services program room, howland public library, 313 main street, beacon, ny": {
+"lat": 41.5053602,
+"lon": -73.9710687,
+"display": "Howland Public Library, 313, Main Street, City of Beacon, Dutchess County, New York, 12508, United States",
+"matched": "Howland Public Library, 313 Main Street, Beacon, NY",
+"precision": 1
+},
+"main room, howland public library, 313 main street, beacon, ny": {
+"lat": 41.5053602,
+"lon": -73.9710687,
+"display": "Howland Public Library, 313, Main Street, City of Beacon, Dutchess County, New York, 12508, United States",
+"matched": "Howland Public Library, 313 Main Street, Beacon, NY",
+"precision": 1
+},
+"community room, howland public library, 313 main street, beacon, ny": {
+"lat": 41.5053602,
+"lon": -73.9710687,
+"display": "Howland Public Library, 313, Main Street, City of Beacon, Dutchess County, New York, 12508, United States",
+"matched": "Howland Public Library, 313 Main Street, Beacon, NY",
+"precision": 1
+},
+"311 learning annex, howland public library, 313 main street, beacon, ny": {
+"lat": 41.5053602,
+"lon": -73.9710687,
+"display": "Howland Public Library, 313, Main Street, City of Beacon, Dutchess County, New York, 12508, United States",
+"matched": "Howland Public Library, 313 Main Street, Beacon, NY",
+"precision": 1
+},
+"community room, kingston library, new york (uptown), 61 crown street, kingston, ny": {
+"lat": 41.9345405,
+"lon": -74.0076523,
+"display": "Community Room, Albany Avenue, Stockade District, City of Kingston, Ulster County, New York, 12401, United States",
+"matched": "Community Room, Kingston, NY",
+"precision": 2
+},
+"world's end comics, 319 wall street, unit 1, kingston, ny": {
+"lat": 41.9287812,
+"lon": -74.0023825,
+"display": "City of Kingston, Ulster County, New York, United States",
+"matched": "Kingston, NY",
+"precision": 3
+},
+"meeting room, kingston library, new york (uptown), 61 crown street, kingston, ny": {
+"lat": 41.9287812,
+"lon": -74.0023825,
+"display": "City of Kingston, Ulster County, New York, United States",
+"matched": "Kingston, NY",
+"precision": 3
+},
+"teen space, kingston library, new york (uptown), 61 crown street, kingston, ny": {
+"lat": 41.9287812,
+"lon": -74.0023825,
+"display": "City of Kingston, Ulster County, New York, United States",
+"matched": "Kingston, NY",
+"precision": 3
+},
+"lagrange association library, lagrange association library, 1110 route 55, lagrangeville, ny": {
+"lat": 41.6504465,
+"lon": -73.7642453,
+"display": "Lagrangeville, Town of La Grange, Dutchess County, New York, 12540, United States",
+"matched": "LaGrangeville, NY",
+"precision": 3
+},
+"children's program room, lagrange association library, 1110 route 55, lagrangeville, ny": {
+"lat": 41.6504465,
+"lon": -73.7642453,
+"display": "Lagrangeville, Town of La Grange, Dutchess County, New York, 12540, United States",
+"matched": "LaGrangeville, NY",
+"precision": 3
+},
+"community room, lagrange association library, 1110 route 55, lagrangeville, ny": {
+"lat": 41.6504465,
+"lon": -73.7642453,
+"display": "Lagrangeville, Town of La Grange, Dutchess County, New York, 12540, United States",
+"matched": "LaGrangeville, NY",
+"precision": 3
+},
+"children's play area, lagrange association library, 1110 route 55, lagrangeville, ny": {
+"lat": 41.6504465,
+"lon": -73.7642453,
+"display": "Lagrangeville, Town of La Grange, Dutchess County, New York, 12540, United States",
+"matched": "LaGrangeville, NY",
+"precision": 3
+},
+"zoom, virtual, 1110 route 55, lagrangeville, ny": {
+"lat": 41.6504465,
+"lon": -73.7642453,
+"display": "Lagrangeville, Town of La Grange, Dutchess County, New York, 12540, United States",
+"matched": "LaGrangeville, NY",
+"precision": 3
+},
+"conference room, lagrange association library, 1110 route 55, lagrangeville, ny": {
+"lat": 41.6504465,
+"lon": -73.7642453,
+"display": "Lagrangeville, Town of La Grange, Dutchess County, New York, 12540, United States",
+"matched": "LaGrangeville, NY",
+"precision": 3
+},
+"the library, pleasant valley library, 1584 main st, pleasant valley, ny": {
+"lat": 41.7443444,
+"lon": -73.8247785,
+"display": "Pleasant Valley, Town of Pleasant Valley, Dutchess County, New York, 12569, United States",
+"matched": "Pleasant Valley, NY",
+"precision": 3
+},
+"conference room, pleasant valley library, 1584 main st, pleasant valley, ny": {
+"lat": 41.7443444,
+"lon": -73.8247785,
+"display": "Pleasant Valley, Town of Pleasant Valley, Dutchess County, New York, 12569, United States",
+"matched": "Pleasant Valley, NY",
+"precision": 3
+},
+"miss julie's project room, pleasant valley library, 1584 main st, pleasant valley, ny": {
+"lat": 41.7443444,
+"lon": -73.8247785,
+"display": "Pleasant Valley, Town of Pleasant Valley, Dutchess County, New York, 12569, United States",
+"matched": "Pleasant Valley, NY",
+"precision": 3
+},
+"community room, pleasant valley library, 1584 main st, pleasant valley, ny": {
+"lat": 41.7443444,
+"lon": -73.8247785,
+"display": "Pleasant Valley, Town of Pleasant Valley, Dutchess County, New York, 12569, United States",
+"matched": "Pleasant Valley, NY",
+"precision": 3
+},
+"teen room, pleasant valley library, 1584 main st, pleasant valley, ny": {
+"lat": 41.7443444,
+"lon": -73.8247785,
+"display": "Pleasant Valley, Town of Pleasant Valley, Dutchess County, New York, 12569, United States",
+"matched": "Pleasant Valley, NY",
+"precision": 3
+},
+"study room, pleasant valley library, 1584 main st, pleasant valley, ny": {
+"lat": 41.7443444,
+"lon": -73.8247785,
+"display": "Pleasant Valley, Town of Pleasant Valley, Dutchess County, New York, 12569, United States",
+"matched": "Pleasant Valley, NY",
+"precision": 3
+},
+"children's section, red hook public library, 7444 s broadway, red hook, ny": {
+"lat": 41.9933277,
+"lon": -73.8768137,
+"display": "Red Hook Public Library, 7444, South Broadway, Village of Red Hook, Town of Red Hook, Dutchess County, New York, 12571, United States",
+"matched": "Red Hook Public Library, 7444 S Broadway, Red Hook, NY",
+"precision": 1
+},
+"community room, red hook public library, 7444 s broadway, red hook, ny": {
+"lat": 41.9933277,
+"lon": -73.8768137,
+"display": "Red Hook Public Library, 7444, South Broadway, Village of Red Hook, Town of Red Hook, Dutchess County, New York, 12571, United States",
+"matched": "Red Hook Public Library, 7444 S Broadway, Red Hook, NY",
+"precision": 1
+},
+"children's garden, red hook public library, 7444 s broadway, red hook, ny": {
+"lat": 41.9933277,
+"lon": -73.8768137,
+"display": "Red Hook Public Library, 7444, South Broadway, Village of Red Hook, Town of Red Hook, Dutchess County, New York, 12571, United States",
+"matched": "Red Hook Public Library, 7444 S Broadway, Red Hook, NY",
+"precision": 1
+},
+"teen room, red hook public library, 7444 s broadway, red hook, ny": {
+"lat": 41.9933277,
+"lon": -73.8768137,
+"display": "Red Hook Public Library, 7444, South Broadway, Village of Red Hook, Town of Red Hook, Dutchess County, New York, 12571, United States",
+"matched": "Red Hook Public Library, 7444 S Broadway, Red Hook, NY",
+"precision": 1
+},
+"lasting joy, 485 lasher rd, tivoli, ny": {
+"lat": 42.0633168,
+"lon": -73.8533777,
+"display": "485, Lasher Road, Nevis, Town of Clermont, Columbia County, New York, 12583, United States",
+"matched": "485 Lasher Rd, Tivoli, NY",
+"precision": 1
+},
+"the fisher center at bard, 30 campus road, annandale-on-hudson, ny": {
+"lat": 42.0225482,
+"lon": -73.9107242,
+"display": "Bard College, 30, Campus Road, Annandale-on-Hudson, Town of Red Hook, Dutchess County, New York, 12504, United States",
+"matched": "30 Campus Road, Annandale-on-Hudson, NY",
+"precision": 1
+},
+"lower level program room, beekman library, 11 town center blvd, hopewell jct, ny": {
+"lat": 41.5810881,
+"lon": -73.8106688,
+"display": "Hopewell Junction, Town of East Fishkill, Dutchess County, New York, United States",
+"matched": "Hopewell JCT, NY",
+"precision": 3
+},
+"community room, beekman library, 11 town center blvd, hopewell jct, ny": {
+"lat": 41.5810881,
+"lon": -73.8106688,
+"display": "Hopewell Junction, Town of East Fishkill, Dutchess County, New York, United States",
+"matched": "Hopewell JCT, NY",
+"precision": 3
+},
+"main area, beekman library, 11 town center blvd, hopewell jct, ny": {
+"lat": 41.5810881,
+"lon": -73.8106688,
+"display": "Hopewell Junction, Town of East Fishkill, Dutchess County, New York, United States",
+"matched": "Hopewell JCT, NY",
+"precision": 3
+},
+"outdoors, beekman library, 11 town center blvd, hopewell jct, ny": {
+"lat": 41.5810881,
+"lon": -73.8106688,
+"display": "Hopewell Junction, Town of East Fishkill, Dutchess County, New York, United States",
+"matched": "Hopewell JCT, NY",
+"precision": 3
+},
+"community room, mahopac public library, 668 route 6, mahopac, ny": {
+"lat": 41.3712985,
+"lon": -73.7390641,
+"display": "Mahopac, Town of Carmel, Putnam County, New York, United States",
+"matched": "Mahopac, NY",
+"precision": 3
+},
+"learning lab, mahopac public library, 668 route 6, mahopac, ny": {
+"lat": 41.3712985,
+"lon": -73.7390641,
+"display": "Mahopac, Town of Carmel, Putnam County, New York, United States",
+"matched": "Mahopac, NY",
+"precision": 3
+},
+"lake view room, mahopac public library, 668 route 6, mahopac, ny": {
+"lat": 41.3712985,
+"lon": -73.7390641,
+"display": "Mahopac, Town of Carmel, Putnam County, New York, United States",
+"matched": "Mahopac, NY",
+"precision": 3
+},
+"third floor meeting room, mahopac public library, 668 route 6, mahopac, ny": {
+"lat": 41.3712985,
+"lon": -73.7390641,
+"display": "Mahopac, Town of Carmel, Putnam County, New York, United States",
+"matched": "Mahopac, NY",
+"precision": 3
+},
+"garden view room, mahopac public library, 668 route 6, mahopac, ny": {
+"lat": 41.3712985,
+"lon": -73.7390641,
+"display": "Mahopac, Town of Carmel, Putnam County, New York, United States",
+"matched": "Mahopac, NY",
+"precision": 3
+},
+"virtual - no room needed, mahopac public library, 668 route 6, mahopac, ny": {
+"lat": 41.3712985,
+"lon": -73.7390641,
+"display": "Mahopac, Town of Carmel, Putnam County, New York, United States",
+"matched": "Mahopac, NY",
+"precision": 3
+},
+"conference room, mahopac public library, 668 route 6, mahopac, ny": {
+"lat": 41.3712985,
+"lon": -73.7390641,
+"display": "Mahopac, Town of Carmel, Putnam County, New York, United States",
+"matched": "Mahopac, NY",
+"precision": 3
+},
+"land use room, mahopac public library, 668 route 6, mahopac, ny": {
+"lat": 41.3712985,
+"lon": -73.7390641,
+"display": "Mahopac, Town of Carmel, Putnam County, New York, United States",
+"matched": "Mahopac, NY",
+"precision": 3
+},
+"third floor gallery, mahopac public library, 668 route 6, mahopac, ny": {
+"lat": 41.3712985,
+"lon": -73.7390641,
+"display": "Mahopac, Town of Carmel, Putnam County, New York, United States",
+"matched": "Mahopac, NY",
+"precision": 3
+},
+"1st floor seating area, mahopac public library, 668 route 6, mahopac, ny": {
+"lat": 41.3712985,
+"lon": -73.7390641,
+"display": "Mahopac, Town of Carmel, Putnam County, New York, United States",
+"matched": "Mahopac, NY",
+"precision": 3
 }
 }

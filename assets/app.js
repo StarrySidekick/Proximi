@@ -1898,7 +1898,15 @@
     const claimed = new Set();
 
     for (const place of state.places) {
-      const n = counts.get(place.name) || place.events || 0;
+      /* The feed is the only authority on how many listings a place has.
+         places.json carries an `events` count too, written when the directory
+         was built, and falling back to it was wrong in the one case it fired:
+         a place with nothing in today's feed got the number from whenever the
+         directory last ran. 294 rows promised listings the feed could not
+         show — the row said 11, the peek said 0 — because the row and the
+         filter it opens were reading two different copies of one fact. One
+         owner: count what is in state.items, and nothing there is nothing. */
+      const n = counts.get(place.name) || 0;
       claimed.add(place.name);
       rows.push({ ...place, events: n, _miles: placeMiles(place) });
     }

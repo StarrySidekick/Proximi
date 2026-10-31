@@ -41,7 +41,7 @@
 },
 "https://olivefreelibrary.org/": {
 "price": null,
-"at": "2026-08-30T00:25:33.548057+00:00"
+"at": "2026-10-30T19:41:58.853411+00:00"
 },
 "https://events.msmc.edu/event/mount-saint-mary-college-mens-soccer-vs-bard-college": {
 "price": null,
@@ -661,7 +661,7 @@
 },
 "https://thomaspainecottage.org/": {
 "price": null,
-"at": "2026-08-30T00:29:10.946263+00:00"
+"at": "2026-10-31T15:23:21.540857+00:00"
 },
 "https://www.savagewonder.org/event/savage-wonder-presents-straight-ahead-jazz-project/2026-09-20/": {
 "price": null,
@@ -701,7 +701,7 @@
 },
 "https://lincolndepotmuseum.org/calendar/return-to-freedomland-u-s-a/": {
 "price": null,
-"at": "2026-08-30T00:29:39.283274+00:00"
+"at": "2026-10-31T14:50:51.275133+00:00"
 },
 "https://www.scenichudson.org/events/poughkeepsie-farm-project-fundraiser-dinner/": {
 "price": null,
@@ -821,11 +821,11 @@
 },
 "https://www.westsidecommunitygarden.org/event/tulip-planting-4/2026-11-07/": {
 "price": null,
-"at": "2026-08-30T00:31:01.200537+00:00"
+"at": "2026-10-31T14:50:37.923714+00:00"
 },
 "https://www.westsidecommunitygarden.org/event/tulip-planting-4/2026-11-08/": {
 "price": null,
-"at": "2026-08-30T00:31:02.823784+00:00"
+"at": "2026-10-31T15:02:56.827355+00:00"
 },
 "https://hudsonvalleybrewery.com/calendar/2026/8/30/ramp-jam": {
 "price": null,
@@ -842,5 +842,3537 @@
 "https://riversideparknyc.org/event/bodyroll-workout-6/2026-09-01/": {
 "price": null,
 "at": "2026-08-30T00:31:10.475210+00:00"
+},
+"https://ridgefieldplayhouse.org/event/meet-the-orchestra-ridgefield-ct-2026/": {
+"price": null,
+"at": "2026-10-30T19:41:35.349041+00:00"
+},
+"https://ridgefieldplayhouse.org/event/met-macbeth-ridgefield-ct-2026/": {
+"price": null,
+"at": "2026-10-30T19:41:36.449384+00:00"
+},
+"https://ridgefieldplayhouse.org/event/mike-super-ridgefield-ct-2026/": {
+"price": null,
+"at": "2026-10-30T19:41:37.463326+00:00"
+},
+"https://ridgefieldplayhouse.org/event/michelle-wolf-ridgefield-ct-2026/": {
+"price": null,
+"at": "2026-10-30T19:41:38.535672+00:00"
+},
+"https://ridgefieldplayhouse.org/event/private-event-11-8-2026/": {
+"price": null,
+"at": "2026-10-30T19:41:39.622521+00:00"
+},
+"https://events.fairfield.edu/event/fairfield-university-womens-soccer-vs-saint-peters-7084": {
+"price": null,
+"at": "2026-10-30T19:41:41.361410+00:00"
+},
+"https://events.fairfield.edu/event/fairfield-university-mens-soccer-vs-sacred-heart-4231": {
+"price": null,
+"at": "2026-10-30T19:41:42.557965+00:00"
+},
+"https://events.fairfield.edu/event/fairfield-university-mens-basketball-vs-vermont-4575": {
+"price": null,
+"at": "2026-10-30T19:41:43.982479+00:00"
+},
+"https://events.fairfield.edu/event/fairfield-university-womens-basketball-vs-binghamton": {
+"price": null,
+"at": "2026-10-30T19:41:45.203516+00:00"
+},
+"https://events.fairfield.edu/event/fairfield-university-womens-basketball-vs-vermont": {
+"price": null,
+"at": "2026-10-30T19:41:46.599555+00:00"
+},
+"https://calendar.fordham.edu/event/fordham-university-mens-swimming-and-diving-vs-njit": {
+"price": null,
+"at": "2026-10-30T19:41:47.968591+00:00"
+},
+"https://calendar.fordham.edu/event/fordham-university-womens-swimming-and-diving-vs-columbia": {
+"price": null,
+"at": "2026-10-30T19:41:49.983685+00:00"
+},
+"https://calendar.fordham.edu/event/fordham-university-mens-soccer-vs-saint-josephs-university": {
+"price": null,
+"at": "2026-10-30T19:41:51.711768+00:00"
+},
+"https://calendar.fordham.edu/event/fordham-university-womens-basketball-vs-niagara-university": {
+"price": null,
+"at": "2026-10-30T19:41:53.939795+00:00"
+},
+"https://calendar.fordham.edu/event/fordham-university-womens-basketball-vs-st-thomas-aquinas-college": {
+"price": null,
+"at": "2026-10-30T19:41:57.087366+00:00"
+},
+"https://tubbyskingston.com/calendar/tubbys-halloween-cover-band-battle-night-2": {
+"price": null,
+"at": "2026-10-30T19:41:59.975921+00:00"
+},
+"https://tubbyskingston.com/calendar/tubbys-halloween-cover-band-battle-night-3": {
+"price": null,
+"at": "2026-10-30T19:42:02.038986+00:00"
+},
+"https://events.msmc.edu/event/mount-saint-mary-college-mens-soccer-vs-skyline-conference-championship-first-round": {
+"price": null,
+"at": "2026-10-30T19:42:03.141635+00:00"
+},
+"https://events.msmc.edu/event/mount-saint-mary-college-mens-soccer-vs-skyline-conference-championship-semifinals": {
+"price": null,
+"at": "2026-10-30T19:42:04.558437+00:00"
+},
+"https://tubbyskingston.com/calendar/nick-shows-the-knicks": {
+"price": null,
+"at": "2026-10-30T19:42:07.231135+00:00"
+},
+"https://events.msmc.edu/event/mount-saint-mary-college-womens-volleyball-vs-sarah-lawrence-college-4137": {
+"price": null,
+"at": "2026-10-30T19:42:09.245220+00:00"
+},
+"https://tubbyskingston.com/calendar/ditz": {
+"price": null,
+"at": "2026-10-30T19:42:11.284766+00:00"
+},
+"https://tubbyskingston.com/calendar/fish-narc-phantasia": {
+"price": null,
+"at": "2026-10-30T19:42:13.372321+00:00"
+},
+"https://events.msmc.edu/event/mount-saint-mary-college-mens-basketball-vs-medgar-evers-college": {
+"price": null,
+"at": "2026-10-30T19:42:15.072127+00:00"
+},
+"https://events.msmc.edu/event/mount-saint-mary-college-womens-volleyball-vs-skyline-conference-championship-first-round": {
+"price": null,
+"at": "2026-10-30T19:42:16.295095+00:00"
+},
+"https://desmondfishlibrary.org/event/open-makerspace-hours-2/2026-11-01/": {
+"price": null,
+"at": "2026-10-30T19:42:19.784111+00:00"
+},
+"https://desmondfishlibrary.org/event/giovannis-room/": {
+"price": null,
+"at": "2026-10-30T19:42:25.072674+00:00"
+},
+"https://desmondfishlibrary.org/event/lego-dream-and-design/2026-11-02/": {
+"price": null,
+"at": "2026-10-30T19:42:27.647012+00:00"
+},
+"https://desmondfishlibrary.org/event/baby-storytime-16/2026-11-03/": {
+"price": null,
+"at": "2026-10-30T19:42:30.732016+00:00"
+},
+"https://desmondfishlibrary.org/event/creative-games-meetup/2026-11-03/": {
+"price": null,
+"at": "2026-10-30T19:42:33.448093+00:00"
+},
+"https://mahaiwe.org/event/jeff-tweedy-with-special-guest-case-oats/": {
+"price": null,
+"at": "2026-10-30T19:42:36.182924+00:00"
+},
+"https://mahaiwe.org/event/la-pena-maxima-2/": {
+"price": null,
+"at": "2026-10-30T19:42:38.730025+00:00"
+},
+"https://mahaiwe.org/event/close-encounters-with-music-saluting-the-clarinet-mozart-beethoven-bartok-and-gershwin/": {
+"price": null,
+"at": "2026-10-30T19:42:41.273126+00:00"
+},
+"https://mahaiwe.org/event/londons-national-theatre-in-hd-les-liaisons-dangereuses/": {
+"price": null,
+"at": "2026-10-30T19:42:43.931431+00:00"
+},
+"https://mahaiwe.org/event/samantha-bee-how-to-survive-menopause/": {
+"price": null,
+"at": "2026-10-30T19:42:46.527236+00:00"
+},
+"https://emelin.org/event/the-adventures-of-tortoise-and-hare-the-next-gen-2/": {
+"price": null,
+"at": "2026-10-30T19:42:51.694354+00:00"
+},
+"https://emelin.org/event/best-of-new-york-stand-up-comedy/": {
+"price": {
+"min": 20.0,
+"max": 20.0,
+"note": "from the listing page"
+},
+"at": "2026-10-30T19:42:54.840442+00:00"
+},
+"https://emelin.org/event/a-choreography-showcase-2/": {
+"price": null,
+"at": "2026-10-30T19:42:57.818291+00:00"
+},
+"https://emelin.org/event/cyrille-aimee-2/": {
+"price": null,
+"at": "2026-10-30T19:43:01.415351+00:00"
+},
+"https://emelin.org/event/fall-film-club-2026-4/": {
+"price": null,
+"at": "2026-10-30T19:43:04.081765+00:00"
+},
+"https://emelin.org/event/vitaly/": {
+"price": null,
+"at": "2026-10-30T19:43:07.580156+00:00"
+},
+"https://emelin.org/event/live-and-let-die/": {
+"price": null,
+"at": "2026-10-30T19:43:11.075557+00:00"
+},
+"https://events.newhaven.edu/event/university-of-new-haven-football-vs-duquesne-university": {
+"price": null,
+"at": "2026-10-30T19:43:12.206694+00:00"
+},
+"https://events.newhaven.edu/event/university-of-new-haven-womens-volleyball-vs-mercyhurst-university-2038": {
+"price": null,
+"at": "2026-10-30T19:43:13.665490+00:00"
+},
+"https://burnhamlibrary.org/events/town-event-trunk-or-treat-2/": {
+"price": null,
+"at": "2026-10-30T19:43:15.593125+00:00"
+},
+"https://events.newhaven.edu/event/university-of-new-haven-mens-soccer-vs-fdu": {
+"price": null,
+"at": "2026-10-30T19:43:17.474180+00:00"
+},
+"https://events.newhaven.edu/event/university-of-new-haven-womens-basketball-vs-mitchell-college": {
+"price": null,
+"at": "2026-10-30T19:43:19.615323+00:00"
+},
+"https://burnhamlibrary.org/events/november-artist-desiree-alvarez/": {
+"price": null,
+"at": "2026-10-30T19:43:21.111102+00:00"
+},
+"https://burnhamlibrary.org/events/virtual-author-talk-asha-frost/": {
+"price": null,
+"at": "2026-10-30T19:43:22.579178+00:00"
+},
+"https://burnhamlibrary.org/events/kids-klub-builders-club-grades-2-3/2026-11-04/": {
+"price": null,
+"at": "2026-10-30T19:43:24.118955+00:00"
+},
+"https://burnhamlibrary.org/events/burnham-bunch-fall-storytime/2026-11-05/": {
+"price": null,
+"at": "2026-10-30T19:43:25.697940+00:00"
+},
+"https://events.newhaven.edu/event/university-of-new-haven-football-vs-liu": {
+"price": null,
+"at": "2026-10-30T19:43:26.741184+00:00"
+},
+"https://carriagebarn.org/event/the-joy-of-botanical-printmaking-2/": {
+"price": null,
+"at": "2026-10-30T19:43:28.320181+00:00"
+},
+"https://carriagebarn.org/event/the-beatles/": {
+"price": null,
+"at": "2026-10-30T19:43:29.399622+00:00"
+},
+"https://carriagebarn.org/event/john-constable-yale-british-art/": {
+"price": null,
+"at": "2026-10-30T19:43:30.452673+00:00"
+},
+"https://carriagebarn.org/event/listening-within-a-morning-retreat/": {
+"price": null,
+"at": "2026-10-30T19:43:31.465577+00:00"
+},
+"https://carriagebarn.org/event/waterflower-florals-and-pointed-pen-calligraphy/": {
+"price": null,
+"at": "2026-10-30T19:43:32.552860+00:00"
+},
+"https://whitememorialcc.org/event/shade-swamp-sanctuary-hike-with-ct-deep-habitat-biologist-peter-picone-and-gerri-griswold/": {
+"price": null,
+"at": "2026-10-30T19:43:33.755037+00:00"
+},
+"https://whitememorialcc.org/event/fresh-start-hiking-club/2026-11-03/": {
+"price": null,
+"at": "2026-10-30T19:43:34.727216+00:00"
+},
+"https://whitememorialcc.org/event/back-to-nature-basics-grades-5-8/": {
+"price": null,
+"at": "2026-10-30T19:43:35.659672+00:00"
+},
+"https://whitememorialcc.org/event/tiny-trekking-with-kelly-orr-9/": {
+"price": null,
+"at": "2026-10-30T19:43:36.574884+00:00"
+},
+"https://whitememorialcc.org/event/artistry-in-nature-teen-trek-following-in-the-footsteps-of-violetta-white-delafield-with-colleen-harrak/": {
+"price": null,
+"at": "2026-10-30T19:43:37.419427+00:00"
+},
+"https://rosendaletheatre.org/movies/the-devils/": {
+"price": null,
+"at": "2026-10-30T19:43:38.654404+00:00"
+},
+"https://rosendaletheatre.org/movies/sunday-silents-waxworks-1924/": {
+"price": {
+"min": 7.0,
+"max": 7.0,
+"note": "from the listing page"
+},
+"at": "2026-10-30T19:43:39.854193+00:00"
+},
+"https://rosendaletheatre.org/movies/coco-2017/": {
+"price": {
+"min": 0.0,
+"max": 0.0,
+"note": "from the listing page"
+},
+"at": "2026-10-30T19:43:40.930948+00:00"
+},
+"https://rosendaletheatre.org/movies/darn-good-docs-the-work-in-progress/": {
+"price": {
+"min": 11.0,
+"max": 11.0,
+"note": "from the listing page"
+},
+"at": "2026-10-30T19:43:42.022029+00:00"
+},
+"https://rosendaletheatre.org/movies/your-mother-your-mother-your-mother/": {
+"price": null,
+"at": "2026-10-30T19:43:43.344579+00:00"
+},
+"https://rosendaletheatre.org/movies/allowed-to-birth-the-journey-of-a-global-midwife/": {
+"price": {
+"min": 25.0,
+"max": 25.0,
+"note": "from the listing page"
+},
+"at": "2026-10-30T19:43:44.705044+00:00"
+},
+"https://rosendaletheatre.org/movies/naza/": {
+"price": {
+"min": 11.0,
+"max": 11.0,
+"note": "from the listing page"
+},
+"at": "2026-10-30T19:43:45.722603+00:00"
+},
+"https://rosendaletheatre.org/movies/wicker/": {
+"price": null,
+"at": "2026-10-30T19:43:46.794079+00:00"
+},
+"https://rosendaletheatre.org/movies/the-six-bells-countryside-inn-a-special-partner-present-the-muppet-christmas-carol/": {
+"price": {
+"min": 0.0,
+"max": 0.0,
+"note": "from the listing page"
+},
+"at": "2026-10-30T19:43:47.861222+00:00"
+},
+"https://rosendaletheatre.org/movies/planes-trains-and-automobiles-1987/": {
+"price": null,
+"at": "2026-10-30T19:43:49.054427+00:00"
+},
+"https://rosendaletheatre.org/movies/bearcity/": {
+"price": {
+"min": 15.0,
+"max": 15.0,
+"note": "from the listing page"
+},
+"at": "2026-10-30T19:43:50.152823+00:00"
+},
+"https://rosendaletheatre.org/movies/the-nightmare-before-christmas/": {
+"price": {
+"min": 0.0,
+"max": 0.0,
+"note": "from the listing page"
+},
+"at": "2026-10-30T19:43:51.168941+00:00"
+},
+"https://www.veronalibrary.org/events/friday-matinee/2026-10-30/": {
+"price": null,
+"at": "2026-10-30T19:43:52.096540+00:00"
+},
+"https://fishercenter.bard.edu/events/indiana-jones-and-the-raiders-of-the-lost-ark-in-concert/": {
+"price": null,
+"at": "2026-10-30T19:43:53.493495+00:00"
+},
+"https://www.veronalibrary.org/events/lr-1101/": {
+"price": null,
+"at": "2026-10-30T19:43:58.009759+00:00"
+},
+"https://www.veronalibrary.org/events/qigong/2026-11-02/": {
+"price": null,
+"at": "2026-10-30T19:44:02.517511+00:00"
+},
+"https://www.veronalibrary.org/events/light-up-diwali/": {
+"price": null,
+"at": "2026-10-30T19:44:03.487457+00:00"
+},
+"https://www.veronalibrary.org/events/storytime-with-ms-rachael/2026-11-04/": {
+"price": null,
+"at": "2026-10-30T19:44:08.004738+00:00"
+},
+"https://fishercenter.bard.edu/events/fall-dance-concert-2026/": {
+"price": null,
+"at": "2026-10-30T19:44:09.272411+00:00"
+},
+"https://fishercenter.bard.edu/events/concerto-competition-fall-26/": {
+"price": null,
+"at": "2026-10-30T19:44:10.271034+00:00"
+},
+"https://fishercenter.bard.edu/events/letters-from-the-front/": {
+"price": null,
+"at": "2026-10-30T19:44:11.307040+00:00"
+},
+"https://fishercenter.bard.edu/events/gershwin-jazz-and-the-music-of-jewish-emigres/": {
+"price": null,
+"at": "2026-10-30T19:44:12.501067+00:00"
+},
+"https://www.wmtl.org/event/halloween-drop-in/": {
+"price": null,
+"at": "2026-10-30T19:44:14.575913+00:00"
+},
+"https://www.teatown.org/events/animal-encounter-snake-feeding-demonstration-for-everyone/": {
+"price": null,
+"at": "2026-10-30T19:44:15.645034+00:00"
+},
+"https://www.wmtl.org/event/100-hundred-acre-wood-scavenger-hunt-2/": {
+"price": null,
+"at": "2026-10-30T19:44:17.329367+00:00"
+},
+"https://www.teatown.org/events/hit-the-trails-daylight-savings-hike-for-everyone-ages-8/": {
+"price": null,
+"at": "2026-10-30T19:44:18.310554+00:00"
+},
+"https://briarcliffmanorlibrary.org/event/chess-for-kids/2026-11-02/": {
+"price": null,
+"at": "2026-10-30T19:44:19.294304+00:00"
+},
+"https://www.teatown.org/events/women-take-to-the-trails-sept-oct-2025/2026-11-04/": {
+"price": null,
+"at": "2026-10-30T19:44:20.663768+00:00"
+},
+"https://www.wmtl.org/event/crazy-8s-craft-club-pumpkins-2/": {
+"price": null,
+"at": "2026-10-30T19:44:22.615313+00:00"
+},
+"https://briarcliffmanorlibrary.org/event/tween-beaded-bracelet-making/": {
+"price": null,
+"at": "2026-10-30T19:44:23.633147+00:00"
+},
+"https://www.wmtl.org/event/steam-lab-build-your-own-catapult/": {
+"price": null,
+"at": "2026-10-30T19:44:25.566690+00:00"
+},
+"https://www.wmtl.org/event/friday-freeplay-ages-0-3/": {
+"price": null,
+"at": "2026-10-30T19:44:27.409328+00:00"
+},
+"https://www.teatown.org/events/hit-the-trails-bring-your-pup-for-everyone-ages-8/": {
+"price": null,
+"at": "2026-10-30T19:44:28.409311+00:00"
+},
+"https://www.teatown.org/events/stem-activity-afternoon-for-families-ages-8/": {
+"price": null,
+"at": "2026-10-30T19:44:29.307770+00:00"
+},
+"https://briarcliffmanorlibrary.org/event/brown-bag-discussion-my-friends/": {
+"price": null,
+"at": "2026-10-30T19:44:31.821265+00:00"
+},
+"https://briarcliffmanorlibrary.org/event/westchester-great-books-council-discussions-fall-26/2026-11-10/": {
+"price": null,
+"at": "2026-10-30T19:44:33.993085+00:00"
+},
+"https://briarcliffmanorlibrary.org/event/adult-craft-decoupage-fall-candle-jars/": {
+"price": null,
+"at": "2026-10-30T19:44:34.944326+00:00"
+},
+"https://burnsfilmcenter.org/booking/the-only-living-pickpocket-in-new-york/": {
+"price": null,
+"at": "2026-10-30T19:44:36.186031+00:00"
+},
+"https://burnsfilmcenter.org/booking/you-can-see-everything/": {
+"price": null,
+"at": "2026-10-30T19:44:37.213741+00:00"
+},
+"https://westportlibrary.org/event/friday-fun-with-friends-3/2026-10-30/": {
+"price": null,
+"at": "2026-10-30T19:44:38.434422+00:00"
+},
+"https://burnsfilmcenter.org/booking/fjord/": {
+"price": null,
+"at": "2026-10-30T19:44:39.726834+00:00"
+},
+"https://burnsfilmcenter.org/booking/fatherland/": {
+"price": null,
+"at": "2026-10-30T19:44:40.729683+00:00"
+},
+"https://burnsfilmcenter.org/booking/once-upon-a-time-in-harlem/": {
+"price": null,
+"at": "2026-10-30T19:44:41.771199+00:00"
+},
+"https://plantingfields.org/happenings/murder-mystery-2026/": {
+"price": null,
+"at": "2026-10-30T19:44:42.659374+00:00"
+},
+"https://stormking.org/events/member-yoga-2-2026-10-31/": {
+"price": null,
+"at": "2026-10-30T19:44:43.818820+00:00"
+},
+"https://stormking.org/events/daily-walking-tour-2-2026-10-31/": {
+"price": null,
+"at": "2026-10-30T19:44:44.870478+00:00"
+},
+"https://stormking.org/events/children-families-halloween/": {
+"price": null,
+"at": "2026-10-30T19:44:45.994399+00:00"
+},
+"https://stormking.org/events/children-families-spooky-inks/": {
+"price": null,
+"at": "2026-10-30T19:44:47.048857+00:00"
+},
+"https://westportlibrary.org/event/tummy-time-midday-3/2026-11-02/": {
+"price": null,
+"at": "2026-10-30T19:44:48.020342+00:00"
+},
+"https://stormking.org/events/k-12-teacher-professional-development-workshop/": {
+"price": null,
+"at": "2026-10-30T19:44:49.062724+00:00"
+},
+"https://westportlibrary.org/event/princess-dianas-storytime-now-on-tuesdays-2-2-2/2026-11-03/": {
+"price": null,
+"at": "2026-10-30T19:44:49.993988+00:00"
+},
+"https://plantingfields.org/happenings/little-sound-explorers/2026-11-03/": {
+"price": null,
+"at": "2026-10-30T19:45:04.165629+00:00"
+},
+"https://westportlibrary.org/event/tummy-time-new-time-2-2-2-2/2026-11-04/": {
+"price": null,
+"at": "2026-10-30T19:45:05.082511+00:00"
+},
+"https://westportlibrary.org/event/somewhat-silent-book-club-3/2026-11-04/": {
+"price": null,
+"at": "2026-10-30T19:45:06.075749+00:00"
+},
+"https://plantingfields.org/happenings/ff-shinn-2026/": {
+"price": null,
+"at": "2026-10-30T19:45:22.849979+00:00"
+},
+"https://plantingfields.org/happenings/first-fridays-holiday-magic-2026/": {
+"price": null,
+"at": "2026-10-30T19:45:29.141565+00:00"
+},
+"https://www.eventbrite.com/e/john-splithoff-tickets-1994692054631": {
+"price": {
+"min": 0.0,
+"max": 0.0,
+"note": "from the listing page"
+},
+"at": "2026-10-30T19:45:30.334841+00:00"
+},
+"https://www.eventbrite.com/e/willie-nile-tickets-1990445398769": {
+"price": {
+"min": 0.0,
+"max": 0.0,
+"note": "from the listing page"
+},
+"at": "2026-10-30T19:45:31.224705+00:00"
+},
+"https://www.eventbrite.com/e/jesse-roper-tickets-1990817152695": {
+"price": {
+"min": 0.0,
+"max": 0.0,
+"note": "from the listing page"
+},
+"at": "2026-10-30T19:45:32.840819+00:00"
+},
+"https://www.eventbrite.com/e/jamie-mclean-band-tickets-1991417867449": {
+"price": {
+"min": 0.0,
+"max": 0.0,
+"note": "from the listing page"
+},
+"at": "2026-10-30T19:45:33.767149+00:00"
+},
+"https://www.eventbrite.com/e/roamer-brian-dolzani-band-tickets-1996746396222": {
+"price": {
+"min": 0.0,
+"max": 0.0,
+"note": "from the listing page"
+},
+"at": "2026-10-30T19:45:35.366977+00:00"
+},
+"https://www.eventbrite.com/e/morgan-james-tickets-2002102455339": {
+"price": {
+"min": 0.0,
+"max": 0.0,
+"note": "from the listing page"
+},
+"at": "2026-10-30T19:45:37.055568+00:00"
+},
+"https://www.eventbrite.com/e/zoso-tickets-1992855256719": {
+"price": {
+"min": 0.0,
+"max": 0.0,
+"note": "from the listing page"
+},
+"at": "2026-10-30T19:45:38.706908+00:00"
+},
+"https://www.eventbrite.com/e/christmas-with-absolute-adele-tickets-2001089458438": {
+"price": {
+"min": 0.0,
+"max": 0.0,
+"note": "from the listing page"
+},
+"at": "2026-10-30T19:45:40.342590+00:00"
+},
+"https://www.eventbrite.com/e/the-alpaca-gnomes-tickets-2002102785326": {
+"price": {
+"min": 0.0,
+"max": 0.0,
+"note": "from the listing page"
+},
+"at": "2026-10-30T19:45:42.365263+00:00"
+},
+"https://tockify.com/untermyer.gardens.conservancy/detail/638/1793419200000": {
+"price": null,
+"at": "2026-10-30T19:45:43.359221+00:00"
+},
+"https://www.lasdonpublicgardens.org/event/littles-at-lasdon-fantasy-parade/": {
+"price": null,
+"at": "2026-10-30T19:45:44.363818+00:00"
+},
+"https://www.lasdonpublicgardens.org/event/garden-highlight-tour/2026-11-01/": {
+"price": null,
+"at": "2026-10-30T19:45:46.370792+00:00"
+},
+"https://tockify.com/untermyer.gardens.conservancy/detail/639/1793559600000": {
+"price": null,
+"at": "2026-10-30T19:45:47.322996+00:00"
+},
+"https://www.lasdonpublicgardens.org/event/littles-at-lasdon-stay-and-play/2026-11-04/": {
+"price": null,
+"at": "2026-10-30T19:45:49.097150+00:00"
+},
+"https://www.lasdonpublicgardens.org/event/ecotherapy-the-benefits-of-nature-3/2026-11-07/": {
+"price": null,
+"at": "2026-10-30T19:45:50.958372+00:00"
+},
+"https://www.lasdonpublicgardens.org/event/world-war-one-craft-taste-and-vehicle-experience-2/": {
+"price": {
+"min": 15.0,
+"max": 15.0,
+"note": "from the listing page"
+},
+"at": "2026-10-30T19:45:52.667296+00:00"
+},
+"https://tockify.com/untermyer.gardens.conservancy/detail/631/1794373200000": {
+"price": null,
+"at": "2026-10-30T19:45:53.596802+00:00"
+},
+"https://www.lasdonpublicgardens.org/event/autumn-atelier-harvest-in-bloom-workshop/": {
+"price": {
+"min": 185.0,
+"max": 185.0,
+"note": "from the listing page"
+},
+"at": "2026-10-30T19:45:55.340012+00:00"
+},
+"https://www.lasdonpublicgardens.org/event/mindful-autumn-walk/": {
+"price": null,
+"at": "2026-10-30T19:45:57.436455+00:00"
+},
+"https://tockify.com/untermyer.gardens.conservancy/detail/632/1795669200000": {
+"price": null,
+"at": "2026-10-30T19:45:58.376582+00:00"
+},
+"https://www.lasdonpublicgardens.org/event/evergreen-and-elegance-a-luxury-holiday-design-mantel-workshop/": {
+"price": {
+"min": 185.0,
+"max": 185.0,
+"note": "from the listing page"
+},
+"at": "2026-10-30T19:46:00.366986+00:00"
+},
+"https://tockify.com/untermyer.gardens.conservancy/detail/652/1797026400000": {
+"price": null,
+"at": "2026-10-30T19:46:01.235042+00:00"
+},
+"https://greatmovieslowerprices.com/roosevelt-cinemas/": {
+"price": null,
+"at": "2026-10-30T19:46:08.495709+00:00"
+},
+"https://greatmovieslowerprices.com/lyceum-cinemas/": {
+"price": null,
+"at": "2026-10-30T19:46:09.514565+00:00"
+},
+"https://www.eventbrite.com/e/farm-day-volunteer-work-days-tickets-1984063760116": {
+"price": {
+"min": 0.0,
+"max": 0.0,
+"note": "from the listing page"
+},
+"at": "2026-10-30T19:46:33.069612+00:00"
+},
+"https://ridgefieldplayhouse.org/event/fall-gala-john-legend-2026/": {
+"price": null,
+"at": "2026-10-31T14:34:54.393961+00:00"
+},
+"https://ridgefieldplayhouse.org/event/john-c-reilly-is-mister-romantic-ridgefield-ct-2026/": {
+"price": null,
+"at": "2026-10-31T14:34:55.508196+00:00"
+},
+"https://ridgefieldplayhouse.org/event/robby-hoffman-live-on-tour/": {
+"price": null,
+"at": "2026-10-31T14:34:56.616224+00:00"
+},
+"https://ridgefieldplayhouse.org/event/lou-gramm-foreigner-ridgefield-ct-2026/": {
+"price": null,
+"at": "2026-10-31T14:34:57.695210+00:00"
+},
+"https://ridgefieldplayhouse.org/event/rufus-wainwright-ridgefield-ct-2026/": {
+"price": null,
+"at": "2026-10-31T14:34:58.845674+00:00"
+},
+"https://www.derbynecklibrary.org/events/sunday-crafternoon-tbd-5": {
+"price": null,
+"at": "2026-10-31T14:35:00.523738+00:00"
+},
+"https://www.derbynecklibrary.org/events/drums-strings-shaky-things-64": {
+"price": null,
+"at": "2026-10-31T14:35:02.164220+00:00"
+},
+"https://www.derbynecklibrary.org/events/dungeons-and-dragons-for-teens-3": {
+"price": null,
+"at": "2026-10-31T14:35:03.677694+00:00"
+},
+"https://www.derbynecklibrary.org/events/taste-makers-2": {
+"price": null,
+"at": "2026-10-31T14:35:05.235240+00:00"
+},
+"https://www.derbynecklibrary.org/events/read-roll-10": {
+"price": null,
+"at": "2026-10-31T14:35:07.186830+00:00"
+},
+"https://events.fairfield.edu/event/fairfield-university-womens-volleyball-vs-canisius-2095": {
+"price": null,
+"at": "2026-10-31T14:35:08.905909+00:00"
+},
+"https://events.fairfield.edu/event/fairfield-university-mens-basketball-vs-njit": {
+"price": null,
+"at": "2026-10-31T14:35:10.141828+00:00"
+},
+"https://events.fairfield.edu/event/fairfield-university-womens-basketball-vs-villanova-9492": {
+"price": null,
+"at": "2026-10-31T14:35:11.705677+00:00"
+},
+"https://events.fairfield.edu/event/fairfield-university-mens-basketball-vs-st-josephs-brooklyn": {
+"price": null,
+"at": "2026-10-31T14:35:13.634048+00:00"
+},
+"https://events.fairfield.edu/event/fairfield-university-mens-basketball-vs-navy": {
+"price": null,
+"at": "2026-10-31T14:35:15.065003+00:00"
+},
+"https://calendar.fordham.edu/event/fordham-university-mens-basketball-vs-stonehill-college": {
+"price": null,
+"at": "2026-10-31T14:35:16.925686+00:00"
+},
+"https://calendar.fordham.edu/event/fordham-university-womens-volleyball-vs-vcu": {
+"price": null,
+"at": "2026-10-31T14:35:18.339357+00:00"
+},
+"https://calendar.fordham.edu/event/fordham-university-womens-tennis-vs-utr-prize-money": {
+"price": null,
+"at": "2026-10-31T14:35:19.588711+00:00"
+},
+"https://calendar.fordham.edu/event/fordham-university-womens-basketball-vs-monroe-university": {
+"price": null,
+"at": "2026-10-31T14:35:22.227411+00:00"
+},
+"https://calendar.fordham.edu/event/fordham-university-mens-basketball-vs-iona-university": {
+"price": null,
+"at": "2026-10-31T14:35:23.650696+00:00"
+},
+"https://events.msmc.edu/event/mount-saint-mary-college-womens-volleyball-vs-skyline-conference-championship-semifinals": {
+"price": null,
+"at": "2026-10-31T14:35:24.980326+00:00"
+},
+"https://events.msmc.edu/event/mount-saint-mary-college-mens-swimming-vs-suny-delhi-sarah-lawrence-sjli": {
+"price": null,
+"at": "2026-10-31T14:35:27.317295+00:00"
+},
+"https://events.msmc.edu/event/mount-saint-mary-college-mens-basketball-vs-fdu-florham": {
+"price": null,
+"at": "2026-10-31T14:35:28.868262+00:00"
+},
+"https://events.msmc.edu/event/mount-saint-mary-college-womens-basketball-vs-new-paltz": {
+"price": null,
+"at": "2026-10-31T14:35:31.743551+00:00"
+},
+"https://events.msmc.edu/event/mount-saint-mary-college-womens-basketball-vs-manhattanville-university-6662": {
+"price": null,
+"at": "2026-10-31T14:35:33.049239+00:00"
+},
+"https://tubbyskingston.com/calendar/mvtant-pink-stiletto-with-djs-hueman-midna-mayhem-a-netboy": {
+"price": null,
+"at": "2026-10-31T14:35:34.592405+00:00"
+},
+"https://tubbyskingston.com/calendar/akai-solo-bobbyy": {
+"price": null,
+"at": "2026-10-31T14:35:36.534850+00:00"
+},
+"https://tubbyskingston.com/calendar/axis-sova-upper-wilds": {
+"price": null,
+"at": "2026-10-31T14:35:37.774328+00:00"
+},
+"https://tubbyskingston.com/calendar/live-well-spite-store-jelly-kelly": {
+"price": null,
+"at": "2026-10-31T14:35:39.061068+00:00"
+},
+"https://tubbyskingston.com/calendar/los-cumpleaos": {
+"price": null,
+"at": "2026-10-31T14:35:40.415538+00:00"
+},
+"https://desmondfishlibrary.org/event/photo-archivie2/": {
+"price": null,
+"at": "2026-10-31T14:35:43.828708+00:00"
+},
+"https://desmondfishlibrary.org/event/preschool-storytime-17/2026-11-05/": {
+"price": null,
+"at": "2026-10-31T14:35:46.934415+00:00"
+},
+"https://desmondfishlibrary.org/event/osr-open-hour/2026-11-05/": {
+"price": null,
+"at": "2026-10-31T14:35:50.452252+00:00"
+},
+"https://desmondfishlibrary.org/event/wills-trusts-paah/": {
+"price": null,
+"at": "2026-10-31T14:35:53.545048+00:00"
+},
+"https://desmondfishlibrary.org/event/family-cooking-workshop-with-land-to-learn/": {
+"price": null,
+"at": "2026-10-31T14:35:57.031215+00:00"
+},
+"https://mahaiwe.org/event/cowboy-junkies-celebrating-40-years-and-beyond/": {
+"price": null,
+"at": "2026-10-31T14:35:59.841225+00:00"
+},
+"https://mahaiwe.org/event/the-wizard-of-oz-1939-4/": {
+"price": null,
+"at": "2026-10-31T14:36:02.542687+00:00"
+},
+"https://mahaiwe.org/event/scott-eyerlys-virtual-met-opera-lecture-verdis-macbeth-duplicate-1/": {
+"price": null,
+"at": "2026-10-31T14:36:05.217795+00:00"
+},
+"https://mahaiwe.org/event/richard-marx/": {
+"price": null,
+"at": "2026-10-31T14:36:08.342570+00:00"
+},
+"https://mahaiwe.org/event/chris-thile-and-aoife-odonovan-wassail-an-evening-of-carols-and-merriment/": {
+"price": null,
+"at": "2026-10-31T14:36:11.914977+00:00"
+},
+"https://events.newhaven.edu/event/university-of-new-haven-mens-soccer-vs-stonehill-college": {
+"price": null,
+"at": "2026-10-31T14:36:13.301410+00:00"
+},
+"https://events.newhaven.edu/event/university-of-new-haven-mens-basketball-vs-army": {
+"price": null,
+"at": "2026-10-31T14:36:14.675224+00:00"
+},
+"https://events.newhaven.edu/event/university-of-new-haven-womens-volleyball-vs-chicago-state-university": {
+"price": null,
+"at": "2026-10-31T14:36:16.540132+00:00"
+},
+"https://events.newhaven.edu/event/university-of-new-haven-womens-basketball-vs-siena-college": {
+"price": null,
+"at": "2026-10-31T14:36:18.632471+00:00"
+},
+"https://events.newhaven.edu/event/university-of-new-haven-mens-basketball-vs-massachusetts-college-of-liberal-arts": {
+"price": null,
+"at": "2026-10-31T14:36:20.216343+00:00"
+},
+"https://emelin.org/event/fall-film-club-2026-5/": {
+"price": null,
+"at": "2026-10-31T14:36:26.015342+00:00"
+},
+"https://emelin.org/event/paula-poundstone-2/": {
+"price": null,
+"at": "2026-10-31T14:36:30.007791+00:00"
+},
+"https://emelin.org/event/emmet-cohen-trio-2/": {
+"price": null,
+"at": "2026-10-31T14:36:34.494169+00:00"
+},
+"https://emelin.org/event/nutcracker-dream-22/": {
+"price": null,
+"at": "2026-10-31T14:36:39.609556+00:00"
+},
+"https://emelin.org/event/the-ultimate-disney-tribute-band-the-little-mermen-the-princess-pals-2/": {
+"price": null,
+"at": "2026-10-31T14:36:44.328567+00:00"
+},
+"https://burnhamlibrary.org/events/burnham-school-visit-k-1-3-5-2/2026-11-05/": {
+"price": null,
+"at": "2026-10-31T14:36:45.710219+00:00"
+},
+"https://burnhamlibrary.org/events/french-conversation-fridays/2026-11-06/": {
+"price": null,
+"at": "2026-10-31T14:36:46.663550+00:00"
+},
+"https://burnhamlibrary.org/events/virtual-author-talk-paul-vigna/": {
+"price": null,
+"at": "2026-10-31T14:36:47.723189+00:00"
+},
+"https://burnhamlibrary.org/events/tween-time-young-engineers-grades-4-5/2026-11-12/": {
+"price": null,
+"at": "2026-10-31T14:36:48.916311+00:00"
+},
+"https://burnhamlibrary.org/events/pk-little-crafts-3-2-2/": {
+"price": null,
+"at": "2026-10-31T14:36:49.940681+00:00"
+},
+"https://carriagebarn.org/event/krasner-pollock-tour-page-knox/": {
+"price": null,
+"at": "2026-10-31T14:36:51.032222+00:00"
+},
+"https://carriagebarn.org/event/grateful-dead-night/": {
+"price": null,
+"at": "2026-10-31T14:36:52.029937+00:00"
+},
+"https://carriagebarn.org/event/through-your-looking-glass-opening-reception/": {
+"price": null,
+"at": "2026-10-31T14:36:53.565343+00:00"
+},
+"https://carriagebarn.org/event/thanksgiving-cooking-crafting/": {
+"price": null,
+"at": "2026-10-31T14:36:55.544540+00:00"
+},
+"https://carriagebarn.org/event/special-art-workshop-with-local-artist-tara-blackwell/": {
+"price": null,
+"at": "2026-10-31T14:36:57.587229+00:00"
+},
+"https://whitememorialcc.org/event/museum-children-free-week-15/": {
+"price": null,
+"at": "2026-10-31T14:36:58.679687+00:00"
+},
+"https://whitememorialcc.org/event/happy-hour-hiking-club-with-gerri-griswold-6/2026-11-12/": {
+"price": null,
+"at": "2026-10-31T14:36:59.745483+00:00"
+},
+"https://whitememorialcc.org/event/crack-o-dawn/": {
+"price": null,
+"at": "2026-10-31T14:37:00.705164+00:00"
+},
+"https://whitememorialcc.org/event/everything-irie-with-colleen-harrak/": {
+"price": null,
+"at": "2026-10-31T14:37:01.744618+00:00"
+},
+"https://whitememorialcc.org/event/connecticut-butterfly-atlas-project-version-2-0-with-laura-saucier-ct-deep/": {
+"price": null,
+"at": "2026-10-31T14:37:02.682648+00:00"
+},
+"https://fishercenter.bard.edu/events/2026-sproj-work-in-progress-festival/": {
+"price": null,
+"at": "2026-10-31T14:37:04.149305+00:00"
+},
+"https://fishercenter.bard.edu/events/bcco-2026-11-23/": {
+"price": null,
+"at": "2026-10-31T14:37:05.121742+00:00"
+},
+"https://fishercenter.bard.edu/events/fall-senior-dance-concert-2026/": {
+"price": null,
+"at": "2026-10-31T14:37:07.296525+00:00"
+},
+"https://fishercenter.bard.edu/events/hansel-and-gretel/": {
+"price": null,
+"at": "2026-10-31T14:37:08.490152+00:00"
+},
+"https://www.veronalibrary.org/events/mah-jongg-class/2026-11-04/": {
+"price": null,
+"at": "2026-10-31T14:37:13.245888+00:00"
+},
+"https://www.veronalibrary.org/events/watercolor-meditation-workshop-3-2-2-2/2026-11-04/": {
+"price": null,
+"at": "2026-10-31T14:37:18.682314+00:00"
+},
+"https://www.veronalibrary.org/events/canasta/2026-11-05/": {
+"price": null,
+"at": "2026-10-31T14:37:23.381205+00:00"
+},
+"https://www.veronalibrary.org/events/books-banter-discussion-group-3-2-2-2-2/2026-11-05/": {
+"price": null,
+"at": "2026-10-31T14:37:28.084273+00:00"
+},
+"https://www.veronalibrary.org/events/friday-matinee-2/2026-11-06/": {
+"price": null,
+"at": "2026-10-31T14:37:32.816878+00:00"
+},
+"https://www.wmtl.org/event/story-time-week-1-2/": {
+"price": null,
+"at": "2026-10-31T14:37:34.846737+00:00"
+},
+"https://www.wmtl.org/event/steam-lab-disaster-island-lego-building-challenge-2/": {
+"price": null,
+"at": "2026-10-31T14:37:39.491115+00:00"
+},
+"https://www.wmtl.org/event/veterans-day-bracelet-making/": {
+"price": null,
+"at": "2026-10-31T14:37:41.174755+00:00"
+},
+"https://briarcliffmanorlibrary.org/event/teen-painted-cactus-garden/": {
+"price": null,
+"at": "2026-10-31T14:37:44.371307+00:00"
+},
+"https://www.wmtl.org/event/chess-club-grades-4-6-2-2/": {
+"price": null,
+"at": "2026-10-31T14:37:46.273347+00:00"
+},
+"https://www.wmtl.org/event/friday-freeplay-ages-0-3-2/": {
+"price": null,
+"at": "2026-10-31T14:37:47.998002+00:00"
+},
+"https://www.teatown.org/events/environmental-art-kinusaiga-crafting-for-adults/": {
+"price": null,
+"at": "2026-10-31T14:37:49.337544+00:00"
+},
+"https://www.teatown.org/events/animal-encounter-reptiles-rule-for-families-ages-4/": {
+"price": null,
+"at": "2026-10-31T14:37:50.237971+00:00"
+},
+"https://www.teatown.org/events/seeking-the-stars-light-pollution-and-its-impact-for-everyone/": {
+"price": null,
+"at": "2026-10-31T14:37:51.119420+00:00"
+},
+"https://briarcliffmanorlibrary.org/event/library-board-of-trustees-meeting-2026/2026-11-18/": {
+"price": null,
+"at": "2026-10-31T14:37:53.256454+00:00"
+},
+"https://briarcliffmanorlibrary.org/event/rocky-50th-anniversary-movie-screening/": {
+"price": null,
+"at": "2026-10-31T14:37:55.731663+00:00"
+},
+"https://briarcliffmanorlibrary.org/event/contemporary-fiction-discussion-the-director/": {
+"price": null,
+"at": "2026-10-31T14:37:58.686008+00:00"
+},
+"https://www.teatown.org/events/animal-encounter-raptor-responsible-for-everyone-ages-8/": {
+"price": null,
+"at": "2026-10-31T14:37:59.583858+00:00"
+},
+"https://briarcliffmanorlibrary.org/event/thanksgiving-trivia-food-drink/": {
+"price": null,
+"at": "2026-10-31T14:38:01.044316+00:00"
+},
+"https://www.teatown.org/events/hit-the-trails-thanksgiving-hike-ages-12/": {
+"price": null,
+"at": "2026-10-31T14:38:02.007131+00:00"
+},
+"https://burnsfilmcenter.org/booking/the-witches/": {
+"price": null,
+"at": "2026-10-31T14:38:03.694847+00:00"
+},
+"https://burnsfilmcenter.org/booking/wicker/": {
+"price": null,
+"at": "2026-10-31T14:38:05.994001+00:00"
+},
+"https://burnsfilmcenter.org/booking/the-fury/": {
+"price": null,
+"at": "2026-10-31T14:38:07.495169+00:00"
+},
+"https://burnsfilmcenter.org/booking/carrie/": {
+"price": null,
+"at": "2026-10-31T14:38:09.136504+00:00"
+},
+"https://westportlibrary.org/event/books-before-bedtime-2/2026-11-04/": {
+"price": null,
+"at": "2026-10-31T14:38:11.073106+00:00"
+},
+"https://westportlibrary.org/event/miss-marys-storytime/2026-11-05/": {
+"price": null,
+"at": "2026-10-31T14:38:13.119859+00:00"
+},
+"https://westportlibrary.org/event/wee-readers-2-2-2-2-2/2026-11-05/": {
+"price": null,
+"at": "2026-10-31T14:38:15.029436+00:00"
+},
+"https://westportlibrary.org/event/toddling-around-2-2/2026-11-05/": {
+"price": null,
+"at": "2026-10-31T14:38:17.207084+00:00"
+},
+"https://westportlibrary.org/event/friday-fun-films/2026-11-06/": {
+"price": null,
+"at": "2026-10-31T14:38:18.182570+00:00"
+},
+"https://stormking.org/events/whoop-dee-doo-at-storm-king-2/": {
+"price": null,
+"at": "2026-10-31T14:38:19.445563+00:00"
+},
+"https://stormking.org/events/children-families-foraging-for-shadows/": {
+"price": null,
+"at": "2026-10-31T14:38:20.500787+00:00"
+},
+"https://stormking.org/events/member-event-closing-reception/": {
+"price": null,
+"at": "2026-10-31T14:38:21.582563+00:00"
+},
+"https://stormking.org/events/geology-of-storm-king-3/": {
+"price": null,
+"at": "2026-10-31T14:38:22.696423+00:00"
+},
+"https://stormking.org/events/member-event-collection-selections-collection-galleries/": {
+"price": null,
+"at": "2026-10-31T14:38:23.679094+00:00"
+},
+"https://www.eventbrite.com/e/marshall-crenshaw-tickets-1997644158453": {
+"price": {
+"min": 0.0,
+"max": 0.0,
+"note": "from the listing page"
+},
+"at": "2026-10-31T14:38:25.021739+00:00"
+},
+"https://plantingfields.org/happenings/little-sound-explorers/2026-11-17/": {
+"price": null,
+"at": "2026-10-31T14:38:26.046042+00:00"
+},
+"https://www.eventbrite.com/e/back-to-back-to-black-the-amy-winehouse-celebration-tickets-1997644360056": {
+"price": {
+"min": 0.0,
+"max": 0.0,
+"note": "from the listing page"
+},
+"at": "2026-10-31T14:38:27.616669+00:00"
+},
+"https://www.eventbrite.com/e/funksgiving-tickets-2001088751323": {
+"price": {
+"min": 0.0,
+"max": 0.0,
+"note": "from the listing page"
+},
+"at": "2026-10-31T14:38:28.547558+00:00"
+},
+"https://www.eventbrite.com/e/sue-foley-ga-20-tickets-2000313497518": {
+"price": {
+"min": 0.0,
+"max": 0.0,
+"note": "from the listing page"
+},
+"at": "2026-10-31T14:38:30.122312+00:00"
+},
+"https://www.eventbrite.com/e/the-tom-petty-project-tickets-2000314106339": {
+"price": {
+"min": 0.0,
+"max": 0.0,
+"note": "from the listing page"
+},
+"at": "2026-10-31T14:38:31.654880+00:00"
+},
+"https://plantingfields.org/happenings/deck-the-halls-2026/": {
+"price": null,
+"at": "2026-10-31T14:38:32.599781+00:00"
+},
+"https://www.eventbrite.com/e/the-alternate-routes-tickets-1996746133436": {
+"price": {
+"min": 0.0,
+"max": 0.0,
+"note": "from the listing page"
+},
+"at": "2026-10-31T14:38:34.210779+00:00"
+},
+"https://plantingfields.org/happenings/holiday-house-tours-2026/": {
+"price": null,
+"at": "2026-10-31T14:38:35.210797+00:00"
+},
+"https://www.eventbrite.com/e/a-jazz-tribute-to-vince-guaraldis-a-charlie-brown-christmas-tickets-2003670775226": {
+"price": {
+"min": 0.0,
+"max": 0.0,
+"note": "from the listing page"
+},
+"at": "2026-10-31T14:38:36.218547+00:00"
+},
+"https://www.eventbrite.com/e/yacht-lobsters-tickets-2001086801491": {
+"price": {
+"min": 0.0,
+"max": 0.0,
+"note": "from the listing page"
+},
+"at": "2026-10-31T14:38:37.788872+00:00"
+},
+"https://millriverpark.org/event/heroes-skate-2/": {
+"price": null,
+"at": "2026-10-31T14:38:40.010904+00:00"
+},
+"https://millriverpark.org/event/wellness-wednesdays-at-the-rink/2026-12-16/": {
+"price": null,
+"at": "2026-10-31T14:38:41.763002+00:00"
+},
+"https://plantingfields.org/happenings/notes-in-nature-fireside-melodies/2026-12-18/": {
+"price": null,
+"at": "2026-10-31T14:38:44.552684+00:00"
+},
+"https://plantingfields.org/happenings/home-for-the-holidays-2026/": {
+"price": null,
+"at": "2026-10-31T14:38:45.623787+00:00"
+},
+"https://millriverpark.org/event/forces-in-motion-stem-on-ice/2026-12-19/": {
+"price": null,
+"at": "2026-10-31T14:38:47.327690+00:00"
+},
+"https://www.eventbrite.com/e/the-weight-band-tickets-1998371170967": {
+"price": {
+"min": 0.0,
+"max": 0.0,
+"note": "from the listing page"
+},
+"at": "2026-10-31T14:38:48.235769+00:00"
+},
+"https://millriverpark.org/event/noon-years-eve-countdown/": {
+"price": null,
+"at": "2026-10-31T14:38:50.280677+00:00"
+},
+"https://millriverpark.org/event/light-up-the-rink/": {
+"price": null,
+"at": "2026-10-31T14:38:52.437969+00:00"
+},
+"https://tockify.com/untermyer.gardens.conservancy/detail/653/1797051600000": {
+"price": null,
+"at": "2026-10-31T14:38:53.651495+00:00"
+},
+"https://tockify.com/untermyer.gardens.conservancy/detail/654/1798174800000": {
+"price": null,
+"at": "2026-10-31T14:38:54.510640+00:00"
+},
+"https://tockify.com/untermyer.gardens.conservancy/detail/655/1798779600000": {
+"price": null,
+"at": "2026-10-31T14:38:55.477411+00:00"
+},
+"https://www.eventbrite.com/e/prophecy-healing-deliverance-in-the-bronx-tickets-2003827084752": {
+"price": {
+"min": 0.0,
+"max": 0.0,
+"note": "from the listing page"
+},
+"at": "2026-10-31T14:38:56.442559+00:00"
+},
+"https://www.scenichudson.org/events/northern-dutchess-naacp-monthly-meeting-4/": {
+"price": null,
+"at": "2026-10-31T14:39:10.107475+00:00"
+},
+"https://www.scenichudson.org/events/stemz-fest-2026/": {
+"price": null,
+"at": "2026-10-31T14:39:27.934414+00:00"
+},
+"https://www.eventbrite.com/e/the-uptown-cabaret-tickets-2003774179511": {
+"price": {
+"min": 0.0,
+"max": 0.0,
+"note": "from the listing page"
+},
+"at": "2026-10-31T14:39:28.805004+00:00"
+},
+"https://www.eventbrite.com/e/wine-tasting-to-benefit-the-sunshine-kids-tickets-2002239997732": {
+"price": {
+"min": 0.0,
+"max": 0.0,
+"note": "from the listing page"
+},
+"at": "2026-10-31T14:39:30.240328+00:00"
+},
+"https://www.scenichudson.org/events/sigma-gamma-rho-sorority-inc-meeting-2/": {
+"price": null,
+"at": "2026-10-31T14:39:32.798491+00:00"
+},
+"https://www.eventbrite.com/e/pour-with-a-purpose-tickets-2003261788937": {
+"price": {
+"min": 0.0,
+"max": 0.0,
+"note": "from the listing page"
+},
+"at": "2026-10-31T14:39:34.270124+00:00"
+},
+"https://www.eventbrite.com/e/hebrews-cafe-the-gathering-tickets-2003390182967": {
+"price": {
+"min": 0.0,
+"max": 0.0,
+"note": "from the listing page"
+},
+"at": "2026-10-31T14:39:35.242517+00:00"
+},
+"https://www.clearwater.org/event/november-walkabout-clearwater-coffeehouse/": {
+"price": null,
+"at": "2026-10-31T14:39:37.909028+00:00"
+},
+"https://www.scenichudson.org/events/northern-dutchess-naacp/": {
+"price": null,
+"at": "2026-10-31T14:39:40.488830+00:00"
+},
+"https://www.scenichudson.org/events/growing-homes-annual-event/": {
+"price": null,
+"at": "2026-10-31T14:39:41.416929+00:00"
+},
+"https://www.eventbrite.com/e/comedy-fun-draiser-tickets-2004101187601": {
+"price": {
+"min": 0.0,
+"max": 0.0,
+"note": "from the listing page"
+},
+"at": "2026-10-31T14:39:43.268447+00:00"
+},
+"https://www.clearwater.org/event/january-walkabout-clearwater-coffeehouse/": {
+"price": null,
+"at": "2026-10-31T14:39:45.406367+00:00"
+},
+"https://www.clearwater.org/event/february-walkabout-clearwater-coffeehouse/": {
+"price": null,
+"at": "2026-10-31T14:39:48.216189+00:00"
+},
+"https://www.clearwater.org/event/march-walkabout-clearwater-coffeehouse/": {
+"price": null,
+"at": "2026-10-31T14:39:51.498329+00:00"
+},
+"https://www.clearwater.org/event/april-walkabout-clearwater-coffeehouse/": {
+"price": null,
+"at": "2026-10-31T14:39:54.349816+00:00"
+},
+"https://opus40.org/event/opus-40-open-day-2-2-2-2-2/2026-10-31/": {
+"price": null,
+"at": "2026-10-31T14:39:56.217356+00:00"
+},
+"https://opus40.org/event/the-richards-gallery-seldom-seen-ii-historic-works-by-woodstock-artists-3-2/2026-10-31/": {
+"price": null,
+"at": "2026-10-31T14:39:57.382162+00:00"
+},
+"https://www.lasdonpublicgardens.org/event/green-squad/2026-10-31/": {
+"price": null,
+"at": "2026-10-31T14:40:00.192171+00:00"
+},
+"https://opus40.org/event/opus-40-open-day-2-2-2-2-2/2026-11-01/": {
+"price": null,
+"at": "2026-10-31T14:40:01.591829+00:00"
+},
+"https://ridgefieldplayhouse.org/event/golden-girls-2pm-ridgefield-ct-2026/": {
+"price": null,
+"at": "2026-10-31T14:45:19.402138+00:00"
+},
+"https://ridgefieldplayhouse.org/event/the-irish-tenors-rso-ridgefield-ct-2026/": {
+"price": null,
+"at": "2026-10-31T14:45:20.485100+00:00"
+},
+"https://ridgefieldplayhouse.org/event/judy-collins-rso-ridgefield-ct-2026/": {
+"price": null,
+"at": "2026-10-31T14:45:21.828898+00:00"
+},
+"https://ridgefieldplayhouse.org/event/judy-collins-ridgefield-ct-113026/": {
+"price": null,
+"at": "2026-10-31T14:45:22.925300+00:00"
+},
+"https://ridgefieldplayhouse.org/event/christmas-with-the-celts-tuesday-ridgefield-ct-2026/": {
+"price": null,
+"at": "2026-10-31T14:45:24.718323+00:00"
+},
+"https://www.derbynecklibrary.org/events/bilingual-book-time-5": {
+"price": null,
+"at": "2026-10-31T14:45:26.919114+00:00"
+},
+"https://www.derbynecklibrary.org/events/stories-and-senses-5": {
+"price": null,
+"at": "2026-10-31T14:45:28.311490+00:00"
+},
+"https://www.derbynecklibrary.org/events/afternoon-teav-11": {
+"price": null,
+"at": "2026-10-31T14:45:31.751829+00:00"
+},
+"https://www.derbynecklibrary.org/events/virtual-author-talk-reclaiming-your-inner-wisdom-sacred-indigenous-teachings-with-asha-frost": {
+"price": null,
+"at": "2026-10-31T14:45:33.229070+00:00"
+},
+"https://www.derbynecklibrary.org/events/lets-play-tuesdays-40": {
+"price": null,
+"at": "2026-10-31T14:45:34.676040+00:00"
+},
+"https://events.fairfield.edu/event/fairfield-university-mens-basketball-vs-central-connecticut-state-7425": {
+"price": null,
+"at": "2026-10-31T14:45:37.517326+00:00"
+},
+"https://events.fairfield.edu/event/fairfield-university-mens-basketball-vs-manhattan-599": {
+"price": null,
+"at": "2026-10-31T14:45:38.861627+00:00"
+},
+"https://events.fairfield.edu/event/fairfield-university-womens-basketball-vs-howard": {
+"price": null,
+"at": "2026-10-31T14:45:41.937820+00:00"
+},
+"https://events.fairfield.edu/event/fairfield-university-mens-basketball-vs-le-moyne": {
+"price": null,
+"at": "2026-10-31T14:45:44.202210+00:00"
+},
+"https://events.fairfield.edu/event/fairfield-university-womens-basketball-vs-columbia": {
+"price": null,
+"at": "2026-10-31T14:45:45.657957+00:00"
+},
+"https://calendar.fordham.edu/event/fordham-university-mens-basketball-vs-liu": {
+"price": null,
+"at": "2026-10-31T14:45:47.082429+00:00"
+},
+"https://calendar.fordham.edu/event/fordham-university-football-vs-georgetown-university": {
+"price": null,
+"at": "2026-10-31T14:45:48.686506+00:00"
+},
+"https://calendar.fordham.edu/event/fordham-university-womens-basketball-vs-university-at-buffalo": {
+"price": null,
+"at": "2026-10-31T14:45:50.096964+00:00"
+},
+"https://calendar.fordham.edu/event/fordham-university-mens-basketball-vs-mercy-university": {
+"price": null,
+"at": "2026-10-31T14:45:51.266534+00:00"
+},
+"https://calendar.fordham.edu/event/fordham-university-womens-basketball-vs-hofstra-university": {
+"price": null,
+"at": "2026-10-31T14:45:52.876229+00:00"
+},
+"https://events.msmc.edu/event/mount-saint-mary-college-womens-basketball-vs-united-states-merchant-marine-academy-6225": {
+"price": null,
+"at": "2026-10-31T14:45:55.118365+00:00"
+},
+"https://events.msmc.edu/event/mount-saint-mary-college-mens-basketball-vs-misericordia-university": {
+"price": null,
+"at": "2026-10-31T14:45:56.485389+00:00"
+},
+"https://events.msmc.edu/event/mount-saint-mary-college-womens-basketball-vs-purchase-college-8689": {
+"price": null,
+"at": "2026-10-31T14:45:57.845500+00:00"
+},
+"https://events.msmc.edu/event/mount-saint-mary-college-mens-basketball-vs-sarah-lawrence-college-8930": {
+"price": null,
+"at": "2026-10-31T14:45:59.426726+00:00"
+},
+"https://events.msmc.edu/event/mount-saint-mary-college-womens-basketball-vs-oneonta": {
+"price": null,
+"at": "2026-10-31T14:46:00.844582+00:00"
+},
+"https://tubbyskingston.com/calendar/benefit-rondout-valley-growers-association-with-dom-and-the-fam-band": {
+"price": null,
+"at": "2026-10-31T14:46:03.253836+00:00"
+},
+"https://tubbyskingston.com/calendar/garbaggio-ben-vida": {
+"price": null,
+"at": "2026-10-31T14:46:04.601679+00:00"
+},
+"https://tubbyskingston.com/calendar/weird-nightmare-vision-boards": {
+"price": null,
+"at": "2026-10-31T14:46:06.008017+00:00"
+},
+"https://tubbyskingston.com/calendar/lucy-cooper-b-handy-gods-wisdom": {
+"price": null,
+"at": "2026-10-31T14:46:08.010274+00:00"
+},
+"https://tubbyskingston.com/calendar/thanksgiving-eve-bash-free": {
+"price": null,
+"at": "2026-10-31T14:46:09.290898+00:00"
+},
+"https://desmondfishlibrary.org/event/mahjong-meetup-5/2026-11-06/": {
+"price": null,
+"at": "2026-10-31T14:46:12.351184+00:00"
+},
+"https://desmondfishlibrary.org/event/ally-sheedy-dfpl/": {
+"price": null,
+"at": "2026-10-31T14:46:15.604322+00:00"
+},
+"https://desmondfishlibrary.org/event/pgc-hv-horticulture/": {
+"price": null,
+"at": "2026-10-31T14:46:18.576231+00:00"
+},
+"https://desmondfishlibrary.org/event/open-makerspace-hours-2/2026-11-08/": {
+"price": null,
+"at": "2026-10-31T14:46:21.241625+00:00"
+},
+"https://desmondfishlibrary.org/event/lego-dream-and-design/2026-11-09/": {
+"price": null,
+"at": "2026-10-31T14:46:23.863239+00:00"
+},
+"https://mahaiwe.org/event/met-opera-live-in-hd-saint-saenss-samson-et-dalila/": {
+"price": null,
+"at": "2026-10-31T14:46:26.541943+00:00"
+},
+"https://mahaiwe.org/event/close-encounters-with-music-come-to-the-cabaret-paris-and-weimar-berlin/": {
+"price": null,
+"at": "2026-10-31T14:46:30.466010+00:00"
+},
+"https://mahaiwe.org/event/its-a-wonderful-life-1946-5/": {
+"price": null,
+"at": "2026-10-31T14:46:33.470957+00:00"
+},
+"https://mahaiwe.org/event/john-pizzarelli-trio-with-jessica-molaskey-the-glory-of-love-married-to-jazz/": {
+"price": null,
+"at": "2026-10-31T14:46:35.855240+00:00"
+},
+"https://mahaiwe.org/event/berkshire-bach-society-presents-bach-at-new-years-a-joyful-noise/": {
+"price": null,
+"at": "2026-10-31T14:46:38.457363+00:00"
+},
+"https://events.newhaven.edu/event/university-of-new-haven-mens-basketball-vs-university-of-new-hampshire": {
+"price": null,
+"at": "2026-10-31T14:46:40.456199+00:00"
+},
+"https://events.newhaven.edu/event/university-of-new-haven-womens-basketball-vs-sacred-heart-university": {
+"price": null,
+"at": "2026-10-31T14:46:42.004149+00:00"
+},
+"https://events.newhaven.edu/event/university-of-new-haven-mens-basketball-vs-mitchell-college-1610": {
+"price": null,
+"at": "2026-10-31T14:46:43.384625+00:00"
+},
+"https://events.newhaven.edu/event/university-of-new-haven-womens-basketball-vs-dartmouth-college": {
+"price": null,
+"at": "2026-10-31T14:46:46.196216+00:00"
+},
+"https://events.newhaven.edu/event/university-of-new-haven-womens-basketball-vs-northeastern-university": {
+"price": null,
+"at": "2026-10-31T14:46:47.562003+00:00"
+},
+"https://emelin.org/event/eric-dittelman/": {
+"price": null,
+"at": "2026-10-31T14:46:51.067968+00:00"
+},
+"https://emelin.org/event/green-river/": {
+"price": null,
+"at": "2026-10-31T14:46:54.484498+00:00"
+},
+"https://emelin.org/event/the-anderson-brothers-present-big-band-royalty/": {
+"price": null,
+"at": "2026-10-31T14:46:58.394652+00:00"
+},
+"https://emelin.org/event/davina-and-the-vagabonds/": {
+"price": null,
+"at": "2026-10-31T14:47:02.159418+00:00"
+},
+"https://emelin.org/event/mary-fahl/": {
+"price": null,
+"at": "2026-10-31T14:47:06.386848+00:00"
+},
+"https://burnhamlibrary.org/events/french-conversation-fridays/2026-11-13/": {
+"price": null,
+"at": "2026-10-31T14:47:07.556485+00:00"
+},
+"https://burnhamlibrary.org/events/table-top-gaming-club/2026-11-14/": {
+"price": null,
+"at": "2026-10-31T14:47:08.506487+00:00"
+},
+"https://burnhamlibrary.org/events/artist-reception-poetry-reading-desiree-alvarez/": {
+"price": null,
+"at": "2026-10-31T14:47:09.452517+00:00"
+},
+"https://burnhamlibrary.org/events/kids-klub-crafty-kids-grades-2-3/2026-11-18/": {
+"price": null,
+"at": "2026-10-31T14:47:19.223695+00:00"
+},
+"https://burnhamlibrary.org/events/tween-time-board-game-club/2026-11-19/": {
+"price": null,
+"at": "2026-10-31T14:47:21.217928+00:00"
+},
+"https://carriagebarn.org/event/the-art-of-aging-well/": {
+"price": null,
+"at": "2026-10-31T14:47:23.468235+00:00"
+},
+"https://carriagebarn.org/event/mini-mahjong-2/": {
+"price": null,
+"at": "2026-10-31T14:47:25.282334+00:00"
+},
+"https://carriagebarn.org/event/holiday-calligraphy-workshop-series/": {
+"price": null,
+"at": "2026-10-31T14:47:26.465263+00:00"
+},
+"https://carriagebarn.org/event/candlelit-sound-bath-10/": {
+"price": null,
+"at": "2026-10-31T14:47:27.486896+00:00"
+},
+"https://carriagebarn.org/event/young-entrepreneurs-holiday-marketplace/": {
+"price": null,
+"at": "2026-10-31T14:47:28.446648+00:00"
+},
+"https://whitememorialcc.org/event/star-party-9/": {
+"price": null,
+"at": "2026-10-31T14:47:29.375342+00:00"
+},
+"https://whitememorialcc.org/event/break-of-dawn-at-little-pond-with-kelly-orr/": {
+"price": null,
+"at": "2026-10-31T14:47:30.324001+00:00"
+},
+"https://whitememorialcc.org/event/museum-children-free-week-18-3/": {
+"price": null,
+"at": "2026-10-31T14:47:31.435982+00:00"
+},
+"https://whitememorialcc.org/event/thanksgiving/": {
+"price": null,
+"at": "2026-10-31T14:47:32.411057+00:00"
+},
+"https://www.veronalibrary.org/events/qigong/2026-11-09/": {
+"price": null,
+"at": "2026-10-31T14:47:39.711970+00:00"
+},
+"https://www.veronalibrary.org/events/senior-lunch-organize/": {
+"price": null,
+"at": "2026-10-31T14:47:46.484568+00:00"
+},
+"https://www.wmtl.org/event/grab-go-craft-chanukah-christmas-2025-2/": {
+"price": null,
+"at": "2026-10-31T14:47:49.674241+00:00"
+},
+"https://briarcliffmanorlibrary.org/event/functional-longevity-staying-strong-mobile-and-independant-as-we-age/": {
+"price": null,
+"at": "2026-10-31T14:47:52.279188+00:00"
+},
+"https://www.teatown.org/events/flood-ready-communities-part-2/": {
+"price": null,
+"at": "2026-10-31T14:47:53.307653+00:00"
+},
+"https://westportlibrary.org/event/tummy-time-for-the-morning-napper/2026-11-06/": {
+"price": null,
+"at": "2026-10-31T14:47:56.254140+00:00"
+},
+"https://plantingfields.org/happenings/notes-in-nature-fireside-melodies/": {
+"price": null,
+"at": "2026-10-31T14:47:57.933499+00:00"
+},
+"https://millriverpark.org/event/healthy-family-fun-day-at-the-rink/2027-01-15/": {
+"price": null,
+"at": "2026-10-31T14:47:59.074523+00:00"
+},
+"https://millriverpark.org/event/healthy-family-fun-day-at-the-rink/2027-02-05/": {
+"price": null,
+"at": "2026-10-31T14:48:01.695033+00:00"
+},
+"https://millriverpark.org/event/heart-healthy-skate/2027-02-13/": {
+"price": null,
+"at": "2026-10-31T14:48:02.859160+00:00"
+},
+"https://millriverpark.org/event/heart-healthy-skate/2027-02-14/": {
+"price": null,
+"at": "2026-10-31T14:48:04.645244+00:00"
+},
+"https://www.veronalibrary.org/events/ms-emilys-sing-along/2026-11-02/": {
+"price": null,
+"at": "2026-10-31T14:48:09.591642+00:00"
+},
+"https://www.veronalibrary.org/events/afterschool-bingo/2026-11-02/": {
+"price": null,
+"at": "2026-10-31T14:48:16.598214+00:00"
+},
+"https://www.veronalibrary.org/events/diwali-craft/": {
+"price": null,
+"at": "2026-10-31T14:48:21.614470+00:00"
+},
+"https://www.wmtl.org/event/coloring-crew-197/": {
+"price": null,
+"at": "2026-10-31T14:48:29.703295+00:00"
+},
+"https://www.wmtl.org/event/stitches-107/": {
+"price": null,
+"at": "2026-10-31T14:48:37.469032+00:00"
+},
+"https://www.wmtl.org/event/writers-cafe-11-4-26/": {
+"price": null,
+"at": "2026-10-31T14:48:44.788320+00:00"
+},
+"https://www.wmtl.org/event/teen-engineering-workshop-with-kerryann-11-2026/": {
+"price": null,
+"at": "2026-10-31T14:48:52.842826+00:00"
+},
+"https://www.scenichudson.org/events/leaders-by-choice-board-retreat/": {
+"price": null,
+"at": "2026-10-31T14:49:02.106751+00:00"
+},
+"https://www.clearwater.org/event/may-walkabout-clearwater-coffeehouse/": {
+"price": null,
+"at": "2026-10-31T14:49:04.707238+00:00"
+},
+"https://opus40.org/event/the-richards-gallery-seldom-seen-ii-historic-works-by-woodstock-artists-3-2/2026-11-01/": {
+"price": null,
+"at": "2026-10-31T14:49:06.342870+00:00"
+},
+"https://www.lasdonpublicgardens.org/event/garden-squad-2/2026-11-01/": {
+"price": null,
+"at": "2026-10-31T14:49:07.372085+00:00"
+},
+"https://watertownlibrary.org/": {
+"price": null,
+"at": "2026-10-31T14:49:08.682864+00:00"
+},
+"https://riversideparknyc.org/event/volunteer-in-the-sweet-spot-3/2026-11-04/": {
+"price": null,
+"at": "2026-10-31T14:49:10.036703+00:00"
+},
+"https://www.eventbrite.com/e/jay-collins-and-the-northern-resistance-tickets-2003074489720": {
+"price": {
+"min": 0.0,
+"max": 0.0,
+"note": "from the listing page"
+},
+"at": "2026-10-31T14:49:11.508777+00:00"
+},
+"https://riversideparknyc.org/event/volunteer-at-island-vibes-4/2026-11-05/": {
+"price": null,
+"at": "2026-10-31T14:49:12.515212+00:00"
+},
+"https://www.lasdonpublicgardens.org/event/literacy-at-lasdon-autumn-nature-journaling/": {
+"price": null,
+"at": "2026-10-31T14:49:13.524133+00:00"
+},
+"https://riversideparknyc.org/event/placepartner-opportunity-gardening-at-tiemann-place/": {
+"price": null,
+"at": "2026-10-31T14:49:14.564563+00:00"
+},
+"https://opus40.org/event/opus-40-fall-faire-2/": {
+"price": null,
+"at": "2026-10-31T14:49:15.722298+00:00"
+},
+"https://rosendaletheatre.org/movies/traces-of-home/": {
+"price": null,
+"at": "2026-10-31T14:49:16.969751+00:00"
+},
+"https://www.eventbrite.com/e/the-vanity-project-tickets-2003661659962": {
+"price": {
+"min": 0.0,
+"max": 0.0,
+"note": "from the listing page"
+},
+"at": "2026-10-31T14:49:17.891971+00:00"
+},
+"https://riversideparknyc.org/event/placepartner-opportunity-tunnel-gardens-at-w-148th-st/2026-11-12/": {
+"price": null,
+"at": "2026-10-31T14:49:18.959019+00:00"
+},
+"https://riversideparknyc.org/event/leaf-lift-2/": {
+"price": null,
+"at": "2026-10-31T14:49:20.058682+00:00"
+},
+"https://friendsoftrailside.org/event/late-fall-shelter-building/": {
+"price": null,
+"at": "2026-10-31T14:49:23.561801+00:00"
+},
+"https://friendsoftrailside.org/event/mini-scientist-saturday-microscope-safari/": {
+"price": null,
+"at": "2026-10-31T14:49:24.960182+00:00"
+},
+"https://www.eventbrite.com/e/brian-mitchell-friends-tickets-2003075269051": {
+"price": {
+"min": 0.0,
+"max": 0.0,
+"note": "from the listing page"
+},
+"at": "2026-10-31T14:49:25.854978+00:00"
+},
+"https://www.lasdonpublicgardens.org/event/lasdon-history-and-highlights-walking-tour/2026-11-21/": {
+"price": null,
+"at": "2026-10-31T14:49:27.877602+00:00"
+},
+"https://friendsoftrailside.org/event/mini-scientist-saturday-how-do-animals-prepare-for-winter/": {
+"price": null,
+"at": "2026-10-31T14:49:29.390088+00:00"
+},
+"https://www.lasdonpublicgardens.org/event/holiday-ornament-making/": {
+"price": null,
+"at": "2026-10-31T14:49:31.481918+00:00"
+},
+"https://www.eventbrite.com/e/dead-last-wednesday-with-gratefully-yours-tickets-2003682803202": {
+"price": {
+"min": 0.0,
+"max": 0.0,
+"note": "from the listing page"
+},
+"at": "2026-10-31T14:49:32.911543+00:00"
+},
+"https://www.eventbrite.com/e/naked-tickets-2002393323333": {
+"price": {
+"min": 0.0,
+"max": 0.0,
+"note": "from the listing page"
+},
+"at": "2026-10-31T14:49:34.314356+00:00"
+},
+"https://friendsoftrailside.org/event/winter-arts-and-crafts-2/": {
+"price": null,
+"at": "2026-10-31T14:49:35.627244+00:00"
+},
+"https://friendsoftrailside.org/event/winter-wildlife-survival/": {
+"price": null,
+"at": "2026-10-31T14:49:36.931447+00:00"
+},
+"https://greatmovieslowerprices.com/new-paltz-cinemas/": {
+"price": null,
+"at": "2026-10-31T14:49:38.160141+00:00"
+},
+"https://millriverpark.org/event/fall-sunday-funday-7/": {
+"price": null,
+"at": "2026-10-31T14:49:39.866712+00:00"
+},
+"https://briarcliffmanorlibrary.org/event/monday-morning-storytime-for-little-ones-2/2026-11-02/": {
+"price": null,
+"at": "2026-10-31T14:49:41.942215+00:00"
+},
+"https://briarcliffmanorlibrary.org/event/lego-free-play-25/2026-11-03/": {
+"price": null,
+"at": "2026-10-31T14:49:42.894253+00:00"
+},
+"https://briarcliffmanorlibrary.org/event/friday-morning-storytime-for-little-ones-2/2026-11-06/": {
+"price": null,
+"at": "2026-10-31T14:49:43.919167+00:00"
+},
+"https://njbg.org/event/manor-house-tour/": {
+"price": null,
+"at": "2026-10-31T14:49:45.019003+00:00"
+},
+"https://www.lasdonpublicgardens.org/event/veterans-day-ceremony/": {
+"price": null,
+"at": "2026-10-31T14:49:46.027137+00:00"
+},
+"https://njbg.org/event/family-winter-hike/": {
+"price": null,
+"at": "2026-10-31T14:49:47.076969+00:00"
+},
+"https://briarcliffmanorlibrary.org/event/afternoon-story-craft-helium-balloons-the-thanksgiving-day-parade/": {
+"price": null,
+"at": "2026-10-31T14:49:49.782367+00:00"
+},
+"https://njbg.org/event/holiday-wreath-making/": {
+"price": {
+"min": 25.0,
+"max": 25.0,
+"note": "from the listing page"
+},
+"at": "2026-10-31T14:49:50.806793+00:00"
+},
+"https://njbg.org/event/holiday-open-house/": {
+"price": null,
+"at": "2026-10-31T14:49:51.817549+00:00"
+},
+"https://fishercenter.bard.edu/events/tactics-of-transmission/": {
+"price": null,
+"at": "2026-10-31T14:49:53.219261+00:00"
+},
+"https://fishercenter.bard.edu/events/tendon-thread/": {
+"price": null,
+"at": "2026-10-31T14:49:54.751436+00:00"
+},
+"https://fishercenter.bard.edu/events/after-this/": {
+"price": null,
+"at": "2026-10-31T14:49:56.043097+00:00"
+},
+"https://fishercenter.bard.edu/events/choreography-of-state/": {
+"price": null,
+"at": "2026-10-31T14:49:57.247471+00:00"
+},
+"https://kingstonlibrary.assabetinteractive.com/calendar/move-well-activities-of-daily-living-17/": {
+"price": null,
+"at": "2026-10-31T14:49:58.347952+00:00"
+},
+"https://pleasantvalleylibrary.assabetinteractive.com/calendar/weekend-pilates-with-michelle-34/": {
+"price": null,
+"at": "2026-10-31T14:49:59.738420+00:00"
+},
+"https://mahopaclibrary.assabetinteractive.com/calendar/chair-yoga-meditation-3/": {
+"price": null,
+"at": "2026-10-31T14:50:00.945667+00:00"
+},
+"https://tockify.com/untermyer.gardens.conservancy/detail/646/1793458800000": {
+"price": null,
+"at": "2026-10-31T14:50:03.001514+00:00"
+},
+"https://www.iaismuseum.org/event/annual-veterans-ceremony-3/": {
+"price": null,
+"at": "2026-10-31T14:50:06.465636+00:00"
+},
+"https://westportlibrary.org/event/language-conversation-group-spanish-2-3/2026-11-03/": {
+"price": null,
+"at": "2026-10-31T14:50:07.356452+00:00"
+},
+"https://tockify.com/untermyer.gardens.conservancy/detail/650/1793728800000": {
+"price": null,
+"at": "2026-10-31T14:50:08.210128+00:00"
+},
+"https://westportlibrary.org/event/beginner-intermediate-french-conversation-group-2/2026-11-04/": {
+"price": null,
+"at": "2026-10-31T14:50:09.166033+00:00"
+},
+"https://www.sunywcc.edu/events/artist-talk-by-kate-rusek/": {
+"price": null,
+"at": "2026-10-31T14:50:10.732689+00:00"
+},
+"https://westportlibrary.org/event/language-conversation-group-italian-2-2/2026-11-04/": {
+"price": null,
+"at": "2026-10-31T14:50:12.632485+00:00"
+},
+"https://www.sunywcc.edu/events/reading-and-discussion-with-author-dr-edda-l-fields-black/": {
+"price": null,
+"at": "2026-10-31T14:50:17.646297+00:00"
+},
+"https://westportlibrary.org/event/language-conversation-group-french-2-2-2/2026-11-06/": {
+"price": null,
+"at": "2026-10-31T14:50:18.626427+00:00"
+},
+"https://www.sunywcc.edu/events/ptk-blood-drive/2026-11-09/": {
+"price": null,
+"at": "2026-10-31T14:50:19.753533+00:00"
+},
+"https://tockify.com/untermyer.gardens.conservancy/detail/651/1794420000000": {
+"price": null,
+"at": "2026-10-31T14:50:20.682783+00:00"
+},
+"https://www.iaismuseum.org/event/book-talk-and-signing-coloring-nehantic-with-dr-john-pfeiffer/": {
+"price": null,
+"at": "2026-10-31T14:50:24.408023+00:00"
+},
+"https://www.iaismuseum.org/event/annual-holiday-market-3/": {
+"price": null,
+"at": "2026-10-31T14:50:27.569515+00:00"
+},
+"https://www.stamfordmuseum.org/event/todays-planetarium-shows-showtimes/2026-10-31/": {
+"price": null,
+"at": "2026-10-31T14:50:29.219150+00:00"
+},
+"https://www.stamfordmuseum.org/event/night-sky-observing/2026-10-31/": {
+"price": null,
+"at": "2026-10-31T14:50:30.427978+00:00"
+},
+"https://travelhudsonvalley.com/event/myths-mysteries-of-the-octagon-house-2-2-2/": {
+"price": {
+"min": 38.0,
+"max": 38.0,
+"note": "from the listing page"
+},
+"at": "2026-10-31T14:50:32.316523+00:00"
+},
+"https://booksonthecommon.com/events/author-talk-heather-abel-and-lauren-acampora/": {
+"price": null,
+"at": "2026-10-31T14:50:33.460842+00:00"
+},
+"https://travelhudsonvalley.com/event/first-friday-fall-festival-main-street-revitalization-ribbon-cutting/": {
+"price": null,
+"at": "2026-10-31T14:50:35.178122+00:00"
+},
+"https://kingstonlibrary.assabetinteractive.com/calendar/qigong-113/": {
+"price": null,
+"at": "2026-10-31T14:58:38.315380+00:00"
+},
+"https://laglib.assabetinteractive.com/calendar/fiber-arts-club-204/": {
+"price": null,
+"at": "2026-10-31T14:58:39.451056+00:00"
+},
+"https://pleasantvalleylibrary.assabetinteractive.com/calendar/geocache-travel-bug-tales/": {
+"price": null,
+"at": "2026-10-31T14:58:40.518501+00:00"
+},
+"https://redhooklibrary.assabetinteractive.com/calendar/chair-yoga-125/": {
+"price": null,
+"at": "2026-10-31T14:58:41.674216+00:00"
+},
+"https://beekmanlibrary.assabetinteractive.com/calendar/tech-help-by-appointment-89/": {
+"price": null,
+"at": "2026-10-31T14:58:42.705592+00:00"
+},
+"https://beaconlibrary.assabetinteractive.com/calendar/fiber-arts-circle-88/": {
+"price": null,
+"at": "2026-10-31T14:58:43.881830+00:00"
+},
+"https://beaconlibrary.assabetinteractive.com/calendar/write-today-beacon-49/": {
+"price": null,
+"at": "2026-10-31T14:58:45.047655+00:00"
+},
+"https://laglib.assabetinteractive.com/calendar/chair-yoga-tuesdays-12-week-series-10/": {
+"price": null,
+"at": "2026-10-31T14:58:46.058852+00:00"
+},
+"https://laglib.assabetinteractive.com/calendar/mahjong-open-play-21/": {
+"price": null,
+"at": "2026-10-31T14:58:47.031269+00:00"
+},
+"https://pleasantvalleylibrary.assabetinteractive.com/calendar/senior-exercise-460/": {
+"price": null,
+"at": "2026-10-31T14:58:48.138414+00:00"
+},
+"https://pleasantvalleylibrary.assabetinteractive.com/calendar/brain-games-252/": {
+"price": null,
+"at": "2026-10-31T14:58:49.218528+00:00"
+},
+"https://pleasantvalleylibrary.assabetinteractive.com/calendar/chair-yoga-72/": {
+"price": null,
+"at": "2026-10-31T14:58:50.192394+00:00"
+},
+"https://redhooklibrary.assabetinteractive.com/calendar/knitting-group-560/": {
+"price": null,
+"at": "2026-10-31T14:58:51.130626+00:00"
+},
+"https://bookwhen.com/putnamvalleylibrary/e/ev-sz5i-20261103103000": {
+"price": null,
+"at": "2026-10-31T14:58:52.979183+00:00"
+},
+"https://bookwhen.com/putnamvalleylibrary/e/ev-su91v-20261103163000": {
+"price": null,
+"at": "2026-10-31T14:58:56.011270+00:00"
+},
+"https://kingstonlibrary.assabetinteractive.com/calendar/childrens-story-hour-309/": {
+"price": null,
+"at": "2026-10-31T14:58:57.061504+00:00"
+},
+"https://kingstonlibrary.assabetinteractive.com/calendar/soul-collage-a-creative-journey-of-self-discovery/": {
+"price": null,
+"at": "2026-10-31T14:58:58.043926+00:00"
+},
+"https://pleasantvalleylibrary.assabetinteractive.com/meeting-and-study-rooms/rapp-cornell-cooperative-comm-22/": {
+"price": null,
+"at": "2026-10-31T14:58:59.089515+00:00"
+},
+"https://redhooklibrary.assabetinteractive.com/calendar/poetry-circle-6/": {
+"price": null,
+"at": "2026-10-31T14:59:00.135363+00:00"
+},
+"https://redhooklibrary.assabetinteractive.com/calendar/citizens-academy-how-to-be-a-community-leader-certification-program-4/": {
+"price": null,
+"at": "2026-10-31T14:59:01.040748+00:00"
+},
+"https://beekmanlibrary.assabetinteractive.com/calendar/terrific-twos-162/": {
+"price": null,
+"at": "2026-10-31T14:59:02.071643+00:00"
+},
+"https://beekmanlibrary.assabetinteractive.com/calendar/little-academy-148/": {
+"price": null,
+"at": "2026-10-31T14:59:03.055993+00:00"
+},
+"https://kingstonlibrary.assabetinteractive.com/calendar/rev250-an-evening-with-wwii-reenactor-hank-yost/": {
+"price": null,
+"at": "2026-10-31T14:59:04.069394+00:00"
+},
+"https://laglib.assabetinteractive.com/calendar/storytime-yoga-with-robin-fall-session-8/": {
+"price": null,
+"at": "2026-10-31T14:59:06.075187+00:00"
+},
+"https://redhooklibrary.assabetinteractive.com/calendar/all-abilities-teens-group-103/": {
+"price": null,
+"at": "2026-10-31T14:59:07.137106+00:00"
+},
+"https://beekmanlibrary.assabetinteractive.com/calendar/no-kids-allowed-game-night-39/": {
+"price": null,
+"at": "2026-10-31T14:59:08.113150+00:00"
+},
+"https://bookwhen.com/putnamvalleylibrary/e/ev-sz7zy-20261105103000": {
+"price": null,
+"at": "2026-10-31T14:59:09.405452+00:00"
+},
+"https://laglib.assabetinteractive.com/calendar/chair-yoga-fridays-12-week-series-10/": {
+"price": null,
+"at": "2026-10-31T14:59:10.392069+00:00"
+},
+"https://mahopaclibrary.assabetinteractive.com/calendar/medicare-101-9/": {
+"price": null,
+"at": "2026-10-31T14:59:11.476215+00:00"
+},
+"https://bookwhen.com/putnamvalleylibrary/e/ev-s4we1-20261106120000": {
+"price": null,
+"at": "2026-10-31T14:59:13.288310+00:00"
+},
+"https://bookwhen.com/putnamvalleylibrary/e/ev-sd27l-20261106190000": {
+"price": null,
+"at": "2026-10-31T14:59:14.876555+00:00"
+},
+"https://mahopaclibrary.assabetinteractive.com/calendar/chair-yoga-meditation-2/": {
+"price": null,
+"at": "2026-10-31T14:59:16.038736+00:00"
+},
+"https://beekmanlibrary.assabetinteractive.com/calendar/early-bird-book-club-44/": {
+"price": null,
+"at": "2026-10-31T14:59:17.033477+00:00"
+},
+"https://mahopaclibrary.assabetinteractive.com/calendar/craft-night/": {
+"price": null,
+"at": "2026-10-31T14:59:18.037337+00:00"
+},
+"https://mahopaclibrary.assabetinteractive.com/calendar/medicare-101-10/": {
+"price": null,
+"at": "2026-10-31T14:59:19.015988+00:00"
+},
+"https://beaconlibrary.assabetinteractive.com/calendar/club-de-lectura-en-espa-ol/": {
+"price": null,
+"at": "2026-10-31T14:59:20.229597+00:00"
+},
+"https://beaconlibrary.assabetinteractive.com/calendar/bring-your-own-book-club-4/": {
+"price": null,
+"at": "2026-10-31T14:59:21.255689+00:00"
+},
+"https://kingstonlibrary.assabetinteractive.com/calendar/lego-club-72/": {
+"price": null,
+"at": "2026-10-31T14:59:23.263097+00:00"
+},
+"https://beaconlibrary.assabetinteractive.com/calendar/movement-is-medicine-18/": {
+"price": null,
+"at": "2026-10-31T14:59:24.252004+00:00"
+},
+"https://mahopaclibrary.assabetinteractive.com/calendar/teen-community-service-opportunity-math-games/": {
+"price": null,
+"at": "2026-10-31T14:59:25.303889+00:00"
+},
+"https://ridgefieldplayhouse.org/event/christmas-with-the-celts-wednesday-ridgefield-ct-2026/": {
+"price": null,
+"at": "2026-10-31T14:59:26.572815+00:00"
+},
+"https://ridgefieldplayhouse.org/event/johnnyswim-ridgefield-ct-2026/": {
+"price": null,
+"at": "2026-10-31T14:59:27.699617+00:00"
+},
+"https://ridgefieldplayhouse.org/event/the-wood-brothers-ridgefield-ct-2026/": {
+"price": null,
+"at": "2026-10-31T14:59:28.725658+00:00"
+},
+"https://ridgefieldplayhouse.org/event/the-ridgefield-chorale-ridgefield-ct-2026/": {
+"price": null,
+"at": "2026-10-31T14:59:29.893961+00:00"
+},
+"https://ridgefieldplayhouse.org/event/old-crow-medicine-show-ridgefield-ct-2026/": {
+"price": null,
+"at": "2026-10-31T14:59:30.961229+00:00"
+},
+"https://www.derbynecklibrary.org/events/storycraft-10": {
+"price": null,
+"at": "2026-10-31T14:59:32.642998+00:00"
+},
+"https://www.derbynecklibrary.org/events/quinnetukut-our-homeland-our-history-with-the-institute-for-american-indian-studies": {
+"price": null,
+"at": "2026-10-31T14:59:33.894287+00:00"
+},
+"https://www.derbynecklibrary.org/events/birth-to-three-play-group-11": {
+"price": null,
+"at": "2026-10-31T14:59:35.484916+00:00"
+},
+"https://www.derbynecklibrary.org/events/mahjong-meetup-13": {
+"price": null,
+"at": "2026-10-31T14:59:37.654060+00:00"
+},
+"https://www.derbynecklibrary.org/events/shorts-for-littles-10": {
+"price": null,
+"at": "2026-10-31T14:59:39.084018+00:00"
+},
+"https://events.fairfield.edu/event/fairfield-university-womens-basketball-vs-merrimack-3089": {
+"price": null,
+"at": "2026-10-31T14:59:40.581765+00:00"
+},
+"https://events.fairfield.edu/event/fairfield-university-mens-basketball-vs-siena-5788": {
+"price": null,
+"at": "2026-10-31T14:59:42.140366+00:00"
+},
+"https://events.fairfield.edu/event/fairfield-university-womens-basketball-vs-rider-1279": {
+"price": null,
+"at": "2026-10-31T14:59:43.666803+00:00"
+},
+"https://events.fairfield.edu/event/fairfield-university-womens-basketball-vs-iona-201": {
+"price": null,
+"at": "2026-10-31T14:59:45.981519+00:00"
+},
+"https://events.fairfield.edu/event/fairfield-university-mens-basketball-vs-merrimack-2252": {
+"price": null,
+"at": "2026-10-31T14:59:47.536660+00:00"
+},
+"https://calendar.fordham.edu/event/fordham-university-mens-basketball-vs-boston-university": {
+"price": null,
+"at": "2026-10-31T14:59:48.887699+00:00"
+},
+"https://calendar.fordham.edu/event/fordham-university-womens-basketball-vs-davidson": {
+"price": null,
+"at": "2026-10-31T14:59:50.133458+00:00"
+},
+"https://calendar.fordham.edu/event/fordham-university-mens-basketball-vs-university-of-st-francis-ill": {
+"price": null,
+"at": "2026-10-31T14:59:52.282856+00:00"
+},
+"https://calendar.fordham.edu/event/fordham-university-womens-basketball-vs-central-connecticut-state-university": {
+"price": null,
+"at": "2026-10-31T14:59:53.621914+00:00"
+},
+"https://calendar.fordham.edu/event/fordham-university-mens-basketball-vs-fdu": {
+"price": null,
+"at": "2026-10-31T14:59:55.010107+00:00"
+},
+"https://events.msmc.edu/event/mount-saint-mary-college-mens-basketball-vs-john-jay-college": {
+"price": null,
+"at": "2026-10-31T14:59:56.478777+00:00"
+},
+"https://events.msmc.edu/event/mount-saint-mary-college-womens-basketball-vs-st-josephs-university-long-island-6556": {
+"price": null,
+"at": "2026-10-31T14:59:57.830548+00:00"
+},
+"https://events.msmc.edu/event/mount-saint-mary-college-mens-basketball-vs-yeshiva-university-9469": {
+"price": null,
+"at": "2026-10-31T14:59:59.144855+00:00"
+},
+"https://events.msmc.edu/event/mount-saint-mary-college-womens-basketball-vs-farmingdale-state-college-2285": {
+"price": null,
+"at": "2026-10-31T15:00:00.439170+00:00"
+},
+"https://events.msmc.edu/event/mount-saint-mary-college-mens-basketball-vs-purchase-college-7000": {
+"price": null,
+"at": "2026-10-31T15:00:03.345785+00:00"
+},
+"https://tubbyskingston.com/calendar/top-rank-anniversary-and-freakout-spot-record-fair": {
+"price": null,
+"at": "2026-10-31T15:00:04.722991+00:00"
+},
+"https://tubbyskingston.com/calendar/frank-hurricane-1": {
+"price": null,
+"at": "2026-10-31T15:00:06.041954+00:00"
+},
+"https://tubbyskingston.com/calendar/ritual-arcana": {
+"price": null,
+"at": "2026-10-31T15:00:07.281781+00:00"
+},
+"https://tubbyskingston.com/calendar/moon-mullins-1": {
+"price": null,
+"at": "2026-10-31T15:00:08.562234+00:00"
+},
+"https://tubbyskingston.com/calendar/real-young-and-lazy-horse": {
+"price": null,
+"at": "2026-10-31T15:00:09.911233+00:00"
+},
+"https://desmondfishlibrary.org/event/baby-storytime-16/2026-11-10/": {
+"price": null,
+"at": "2026-10-31T15:00:20.730921+00:00"
+},
+"https://desmondfishlibrary.org/event/creative-games-meetup/2026-11-10/": {
+"price": null,
+"at": "2026-10-31T15:00:24.785288+00:00"
+},
+"https://desmondfishlibrary.org/event/gnbc1126/": {
+"price": null,
+"at": "2026-10-31T15:00:27.755876+00:00"
+},
+"https://desmondfishlibrary.org/event/preschool-storytime-17/2026-11-12/": {
+"price": null,
+"at": "2026-10-31T15:00:31.095267+00:00"
+},
+"https://desmondfishlibrary.org/event/downsizing/": {
+"price": null,
+"at": "2026-10-31T15:00:34.364428+00:00"
+},
+"https://mahaiwe.org/event/scott-eyerlys-virtual-met-opera-lecture-saint-saenss-samson-et-delila-duplicate-1/": {
+"price": null,
+"at": "2026-10-31T15:00:36.925177+00:00"
+},
+"https://mahaiwe.org/event/met-opera-live-in-hd-puccinis-la-fanciulla-del-west/": {
+"price": null,
+"at": "2026-10-31T15:00:39.446386+00:00"
+},
+"https://mahaiwe.org/event/dakhabrakha/": {
+"price": null,
+"at": "2026-10-31T15:00:42.369068+00:00"
+},
+"https://mahaiwe.org/event/close-encounters-with-music-skylark-vocal-ensemble-matthew-guard-artistic-director/": {
+"price": null,
+"at": "2026-10-31T15:00:44.996741+00:00"
+},
+"https://mahaiwe.org/event/scott-eyerlys-virtual-met-opera-lecture-puccinis-la-fanciulla-del-west-duplicate-1/": {
+"price": null,
+"at": "2026-10-31T15:00:47.397606+00:00"
+},
+"https://events.newhaven.edu/event/university-of-new-haven-mens-basketball-vs-columbia-university-3762": {
+"price": null,
+"at": "2026-10-31T15:00:48.937372+00:00"
+},
+"https://events.newhaven.edu/event/university-of-new-haven-womens-basketball-vs-university-of-new-hampshire": {
+"price": null,
+"at": "2026-10-31T15:00:50.619023+00:00"
+},
+"https://events.newhaven.edu/event/university-of-new-haven-mens-basketball-vs-medgar-evers-college": {
+"price": null,
+"at": "2026-10-31T15:00:52.189453+00:00"
+},
+"https://events.newhaven.edu/event/university-of-new-haven-mens-basketball-vs-new-jersey-institute-of-technology": {
+"price": null,
+"at": "2026-10-31T15:00:53.638801+00:00"
+},
+"https://events.newhaven.edu/event/university-of-new-haven-womens-basketball-vs-albertus-magnus-college": {
+"price": null,
+"at": "2026-10-31T15:00:55.024493+00:00"
+},
+"https://emelin.org/event/night-of-nicks/": {
+"price": null,
+"at": "2026-10-31T15:00:58.825017+00:00"
+},
+"https://emelin.org/event/shadows-of-the-60s/": {
+"price": null,
+"at": "2026-10-31T15:01:02.327176+00:00"
+},
+"https://emelin.org/event/dino-light-2/": {
+"price": null,
+"at": "2026-10-31T15:01:07.036659+00:00"
+},
+"https://emelin.org/event/clifford-the-big-red-dog-the-musical-2/": {
+"price": null,
+"at": "2026-10-31T15:01:11.849549+00:00"
+},
+"https://burnhamlibrary.org/events/47088/": {
+"price": null,
+"at": "2026-10-31T15:01:13.327123+00:00"
+},
+"https://burnhamlibrary.org/events/o-silent-night-2026/": {
+"price": null,
+"at": "2026-10-31T15:01:15.069529+00:00"
+},
+"https://burnhamlibrary.org/events/close-at-200-happy-thanksgiving-2/": {
+"price": null,
+"at": "2026-10-31T15:01:16.562297+00:00"
+},
+"https://burnhamlibrary.org/events/young-explorers-mini-architects-grades-k-1/2026-12-02/": {
+"price": null,
+"at": "2026-10-31T15:01:18.028521+00:00"
+},
+"https://carriagebarn.org/event/holiday-cooking-crafting-with-jane/": {
+"price": null,
+"at": "2026-10-31T15:01:20.343293+00:00"
+},
+"https://carriagebarn.org/event/treetops-cassatt-string-quartet-2/": {
+"price": null,
+"at": "2026-10-31T15:01:21.390446+00:00"
+},
+"https://www.veronalibrary.org/events/stay-and-play/2026-11-04/": {
+"price": null,
+"at": "2026-10-31T15:01:26.187170+00:00"
+},
+"https://www.veronalibrary.org/events/game-on/2026-11-04/": {
+"price": null,
+"at": "2026-10-31T15:01:30.825117+00:00"
+},
+"https://www.veronalibrary.org/events/playdate-at-the-library-3/2026-11-06/": {
+"price": null,
+"at": "2026-10-31T15:01:35.461685+00:00"
+},
+"https://www.veronalibrary.org/events/ms-emilys-sing-along/2026-11-09/": {
+"price": null,
+"at": "2026-10-31T15:01:40.034098+00:00"
+},
+"https://www.veronalibrary.org/events/air-dry-dish-2/": {
+"price": null,
+"at": "2026-10-31T15:01:44.550041+00:00"
+},
+"https://www.wmtl.org/event/basket-weaving-criss-cross-basket/": {
+"price": null,
+"at": "2026-10-31T15:02:14.118188+00:00"
+},
+"https://www.wmtl.org/event/coloring-crew-198/": {
+"price": null,
+"at": "2026-10-31T15:02:15.811655+00:00"
+},
+"https://www.wmtl.org/event/hollywood-the-air-force-in-wwii/": {
+"price": null,
+"at": "2026-10-31T15:02:17.521796+00:00"
+},
+"https://www.wmtl.org/event/library-board-of-trustees-20/": {
+"price": null,
+"at": "2026-10-31T15:02:19.246121+00:00"
+},
+"https://www.wmtl.org/event/stitches-108/": {
+"price": null,
+"at": "2026-10-31T15:02:21.061937+00:00"
+},
+"https://riversideparknyc.org/event/fall-bodyroll-in-the-field-house/2026-11-02/": {
+"price": null,
+"at": "2026-10-31T15:02:21.988296+00:00"
+},
+"https://riversideparknyc.org/event/fall-yoga-in-the-field-house-3/2026-11-04/": {
+"price": null,
+"at": "2026-10-31T15:02:22.904731+00:00"
+},
+"https://riversideparknyc.org/event/field-house-mat-pilates-3/2026-11-05/": {
+"price": null,
+"at": "2026-10-31T15:02:23.828409+00:00"
+},
+"https://riversideparknyc.org/event/strange-confessions-a-new-play-reading/": {
+"price": null,
+"at": "2026-10-31T15:02:24.798702+00:00"
+},
+"https://millriverpark.org/event/fall-sunday-funday-8/": {
+"price": null,
+"at": "2026-10-31T15:02:26.762369+00:00"
+},
+"https://www.lasdonpublicgardens.org/event/chapter-49-vietnam-veterans-of-america-ceremony/": {
+"price": null,
+"at": "2026-10-31T15:02:27.751638+00:00"
+},
+"https://millriverpark.org/event/holidaymarket/2026-12-12/": {
+"price": null,
+"at": "2026-10-31T15:02:29.473260+00:00"
+},
+"https://millriverpark.org/event/holidaymarket/2026-12-13/": {
+"price": null,
+"at": "2026-10-31T15:02:31.560064+00:00"
+},
+"https://www.lasdonpublicgardens.org/event/wreaths-across-america-ceremony/": {
+"price": null,
+"at": "2026-10-31T15:02:33.408610+00:00"
+},
+"https://www.lasdonpublicgardens.org/event/candlelight-vigil/": {
+"price": null,
+"at": "2026-10-31T15:02:35.328949+00:00"
+},
+"https://millriverpark.org/event/david-marion-nissen-carousel/2026-10-31/": {
+"price": null,
+"at": "2026-10-31T15:02:37.009243+00:00"
+},
+"https://www.lasdonpublicgardens.org/event/yoga-in-the-garden/2026-11-01/": {
+"price": {
+"min": 0.0,
+"max": 0.0,
+"note": "from the listing page"
+},
+"at": "2026-10-31T15:02:37.926905+00:00"
+},
+"https://www.lasdonpublicgardens.org/event/roots-of-resilience/2026-11-05/": {
+"price": null,
+"at": "2026-10-31T15:02:39.884743+00:00"
+},
+"https://www.lasdonpublicgardens.org/event/holiday-wreath-workshop/": {
+"price": {
+"min": 125.0,
+"max": 125.0,
+"note": "from the listing page"
+},
+"at": "2026-10-31T15:02:42.514284+00:00"
+},
+"https://millriverpark.org/event/holiday-party-mrp/2026-12-19/": {
+"price": null,
+"at": "2026-10-31T15:02:44.280561+00:00"
+},
+"https://westportlibrary.org/event/itty-bittys-6-3-2-2-2-2/2026-10-31/": {
+"price": null,
+"at": "2026-10-31T15:02:45.310650+00:00"
+},
+"https://westportlibrary.org/event/pokemon-club/2026-10-31/": {
+"price": null,
+"at": "2026-10-31T15:02:46.278089+00:00"
+},
+"https://riversideparknyc.org/event/volunteer-at-the-compost-compound-3-2/2026-11-02/": {
+"price": null,
+"at": "2026-10-31T15:02:47.304332+00:00"
+},
+"https://westportlibrary.org/event/rhythm-and-rhyme-6-2-2/2026-11-02/": {
+"price": null,
+"at": "2026-10-31T15:02:48.294009+00:00"
+},
+"https://westportlibrary.org/event/near-peer-homework-help-7-2-2/2026-11-02/": {
+"price": null,
+"at": "2026-10-31T15:02:49.241351+00:00"
+},
+"https://westportlibrary.org/event/writing-sprints-with-tessa-smith-mcgovern-2/2026-11-03/": {
+"price": null,
+"at": "2026-10-31T15:02:50.162968+00:00"
+},
+"https://travelhudsonvalley.com/event/catskill-first-friday/": {
+"price": null,
+"at": "2026-10-31T15:02:51.131330+00:00"
+},
+"https://www.eventbrite.com/e/queer-ally-parents-support-circle-tickets-2003929964468": {
+"price": {
+"min": 0.0,
+"max": 0.0,
+"note": "from the listing page"
+},
+"at": "2026-10-31T15:02:58.346952+00:00"
+},
+"https://www.savagewonder.org/event/an-evening-with-gina-herrera-on-veterans-day/": {
+"price": null,
+"at": "2026-10-31T15:02:59.504919+00:00"
+},
+"https://www.eventbrite.com/e/queer-munch-south-tickets-2004025878349": {
+"price": {
+"min": 0.0,
+"max": 0.0,
+"note": "from the listing page"
+},
+"at": "2026-10-31T15:03:00.413048+00:00"
+},
+"https://www.savagewonder.org/event/a-talk-with-dennis-dugan/": {
+"price": null,
+"at": "2026-10-31T15:03:01.522259+00:00"
+},
+"https://www.woodstockguild.org/event/chris-wells-and-jeremy-bass-story-songs/": {
+"price": null,
+"at": "2026-10-31T15:03:02.576991+00:00"
+},
+"https://booksonthecommon.com/events/are-they-dead-yet-the-art-of-the-obit/": {
+"price": null,
+"at": "2026-10-31T15:03:03.662117+00:00"
+},
+"https://www.eventbrite.com/e/candlelight-concert-tickets-1989995293492": {
+"price": {
+"min": 0.0,
+"max": 0.0,
+"note": "from the listing page"
+},
+"at": "2026-10-31T15:03:05.168842+00:00"
+},
+"https://lincolndepotmuseum.org/calendar/rendezvous-with-treason/": {
+"price": null,
+"at": "2026-10-31T15:03:10.493452+00:00"
+},
+"https://www.woodstockguild.org/event/an-afternoon-of-modern-dance-with-linda-diamond-company/": {
+"price": null,
+"at": "2026-10-31T15:03:11.506428+00:00"
+},
+"https://www.eventbrite.com/e/jake-swamp-and-the-pine-tickets-1995803282343": {
+"price": {
+"min": 0.0,
+"max": 0.0,
+"note": "from the listing page"
+},
+"at": "2026-10-31T15:03:13.193300+00:00"
+},
+"https://www.woodstockguild.org/event/an-evening-with-tim-moore/": {
+"price": null,
+"at": "2026-10-31T15:03:14.131104+00:00"
+},
+"https://www.woodstockguild.org/event/27th-annual-5-by-7-show-opening-reception/": {
+"price": null,
+"at": "2026-10-31T15:03:15.117960+00:00"
+},
+"https://www.eventbrite.com/e/jazz-room-tickets-1990006457885": {
+"price": {
+"min": 0.0,
+"max": 0.0,
+"note": "from the listing page"
+},
+"at": "2026-10-31T15:03:16.776898+00:00"
+},
+"https://www.eventbrite.com/e/the-alternate-routes-tickets-1996744951902": {
+"price": {
+"min": 0.0,
+"max": 0.0,
+"note": "from the listing page"
+},
+"at": "2026-10-31T15:03:18.341077+00:00"
+},
+"https://travelhudsonvalley.com/event/2026-tri-state-new-york-spartan-event-weekend/": {
+"price": null,
+"at": "2026-10-31T15:03:19.302147+00:00"
+},
+"https://campus-events.wcsu.edu/calendar/football-vs-juniata-college/": {
+"price": {
+"min": 10.0,
+"max": 10.0,
+"note": "from the listing page"
+},
+"at": "2026-10-31T15:03:20.326028+00:00"
+},
+"https://www.stamfordmuseum.org/event/daily-otter-feeding-3/2026-10-31/": {
+"price": null,
+"at": "2026-10-31T15:03:21.993234+00:00"
+},
+"https://pleasantvalleylibrary.assabetinteractive.com/calendar/mah-jongg-for-beginners/": {
+"price": null,
+"at": "2026-10-31T15:13:46.693910+00:00"
+},
+"https://pleasantvalleylibrary.assabetinteractive.com/meeting-and-study-rooms/pv-community-garden-conf-11/": {
+"price": null,
+"at": "2026-10-31T15:13:47.600187+00:00"
+},
+"https://pleasantvalleylibrary.assabetinteractive.com/calendar/face-lymphatic-yoga-57/": {
+"price": null,
+"at": "2026-10-31T15:13:48.510693+00:00"
+},
+"https://pleasantvalleylibrary.assabetinteractive.com/calendar/susan-olin-dabrowski-artist-reception/": {
+"price": null,
+"at": "2026-10-31T15:13:49.498630+00:00"
+},
+"https://redhooklibrary.assabetinteractive.com/calendar/english-as-a-second-language-229/": {
+"price": null,
+"at": "2026-10-31T15:13:50.622241+00:00"
+},
+"https://redhooklibrary.assabetinteractive.com/calendar/all-abilities-adults-245/": {
+"price": null,
+"at": "2026-10-31T15:13:51.640846+00:00"
+},
+"https://laglib.assabetinteractive.com/calendar/family-fun-saturday-storytime-7/": {
+"price": null,
+"at": "2026-10-31T15:13:52.700898+00:00"
+},
+"https://pleasantvalleylibrary.assabetinteractive.com/calendar/defensive-driving-10/": {
+"price": null,
+"at": "2026-10-31T15:13:53.667077+00:00"
+},
+"https://laglib.assabetinteractive.com/calendar/graphic-novel-club-bad-kitty-party-animal/": {
+"price": null,
+"at": "2026-10-31T15:13:54.666611+00:00"
+},
+"https://redhooklibrary.assabetinteractive.com/calendar/marbled-note-cards/": {
+"price": null,
+"at": "2026-10-31T15:13:55.681593+00:00"
+},
+"https://bookwhen.com/putnamvalleylibrary/e/ev-sjjw6-20261110163000": {
+"price": null,
+"at": "2026-10-31T15:13:57.538489+00:00"
+},
+"https://laglib.assabetinteractive.com/calendar/aarp-smart-driver-nys-defensive-driving-course-part-1-9/": {
+"price": null,
+"at": "2026-10-31T15:13:58.468074+00:00"
+},
+"https://laglib.assabetinteractive.com/calendar/on-the-same-page-book-club-23/": {
+"price": null,
+"at": "2026-10-31T15:13:59.497115+00:00"
+},
+"https://beaconlibrary.assabetinteractive.com/calendar/chair-yoga/": {
+"price": null,
+"at": "2026-10-31T15:14:00.543657+00:00"
+},
+"https://beaconlibrary.assabetinteractive.com/calendar/adult-craft-night-paint-by-number/": {
+"price": null,
+"at": "2026-10-31T15:14:01.523716+00:00"
+},
+"https://redhooklibrary.assabetinteractive.com/calendar/bingocize-with-cyd/": {
+"price": null,
+"at": "2026-10-31T15:14:02.621614+00:00"
+},
+"https://mahopaclibrary.assabetinteractive.com/calendar/mathnasium-presents-math-games-2/": {
+"price": null,
+"at": "2026-10-31T15:14:03.815890+00:00"
+},
+"https://beaconlibrary.assabetinteractive.com/calendar/after-hours-the-library-for-tweens-teens-grades-6-12-escape-the-library/": {
+"price": null,
+"at": "2026-10-31T15:14:04.754343+00:00"
+},
+"https://laglib.assabetinteractive.com/calendar/teen-painting-fall-garden-gnome/": {
+"price": null,
+"at": "2026-10-31T15:14:05.721274+00:00"
+},
+"https://beekmanlibrary.assabetinteractive.com/calendar/books-brews-a-teen-book-club-2/": {
+"price": null,
+"at": "2026-10-31T15:14:06.802355+00:00"
+},
+"https://bookwhen.com/putnamvalleylibrary/e/ev-soayu-20261113190000": {
+"price": null,
+"at": "2026-10-31T15:14:08.277984+00:00"
+},
+"https://beaconlibrary.assabetinteractive.com/calendar/history-in-conext-local-esopus-lenape/": {
+"price": null,
+"at": "2026-10-31T15:14:09.236356+00:00"
+},
+"https://bookwhen.com/putnamvalleylibrary/e/ev-szbh-20261114130000": {
+"price": null,
+"at": "2026-10-31T15:14:10.514586+00:00"
+},
+"https://mahopaclibrary.assabetinteractive.com/calendar/the-stone-chambers-a-druids-journey/": {
+"price": null,
+"at": "2026-10-31T15:14:11.504122+00:00"
+},
+"https://redhooklibrary.assabetinteractive.com/calendar/book-club-the-once-and-future-witches/": {
+"price": null,
+"at": "2026-10-31T15:14:12.490370+00:00"
+},
+"https://beekmanlibrary.assabetinteractive.com/calendar/homeschool-group-chemical-reactions-and-changes/": {
+"price": null,
+"at": "2026-10-31T15:14:13.490785+00:00"
+},
+"https://mahopaclibrary.assabetinteractive.com/calendar/teen-service-opportunity-lego-sorting-32/": {
+"price": null,
+"at": "2026-10-31T15:14:14.474446+00:00"
+},
+"https://beaconlibrary.assabetinteractive.com/calendar/write-today-beacon-50/": {
+"price": null,
+"at": "2026-10-31T15:14:15.381931+00:00"
+},
+"https://bookwhen.com/putnamvalleylibrary/e/ev-s0boc-20261116190000": {
+"price": null,
+"at": "2026-10-31T15:14:16.751598+00:00"
+},
+"https://mahopaclibrary.assabetinteractive.com/calendar/teen-service-opportunity-lego-day-52/": {
+"price": null,
+"at": "2026-10-31T15:14:17.731097+00:00"
+},
+"https://bookwhen.com/putnamvalleylibrary/e/ev-slb7u-20261117163000": {
+"price": null,
+"at": "2026-10-31T15:14:19.079945+00:00"
+},
+"https://mahopaclibrary.assabetinteractive.com/calendar/meeting-of-the-mahopac-library-board-of-trustees-15/": {
+"price": null,
+"at": "2026-10-31T15:14:20.052213+00:00"
+},
+"https://kingstonlibrary.assabetinteractive.com/calendar/kingston-library-board-of-trustees-monthly-meeting-68/": {
+"price": null,
+"at": "2026-10-31T15:14:21.113137+00:00"
+},
+"https://beekmanlibrary.assabetinteractive.com/calendar/evening-book-club-48/": {
+"price": null,
+"at": "2026-10-31T15:14:22.056434+00:00"
+},
+"https://kingstonlibrary.assabetinteractive.com/calendar/bard-math-circle-18/": {
+"price": null,
+"at": "2026-10-31T15:14:23.056732+00:00"
+},
+"https://beekmanlibrary.assabetinteractive.com/calendar/library-bot-meeting-38/": {
+"price": null,
+"at": "2026-10-31T15:14:24.019179+00:00"
+},
+"https://beekmanlibrary.assabetinteractive.com/calendar/no-kids-allowed-game-night-40/": {
+"price": null,
+"at": "2026-10-31T15:14:24.968078+00:00"
+},
+"https://kingstonlibrary.assabetinteractive.com/calendar/charter-revision-public-forum/": {
+"price": null,
+"at": "2026-10-31T15:14:25.892363+00:00"
+},
+"https://kingstonlibrary.assabetinteractive.com/calendar/bard-math-circle-19/": {
+"price": null,
+"at": "2026-10-31T15:14:26.831932+00:00"
+},
+"https://kingstonlibrary.assabetinteractive.com/calendar/kingston-library-board-of-trustees-monthly-meeting-69/": {
+"price": null,
+"at": "2026-10-31T15:14:27.787962+00:00"
+},
+"https://ridgefieldplayhouse.org/event/nutcracker-opening-night-ridgefield-ct-2026/": {
+"price": null,
+"at": "2026-10-31T15:14:28.908030+00:00"
+},
+"https://ridgefieldplayhouse.org/event/nutcracker-sat2pm-ridgefield-ct-2026/": {
+"price": null,
+"at": "2026-10-31T15:14:29.981673+00:00"
+},
+"https://ridgefieldplayhouse.org/event/nutcracker-sun11am-ridgefield-ct-2026/": {
+"price": null,
+"at": "2026-10-31T15:14:31.029400+00:00"
+},
+"https://ridgefieldplayhouse.org/event/rental-rhs-ski-team-2026/": {
+"price": null,
+"at": "2026-10-31T15:14:32.077260+00:00"
+},
+"https://ridgefieldplayhouse.org/event/mickey-guyton-ridgefield-ct-2026/": {
+"price": null,
+"at": "2026-10-31T15:14:33.121295+00:00"
+},
+"https://www.derbynecklibrary.org/events/private-meeting-community-room-13": {
+"price": null,
+"at": "2026-10-31T15:14:34.562703+00:00"
+},
+"https://www.derbynecklibrary.org/events/makerspace-11": {
+"price": null,
+"at": "2026-10-31T15:14:36.200377+00:00"
+},
+"https://www.derbynecklibrary.org/events/open-crafting-for-teens-11": {
+"price": null,
+"at": "2026-10-31T15:14:37.669262+00:00"
+},
+"https://www.derbynecklibrary.org/events/dnl-productions-film-club-12": {
+"price": null,
+"at": "2026-10-31T15:14:39.193727+00:00"
+},
+"https://www.derbynecklibrary.org/events/cantos-y-cuentos-11": {
+"price": null,
+"at": "2026-10-31T15:14:40.583536+00:00"
+},
+"https://events.fairfield.edu/event/fairfield-university-womens-basketball-vs-siena-5078": {
+"price": null,
+"at": "2026-10-31T15:14:42.013344+00:00"
+},
+"https://events.fairfield.edu/event/fairfield-university-womens-basketball-vs-mount-st-marys-8141": {
+"price": null,
+"at": "2026-10-31T15:14:43.376608+00:00"
+},
+"https://events.fairfield.edu/event/fairfield-university-mens-basketball-vs-canisius-6117": {
+"price": null,
+"at": "2026-10-31T15:14:44.681546+00:00"
+},
+"https://events.fairfield.edu/event/fairfield-university-mens-basketball-vs-rider-388": {
+"price": null,
+"at": "2026-10-31T15:14:46.464742+00:00"
+},
+"https://events.fairfield.edu/event/fairfield-university-womens-basketball-vs-quinnipiac-8916": {
+"price": null,
+"at": "2026-10-31T15:14:51.239317+00:00"
+},
+"https://calendar.fordham.edu/event/fordham-university-mens-basketball-vs-bryant-university": {
+"price": null,
+"at": "2026-10-31T15:14:52.830525+00:00"
+},
+"https://calendar.fordham.edu/event/fordham-university-womens-basketball-vs-colgate-university": {
+"price": null,
+"at": "2026-10-31T15:14:54.323423+00:00"
+},
+"https://calendar.fordham.edu/event/fordham-university-mens-basketball-vs-central-connecticut-state-university": {
+"price": null,
+"at": "2026-10-31T15:14:55.246234+00:00"
+},
+"https://calendar.fordham.edu/event/fordham-university-mens-basketball-vs-saint-louis": {
+"price": null,
+"at": "2026-10-31T15:14:56.690421+00:00"
+},
+"https://calendar.fordham.edu/event/fordham-university-womens-basketball-vs-la-salle": {
+"price": null,
+"at": "2026-10-31T15:14:58.154883+00:00"
+},
+"https://events.msmc.edu/event/mount-saint-mary-college-mens-swimming-vs-purchase-college": {
+"price": null,
+"at": "2026-10-31T15:14:59.634791+00:00"
+},
+"https://events.msmc.edu/event/mount-saint-mary-college-womens-basketball-vs-sarah-lawrence-college-8389": {
+"price": null,
+"at": "2026-10-31T15:15:01.501478+00:00"
+},
+"https://events.msmc.edu/event/mount-saint-mary-college-mens-basketball-vs-united-states-merchant-marine-academy": {
+"price": null,
+"at": "2026-10-31T15:15:02.715715+00:00"
+},
+"https://events.msmc.edu/event/mount-saint-mary-college-mens-basketball-vs-farmingdale-state-college-2102": {
+"price": null,
+"at": "2026-10-31T15:15:06.558835+00:00"
+},
+"https://events.msmc.edu/event/mount-saint-mary-college-womens-basketball-at-university-of-mount-saint-vincent-2736": {
+"price": null,
+"at": "2026-10-31T15:15:07.828674+00:00"
+},
+"https://tubbyskingston.com/calendar/lily-seabird-eliza-niemi": {
+"price": null,
+"at": "2026-10-31T15:15:09.107376+00:00"
+},
+"https://tubbyskingston.com/calendar/bcmc": {
+"price": null,
+"at": "2026-10-31T15:15:11.145318+00:00"
+},
+"https://tubbyskingston.com/calendar/manas": {
+"price": null,
+"at": "2026-10-31T15:15:12.411450+00:00"
+},
+"https://tubbyskingston.com/calendar/tapers-choice-1": {
+"price": null,
+"at": "2026-10-31T15:15:13.760325+00:00"
+},
+"https://tubbyskingston.com/calendar/spencer-zahn": {
+"price": null,
+"at": "2026-10-31T15:15:15.056724+00:00"
+},
+"https://desmondfishlibrary.org/event/library-student-council-15/": {
+"price": null,
+"at": "2026-10-31T15:15:20.958955+00:00"
+},
+"https://desmondfishlibrary.org/event/sci-fi-thursday-scavengers-reign/": {
+"price": null,
+"at": "2026-10-31T15:15:24.437007+00:00"
+},
+"https://desmondfishlibrary.org/event/paw-pals-read-to-a-dog-10/2026-11-12/": {
+"price": null,
+"at": "2026-10-31T15:15:27.220905+00:00"
+},
+"https://desmondfishlibrary.org/event/mahjong-meetup-5/2026-11-13/": {
+"price": null,
+"at": "2026-10-31T15:15:29.983865+00:00"
+},
+"https://desmondfishlibrary.org/event/play-and-chat-caregiver-meetup-with-putnam-county-doh-nurses/2026-11-13/": {
+"price": null,
+"at": "2026-10-31T15:15:32.591137+00:00"
+},
+"https://mahaiwe.org/event/met-opera-live-in-hd-kevin-putss-silent-night/": {
+"price": null,
+"at": "2026-10-31T15:15:35.310479+00:00"
+},
+"https://mahaiwe.org/event/mermaid-theatre-of-nova-scotia-ocean-blue/": {
+"price": null,
+"at": "2026-10-31T15:15:37.740081+00:00"
+},
+"https://mahaiwe.org/event/scott-eyerlys-virtual-met-opera-lecture-kevin-putss-silent-night-duplicate-1-2/": {
+"price": null,
+"at": "2026-10-31T15:15:40.095545+00:00"
+},
+"https://mahaiwe.org/event/met-opera-live-in-hd-massenets-manon/": {
+"price": null,
+"at": "2026-10-31T15:15:42.366680+00:00"
+},
+"https://www.wmtl.org/event/gentle-yoga-with-michelle-54/": {
+"price": null,
+"at": "2026-10-31T15:16:12.136519+00:00"
+},
+"https://www.wmtl.org/event/friends-general-meeting-2026/": {
+"price": null,
+"at": "2026-10-31T15:16:14.017071+00:00"
+},
+"https://www.wmtl.org/event/needle-felting-with-christine-for-teens-2026/": {
+"price": null,
+"at": "2026-10-31T15:16:15.701539+00:00"
+},
+"https://mahaiwe.org/event/indigo-comedy-night-with-meghan-hanley/": {
+"price": null,
+"at": "2026-10-31T15:16:18.081799+00:00"
+},
+"https://www.wmtl.org/event/v-a-t-11-3-2026/": {
+"price": null,
+"at": "2026-10-31T15:16:19.988165+00:00"
+},
+"https://www.veronalibrary.org/events/chair-yoga/2026-11-06/": {
+"price": null,
+"at": "2026-10-31T15:16:24.627044+00:00"
+},
+"https://events.newhaven.edu/event/inkwell-poet-society-weekly-meeting": {
+"price": null,
+"at": "2026-10-31T15:16:26.294104+00:00"
+},
+"https://www.veronalibrary.org/events/library-chef-kids-burritos/": {
+"price": null,
+"at": "2026-10-31T15:16:30.896586+00:00"
+},
+"https://www.wmtl.org/event/v-a-t-11-10-2026/": {
+"price": null,
+"at": "2026-10-31T15:16:32.552597+00:00"
+},
+"https://events.newhaven.edu/event/kappa-kappa-psi-reading-band-5333": {
+"price": null,
+"at": "2026-10-31T15:16:34.173805+00:00"
+},
+"https://millriverpark.org/event/holiday-party-mrp/2026-12-20/": {
+"price": null,
+"at": "2026-10-31T15:16:36.826428+00:00"
+},
+"https://events.newhaven.edu/event/memorial-day-2027": {
+"price": null,
+"at": "2026-10-31T15:16:38.658353+00:00"
+},
+"https://www.veronalibrary.org/events/artists-reception-2/": {
+"price": null,
+"at": "2026-10-31T15:16:43.372426+00:00"
+},
+"https://westportlibrary.org/event/trading-card-swap/": {
+"price": null,
+"at": "2026-10-31T15:16:44.517623+00:00"
+},
+"https://westportlibrary.org/event/writing-sprints-with-alexandra-soiseth-2-2-2/2026-11-04/": {
+"price": null,
+"at": "2026-10-31T15:16:46.387030+00:00"
+},
+"https://www.veronalibrary.org/events/tech-time-2/2026-11-05/": {
+"price": null,
+"at": "2026-10-31T15:16:50.913378+00:00"
+},
+"https://westportlibrary.org/event/take-and-make-2-2/": {
+"price": null,
+"at": "2026-10-31T15:16:51.903704+00:00"
+},
+"https://riversideparknyc.org/event/meet-the-fleet/2026-11-07/": {
+"price": null,
+"at": "2026-10-31T15:16:53.139533+00:00"
+},
+"https://riversideparknyc.org/event/gardening-at-ralph-ellison-memorial-3/": {
+"price": null,
+"at": "2026-10-31T15:16:54.067335+00:00"
+},
+"https://riversideparknyc.org/event/en-espanol-tree-club-del-bosque-de-west-harlem/2026-10-31/": {
+"price": null,
+"at": "2026-10-31T15:16:55.070101+00:00"
+},
+"https://riversideparknyc.org/event/hippo-halloween-parade-4/": {
+"price": null,
+"at": "2026-10-31T15:16:56.080210+00:00"
+},
+"https://campus-events.wcsu.edu/calendar/mens-ice-hockey-vs-post-university/": {
+"price": null,
+"at": "2026-10-31T15:16:58.101836+00:00"
+},
+"https://www.lasdonpublicgardens.org/event/forest-bathing-at-lasdon/": {
+"price": null,
+"at": "2026-10-31T15:16:59.238013+00:00"
+},
+"https://www.duny.edu/events/campus-mass-3/2026-11-01/": {
+"price": null,
+"at": "2026-10-31T15:17:01.818733+00:00"
+},
+"https://travelhudsonvalley.com/event/autumn-glow-festival-2-2-2-2/": {
+"price": {
+"min": 16.99,
+"max": 16.99,
+"note": "from the listing page"
+},
+"at": "2026-10-31T15:17:02.953079+00:00"
+},
+"https://www.veronalibrary.org/events/maker-space-open-hours/2026-11-02/": {
+"price": null,
+"at": "2026-10-31T15:17:08.047542+00:00"
+},
+"https://www.eventbrite.com/e/yang-sheng-gong-tickets-2003081311123": {
+"price": {
+"min": 0.0,
+"max": 0.0,
+"note": "from the listing page"
+},
+"at": "2026-10-31T15:17:09.908509+00:00"
+},
+"https://www.teatown.org/events/birding-basics-at-the-chappaqua-public-library/": {
+"price": null,
+"at": "2026-10-31T15:17:10.874510+00:00"
+},
+"https://campus-events.wcsu.edu/calendar/fall-2026-regional-lake-communities-symposium/2026-11-02/": {
+"price": null,
+"at": "2026-10-31T15:17:13.308385+00:00"
+},
+"https://westportlibrary.org/event/books-bites/2026-11-03/": {
+"price": null,
+"at": "2026-10-31T15:17:14.301308+00:00"
+},
+"https://www.teatown.org/events/hudson-valley-wildlife-at-the-ardsley-public-library-for-families/": {
+"price": null,
+"at": "2026-10-31T15:17:15.196377+00:00"
+},
+"https://www.sunywcc.edu/events/brave-talk-peer-support-training/": {
+"price": null,
+"at": "2026-10-31T15:17:17.244132+00:00"
+},
+"https://www.eventbrite.com/e/new-york-one-day-choir-olafur-arnalds-talos-a-dawning-tickets-2000538090281": {
+"price": {
+"min": 0.0,
+"max": 0.0,
+"note": "from the listing page"
+},
+"at": "2026-10-31T15:17:18.141045+00:00"
+},
+"https://riversideparknyc.org/event/volunteer-at-sakura-park-and-claremont-3/2026-11-04/": {
+"price": null,
+"at": "2026-10-31T15:17:19.165735+00:00"
+},
+"https://www.clearwater.org/event/hudson-river-sloop-clearwaters-circle-of-song/": {
+"price": {
+"min": 0.0,
+"max": 0.0,
+"note": "from the listing page"
+},
+"at": "2026-10-31T15:17:20.962503+00:00"
+},
+"https://westportlibrary.org/event/tell-a-yarn-2/2026-11-04/": {
+"price": null,
+"at": "2026-10-31T15:17:21.857899+00:00"
+},
+"https://whitememorialcc.org/event/natures-nursery-series-fall-2026/2026-11-05/": {
+"price": null,
+"at": "2026-10-31T15:17:22.980123+00:00"
+},
+"https://hudsonvalleybrewery.com/calendar/2025/10/24/lager-night-yn9bf": {
+"price": null,
+"at": "2026-10-31T15:17:24.061528+00:00"
+},
+"https://campus-events.wcsu.edu/calendar/volleyball-vs-university-of-mount-saint-vincent/": {
+"price": null,
+"at": "2026-10-31T15:17:26.181722+00:00"
+},
+"https://travelhudsonvalley.com/event/legendary-tours-of-washington-irvings-sunnyside-2-2/": {
+"price": null,
+"at": "2026-10-31T15:17:27.935670+00:00"
+},
+"https://travelhudsonvalley.com/event/lyndhursts-fall-theater-the-importance-of-being-earnest/": {
+"price": {
+"min": 49.0,
+"max": 49.0,
+"note": "from the listing page"
+},
+"at": "2026-10-31T15:17:28.989513+00:00"
+},
+"https://travelhudsonvalley.com/event/borscht-belt-film-festival/": {
+"price": null,
+"at": "2026-10-31T15:17:30.714960+00:00"
+},
+"https://travelhudsonvalley.com/event/holiday-house-2026/": {
+"price": {
+"min": 0.0,
+"max": 0.0,
+"note": "from the listing page"
+},
+"at": "2026-10-31T15:17:32.486172+00:00"
+},
+"https://www.eventbrite.com/e/flash-foxy-trad-mentorship-new-paltz-ny-tickets-1993349453876": {
+"price": {
+"min": 0.0,
+"max": 0.0,
+"note": "from the listing page"
+},
+"at": "2026-10-31T15:17:33.348380+00:00"
+},
+"https://www.eventbrite.com/e/flourisha-gathering-for-growth-tickets-2003747992184": {
+"price": {
+"min": 0.0,
+"max": 0.0,
+"note": "from the listing page"
+},
+"at": "2026-10-31T15:17:34.299731+00:00"
+},
+"https://www.eventbrite.com/e/kingston-community-dharma-one-day-retreat-tickets-2002791158268": {
+"price": {
+"min": 0.0,
+"max": 0.0,
+"note": "from the listing page"
+},
+"at": "2026-10-31T15:17:35.799510+00:00"
+},
+"https://travelhudsonvalley.com/event/beacon-bonfire-presents-its-baby-bonfire-festival-at-the-kube-art-center/": {
+"price": null,
+"at": "2026-10-31T15:17:36.715642+00:00"
+},
+"https://www.eventbrite.com/e/the-laramie-project-saturday-tickets-tickets-2003364978580": {
+"price": {
+"min": 0.0,
+"max": 0.0,
+"note": "from the listing page"
+},
+"at": "2026-10-31T15:17:37.978396+00:00"
+},
+"https://travelhudsonvalley.com/event/the-hudson-valley-train-show-at-the-mjn-convention-center-in-poughkeepsie/": {
+"price": null,
+"at": "2026-10-31T15:17:39.705183+00:00"
+},
+"https://travelhudsonvalley.com/event/open-day-at-equine-advocates/": {
+"price": {
+"min": 0.0,
+"max": 0.0,
+"note": "from the listing page"
+},
+"at": "2026-10-31T15:17:40.690778+00:00"
+},
+"https://travelhudsonvalley.com/event/harvest-wine-festival/": {
+"price": null,
+"at": "2026-10-31T15:17:42.414487+00:00"
+},
+"https://www.teatown.org/events/gardening-with-native-plants-at-the-dobbs-ferry-public-library-for-adults/": {
+"price": null,
+"at": "2026-10-31T15:17:43.336755+00:00"
+},
+"https://www.clearwater.org/event/2026-wallkill-river-summit/": {
+"price": null,
+"at": "2026-10-31T15:17:45.234792+00:00"
+},
+"https://burnhamlibrary.org/events/norman-rockwell-inclusion-exclusion-and-representing-america-zoom/": {
+"price": null,
+"at": "2026-10-31T15:17:46.980367+00:00"
+},
+"https://booksonthecommon.com/events/not-your-founding-father-how-a-nonbinary-minster-became-americas-most-radical-revolutionary/": {
+"price": null,
+"at": "2026-10-31T15:17:48.103549+00:00"
+},
+"https://travelhudsonvalley.com/event/a-storybook-christmas-festival-of-trees/": {
+"price": null,
+"at": "2026-10-31T15:17:49.075096+00:00"
+},
+"https://www.teatown.org/events/volunteer-with-teatown-forest-research-project-plant-care/": {
+"price": null,
+"at": "2026-10-31T15:17:50.053358+00:00"
+},
+"https://travelhudsonvalley.com/event/victorian-christmas-at-the-octagon-house/": {
+"price": {
+"min": 38.0,
+"max": 38.0,
+"note": "from the listing page"
+},
+"at": "2026-10-31T15:17:51.059172+00:00"
+},
+"https://www.iaismuseum.org/event/an-evening-of-songs-and-stories-iais-fall-fundraiser/": {
+"price": null,
+"at": "2026-10-31T15:17:54.311911+00:00"
+},
+"https://www.scenichudson.org/events/northside-collaborative-meeting/": {
+"price": null,
+"at": "2026-10-31T15:17:56.902150+00:00"
+},
+"https://dyckmanfarmhouse.org/event/comfy-classical-at-dyckman-farmhouse/": {
+"price": null,
+"at": "2026-10-31T15:17:58.424783+00:00"
+},
+"https://www.iaismuseum.org/event/november-virtual-book-club-rediscovering-turtle-island/": {
+"price": null,
+"at": "2026-10-31T15:18:01.604044+00:00"
+},
+"https://briarcliffmanorlibrary.org/event/briarcliff-battle-of-the-book-benny-on-the-case/": {
+"price": null,
+"at": "2026-10-31T15:18:02.559310+00:00"
+},
+"https://briarcliffmanorlibrary.org/event/teen-dungeons-dragons-2/2026-11-19/": {
+"price": null,
+"at": "2026-10-31T15:18:05.242416+00:00"
+},
+"https://www.eventbrite.com/e/the-brooklyn-pancakes-booze-art-show-vendor-artist-reservations-only-tickets-2002461528336": {
+"price": null,
+"at": "2026-10-31T15:18:06.204075+00:00"
+},
+"https://www.clearwater.org/event/clearwaters-60th-anniversary-benefit-concert/": {
+"price": {
+"min": 35.0,
+"max": 35.0,
+"note": "from the listing page"
+},
+"at": "2026-10-31T15:18:07.933823+00:00"
+},
+"https://pleasantvalleylibrary.assabetinteractive.com/calendar/evening-face-lymphatic-yoga-56/": {
+"price": null,
+"at": "2026-10-31T15:20:54.618037+00:00"
+},
+"https://pleasantvalleylibrary.assabetinteractive.com/calendar/songs-from-the-60s-70s-with-acoustic-guitarist-mike-kiernan/": {
+"price": null,
+"at": "2026-10-31T15:20:55.619824+00:00"
+},
+"https://pleasantvalleylibrary.assabetinteractive.com/calendar/chess-club-156/": {
+"price": null,
+"at": "2026-10-31T15:20:56.592876+00:00"
+},
+"https://pleasantvalleylibrary.assabetinteractive.com/calendar/gone-but-not-forgotten-lost-treasures-in-the-hudson-valley-with-anthony-musso/": {
+"price": null,
+"at": "2026-10-31T15:20:57.528505+00:00"
+},
+"https://pleasantvalleylibrary.assabetinteractive.com/calendar/pilates-with-michelle-38/": {
+"price": null,
+"at": "2026-10-31T15:20:58.437684+00:00"
+},
+"https://beaconlibrary.assabetinteractive.com/calendar/socrates-cafe-17/": {
+"price": null,
+"at": "2026-10-31T15:20:59.610922+00:00"
+},
+"https://bookwhen.com/putnamvalleylibrary/e/ev-siak-20261117200000": {
+"price": null,
+"at": "2026-10-31T15:21:01.158143+00:00"
+},
+"https://laglib.assabetinteractive.com/calendar/aarp-smart-driver-nys-defensive-driving-course-part-1-10/": {
+"price": null,
+"at": "2026-10-31T15:21:02.206907+00:00"
+},
+"https://beaconlibrary.assabetinteractive.com/calendar/wednesday-book-club-20/": {
+"price": null,
+"at": "2026-10-31T15:21:03.193832+00:00"
+},
+"https://redhooklibrary.assabetinteractive.com/calendar/mystery-book-club-last-one-out/": {
+"price": null,
+"at": "2026-10-31T15:21:04.270650+00:00"
+},
+"https://laglib.assabetinteractive.com/calendar/lotus-lantern-workshop-with-kscpp/": {
+"price": null,
+"at": "2026-10-31T15:21:05.188787+00:00"
+},
+"https://mahopaclibrary.assabetinteractive.com/calendar/sensory-playtime-for-ages-18-mo-4-yrs/": {
+"price": null,
+"at": "2026-10-31T15:21:06.295926+00:00"
+},
+"https://beaconlibrary.assabetinteractive.com/calendar/collage-meetup-adults-14/": {
+"price": null,
+"at": "2026-10-31T15:21:07.271203+00:00"
+},
+"https://redhooklibrary.assabetinteractive.com/calendar/board-of-trustees-general-meeting-49/": {
+"price": null,
+"at": "2026-10-31T15:21:08.287955+00:00"
+},
+"https://bookwhen.com/putnamvalleylibrary/e/ev-s0xs5-20261119183000": {
+"price": null,
+"at": "2026-10-31T15:21:09.537179+00:00"
+},
+"https://redhooklibrary.assabetinteractive.com/calendar/homeschool-happening-leaf-detectives/": {
+"price": null,
+"at": "2026-10-31T15:21:10.467381+00:00"
+},
+"https://mahopaclibrary.assabetinteractive.com/calendar/opening-reception-group-show/": {
+"price": null,
+"at": "2026-10-31T15:21:11.471435+00:00"
+},
+"https://beaconlibrary.assabetinteractive.com/calendar/multi-age-puzzle-challenge/": {
+"price": null,
+"at": "2026-10-31T15:21:12.474789+00:00"
+},
+"https://bookwhen.com/putnamvalleylibrary/e/ev-s2n75-20261121140000": {
+"price": null,
+"at": "2026-10-31T15:21:13.960974+00:00"
+},
+"https://laglib.assabetinteractive.com/calendar/lego-club-turkey-time/": {
+"price": null,
+"at": "2026-10-31T15:21:14.944108+00:00"
+},
+"https://redhooklibrary.assabetinteractive.com/calendar/publishing-panel/": {
+"price": null,
+"at": "2026-10-31T15:21:15.853291+00:00"
+},
+"https://beaconlibrary.assabetinteractive.com/calendar/aging-with-grace-16/": {
+"price": null,
+"at": "2026-10-31T15:21:16.776366+00:00"
+},
+"https://redhooklibrary.assabetinteractive.com/calendar/gift-boxes/": {
+"price": null,
+"at": "2026-10-31T15:21:17.778481+00:00"
+},
+"https://mahopaclibrary.assabetinteractive.com/calendar/home-sellers-workshop/": {
+"price": null,
+"at": "2026-10-31T15:21:18.768298+00:00"
+},
+"https://bookwhen.com/putnamvalleylibrary/e/ev-spool-20261202150000": {
+"price": null,
+"at": "2026-10-31T15:21:20.181551+00:00"
+},
+"https://mahopaclibrary.assabetinteractive.com/calendar/golden-apple-chorus-2/": {
+"price": null,
+"at": "2026-10-31T15:21:21.109210+00:00"
+},
+"https://beekmanlibrary.assabetinteractive.com/calendar/books-brews-a-teen-book-club-3/": {
+"price": null,
+"at": "2026-10-31T15:21:22.149898+00:00"
+},
+"https://mahopaclibrary.assabetinteractive.com/calendar/adult-program-hold-4/": {
+"price": null,
+"at": "2026-10-31T15:21:23.066465+00:00"
+},
+"https://beekmanlibrary.assabetinteractive.com/calendar/tech-help-by-appointment-101/": {
+"price": null,
+"at": "2026-10-31T15:21:24.127138+00:00"
+},
+"https://beekmanlibrary.assabetinteractive.com/calendar/homeschool-group-chemical-reactions-and-changes-2/": {
+"price": null,
+"at": "2026-10-31T15:21:25.123820+00:00"
+},
+"https://laglib.assabetinteractive.com/calendar/graphic-novel-club-north-for-the-winter/": {
+"price": null,
+"at": "2026-10-31T15:21:26.106414+00:00"
+},
+"https://beekmanlibrary.assabetinteractive.com/calendar/hanukkah-story-time/": {
+"price": null,
+"at": "2026-10-31T15:21:27.100216+00:00"
+},
+"https://beekmanlibrary.assabetinteractive.com/calendar/christmas-story-time-with-tania-guarino/": {
+"price": null,
+"at": "2026-10-31T15:21:28.058502+00:00"
+},
+"https://laglib.assabetinteractive.com/calendar/on-the-same-page-book-club-24/": {
+"price": null,
+"at": "2026-10-31T15:21:28.968463+00:00"
+},
+"https://bookwhen.com/putnamvalleylibrary/e/ev-sc5u3-20261210183000": {
+"price": null,
+"at": "2026-10-31T15:21:30.234183+00:00"
+},
+"https://kingstonlibrary.assabetinteractive.com/calendar/poetry-caravan/": {
+"price": null,
+"at": "2026-10-31T15:21:31.323440+00:00"
+},
+"https://ridgefieldplayhouse.org/event/marc-roberge-ridgefield-ct-2026/": {
+"price": null,
+"at": "2026-10-31T15:21:32.539993+00:00"
+},
+"https://ridgefieldplayhouse.org/event/luminare-christmas-ridgefield-ct-2026/": {
+"price": null,
+"at": "2026-10-31T15:21:33.586251+00:00"
+},
+"https://ridgefieldplayhouse.org/event/sphere-holiday-spectacular-ridgefield-ct-2026/": {
+"price": null,
+"at": "2026-10-31T15:21:34.647873+00:00"
+},
+"https://ridgefieldplayhouse.org/event/belinda-carlisle-ridgefield-ct-2026/": {
+"price": null,
+"at": "2026-10-31T15:21:35.677824+00:00"
+},
+"https://ridgefieldplayhouse.org/event/met-samson-et-dalila-ridgefield-ct-2027/": {
+"price": null,
+"at": "2026-10-31T15:21:36.729564+00:00"
+},
+"https://www.derbynecklibrary.org/events/yap-and-snack-for-teens-11": {
+"price": null,
+"at": "2026-10-31T15:21:38.167064+00:00"
+},
+"https://www.derbynecklibrary.org/events/tales-and-tunes-11": {
+"price": null,
+"at": "2026-10-31T15:21:39.620355+00:00"
+},
+"https://www.derbynecklibrary.org/events/needlers-club-14": {
+"price": null,
+"at": "2026-10-31T15:21:41.032828+00:00"
+},
+"https://www.derbynecklibrary.org/events/stem-saturdays-11": {
+"price": null,
+"at": "2026-10-31T15:21:42.372079+00:00"
+},
+"https://www.derbynecklibrary.org/events/sunday-crafternoon-tbd-37": {
+"price": null,
+"at": "2026-10-31T15:21:43.827206+00:00"
+},
+"https://events.fairfield.edu/event/fairfield-university-womens-swimming-diving-vs-umass-senior-day": {
+"price": null,
+"at": "2026-10-31T15:21:45.776717+00:00"
+},
+"https://events.fairfield.edu/event/fairfield-university-mens-basketball-vs-mount-st-marys-8328": {
+"price": null,
+"at": "2026-10-31T15:21:47.154308+00:00"
+},
+"https://events.fairfield.edu/event/fairfield-university-womens-basketball-vs-sacred-heart-5350": {
+"price": null,
+"at": "2026-10-31T15:21:49.018926+00:00"
+},
+"https://events.fairfield.edu/event/fairfield-university-mens-basketball-vs-saint-peters-8166": {
+"price": null,
+"at": "2026-10-31T15:21:50.859514+00:00"
+},
+"https://events.fairfield.edu/event/fairfield-university-womens-basketball-vs-marist-3762": {
+"price": null,
+"at": "2026-10-31T15:21:52.326149+00:00"
+},
+"https://calendar.fordham.edu/event/fordham-university-womens-basketball-vs-vcu": {
+"price": null,
+"at": "2026-10-31T15:21:55.337161+00:00"
+},
+"https://calendar.fordham.edu/event/fordham-university-mens-basketball-vs-st-bonaventure": {
+"price": null,
+"at": "2026-10-31T15:21:57.662032+00:00"
+},
+"https://calendar.fordham.edu/event/fordham-university-mens-swimming-and-diving-vs-rider": {
+"price": null,
+"at": "2026-10-31T15:21:59.059422+00:00"
+},
+"https://calendar.fordham.edu/event/fordham-university-mens-basketball-vs-saint-josephs": {
+"price": null,
+"at": "2026-10-31T15:22:00.276353+00:00"
+},
+"https://calendar.fordham.edu/event/fordham-university-womens-basketball-vs-george-mason": {
+"price": null,
+"at": "2026-10-31T15:22:01.703548+00:00"
+},
+"https://events.msmc.edu/event/mount-saint-mary-college-womens-basketball-vs-st-josephs-university-brooklyn-9536": {
+"price": null,
+"at": "2026-10-31T15:22:03.218464+00:00"
+},
+"https://events.msmc.edu/event/mount-saint-mary-college-womens-basketball-vs-old-westbury-8011": {
+"price": null,
+"at": "2026-10-31T15:22:04.615325+00:00"
+},
+"https://events.msmc.edu/event/mount-saint-mary-college-mens-basketball-vs-university-of-mount-saint-vincent-5616": {
+"price": null,
+"at": "2026-10-31T15:22:05.589405+00:00"
+},
+"https://events.msmc.edu/event/mount-saint-mary-college-womens-basketball-vs-yeshiva-university-6922": {
+"price": null,
+"at": "2026-10-31T15:22:06.844390+00:00"
+},
+"https://tubbyskingston.com/calendar/velvet-underground-new-years-eve-with-loaded": {
+"price": null,
+"at": "2026-10-31T15:22:08.991555+00:00"
+},
+"https://tubbyskingston.com/calendar/tara-clerkin-trio-1": {
+"price": null,
+"at": "2026-10-31T15:22:11.159243+00:00"
+},
+"https://tubbyskingston.com/calendar/this-is-the-kit": {
+"price": null,
+"at": "2026-10-31T15:22:12.388440+00:00"
+},
+"https://desmondfishlibrary.org/event/afya-book-talk/": {
+"price": null,
+"at": "2026-10-31T15:22:15.776726+00:00"
+},
+"https://kingstonlibrary.assabetinteractive.com/calendar/kingston-library-board-of-trustees-operations-committee-45/": {
+"price": null,
+"at": "2026-10-31T15:22:16.804168+00:00"
+},
+"https://kingstonlibrary.assabetinteractive.com/calendar/pumpkin-spice-saturday/": {
+"price": null,
+"at": "2026-10-31T15:22:17.726990+00:00"
+},
+"https://kingstonlibrary.assabetinteractive.com/calendar/friends-of-kingston-library-monthly-meeting-28/": {
+"price": null,
+"at": "2026-10-31T15:22:18.651466+00:00"
+},
+"https://kingstonlibrary.assabetinteractive.com/calendar/artificial-intelligence-your-devices-your-decisions/": {
+"price": null,
+"at": "2026-10-31T15:22:19.633722+00:00"
+},
+"https://mahaiwe.org/event/sean-mason-trio/2026-11-21/1/": {
+"price": null,
+"at": "2026-10-31T15:22:49.415757+00:00"
+},
+"https://mahaiwe.org/event/shire-stories-with-sheela-clary/": {
+"price": null,
+"at": "2026-10-31T15:22:51.605731+00:00"
+},
+"https://mahaiwe.org/event/indigo-comedy-night-with-steven-rogers/": {
+"price": null,
+"at": "2026-10-31T15:22:53.857083+00:00"
+},
+"https://mahaiwe.org/event/olafs-frozen-adventure-2017-2/": {
+"price": null,
+"at": "2026-10-31T15:22:56.034107+00:00"
+},
+"https://www.wmtl.org/event/v-a-t-11-11-2026/": {
+"price": null,
+"at": "2026-10-31T15:22:57.820439+00:00"
+},
+"https://events.msmc.edu/event/mount-saint-mary-college-mens-swimming-vs-skyline-conference-championship-9517": {
+"price": null,
+"at": "2026-10-31T15:22:59.273871+00:00"
+},
+"https://events.newhaven.edu/event/theater-program-presents-the-poe-show": {
+"price": null,
+"at": "2026-10-31T15:23:01.109609+00:00"
+},
+"https://desmondfishlibrary.org/event/music-and-movement-with-miss-gabi-at-1015am-4/2026-11-04/": {
+"price": null,
+"at": "2026-10-31T15:23:05.215736+00:00"
+},
+"https://westportlibrary.org/event/sit-stitch/2026-11-04/": {
+"price": null,
+"at": "2026-10-31T15:23:07.257594+00:00"
+},
+"https://westportlibrary.org/event/chess-club-for-adults-4-2022-03-23-2-2/2026-11-04/": {
+"price": null,
+"at": "2026-10-31T15:23:08.188970+00:00"
+},
+"https://westportlibrary.org/event/verso-university-mah-jongg-open-play-3/": {
+"price": {
+"min": 5.0,
+"max": 5.0,
+"note": "from the listing page"
+},
+"at": "2026-10-31T15:23:09.117268+00:00"
+},
+"https://riversideparknyc.org/event/volunteer-in-south-park-5-4/2026-11-06/": {
+"price": null,
+"at": "2026-10-31T15:23:10.076556+00:00"
+},
+"https://desmondfishlibrary.org/event/dfpl-at-the-cold-spring-farmers-market-6/2026-11-07/": {
+"price": null,
+"at": "2026-10-31T15:23:13.019012+00:00"
+},
+"https://www.veronalibrary.org/events/prenatal-pelvic-floor-yoga-class/": {
+"price": null,
+"at": "2026-10-31T15:23:17.512424+00:00"
+},
+"https://www.teatown.org/events/environmental-art-fall-foliage-for-families-ages-4/": {
+"price": null,
+"at": "2026-10-31T15:23:18.393655+00:00"
+},
+"https://events.newhaven.edu/event/fall-concert": {
+"price": null,
+"at": "2026-10-31T15:23:19.757783+00:00"
+},
+"https://www.lasdonpublicgardens.org/event/holidays-on-the-hill/": {
+"price": {
+"min": 20.0,
+"max": 20.0,
+"note": "from the listing page"
+},
+"at": "2026-10-31T15:23:23.388013+00:00"
+},
+"https://salisburyassociation.org/event/cool-talks-series-history-of-salisbury-land-use-with-mat-keifer-surveyor/": {
+"price": null,
+"at": "2026-10-31T15:23:25.481773+00:00"
+},
+"https://www.eventbrite.com/e/nyccw-presents-3rd-annual-holiday-market-coquito-competition-tickets-2003835580162": {
+"price": null,
+"at": "2026-10-31T15:23:26.675753+00:00"
+},
+"https://www.eventbrite.com/e/sinterklaas-day-and-dutch-holiday-traditions-childrens-program-tickets-2003515124671": {
+"price": {
+"min": 0.0,
+"max": 0.0,
+"note": "from the listing page"
+},
+"at": "2026-10-31T15:23:27.899882+00:00"
+},
+"https://salisburyassociation.org/event/holiday-concert-with-pizzaz-strings-group/": {
+"price": null,
+"at": "2026-10-31T15:23:29.791028+00:00"
+},
+"https://www.duny.edu/events/christmas-concert-2026/": {
+"price": null,
+"at": "2026-10-31T15:23:31.098893+00:00"
+},
+"https://www.clearwater.org/event/cleawaters-holiday-open-house/": {
+"price": null,
+"at": "2026-10-31T15:23:32.912458+00:00"
+},
+"https://www.eventbrite.com/e/yuletide-hilltop-hanover-farm-tickets-1998380195961": {
+"price": null,
+"at": "2026-10-31T15:23:33.881076+00:00"
+},
+"https://www.clearwater.org/event/practical-navigator-captains-course-jan-11-15-2027/": {
+"price": {
+"min": 735.0,
+"max": 735.0,
+"note": "from the listing page"
+},
+"at": "2026-10-31T15:23:35.495279+00:00"
 }
 }

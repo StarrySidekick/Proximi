@@ -362,6 +362,11 @@ SENIORS = re.compile(r'''(?<!\w)(?:55|60|62|65)\s*\+(?!\w)|\b(?:
  senior\ (?:breakfast|lunch(?:eon)?|social|club|bingo|movie|matinee|fitness|
          yoga|stretch|chair|tech|hour|day|center|centre|swim|walk|exercise)
 )\b''', re.I | re.X)
+# A team's Senior Day honours its graduating players, and every college has one
+# in every sport — "Fordham Football vs Georgetown — Senior Day". Beside a
+# fixture that is what the words mean, and seniors is hidden by default, so
+# reading it as an older-adults programme silently removes a public game.
+FIXTURE = re.compile(r'\bvs\.?(?:\s|$)', re.I)
 # "$14 seniors (62+)" is a discount, not an audience. Most of the "senior"s
 # and age-caps in a description live in the ticket table — a manor tour, a
 # college football game and a trick-or-treat tour were all filed under
@@ -425,7 +430,8 @@ def audience_of(text, title=None, kind=None):
     # The adults check reads the unscrubbed text: "$10 cover, 21+" is a real
     # age gate, where "$14 seniors" is a discount.
     scrubbed = PRICE_CLAUSE.sub(' ', text)
-    if SENIORS.search(scrubbed):
+    heading = title if title is not None else text
+    if SENIORS.search(scrubbed) and not FIXTURE.search(heading):
         return 'seniors'
     if ADULTS_ONLY.search(text):
         return 'adults'
@@ -434,7 +440,6 @@ def audience_of(text, title=None, kind=None):
         # both are hidden by the same switch, and the distinction only ever
         # mattered to the code that drew it.
         return 'family'
-    heading = title if title is not None else text
     if CHILD_FOCUSED.search(heading):
         # Music listings must say so outright, or every band with "Baby" in its
         # name becomes a children's event.

@@ -9,7 +9,7 @@ here can invent an event.
 """
 
 import argparse, gzip, http.cookiejar, io, json, os, sys, time, urllib.error, urllib.request, zlib
-from datetime import datetime, timezone
+from datetime import date, datetime, timedelta, timezone
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import icsparse
@@ -35,6 +35,19 @@ def decode_body(raw, encoding):
 # both serve well-formed archives frozen months back; ingesting them would put
 # confident, obsolete listings on the site.
 STALE = 'no future events — feed looks frozen'
+
+# How far ahead harvest_wpfc walks. An iCal feed carries whatever it carries
+# and gets no horizon at all, so a season here is already the conservative
+# reading of "what is on".
+WPFC_DAYS = 90
+
+# The range to ask for on each page. Short on purpose — see harvest_wpfc.
+WPFC_PAGE = 30
+
+# A cap, not a horizon: harvest_tribe asks for everything from today onwards
+# and stops after this many pages of 50 so one venue with a decade of repeats
+# cannot run away with the run.
+TRIBE_PAGES = 10
 
 
 class Blocked(Exception):
@@ -65,6 +78,16 @@ def fetch(url, tries=3):
                 ctype = (r.headers.get('Content-Type') or '').lower()
             if 'BEGIN:VCALENDAR' in body:
                 return body
+            # WordPress serves admin-ajax.php as text/html whatever it returns,
+            # so a perfectly good wp-fullcalendar feed arrives looking exactly
+            # like a challenge page. A challenge is never JSON, so parsing
+            # settles which one this is.
+            if body.lstrip()[:1] in ('[', '{'):
+                try:
+                    json.loads(body)
+                    return body
+                except json.JSONDecodeError:
+                    pass
             if r.status == 202 or 'html' in ctype:
                 raise Blocked(f'bot challenge (HTTP {r.status}, {ctype.split(";")[0] or "?"})')
             return body
@@ -81,11 +104,25 @@ def harvest_ics(src, tz):
     raw = fetch(src['url'])
     events = icsparse.parse(raw, default_tz=tz)
     if not events:
+        # A VCALENDAR carrying no VEVENTs is an empty calendar, not a broken
+        # one. Four Brothers Drive-In serves exactly that out of season —
+        # headers, timezone, description, no events — and "not an iCal feed?"
+        # sent someone looking for a parser bug that was never there.
+        if 'BEGIN:VCALENDAR' in raw:
+            return [], 'nothing scheduled yet (empty calendar)'
         return [], 'no VEVENTs — not an iCal feed?'
     future = icsparse.future_only(events)
     if not future:
-        span = sorted(e['start'] for e in events)
-        return [], f'{STALE} (latest {str(span[-1])[:10]})'
+        span = sorted(str(e['start'])[:10] for e in events)
+        # Which months, not just the last date. A feed that stopped dead and a
+        # museum that opens in spring and autumn are indistinguishable through
+        # "latest 2026-09-20", and telling them apart is the whole question:
+        # one wants removing, the other wants leaving alone until May. Hurley
+        # Heritage's 19 dates fall in February, May, August and September —
+        # that is a season, and it only shows if the status says so.
+        months = sorted({d[:7] for d in span})
+        return [], (f'{STALE} ({len(events)} dated, latest {span[-1]}, '
+                    f'months {", ".join(months[-8:])})')
 
     out = []
     for e in future:
@@ -171,7 +208,172 @@ def harvest_sqsp(src, tz):
     return out, None
 
 
-HANDLERS = {'ics': harvest_ics, 'sqsp': harvest_sqsp}
+def harvest_wpfc(src, tz):
+    """WordPress Events Manager, read through its wp-fullcalendar front end.
+
+    Derby Neck Library moved off The Events Calendar and left the old plugin's
+    export standing: /events.ics and /?ical=1 serve the same frozen file, 50
+    VEVENTs ending months back, which reads as a library that stopped running
+    programmes rather than as a feed nobody writes to any more. The new stack
+    publishes no iCal at all, so there is no feed to point a registry entry at.
+
+    What the calendar page itself calls is
+
+      /wp-admin/admin-ajax.php?action=WP_FullCalendar&type=event&start=&end=
+
+    and it answers a JSON array: title, start, end, the all-day flag and the
+    event's own URL. Nothing else — no description, no room, no price. Those
+    live on the event pages at one request each, which is a bill harvest
+    should not run up for fields the rest of the pipeline derives anyway.
+
+    The one trap is the window, and it fails in the direction that looks like
+    success. `end` is not a filter: the endpoint answers a fixed page of about
+    160 rows and slides it further out the wider the range, so asking for 14,
+    30, 45 or 60 days all return the same 164 listings (1 Nov - 12 Dec), while
+    asking for 90 returns 160 that *start* on 29 November — the near month
+    silently gone, the count still healthy. So the range stays short and the
+    cursor walks: each page from the last start seen, which overlaps the one
+    before and is deduped on the listing, until it passes the horizon or stops
+    saying anything new.
+    """
+    import html as _html
+    from urllib.parse import urlsplit
+    from zoneinfo import ZoneInfo
+    site = urlsplit(src['url'])
+    endpoint = (f'{site.scheme}://{site.netloc}/wp-admin/admin-ajax.php'
+                '?action=WP_FullCalendar&type=event&start={start}&end={end}')
+    zone = ZoneInfo(tz)
+    today = date.today()
+    horizon = today + timedelta(days=WPFC_DAYS)
+    cursor, seen, out = today, set(), []
+    while cursor <= horizon:
+        page = json.loads(fetch(endpoint.format(
+            start=cursor.isoformat(),
+            end=(cursor + timedelta(days=WPFC_PAGE)).isoformat())))
+        rows = [e for e in page if e.get('start') and e.get('title')]
+        if not rows:
+            break
+        for e in rows:
+            # post_id is the event, event_id the recurrence it belongs to, so
+            # the pair plus the date is one dated listing.
+            uid = f"wpfc-{e.get('post_id')}-{e.get('event_id')}-{e['start'][:10]}"
+            start = datetime.fromisoformat(e['start']).replace(tzinfo=zone)
+            if uid in seen or start.date() > horizon:
+                continue
+            seen.add(uid)
+            # Local wall-clock with no offset. Stamping the registry's zone on
+            # it is what keeps a 7pm concert from being filed at 3pm, which is
+            # what bare fromisoformat() plus a UTC CI clock would do.
+            end = (datetime.fromisoformat(e['end']).replace(tzinfo=zone)
+                   if e.get('end') else None)
+            out.append({
+                'sourceId': src['id'],
+                'sourceName': src.get('publisher', src['id']),
+                # Titles arrive HTML-escaped: "Drums &amp; Strings".
+                'title': _html.unescape(e['title'].strip()),
+                'start': start.isoformat(),
+                'end': end.isoformat() if end else None,
+                'allDay': bool(e.get('allDay')),
+                'url': e.get('url') or src.get('homepage') or src['url'],
+                'location': venue_hint(src),
+                'description': None,
+                'feedCategories': None,
+                'organizer': src.get('publisher'),
+                'recurring': False,
+                'uid': uid,
+            })
+        last = max(date.fromisoformat(e['start'][:10]) for e in rows)
+        if last <= cursor:
+            break
+        cursor = last
+        time.sleep(0.4)
+    if not out:
+        return [], STALE
+    return out, None
+
+
+def harvest_tribe(src, tz):
+    """The Events Calendar, read through its REST API instead of ?ical=1.
+
+    Five registry feeds were failing on the iCal route and four of them were
+    reported as "blocked: bot challenge": the challenge sits in front of the
+    site's own pages, and /events/?ical=1 is one of those pages. /wp-json/ is
+    not, and it is the plugin's documented API.
+
+    The status line is the real repair. Maverick Concerts runs a summer
+    chamber series — June to September, 46 listings, nothing afterwards — and
+    "blocked" said the feed could not be read when the truth is that the
+    season is over. The Castle Fun Center and Millbrook Vineyards are the same
+    shape; the Corner Bookstore's last reading was three days ago and it
+    schedules a few weeks out. None of them is broken, all four will refill on
+    their own, and reading them this way says so instead of guessing.
+
+    It also carries more than the iCal did: the venue arrives as an address
+    rather than a room name, and `cost` is deliberately dropped — the
+    candidate shape has no price, because prices.py owns that and reads it
+    from the listing itself.
+    """
+    import html as _html
+    import re as _re
+    from urllib.parse import urlsplit
+    from zoneinfo import ZoneInfo
+    site = urlsplit(src['url'])
+    api = (f'{site.scheme}://{site.netloc}/wp-json/tribe/events/v1/events'
+           f'?per_page=50&start_date={date.today().isoformat()}&page=')
+    out = []
+    for page in range(1, TRIBE_PAGES + 1):
+        payload = json.loads(fetch(api + str(page)))
+        events = payload.get('events') or []
+        if not events:
+            break
+        for e in events:
+            title = _html.unescape((e.get('title') or '').strip())
+            if not title or not e.get('start_date'):
+                continue
+            # Each event states its own zone; the registry's is the fallback
+            # for the rare one that does not.
+            zone = ZoneInfo(e.get('timezone') or tz)
+            start = datetime.strptime(e['start_date'], '%Y-%m-%d %H:%M:%S').replace(tzinfo=zone)
+            end = (datetime.strptime(e['end_date'], '%Y-%m-%d %H:%M:%S').replace(tzinfo=zone)
+                   if e.get('end_date') else None)
+            venue = e.get('venue') or {}
+            where = ', '.join(filter(None, [
+                venue.get('venue'), venue.get('address'),
+                venue.get('city'), venue.get('stateprovince') or venue.get('state')]))
+            desc = _html.unescape(_re.sub(r'<[^>]+>', ' ',
+                                          e.get('description') or e.get('excerpt') or ''))
+            out.append({
+                'sourceId': src['id'],
+                'sourceName': src.get('publisher', src['id']),
+                'title': title,
+                'start': start.isoformat(),
+                'end': end.isoformat() if end else None,
+                'allDay': bool(e.get('all_day')),
+                'url': e.get('url') or src.get('homepage') or src['url'],
+                'location': where or venue_hint(src),
+                'description': ' '.join(desc.split())[:1200] or None,
+                'feedCategories': [c.get('name') for c in (e.get('categories') or [])
+                                   if c.get('name')] or None,
+                'organizer': (e.get('organizer') or [{}])[0].get('organizer')
+                             or src.get('publisher'),
+                'recurring': False,
+                # Stable across runs and unique per occurrence: a repeating
+                # series gives each date its own id.
+                'uid': f"tribe-{e.get('id')}",
+            })
+        if page >= (payload.get('total_pages') or 1):
+            break
+        time.sleep(0.4)
+    if not out:
+        # Nothing scheduled is not the same as nothing readable, and this
+        # route can tell them apart: the API answered, it simply has no future
+        # events. STALE would put this in the same bucket as a dead export.
+        return [], 'nothing scheduled yet (API answered, 0 upcoming)'
+    return out, None
+
+
+HANDLERS = {'ics': harvest_ics, 'sqsp': harvest_sqsp, 'wpfc': harvest_wpfc,
+            'tribe': harvest_tribe}
 
 
 def main():

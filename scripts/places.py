@@ -857,7 +857,15 @@ def norm(name):
 
 
 def merge_events(places, events_path, center, radius):
-    """Attach event counts, and add any event venue OSM did not know about."""
+    """Attach event counts, and add any event venue OSM did not know about.
+
+    The count written here decides which feed-only venues earn a row, and it
+    is a record of what this build saw. It is not what the app displays: the
+    client counts the feed it is holding, because a directory built on Monday
+    and a feed refreshed on Friday disagree by Friday, and the row would go on
+    promising listings the filter could no longer find. See buildPlaceIndex in
+    assets/app.js — that fallback is gone on purpose.
+    """
     if not os.path.exists(events_path):
         return places
     items = json.load(open(events_path)).get('items', [])
